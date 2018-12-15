@@ -1,0 +1,2026 @@
+# PLOTSCR.HSD
+# This file holds the language definition for OHRRPGCE plotscripting.
+# modifying this file may have undesired/disasterous effects,
+# but reading it can be somewhat educational. Especially the constants.
+
+# Use same capitalisation as HSpeak does, pad to length 3
+plotscr version, begin
+  "3Tf",  # Version number used by hspeak to test whether this file
+          # supports necessary features, and also causes the
+          # display of future-version warnings in Game/Custom;
+          # only very rarely necessary to increment (don't when
+          # new commands are added; that's detected separately),
+          # otherwise leave alone to allow forwards compatibility.
+  "3S "   # Minimum supported version of hspeak;
+          # Custom/Game don't care about this.
+end
+
+include, scancode.hsi
+
+#--------------------------------------------------------------------------
+# hard coded functions
+
+define function, begin
+0,noop,0                    # no operation
+1,wait,1,1                  # wait(cycles)
+2,waitforall,0              # wait for script-related walking&panning to stop
+3,waitforhero,1,0           # wait for hero to stop moving
+4,waitfornpc,1,0            # wait for npc to stop moving
+5,suspendnpcs,0             # pause normal NPC movement
+6,suspendplayer,0           # stop the player from controlling stuff (except text boxes)
+7,resumenpcs,0              # resume npc automation
+8,resumeplayer,0            # unlock players controls
+9,waitforkey,1,99           # wait for a keypress
+10,walkhero,3,0,2,1         # walk hero(who,direction,distance)
+11,showtextbox,1,1          # show a text box
+12,checktag,1,0             # returns the value of a tag
+13,settag,2,0,0             # set tag(#,true/false)
+15,usedoor,1,0              # use door(#)
+16,fightformation,1,0       # fight formation(#)
+17,getitem,2,0,1            # get item(item,quantity)
+18,deleteitem,2,0,1         # delete item(item,quantity)
+19,leader,0                 # returns the current leader
+20,getmoney,1,0             # get money(amount)
+21,losemoney,1,0            #? lose money(amount) no checking
+22,paymoney,1,0             # returns false and subtracts nothing if cannot afford
+23,unequip,2,0,1            # (who,where)
+24,forceequip,3,0,1,0       # (who,where,item)
+25,setheroframe,2,0,0       # (who,frame) frame is 0 or 1
+26,setNPCframe,2,0,0        # (who,frame) frame is 0 or 1
+27,suspendoverlay,0         # turns off overhead tiles
+28,playsong,1,0             # play song(#)
+29,stopsong,0               # stop the music
+30,keyval,1,0               # check key by scancode - returns value from keyval array
+31,rankincaterpillar,1,0    # finds the heros position in the caterpillar
+32,showbackdrop,1,0         # showbackdrop (#)
+33,showmap,0                # cancels a showbackdrop
+34,dismountvehicle,0        # dismount whatever vehicle you may be riding
+35,useNPC,1,0               # trigger an NPC remotely
+37,useshop,1,0              #? use shop(#)
+38,camerafollowshero,1,0    # make camera follow a hero
+39,camerafollowsnpc,1,0     # make camera follow an npc
+40,pancamera,3,0,1,2        # pan camera(direction,distance,pixelstep)
+41,focuscamera,3,0,0,2      # focus camera(x,y,pixelstep)
+42,waitforcamera,0          # waits for pan or focus to finish
+43,herox,1,0                # returns the hero's x coordinate
+44,heroy,1,0                # returns the hero's y coordinate
+45,npcx,1,0                 # returns the npc's x coordinate
+46,npcy,1,0                 # returns the npc's y coordinate
+47,suspendobstruction,0     # lets heros walk through NPCs and vice versa
+48,resumeobstruction,0      # restores normal obstruction behavior
+49,suspendherowalls,0       # lets heros walk through walls
+50,suspendNPCwalls,0        # lets heros and npcs walk through walls
+51,resumeherowalls,0        # restores normal hero wall behavior
+52,walknpc,3,0,2,1          # walk npc(who,direction,distance)
+53,setherodirection,2,0,2   # set hero direction(who,direction)
+54,setnpcdirection,2,0,2    # set npc direction(who,direction)
+55,getdefaultweapon,1,0     # (who)
+56,setdefaultweapon,2,0,0   # (who,item)
+57,suspendcatapillar,0      # misspelled alias for backcompat
+58,resumecatapillar,0       # misspelled alias for backcompat
+59,waitfortextbox,0         # waits for text box to go away
+60,equipwhere,2,0,0         #? (who,item) returns the slot that an item can be equipped in, or false if the hero cant equip it
+61,teleporttomap,3,0,0,0    # teleport to map (map,x,y)
+62,suspendrandomenemys,0    # misspelled alias for backcompat
+63,resumerandomenemys,0     # misspelled alias for backcompat
+64,getherostat,3,0,0,0      # returns a hero's stat (who,stat,cur/max)
+65,resumeoverlay,0          # turns overhead tiles back on
+66,addhero,1,0              # adds a hero to the party
+67,deletehero,1,0           # deletes a hero from the party
+68,swapouthero,1,0          # move a hero out of the active party
+69,swapinhero,1,0           # moves a hero into the active party (if there is room)
+70,roominactiveparty,0      # returns the number of empty slots in the active party (0-3)
+71,lockhero,1,0             # prevents swapping of a hero
+72,unlockhero,1,0           #? reverses lockhero
+73,gameover,0               # returns you to the title screen
+74,setdeathscript,1,0       # changes what script is run when you die
+75,fadescreenout,3,0,0,0    # fade screen out (red,green,blue)
+76,fadescreenin,0           # fade back to color after fade screen out
+77,showvalue,1,0            # display a number in the bottom left corner
+78,alterNPC,3,0,0,0         # replaces one of an NPC's stats
+79,shownovalue,0            # hide the number from showvalue
+80,currentmap,0             # returns the number of the current map
+81,setherospeed,2,0,4       # changes a heros walking speed
+82,inventory,1,0            # returns the count of a given item
+83,setherostat,4,0,0,1,0    # alters a hero's stats (who,stat,value,cur/max)
+84,suspendboxadvance,0      # prevents user from advancing text boxes
+85,resumeboxadvance,0       # reverses suspendboxadvance
+86,advancetextbox,0         # as if the user had pressed a key
+87,setheroposition,3,0,0,0  # arbitrarily set x,y
+88,setNPCposition,3,0,0,0   # arbitrarily set x,y
+89,swapbyposition,2,0,0     # swap two hero slots
+90,findhero,1,0             # locate hero slot by hero name
+91,checkequipment,2,0,1     # what is a hero equipped with? (who,where)
+#92,daysofplay,0             # returns the days, these opcodes remain for compatability
+#93,hoursofplay,0            # returns the hours
+#94,minutesofplay,0          # returns the minutes
+95,resumeNPCwalls,0         # restores normal NPC wall behavior
+96,setheroz,2,0,0           # sets the hero's vertical position
+97,readmapblock,3,0,0,0     # get mapblock x,y,layer
+98,writemapblock,4,0,0,0,0  # set mapblock x,y,value,layer
+99,readpassblock,2,0,0      # get passblock x,y
+100,writepassblock,3,0,0,0  # set passblock x,y,value
+101,NPCdirection,1,0        # return an NPC's direction
+102,herodirection,1,0       # return a hero's direction
+103,resetpalette,0          # return the master palette to defaults
+104,tweakpalette,5,0,0,0,0,255 # alter the master palette
+105,readcolor,2,0,0         # return a color value
+106,writecolor,3,0,0,0      # change a color value
+107,updatepalette,0         # apply changes made with writecolor
+108,seedrandom,1,0          #? reseed the random number generator
+109,greyscalepalette,2,0,255# convert the palette to greyscale
+110,setheropicture,3,0,0,1  # who,picture,type
+111,setheropalette,3,0,0,1  # who,palette,type
+112,getheropicture,2,0,1    # who,type
+113,getheropalette,2,0,1    # who,type
+114,readglobal,1,0          # index
+115,writeglobal,2,0,0       # index,value
+116,heroiswalking,1,0       # (who)
+#117,NPCiswalking,1,0       #x obsolete, backwards compatability only
+118,suspendcaterpillar,0    # other heros stop following the leader, and can be manipulated separately.
+119,resumecaterpillar,0     # turns catapillar party back on
+120,NPCreference,2,0,0      # get an NPC reference by ID number
+121,NPCatspot,3,0,0,0       # get nth NPC reference on tile (X,Y,n)
+122,getNPCID,1,0            # get the ID number of an NPC reference
+123,NPCcopycount,1,0        # find out how many copys of an NPC ID are on the map
+124,changeNPCID,2,0,0       # given an NPC reference, changes its ID
+125,createNPC,4,0,0,0,2     # create an NPC by ID at a location and return its reference
+126,destroyNPC,1,0          # destroy the referenced NPC
+126,deleteNPC,1,0           # alias
+127,teachspell,2,0,0        # (who,spell) tries to teach a hero a spell
+128,forgetspell,2,0,0       # (who,spell) forget a learned spell
+129,readspell,3,0,0,0       # (who,list,slot) returns the number of the spell in a slot
+130,writespell,4,0,0,0,0    # (who,list,slot,spell) forces a hero to learn a spell
+131,knowsspell,2,0,0        # (who,spell) returns true if the hero already knows this spell
+132,canlearnspell,3,0,0,0   # (who,spell,learntype) returns true if the hero can learn the spell
+133,herobyslot,1,0          # returns the hero ID/name of the hero at a particular slot in the party
+134,herobyrank,1,0          # returns the hero ID/name of the hero at a particular rank in the caterpillar
+135,puthero,3,0,0,0         #? (who,x,y) set hero pixel-position
+136,putnpc,3,0,0,0          # (who,x,y) set npc pixel position
+137,putcamera,2,0,0         # (x,y) set screen pixel position
+138,heropixelx,1,0          #? (who) get hero pixel x
+139,heropixely,1,0          #? (who) get hero pixel y
+140,npcpixelx,1,0           # (who) get npc pixel x
+141,npcpixely,1,0           # (who) get npc pixel y
+142,camerapixelx,0          #? get camera pixel x
+143,camerapixely,0          #? get camera pixel y
+144,loadtileset,2,-1,-1     # load a new tileset for the current map
+145,pickhero,0              # lets you manually pick a hero
+146,renameherobyslot,1,0    # lets you manually rename a hero
+147,readgeneral,1,0         # directly read from the in-memory array of general game data
+148,writegeneral,2,0,0      # directly write to the in-memory array of general game data. If you crash your game with this command, don't be too surprised
+150,statusscreen,1,0        # display the status screen for a hero
+151,showminimap,0           # display the mini-map
+152,spellsmenu,1,0          # display the spell menu for a hero
+153,itemsmenu,0             # display the items menu
+154,equipmenu,2,-1,1        # display the equip menu for a hero
+#155,savemenu,0             # obsolete in favor of ID 170
+157,ordermenu,0             # display the order menu
+158,teammenu,0              # display the team menu
+159,initmouse,0             # init mouse, return true if a mouse is installed
+160,mousepixelx,0           # returns mouse x coordinate on the screen
+161,mousepixely,0           # returns mouse y coordinate on the screen
+162,mousebutton,1,0         # returns true if the specified button is pressed
+163,putmouse,2,160,100      # places the mouse at a point on the screen
+164,mouseregion,4,-1,-1,-1,-1 # define the rectangle in which the mouse can move (xmin, xmax, ymin, ymax)
+165,npcatpixel,3,0,0,0      # returns NPC at pixel x,y, third arg is which npc (on -1 returns number of npcs at pixel)
+166,saveinslot,1,0	    # save game in slot
+167,lastsaveslot,0	    # returns the last save slot the game was saved in, false if unsaved
+168,suspendrandomenemies,0  # keeps random enemies from attacking
+169,resumerandomenemies,0   # undoes suspendrandomenemies
+170,savemenu,1,-1           # display the save menu
+171,saveslotused,1,1        # returns true if a saved game exists in the specified slot
+172,importglobals,3,1,-1,-1 # (slot) or (slot, id) or (slot, first, last) reads a range of globals from a save slot
+173,exportglobals,3,1,0,50000 # (slot) or (slot, first, last) writes a range of globals to a save slot
+174,loadfromslot,-1         # loads saved game from slot (slot, args...)
+175,deletesave,1,1          # delete (hide from load/save screen - data not *actaully* deleted) specified slot
+176,runscriptbyid,-1        # run a script by its id number and pass any number of arguments
+177,NPCiswalking,1,0        # (who) returns true if walking (for real, unlike the old implementation)
+178,readgmap,1,0            # read from general map data array
+179,writegmap,2,0,0         # write a gmap data item
+180,mapwidth,1,-1           # returns map height in tiles (map id)
+181,mapheight,1,-1          # returns map width in tiles (map id)
+182,readNPC,2,0,0           # reads information about an NPC on the current map (corresponds to alterNPC)
+183,setherolevel,3,0,0,1    # change a hero's level
+184,giveexperience,2,-1,1   # (who, how much) gives a hero or the active party experience
+185,herolevelled,1,0        # number of levels gained last battle/giveexperience command.
+186,spellslearnt,2,0,0      # deprecated, use "spells learned" instead.
+187,getmusicvolume,0        # music volume on a scale of 0-255 regardless of implementation
+188,setmusicvolume,1,128    # set music volume on a scale of 0-255
+#189,getformationsong,1,0	# returns the song associated with a given formation + 1   (obsoleted by opcode 307)
+190,setformationsong,2,0,0	# sets the song associated with a given formation
+191,heroframe,1,0           # get hero walkabout frame
+192,npcframe,1,0            # get npc walkabout frame
+193,npcextra,2,0,1          # get npc extra data (ref, 0 - 2)
+194,setnpcextra,3,0,1,0     # set npc extra data (ref, 0 - 2, value)
+#195,loadsound,2,0,0         # loads a sound into a slot(slot, sfx) #DO NOT USE
+#196,freesound,1,1           # frees an sfx slot(slot) #DO NOT USE
+197,playsound,3,1,0,0       # plays an sfx (num, loop?, preempt?)
+198,pausesound,1,1          # pauses an sfx (num) (stop, but don't rewind)
+199,stopsound,1,1           # stops an sfx (num)  (stop, and rewind)
+200,systemhour,0
+201,systemminute,0
+202,systemsecond,0
+203,currentsong,0
+204,getheroname,2,0,0         # (string, hero) - puts the name of hero(hero) in string(string)
+205,setheroname,2,0,0         # (string, hero) - sets the name of hero(hero) to string(string)
+206,getitemname,2,0,0         # (string, item) - puts the name of item(item) in string(string)
+207,getmapname,2,0,0          # (string, map) - puts the name of map(map) in string(string)
+208,getattackname,2,0,0       # deprecated. Use "read attack name" instead
+#209,getglobalstring,2,0,0     # (string, global) - puts the global string (global) in string(string)
+210,showstring,1,0            #shows string on the bottom(stringID)
+211,clearstring,1,0           #deletes the data from string(stringID)
+212,appendascii,2,0,0         #adds ascii to string(stringID,ascii)
+213,appendnumber,2,0,0        #adds number to string(stringID,number)
+214,copystring,2,0,0          #copies string from one to another(sourceID,destinationID)
+215,concatenatestrings,2,0,0  #adds two strings(sourceID,destinationID)
+216,stringlength,1,0          #returns the length of string(stringID)
+217,deletechar,2,0,1          #deletes character from string(stringID,position)
+218,replacechar,3,0,1,0       #replaces character in the specified string(stringID,position,ascii)
+219,asciifromstring,2,0,1     #returns the ascii in the string(ascii number)(stringID,position)
+220,positionstring,3,0,0,0    #move a string to a position on the screen(stringID,x,y)
+221,setstringbit,3,0,0,0      #set a string bit, such as: visibility, style(stringID,bit,value)
+222,getstringbit,2,0,0        #return a string bit, such as: visibility, style(stringID,bit)
+223,stringcolor,3,0,-1,0      #set a string's foreground and background color(stringID,fColor,bColor)
+224,stringx,1,0               #return a string's X position(stringID)
+225,stringy,1,0               #return a string's Y position(stringID)
+226,systemday,0               #returns system day
+227,systemmonth,0             #returns system month
+228,systemyear,0              #returns system year
+229,stringcompare,2,0,0	      #returns whether two strings are the same(stringID1, stringID2)
+230,readenemydata,2,0,0       #reads enemy data(enemy,dataposition)
+231,writeenemydata,3,0,0,0    #writes enemy data(enemy,dataposition,value)
+232,trace,1,0                 #writes the provided string to G_DEBUG.txt
+233,getsongname,2,0,0         #get song name and store in string (string id, song)
+234,loadmenu,2,1,1            #show loadmenu (really load/quit?, show new game)
+235,keyispressed,2,0,0        #check key by scancode, returns a bool
+236,soundisplaying,1,0        #checks to see if a sound is playing (soundID)
+#237,soundslots,0              #returns the number of slots available
+238,searchstring,3,0,0,1      #Search string, (ID1,ID2,start)
+239,trimstring,3,0,-1,1       #Trims the specified string, (ID, start,length)
+240,stringfromtextbox,4,0,0,0,0 #(obsolete) get a line from a textbox  (string, box, line, ignored)
+241,expandstring,2,0,0        #expand ${Hxx}, etc in a string(ID)
+242,joystickbutton,2,0,0      #returns whether a given button is pressed (button, joystick)
+243,joystickaxis,3,0,100,0    #returns the axis position (axis,multiplier,joystick)
+244,waitforscancode,1,0       #waits for a specific scancode
+245,savemapstate,2,255,255    #save map data to a temp file (savebits, customid)
+246,loadmapstate,2,255,255    #load map data from a temp file (loadbits, customid)
+247,resetmapstate,1,255       #reload original map data (loadbits)
+248,deletemapstate,1,255      #delete temp map state files (deletebits)
+249,partymoney,0              #retrieves amount of gold
+250,setmoney,1,0              #sets amount of gold
+251,setstringfromtable,2,0,0  #string support function
+252,appendstringfromtable,2,0,0      #string support function
+253,settileanimationoffset,3,0,0,0   #set offset from starting tile (animation pattern 0/1, offset, layer)
+254,gettileanimationoffset,2,0,0     #get offset from starting tile (animation pattern 0/1, layer)
+255,animationstarttile,2,0,0  #tile number which this tile starts its animation pattern off as (id of a tile, layer)
+256,suspendmapmusic,0         #prevent ambient music from playing on entering a map
+257,resumemapmusic,0          #reverse above
+258,checkherowall,2,0,0       #check passability in a direction relative to a hero
+259,checknpcwall,2,0,0        #check passability in a direction relative to an NPC
+260,settimer,6,0,-1,-1,-1,-1,-1#start (or modify) a timer(id, count, speed, trigger, string, flags)
+261,stoptimer,1,0             #convenience for settimer(id,-1,0)
+262,readtimer,1,0             #returns the count of a timer(id)
+263,getcolor,1,0              #returns a 32-bit color from the master palette(index)
+264,setcolor,2,0,0            #writes a 32-bit color to the master palette(index,val)
+265,rgb,3,0,0,0               #mixes red, green and blue into a 32-bit color(r, g, b)
+266,extractcolor,2,0,0        #extracts an RGB component from a 32-bit color(color, component)
+267,mainmenu,0                #opens the main menu
+268,loadpalette,1,0           #load master palette
+269,totalexperience,1,0       #experience gained by a hero
+270,experiencetolevel,2,0,-1  #total experience to reach a level (level,hero)
+271,experiencetonextlevel,1,0 #experience to level up
+272,setexperience,3,0,0,1     #set total experience (who,amount,allow spell forgetting)
+273,milliseconds,0            #timer in milliseconds
+274,openmenu,2,0,0            #openmenu(menuID, allow duplicate)
+275,readmenuint,2,0,0         #read menu int(menuhandle,intid)
+276,writemenuint,3,0,0,0      #write menu int(menuhandle,intid,n)
+277,readmenuitemint,2,0,0     #read menu item int(menuitemhandle,intid)
+278,writemenuitemint,3,0,0,0  #write menu item int(menuitemhandle,intid,n)
+279,createmenu,0              #create a blank menu
+280,closemenu,1,0             #close menu(handle)
+281,topmenu,0                 #return a handle to the topmost menu
+282,bringmenuforward,1,0      #bring menu forward(menu handle)
+283,addmenuitem,1,0           #add menu item(menuhandle) appends, returns menuitemhandle
+284,deletemenuitem,1,0        #delete menu item(menuitemhandle)
+285,getmenuitemcaption,2,0,0  #get menu item caption(menuitemhandle, string ID)
+286,setmenuitemcaption,2,0,0  #set menu item caption(menuitemhandle, string ID)
+287,getlevelmp,3,0,0,0        #get level mp(hero party slot, mp level, currentstat|maximumstat)
+288,setlevelmp,3,0,0,0        #set level mp(hero party slot, mp level, new value)
+289,bottommenu,0              #return a handle to the bottommost menu
+290,previousmenu,1,0          #given a menu handle, return a handle to the menu beneath it
+291,nextmenu,1,0              #given a menu handle, return a handle to the menu on top of it
+292,menuitembyslot,3,0,0,true #menu item by slot(menu handle, slotnum, visible only) returns menuitemhandle
+293,previousmenuitem,2,0,true #given a menuitemhandle return handle to the menu item before it
+294,nextmenuitem,2,0,true     #given a menuitemhandle return handle to the menu item after it
+295,selectedmenuitem,1,-1     #selected menu item(menu handle) returns menuitemhandle
+296,selectmenuitem,1,0        #select menu item(menu item handle) moves the cursor
+297,parentmenu,1,0            #parent menu(menu item handle) returns menu handle
+298,getmenuid,1,0             #menu ID(menu handle) returns the ID of the menu
+299,swapmenuitems,2,0,0       #swap menu items(handle1, handle2)
+300,findmenuitemcaption,4,0,0,0,1 #find menu item caption(menu handle, string ID, search after handle=false, visible only=true)
+301,findmenuid,1,0            #find menu(menu ID) search open menus for menu ID and return menu handle
+302,menuisopen,1,0            #menu is open(menu handle) # return true as long as the handle is still valid
+303,menuitemslot,1,0          #menu item slot(menu item handle) returns a menu slot number
+304,outsidebattlecure,3,0,0,-1 #backcompat only, should prefer "map cure"
+305,changetileset,2,-1,-1     #similar to loadtileset. (tileset,layer)
+306,layertileset,1,0          #layer tileset(layer) returns tileset number in use
+307,getformationsong,1,0      #returns the song associated with a given formation
+308,addenemytoformation,5,0,0,85,95,-1 #add enemy to formation(formation, enemy id, x, y, slot = -1) returns slot or -1
+309,findenemyinformation,3,0,0,0       #find enemy in formation(formation, enemy id, number) returns slot or -1
+310,deleteenemyfromformation,2,0,0     #delete enemy from formation(formation, slot)
+311,formationslotenemy,2,0,0  #formation slot enemy (formation, slot) returns enemy in slot
+312,formationslotx,2,0,0      #formation slot x(formation, slot) returns x of enemy in slot
+313,formationsloty,2,0,0      #formation slot y(formation, slot) returns y of enemy in slot
+314,setformationbackground,4,0,0,1,0   #set formation background(formation, background, animation frames, animation ticks)
+315,getformationbackground,1,0 #get formation background(formation) returns background number
+316,lastformation,0           #last formation fought
+317,randomformation,1,0       #pick a formation from a formation set
+318,formationsetfrequency,1,0 #returns set frequency
+319,formationprobability,2,0,0 #returns (as percentage) formation being picked from formation set probability
+320,currenttextbox,0          #currently displayed textbox or -1
+321,getherospeed,1,0          #hero walk speed (hero)
+322,loadherosprite,2,0,-1     #load hero sprite (number, palette)
+323,freesprite,1,0            #frees a sprite (id)
+324,putslice,3,0,0,0          #change the position of a slice
+325,setspritevisible,2,0,0    #alias for set slice visible
+326,setspritepalette,2,0,0    #set sprite palette(id, pal)
+327,replaceherosprite,3,0,0,-1 #replaces the sprite with a hero sprite (id, num, pal)
+328,setspriteframe,2,0,0      #what it says on the tin(id, num)
+329,loadwalkaboutsprite,2,0,-1 #load walkabout sprite (number, palette)
+330,replacewalkaboutsprite,3,0,0,-1 #replaces the sprite with a walkabout sprite (id, num, pal)
+331,loadweaponsprite,2,0,-1   #load weapon sprite (number, palette)
+332,replaceweaponsprite,3,0,0,-1 #replaces the sprite with a weapon sprite (id, num, pal)
+333,loadsmallenemysprite,2,0,-1  #load enemy sprite (number, palette)
+334,replacesmallenemysprite,3,0,0,-1 #replaces the sprite with an enemy sprite (id, num, pal)
+335,loadmediumenemysprite,2,0,-1  #load enemy sprite (number, palette)
+336,replacemediumenemysprite,3,0,0,-1 #replaces the sprite with an enemy sprite (id, num, pal)
+337,loadlargeenemysprite,2,0,-1  #load enemy sprite (number, palette)
+338,replacelargeenemysprite,3,0,0,-1 #replaces the sprite with an enemy sprite (id, num, pal)
+339,loadattacksprite,2,0,-1   #load attack sprite (number, palette)
+340,replaceattacksprite,3,0,0,-1 #replaces the sprite with an attack sprite (id, num, pal)
+341,loadbordersprite,2,0,-1   #load a textbox border (number, palette)
+342,replacebordersprite,3,0,0,-1 #replaces the sprite with a textbox border (id, num, pal)
+343,loadportraitsprite,2,0,-1 #load a character portrait (number, palette)
+344,replaceportraitsprite,3,0,0,-1 #replaces the sprite with a character portrait (id, num, pal)
+345,clonesprite,2,0, 0        #returns a copy of the given sprite(ID, pal)
+346,getspriteframe,1,0        #returns the current frame number of a sprite
+347,spriteframecount,1,0      #returns the number of frames a sprite has
+348,slicex,1,0                #returns the x position of a slice relative to its parent
+349,slicey,1,0                #returns the y position of a slice relative to its parent
+350,setslicex,2,0,0           #set the x position of a slice relative to its parent
+351,setslicey,2,0,0           #set the y position of a slice relative to its parent
+352,slicewidth,1,0            #returns the width of a slice
+353,sliceheight,1,0           #returns the height of a slice
+354,sethorizalign,2,0,0       #changes the horizontal alignment of a slice to its parent
+355,setvertalign,2,0,0        #changes the vertical alignment of a slice to its parent
+356,sethorizanchor,2,0,0      #changes the horizontal anchor of a slice
+357,setvertanchor,2,0,0       #changes the vertical anchor of a slice
+358,numberfromstring,2,0,0    #look in a string for a number and return it
+359,sliceissprite,1,0         #return true if the provided slice handle points to a sprite
+360,spritelayer,0             #return a handle to the plotsprite layer
+361,freeslice,1,0             #free a slice and all its children
+362,firstchild,1,0            #return the first child of a slice or 0 if none
+363,nextsibling,1,0           #return the next sibling of a slice or 0 if none
+364,createcontainer,2,0,0     #create a container slice (width, height)
+365,setparent,2,0,0           #move a slice to a new parent
+366,checkparentage,2,0,0      #check to see if a slice is a child (or grandchild) of another
+367,slicescreenx,1,0          #return a slice's x position relative to the screen
+368,slicescreeny,1,0          #return a slice's y position relative to the screen
+369,sliceiscontainer,1,0      #return true if a slice is a container
+370,createrect,3,0,0,0        #create a rect slice (width, height, style)
+371,sliceisrect,1,0           #return true if a slice is a rect
+372,setslicewidth,2,0,0       #change the width of a resizeable slice
+373,setsliceheight,2,0,0      #change the height of a resizeable slice
+374,getrectstyle,1,0          #return the style of a rect slice
+375,setrectstyle,2,0,0        #change the style of a rect slice
+376,getrectfgcol,1,0          #return the fgcol of a rect slice
+377,setrectfgcol,2,0,0        #change the fgcol of a rect slice
+378,getrectbgcol,1,0          #return the bgcol of a rect slice
+379,setrectbgcol,2,0,0        #change the bgcol of a rect slice
+380,getrectborder,1,0         #return the border of a rect slice
+381,setrectborder,2,0,0       #change the border of a rect slice
+382,getrecttrans,1,0          #return the translucency of a rect slice
+383,setrecttrans,2,0,0        #change the translucency of a rect slice
+384,slicecollidepoint,3,0,0,0 #check a point for collision with a slice
+385,slicecollide,2,0,0        #check a pair of slices for collision
+386,slicecontains,2,0,0       #check if slice2 is completely inside slice1
+387,clampslice,2,0,0          #move slice1 so that it is inside slice2
+388,horizflipsprite,2,0,1     #flip a sprite horizontally
+389,vertflipsprite,2,0,1      #flip a sprite vertically
+390,spriteishorizflipped,1,0  #return true if a sprite is flipped horiz.
+391,spriteisvertflipped,1,0   #return true if a sprite is flipped vert.
+392,settoppadding,2,0,0       #change a slice's top-padding
+393,gettoppadding,1,0         #return a slice's top-padding
+394,setleftpadding,2,0,0      #change a slice's left-padding
+395,getleftpadding,1,0        #return a slice's left-padding
+396,setbottompadding,2,0,0    #change a slice's bottom-padding
+397,getbottompadding,1,0      #return a slice's bottom-padding
+398,setrightpadding,2,0,0     #change a slice's right-padding
+399,getrightpadding,1,0       #return a slice's right-padding
+400,fillparent,2,0,1          #make a slice fill its parent
+401,isfillingparent,1,0       #returns true if a slice is set to fill
+402,slicetofront,1,0          #move a slice in front of its siblings
+403,slicetoback,1,0           #move a slice behind its siblings
+404,lastchild,1,0             #find the last child of a parent slice
+405,ysortchildren,1,0         #sort the children of a slice by Y value
+406,setsortorder,2,0,0        #set sort value on a slice for sortchildren
+407,sortchildren,2,0,1        #sort siblings by their setsortorder value
+408,previoussibling,1,0       #return the previous sibling of a slice or 0 if none
+409,getsortorder,1,0          #get sort value for sortchildren for a slice
+410,getsliceextra,2,0,0       #get slice extra (0-2) data (slice, extra)
+411,setsliceextra,3,0,0,0     #set slice extra (0-2) data (slice, extra, value)
+412,getspritetype,1,0         #get type of a sprite slice or -1 if not
+413,getspritesetnumber,1,0    #get record number of a sprite slice
+414,getspritepalette,1,0      #get palette number of a sprite slice
+415,suspendtimers,0           #stop all timers without resetting them
+416,resumetimers,0            #makes timers paused with "suspend timers" continue
+417,setslicevisible,2,0,0     #change sprite visibilty(id, vis)
+418,getslicevisible,1,0       #return a slice's visibility bit
+419,sliceedgex,2,0,0          #return the x pos of a given edge of a slice
+420,sliceedgey,2,0,0          #return the y pos of a given edge of a slice
+421,createtext,0              #create a new text slice
+422,setslicetext,2,0,0        #copy a string into a text slice
+423,gettextcolor,1,0          #return a text strings color
+424,settextcolor,2,0,0        #change a text strings color
+425,getwrap,1,0               #return true if a text slice wraps
+426,setwrap,2,0,1             #change the wrapping state of a text slice
+427,sliceistext,1,0           #return true if the given slice handle is a text slice
+428,gettextbg,1,0             #return text background color
+429,settextbg,2,0,0           #change text background color
+430,getoutline,1,0            #return true if text uses outline
+431,setoutline,2,0,1          #change text's outline mode
+432,usemenuitem,1,0           #given a menu item handle, activate it
+433,sliceatpixel,6,0,0,0,0,1,0  #find descendant or child slices containing a screen position
+434,findcollidingslice,5,0,0,0,1,0 #find descendant or child slices colliding with a slice
+435,parentslice,1,0           #return a slice's parent
+435,sliceparent,1,0           #alias
+436,childcount,1,0            #return number of children of a slice
+437,lookupslice,2,0,0         #find a slice using a lookup code constant
+438,resetgame,-1              #reset the game (newgame args)
+439,sliceisvalid,1,0          #checks for a real, non-deleted slice handle
+440,iteminslot,1,0            #read inventory by position
+441,setiteminslot,2,0,0       #write inventory by position
+442,itemcountinslot,1,0       #read item count by position
+443,setitemcountinslot,2,0,0  #write item count by position
+444,putsprite,3,0,0,0         #change a sprite's position (handle, x, y)
+444,placesprite,3,0,0,0       #change a sprite's position (handle, x, y)
+445,updateleveluplearning,2,0,1 #refresh spells learned from level ups
+446,moveslicebelow,2,0,0      #make a slice the previous sibling of another slice
+447,movesliceabove,2,0,0      #make a slice the next sibling of another slice
+448,slicechild,2,0,0          #the nth child of a slice, counting from 0
+449,resetheropicture,2,0,1    #reset a hero's picture to their default
+450,resetheropalette,2,0,1    #reset a hero's palette to their default
+451,setsliceclipping,2,0,1    #set whether a slice will crop its children
+452,getsliceclipping,1,0      #return whether a slice will crop its children
+453,creategrid,4,0,0,1,1      #create a grid slice of a specified size
+454,sliceisgrid,1,0           #true if the slice is a grid
+455,setgridcolumns,2,0,1      #change grid horizontal count
+456,getgridcolumns,1,0        #return the number of horizontal cells
+457,setgridrows,2,0,1         #change grid vertical count
+458,getgridrows,1,0           #return the number of vertical cells
+459,showgrid,2,0,1            #make a grid visible
+460,gridisshown,1,0           #return true if grid is visible
+461,loadslicecollection,1,0   #load a collection of slices
+462,setsliceedgex,3,0,0,0     #set a slice's position by an arbitrary edge
+463,setsliceedgey,3,0,0,0     #set a slice's position by an arbitrary edge
+464,getslicelookup,1,0        #get a slice's lookup code
+465,setslicelookup,2,0,0      #change a slice's lookup code
+466,tracevalueinternal,-1     #tracevalue is translated to this
+467,mapcure,3,0,0,-1          #uses a cure attack on a hero
+468,readattackname,2,0,0      #puts an attack name in a string (string id, attack id+1 / attack .hsi constant)
+469,spellslearned,2,0,0       #number spells and spell ids hero learnt at last battle/giveexperience command.
+470,allocatetimers,1,16       #change the number of timers
+#471,unusedtimer,0             #find a timer id that's not in use, or allocate more
+472,setnpcignoreswalls,2,0,1  #set whether an npc can pass walls (npcref, bool)
+473,getnpcignoreswalls,1,0    #get whether an npc can pass walls (npcref)
+474,setnpcobstructs,2,0,1     #set whether an npc obstructs (npcref, bool)
+475,getnpcobstructs,1,0       #get whether an npc obstructs (npcref)
+476,setnpcusable,2,0,1        #set whether an npc can be used (npcref, bool)
+477,getnpcusable,1,0          #get whether an npc can be used (npcref)
+478,setnpcmoves,2,0,1         #set whether an npc's movetype used (npcref, bool)
+479,getnpcmoves,1,0           #get whether an npc's movetype used (npcref)
+480,readzone,3,0,0,0          #test whether a tile is in a zone (zone id, x, y)
+481,writezone,4,0,0,0,1       #set whether a tile is in a zone (zone id, x, y, true/false)
+482,zoneatspot,3,0,0,0        #get the nth zone set at a tile (x, y, n)
+483,zonenumberoftiles,1,0     #get the number of tiles in this zone (zone id)
+#484,drawwithzone,3,0,0,0      #write to map layer (zone id, layer num, tile)  (unimplemented)
+#485,zonenexttilex,3,0,-1,-1   #x coordinate of next tile in zone (zone id, current x, current y)  (unimplemented)
+#486,zonenexttiley,3,0,-1,-1   #y coordinate of next tile in zone (zone id, current x, current y)  (unimplemented)
+#
+487,getzonename,2,0,0         #read zone name (string, zone id)
+488,getzoneextra,2,0,0        #get zone extra data (zone id, extra field)
+489,setzoneextra,3,0,0,0      #set zone extra data (zone id, extra field, value)
+490,useitem,1,0               # use an item as if you had used it from the item menu
+491,useiteminslot,1,0         # use item in a given inventory slot
+492,mouseclick,1,0            # returns true if the specified button is pressed (button)
+493,loadbackdropsprite,1,0    # load backdrop sprite (number)
+494,replacebackdropsprite,2,0,-1 # replaces the sprite with a backdrop sprite (handle, number)
+495,getspritetrans,1,0        # whether the sprite is drawn transparently (handle)
+496,setspritetrans,2,0,1      # set whether the sprite is drawn transparently (handle, bool)
+497,setherobaseelementalresist,3,-1,0,100 # set percentage damage taken from an element (hero, element, percent)
+498,herobaseelementalresistasint,2,-1,0   # percentage damage taken from an element rounded to an int (hero, element)
+499,herototalelementalresistasint,2,-1,0  # percentage damage taken from an element rounded to an int (hero, element)
+500,setslicevelocityx,3,0,0,-1   #set slice velocity x(sl, pixels per tick, ticks) # negative left, positive right
+501,setslicevelocityy,3,0,0,-1   #set slice velocity y(sl, pixels per tick, ticks) # negative up, positive down
+502,getslicevelocityx,1,0        #return x velocity in pixels per tick
+503,getslicevelocityy,1,0        #return y velocity in pixels per tick
+504,setslicevelocity,4,0,0,0,-1  #set both x and y velocity simultaneously (sl, x vel, y vel, ticks)
+505,stopslice,1,0                #cancel all of a slice's movement
+506,movesliceto,4,0,0,0,0        #move a slice until it has the new desired x and y (sl, x, y, ticks)
+507,movesliceby,4,0,0,0,0        #move a slice until it has the new desired relative x and y (sl, rel x, rel y, ticks)
+508,waitforslice,1,0             #wait for a slice to stop moving
+509,sliceismoving,1,0            #return true if the slice has velocity or target
+510,createellipse,4,0,0,-1,-1    #width, height, border color, fill color
+511,sliceisellipse,1,0           #return true if the slice is an ellipse
+512,setellipsebordercol,2,0,0    #change border color
+513,setellipsefillcol,2,0,0      #change fill color
+514,getellipsebordercol,1,0      #change border color
+515,getellipsefillcol,1,0        #change fill color
+516,_checkpoint,0                #dumps checkpoint screenshot for automated testing. Only works when run with the -autotest command line argument
+517,menuitembytrueslot,2,0,0     #return a menu item handle, based on the order in Custom (menu handle, slot no.)
+518,menuitemtrueslot,1,0         #slot no. of a menu item as it appears in Custom (menu item handle)
+519,getheroslice,1,0             #get the slice representing a hero walkabout
+520,getNPCslice,1,0              #get the slice representing an NPC walkabout
+521,getdoorx,2,0,-1              #x coordinate of given door
+522,getdoory,2,0,-1              #y coordinate of given door
+523,getdoordestinationid,2,0,-1  #door id of given door's exit
+524,getdoordestinationmap,2,0,-1 #map number of given door's exit
+525,doorexists,2,0,-1            #returns true if the given door exists
+526,getattackcaption,2,0,0       #puts an attack's caption in a string (string id, attack id+1 / attack .hsi constant)
+527,getrectfuzziness,1,0         #get rect fuzz percentange
+528,setrectfuzziness,2,0,50      #set rect fuzz percentange
+529,textboxline,5,0,0,-1,1,0     #get a line of text from a textbox (string, box, line, expand, strip)
+530,getslicetext,2,0,0           #get the contents of a text slice (string, slice)
+531,getinputtext,1,0             #get user textual input since last tick (string)
+532,enableinputtext,1,1          #whether to enable getinputtext (enable?)
+533,inputtextenabled,0           #(undocumented) whether getinputtext is enabled
+534,setherohandx,3,0,0,0         #Change hand position for battle weapons (who, frame, new x)
+535,setherohandy,3,0,0,0         #Change hand position for battle weapons (who, frame, new y)
+536,getherohandx,2,0,0           #Read hero hand position for battle weapons (who, frame)
+537,getherohandy,2,0,0           #Read hero hand position for battle weapons (who, frame)
+538,getdefaultherohandx,2,0,0    #Read default hero hand position for battle weapons (who, frame)
+539,getdefaultherohandy,2,0,0    #Read default hero hand position for battle weapons (who, frame)
+540,checkonetime,1,0             #returns the value of a onetime npc tag
+541,setonetime,2,0,0             #set onetime npc tag(#,true/false)
+542,microseconds,0               #microsecond timer
+543,enemyelementalresistasint,2,0,0  #get percentage elemental damage for an enemy (id, element)
+544,heroz,1,0                    #a hero's Z coordinate (party slot)
+545,getherostatcap,1,0           #get the cap for a stat; 0 if none (stat)
+546,setherostatcap,2,0,0         #set the cap for a stat (stat, value or 0)
+547,getitemmaximumstacksize,1,0  #get the maximum size of a stack of a certain item (item id)
+548,npcz,1,0                     #npc's Z value, in pixels (npcref)
+549,setnpcz,2,0,0                #set npc's Z value, in pixels (npcref, z)
+550,dooratspot,2,0,0             #get door ID on tile, or -1 (x, y)
+551,suspenddoors,1,0             #doors don't trigger when stepped on
+552,resumedoors,1,0              #undoes suspend doors
+553,runningondesktop,0           #returns true if the device is Windows/Mac/Linux
+554,runningonmobile,0            #returns true if the device is Android
+555,runningonconsole,0           #returns true if the device is console (OUYA, Gamestick, FireTV, Mojo)
+556,inputstringwithvirtualkeyboard,3,0,-1,-1 # (string id, max length, only player)
+557,getitemdescription,2,0,0     #(string, item) - puts the description of item(item) in string(string)
+558,setspritesetnumber,2,0,0     #(sprite slice handle, set num)
+559,getspritedefaultpal,1,0      #(sprite slice handle) - returns default palette number
+560,npcisdisabled,1,0            #(npc reference) returns true if the npc exists, but is disabled by tags or one-time use
+#561,unused
+#562,unused
+#563,unused
+#564,unused
+565,stringsprintf,-1             #(dest string id, format string id, args...) Format a string, like sprintf
+566,scripterror,1,-1             #(string id) Show a script error
+567,getscriptname,2,0,0          #(string id, script id) Get name of a script
+568,getcallingscriptid,1,1       #(depth) Get ID number of a parent or ancestor script
+569,camerafollowsslice,1,0       #(slice) Center camera on slice
+570,getactivebattlepauseonallmenus,0 # returns true or false based on the global bitset
+571,setactivebattlepauseonallmenus,1,0, #(true/false) change the global bitset (not saved)
+572,dissolvesprite,6,0,0,-1,0,0,1 #(slice handle, dissolve:type, ticks, start tick, backwards, auto animate)
+573,canceldissolve,1,0        #(slice handle) stop/reset dissolve
+574,spriteisdissolving,1,0    #(slice handle) return true if sprite is in the middle of a dissolve state
+575,waitfordissolve,1,0       #(slice handle) wait for an "dissolve sprite" command to finish (only if auto animate)
+576,hidevirtualgamepad,0      # force-hide virtual gamepad on platforms that support it
+577,showvirtualgamepad,0      # force-show virtual gamepad on platforms that support it
+578,autovirtualgamepad,0      # automatic show/hide virtual gamepad on platforms that support it (default)
+579,getvertalign,1,0          # return a slice's alignment. Compare with edge: constants
+580,gethorizalign,1,0         # return a slice's alignment. Compare with edge: constants
+581,getvertanchor,1,0         # return a slice's anchor. Compare with edge: constants
+582,gethorizanchor,1,0        # return a slice's anchor. Compare with edge: constants
+583,setselectsliceindex,2,0,0 # change the currently selected child of a select slice by index
+584,getselectsliceindex,1,0   # return the index of the currently selected child of a select slice
+585,createselect,2,0,0        # create a select slice of a specified size
+586,sliceisselect,1,0         # true if the slice is a select
+587,slicechildindex,1,0       # Return the current integer index of this slice relative to its siblings
+588,createscroll,2,0,0        # create a scroll slice of a specified size
+589,sliceisscroll,1,0         # true if the slice is a scroll
+590,setscrollbarstyle,2,0,0   # change scroll slice scrollbar style
+591,getscrollbarstyle,1,0     # return current scroll slice scrollbar style
+592,setscrollcheckdepth,2,0,0 # change a scroll's child-check-depth
+593,getscrollcheckdepth,1,0   # return a scroll's current child-check-depth
+594,scrolltochild,2,0,0       # cause all the children of a Scroll Slice to move until a specific child is in view
+595,runningonwindows,0        # returns true if the device is Windows
+596,runningonmac,0            # returns true if the device is Mac
+597,runningonlinux,0          # returns true if the device is Linux
+598,nextnpcreference,1,0      # Iterating over NPCs: reference to next NPC
+599,input string with mouse keyboard,2,0,-1 # pop up a virtual keyboard that responds to mouse clicks
+600,runningonouya,0           # returns true if the device is OUYA (see also "running on console")
+601,unhidemousecursor,0       # unhides the OS mouse cursor
+601,showmousecursor,0
+602,hidemousecursor,0         # hides the OS mouse cursor
+603,pixelfocuscamera,3,0,0,2  # pixel focus camera(x,y,pixelstep)
+604,sendemail,3,0,-1,-1       # send an email, possibly with attached saved (save slot, subject string, body string)
+605,dumpslicetree,1,0         # Dump slice tree to g_debug.txt, like ctrl+F8 debug key (root slice handle)
+606,createpanel,2,0,0         #x create a panel slice of a specified size
+607,sliceispanel,1,0          #x return if the slice is a panel
+608,getpanelisvertical,1,0    #x return true for a vertical panel slice, false for a horizontal panel slice
+609,setpanelisvertical,2,0,1  #x change the vertical/horizontal orientation of a panel slice
+610,getpanelprimaryindex,1,0  #x return the index (0 or 1) of the panel primary child
+611,setpanelprimaryindex,2,0,0 #x change the panel primary child. must be 0 or 1
+612,getpanelpercentasint,1,0  #x return slice panel primary child percentage as an integer
+613,setpanelpercent,2,0,0     #x change slice panel primary child percentage
+614,getpanelpixels,1,0        #x return slice panel primary child pixel size
+615,setpanelpixels,2,0,0      #x change slice panel primary child pixel size
+616,getpanelpadding,1,0       #x return slice panel padding
+617,setpanelpadding,2,0,0     #x change slice panel padding
+618,debugmenu,0               # Opens the debug menu
+619,menuitematpixel,2,0,0     # The menu item at a screen position
+620,rungame,1,0               # Run another game (string id)
+621,getbattlecountdown,0      # Get random battle counter
+622,setbattlecountdown,1,100  # Set random battle counter
+623,checkwallcollisionx,7,0,0,0,0,20,20,100  # Check for wall collision (pixel x, pixel y, width, height, xgo, ygo, friction)
+624,checkwallcollisiony,7,0,0,0,0,20,20,100  # Check for wall collision (pixel x, pixel y, width, height, xgo, ygo, friction)
+625,moveslicewithwallchecking,4,0,0,0,100    # Move a slice by xgo,ygo or until it hits a wall (sl, xgo, ygo, friction)
+626,textboxtext,4,0,0,1,0                # Get whole text from a textbox (string, box, expand, strip)
+627,checkgameexists,1,-1      # Check an .rpg/.rpgdir exists (string id)
+628,pathfindnpcto,4,0,0,0,0   # Make an NPC pathfind to a specific position (npc, tile x, tile y, stop after stuckticks)
+629,npcchasesnpc,4,0,0,0,0    # Make an NPC chase another NPC (npc, target npc, stop when reached, stop after stuckticks)
+630,cancelnpcwalk,1,0         # Cancel walknpc, pathfindnpcto, or npcchasesnpc command (npc)
+631,playerissuspended,0       # return true if "suspend player" is active
+632,npcsaresuspended,0        # return true if "suspend NPCs" is active
+633,obstructionissuspended,0  # return true if "suspend obstruction" is active
+634,herowallsaresuspended,0   # return true if "suspend hero walls" is active
+635,npcwallsaresuspended,0    # return true if "suspend NPC walls" is active
+636,caterpillarissuspended,0  # return true if "suspend caterpillar" is active
+637,doorsaresuspended,0       # return true if "suspend doors" is active
+638,randomenemiesaresuspended,0  # return true if "suspend random enemies" is active
+639,boxadvanceissuspended,0   # return true if "suspend box advance" is active
+640,overlayissuspended,0      # return true if "suspend overlay" is active
+641,mapmusicissuspended,0     # return true if "suspend map music" is active
+642,timersaresuspended,0      # return true if "suspend timers" is active
+643,getscreenwidth,0          # return the x resolution of the screen
+644,getscreenheight,0         # return the y resolution of the screen
+645,setscreenresolution,2,0,0 # change the x,y resolution of the screen
+646,mouserelease,1,0          # returns true if the specified button is was just released (button)
+647,_cancelrunfast,0          # cancels the -runfast command-line option, if it is active.
+648,_runfast,0                # speeds up as if the -runfast command-line option is active.
+649,multdiv,3,0,0,0           # calculate int(float(a)*b/c), with rounding and clamping (undocumented)
+650,setrectrawborder,2,0,-1   # set a rectangle slice to use a specific border sprite instead of the border for its style
+651,getrectrawborder,1,0      # set a rectangle slice to use a specific border sprite instead of the border for its style
+652,cloneslice,2,0,1          # Copy a slice (handle, recurse)
+653,resetformation,1,0        # resets any scripted modifications to a battle formation
+654,resetformationslot,2,0,0  # resets scripted modifications to a specific slot in a battle formation
+655,sliceismaplayer,1,0       # Check slice type
+656,npcreferencefromslice,1,0 # Return the NPC reference for an NPC slice, or else 0
+657,herorankfromslice,1,0     # Return the hero rank for a hero slice, or else 0
+658,slicetype,1,0             # Returns a slicetype:* constant
+659,_asserteq,4,0,0,0,0       # Used in the macro expansion of assert(x==y)
+# Don't forget to update maxScriptCmdID in const.bi when adding new commands
+end
+
+#--------------------------------------------------------------------------
+# soft coded functions
+
+script,walkherotoX,hsd:who,hsd:n,begin
+if (hsd:n<<heroX(hsd:who)) then(walk hero(hsd:who,west,heroX(hsd:who)--hsd:n))
+if (hsd:n>>heroX(hsd:who)) then(walk hero(hsd:who,east,hsd:n--heroX(hsd:who)))
+end
+
+script,walkherotoY,hsd:who,hsd:n,begin
+if (hsd:n<<heroY(hsd:who)) then(walk hero(hsd:who,north,heroY(hsd:who)--hsd:n))
+if (hsd:n>>heroY(hsd:who)) then(walk hero(hsd:who,south,hsd:n--heroY(hsd:who)))
+end
+
+script,walkNPCtoX,hsd:who,hsd:n,begin
+if (hsd:n<<NPCX(hsd:who)) then(walk NPC(hsd:who,west,NPCX(hsd:who)--hsd:n))
+if (hsd:n>>NPCX(hsd:who)) then(walk NPC(hsd:who,east,hsd:n--NPCX(hsd:who)))
+end
+
+script,walkNPCtoY,hsd:who,hsd:n,begin
+if (hsd:n<<NPCY(hsd:who)) then(walk NPC(hsd:who,north,NPCY(hsd:who)--hsd:n))
+if (hsd:n>>NPCY(hsd:who)) then(walk NPC(hsd:who,south,hsd:n--NPCY(hsd:who)))
+end
+
+script,getNPCspeed,hsd:who,begin
+ readNPC(hsd:who,NPCstat:movespeed)
+end
+
+script,setNPCspeed,hsd:who,hsd:newspeed=4,begin
+ alterNPC(hsd:who,NPCstat:movespeed,hsd:newspeed)
+end
+
+script,swapbyname,hsd:hero1,hsd:hero2,begin
+ hsd:hero1:=findhero(hsd:hero1)
+ hsd:hero2:=findhero(hsd:hero2)
+ if (hsd:hero1==-1,or,hsd:hero2==-1)
+  then (return(false))
+  else (return(true),swapbyposition(hsd:hero1,hsd:hero2))
+end
+
+script,renamehero,hsd:who=0,begin
+  variable(hsd:slot)
+  hsd:slot:=findhero(hsd:who)
+  if(hsd:slot>=0)
+    then(renameherobyslot(hsd:slot),return(true))
+    else(return(false))
+end
+
+# this exploits an undocumented feature of getherostat. Don't use the
+# same method to set the hero level (use setherolevel instead)
+script,getherolevel,hsd:who=0,begin
+  return(getherostat(hsd:who,12,currentstat))
+end
+
+script, gainherostat, hsd:who, hsd:stat, hsd:change, hsd:resetcurrent=false, begin
+  variable(hsd:oldcur, hsd:oldmax, hsd:newcur, hsd:newmax, hsd:newbase, hsd:cap)
+  if (hsd:resetcurrent == false) then (
+    hsd:oldcur := getherostat(hsd:who, hsd:stat, currentstat)
+    hsd:oldmax := getherostat(hsd:who, hsd:stat, maximumstat)
+  )
+  hsd:newbase := getherostat(hsd:who, hsd:stat, basestat) + hsd:change
+  setherostat(hsd:who, hsd:stat, hsd:newbase, basestat)
+  hsd:newmax := getherostat(hsd:who, hsd:stat, maximumstat)
+  if (hsd:resetcurrent) then (
+    # Set current to new max
+    hsd:newcur := hsd:newmax
+  ) else (
+    # Increase current proportional to change in max
+    # Have to be careful about integer overflow. Each stat can be any int32
+    #hsd:newcur := hsd:oldcur * hsd:newmax / hsd:oldmax
+    hsd:newcur := multdiv(hsd:oldcur, hsd:newmax, hsd:oldmax)
+  )
+  # Enforce stat caps on current. No need to do this for base/max, as base isn't
+  # capped, and max is autocapped when base is modified.
+  hsd:cap := get hero stat cap(hsd:stat)
+  if (hsd:cap && hsd:newcur > hsd:cap) then (hsd:newcur := hsd:cap)
+  setherostat(hsd:who, hsd:stat, hsd:newcur, currentstat)
+  return(hsd:newmax)
+end
+
+script,autosave,begin
+  if (lastsaveslot==0)
+  then(return(savemenu))
+  else(saveinslot(lastsaveslot),return(lastsaveslot))
+end
+
+script,stringtoglobals,hsd:stringID,hsd:start,hsd:length,begin
+  variable(hsd:temp,hsd:padding)
+  if (hsd:stringID>=0,and,hsd:stringID<=maximum string id) then(
+    if (hsd:length>=1) then(
+      if (hsd:length+hsd:start>maximum global id) then(hsd:length:=maximum global id--hsd:start)
+      hsd:padding:=hsd:length--stringlength(hsd:stringID)
+      hsd:length:=stringlength(hsd:stringID)
+      for (hsd:temp,1,hsd:length) do(
+        writeglobal(hsd:start,asciifromstring(hsd:stringID,hsd:temp))
+        hsd:start+=1
+      )
+      for (hsd:temp,hsd:start,hsd:start+hsd:padding--1) do(
+        writeglobal(hsd:temp,256)
+      )
+    )
+  )
+end
+
+script,globalstostring,hsd:stringID,hsd:start,hsd:length,begin
+  variable(hsd:temp)
+  variable(hsd:temp2)
+  if (hsd:stringID>=0,and,hsd:stringID<=maximum string id) then(
+    clearstring(hsd:stringID)
+    if (hsd:length>=1) then(
+      if (hsd:length+hsd:start>maximum global id) then(hsd:length:=maximum global id--hsd:start)
+      for (hsd:temp,1,hsd:length) do(
+        hsd:temp2:=readglobal(hsd:start+(hsd:temp--1))
+        if (hsd:temp2>=0,and,hsd:temp2<=255) then(appendascii(hsd:stringID,hsd:temp2))
+      )
+    )
+  )
+end
+
+script,showstringat,hsd:stringID,hsd:x=0,hsd:y=0,begin
+  setstringbit(hsd:stringID,0,1)
+  positionstring(hsd:stringID,hsd:x,hsd:y)
+end
+
+script,centerstringat,hsd:stringID,hsd:x=160,hsd:y=100,begin
+  setstringbit(hsd:stringID,0,1)
+  positionstring(hsd:stringID,hsd:x--(stringlength(hsd:stringID)*4),hsd:y)
+end
+
+script,hidestring,hsd:stringID,begin
+  setstringbit(hsd:stringID,0,0)
+end
+
+script,stringstyle,hsd:stringID,hsd:style=0,begin
+  setstringbit(hsd:stringID,1,hsd:style)
+end
+
+script,stringisvisible,hsd:stringID,begin
+  return(getstringbit(hsd:stringID,0))
+end
+
+# Internal functions, do not use
+# To get around the 32 string limitation...
+script, hsd:save string, hsd:id, begin
+  variable (hsd:sl)
+  hsd:sl := create text
+  set slice visible(hsd:sl, false)
+  set slice text(hsd:sl, hsd:id)
+  clear string(hsd:id)
+  return (hsd:sl)
+end
+
+script, hsd:restore string, hsd:id, hsd:saved, begin
+  get slice text(hsd:id, hsd:saved)
+  free slice(hsd:saved)
+end
+
+# Improvement (but which requires enableinputtext)
+# script, last ascii, begin
+#   variable (hsd:saved)
+#   hsd:saved := hsd:savestring(0)
+#   get input text(0)
+#   if (string length(0)) then (
+#     return (ascii from string(0, 1))
+#   )
+#   hsd:restore string(0, hsd:saved)
+# end
+
+script, last ascii, begin
+	variable(hsd:code, hsd:shift)
+
+	hsd:shift := keyispressed(42) || keyispressed(54)
+
+	if(keyval(30) >> 1) then (hsd:code := 65) #A...
+	if(keyval(48) >> 1) then (hsd:code := 66)
+	if(keyval(46) >> 1) then (hsd:code := 67)
+	if(keyval(32) >> 1) then (hsd:code := 68)
+	if(keyval(18) >> 1) then (hsd:code := 69)
+	if(keyval(33) >> 1) then (hsd:code := 70)
+	if(keyval(34) >> 1) then (hsd:code := 71)
+	if(keyval(35) >> 1) then (hsd:code := 72)
+	if(keyval(23) >> 1) then (hsd:code := 73)
+	if(keyval(36) >> 1) then (hsd:code := 74)
+	if(keyval(37) >> 1) then (hsd:code := 75)
+	if(keyval(38) >> 1) then (hsd:code := 76)
+	if(keyval(50) >> 1) then (hsd:code := 77)
+	if(keyval(49) >> 1) then (hsd:code := 78)
+	if(keyval(24) >> 1) then (hsd:code := 79)
+	if(keyval(25) >> 1) then (hsd:code := 80)
+	if(keyval(16) >> 1) then (hsd:code := 81)
+	if(keyval(19) >> 1) then (hsd:code := 82)
+	if(keyval(31) >> 1) then (hsd:code := 83)
+	if(keyval(20) >> 1) then (hsd:code := 84)
+	if(keyval(22) >> 1) then (hsd:code := 85)
+	if(keyval(47) >> 1) then (hsd:code := 86)
+	if(keyval(17) >> 1) then (hsd:code := 87)
+	if(keyval(45) >> 1) then (hsd:code := 88)
+	if(keyval(21) >> 1) then (hsd:code := 89)
+	if(keyval(44) >> 1) then (hsd:code := 90)#...Z
+	if(keyval(2) >> 1) then (if(hsd:shift) then (hsd:code :=33) else (hsd:code :=49)) # 1...
+	if(keyval(3) >> 1) then (if(hsd:shift) then (hsd:code :=64) else (hsd:code :=50))
+	if(keyval(4) >> 1) then (if(hsd:shift) then (hsd:code :=35) else (hsd:code :=51))
+	if(keyval(5) >> 1) then (if(hsd:shift) then (hsd:code :=36) else (hsd:code :=52))
+	if(keyval(6) >> 1) then (if(hsd:shift) then (hsd:code :=37) else (hsd:code :=53))
+	if(keyval(7) >> 1) then (if(hsd:shift) then (hsd:code :=94) else (hsd:code :=54))
+	if(keyval(8) >> 1) then (if(hsd:shift) then (hsd:code :=38) else (hsd:code :=55))
+	if(keyval(9) >> 1) then (if(hsd:shift) then (hsd:code :=42) else (hsd:code :=56))
+	if(keyval(10) >> 1) then (if(hsd:shift) then (hsd:code :=40) else (hsd:code :=57))
+	if(keyval(11) >> 1) then (if(hsd:shift) then (hsd:code :=41) else (hsd:code :=48)) # ...0
+	if(keyval(41) >> 1) then (if(hsd:shift) then (hsd:code :=126) else (hsd:code :=96)) # ` ~
+	if(keyval(12) >> 1) then (if(hsd:shift) then (hsd:code :=95) else (hsd:code :=45)) # - _
+	if(keyval(13) >> 1) then (if(hsd:shift) then (hsd:code := 43) else (hsd:code := 61)) # = +
+	if(keyval(26) >> 1) then (if(hsd:shift) then (hsd:code := 123) else (hsd:code := 91)) # [ {
+	if(keyval(27) >> 1) then (if(hsd:shift) then (hsd:code := 125) else (hsd:code := 93)) # ] }
+	if(keyval(39) >> 1) then (if(hsd:shift) then (hsd:code := 58) else (hsd:code := 59)) # ; :
+	if(keyval(40) >> 1) then (if(hsd:shift) then (hsd:code := 34) else (hsd:code := 39)) # ' "
+	if(keyval(51) >> 1) then (if(hsd:shift) then (hsd:code := 60) else (hsd:code := 44)) # , <
+	if(keyval(52) >> 1) then (if(hsd:shift) then (hsd:code := 62) else (hsd:code := 46)) # . >
+	if(keyval(53) >> 1) then (if(hsd:shift) then (hsd:code := 63) else (hsd:code := 47)) # / ?
+	if(keyval(43) >> 1) then (if(hsd:shift) then (hsd:code := 124) else (hsd:code := 92)) # \ |
+	#if(keyval(40) >> 1) then (hsd:code := 47) # Num / WTF? What's the hsd:code for the other "/"?
+	if(keyval(55) >> 1) then (hsd:code := 42) # Num *
+	if(keyval(71) >> 1) then (hsd:code := 55) # Num 7
+	if(keyval(72) >> 1) then (hsd:code := 56) # Num 8
+	if(keyval(73) >> 1) then (hsd:code := 57) # Num 9
+	if(keyval(74) >> 1) then (hsd:code := 45) # Num -
+	if(keyval(75) >> 1) then (hsd:code := 52) # Num 4
+	if(keyval(76) >> 1) then (hsd:code := 53) # Num 5
+	if(keyval(77) >> 1) then (hsd:code := 54) # Num 6
+	if(keyval(78) >> 1) then (hsd:code := 43) # Num +
+	if(keyval(79) >> 1) then (hsd:code := 49) # Num 1
+	if(keyval(80) >> 1) then (hsd:code := 50) # Num 2
+	if(keyval(81) >> 1) then (hsd:code := 51) # Num 3
+	if(keyval(82) >> 1) then (hsd:code := 48) # Num 0
+	if(keyval(83) >> 1) then (hsd:code := 46) # Num .
+	if(keyval(57) >> 1) then (hsd:code := 32) #Space
+
+
+	if(hsd:code <= 90 && hsd:code >= 65) then, begin
+		if(hsd:shift == false) then (hsd:code += 32)
+	end
+
+	return (hsd:code)
+end
+
+script, input string, hsd:str, hsd:max len=40, hsd:useexist=0, hsd:center=1, hsd:positionx=-654321, hsd:positiony=-654321, begin
+  variable(hsd:done, hsd:key, hsd:show, hsd:tmp str, hsd:saved, hsd:enable input)
+  hsd:enable input := input text enabled
+  enable input text (true)
+  if(hsd:useexist) else(clear string(hsd:str))
+  trim string(hsd:str,1,hsd:maxlen)
+  hsd:show:=getstringbit(hsd:str,0)==false
+  if(hsd:positiony <> -654321 || hsd:show) then(
+    if(hsd:positionx == -654321) then(hsd:positionx := 160)
+    if(hsd:positiony == -654321) then(hsd:positiony := 110)
+    if(hsd:center) then(
+      center string at(hsd:str,hsd:positionx,hsd:positiony)
+    )else(
+      show string at(hsd:str,hsd:positionx,hsd:positiony)
+    )
+  )else(
+    hsd:positionx := string x(hsd:str)
+    hsd:positiony := string y(hsd:str)
+  )
+  hsd:tmp str := hsd:str,xor,1
+  hsd:saved := hsd:save string(hsd:tmp str)
+  while(not(hsd:done)) do, begin
+    if(hsd:center) then(center string at(hsd:str,hsd:positionx,hsd:positiony))
+    wait
+    if(keyval(28)>>1 || keyval(103)>>1) then(hsd:done:=true, return(true)) else(
+      if(keyval(14)>>1) then(delete char(hsd:str,string length(hsd:str)))
+      get input text(hsd:tmp str)
+      concatenate strings(hsd:str, hsd:tmp str)
+      trim string(hsd:str, 1, hsd:max len)
+      while(key is pressed(1)) do, begin
+        hsd:done:=true
+        return(false)
+        if(read general(44),and,2)
+          then(wait)
+          else(suspendplayer, wait, resumeplayer)
+      end
+    )
+  end
+  enable input text (hsd:enable input)
+  hsd:restore string(hsd:tmp str,hsd:saved)
+  if(hsd:show) then(hide string(hsd:str))
+end
+
+script,currentdisplaytile,hsd:tile,hsd:layernumber=0,begin
+  if(hsd:tile>=160) then(
+    return(animationstarttile(hsd:tile,hsd:layernumber)+gettileanimationoffset((hsd:tile--160)/48,hsd:layernumber))
+  ) else(return(hsd:tile))
+end
+
+script, wait for sound, hsd:soundid, begin
+  while(sound is playing(hsd:soundid)) do(wait(1))
+end
+
+#--------------------------------------------------------------------------
+#read/write enemy wrappers
+
+script,getenemyname,hsd:enemyID,hsd:stringID,begin
+  variable(hsd:t)
+  clearstring(hsd:stringID)
+  for (hsd:t,1,readenemydata(hsd:enemyID,0)) do(
+    appendascii(hsd:stringID,readenemydata(hsd:enemyID,hsd:t))
+  end
+end
+
+script,getenemystat,hsd:enemyID,hsd:stat,begin
+  return(readenemydata(hsd:enemyID,hsd:stat+62))
+end
+
+script,setenemystat,hsd:enemyID,hsd:stat,hsd:value,begin
+  writeenemydata(hsd:enemyID,hsd:stat+62,hsd:value)
+end
+
+script,setenemyname,hsd:enemyID,hsd:stringID,begin
+  variable(hsd:t,hsd:t2)
+  if(stringlength(hsd:stringID)>=16) then (hsd:t2:=16) else (hsd:t2:=stringlength(hsd:stringID))
+  writeenemydata(hsd:enemyID,0,hsd:t2)
+  for(hsd:t,1,hsd:t2) do (
+    writeenemydata(hsd:enemyID,hsd:t,asciifromstring(hsd:stringID,hsd:t))
+  )
+end
+
+#get/set enemy appearance are now simply wrappers. too much confusion to remove them now
+script,getenemyappearance,hsd:enemyID,hsd:appearance,begin
+  return(readenemydata(hsd:enemyID,hsd:appearance))
+end
+
+script,setenemyappearance,hsd:enemyID,hsd:appearance,hsd:value,begin
+  writeenemydata(hsd:enemyID,hsd:appearance,hsd:value)
+end
+
+#--------------------------------------------------------------------------
+# read/write general wrappers
+
+script,set victory music,hsd:song,begin
+  write general(3,hsd:song+1)
+end
+
+script,get victory music,begin
+  return(read general(3)--1)
+end
+
+script,get death script,begin
+  return(read general(42))
+end
+
+script,get load script,begin
+  return(read general(57))
+end
+
+script,set load script,hsd:ID=0,begin
+  write general(57,hsd:ID)
+end
+
+script,set battle wait mode,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=1)
+  write general(101,(read general(101),and,-2)+hsd:bit)
+end
+
+script,set caterpillar mode,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=2)
+  write general(101,(read general(101),and,-3)+hsd:bit)
+end
+
+script,set no HP level up restore,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=4)
+  write general(101,(read general(101),and,-5)+hsd:bit)
+end
+
+script,set no MP level up restore,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=8)
+  write general(101,(read general(101),and,-9)+hsd:bit)
+end
+
+script,set inn no revive mode,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=16)
+  write general(101,(read general(101),and,-17)+hsd:bit)
+end
+
+script,set full hero swap mode,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=32)
+  write general(101,(read general(101),and,-33)+hsd:bit)
+end
+
+script,hide battle ready meter,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=64)
+  write general(101,(read general(101),and,-65)+hsd:bit)
+end
+
+script,hide battle health meter,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=128)
+  write general(101,(read general(101),and,-129)+hsd:bit)
+end
+
+script,set debug keys disable,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=256)
+  write general(101,(read general(101),and,-257)+hsd:bit)
+end
+
+script,set dead heroes gain experience,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=8)
+  write general(177,(read general(177),and,-9)+hsd:bit)
+end
+
+script,set active battle pause for animations,hsd:bit=1,begin
+  if(hsd:bit) then(hsd:bit:=2^7)
+  write general(177,(read general(177),and,(-1--2^7))+hsd:bit)
+end
+
+script,set capped hero stat,hsd:who,hsd:stat,hsd:value,hsd:stat type=current stat,begin
+ variable(hsd:cap)
+ if (hsd:stat type <> base stat) then (
+   hsd:cap := get hero stat cap(hsd:stat)
+   if(hsd:cap>>0, and, hsd:cap<<hsd:value) then(hsd:value:=hsd:cap)
+ )
+ set hero stat(hsd:who,hsd:stat,hsd:value,hsd:stat type)
+end
+
+script,get damage cap,begin
+  return(readgeneral(63))
+end
+
+script,set damage cap,hsd:c=0,begin
+  writegeneral(63,hsd:c)
+end
+
+script, get inventory size, begin
+  if(read general(85) == 0) then(exit returning(600))
+  exit returning (read general(85) / 3 * 3 + 3)
+end
+
+script, set inventory size, hsd:newsize, begin
+  if(hsd:newsize << 0) then(exit script)
+  if(hsd:newsize == inv:max || hsd:newsize >> 600)
+  then(write general(85, 0))
+  else(write general(85, (hsd:newsize + 2) / 3 * 3 -- 1))
+end
+
+script, extended scancodes enabled, begin
+  return((readgeneral(177),and,256)<>0)
+end
+
+script, get level cap, begin
+  return(readgeneral(87))
+end
+
+script, set level cap, hsd:cap, begin
+  if(hsd:cap >= 0 && hsd:cap <= readgeneral(191)) then(writegeneral(87, hsd:cap))
+end
+
+#--------------------------------------------------------------------------
+# read/write gmap wrappers
+
+script,get map tileset,begin
+  return(read gmap(0))
+end
+
+script, get ambient music, begin
+  return (read gmap(1) -- 1)
+end
+
+script, set ambient music, hsd:song=-1, begin
+  write gmap(1,hsd:song + 1)
+  if (hsd:song >= 0) then (play song (hsd:song))
+  else (if (hsd:song == -1) then (stop song))
+end
+
+script,allow minimap,hsd:setting=1,begin
+  write gmap(2,hsd:setting)
+end
+
+script,allow save anywhere,hsd:setting=1,begin
+  write gmap(3,hsd:setting)
+end
+
+script,cancel map name display,begin
+  write gmap(4,0)
+end
+
+script,set map edge mode,mode=0,hsd:tile=0,begin
+  write gmap(5,mode)
+  write gmap(6,hsd:tile)
+end
+
+script,get map edge mode,begin
+  return(read gmap(5))
+end
+
+script,set harm tile damage,hsd:damage=0,begin
+  write gmap(9,hsd:damage)
+end
+
+script,set harm tile flash,hsd:colour=0,begin
+  write gmap(10,hsd:colour)
+end
+
+script,get footoffset,begin
+  return(read gmap(11))
+end
+
+script,set footoffset,hsd:offset=0,begin
+  write gmap(11,hsd:offset)
+end
+
+script,get instead of battle script,begin
+  return (read gmap(13))
+end
+
+script,set instead of battle script,hsd:ID=0,begin
+  write gmap(13,hsd:ID)
+end
+
+script,get each step script,begin
+  return (read gmap(14))
+end
+
+script,set each step script,hsd:ID=0,begin
+  write gmap(14,hsd:ID)
+end
+
+script,get on keypress script,begin
+  return (read gmap(15))
+end
+
+script,set on keypress script,hsd:ID=0,begin
+  write gmap(15,hsd:ID)
+end
+
+script,draw npcs above heroes,hsd:setting=1,begin
+  write gmap(16,hsd:setting)
+end
+
+#--------------------------------------------------------------------------
+# new wrappers/re-inventing of the wheel commands
+
+script, days of play, begin
+	return(read general(51))
+end
+
+script, hours of play, begin
+	return(read general(52))
+end
+
+script, minutes  of play, begin
+	return(read general(53))
+end
+
+script, seconds of play, begin
+	return(read general(54))
+end
+
+script,set days of play,hsd:d, begin
+	if(hsd:d >= 0) then (write general(51,hsd:d))
+end
+
+script,set hours of play,hsd:h, begin
+	if(hsd:h >= 0, and, hsd:h << 24) then (write general(52,hsd:h))
+end
+
+script,set minutes  of play,hsd:m, begin
+	if(hsd:m >= 0, and, hsd:m << 60) then (write general(53,hsd:m))
+end
+
+script,set seconds of play,hsd:s, begin
+	if(hsd:s >= 0, and, hsd:s << 60) then (write general(54,hsd:s))
+end
+
+#--------------------------------------------------------------------------
+# menu wrappers
+
+script, first menu item, hsd:menuhandle, begin
+  exit returning(menu item by slot(hsd:menuhandle, 0))
+end
+
+script, wait for menu, hsd:menuhandle, begin
+  while(menu is open(hsd:menuhandle)) do(wait(1))
+end
+
+#--------------------------------------------------------------------------
+# menu data wrappers
+
+script, get menu boxstyle, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 12))
+end
+
+script, set menu boxstyle, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 12, hsd:n)
+end
+
+script, get menu textcolor, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 13))
+end
+
+script, set menu textcolor, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 13, hsd:n)
+end
+
+script, get menu max rows, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 14))
+end
+
+script, set menu max rows, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 14, hsd:n)
+end
+
+script, get menu offset x, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 16))
+end
+
+script, set menu offset x, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 16, hsd:n)
+end
+
+script, get menu offset y, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 17))
+end
+
+script, set menu offset y, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 17, hsd:n)
+end
+
+script, get menu anchor x, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 18))
+end
+
+script, set menu anchor x, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 18, hsd:n)
+end
+
+script, get menu anchor y, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 19))
+end
+
+script, set menu anchor y, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 19, hsd:n)
+end
+
+script, get menu text align, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 20))
+end
+
+script, set menu text align, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 20, hsd:n)
+end
+
+script, get menu min chars, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 21))
+end
+
+script, set menu min chars, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 21, hsd:n)
+end
+
+script, get menu max chars, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 22))
+end
+
+script, set menu max chars, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 22, hsd:n)
+end
+
+script, get menu border, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 23))
+end
+
+script, set menu border, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 23, hsd:n)
+end
+
+script, get menu on close script, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 24))
+end
+
+script, set menu on close script, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 24, hsd:n)
+end
+
+script, get menu bit, hsd:handle, hsd:bit, begin
+  variable(hsd:n)
+  hsd:n := read menu int(hsd:handle, 15)
+  if(hsd:n,and,2^hsd:bit) then(exit returning(true))
+  exit returning(false)
+end
+
+script, set menu bit, hsd:handle, hsd:bit, hsd:value=1, begin
+  variable(hsd:n)
+  hsd:n := read menu int(hsd:handle, 15)
+  if(hsd:value) then(hsd:n := hsd:n, or, 2^hsd:bit)
+    else(hsd:n := hsd:n, and, (-1, xor, 2^hsd:bit))
+  write menu int(hsd:handle, 15, hsd:n)
+end
+
+#--------------------------------------------------------------------------
+# menu item data wrappers
+
+script, set menu item, hsd:handle, hsd:type=0, hsd:subtype=0, hsd:tag1=0, hsd:tag2=0, hsd:stag=0, hsd:togtag=0, begin
+  write menu item int(hsd:handle, 22, hsd:type)
+  write menu item int(hsd:handle, 23, hsd:subtype)
+  write menu item int(hsd:handle, 24, hsd:tag1)
+  write menu item int(hsd:handle, 25, hsd:tag2)
+  write menu item int(hsd:handle, 26, hsd:stag)
+  write menu item int(hsd:handle, 27, hsd:togtag)
+end
+
+script, set menu item type, hsd:handle, hsd:n=0, begin
+  write menu item int(hsd:handle, 22, hsd:n)
+end
+
+script, get menu item type, hsd:handle, begin
+  exit returning(read menu item int(hsd:handle, 22))
+end
+
+script, set menu item subtype, hsd:handle, hsd:n=0, begin
+  write menu item int(hsd:handle, 23, hsd:n)
+end
+
+script, get menu item subtype, hsd:handle, begin
+  exit returning(read menu item int(hsd:handle, 23))
+end
+
+script, set menu item tag, hsd:handle, hsd:n=0, hsd:whichtag=1, begin
+  if(hsd:whichtag == 1) then(write menu item int(hsd:handle, 24, hsd:n))
+  if(hsd:whichtag == 2) then(write menu item int(hsd:handle, 25, hsd:n))
+end
+
+script, get menu item tag, hsd:handle, hsd:whichtag=1, begin
+  if(hsd:whichtag == 1) then(exit returning(read menu item int(hsd:handle, 24)))
+  if(hsd:whichtag == 2) then(exit returning(read menu item int(hsd:handle, 25)))
+end
+
+script, set menu item settag, hsd:handle, hsd:n=0, begin
+  write menu item int(hsd:handle, 26, hsd:n)
+end
+
+script, get menu item settag, hsd:handle, begin
+  exit returning(read menu item int(hsd:handle, 26))
+end
+
+script, set menu item togtag, hsd:handle, hsd:n=0, begin
+  write menu item int(hsd:handle, 27, hsd:n)
+end
+
+script, get menu item togtag, hsd:handle, begin
+  exit returning(read menu item int(hsd:handle, 27))
+end
+
+script, get menu item bit, hsd:handle, hsd:bit, begin
+  variable(hsd:n)
+  hsd:n := read menu item int(hsd:handle, 28)
+  if(hsd:n,and,2^hsd:bit) then(exit returning(true))
+  exit returning(false)
+end
+
+script, set menu item bit, hsd:handle, hsd:bit, hsd:value=1, begin
+  variable(hsd:n)
+  hsd:n := read menu item int(hsd:handle, 28)
+  if(hsd:value) then(hsd:n := hsd:n, or, 2^hsd:bit)
+    else(hsd:n := hsd:n, and, (-1, xor, 2^hsd:bit))
+  write menu item int(hsd:handle, 28, hsd:n)
+end
+
+script, set menu item extra, hsd:handle, hsd:extra=0, hsd:n=0, begin
+  if(hsd:extra >= 0 && hsd:extra <= 2) then, begin
+    write menu item int(hsd:handle, 29+hsd:extra, hsd:n)
+  end
+end
+
+script, get menu item extra, hsd:handle, hsd:extra=0, begin
+  if(hsd:extra >= 0 && hsd:extra <= 2) then, begin
+    exit returning(read menu item int(hsd:handle, 29+hsd:extra))
+  end
+end
+
+#--------------------------------------------------------------------------
+# slice commands
+
+script, load sprite, hsd:type, hsd:number, hsd:pal = -1, begin
+  if(hsd:type == spritetype:hero)        then(return(load hero sprite         (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:smallenemy)  then(return(load small enemy sprite  (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:mediumenemy) then(return(load medium enemy sprite (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:largeenemy)  then(return(load large enemy sprite  (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:walkabout)   then(return(load walkabout sprite    (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:weapon)      then(return(load weapon sprite       (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:attack)      then(return(load attack sprite       (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:border)      then(return(load border sprite       (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:portrait)    then(return(load portrait sprite     (hsd:number, hsd:pal)))
+  if(hsd:type == spritetype:backdrop)    then(return(load backdrop sprite     (hsd:number)))
+end
+
+script, replace sprite, hsd:sl, hsd:type, hsd:number, hsd:pal = -1, begin
+  if(hsd:type == spritetype:hero)        then(replace hero sprite         (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:smallenemy)  then(replace small enemy sprite  (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:mediumenemy) then(replace medium enemy sprite (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:largeenemy)  then(replace large enemy sprite  (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:walkabout)   then(replace walkabout sprite    (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:weapon)      then(replace weapon sprite       (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:attack)      then(replace attack sprite       (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:border)      then(replace border sprite       (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:portrait)    then(replace portrait sprite     (hsd:sl, hsd:number, hsd:pal))
+  if(hsd:type == spritetype:backdrop)    then(replace backdrop sprite     (hsd:sl, hsd:number))
+end
+
+script, load enemy sprite, hsd:size, hsd:number, hsd:pal = -1, begin
+  if(hsd:size == EnemySize:small) then(return(load small enemy sprite(hsd:number, hsd:pal)))
+  if(hsd:size == EnemySize:medium) then(return(load medium enemy sprite(hsd:number, hsd:pal)))
+  if(hsd:size == EnemySize:large) then(return(load large enemy sprite(hsd:number, hsd:pal)))
+end
+
+script, replace enemy sprite, hsd:ID, hsd:size, hsd:number, hsd:pal = -1, begin
+  if(hsd:size == EnemySize:small) then(return(replace small enemy sprite(hsd:ID, hsd:number, hsd:pal)))
+  if(hsd:size == EnemySize:medium) then(return(replace medium enemy sprite(hsd:ID, hsd:number, hsd:pal)))
+  if(hsd:size == EnemySize:large) then(return(replace large enemy sprite(hsd:ID, hsd:number, hsd:pal)))
+end
+
+#### first child/next sibling wrappers
+
+script, first child of type, hsd:parent, hsd:type, begin
+  variable(hsd:sl)
+  hsd:sl := first child(hsd:parent)
+  if(hsd:sl==0) then(exit returning(hsd:sl))
+  if(slice type(hsd:sl) == hsd:type) then(exit returning(hsd:sl))
+  exit returning(next sibling of type(hsd:sl, hsd:type))
+end
+
+script, next sibling of type, hsd:sl, hsd:type, begin
+  hsd:sl := next sibling(hsd:sl)
+  while(hsd:sl) do (
+    if(slice type(hsd:sl) == hsd:type) then(exit returning(hsd:sl))
+    hsd:sl := next sibling(hsd:sl)
+  )
+  exit returning(hsd:sl)
+end
+
+script, first container child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:container))
+end
+
+script, next container sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:container))
+end
+
+script, first rect child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:rect))
+end
+
+script, next rect sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:rect))
+end
+
+script, first sprite child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:sprite))
+end
+
+script, next sprite sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:sprite))
+end
+
+script, first text child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:text))
+end
+
+script, next text sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:text))
+end
+
+script, first ellipse child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:ellipse))
+end
+
+script, next ellipse sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:ellipse))
+end
+
+script, first grid child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:grid))
+end
+
+script, next grid sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:grid))
+end
+
+script, first scroll child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:scroll))
+end
+
+script, next scroll sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:scroll))
+end
+
+script, first select child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:select))
+end
+
+script, next select sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:select))
+end
+
+script, first panel child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:panel))
+end
+
+script, next panel sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:panel))
+end
+
+#### More slice commands
+
+script, free slice children, hsd:parent, begin
+  variable(hsd:sl, hsd:next)
+  hsd:sl := first child(hsd:parent)
+  while(hsd:sl) do(
+    hsd:next := next sibling(hsd:sl)
+    free slice(hsd:sl)
+    hsd:sl := hsd:next
+  )
+end
+
+script, realign slice, hsd:sl, hsd:halign, hsd:valign, hsd:hanchor=-1, hsd:vanchor=-1, begin
+  set horiz align(hsd:sl, hsd:halign)
+  set vert align(hsd:sl, hsd:valign)
+  if(hsd:hanchor <> -1) then(set horiz anchor(hsd:sl, hsd:hanchor))
+  if(hsd:vanchor <> -1) then(set vert anchor(hsd:sl, hsd:vanchor))
+end
+
+script, center slice, hsd:sl, begin
+  realign slice(hsd:sl, 1, 1, 1, 1)
+end
+
+script, set slice screen x, hsd:sl, hsd:newx, begin
+  variable(hsd:oldx, hsd:diff)
+  hsd:oldx := slice screen x(hsd:sl)
+  hsd:diff := hsd:newx -- hsd:oldx
+  set slice x(hsd:sl, slice x(hsd:sl) + hsd:diff)
+end
+
+script, set slice screen y, hsd:sl, hsd:newy, begin
+  variable(hsd:oldy, hsd:diff)
+  hsd:oldy := slice screen y(hsd:sl)
+  hsd:diff := hsd:newy -- hsd:oldy
+  set slice y(hsd:sl, slice y(hsd:sl) + hsd:diff)
+end
+
+script, set slice size, hsd:sl, hsd:width, hsd:height, begin
+  set slice width(hsd:sl, hsd:width)
+  set slice height(hsd:sl, hsd:height)
+end
+
+script, put slice screen, hsd:sl, hsd:newx, hsd:newy, begin
+  put slice(hsd:sl, slice x(hsd:sl) + hsd:newx -- slice screen x(hsd:sl),
+                    slice y(hsd:sl) + hsd:newy -- slice screen y(hsd:sl))
+end
+
+script, set padding, hsd:sl, hsd:newpadding, begin
+  set left padding  (hsd:sl, hsd:newpadding)
+  set right padding (hsd:sl, hsd:newpadding)
+  set top padding   (hsd:sl, hsd:newpadding)
+  set bottom padding(hsd:sl, hsd:newpadding)
+end
+
+script, reparent to npc, hsd:sl, hsd:npc, begin
+  set parent(hsd:sl, lookup slice(sl:walkabout sprite component, get npc slice(hsd:npc)))
+end
+
+script, reparent to hero, hsd:sl, hsd:hero rank, begin
+  set parent(hsd:sl, lookup slice(sl:walkabout sprite component, get hero slice(hsd:hero rank)))
+end
+
+#--------------------------------------------------------------------------
+# script triggers
+
+define trigger,begin
+0, script
+1, plotscript
+end
+
+#--------------------------------------------------------------------------
+# betweenable operators
+
+define operator,begin
+20 ^   exponent
+30,mod,modulus
+30 /   divide
+30 *   multiply
+40 --  subtract
+40 +   add
+50 ==  equal
+50 <>  notequal
+50 <<  lessthan
+50 >>  greaterthan
+50 <   lessthan
+50 >   greaterthan
+50 <=  lessthanorequalto
+50 >=  greaterthanorequalto
+60,xor,xor
+60,and,and
+60,or, or
+65 &&  logand
+70 ||  logor
+70 ^^  logxor
+80 :=  setvariable
+80 +=  increment
+80 -=  decrement
+80 $+  concatenatestrings
+80 $=  copystring
+end
+
+#--------------------------------------------------------------------------
+# global constants
+
+define constant, begin
+0,zero
+1,one
+2,two
+3,three
+4,four
+5,five
+6,six
+7,seven
+8,eight
+9,nine
+10,ten
+0,false
+1,true
+0,off
+1,on
+0,north
+1,east
+2,south
+3,west
+0,up
+2,down
+3,left
+1,right
+0,upkey
+1,downkey
+2,leftkey
+3,rightkey
+4,usekey
+5,cancelkey
+5,menukey
+99,anykey
+0,me
+0,none
+-1,autonumber
+0,currentstat
+1,maximumstat
+2,basestat
+0b1,northwall
+0b10,eastwall
+0b100,southwall
+0b1000,westwall
+0b10000,vehicleA
+0b100000,vehicleB
+0b1000000,harmtile
+0b10000000,overheadtile
+# Special constants used only by 'move slice with wallchecking'
+# Each is euqal to the wall bits for two directions, shifted 24 bits left
+0b0011 00000000 00000000 00000000,northeast corner
+0b1001 00000000 00000000 00000000,northwest corner
+0b0110 00000000 00000000 00000000,southeast corner
+0b1100 00000000 00000000 00000000,southwest corner
+# Special zones
+10000,zone:OneWayExit
+0,inside battle
+1,outside battle
+2,hero portrait
+0,NPCstat:picture
+1,NPCstat:palette
+2,NPCstat:movetype
+  0,NPCmovetype:standstill
+  1,NPCmovetype:wander
+  2,NPCmovetype:pace
+  3,NPCmovetype:rightturns
+  4,NPCmovetype:leftturns
+  5,NPCmovetype:randomturns
+  6,NPCmovetype:chaseyou
+  6,NPCmovetype:chaseyoumeandering
+  7,NPCmovetype:avoidyou
+  7,NPCmovetype:avoidyoumeandering
+  8,NPCmovetype:walkinplace
+  9,NPCmovetype:chaseyoudirect
+  10,NPCmovetype:avoidyoudirect
+  11,NPCmovetype:followwallsright
+  12,NPCmovetype:followwallsleft
+  13,NPCmovetype:followwallsrightstopsforothers
+  14,NPCmovetype:followwallsleftstopsforothers
+  15,NPCmovetype:chaseyoupathfinding
+3,NPCstat:movespeed
+4,NPCstat:displaytext
+5,NPCstat:whenactivated
+  0,NPCwhenactivated:changedirection
+  1,NPCwhenactivated:faceplayer
+  2,NPCwhenactivated:donotfaceplayer
+6,NPCstat:giveitem    # Note: item num + 1
+7,NPCstat:pushability
+  0,NPCpush:off
+  1,NPCpush:full
+  2,NPCpush:horizontal
+  3,NPCpush:vertical
+  4,NPCpush:uponly
+  5,NPCpush:rightonly
+  6,NPCpush:downonly
+  7,NPCpush:leftonly
+8,NPCstat:activation
+  0,NPCactivation:use
+  1,NPCactivation:touch
+  2,NPCactivation:stepon
+9,NPCstat:tag1
+10,NPCstat:tag2
+11,NPCstat:onetimeusetag
+12,NPCstat:script
+13,NPCstat:scriptargument
+14,NPCstat:vehicle
+15,NPCstat:defaultmovementzone
+16,NPCstat:defaultavoidancezone
+17,NPCstat:ignorepassmap
+0,color:red
+1,color:green
+2,color:blue
+0,leftbutton
+1,rightbutton
+2,middlebutton
+-1,getcount
+0,string:outline
+1,string:flat
+53,Enemy:Picture
+54,Enemy:Palette
+55,Enemy:PictureSize
+  0, EnemySize:small
+  1, EnemySize:medium
+  2, EnemySize:large
+56,Enemy:Gold
+57,Enemy:Experience
+58,Enemy:Item
+59,Enemy:ItemPercent
+60,Enemy:RareItem
+61,Enemy:RareItemPercent
+17,Stealability
+   -1, IsNotStealable
+    0, StealableOnce
+    1, StealableInfinity
+18, StealableItem
+19, StealableItemChance
+20, StealableRareItem
+21, StealableRareItemchance
+0, Crop
+1, Wrap
+2, Defaulttile
+-1,party
+0, extra 0
+1, extra 1
+2, extra 2
+0, x axis
+1, y axis
+0b1,mapstate:mapsettings
+0b10,mapstate:npclocations
+0b100,mapstate:npcdefinitions
+0b1000,mapstate:tilemap
+0b10000,mapstate:passmap
+0b100000,mapstate:zonemap
+#0b1000000,mapstate:foemap
+0b110,mapstate:npcs
+0b111000,mapstate:tiles
+0b11111111,mapstate:all
+0,timer:stop #use in speed
+-1,timer:default #use in any
+-2,timer:gameover#use in trigger
+0b1,timerflag:critical
+0b10,timerflag:battle
+0b100,timerflag:menu
+0,menutype:label
+1,menutype:special
+2,menutype:menu
+3,menutype:textbox
+4,menutype:script
+0,menuspecial:items
+1,menuspecial:spells
+2,menuspecial:status
+3,menuspecial:equip
+4,menuspecial:order
+5,menuspecial:team
+6,menuspecial:orderteam
+7,menuspecial:map
+8,menuspecial:save
+9,menuspecial:load
+10,menuspecial:quit
+11,menuspecial:volume
+0,menuitembit:Hide when disabled
+1,menuitembit:Close menu when selected
+2,menuitembit:skip close script
+0,menubit:translucent box
+1,menubit:never show scrollbar
+2,menubit:allow gameplay
+3,menubit:suspend player even if gameplay allowed
+4,menubit:no box
+5,menubit:no close
+6,menubit:no controls
+7,menubit:prevent main menu
+8,menubit:advance text box when menu closes
+9,menubit:highlight selection background
+### The align: constants are for menu alignment, NOT for slices!
+0,align:center
+-1,align:left
+1,align:right
+-1,align:top
+1,align:bottom
+-1,tileset:default
+-1,song:silence
+-2,song:same as map
+-2,song:same as last map
+-1,any enemy
+0,inv:max
+### The edge: constants are for slice alignment, NOT for menus!
+0,edge:left
+1,edge:center
+2,edge:right
+0,edge:top
+1,edge:middle
+2,edge:bottom
+1,slicetype:Special
+2,slicetype:Container
+3,slicetype:Rectangle
+3,slicetype:Rect
+4,slicetype:Sprite
+5,slicetype:Text
+6,slicetype:Map
+7,slicetype:Grid
+8,slicetype:Ellipse
+9,slicetype:Scroll
+10,slicetype:Select
+11,slicetype:Panel
+12,slicetype:Layout
+13,slicetype:Line
+0,spritetype:hero
+1,spritetype:smallenemy
+2,spritetype:mediumenemy
+3,spritetype:largeenemy
+4,spritetype:walkabout
+5,spritetype:weapon
+6,spritetype:attack
+7,spritetype:border
+8,spritetype:portrait
+9,spritetype:backdrop
+-1,border:line
+-2,border:none
+-99,border:raw
+0,trans:solid
+1,trans:fuzzy
+2,trans:hollow
+0,hand:Attack A
+1,hand:Attack B
+0,dissolve:random scatter
+1,dissolve:crossfade
+2,dissolve:diagonal vanish
+3,dissolve:sink into ground
+4,dissolve:squash
+5,dissolve:melt
+6,dissolve:vapourise
+7,dissolve:phase out
+8,dissolve:squeeze
+9,dissolve:shrink
+10,dissolve:flicker
+-1,dissolvetime:default
+50000,maximum global id
+99,maximum string id
+end
+
+#<SLICE LOOKUP CODES>
+define constant, begin
+-100000, sl:root
+-100001, sl:textbox text
+-100002, sl:textbox portrait
+-100003, sl:textbox choice0
+-100004, sl:textbox choice1
+-100016, sl:textbox box
+-100017, sl:textbox portrait box
+-100018, sl:textbox choice box
+-100019, sl:textbox root
+-100005, sl:script layer
+-100006, sl:textbox layer
+-100007, sl:string layer
+-100008, sl:maproot
+-100009, sl:obsolete overhead
+-100020, sl:map overlay
+-100010, sl:walkabout layer
+-100011, sl:hero layer
+-100012, sl:npc layer
+-100013, sl:walkabout sprite component
+-100014, sl:walkabout shadow component
+-100015, sl:backdrop
+-101000, sl:map layer0
+-101001, sl:map layer1
+-101002, sl:map layer2
+-101003, sl:map layer3
+-101004, sl:map layer4
+-101005, sl:map layer5
+-101006, sl:map layer6
+-101007, sl:map layer7
+-101008, sl:map layer8
+-101009, sl:map layer9
+-101010, sl:map layer10
+-101011, sl:map layer11
+-101012, sl:map layer12
+-101013, sl:map layer13
+-101014, sl:map layer14
+-101015, sl:map layer15
+-102000, sl:status portrait
+-102001, sl:status walkabout
+-102002, sl:status battlesprite
+-102003, sl:status page select
+-102004, sl:status statlist
+-102005, sl:status hide if no mp
+-102006, sl:status hide if no lmp
+-102007, sl:status hide if max lev
+-102008, sl:plank holder
+-102009, sl:status hide if no portrait
+-102010, sl:item itemlist
+-102011, sl:item exitbutton
+-102012, sl:item sortbutton
+-102013, sl:item trashbutton
+-102014, sl:plank menu selectable
+-102015, sl:spell listlist
+-102016, sl:spell spelllist
+-102017, sl:spell hide if no list
+-102018, sl:spell cancelbutton
+-102019, sl:virtual keyboard button
+-102020, sl:virtual keyboard buttontext
+-102021, sl:virtual keyboard shift
+-102022, sl:virtual keyboard symbols
+-102023, sl:virtual keyboard select
+-102024, sl:virtual keyboard entrytext
+-102025, sl:virtual keyboard del
+-102026, sl:virtual keyboard enter
+-102100, sl:pathfind dest display
+end
+#</SLICE LOOKUP CODES>
