@@ -1,0 +1,3784 @@
+## Sword of Jade 2 Battle Scripts
+
+define script (15,battlewater,1,0)
+define script (33,bgrin1,0)
+define script (34,bgrin2,0)
+define script (35,bgrin3,1,0)
+define script (36,bgrin4,1,0)
+define script (226,raiderbattles,1,0)
+#Forest Pass Battles
+define script (289,fpoobat,1,0)
+define script (290,fpanbat,1,0)
+define script (291,fpnibat,1,0)
+define script (292,fpmonbat,1,0)
+#define script (293,hunt,0)
+define script (294,dummy,0)
+define script (295,scarf2bat,1,0)
+define script (296,quarrybat,1,0)
+define script (297,gitlehbat,1,0)
+define script (298,ddnoobat,1,0)
+define script (299,ddaftbat,1,0)
+define script (300,ddnigbat,1,0)
+define script (301,ddmonbat,1,0)
+define script (302,fedorabat,1,0)
+define script (303,unknownbat,1,0)
+define script (304,linknoobat,1,0)
+define script (305,linkaftbat,1,0)
+define script (306,linknigbat,1,0)
+define script (307,linkmorbat,1,0)
+define script (308,trailnoobat,1,0)
+define script (309,trailaftbat,1,0)
+define script (310,trailnigbat,1,0)
+define script (311,trailmorbat,1,0)
+define script (312,scarf4bat,1,0)
+define script (313,mountnoobat,1,0)
+define script (314,mountaftbat,1,0)
+define script (315,mountnigbat,1,0)
+define script (316,mountmorbat,1,0)
+define script (317,shodanoobat,1,0)
+define script (318,shodaaftbat,1,0)
+define script (319,shodanigbat,1,0)
+define script (320,shodamorbat,1,0)
+#define script (321,wobblerloot,0)
+
+define script (autonumber,battlewater1,1,0)
+define script (autonumber,battlewater2,1,0)
+define script (autonumber,battlewater3,1,0)
+define script (autonumber,grinintrobattle,0)
+
+#####################
+# Battles           #
+#####################
+script, b grin 1, begin
+suspend player
+suspend npcs
+Alter NPC (12, NPCstat:script, 0)
+wait(1)
+battle flash
+fight formation(5)
+resume npcs
+resume player
+end
+###
+#######################
+script, b grin 2, begin
+suspend player
+suspend npcs
+Alter NPC (13, NPCstat:script, 0)
+wait(1)
+battle flash
+set variable(battlesfought,battlesfought+1)
+if(fight formation(6)) then(set variable(battleswon,battleswon+1))
+
+set npc position(13,0,0)
+alter npc(12,NPCstat:move type,NPCmovetype:avoidyou)
+suspend obstruction
+set party out
+swap by position(0,find hero(0))
+
+set npc position(1,herox(0),heroy(0))
+set npc position(2,herox(0),heroy(0))
+set npc position(3,herox(0),heroy(0))
+set hero direction(0,up)
+set hero frame(0,0)
+walk npc(1,left,1)
+walk npc(2,left,2)
+walk npc(3,right,1)
+wait for npc(1)
+set npc direction(1,up)
+set npc frame(1,0)
+wait for npc(3)
+set npc direction(3,up)
+set npc frame(3,0)
+wait for npc(2)
+set npc direction(2,up)
+set npc frame(2,0)
+resume obstruction
+resume npcs
+
+jig npc(1)
+tb(307)
+jig npc(2)
+tb(308)
+jig npc(3)
+tb(309)
+set hero direction(0,left)
+jig hero(0)
+tb(310)
+set npc direction(1,right)
+jig npc(1)
+tb(311)
+suspend npcs
+suspend obstruction
+walk hero(0,left,1)
+walk npc(2,right,1)
+walk npc(3,left,2)
+wait for hero(0)
+wait for npc(2)
+wait for npc(3)
+set hero direction(0,down)
+set npc position(1,0,0)
+set npc position(2,0,0)
+set npc position(3,0,0)
+set party in
+resume obstruction
+resume npcs
+resume player
+write pass block(26,62,1)
+write pass block(27,62,1)
+write pass block(28,62,1)
+end
+###
+###################################
+script, b grin 3, npc number, begin
+suspend player
+suspend npcs
+Alter NPC (npc number, NPCstat:script, 0)
+wait (1)
+battle flash
+set variable(battlesfought,battlesfought+1)
+if(fight formation(3)) then(set variable(battleswon,battleswon+1))
+resume npcs
+resume player
+end
+###
+###################################
+script, b grin 4, npc number, begin
+suspend player
+suspend npcs
+Alter NPC (npc number, NPCstat:script, 0)
+wait (1)
+battle flash
+set variable(battlesfought,battlesfought+1)
+if(fight formation(4)) then(set variable(battleswon,battleswon+1))
+resume npcs
+resume player
+end
+###
+
+#########################################
+script, battle water, whichone, begin
+suspend player
+suspend npcs
+
+
+battlewater1(whichone)
+battlewater2(whichone)
+battlewater3(whichone)
+wait(1)
+
+
+resume npcs
+resume player
+end
+###
+#####################################
+script, battlewater1, whichone, begin
+suspend player
+suspend npcs
+
+if (whichone==1) then(
+battle flash
+ff(11,2,true)
+#reset palette
+#tweak palette (-2,-2,-2)
+#update palette
+tp
+wait(1)
+tb(1053)
+get item(29,1)
+waterdungeonauto(1)
+)
+if (whichone==2) then(
+battle flash
+ff(12,1,true)
+#reset palette
+#tweak palette (-2,-2,-2)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==3) then(
+battle flash
+ff(13,1,true)
+#reset palette
+#tweak palette (-2,-2,-2)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==4) then(
+battle flash
+ff(14,1,true)
+#tweak palette (-1,-1,-1)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==5) then(
+battle flash
+ff(15,1,true)
+#reset palette
+#tweak palette (-1,-1,-1)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==6) then(
+battle flash
+ff(16,0,true)
+#reset palette
+#tweak palette (-1,-1,-1)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==7) then(
+battle flash
+ff(17,0,true)
+#reset palette
+#tweak palette (-1,-1,-1)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==8) then(
+set npc direction(13,up)
+alter npc(13,NPCstat:picture,147)
+wait(2)
+set npc direction(13,right)
+wait(3)
+set npc direction(13,down)
+wait(2)
+set npc direction(13,left)
+wait(2)
+set tag(53,1)
+battle flash
+ff(18,2,true)
+#reset palette
+#tweak palette (-1,-1,4)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==9) then(
+set npc direction(14,up)
+alter npc(14,NPCstat:picture,147)
+wait(2)
+set npc direction(14,right)
+wait(3)
+set npc direction(14,down)
+wait(2)
+set npc direction(14,left)
+wait(2)
+set tag(54,1)
+battle flash
+ff(19,1,true)
+#reset palette
+#tweak palette (-1,-1,4)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==10) then(
+set npc direction(15,up)
+alter npc(15,NPCstat:picture,147)
+wait(2)
+set npc direction(15,right)
+wait(3)
+set npc direction(15,down)
+wait(2)
+set npc direction(15,left)
+wait(2)
+set tag(55,1)
+battle flash
+ff(20,1,true)
+#reset palette
+#tweak palette (-1,-1,4)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==11) then(
+battle flash
+ff(21,2,true)
+#reset palette
+#tweak palette (-5,-5,-5)
+#update palette
+tp
+waterdungeonauto(1)
+)
+end
+###
+#####################################
+script, battlewater2, whichone, begin
+suspend player
+suspend npcs
+
+if (whichone==12) then(
+battle flash
+ff(22,0,true)
+#reset palette
+#tweak palette (-5,-5,-5)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==13) then(
+set npc direction(18,up)
+alter npc(18,NPCstat:picture,147)
+wait(2)
+set npc direction(18,right)
+wait(3)
+set npc direction(18,down)
+wait(2)
+set npc direction(18,left)
+wait(2)
+set tag(57,1)
+battle flash
+ff(23,2,true)
+#reset palette
+#tweak palette (-2,-2,1)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==14) then(
+set npc direction(19,up)
+alter npc(19,NPCstat:picture,147)
+wait(2)
+set npc direction(19,right)
+wait(3)
+set npc direction(19,down)
+wait(2)
+set npc direction(19,left)
+wait(2)
+set tag(58,1)
+battle flash
+ff(24,1,true)
+#reset palette
+#tweak palette (-2,-2,1)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==15) then(
+set npc direction(20,up)
+alter npc(20,NPCstat:picture,147)
+wait(2)
+set npc direction(20,right)
+wait(3)
+set npc direction(20,down)
+wait(2)
+set npc direction(20,left)
+wait(2)
+set tag(59,1)
+battle flash
+ff(25,1,true)
+#reset palette
+#tweak palette (-2,-2,1)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==16) then(
+set npc direction(21,up)
+alter npc(21,NPCstat:picture,147)
+wait(2)
+set npc direction(21,right)
+wait(3)
+set npc direction(21,down)
+wait(2)
+set npc direction(21,left)
+wait(2)
+set tag(60,1)
+battle flash
+ff(26,2,true)
+#reset palette
+#tweak palette (-2,-2,1)
+#update palette
+tp
+waterdungeonauto(1)
+)
+if (whichone==17,and,check tag(61)==false) then(
+set npc direction(23,right)
+wait(2)
+set npc direction(23,down)
+wait(1)
+set npc direction(23,left)
+set tag(61,1)
+)
+if (whichone==18) then(
+variable(i)
+for(i,1,4,1) do(
+set npc frame(24,1)
+wait(1)
+set npc frame(24,0)
+wait(1))
+battleflash
+set tag(62,1)
+ff(27,1,true)
+#reset palette
+#tweak palette (-3,-3,-3)
+#update palette
+tp
+wait(1)
+tb(1053)
+get item(29,1)
+waterdungeonauto(1)
+)
+if (whichone==19) then(
+variable(j)
+for(j,1,4,1) do(
+set npc frame(25,1)
+wait(1)
+set npc frame(25,0)
+wait(1))
+battleflash
+set tag(63,1)
+ff(28,1,true)
+#reset palette
+#tweak palette (-3,-3,-3)
+#update palette
+tp
+waterdungeonauto(1)
+)
+end
+###
+#####################################
+script, battlewater3, whichone, begin
+suspend player
+suspend npcs
+
+if (whichone==20) then(
+	if (herox(0)==78,and,heroy(0)==42) then(
+	variable(k)
+	for(k,1,4,1) do(
+	set npc frame(npc at spot(78,41),1)
+	wait(1)
+	set npc frame(npc at spot(78,41),0)
+	wait(1))
+	battleflash
+	set tag(64,1)
+	ff(29,1,true)
+	#reset palette
+	#tweak palette (-3,-3,-3)
+	#update palette
+	tp
+	set npc position(npc at spot(78,41),1,0)
+	waterdungeonauto(1)
+	)
+	if (herox(0)==84,and,heroy(0)==42) then(
+	alter npc(22,NPCstat:script,0)
+	save game
+	alter npc(22,NPCstat:script,15)
+	#variable(slot)
+	#set variable(slot,save menu)
+	#if(slot>=0) then(set variable(saves,saves+1))
+	)
+	if (herox(0)==81,and,heroy(0)==44) then(
+	set tag(711,0)
+	wait(2)
+	set npc frame(npc at spot(81,45),1)
+	wait(2)
+	write pass block(75,42,0)
+	write pass block(75,44,128)
+	variable(dd1)
+	variable(dd2)
+	variable(dd3)
+	set variable(dd1,npc at spot(75,41))
+	set variable(dd2,npc at spot(75,42))
+	set variable(dd3,npc at spot(75,43))
+	walk npc(dd1,down,3)
+	set npc direction(dd1,up)
+	walk npc(dd2,down,3)
+	walk npc(dd3,down,3)
+	wait(10)
+	set npc frame(npc at spot(81,45),0)
+	wait for npc(dd3)
+	destroy NPC(dd1)
+	destroy NPC(dd2)
+	destroy NPC(dd3)
+	write pass block(75,42,4)
+	write pass block(75,44,1+128)
+	)
+)
+
+if (check tag(53),and,check tag(54),and,check tag(55),and,check tag(56)==false) then(
+suspend player
+suspend obstruction
+write pass block (27,40,0)
+write pass block (26,36,128)
+write pass block (26,37,128)
+write pass block (26,38,128)
+write pass block (26,39,128)
+write pass block (20,41,0)
+write pass block (20,42,0)
+write pass block (20,44,128)
+variable(d1)
+variable(d2)
+variable(d3)
+variable(d4)
+variable(d5)
+variable(d6)
+variable(d7)
+set variable (d1,npc at spot(27,37))
+set variable (d2,npc at spot(27,38))
+set variable (d3,npc at spot(27,39))
+set variable (d4,npc at spot(27,40))
+set variable (d5,npc at spot(20,41))
+set variable (d6,npc at spot(20,42))
+set variable (d7,npc at spot(20,43))
+wait(4)
+walk npc(d1,left,1)
+set npc direction(d1,up)
+walk npc(d2,left,1)
+walk npc(d3,left,1)
+set npc direction(d3,right)
+walk npc(d4,left,1)
+set npc direction(d4,down)
+walk npc(d5,down,3)
+set npc direction(d5,up)
+walk npc(d6,down,3)
+walk npc(d7,down,3)
+wait for npc(d1)
+wait for npc(d2)
+wait for npc(d3)
+wait for npc(d4)
+wait for npc(d5)
+wait for npc(d6)
+wait for npc(d7)
+write pass block (26,36,2)
+write pass block (26,37,2)
+write pass block (26,38,2)
+write pass block (26,39,2+4)
+write pass block (20,41,2)
+write pass block (20,42,2+4)
+write pass block (20,44,1+2)
+
+resume obstruction
+set tag(56,1)
+)
+end
+###
+
+########################################
+script, grin intro battle, begin
+stop song
+set hero frame(0,0)
+variable (i)
+wait(1)
+for (i,1,3,1) do(
+alter npc(4,NPCstat:picture,121)
+alter npc(5,NPCstat:picture,122)
+alter npc(8,NPCstat:picture,123)
+wait(1)
+alter npc(4,NPCstat:picture,111)
+alter npc(5,NPCstat:picture,112)
+alter npc(8,NPCstat:picture,113)
+wait(1)
+)
+set hero direction(0,right)
+wait(2)
+set hero direction(0,down)
+jig hero(0)
+tb(236)
+battle flash
+wait(1)
+fade screen out(63,63,63)
+show backdrop(0)
+wait(1)
+fade screen in
+stop song
+wait(15)
+play song(15)
+jig gahn
+tb(1030)
+if (check tag(48)) then(
+set tag(48,0)
+jig gahn
+tb(1031)
+)else(
+jig gahn
+tb(1032)
+jig gahn
+tb(1033)
+jig gahn
+tb(1034)
+jig gahn
+tb(1035)
+jig gahn
+tb(1036)
+jig gahn
+tb(1037)
+jig gahn
+tb(1038)
+jig gahn
+tb(1039)
+jig gahn
+tb(1040)
+jig gahn
+tb(1041)
+jig gahn
+tb(1042)
+jig gahn
+tb(1043)
+wait(10)
+#jig gahn
+#tb(1044)
+#wait(5)
+jig gahn
+tb(1045)
+)
+fade screen out
+show map
+set variable(battlesfought,battlesfought+1)
+if(fight formation(1)) then(set variable(battleswon,battleswon+1))
+end
+###
+
+######################################
+script, raiderbattles, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==1) then(
+	battleflash
+	set tag(389,1)
+	ff(226)
+	if(check tag(389),and,check tag(390),and,check tag(391),and,check tag(392),and,check tag(393)) then(
+		play song(59)
+		jig gahn
+		tb(2109)
+		wait(3)
+		palout(1)
+		set hero position(0,47,28)
+		wait(1)
+		pan camera(south,0,0)
+		set hero position(0,47,27)
+		set npc position(1,48,28)
+		set npc position(2,46,28)
+		set npc position(3,47,29)
+		set hero direction(0,down)
+		set npc direction(1,left)
+		set npc direction(2,right)
+		set npc direction(3,up)
+		set party out
+		swap by position(find hero(0),0)
+		wait(1)
+		palin(1)
+		mainforcesfallen
+	)
+	else(play song(5))
+)
+if(whichone==2) then(
+	battleflash
+	set tag(390,1)
+	ff(227)
+	if(check tag(389),and,check tag(390),and,check tag(391),and,check tag(392),and,check tag(393)) then(
+		play song(59)
+		jig gahn
+		tb(2109)
+		wait(3)
+		palout(1)
+		set hero position(0,43,19)
+		wait(1)
+		pan camera(south,0,0)
+		set hero position(0,43,18)
+		set npc position(1,44,19)
+		set npc position(2,42,19)
+		set npc position(3,43,20)
+		set hero direction(0,down)
+		set npc direction(1,left)
+		set npc direction(2,right)
+		set npc direction(3,up)
+		set party out
+		swap by position(find hero(0),0)
+		wait(1)
+		palin(1)
+		mainforcesfallen
+	)
+	else(play song(5))
+)
+if(whichone==3) then(
+	battleflash
+	set tag(391,1)
+	ff(228)
+	if(check tag(389),and,check tag(390),and,check tag(391),and,check tag(392),and,check tag(393)) then(
+		play song(59)
+		jig gahn
+		tb(2109)
+		wait(3)
+		palout(1)
+		set hero position(0,54,20)
+		wait(1)
+		pan camera(south,0,0)
+		set hero position(0,54,19)
+		set npc position(1,55,20)
+		set npc position(2,53,20)
+		set npc position(3,54,21)
+		set hero direction(0,down)
+		set npc direction(1,left)
+		set npc direction(2,right)
+		set npc direction(3,up)
+		set party out
+		swap by position(find hero(0),0)
+		wait(1)
+		palin(1)
+		mainforcesfallen
+	)
+	else(play song(5))
+)
+if(whichone==4) then(
+	battleflash
+	set tag(392,1)
+	ff(229)
+	if(check tag(389),and,check tag(390),and,check tag(391),and,check tag(392),and,check tag(393)) then(
+		play song(59)
+		jig gahn
+		tb(2109)
+		wait(3)
+		palout(1)
+		set hero position(0,5,94)
+		wait(1)
+		pan camera(south,0,0)
+		set hero position(0,5,93)
+		set npc position(1,6,94)
+		set npc position(2,4,94)
+		set npc position(3,5,95)
+		set hero direction(0,down)
+		set npc direction(1,left)
+		set npc direction(2,right)
+		set npc direction(3,up)
+		set party out
+		swap by position(find hero(0),0)
+		wait(1)
+		palin(1)
+		mainforcesfallen
+	)
+	else(play song(5))
+)
+if(whichone==5) then(
+	battleflash
+	set tag(393,1)
+	ff(229)
+	if(check tag(389),and,check tag(390),and,check tag(391),and,check tag(392),and,check tag(393)) then(
+		play song(59)
+		jig gahn
+		tb(2109)
+		wait(3)
+		palout(1)
+		set hero position(0,3,110)
+		wait(1)
+		pan camera(south,0,0)
+		set hero position(0,3,109)
+		set npc position(1,4,110)
+		set npc position(2,2,110)
+		set npc position(3,3,111)
+		set hero direction(0,down)
+		set npc direction(1,left)
+		set npc direction(2,right)
+		set npc direction(3,up)
+		set party out
+		swap by position(find hero(0),0)
+		wait(1)
+		palin(1)
+		mainforcesfallen
+	)
+	else(play song(5))
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+################################
+script, fpoobat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==1) then(
+	set tag(557,1)
+	tb(7312)
+	get item(50,3)
+)
+if(whichone==2) then(
+	set tag(558,1)
+	tb(7313)
+	get item(58,1)
+)
+if(whichone==3) then(
+	set tag(559,1)
+	tb(7314)
+	get money(35)
+)
+if(whichone==11) then(
+	battleflash
+	ff(36,1,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(36,1,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(36,1,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(37,1,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(37,1,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(38,1,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(39,1,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(40,1,true)
+)
+if(whichone==19) then(
+	battleflash
+	ff(40,1,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(41,1,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(42,1,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(42,1,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(43,1,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(44,1,true)
+)
+if(whichone==26) then(
+	battleflash
+	ff(45,1,true)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+################################
+script, fpanbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==1) then(
+	set tag(557,1)
+	tb(7312)
+	get item(50,3)
+)
+if(whichone==2) then(
+	set tag(558,1)
+	tb(7313)
+	get item(58,1)
+)
+if(whichone==3) then(
+	set tag(559,1)
+	tb(7314)
+	get money(35)
+)
+if(whichone==11) then(
+	battleflash
+	ff(46,1,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(47,1,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(48,1,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(49,1,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(50,1,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(51,1,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(52,1,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(53,1,true)
+)
+if(whichone==19) then(
+	battleflash
+	ff(53,1,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(54,1,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(55,1,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(56,1,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(57,1,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(58,1,true)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+################################
+script, fpnibat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==1) then(
+	set tag(557,1)
+	tb(7312)
+	get item(50,3)
+)
+if(whichone==2) then(
+	set tag(558,1)
+	tb(7313)
+	get item(58,1)
+)
+#KRESSE!!!!!!!!!!!!!!
+if(whichone==3) then(
+	battleflash
+	set tag(324,1)
+	ff(95,0,false)
+	get item(14,1)
+	tb(7333)
+)
+if(whichone==11) then(
+	battleflash
+	ff(59,1,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(59,1,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(60,1,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(60,1,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(61,1,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(61,1,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(62,1,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(63,1,true)
+)
+if(whichone==19) then(
+	battleflash
+	ff(64,1,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(64,1,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(64,1,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(65,1,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(65,1,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(66,1,true)
+)
+if(whichone==26) then(
+	battleflash
+	ff(67,1,true)
+)
+if(whichone==29) then(
+	battleflash
+	ff(68,1,true)
+)
+if(whichone==30) then(
+	battleflash
+	ff(68,1,true)
+)
+if(whichone==31) then(
+	battleflash
+	ff(69,1,true)
+)
+if(whichone==32) then(
+	battleflash
+	ff(69,1,true)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+#################################
+script, fpmonbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==1) then(
+	set tag(557,1)
+	tb(7312)
+	get item(50,3)
+)
+if(whichone==2) then(
+	set tag(558,1)
+	tb(7313)
+	get item(58,1)
+)
+if(whichone==3) then(
+	set tag(559,1)
+	tb(7314)
+	get money(35)
+)
+if(whichone==11) then(
+	battleflash
+	ff(70,1,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(71,1,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(72,1,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(73,1,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(74,1,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(75,1,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(75,1,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(76,1,true)
+)
+if(whichone==19) then(
+	battleflash
+	ff(76,1,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(77,1,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(77,1,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(78,1,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(79,1,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(80,1,true)
+)
+if(whichone==26) then(
+	battleflash
+	ff(81,1,true)
+)
+if(whichone==29) then(
+	battleflash
+	ff(82,1,true)
+)
+if(whichone==30) then(
+	battleflash
+	ff(83,1,true)
+)
+if(whichone==31) then(
+	battleflash
+	ff(84,1,true)
+)
+if(whichone==32) then(
+	battleflash
+	ff(85,1,true)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################
+script, dummy, begin
+#battleiconsystem sets this as the game over script for non-game over fights
+#KEEP DUMMY SCRIPT EMPTY
+end
+###
+
+##################################
+script, scarf2bat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==8) then(
+	battleflash
+	ff(119,0,false)
+)
+if(whichone==9) then(
+	battleflash
+	ff(119,0,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(119,0,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(120,1,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(121,1,true)
+)
+if(whichone==13) then(
+	battleflash
+	set tag(564,1)
+	ff(122,0,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(123,1,true)
+)
+if(whichone==15,and,currentmap==70) then(
+	get item(56,1)
+	tb(7329)
+)
+
+#below are items from scarf1
+#i refuse to make a new script for them!
+if(whichone==15,and,currentmap==69) then(
+	get money(25)
+	tb(7330)
+)
+if(whichone==16) then(
+	get item(26,1)
+	tb(7331)
+)
+if(whichone==17) then(
+	get item(65,3)
+	tb(7332)
+)
+
+#again
+#no new scripts!!
+#this is the non-scene guard fight option
+if(whichone==77) then(
+	jig npc(9)
+	tb(1722)
+	wait(2)
+	tb(1723)
+	if(check tag(79)) then(
+		jig hero(0)
+		if(check tag(19)) then(tb(1724))
+		if(check tag(20)) then(tb(1725))
+		if(check tag(21)) then(
+			tb(1726)
+			jig npc(9)
+			tb(1727)
+			jig hero(0)
+			tb(1728)
+		)
+		battleflash
+		set tag(82,1)
+		if(check tag(4)) then(ff(32,0,false))
+		if(check tag(5)) then(ff(33,0,false))
+		if(check tag(6)) then(ff(34,0,false))
+		if(check tag(3)) then(ff(593,0,false))
+	)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+##################################
+script, quarrybat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==9) then(
+	battleflash
+	ff(127,2,true)
+	#tweak palette(-2,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==10) then(
+	battleflash
+	ff(128,2,true)
+	#tweak palette(-2,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==11) then(
+	battleflash
+	ff(129,2,true)
+	#tweak palette(-3,-3,-3)
+	#update palette
+	tp
+)
+if(whichone==12) then(
+	battleflash
+	ff(130,2,true)
+	#tweak palette(-2,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==13) then(
+	battleflash
+	ff(131,3,true)
+	#tweak palette(-3,-3,-3)
+	#update palette
+	tp
+)
+if(whichone==14) then(
+	battleflash
+	ff(132,2,true)
+	#tweak palette(-4,-4,-4)
+	#update palette
+	tp
+)
+if(whichone==15) then(
+	battleflash
+	ff(133,2,true)
+	#tweak palette(-4,-4,-4)
+	#update palette
+	tp
+)
+if(whichone==16) then(
+	tb(7327)
+	get item(27,1)
+)
+if(whichone==17) then(
+	battleflash
+	ff(134,2,true)
+	#tweak palette(-4,-4,-4)
+	#update palette
+	tp
+)
+if(whichone==18) then(
+	battleflash
+	ff(135,2,true)
+	#tweak palette(-6,-6,-6)
+	#update palette
+	tp
+)
+if(whichone==19) then(
+	battleflash
+	ff(136,2,true)
+	#tweak palette(-6,-6,-6)
+	#update palette
+	tp
+)
+if(whichone==20) then(
+	battleflash
+	ff(137,2,true)
+	#tweak palette(-5,-5,-5)
+	#update palette
+	tp
+)
+if(whichone==21) then(
+	tb(7328)
+	get item(53,3)
+)
+if(whichone==22) then(
+	battleflash
+	ff(138,2,true)
+	#tweak palette(-7,-7,-7)
+	#update palette
+	tp
+)
+if(whichone==23) then(
+	battleflash
+	ff(139,2,true)
+	#tweak palette(-7,-7,-7)
+	#update palette
+	tp
+)
+if(whichone==24) then(
+	battleflash
+	ff(140,2,true)
+	#tweak palette(-7,-7,-7)
+	#update palette
+	tp
+)
+if(whichone==25) then(
+	battleflash
+	ff(141,2,true)
+	#tweak palette(-7,-7,-7)
+	#update palette
+	tp
+)
+if(whichone==26) then(
+	battleflash
+	ff(142,2,true)
+	#tweak palette(-7,-7,-7)
+	#update palette
+	tp
+)
+if(whichone==27) then(
+	battleflash
+	ff(143,2,true)
+	#tweak palette(-7,-7,-7)
+	#update palette
+	tp
+)
+if(whichone==28) then(
+	battleflash
+	ff(144,2,true)
+	#tweak palette(-8,-8,-8)
+	#update palette
+	tp
+)
+if(whichone==29) then(
+	battleflash
+	ff(145,2,true)
+	#tweak palette(-8,-8,-8)
+	#update palette
+	tp
+)
+if(whichone==30) then(
+	battleflash
+	ff(594,4,false)
+	set tag(644,1)
+	if(check tag(644),and,check tag(645),and,check tag(646)) then(set tag(350,1))
+)
+if(whichone==31) then(
+	battleflash
+	ff(595,4,false)
+	set tag(645,1)
+	if(check tag(644),and,check tag(645),and,check tag(646)) then(set tag(350,1))
+)
+if(whichone==32) then(
+	battleflash
+	ff(596,4,false)
+	set tag(646,1)
+	if(check tag(644),and,check tag(645),and,check tag(646)) then(set tag(350,1))
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+##################################
+script, gitlehbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==16) then(
+	battleflash
+	ff(154,3,true)
+	#tweak palette(-5,-5,-5)
+	#update palette
+	tp
+)
+if(whichone==17) then(
+	battleflash
+	ff(155,3,true)
+	#tweak palette(-1,-4,-4)
+	#tweak palette(4,0,0)
+	#update palette
+	tp
+)
+if(whichone==18) then(
+	battleflash
+	ff(156,3,true)
+
+	set npc position(4,83,8)
+	set npc direction(4,down)
+	alter npc(4,NPCstat:picture,496)
+	alter npc(4,NPCstat:palette,26)
+
+	if( read map block(82,17) <> read map block(106,0) ) then(set npc frame(4,0))
+	else(set npc frame(4,1))
+
+	#tweak palette(-2,-2,-2)
+	#tweak palette(4,0,0)
+	#update palette
+	tp
+)
+if(whichone==19) then(
+	battleflash
+	ff(157,3,true)
+	#tweak palette(-7,-7,-7)
+	#tweak palette(4,0,0)
+	#update palette
+	tp
+)
+if(whichone==20) then(
+	battleflash
+	ff(158,3,true)
+	#tweak palette(-8,-8,-8)
+	#update palette
+	tp
+)
+if(whichone==21) then(
+	battleflash
+	ff(159,3,true)
+	#tweak palette(1,-2,-2)
+	#tweak palette(0,0,4)
+	#update palette
+	tp
+)
+if(whichone==22) then(
+	battleflash
+	ff(160,3,true)
+	#tweak palette(1,-2,-2)
+	#tweak palette(0,0,4)
+	#update palette
+	tp
+)
+if(whichone==23) then(
+	battleflash
+	ff(161,3,true)
+	#tweak palette(1,-4,-4)
+	#tweak palette(0,0,4)
+	#update palette
+	tp
+)
+if(whichone==24) then(
+	battleflash
+	ff(162,3,true)
+	#tweak palette(1,-2,-2)
+	#tweak palette(0,0,4)
+	#update palette
+	tp
+)
+if(whichone==25) then(
+	battleflash
+	ff(163,3,true)
+	#tweak palette(1,-2,-2)
+	#tweak palette(0,0,4)
+	#update palette
+	tp
+)
+if(whichone==26) then(
+	battleflash
+	ff(164,3,true)
+	#tweak palette(1,-2,-2)
+	#tweak palette(0,0,4)
+	#update palette
+	tp
+)
+if(whichone==27) then(
+	battleflash
+	ff(165,3,true)
+	#tweak palette(1,-2,-2)
+	#tweak palette(0,0,4)
+	#update palette
+	tp
+)
+if(whichone==28) then(
+	battleflash
+	ff(166,3,true)
+	#tweak palette(-2,-2,-2)
+	#tweak palette(0,0,4)
+	#update palette
+	tp
+)
+if(whichone==29) then(
+	battleflash
+	ff(167,3,true)
+	#tweak palette(-2,-2,-2)
+	#tweak palette(2,0,4)
+	#update palette
+	tp
+)
+if(whichone==30) then(
+	battleflash
+	ff(168,3,true)
+	#tweak palette(-4,-4,-4)
+	#tweak palette(0,0,5)
+	#update palette
+	tp
+)
+if(whichone==31) then(
+	battleflash
+	ff(169,3,true)
+	#tweak palette(-4,-4,-4)
+	#tweak palette(0,0,5)
+	#update palette
+	tp
+)
+if(whichone==32) then(
+	battleflash
+	ff(170,3,true)
+	#tweak palette(-5,-5,-5)
+	#tweak palette(0,0,6)
+	#update palette
+	tp
+)
+if(whichone==33) then(
+	battleflash
+	set tag(565,1)
+	ff(171,3,true)
+	#tweak palette(-4,-4,-4)
+	#tweak palette(0,0,5)
+	#update palette
+	tp
+)
+
+gitlehautoload(1)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+#################################
+script, ddnoobat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==9) then(
+	battleflash
+	ff(172,3,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(172,3,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(173,3,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(173,3,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(174,3,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(174,3,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(175,3,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(175,3,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(176,3,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(176,3,true)
+	if(check tag(612)==false) then(
+		get item(228,1)
+		tb(7352)
+		set tag(612,1)
+	)
+)
+if(whichone==19) then(
+	battleflash
+	ff(177,3,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(177,3,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(178,3,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(178,3,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(179,3,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(179,3,true)
+)
+if(whichone==25) then(
+	battleflash
+	ff(180,3,true)
+	if(check tag(613)==false) then(
+		get item(231,1)
+		tb(7355)
+		set tag(613,1)
+	)
+)
+if(whichone==26) then(
+	battleflash
+	ff(180,3,true)
+	if(check tag(610)==false) then(
+		get item(229,1)
+		tb(7353)
+		set tag(610,1)
+	)
+)
+if(whichone==27) then(
+	battleflash
+	ff(181,3,true)
+)
+if(whichone==28) then(
+	battleflash
+	ff(181,3,true)
+	if(check tag(611)==false) then(
+		get item(230,1)
+		tb(7354)
+		set tag(611,1)
+	)
+)
+if(whichone==29) then(
+	battleflash
+	ff(182,3,true)
+)
+if(whichone==30) then(
+	battleflash
+	ff(182,3,true)
+)
+if(whichone==31) then(
+	battleflash
+	ff(183,3,true)
+)
+if(whichone==32) then(
+	battleflash
+	ff(183,3,true)
+)
+if(whichone==33) then(
+	battleflash
+	set tag(570,1)
+	ff(581,0,false)
+	set tag(377,1)
+	get item(220,1)
+	tb(7338)
+)
+
+restingbythefire
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+#################################
+script, ddaftbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==9) then(
+	battleflash
+	ff(184,3,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(184,3,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(185,3,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(185,3,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(186,3,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(186,3,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(187,3,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(187,3,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(188,3,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(188,3,true)
+	if(check tag(612)==false) then(
+		get item(228,1)
+		tb(7352)
+		set tag(612,1)
+	)
+)
+if(whichone==19) then(
+	battleflash
+	ff(189,3,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(189,3,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(190,3,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(190,3,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(191,3,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(191,3,true)
+)
+if(whichone==25) then(
+	battleflash
+	ff(192,3,true)
+	if(check tag(613)==false) then(
+		get item(231,1)
+		tb(7355)
+		set tag(613,1)
+	)
+)
+if(whichone==26) then(
+	battleflash
+	ff(192,3,true)
+	if(check tag(610)==false) then(
+		get item(229,1)
+		tb(7353)
+		set tag(610,1)
+	)
+)
+if(whichone==27) then(
+	battleflash
+	ff(193,3,true)
+)
+if(whichone==28) then(
+	battleflash
+	ff(193,3,true)
+	if(check tag(611)==false) then(
+		get item(230,1)
+		tb(7354)
+		set tag(611,1)
+	)
+)
+if(whichone==29) then(
+	battleflash
+	ff(194,3,true)
+)
+if(whichone==30) then(
+	battleflash
+	ff(194,3,true)
+)
+if(whichone==31) then(
+	battleflash
+	ff(195,3,true)
+)
+if(whichone==32) then(
+	battleflash
+	ff(195,3,true)
+)
+if(whichone==33) then(
+	battleflash
+	set tag(570,1)
+	ff(582,0,false)
+	set tag(377,1)
+	get item(220,1)
+	tb(7338)
+)
+
+restingbythefire
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+#################################
+script, ddnigbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==9) then(
+	battleflash
+	ff(196,3,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(196,3,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(197,3,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(197,3,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(198,3,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(198,3,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(199,3,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(199,3,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(200,3,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(200,3,true)
+	if(check tag(612)==false) then(
+		get item(228,1)
+		tb(7352)
+		set tag(612,1)
+	)
+)
+if(whichone==19) then(
+	battleflash
+	ff(201,3,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(201,3,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(202,3,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(202,3,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(203,3,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(203,3,true)
+)
+if(whichone==25) then(
+	battleflash
+	ff(204,3,true)
+	if(check tag(613)==false) then(
+		get item(231,1)
+		tb(7355)
+		set tag(613,1)
+	)
+)
+if(whichone==26) then(
+	battleflash
+	ff(204,3,true)
+	if(check tag(610)==false) then(
+		get item(229,1)
+		tb(7353)
+		set tag(610,1)
+	)
+)
+if(whichone==27) then(
+	battleflash
+	ff(205,3,true)
+)
+if(whichone==28) then(
+	battleflash
+	ff(205,3,true)
+	if(check tag(611)==false) then(
+		get item(230,1)
+		tb(7354)
+		set tag(611,1)
+	)
+)
+if(whichone==29) then(
+	battleflash
+	ff(206,3,true)
+)
+if(whichone==30) then(
+	battleflash
+	ff(206,3,true)
+)
+if(whichone==31) then(
+	battleflash
+	ff(207,3,true)
+)
+if(whichone==32) then(
+	battleflash
+	ff(208,3,true)
+)
+if(whichone==33) then(
+	battleflash
+	set tag(570,1)
+	ff(583,0,false)
+	set tag(377,1)
+	get item(220,1)
+	tb(7338)
+)
+
+restingbythefire
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+#################################
+script, ddmonbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==9) then(
+	battleflash
+	ff(209,3,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(209,3,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(210,3,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(210,3,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(211,3,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(211,3,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(212,3,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(212,3,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(213,3,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(213,3,true)
+	if(check tag(612)==false) then(
+		get item(228,1)
+		tb(7352)
+		set tag(612,1)
+	)
+)
+if(whichone==19) then(
+	battleflash
+	ff(214,3,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(214,3,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(215,3,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(215,3,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(216,3,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(216,3,true)
+)
+if(whichone==25) then(
+	battleflash
+	ff(217,3,true)
+	if(check tag(613)==false) then(
+		get item(231,1)
+		tb(7355)
+		set tag(613,1)
+	)
+)
+if(whichone==26) then(
+	battleflash
+	ff(217,3,true)
+	if(check tag(610)==false) then(
+		get item(229,1)
+		tb(7353)
+		set tag(610,1)
+	)
+)
+if(whichone==27) then(
+	battleflash
+	ff(218,3,true)
+)
+if(whichone==28) then(
+	battleflash
+	ff(218,3,true)
+	if(check tag(611)==false) then(
+		get item(230,1)
+		tb(7354)
+		set tag(611,1)
+	)
+)
+if(whichone==29) then(
+	battleflash
+	ff(219,3,true)
+)
+if(whichone==30) then(
+	battleflash
+	ff(219,3,true)
+)
+if(whichone==31) then(
+	battleflash
+	ff(220,3,true)
+)
+if(whichone==32) then(
+	battleflash
+	ff(220,3,true)
+)
+if(whichone==33) then(
+	battleflash
+	set tag(570,1)
+	ff(584,0,false)
+	set tag(377,1)
+	get item(220,1)
+	tb(7338)
+)
+
+restingbythefire
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+##################################
+script, fedorabat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==9) then(
+	battleflash
+	ff(231,4,false)
+	#tweak palette(-3,-1,-5)
+	#update palette
+	tp
+)
+if(whichone==10) then(
+	battleflash
+	ff(232,4,false)
+	#tweak palette(6,-3,-4)
+	#update palette
+	tp
+)
+if(whichone==11) then(
+	battleflash
+	ff(233,4,false)
+	#tweak palette(-3,-6,-6)
+	#update palette
+	tp
+	get item(214,1)
+	tb(7350)
+)
+if(whichone==12) then(
+	battleflash
+	ff(234,4,false)
+	#tweak palette(2,0,-1)
+	#update palette
+	tp
+)
+if(whichone==13) then(
+	battleflash
+	ff(235,4,false)
+	#tweak palette(-5,-5,-5)
+	#update palette
+	tp
+)
+if(whichone==14) then(
+	battleflash
+	ff(236,4,false)
+	#tweak palette(-5,-5,-5)
+	#update palette
+	tp
+)
+if(whichone==15) then(
+	battleflash
+	ff(237,4,false)
+	#tweak palette(6,-3,-4)
+	#update palette
+	tp
+)
+if(whichone==16) then(
+	battleflash
+	ff(238,4,false)
+	#tweak palette(6,-3,-4)
+	#update palette
+	tp
+)
+if(whichone==17) then(
+	battleflash
+	ff(239,4,false)
+	#tweak palette(-7,-7,-7)
+	#update palette
+	tp
+	get item(215,1)
+	tb(7351)
+)
+if(whichone==18) then(
+	battleflash
+	ff(240,4,false)
+	#tweak palette(-7,-7,-7)
+	#update palette
+	tp
+)
+if(whichone==19) then(
+	battleflash
+	ff(241,4,false)
+	#tweak palette(3,0,0)
+	#update palette
+	tp
+)
+if(whichone==20) then(
+	battleflash
+	ff(242,4,false)
+	#tweak palette(3,0,0)
+	#update palette
+	tp
+)
+if(whichone==21) then(
+	battleflash
+	ff(243,4,false)
+	#tweak palette(7,0,0)
+	#update palette
+	tp
+)
+if(whichone==22) then(
+	battleflash
+	ff(244,4,false)
+	#tweak palette(2,0,0)
+	#update palette
+	tp
+)
+if(whichone==23) then(
+	battleflash
+	ff(245,4,false)
+	#tweak palette(14,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==24) then(
+	battleflash
+	ff(246,4,false)
+	#tweak palette(5,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==25) then(
+	battleflash
+	ff(247,4,false)
+	#tweak palette(5,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==26) then(
+	battleflash
+	ff(248,4,false)
+	#tweak palette(5,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==27) then(
+	battleflash
+	ff(249,4,false)
+	#tweak palette(14,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==28) then(
+	battleflash
+	ff(250,4,false)
+	#tweak palette(14,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==29) then(
+	battleflash
+	ff(251,4,false)
+	#tweak palette(5,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==30) then(
+	battleflash
+	ff(252,4,false)
+	#tweak palette(5,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==31) then(
+	battleflash
+	ff(253,4,false)
+	#tweak palette(14,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==32) then(
+	battleflash
+	ff(254,4,false)
+	#tweak palette(5,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==33) then(
+	battleflash
+	ff(255,4,false)
+	#tweak palette(5,-2,-2)
+	#update palette
+	tp
+)
+if(whichone==34) then(
+	battleflash
+	ff(256,4,false)
+	#tweak palette(10,0,0)
+	#update palette
+	tp
+)
+
+fedoratombload
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+###################################
+script, unknownbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==5) then(
+	battleflash
+	set tag(583,1)
+	ff(303,4,false)
+)
+if(whichone==6) then(
+	battleflash
+	set tag(584,1)
+	ff(304,4,false)
+)
+if(whichone==7) then(
+	battleflash
+	set tag(585,1)
+	ff(305,4,false)
+)
+if(whichone==8) then(
+	battleflash
+	set tag(586,1)
+	ff(306,4,false)
+	write pass block(7,65,1+2+4+8)
+)
+if(whichone==9) then(
+	battleflash
+	set tag(587,1)
+	ff(307,4,false)
+	write pass block(7,65,1+2+4+8)
+)
+if(whichone==10) then(
+	battleflash
+	set tag(588,1)
+	ff(308,4,false)
+)
+if(whichone==11) then(
+	battleflash
+	set tag(589,1)
+	ff(309,4,false)
+)
+if(whichone==12) then(
+	battleflash
+	set tag(590,1)
+	ff(310,4,false)
+)
+if(whichone==13) then(
+	battleflash
+	set tag(591,1)
+	ff(311,4,false)
+)
+if(whichone==14) then(
+	battleflash
+	set tag(592,1)
+	ff(312,4,false)
+)
+if(whichone==15) then(
+	battleflash
+	set tag(593,1)
+	ff(313,4,false)
+)
+if(whichone==16) then(
+	battleflash
+	set tag(594,1)
+	ff(314,4,false)
+)
+if(whichone==17) then(
+	get item(199,1)
+	tb(7344)
+)
+if(whichone==18) then(
+	get item(196,1)
+	tb(7345)
+)
+if(whichone==19) then(
+	get money(24)
+	tb(7346)
+)
+if(whichone==20) then(
+	get item(57,1)
+	tb(7347)
+)
+if(whichone==21) then(
+	get item(67,1)
+	tb(7348)
+)
+if(whichone==22) then(
+	get item(60,1)
+	tb(7349)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+###################################
+script, linknoobat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==7) then(
+	battleflash
+	ff(315,2,true)
+)
+if(whichone==8) then(
+	battleflash
+	ff(315,2,true)
+)
+if(whichone==9) then(
+	battleflash
+	ff(315,2,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(319,2,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(319,2,true)
+)
+if(whichone==12) then(
+	get item(192,1)
+	set tag(597,1)
+	tb(7356)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+###################################
+script, linkaftbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==7) then(
+	battleflash
+	ff(316,2,true)
+)
+if(whichone==8) then(
+	battleflash
+	ff(316,2,true)
+)
+if(whichone==9) then(
+	battleflash
+	ff(316,2,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(320,2,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(320,2,true)
+)
+if(whichone==12) then(
+	get item(192,1)
+	set tag(597,1)
+	tb(7356)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+###################################
+script, linknigbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==7) then(
+	battleflash
+	ff(317,2,true)
+)
+if(whichone==8) then(
+	battleflash
+	ff(317,2,true)
+)
+if(whichone==9) then(
+	battleflash
+	ff(317,2,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(321,2,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(321,2,true)
+)
+if(whichone==12) then(
+	get item(192,1)
+	set tag(597,1)
+	tb(7356)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+###################################
+script, linkmorbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==7) then(
+	battleflash
+	ff(318,2,true)
+)
+if(whichone==8) then(
+	battleflash
+	ff(318,2,true)
+)
+if(whichone==9) then(
+	battleflash
+	ff(318,2,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(322,2,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(322,2,true)
+)
+if(whichone==12) then(
+	get item(192,1)
+	set tag(597,1)
+	tb(7356)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, trailnoobat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==6) then(
+	battleflash
+	ff(334,5,true)
+)
+if(whichone==7) then(
+	battleflash
+	ff(334,5,true)
+)
+if(whichone==8) then(
+	battleflash
+	ff(335,5,true)
+)
+if(whichone==9) then(
+	battleflash
+	ff(336,5,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(337,5,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(338,5,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(339,5,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(340,5,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(341,5,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(342,5,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(343,5,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(343,5,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(344,5,true)
+)
+if(whichone==19) then(
+	battleflash
+	ff(345,5,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(346,5,true)
+)
+if(whichone==21) then(
+	battleflash
+	set tag(571,1)
+	ff(330,7,false)
+)
+if(whichone==27) then(
+	get item(53,3)
+	set tag(599,1)
+	tb(7364)
+)
+if(whichone==28) then(
+	get money(jadecounter)
+	set tag(600,1)
+	tb(7365)
+)
+if(whichone==29) then(
+	get item(28,1)
+	set tag(601,1)
+	tb(7366)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, trailaftbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==6) then(
+	battleflash
+	ff(347,5,true)
+)
+if(whichone==7) then(
+	battleflash
+	ff(348,5,true)
+)
+if(whichone==8) then(
+	battleflash
+	ff(349,5,true)
+)
+if(whichone==9) then(
+	battleflash
+	ff(350,5,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(351,5,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(352,5,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(353,5,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(353,5,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(354,5,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(355,5,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(356,5,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(357,5,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(358,5,true)
+)
+if(whichone==19) then(
+	battleflash
+	ff(359,5,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(360,5,true)
+)
+if(whichone==21) then(
+	battleflash
+	set tag(571,1)
+	ff(331,7,false)
+)
+if(whichone==27) then(
+	get item(53,3)
+	set tag(599,1)
+	tb(7364)
+)
+if(whichone==28) then(
+	get money(jadecounter)
+	set tag(600,1)
+	tb(7365)
+)
+if(whichone==29) then(
+	get item(28,1)
+	set tag(601,1)
+	tb(7366)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, trailnigbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==11) then(
+	battleflash
+	ff(361,5,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(361,5,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(362,5,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(363,5,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(364,5,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(365,5,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(366,5,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(367,5,true)
+)
+if(whichone==19) then(
+	battleflash
+	ff(368,5,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(368,5,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(369,5,true)
+)
+if(whichone==23) then(
+	battleflash
+	ff(370,5,true)
+)
+if(whichone==24) then(
+	battleflash
+	ff(371,5,true)
+)
+if(whichone==25) then(
+	battleflash
+	ff(372,5,true)
+)
+if(whichone==26) then(
+	battleflash
+	ff(373,5,true)
+)
+if(whichone==21) then(
+	battleflash
+	set tag(571,1)
+	ff(332,7,false)
+)
+if(whichone==27) then(
+	get item(53,3)
+	set tag(599,1)
+	tb(7364)
+)
+if(whichone==28) then(
+	get money(jadecounter)
+	set tag(600,1)
+	tb(7365)
+)
+if(whichone==29) then(
+	get item(28,1)
+	set tag(601,1)
+	tb(7366)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, trailmorbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==6) then(
+	battleflash
+	ff(374,5,true)
+)
+if(whichone==7) then(
+	battleflash
+	ff(375,5,true)
+)
+if(whichone==8) then(
+	battleflash
+	ff(376,5,true)
+)
+if(whichone==9) then(
+	battleflash
+	ff(376,5,true)
+)
+if(whichone==10) then(
+	battleflash
+	ff(377,5,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(377,5,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(378,5,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(379,5,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(380,5,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(381,5,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(382,5,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(383,5,true)
+)
+if(whichone==18) then(
+	battleflash
+	ff(384,5,true)
+)
+if(whichone==19) then(
+	battleflash
+	ff(385,5,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(386,5,true)
+)
+if(whichone==21) then(
+	battleflash
+	set tag(571,1)
+	ff(333,7,false)
+)
+if(whichone==27) then(
+	get item(53,3)
+	set tag(599,1)
+	tb(7364)
+)
+if(whichone==28) then(
+	get money(jadecounter)
+	set tag(600,1)
+	tb(7365)
+)
+if(whichone==29) then(
+	get item(28,1)
+	set tag(601,1)
+	tb(7366)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+##################################
+script, scarf4bat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==9) then(
+	battleflash
+	ff(387,5,false)
+)
+if(whichone==10) then(
+	battleflash
+	ff(388,5,false)
+)
+if(whichone==11) then(
+	battleflash
+	ff(389,5,false)
+)
+if(whichone==12) then(
+	battleflash
+	ff(390,5,false)
+)
+if(whichone==13) then(
+	battleflash
+	ff(391,5,false)
+)
+if(whichone==14) then(
+	battleflash
+	ff(392,5,false)
+)
+if(whichone==15) then(
+	battleflash
+	ff(393,5,false)
+)
+if(whichone==16) then(
+	battleflash
+	ff(394,5,false)
+)
+if(whichone==17) then(
+	battleflash
+	ff(395,5,false)
+)
+if(whichone==18) then(
+	battleflash
+	ff(396,5,false)
+)
+if(whichone==19) then(
+	battleflash
+	ff(397+poff,1,true)
+)
+if(whichone==20) then(
+	battleflash
+	ff(397+poff,1,true)
+)
+if(whichone==21) then(
+	battleflash
+	ff(401+poff,1,true)
+)
+if(whichone==22) then(
+	battleflash
+	ff(401+poff,1,true)
+)
+if(whichone==23) then(
+	get item(62,1)
+	tb(7358)
+)
+if(whichone==24) then(
+	get item(61,1)
+	tb(7357)
+)
+if(whichone==25) then(
+	get item(193,1)
+	tb(7362)
+)
+if(whichone==26) then(
+	get item(54,4)
+	tb(7361)
+)
+if(whichone==27) then(
+	get item(63,1)
+	tb(7359)
+)
+if(whichone==28) then(
+	get item(64,1)
+	tb(7360)
+)
+if(whichone==29) then(
+	get item(194,1)
+	set tag(598,1)
+	tb(7363)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, mountnoobat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==10) then(
+	battleflash
+	ff(413,5,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(414,5,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(414,5,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(415,5,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(416,5,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(416,5,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(417,5,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(418,5,true)
+)
+if(whichone==18) then(
+	stop song
+	battleflash
+	set tag(568,1)
+	ff(409,1,true)
+)
+if(whichone==19) then(
+	set tag(569,1)
+	variable(giconoffset)
+	set variable(giconoffset,random(0,3))
+	get item(208+giconoffset,1)
+	tb(7334+giconoffset)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, mountaftbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==10) then(
+	battleflash
+	ff(419,5,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(419,5,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(420,5,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(421,5,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(422,5,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(423,5,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(424,5,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(424,5,true)
+)
+if(whichone==18) then(
+	stop song
+	battleflash
+	set tag(568,1)
+	ff(410,5,true)
+)
+if(whichone==19) then(
+	set tag(569,1)
+	variable(giconoffset)
+	set variable(giconoffset,random(0,3))
+	get item(208+giconoffset,1)
+	tb(7334+giconoffset)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, mountnigbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==10) then(
+	battleflash
+	ff(425,5,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(426,5,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(427,5,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(428,5,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(428,5,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(429,5,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(429,5,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(430,5,true)
+)
+if(whichone==18) then(
+	stop song
+	battleflash
+	set tag(568,1)
+	ff(411,5,true)
+)
+if(whichone==19) then(
+	set tag(569,1)
+	variable(giconoffset)
+	set variable(giconoffset,random(0,3))
+	get item(208+giconoffset,1)
+	tb(7334+giconoffset)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, mountmorbat, whichone, begin
+suspend player
+suspend npcs
+suspend obstruction
+
+if(whichone==10) then(
+	battleflash
+	ff(431,5,true)
+)
+if(whichone==11) then(
+	battleflash
+	ff(432,5,true)
+)
+if(whichone==12) then(
+	battleflash
+	ff(432,5,true)
+)
+if(whichone==13) then(
+	battleflash
+	ff(433,5,true)
+)
+if(whichone==14) then(
+	battleflash
+	ff(433,5,true)
+)
+if(whichone==15) then(
+	battleflash
+	ff(434,5,true)
+)
+if(whichone==16) then(
+	battleflash
+	ff(435,5,true)
+)
+if(whichone==17) then(
+	battleflash
+	ff(436,5,true)
+)
+if(whichone==18) then(
+	stop song
+	battleflash
+	set tag(568,1)
+	ff(412,5,true)
+)
+if(whichone==19) then(
+	set tag(569,1)
+	variable(giconoffset)
+	set variable(giconoffset,random(0,3))
+	get item(208+giconoffset,1)
+	tb(7334+giconoffset)
+)
+
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, shodanoobat, whichone, begin
+suspend player
+suspend npcs
+#suspend obstruction
+
+if(whichone==7) then(
+	battleflash
+	ff(441,6,false)
+)
+if(whichone==8) then(
+	battleflash
+	ff(442,6,false)
+)
+if(whichone==9) then(
+	battleflash
+	ff(443,6,false)
+)
+if(whichone==10) then(
+	battleflash
+	ff(444,6,false)
+)
+if(whichone==11) then(
+	battleflash
+	ff(445,6,false)
+)
+if(whichone==12) then(
+	battleflash
+	ff(446,6,false)
+)
+if(whichone==13) then(
+	battleflash
+	ff(447,6,false)
+)
+if(whichone==14) then(
+	battleflash
+	ff(448,6,false)
+)
+if(whichone==15) then(
+	battleflash
+	ff(449,6,false)
+)
+if(whichone==16) then(
+	battleflash
+	ff(450,6,false)
+)
+if(whichone==17) then(
+	battleflash
+	ff(451,6,false)
+)
+if(whichone==18) then(
+	battleflash
+	ff(452,6,false)
+)
+if(whichone==19) then(
+	battleflash
+	ff(453,6,false)
+)
+if(whichone==20) then(
+	battleflash
+	ff(454,6,false)
+)
+if(whichone==21) then(
+	battleflash
+	ff(455,6,false)
+)
+if(whichone==22) then(
+	battleflash
+	ff(456,6,false)
+)
+if(whichone==23) then(
+	battleflash
+	ff(457,6,false)
+)
+if(whichone==24) then(
+	battleflash
+	ff(458,6,false)
+)
+if(whichone==25) then(
+	battleflash
+	ff(459,6,false)
+)
+if(whichone==26) then(
+	battleflash
+	ff(460,6,false)
+)
+if(whichone==27) then(
+	battleflash
+	ff(461,6,false)
+)
+if(whichone==28) then(
+	battleflash
+	ff(462,6,false)
+)
+if(whichone==29) then(
+	battleflash
+	ff(463,6,false)
+)
+if(whichone==30) then(
+	battleflash
+	ff(464,6,false)
+)
+if(whichone==31) then(
+	battleflash
+	ff(465,6,false)
+)
+
+shodatombload(1)
+
+#resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, shodaaftbat, whichone, begin
+suspend player
+suspend npcs
+#suspend obstruction
+
+if(whichone==7) then(
+	battleflash
+	ff(466,6,false)
+)
+if(whichone==8) then(
+	battleflash
+	ff(467,6,false)
+)
+if(whichone==9) then(
+	battleflash
+	ff(468,6,false)
+)
+if(whichone==10) then(
+	battleflash
+	ff(469,6,false)
+)
+if(whichone==11) then(
+	battleflash
+	ff(470,6,false)
+)
+if(whichone==12) then(
+	battleflash
+	ff(471,6,false)
+)
+if(whichone==13) then(
+	battleflash
+	ff(472,6,false)
+)
+if(whichone==14) then(
+	battleflash
+	ff(473,6,false)
+)
+if(whichone==15) then(
+	battleflash
+	ff(474,6,false)
+)
+if(whichone==16) then(
+	battleflash
+	ff(475,6,false)
+)
+if(whichone==17) then(
+	battleflash
+	ff(476,6,false)
+)
+if(whichone==18) then(
+	battleflash
+	ff(477,6,false)
+)
+if(whichone==19) then(
+	battleflash
+	ff(478,6,false)
+)
+if(whichone==20) then(
+	battleflash
+	ff(479,6,false)
+)
+if(whichone==21) then(
+	battleflash
+	ff(480,6,false)
+)
+if(whichone==22) then(
+	battleflash
+	ff(481,6,false)
+)
+if(whichone==23) then(
+	battleflash
+	ff(482,6,false)
+)
+if(whichone==24) then(
+	battleflash
+	ff(483,6,false)
+)
+if(whichone==25) then(
+	battleflash
+	ff(484,6,false)
+)
+if(whichone==26) then(
+	battleflash
+	ff(485,6,false)
+)
+if(whichone==27) then(
+	battleflash
+	ff(486,6,false)
+)
+if(whichone==28) then(
+	battleflash
+	ff(487,6,false)
+)
+if(whichone==29) then(
+	battleflash
+	ff(488,6,false)
+)
+if(whichone==30) then(
+	battleflash
+	ff(489,6,false)
+)
+if(whichone==31) then(
+	battleflash
+	ff(490,6,false)
+)
+
+shodatombload(1)
+
+#resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, shodanigbat, whichone, begin
+suspend player
+suspend npcs
+#suspend obstruction
+
+if(whichone==7) then(
+	battleflash
+	ff(491,6,false)
+)
+if(whichone==8) then(
+	battleflash
+	ff(492,6,false)
+)
+if(whichone==9) then(
+	battleflash
+	ff(493,6,false)
+)
+if(whichone==10) then(
+	battleflash
+	ff(494,6,false)
+)
+if(whichone==11) then(
+	battleflash
+	ff(495,6,false)
+)
+if(whichone==12) then(
+	battleflash
+	ff(496,6,false)
+)
+if(whichone==13) then(
+	battleflash
+	ff(497,6,false)
+)
+if(whichone==14) then(
+	battleflash
+	ff(498,6,false)
+)
+if(whichone==15) then(
+	battleflash
+	ff(499,6,false)
+)
+if(whichone==16) then(
+	battleflash
+	ff(500,6,false)
+)
+if(whichone==17) then(
+	battleflash
+	ff(501,6,false)
+)
+if(whichone==18) then(
+	battleflash
+	ff(502,6,false)
+)
+if(whichone==19) then(
+	battleflash
+	ff(503,6,false)
+)
+if(whichone==20) then(
+	battleflash
+	ff(504,6,false)
+)
+if(whichone==21) then(
+	battleflash
+	ff(505,6,false)
+)
+if(whichone==22) then(
+	battleflash
+	ff(506,6,false)
+)
+if(whichone==23) then(
+	battleflash
+	ff(507,6,false)
+)
+if(whichone==24) then(
+	battleflash
+	ff(508,6,false)
+)
+if(whichone==25) then(
+	battleflash
+	ff(509,6,false)
+)
+if(whichone==26) then(
+	battleflash
+	ff(510,6,false)
+)
+if(whichone==27) then(
+	battleflash
+	ff(511,6,false)
+)
+if(whichone==28) then(
+	battleflash
+	ff(512,6,false)
+)
+if(whichone==29) then(
+	battleflash
+	ff(513,6,false)
+)
+if(whichone==30) then(
+	battleflash
+	ff(514,6,false)
+)
+if(whichone==31) then(
+	battleflash
+	ff(515,6,false)
+)
+
+shodatombload(1)
+
+#resume obstruction
+resume npcs
+resume player
+end
+###
+
+####################################
+script, shodamorbat, whichone, begin
+suspend player
+suspend npcs
+#suspend obstruction
+
+if(whichone==7) then(
+	battleflash
+	ff(516,6,false)
+)
+if(whichone==8) then(
+	battleflash
+	ff(517,6,false)
+)
+if(whichone==9) then(
+	battleflash
+	ff(518,6,false)
+)
+if(whichone==10) then(
+	battleflash
+	ff(519,6,false)
+)
+if(whichone==11) then(
+	battleflash
+	ff(520,6,false)
+)
+if(whichone==12) then(
+	battleflash
+	ff(521,6,false)
+)
+if(whichone==13) then(
+	battleflash
+	ff(522,6,false)
+)
+if(whichone==14) then(
+	battleflash
+	ff(523,6,false)
+)
+if(whichone==15) then(
+	battleflash
+	ff(524,6,false)
+)
+if(whichone==16) then(
+	battleflash
+	ff(525,6,false)
+)
+if(whichone==17) then(
+	battleflash
+	ff(526,6,false)
+)
+if(whichone==18) then(
+	battleflash
+	ff(527,6,false)
+)
+if(whichone==19) then(
+	battleflash
+	ff(528,6,false)
+)
+if(whichone==20) then(
+	battleflash
+	ff(529,6,false)
+)
+if(whichone==21) then(
+	battleflash
+	ff(530,6,false)
+)
+if(whichone==22) then(
+	battleflash
+	ff(531,6,false)
+)
+if(whichone==23) then(
+	battleflash
+	ff(532,6,false)
+)
+if(whichone==24) then(
+	battleflash
+	ff(533,6,false)
+)
+if(whichone==25) then(
+	battleflash
+	ff(534,6,false)
+)
+if(whichone==26) then(
+	battleflash
+	ff(535,6,false)
+)
+if(whichone==27) then(
+	battleflash
+	ff(536,6,false)
+)
+if(whichone==28) then(
+	battleflash
+	ff(537,6,false)
+)
+if(whichone==29) then(
+	battleflash
+	ff(538,6,false)
+)
+if(whichone==30) then(
+	battleflash
+	ff(539,6,false)
+)
+if(whichone==31) then(
+	battleflash
+	ff(540,6,false)
+)
+
+shodatombload(1)
+
+#resume obstruction
+resume npcs
+resume player
+end
+###

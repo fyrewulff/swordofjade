@@ -1,0 +1,1006 @@
+#Sword of Jade 2 Real-Time engine
+#(C)2000 Mike Kidder "Initial" (KEEP YER HANDS OFF)
+#(C)2003 - 2005 (2005, GAH) Charbile "Hands On" Update
+#(C)2005 Fyrewulff "FINAL OMEGA ATTACK" Update ?!
+
+#######################  AUTONUMBERED SCRIPTS ###########################
+## The Master Script
+define script(autonumber,runrealtimesystem,1,false)
+
+###### Scripts for the Time system ######################################
+define script(autonumber,changetonoon,none) #Changes to noon tiles
+define script(autonumber,changetoafternoon,none) #Changes to afternoon
+define script(autonumber,changetonight,none) #Changes tiles to night
+define script(autonumber,changetomorning,none) #Changes to morning
+define script(autonumber,advancetimeofday,1,1)
+
+###Misc Functions###############
+define script(autonumber,displaytime,none) #Gets military format time, converts to standard.
+define script(autonumber,adjust hero palettes,1,0)
+define script(autonumber,setmaps,0)
+define script(autonumber,setmaps1,0)
+define script(autonumber,setmaps2,0)
+define script(autonumber,setmaps3,0)
+define script(autonumber,setmaps4,0)
+define script(autonumber,setmaps5,0)
+define script(autonumber,setmaps6,0)
+define script(autonumber,setmaps7,0)
+define script(autonumber,jadecheck,0)
+define script(autonumber,jadeovergame,0)
+define script(autonumber,wearycheck,0)
+define script(autonumber,tonoon,0)
+define script(autonumber,toafternoon,0)
+define script(autonumber,tonight,0)
+define script(autonumber,tomorning,0)
+define script(autonumber,wearycheck2,0)
+define script(autonumber,setpal,1,2)
+define script(autonumber,souter,0)
+
+############ >>>>>>>>>>> Constants <<<<<<<<<<<< ##############
+define constant(1,morning) #Is morning
+define constant(2,noon) #Is noon
+define constant(3,afternoon) #is afternoon
+define constant(4,night) #Is night
+define constant(900,noontime)
+define constant(1500,afternoontime)
+define constant(2100,nighttime)
+define constant(300,morningtime)
+
+###Notes###
+# Tag 3 = Is Morning, 4 = Is Noon, 5 = Is Afternoon, 6 = Is Night
+
+
+
+################################################################################################
+#########################################
+script,Run Real Time System,doinit, begin
+   if(doinit == true) then, begin	
+	setvariable(day,0)
+	setvariable(hour,1500)
+	setvariable(minute,0)
+	setvariable(second,1)
+	setvariable(isrunning,true)
+	setvariable(dochange,false)
+	setvariable(wearycounter,4)
+	set tag (5,1) #Is afternoon tag
+
+	#suspend box advance	#run real time system before saving
+	#show text box (33)
+	#wait(1)
+	#advance text box
+	#resume box advance
+	#set variable(hspeed,5)
+	#resume player
+   end
+	
+	while(isrunning == true)
+	do,begin
+		waitfortextbox
+		setvariable(second,second + 01) #increase
+		if(second == 2)
+			then,begin
+			setvariable(second,1)
+            	setvariable(minute,minute + 01)
+			end #end of then
+	   	if(minute == 60)
+			then,begin
+			setvariable(minute,0) #sets minutes back
+			setvariable(hour,hour + 100) #increases hour
+			end
+		if(hour == 2500)
+			then,begin
+			setvariable(hour,100)
+			setvariable(day,day + 1)
+			end
+
+		setvariable(currenttime,hour+minute)
+
+		if(currenttime==noontime)
+			then,begin
+				setmaps
+				changetonoon
+			end
+		if(currenttime==afternoontime)
+			then,begin
+				setmaps
+				changetoafternoon
+			end
+		if(currenttime==nighttime)
+			then,begin
+				setmaps
+				changetonight
+			end
+		if(currenttime==morningtime)
+			then,begin
+				setmaps
+				changetomorning
+			end
+
+		#displaytime #remember to disable this before pub release
+					
+		wait(1)
+	end
+end # End of Run Real Time System
+###
+
+#########################
+script,changetonoon,begin
+waitforhero(me)
+set tag (3,0)
+set tag (4,1)
+set tag (5,0)
+set tag (6,0)
+
+to noon
+
+jade check
+weary check
+
+resume npcs
+resumeplayer
+end
+###
+###################
+script,tonoon,begin
+if (dochange == true) then (
+tweak palette (1,1,1)
+update palette
+wait (1)
+tweak palette (2,2,2)
+update palette
+wait (1)
+tweak palette (3,3,3)
+update palette
+wait (1)
+tweak palette (4,4,4)
+update palette
+wait (1)
+update palette
+
+#adjust hero palettes(-3)
+set hp
+teleporttomap(noonmap,herox(me),heroy(me))
+suspend player
+suspend npcs
+
+reset palette
+tweak palette (3,3,3)
+update palette
+wait (1)
+reset palette
+tweak palette (2,2,2)
+update palette
+wait (1)
+reset palette
+tweak palette (1,1,1)
+update palette
+wait (1)
+reset palette
+update palette
+)
+end
+###
+
+##############################
+script,changetoafternoon,begin
+waitforhero(me)
+set tag (3,0)
+set tag (4,0)
+set tag (5,1)
+set tag (6,0)
+
+to afternoon
+
+jade check
+weary check
+
+resume npcs
+resumeplayer
+end
+###
+########################
+script,toafternoon,begin
+if (dochange == true) then (
+tweak palette (0,0,-1)
+update palette
+wait (1)
+tweak palette (0,-1,-2)
+update palette
+wait (1)
+tweak palette (0,-2,-3)
+update palette
+wait (1)
+tweak palette (0,-3,-4)
+update palette
+wait (1)
+update palette
+
+#adjust hero palettes(1)
+set hp
+teleporttomap(afternoonmap,herox(me),heroy(me))
+suspend player
+suspend npcs
+
+reset palette
+tweak palette (0,-2,-3)
+update palette
+wait (1)
+reset palette
+tweak palette (0,-1,-2)
+update palette
+wait (1)
+reset palette
+tweak palette (0,0,-1)
+update palette
+wait (1)
+reset palette
+update palette
+)
+end
+###
+
+##########################
+script,changetonight,begin
+waitforhero(me)
+set tag (3,0)
+set tag (4,0)
+set tag (5,0)
+set tag (6,1)
+
+to night
+
+jade check
+weary check
+
+resume npcs
+resumeplayer
+end
+###
+####################
+script,tonight,begin
+if (dochange == true) then (
+tweak palette (-1,-1,0)
+update palette
+wait (1)
+tweak palette (-2,-2,0)
+update palette
+wait (1)
+tweak palette (-3,-3,0)
+update palette
+wait (1)
+tweak palette (-4,-4,0)
+update palette
+wait (1)
+update palette
+
+#adjust hero palettes(1)
+set hp
+teleporttomap(nightmap,herox(me),heroy(me))
+suspend player
+suspend npcs
+
+reset palette
+tweak palette (-3,-3,0)
+update palette
+wait (1)
+reset palette
+tweak palette (-2,-2,0)
+update palette
+wait (1)
+reset palette
+tweak palette (-1,-1,0)
+update palette
+wait (1)
+reset palette
+update palette
+)
+end
+###
+
+############################
+script,changetomorning,begin
+waitforhero(me)
+set tag (3,1)
+set tag (4,0)
+set tag (5,0)
+set tag (6,0)
+
+to morning
+
+jade check
+weary check
+
+resume npcs
+resumeplayer
+end
+###
+######################
+script,tomorning,begin
+if (dochange == true) then (
+tweak palette (2,2,0)
+update palette
+wait (1)
+tweak palette (3,3,1)
+update palette
+wait (1)
+tweak palette (4,4,2)
+update palette
+wait (1)
+tweak palette (5,5,3)
+update palette
+wait (1)
+update palette
+
+#adjust hero palettes(1)
+set hp
+teleporttomap(morningmap,herox(me),heroy(me))
+suspend player
+suspend npcs
+
+reset palette
+tweak palette (4,4,2)
+update palette
+wait (1)
+reset palette
+tweak palette (3,3,1)
+update palette
+wait (1)
+reset palette
+tweak palette (2,2,0)
+update palette
+wait (1)
+reset palette
+update palette
+)
+end
+###
+
+########################################
+script, advance time of day, stop, begin
+set maps
+
+variable (i)
+for (i,1,stop,1)
+do,begin
+
+set variable(hour,hour+600)
+
+if(hour >= 2500) then(
+setvariable(hour,hour--2400)
+setvariable(day,day+1)	
+)
+
+if(hour>=noontime,and,hour<<afternoontime) then(
+set tag(3,0)
+set tag(4,1)
+#adjust hero palettes(-3)
+#teleporttomap(noonmap,herox(me),heroy(me))
+)
+if(hour>=afternoontime,and,hour<<nighttime) then(
+set tag(4,0)
+set tag(5,1)
+#adjust hero palettes(1)
+#teleporttomap(afternoonmap,herox(me),heroy(me))
+)
+if(hour>=nighttime,or,hour<<morningtime) then(
+set tag(5,0)
+set tag(6,1)
+#adjust hero palettes(1)
+#teleporttomap(nightmap,herox(me),heroy(me))
+)
+if(hour>=morningtime,and,hour<<noontime) then(
+set tag(6,0)
+set tag(3,1)
+#adjust hero palettes(1)
+#teleporttomap(morningmap,herox(me),heroy(me))
+)
+
+weary check
+jade check
+wait(1)
+end
+
+if(dochange) then(set hp)
+
+end
+###
+
+########################
+script,displaytime,begin
+showvalue(currenttime)
+end
+###
+
+###########################################
+script,adjust hero palettes,offset,begin
+
+variable(heropos)
+
+for(heropos,0,3,1) do(
+setheropalette(find hero(heropos),getheropalette(find hero(heropos),inside battle)+offset,inside battle)
+setheropalette(find hero(heropos),getheropalette(find hero(heropos),outsidebattle)+offset,outsidebattle)
+)
+
+end 
+###
+
+#######################
+script, set maps, begin
+suspend player
+suspend npcs
+waitforhero(me)
+ 	dochange := true  # default to changing maps
+
+	setmaps1
+	setmaps2
+	setmaps3
+	setmaps4
+	setmaps5
+	setmaps6
+	setmaps7
+
+end
+###
+
+#######################
+script, setmaps1, begin
+	#Fralin
+	if(currentmap==1,or,currentmap==2,or,currentmap==3,or,currentmap==4)
+		then,begin
+			setvariable(noonmap,1)
+			setvariable(afternoonmap,2)
+			setvariable(nightmap,3)
+			setvariable(morningmap,4)
+		end
+	#Fralin Inside
+	if(currentmap==5,or,currentmap==6,or,currentmap==7,or,currentmap==8)
+		then,begin
+			setvariable(noonmap,5)
+			setvariable(afternoonmap,6)
+			setvariable(nightmap,7)
+			setvariable(morningmap,8)
+		end
+	#Forest Pass
+	if(currentmap==9,or,currentmap==10,or,currentmap==11,or,currentmap==12)
+		then,begin
+			setvariable(noonmap,9)
+			setvariable(afternoonmap,10)
+			setvariable(nightmap,11)
+			setvariable(morningmap,12)
+		end
+end
+###
+#######################
+script, setmaps2, begin
+	#Anon's Tomb
+	#Underground Quarry
+	#Gitleh's Tomb
+	#Fedora's Tomb
+	#Grinlow Exterior
+	#Unknown Tomb
+	#Scarf 1,2,3,4
+	#Shoda Inner
+	#Grinlow Final Interior
+	#RPGC Release Party
+if(currentmap==13,or,currentmap==22,or,currentmap==23,or,currentmap==36,or,currentmap==66,or,currentmap==57,or,currentmap==69,or,currentmap==70,or,currentmap==71,or,currentmap==72,or,currentmap==91,or,currentmap==98,or,currentmap==0,or,currentmap==99)	
+		then,begin
+			dochange := false #special case! set it so no map reload occurs
+		end
+
+	#Shoda Outer Tomb, special case*******
+	if(currentmap==92)
+		then,begin
+			souter
+		end
+end
+###
+#######################
+script, setmaps3, begin
+	#Adlez
+	if(currentmap==14,or,currentmap==15,or,currentmap==16,or,currentmap==17)
+		then,begin
+			setvariable(noonmap,14)
+			setvariable(afternoonmap,15)
+			setvariable(nightmap,16)
+			setvariable(morningmap,17)
+		end
+	#Adlez Inside
+	if(currentmap==18,or,currentmap==19,or,currentmap==20,or,currentmap==21)
+		then,begin
+			setvariable(noonmap,18)
+			setvariable(afternoonmap,19)
+			setvariable(nightmap,20)
+			setvariable(morningmap,21)
+		end
+	#Desert of Despair
+	if(currentmap==24,or,currentmap==25,or,currentmap==26,or,currentmap==27)
+		then,begin
+			setvariable(noonmap,24)
+			setvariable(afternoonmap,25)
+			setvariable(nightmap,26)
+			setvariable(morningmap,27)
+		end
+end
+###
+#######################
+script, setmaps4, begin
+	#New Keltan
+	if(currentmap==28,or,currentmap==29,or,currentmap==30,or,currentmap==31)
+		then,begin
+			setvariable(noonmap,28)
+			setvariable(afternoonmap,29)
+			setvariable(nightmap,30)
+			setvariable(morningmap,31)
+		end
+	#New Keltan Inside
+	if(currentmap==32,or,currentmap==33,or,currentmap==34,or,currentmap==35)
+		then,begin
+			setvariable(noonmap,32)
+			setvariable(afternoonmap,33)
+			setvariable(nightmap,34)
+			setvariable(morningmap,35)
+		end
+	#Cyport West
+	if(currentmap==37,or,currentmap==38,or,currentmap==39,or,currentmap==40)
+		then,begin
+			setvariable(noonmap,37)
+			setvariable(afternoonmap,38)
+			setvariable(nightmap,39)
+			setvariable(morningmap,40)
+		end
+end
+###
+#######################
+script, setmaps5, begin
+	#Cyport Commercial
+	if(currentmap==41,or,currentmap==42,or,currentmap==43,or,currentmap==44)
+		then,begin
+			setvariable(noonmap,41)
+			setvariable(afternoonmap,42)
+			setvariable(nightmap,43)
+			setvariable(morningmap,44)
+		end
+	#Cyport Central
+	if(currentmap==45,or,currentmap==46,or,currentmap==47,or,currentmap==48)
+		then,begin
+			setvariable(noonmap,45)
+			setvariable(afternoonmap,46)
+			setvariable(nightmap,47)
+			setvariable(morningmap,48)
+		end
+	#Cyport Residential
+	if(currentmap==49,or,currentmap==50,or,currentmap==51,or,currentmap==52)
+		then,begin
+			setvariable(noonmap,49)
+			setvariable(afternoonmap,50)
+			setvariable(nightmap,51)
+			setvariable(morningmap,52)
+		end
+end
+###
+#######################
+script, setmaps6, begin
+	#Cyport North
+	if(currentmap==53,or,currentmap==54,or,currentmap==55,or,currentmap==56)
+		then,begin
+			setvariable(noonmap,53)
+			setvariable(afternoonmap,54)
+			setvariable(nightmap,55)
+			setvariable(morningmap,56)
+		end
+	#Snowfall Trail
+	if(currentmap==58,or,currentmap==59,or,currentmap==60,or,currentmap==61)
+		then,begin
+			setvariable(noonmap,58)
+			setvariable(afternoonmap,59)
+			setvariable(nightmap,60)
+			setvariable(morningmap,61)
+		end
+	#Shoda Tomb
+	if(currentmap==62,or,currentmap==63,or,currentmap==64,or,currentmap==65)
+		then,begin
+			setvariable(noonmap,62)
+			setvariable(afternoonmap,63)
+			setvariable(nightmap,64)
+			setvariable(morningmap,65)
+		end
+end
+###
+#######################
+script, setmaps7, begin
+	#Snowfall Mountains
+	if(currentmap==73,or,currentmap==74,or,currentmap==75,or,currentmap==76)
+		then,begin
+			setvariable(noonmap,73)
+			setvariable(afternoonmap,74)
+			setvariable(nightmap,75)
+			setvariable(morningmap,76)
+		end
+	#Rorc
+	if(currentmap==77,or,currentmap==78,or,currentmap==79,or,currentmap==80)
+		then,begin
+			setvariable(noonmap,77)
+			setvariable(afternoonmap,78)
+			setvariable(nightmap,79)
+			setvariable(morningmap,80)
+		end
+	#Northwest of Fralin
+	if(currentmap==81,or,currentmap==82,or,currentmap==83,or,currentmap==84)
+		then,begin
+			setvariable(noonmap,81)
+			setvariable(afternoonmap,82)
+			setvariable(nightmap,83)
+			setvariable(morningmap,84)
+		end
+	#Ruins
+	if(currentmap==85,or,currentmap==86,or,currentmap==87,or,currentmap==88)
+		then,begin
+			setvariable(noonmap,85)
+			setvariable(afternoonmap,86)
+			setvariable(nightmap,87)
+			setvariable(morningmap,88)
+		end
+end
+###
+
+#########################
+script, jade check, begin
+if(check tag(188)==false) then(
+suspend npcs
+
+set variable(jadecounter2,jadecounter2--jadestep)
+
+if ( jadecounter2 <= 0 )
+	then,begin
+	if( checktag(41) )
+		then,begin
+		tb(590)
+		if (checktag(45))then(tb(591))
+		if (checktag(46))then(tb(592))
+		if (checktag(47))then(tb(593))
+		tb(594)
+		end
+		else,begin
+		tb(595)
+		tb(596)
+		end
+	jade over game
+	end
+
+if ( (jadecounter2,mod,4) == 0 )
+	then,begin
+	set variable(jadecounter,jadecounter2/4)
+	show backdrop (7)
+	wait(2)
+	show map
+	if (jadecounter==1)
+		then( tb(589) )
+		else( tb(random(569,588)) )
+	end
+
+resume npcs
+)
+
+
+#Dart Jaded Shoda Tomb Check
+if(check tag(198)) then(
+
+if(jadedart >> 0 ) then( set variable(jadedart,jadedart--1) )
+
+if ( jadedart == 16 ) then(dartjade1)
+if ( jadedart == 12 ) then(dartjade2)
+if ( jadedart == 8  ) then(dartjade3)
+if ( jadedart == 4  ) then(dartjade4)
+if ( jadedart == 0  ) then(dartjade5)
+
+)
+
+#Gahn Taunts You!!
+if(check tag(208)) then(
+show backdrop (7)
+wait(2)
+show map
+tb(random(3704,3723))
+)
+end
+###
+
+#############################
+script, jade over game, begin
+
+suspend player
+suspend npcs
+suspend box advance
+
+variable(i)
+
+for (i,1,5,1)
+	do,begin
+	show backdrop(7)
+	wait(1)
+	show map
+	wait(1)
+	end
+
+fade screen out(0,63,0)
+show backdrop(7)
+show text box(421)
+wait(1)
+fade screen in
+
+for (i,1,10,1)
+	do,begin
+	write color(15,0,0)
+	write color(15,2,0)
+	update palette
+	wait(1)
+	write color(15,0,63)
+	write color(15,2,63)
+	update palette
+	wait(1)
+	end
+
+wait(20)
+fade screen out
+show backdrop(2)
+wait(1)
+fade screen in
+game over
+
+end
+###
+
+##########################
+script, weary check, begin
+
+#NOTE
+#the weary counter begins at 4 (1 day)
+#but from then on
+#it is 4 + the current act
+#thus it can be between 5 and 10
+#globabl variable "actnumber"
+
+if (weary counter <> 0)
+	then,begin
+	set variable(weary counter, weary counter -- 1)
+	end
+	else,begin
+	weary check 2
+	end
+
+end
+###
+############################
+script, weary check 2, begin
+	variable(j)
+
+	for(j,2,7,1)
+		do,begin
+if (check tag(44)) then(
+set hero stat (find hero(0),j,get hero stat(find hero(0),j,current stat)--jadestep,current stat)
+if (get hero stat(find hero(0),j,current stat) << 1)
+then(set hero stat(find hero(0),j,1,currentstat))
+)
+if (check tag(45)) then(
+set hero stat (find hero(1),j,get hero stat(find hero(1),j,current stat)--jadestep,current stat)
+if (get hero stat(find hero(1),j,current stat) << 1)
+then(set hero stat(find hero(1),j,1,currentstat))
+)
+if (check tag(46)) then(
+set hero stat (find hero(2),j,get hero stat(find hero(2),j,current stat)--jadestep,current stat)
+if (get hero stat(find hero(2),j,current stat) << 1)
+then(set hero stat(find hero(2),j,1,currentstat))
+)
+if (check tag(47)) then(
+set hero stat (find hero(3),j,get hero stat(find hero(3),j,current stat)--jadestep,current stat)
+if (get hero stat(find hero(3),j,current stat) << 1)
+then(set hero stat(find hero(3),j,1,currentstat))
+)
+
+
+		end
+
+#weary text
+#jig hero(0)
+#tb()
+
+end
+###
+
+###########################
+script, set pal, num, begin
+if(num<>0) then(
+variable (offset)
+
+if (num == noon) then(set variable(offset,0))
+if (num == afternoon) then(set variable(offset,1))
+if (num == night) then(set variable(offset,2))
+if (num == morning) then(set variable(offset,3))
+
+set hero palette(find hero(0),1+offset,outside battle)
+set hero palette(find hero(0),1+offset,inside battle)
+set hero palette(find hero(1),29+offset,outside battle)
+set hero palette(find hero(1),29+offset,inside battle)
+set hero palette(find hero(2),33+offset,outside battle)
+set hero palette(find hero(2),33+offset,inside battle)
+set hero palette(find hero(3),65+offset,outside battle)
+set hero palette(find hero(3),65+offset,inside battle)
+)
+end
+###
+
+#####################
+script, souter, begin
+suspend player
+dochange := false #special case! set it so no map reload occurs
+if(current time==noon time) then(
+tweak palette (1,1,1)
+update palette
+wait (1)
+tweak palette (2,2,2)
+update palette
+wait (1)
+tweak palette (3,3,3)
+update palette
+wait (1)
+tweak palette (4,4,4)
+update palette
+wait (1)
+update palette
+
+adjust hero palettes(-3)
+loadtileset(100)
+alter npc(4,NPCstat:palette,25)
+alter npc(5,NPCstat:palette,9)
+alter npc(6,NPCstat:palette,41)
+alter npc(7,NPCstat:palette,81)
+alter npc(8,NPCstat:palette,129)
+alter npc(9,NPCstat:palette,149)
+alter npc(10,NPCstat:palette,1)
+alter npc(11,NPCstat:palette,125)
+alter npc(12,NPCstat:palette,105)
+
+reset palette
+tweak palette (3,3,3)
+update palette
+wait (1)
+reset palette
+tweak palette (2,2,2)
+update palette
+wait (1)
+reset palette
+tweak palette (1,1,1)
+update palette
+wait (1)
+reset palette
+update palette
+)
+if(current time==afternoon time) then(
+tweak palette (0,0,-1)
+update palette
+wait (1)
+tweak palette (0,-1,-2)
+update palette
+wait (1)
+tweak palette (0,-2,-3)
+update palette
+wait (1)
+tweak palette (0,-3,-4)
+update palette
+wait (1)
+update palette
+
+adjust hero palettes(1)
+loadtileset(101)
+alter npc(4,NPCstat:palette,26)
+alter npc(5,NPCstat:palette,10)
+alter npc(6,NPCstat:palette,42)
+alter npc(7,NPCstat:palette,82)
+alter npc(8,NPCstat:palette,130)
+alter npc(9,NPCstat:palette,150)
+alter npc(10,NPCstat:palette,2)
+alter npc(11,NPCstat:palette,126)
+alter npc(12,NPCstat:palette,106)
+
+reset palette
+tweak palette (0,-2,-3)
+update palette
+wait (1)
+reset palette
+tweak palette (0,-1,-2)
+update palette
+wait (1)
+reset palette
+tweak palette (0,0,-1)
+update palette
+wait (1)
+reset palette
+update palette
+)
+if(current time==night time) then(
+tweak palette (-1,-1,0)
+update palette
+wait (1)
+tweak palette (-2,-2,0)
+update palette
+wait (1)
+tweak palette (-3,-3,0)
+update palette
+wait (1)
+tweak palette (-4,-4,0)
+update palette
+wait (1)
+update palette
+
+adjust hero palettes(1)
+loadtileset(102)
+alter npc(4,NPCstat:palette,27)
+alter npc(5,NPCstat:palette,11)
+alter npc(6,NPCstat:palette,43)
+alter npc(7,NPCstat:palette,83)
+alter npc(8,NPCstat:palette,131)
+alter npc(9,NPCstat:palette,151)
+alter npc(10,NPCstat:palette,3)
+alter npc(11,NPCstat:palette,127)
+alter npc(12,NPCstat:palette,107)
+
+reset palette
+tweak palette (-3,-3,0)
+update palette
+wait (1)
+reset palette
+tweak palette (-2,-2,0)
+update palette
+wait (1)
+reset palette
+tweak palette (-1,-1,0)
+update palette
+wait (1)
+reset palette
+update palette
+)
+if(current time==morning time) then(
+tweak palette (2,2,0)
+update palette
+wait (1)
+tweak palette (3,3,1)
+update palette
+wait (1)
+tweak palette (4,4,2)
+update palette
+wait (1)
+tweak palette (5,5,3)
+update palette
+wait (1)
+update palette
+
+adjust hero palettes(1)
+loadtileset(103)
+alter npc(4,NPCstat:palette,28)
+alter npc(5,NPCstat:palette,12)
+alter npc(6,NPCstat:palette,44)
+alter npc(7,NPCstat:palette,84)
+alter npc(8,NPCstat:palette,132)
+alter npc(9,NPCstat:palette,152)
+alter npc(10,NPCstat:palette,4)
+alter npc(11,NPCstat:palette,128)
+alter npc(12,NPCstat:palette,108)
+
+reset palette
+tweak palette (4,4,2)
+update palette
+wait (1)
+reset palette
+tweak palette (3,3,1)
+update palette
+wait (1)
+reset palette
+tweak palette (2,2,0)
+update palette
+wait (1)
+reset palette
+update palette
+)
+resume player
+end
+###

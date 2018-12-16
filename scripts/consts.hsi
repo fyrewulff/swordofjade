@@ -1,0 +1,20 @@
+#Sword of Jade 2 constants
+#(C)2000-01-02 RPGCreations
+
+
+#Picture constants
+define constant, begin
+
+	24,pic:sweat          #sweatdrops above head
+	25,pic:dogerostanding #Dogero standing
+	26,pic:pullswordup    #Pulling out sword up
+	27,pic:pullswordright # right
+	28,pic:pullsworddown  #down 
+	29,pic:pullswordleft  #left
+	31,pic:questionmark   # ? above head
+	32,pic:exclamation    # ! above head
+	33,pic:dogerorunning  # Dogero running
+	34,pic:dogeroslash    # Dogero finishing slash
+	35,pic:dogerocrouch   # Dogero crouching
+	36,pic:dogerodrawn    # Walking with sword drawn
+end

@@ -1,0 +1,6588 @@
+#####SHOP SOIDHFPLSKDFHS:KJFLKFJ:LSKDJ:LSKDjfla;sdkjfalksdjf;laskdjf;las
+#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+#..................
+#MORE SCRIPTS!
+
+define script(autonumber,innrest,0)
+
+define script(autonumber,itemrest,0)
+define script(autonumber,restauto1,6,0,0,0,0,0,0)
+define script(autonumber,restauto2,1,0)
+define script(autonumber,itemrestdo,0)
+define script(autonumber,itemrestmi,0)
+define script(autonumber,itemrestjo,0)
+define script(autonumber,itemrestpy,0)
+
+define script(autonumber,iconcraft,7,0,0,0,0,0,0,95)
+define script(autonumber,iconpalrefresh,0)
+define script(autonumber,fraliniconbuy,5,0,0,0,0,0)
+define script(autonumber,adleziconbuy,5,0,0,0,0,0)
+define script(autonumber,keltaniconbuy,5,0,0,0,0,0)
+define script(autonumber,cyporticonbuy,5,0,0,0,0,0)
+define script(autonumber,ultraiconbuy,5,0,0,0,0,0)
+define script(autonumber,rorciconbuy,5,0,0,0,0,0)
+define script(autonumber,plugiconbuy,5,0,0,0,0,0)
+define script(autonumber,iconanimacheck,2,0,0)
+define script(autonumber,iconwaitcheck,3,0,0,0)
+define script(autonumber,rorciconwaitcheck,3,0,0,0)
+define script(autonumber,returnanima,2,0,0)
+define script(autonumber,returniconnumber,2,0,0)
+define script(autonumber,seticoncolor,1,0)
+
+define script(autonumber,itempalrefresh,0)
+define script(autonumber,setitemcolor,1,0)
+
+define script(autonumber,itemfralin,0)
+define script(autonumber,itembuyfralin,1,0)
+define script(autonumber,itemadlez,0)
+define script(autonumber,itembuyadlez,1,0)
+define script(autonumber,itemkeltan,0)
+define script(autonumber,itembuykeltan,1,0)
+define script(autonumber,itemcyport,0)
+define script(autonumber,itembuycyport,1,0)
+define script(autonumber,itemrorc,0)
+define script(autonumber,itembuyrorc,1,0)
+
+define script(autonumber,stattrain,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+define script(autonumber,statpalrefresh,0)
+define script(autonumber,setstatcolor,1,0)
+define script(autonumber,statbuy,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+define script(autonumber,statdao,9,0,0,0,0,0,0,0,0,0)
+define script(autonumber,statcapcheck,2,0,0)
+define script(autonumber,statget,2,0,0)
+###shortening
+define script(autonumber,statbuystr,3,0,0,0)
+define script(autonumber,statbuyacc,3,0,0,0)
+define script(autonumber,statbuydef,3,0,0,0)
+define script(autonumber,statbuyddg,3,0,0,0)
+define script(autonumber,statbuyskl,3,0,0,0)
+define script(autonumber,statbuyevd,3,0,0,0)
+define script(autonumber,statgetstr,1,0)
+define script(autonumber,statgetacc,1,0)
+define script(autonumber,statgetdef,1,0)
+define script(autonumber,statgetddg,1,0)
+define script(autonumber,statgetskl,1,0)
+define script(autonumber,statgetevd,1,0)
+
+define script(autonumber,avis,0)
+define script(autonumber,avisloop,0)
+define script(autonumber,avispalrefresh,0)
+define script(autonumber,setaviscolor,1,0)
+define script(autonumber,avisdis,2,0,0)
+define script(autonumber,avisgo,1,0)
+define script(autonumber,avissplicereturn,0)
+define script(autonumber,avissplicego,1,0)
+
+define script(autonumber,trader,2,0,0)
+define script(autonumber,traderpalrefresh,0)
+define script(autonumber,settradercolor,1,0)
+define script(autonumber,traderbuysell,3,0,0,0)
+
+define script(autonumber,itemhunt,0)
+define script(autonumber,itemhunt1,0)
+define script(autonumber,itemhunt2,0)
+define script(autonumber,itemhunt3,0)
+define script(autonumber,itemhunt4,0)
+define script(autonumber,itemhunt5,0)
+define script(autonumber,itemhunt6,0)
+define script(autonumber,itemhunt7,0)
+
+define script(autonumber,trainfancy,4,0,0,0,0)
+define script(autonumber,innfancy,0)
+define script(autonumber,restfancy,0)
+define script(autonumber,restfancy1,0)
+define script(autonumber,restfancy2,1,0)
+define script(autonumber,restfancy3,1,0)
+define script(autonumber,restfancy4,1,0)
+define script(autonumber,restfancy5,1,0)
+define script(autonumber,restfancy6,2,0,0)
+
+define script(autonumber,setmoneyanima,2,0,0)
+define script(autonumber,playermoney,0)
+
+define script(autonumber,skillitem,0)
+define script(autonumber,skitemgo,6,0,0,0,0,0,0)
+
+define script(autonumber,doskillitem,0)
+define script(autonumber,doskitpalrefresh,0)
+define script(autonumber,doskitpalrefresh1,0)
+define script(autonumber,doskitpalrefresh2,0)
+define script(autonumber,doskitpalrefresh3,0)
+define script(autonumber,doskitpalrefresh4,0)
+define script(autonumber,doskitpalrefresh5,0)
+define script(autonumber,doskillitemcheck,1,0)
+define script(autonumber,doskitch1,1,0)
+define script(autonumber,doskitch2,1,0)
+define script(autonumber,doskitch3,1,0)
+define script(autonumber,doskitch4,1,0)
+
+define script(autonumber,miskillitem,0)
+define script(autonumber,miskitpalrefresh,0)
+define script(autonumber,miskitpalrefresh1,0)
+define script(autonumber,miskitpalrefresh2,0)
+define script(autonumber,miskitpalrefresh3,0)
+define script(autonumber,miskitpalrefresh4,0)
+define script(autonumber,miskitpalrefresh5,0)
+define script(autonumber,miskillitemcheck,1,0)
+define script(autonumber,miskitch1,1,0)
+define script(autonumber,miskitch2,1,0)
+define script(autonumber,miskitch3,1,0)
+define script(autonumber,miskitch4,1,0)
+
+define script(autonumber,joskillitem,0)
+define script(autonumber,joskitpalrefresh,0)
+define script(autonumber,joskitpalrefresh1,0)
+define script(autonumber,joskitpalrefresh2,0)
+define script(autonumber,joskitpalrefresh3,0)
+define script(autonumber,joskitpalrefresh4,0)
+define script(autonumber,joskitpalrefresh5,0)
+define script(autonumber,joskillitemcheck,1,0)
+define script(autonumber,joskitch1,1,0)
+define script(autonumber,joskitch2,1,0)
+define script(autonumber,joskitch3,1,0)
+define script(autonumber,joskitch4,1,0)
+
+define script(autonumber,pyskillitem,0)
+define script(autonumber,pyskitpalrefresh,0)
+define script(autonumber,pyskitpalrefresh1,0)
+define script(autonumber,pyskitpalrefresh2,0)
+define script(autonumber,pyskitpalrefresh3,0)
+define script(autonumber,pyskitpalrefresh4,0)
+define script(autonumber,pyskitpalrefresh5,0)
+define script(autonumber,pyskillitemcheck,1,0)
+define script(autonumber,pyskitch1,1,0)
+define script(autonumber,pyskitch2,1,0)
+define script(autonumber,pyskitch3,1,0)
+define script(autonumber,pyskitch4,1,0)
+
+
+
+######################
+script, innrest, begin
+#for use inside all inn scripts
+#this is the healing part
+
+#set the weary counter
+set variable(weary counter, 4 + actnumber)
+
+#have Dogero
+if(check tag(44)) then( itemrestdo )
+
+#have Mi'la
+if(check tag(45)) then( itemrestmi )
+
+#have Johan
+if(check tag(46)) then( itemrestjo )
+
+#have Pyrus
+if(check tag(47)) then( itemrestpy )
+end
+###
+
+#######################
+script, itemrest, begin
+suspend player
+suspend npcs
+
+#this is the whole rest item script
+#called on text box #?????????
+
+#will need to check if current map allows sleeping
+#HUGE if statement!
+if(check tag(433),or,current map==5,or,current map==6,or,current map==7,or,current map==8,or,current map==18,or,current map==19,or,current map==20,or,current map==21,or,current map==32,or,current map==33,or,current map==34,or,current map==35,or,current map==41,or,current map==42,or,current map==43,or,current map==44,or,current map==49,or,current map==50,or,current map==51,or,current map==52,or,current map==67,or,current map==68,or,current map==71,or,current map==89,or,current map==77,or,current map==78,or,current map==79,or,current map==80,or,current map==91,or,current map==92,or,current map==94,or,current map==96,or,current map==97,or,current map==98,or,current map==99) then(
+
+#below taken out because it resets any loaded tileset (flashbacks)
+#show backdrop (7)
+#wait(2)
+#show map
+if(check tag(433)) then(tb(6920))
+else(tb(6507))
+
+)
+else(
+
+palout(2)
+set maps
+variable(mmap)
+set variable(mmap,currentmap)
+wait(1)
+
+#set the weary counter
+#plus 1 for the advance time of day by 1
+set variable(weary counter, 4 + actnumber + 1)
+
+#have Dogero
+if(check tag(44)) then( itemrestdo )
+
+#have Mi'la
+if(check tag(45)) then( itemrestmi )
+
+#have Johan
+if(check tag(46)) then( itemrestjo )
+
+#have Pyrus
+if(check tag(47)) then( itemrestpy )
+
+#will need to advance time of day 2 phases
+#CHANGED 1 phase
+variable(hx)
+variable(hy)
+variable(hmap)
+variable(hdir)
+variable(cx)
+variable(cy)
+set variable(hx,herox(0))
+set variable(hy,heroy(0))
+set variable(hmap,noonmap)
+set variable(hdir,hero direction(0))
+set variable(cx,camera pixel x)
+set variable(cy,camera pixel y)
+
+restfancy
+
+restauto1(mmap,hmap,hx,hy,cx,cy)
+
+restauto2(hdir)
+
+)
+
+resume npcs
+resume player
+end
+###
+
+####################################################
+script, restauto1, mmap, hmap, hx, hy, cx, cy, begin
+#maps where no map adjustment is needed
+if(mmap==13,or,mmap==22,or,mmap==23,or,mmap==36,or,mmap==57,or,mmap==66,or,mmap==69,or,mmap==70,or,mmap==71,or,mmap==72,or,mmap==91,or,mmap==98,or,mmap==0) then(
+
+	teleport to map(mmap,hx,hy)
+
+	#if not on a camera follow map, then no camera follow!
+	if(mmap==13,or,mmap==23,or,mmap==36,or,mmap==91) then(
+		put camera(cx,cy)
+		pan camera(south,0,0)
+	)
+	#else, camera follow!
+	else(camera follows hero(0))
+)
+else(
+	set hp
+	if(mmap==62,or,mmap==63,or,mmap==64,or,mmap==65) then(
+		put camera(cx,cy)
+		pan camera(south,0,0)
+	)
+	else(camera follows hero(0))
+	teleport to map(hmap+poff,hx,hy)
+)
+end
+###
+
+##############################
+script, restauto2, hdir, begin
+suspend player
+suspend npcs
+set hero direction(0,hdir)
+wait(1)
+#wait(10)
+if(dunred==0,and,dungreen==0,and,dunblue==0) then(palin(2))
+else(
+	reset palette
+	tweak palette (-40,-40,-40)
+	update palette
+	wait (2)
+	reset palette
+	tweak palette (-20,-20,-20)
+	update palette
+	wait (2)
+	reset palette
+	tweak palette (-10,-10,-10)
+	update palette
+	wait (2)
+	tp
+)
+end
+###
+
+#########################
+script, itemrestdo, begin
+#set hero stat(find hero(0),0,get hero stat(find hero(0),0,current stat)+(dohp/2),current stat)
+#if(get hero stat(find hero(0),0,current stat) >> dohp) then(set hero stat(find hero(0),0,dohp,current stat))
+
+#set hero stat(find hero(0),1,get hero stat(find hero(0),1,current stat)+(dosp/2),current stat)
+#if(get hero stat(find hero(0),1,current stat) >> dosp) then(set hero stat(find hero(0),1,dosp,current stat))
+
+#set hero stat(find hero(0),2,get hero stat(find hero(0),2,current stat)+(dostr/2),current stat)
+#if(get hero stat(find hero(0),2,current stat) >> dostr) then(set hero stat(find hero(0),2,dostr,current stat))
+
+#set hero stat(find hero(0),3,get hero stat(find hero(0),3,current stat)+(doacc/2),current stat)
+#if(get hero stat(find hero(0),3,current stat) >> doacc) then(set hero stat(find hero(0),3,doacc,current stat))
+
+#set hero stat(find hero(0),4,get hero stat(find hero(0),4,current stat)+(dodef/2),current stat)
+#if(get hero stat(find hero(0),4,current stat) >> dodef) then(set hero stat(find hero(0),4,dodef,current stat))
+
+#set hero stat(find hero(0),5,get hero stat(find hero(0),5,current stat)+(doddg/2),current stat)
+#if(get hero stat(find hero(0),5,current stat) >> doddg) then(set hero stat(find hero(0),5,doddg,current stat))
+
+#set hero stat(find hero(0),6,get hero stat(find hero(0),6,current stat)+(doskl/2),current stat)
+#if(get hero stat(find hero(0),6,current stat) >> doskl) then(set hero stat(find hero(0),6,doskl,current stat))
+
+#set hero stat(find hero(0),7,get hero stat(find hero(0),7,current stat)+(doevd/2),current stat)
+#if(get hero stat(find hero(0),7,current stat) >> doevd) then(set hero stat(find hero(0),7,doevd,current stat))
+
+#above only heals half of max
+#changed to full heal
+#set hero stat(find hero(0),0,get hero stat(find hero(0),0,maximum stat),current stat)
+#set hero stat(find hero(0),1,get hero stat(find hero(0),1,maximum stat),current stat)
+#set hero stat(find hero(0),2,get hero stat(find hero(0),2,maximum stat),current stat)
+#set hero stat(find hero(0),3,get hero stat(find hero(0),3,maximum stat),current stat)
+#set hero stat(find hero(0),4,get hero stat(find hero(0),4,maximum stat),current stat)
+#set hero stat(find hero(0),5,get hero stat(find hero(0),5,maximum stat),current stat)
+#set hero stat(find hero(0),6,get hero stat(find hero(0),6,maximum stat),current stat)
+#set hero stat(find hero(0),7,get hero stat(find hero(0),7,maximum stat),current stat)
+
+#set hero stat(find hero(0),0,dohp,maximum stat)
+#set hero stat(find hero(0),1,dosp,maximum stat)
+#set hero stat(find hero(0),2,dostr,maximum stat)
+#set hero stat(find hero(0),3,doacc,maximum stat)
+#set hero stat(find hero(0),4,dodef,maximum stat)
+#set hero stat(find hero(0),5,doddg,maximum stat)
+#set hero stat(find hero(0),6,doskl,maximum stat)
+#set hero stat(find hero(0),7,doevd,maximum stat)
+
+variable(icon2)
+variable(icon3)
+variable(icon4)
+variable(icon5)
+if(check equipment(find hero(0),2)<>-1) then(
+	set variable(icon2,check equipment(find hero(0),2))
+	unequip(find hero(0),2)
+)
+else(set variable(icon2,-1))
+if(check equipment(find hero(0),3)<>-1) then(
+	set variable(icon3,check equipment(find hero(0),3))
+	unequip(find hero(0),3)
+)
+else(set variable(icon3,-1))
+if(check equipment(find hero(0),4)<>-1) then(
+	set variable(icon4,check equipment(find hero(0),4))
+	unequip(find hero(0),4)
+)
+else(set variable(icon4,-1))
+if(check equipment(find hero(0),5)<>-1) then(
+	set variable(icon5,check equipment(find hero(0),5))
+	unequip(find hero(0),5)
+)
+else(set variable(icon5,-1))
+
+set hero stat(find hero(0),0,dohp,maximum stat)
+set hero stat(find hero(0),1,dosp,maximum stat)
+set hero stat(find hero(0),2,dostr,maximum stat)
+set hero stat(find hero(0),3,doacc,maximum stat)
+set hero stat(find hero(0),4,dodef,maximum stat)
+set hero stat(find hero(0),5,doddg,maximum stat)
+set hero stat(find hero(0),6,doskl,maximum stat)
+set hero stat(find hero(0),7,doevd,maximum stat)
+
+set hero stat(find hero(0),0,dohp,current stat)
+set hero stat(find hero(0),1,dosp,current stat)
+set hero stat(find hero(0),2,dostr,current stat)
+set hero stat(find hero(0),3,doacc,current stat)
+set hero stat(find hero(0),4,dodef,current stat)
+set hero stat(find hero(0),5,doddg,current stat)
+set hero stat(find hero(0),6,doskl,current stat)
+set hero stat(find hero(0),7,doevd,current stat)
+
+if(icon2<>-1) then(force equip(find hero(0),2,icon2))
+if(icon3<>-1) then(force equip(find hero(0),3,icon3))
+if(icon4<>-1) then(force equip(find hero(0),4,icon4))
+if(icon5<>-1) then(force equip(find hero(0),5,icon5))
+end
+###
+
+#########################
+script, itemrestmi, begin
+variable(icon2)
+variable(icon3)
+variable(icon4)
+variable(icon5)
+if(check equipment(find hero(1),2)<>-1) then(
+	set variable(icon2,check equipment(find hero(1),2))
+	unequip(find hero(1),2)
+)
+else(set variable(icon2,-1))
+if(check equipment(find hero(1),3)<>-1) then(
+	set variable(icon3,check equipment(find hero(1),3))
+	unequip(find hero(1),3)
+)
+else(set variable(icon3,-1))
+if(check equipment(find hero(1),4)<>-1) then(
+	set variable(icon4,check equipment(find hero(1),4))
+	unequip(find hero(1),4)
+)
+else(set variable(icon4,-1))
+if(check equipment(find hero(1),5)<>-1) then(
+	set variable(icon5,check equipment(find hero(1),5))
+	unequip(find hero(1),5)
+)
+else(set variable(icon5,-1))
+
+set hero stat(find hero(1),0,mihp,maximum stat)
+set hero stat(find hero(1),1,misp,maximum stat)
+set hero stat(find hero(1),2,mistr,maximum stat)
+set hero stat(find hero(1),3,miacc,maximum stat)
+set hero stat(find hero(1),4,midef,maximum stat)
+set hero stat(find hero(1),5,middg,maximum stat)
+set hero stat(find hero(1),6,miskl,maximum stat)
+set hero stat(find hero(1),7,mievd,maximum stat)
+
+set hero stat(find hero(1),0,mihp,current stat)
+set hero stat(find hero(1),1,misp,current stat)
+set hero stat(find hero(1),2,mistr,current stat)
+set hero stat(find hero(1),3,miacc,current stat)
+set hero stat(find hero(1),4,midef,current stat)
+set hero stat(find hero(1),5,middg,current stat)
+set hero stat(find hero(1),6,miskl,current stat)
+set hero stat(find hero(1),7,mievd,current stat)
+
+if(icon2<>-1) then(force equip(find hero(1),2,icon2))
+if(icon3<>-1) then(force equip(find hero(1),3,icon3))
+if(icon4<>-1) then(force equip(find hero(1),4,icon4))
+if(icon5<>-1) then(force equip(find hero(1),5,icon5))
+end
+###
+
+#########################
+script, itemrestjo, begin
+variable(icon2)
+variable(icon3)
+variable(icon4)
+variable(icon5)
+if(check equipment(find hero(2),2)<>-1) then(
+	set variable(icon2,check equipment(find hero(2),2))
+	unequip(find hero(2),2)
+)
+else(set variable(icon2,-1))
+if(check equipment(find hero(2),3)<>-1) then(
+	set variable(icon3,check equipment(find hero(2),3))
+	unequip(find hero(2),3)
+)
+else(set variable(icon3,-1))
+if(check equipment(find hero(2),4)<>-1) then(
+	set variable(icon4,check equipment(find hero(2),4))
+	unequip(find hero(2),4)
+)
+else(set variable(icon4,-1))
+if(check equipment(find hero(2),5)<>-1) then(
+	set variable(icon5,check equipment(find hero(2),5))
+	unequip(find hero(2),5)
+)
+else(set variable(icon5,-1))
+
+set hero stat(find hero(2),0,johp,maximum stat)
+set hero stat(find hero(2),1,josp,maximum stat)
+set hero stat(find hero(2),2,jostr,maximum stat)
+set hero stat(find hero(2),3,joacc,maximum stat)
+set hero stat(find hero(2),4,jodef,maximum stat)
+set hero stat(find hero(2),5,joddg,maximum stat)
+set hero stat(find hero(2),6,joskl,maximum stat)
+set hero stat(find hero(2),7,joevd,maximum stat)
+
+set hero stat(find hero(2),0,johp,current stat)
+set hero stat(find hero(2),1,josp,current stat)
+set hero stat(find hero(2),2,jostr,current stat)
+set hero stat(find hero(2),3,joacc,current stat)
+set hero stat(find hero(2),4,jodef,current stat)
+set hero stat(find hero(2),5,joddg,current stat)
+set hero stat(find hero(2),6,joskl,current stat)
+set hero stat(find hero(2),7,joevd,current stat)
+
+if(icon2<>-1) then(force equip(find hero(2),2,icon2))
+if(icon3<>-1) then(force equip(find hero(2),3,icon3))
+if(icon4<>-1) then(force equip(find hero(2),4,icon4))
+if(icon5<>-1) then(force equip(find hero(2),5,icon5))
+end
+###
+
+#########################
+script, itemrestpy, begin
+variable(icon2)
+variable(icon3)
+variable(icon4)
+variable(icon5)
+if(check equipment(find hero(3),2)<>-1) then(
+	set variable(icon2,check equipment(find hero(3),2))
+	unequip(find hero(3),2)
+)
+else(set variable(icon2,-1))
+if(check equipment(find hero(3),3)<>-1) then(
+	set variable(icon3,check equipment(find hero(3),3))
+	unequip(find hero(3),3)
+)
+else(set variable(icon3,-1))
+if(check equipment(find hero(3),4)<>-1) then(
+	set variable(icon4,check equipment(find hero(3),4))
+	unequip(find hero(3),4)
+)
+else(set variable(icon4,-1))
+if(check equipment(find hero(3),5)<>-1) then(
+	set variable(icon5,check equipment(find hero(3),5))
+	unequip(find hero(3),5)
+)
+else(set variable(icon5,-1))
+
+set hero stat(find hero(3),0,pyhp,maximum stat)
+set hero stat(find hero(3),1,pysp,maximum stat)
+set hero stat(find hero(3),2,pystr,maximum stat)
+set hero stat(find hero(3),3,pyacc,maximum stat)
+set hero stat(find hero(3),4,pydef,maximum stat)
+set hero stat(find hero(3),5,pyddg,maximum stat)
+set hero stat(find hero(3),6,pyskl,maximum stat)
+set hero stat(find hero(3),7,pyevd,maximum stat)
+
+set hero stat(find hero(3),0,pyhp,current stat)
+set hero stat(find hero(3),1,pysp,current stat)
+set hero stat(find hero(3),2,pystr,current stat)
+set hero stat(find hero(3),3,pyacc,current stat)
+set hero stat(find hero(3),4,pydef,current stat)
+set hero stat(find hero(3),5,pyddg,current stat)
+set hero stat(find hero(3),6,pyskl,current stat)
+set hero stat(find hero(3),7,pyevd,current stat)
+
+if(icon2<>-1) then(force equip(find hero(3),2,icon2))
+if(icon3<>-1) then(force equip(find hero(3),3,icon3))
+if(icon4<>-1) then(force equip(find hero(3),4,icon4))
+if(icon5<>-1) then(force equip(find hero(3),5,icon5))
+end
+###
+
+###################################################################################################
+script, iconcraft, firstscreen, firstitem, firsttextbox, goldcost, animacost, area, lastspot, begin
+
+palout(1)
+show backdrop(0)
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(firstscreen)
+
+icon pal refresh
+update palette
+
+wait(10)
+show backdrop(firstscreen+1)
+wait(5)
+show backdrop(firstscreen+2)
+wait(2)
+
+variable (spot)
+set variable (spot,79)
+
+icon pal refresh
+set icon color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>79 ,and, spot<>80 )
+	then(
+	set variable(spot,spot--2)
+	icon pal refresh
+	set icon color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>lastspot )
+	then(
+	if( spot == (lastspot--1) ) then( set variable(spot,spot+1) )
+	else( set variable(spot,spot+2) )
+	icon pal refresh
+	set icon color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>79 )
+	then(
+	set variable(spot,spot--1)
+	icon pal refresh
+	set icon color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>lastspot )
+	then(
+	set variable(spot,spot+1)
+	icon pal refresh
+	set icon color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	icon pal refresh
+
+	setmoneyanima(spot,0)
+
+	if(area==1) then( fraliniconbuy(spot,firstitem,firsttextbox,goldcost,animacost) )
+	if(area==2) then( adleziconbuy(spot,firstitem,firsttextbox,goldcost,animacost) )
+	if(area==3) then( keltaniconbuy(spot,firstitem,firsttextbox,goldcost,animacost) )
+	if(area==4) then( cyporticonbuy(spot,firstitem,firsttextbox,goldcost,animacost) )
+	if(area==5) then( ultraiconbuy(spot,firstitem,firsttextbox,goldcost,animacost) )
+	if(area==6) then( rorciconbuy(spot,firstitem,firsttextbox,goldcost,animacost) )
+	if(area==7) then( plugiconbuy(spot,firstitem,firsttextbox,goldcost,animacost) )
+
+	wait(2)
+	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	icon pal refresh
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+	wait(1)
+)
+
+
+icon pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+32,0,read color(2,0))
+write color(spot+32,1,read color(2,1))
+write color(spot+32,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+32,0,read color(2,0))
+write color(spot+32,1,read color(2,1))
+write color(spot+32,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(firstscreen+1)
+wait(4)
+show backdrop(firstscreen)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+
+end
+###
+
+#############################
+script, iconpalrefresh, begin
+variable(i)
+
+for(i,79,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,111,127,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+################################################################################
+script, fraliniconbuy, spot, firstitem, firsttextbox, goldcost, animacost, begin
+#note on textbox
+#0-16 is the buy?
+#17-x is get!
+
+#exit
+if(spot==95) then(
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+	wait(1)
+)
+
+#chose to craft
+else(
+	set tag(258,0)
+	tb( firsttext box + (spot -- 79) )
+	wait(1)
+
+	#chose to buy
+	if(check tag(258)) then(
+
+		#have enough money and anima
+		if( pay money (goldcost) ) then(
+		if( iconanimacheck (animacost,spot) ) then(
+
+			#if item is instant purchase
+			if(spot << 87) then(
+				tb( first text box + 16 + (spot -- 79) )
+				get item( return icon number(firstitem,spot) )
+				wait(1)
+			)#end instant purchase
+
+			#if item is wait
+			if(spot >> 86) then(
+				#check if already waiting
+				if( fraliniconsave >> 0) then(
+					set tag(258,0)
+					tb(6509)
+					if(check tag(258)) then(
+						tb( first text box + 16 + (spot -- 79) )
+						set variable(fraliniconsave, return icon number(firstitem,spot) )
+						set variable(fraliniconhour,hour)
+						set variable(fraliniconday,day)
+					)
+					else(
+						get money (goldcost)
+						return anima (animacost,spot)
+					)
+					wait(1)
+				)#end if already waiting, else set new wait
+				else(
+					tb( firsttext box + 16 + (spot -- 79) )
+					set variable(fraliniconsave, return icon number(firstitem,spot) )
+					set variable(fraliniconhour,hour)
+					set variable(fraliniconday,day)
+					wait(1)
+				)
+			)#end wait for icon
+
+		)#end have enough anima
+		#don't have enough anima
+		else( tb(6511) )
+
+		)#end have enough money
+		#don't have enough money
+		else( tb(6510) )		
+
+	)#end chose to buy
+)#end chose to craft
+end
+###
+
+################################################################################
+script, adleziconbuy, spot, firstitem, firsttextbox, goldcost, animacost, begin
+#note on textbox
+#0-16 is the buy?
+#17-x is get!
+
+#exit
+if(spot==95) then(
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+	wait(1)
+)
+
+#chose to craft
+else(
+	set tag(258,0)
+	tb( firsttext box + (spot -- 79) )
+	wait(1)
+
+	#chose to buy
+	if(check tag(258)) then(
+
+		#have enough money and anima
+		if( pay money (goldcost) ) then(
+		if( iconanimacheck (animacost,spot) ) then(
+
+			#if item is instant purchase
+			if(spot << 87) then(
+				tb( first text box + 16 + (spot -- 79) )
+				get item( return icon number(firstitem,spot) )
+				wait(1)
+			)#end instant purchase
+
+			#if item is wait
+			if(spot >> 86) then(
+				#check if already waiting
+				if( adleziconsave >> 0) then(
+					set tag(258,0)
+					tb(6509)
+					if(check tag(258)) then(
+						tb( first text box + 16 + (spot -- 79) )
+						set variable(adleziconsave, return icon number(firstitem,spot) )
+						set variable(adleziconhour,hour)
+						set variable(adleziconday,day)
+					)
+					else(
+						get money (goldcost)
+						return anima (animacost,spot)
+					)
+					wait(1)
+				)#end if already waiting, else set new wait
+				else(
+					tb( firsttext box + 16 + (spot -- 79) )
+					set variable(adleziconsave, return icon number(firstitem,spot) )
+					set variable(adleziconhour,hour)
+					set variable(adleziconday,day)
+					wait(1)
+				)
+			)#end wait for icon
+
+		)#end have enough anima
+		#don't have enough anima
+		else( tb(6511) )
+
+		)#end have enough money
+		#don't have enough money
+		else( tb(6510) )		
+
+	)#end chose to buy
+)#end chose to craft
+end
+###
+
+################################################################################
+script, keltaniconbuy, spot, firstitem, firsttextbox, goldcost, animacost, begin
+#note on textbox
+#0-16 is the buy?
+#17-x is get!
+
+#exit
+if(spot==95) then(
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+	wait(1)
+)
+
+#chose to craft
+else(
+	set tag(258,0)
+	tb( firsttext box + (spot -- 79) )
+	wait(1)
+
+	#chose to buy
+	if(check tag(258)) then(
+
+		#have enough money and anima
+		if( pay money (goldcost) ) then(
+		if( iconanimacheck (animacost,spot) ) then(
+
+			#if item is instant purchase
+			if(spot << 87) then(
+				tb( first text box + 16 + (spot -- 79) )
+				get item( return icon number(firstitem,spot) )
+				wait(1)
+			)#end instant purchase
+
+			#if item is wait
+			if(spot >> 86) then(
+				#check if already waiting
+				if( keltaniconsave >> 0) then(
+					set tag(258,0)
+					tb(6509)
+					if(check tag(258)) then(
+						tb( first text box + 16 + (spot -- 79) )
+						set variable(keltaniconsave, return icon number(firstitem,spot) )
+						set variable(keltaniconhour,hour)
+						set variable(keltaniconday,day)
+					)
+					else(
+						get money (goldcost)
+						return anima (animacost,spot)
+					)
+					wait(1)
+				)#end if already waiting, else set new wait
+				else(
+					tb( firsttext box + 16 + (spot -- 79) )
+					set variable(keltaniconsave, return icon number(firstitem,spot) )
+					set variable(keltaniconhour,hour)
+					set variable(keltaniconday,day)
+					wait(1)
+				)
+			)#end wait for icon
+
+		)#end have enough anima
+		#don't have enough anima
+		else( tb(6511) )
+
+		)#end have enough money
+		#don't have enough money
+		else( tb(6510) )		
+
+	)#end chose to buy
+)#end chose to craft
+end
+###
+
+################################################################################
+script, cyporticonbuy, spot, firstitem, firsttextbox, goldcost, animacost, begin
+#note on textbox
+#0-16 is the buy?
+#17-x is get!
+
+#exit
+if(spot==87) then(
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+	wait(1)
+)
+
+#chose to craft
+else(
+	set tag(258,0)
+	tb( firsttext box + (spot -- 79) )
+	wait(1)
+
+	#chose to buy
+	if(check tag(258)) then(
+
+		#have enough money and anima
+		if( pay money (goldcost) ) then(
+		if( iconanimacheck (animacost,spot) ) then(
+
+			#item is instant purchase
+			tb( first text box + 16 + (spot -- 79) )
+			get item( return icon number(firstitem,spot) )
+			wait(1)
+
+		)#end have enough anima
+		#don't have enough anima
+		else( tb(6511) )
+
+		)#end have enough money
+		#don't have enough money
+		else( tb(6510) )		
+
+	)#end chose to buy
+)#end chose to craft
+end
+###
+
+###############################################################################
+script, ultraiconbuy, spot, firstitem, firsttextbox, goldcost, animacost, begin
+#note on textbox
+#0-16 is the buy?
+#17-x is get!
+
+#exit
+if(spot==87) then(
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+	wait(1)
+)
+
+#chose to craft
+else(
+	set tag(258,0)
+	tb( firsttext box + (spot -- 79) )
+	wait(1)
+
+	#chose to buy
+	if(check tag(258)) then(
+
+		#have enough money and anima
+		if( pay money (goldcost) ) then(
+		if( iconanimacheck (animacost,spot) ) then(
+
+			#item is wait
+				#check if already waiting
+				if( cyporticonsave >> 0) then(
+					set tag(258,0)
+					tb(6509)
+					if(check tag(258)) then(
+						tb( first text box + 16 + (spot -- 79) )
+						set variable(cyporticonsave, return icon number(firstitem,spot) )
+						set variable(cyporticonhour,hour)
+						set variable(cyporticonday,day)
+					)
+					else(
+						get money (goldcost)
+						return anima (animacost,spot)
+					)
+					wait(1)
+				)#end if already waiting, else set new wait
+				else(
+					tb( firsttext box + 16 + (spot -- 79) )
+					set variable(cyporticonsave, return icon number(firstitem,spot) )
+					set variable(cyporticonhour,hour)
+					set variable(cyporticonday,day)
+					wait(1)
+				)
+
+		)#end have enough anima
+		#don't have enough anima
+		else( tb(6511) )
+
+		)#end have enough money
+		#don't have enough money
+		else( tb(6510) )		
+
+	)#end chose to buy
+)#end chose to craft
+end
+###
+
+################################################################################
+script, rorciconbuy, spot, firstitem, firsttextbox, goldcost, animacost, begin
+#note on textbox
+#0-16 is the buy?
+#17-x is get!
+
+#exit
+if(spot==87) then(
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+	wait(1)
+)
+
+#chose to craft
+else(
+	set tag(258,0)
+	tb( firsttext box + (spot -- 79) )
+	wait(1)
+
+	#chose to buy
+	if(check tag(258)) then(
+
+		#have enough money and anima
+		if( pay money (goldcost) ) then(
+		if( iconanimacheck (animacost,spot) ) then(
+
+			#item is instant purchase
+			tb( first text box + 16 + (spot -- 79) )
+			get item( return icon number(firstitem,spot) )
+			wait(1)
+
+		)#end have enough anima
+		#don't have enough anima
+		else( tb(6511) )
+
+		)#end have enough money
+		#don't have enough money
+		else( tb(6510) )		
+
+	)#end chose to buy
+)#end chose to craft
+end
+###
+
+##############################################################################
+script, plugiconbuy, spot, firstitem, firsttextbox, goldcost, animacost, begin
+#note on textbox
+#0-16 is the buy?
+#17-x is get!
+
+#exit
+if(spot==87) then(
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+	wait(1)
+)
+
+#chose to craft
+else(
+	set tag(258,0)
+	tb( firsttext box + (spot -- 79) )
+	wait(1)
+
+	#chose to buy
+	if(check tag(258)) then(
+
+		#have enough money and anima
+		if( pay money (goldcost) ) then(
+		if( iconanimacheck (animacost,spot) ) then(
+
+			#item is wait
+				#check if already waiting
+				if( rorciconsave >> 0) then(
+					set tag(258,0)
+					tb(6509)
+					if(check tag(258)) then(
+						tb( first text box + 16 + (spot -- 79) )
+						set variable(rorciconsave, return icon number(firstitem,spot) )
+						set variable(rorciconhour,hour)
+						set variable(rorciconday,day)
+					)
+					else(
+						get money (goldcost)
+						return anima (animacost,spot)
+					)
+					wait(1)
+				)#end if already waiting, else set new wait
+				else(
+					tb( firsttext box + 16 + (spot -- 79) )
+					set variable(rorciconsave, return icon number(firstitem,spot) )
+					set variable(rorciconhour,hour)
+					set variable(rorciconday,day)
+					wait(1)
+				)
+
+		)#end have enough anima
+		#don't have enough anima
+		else( tb(6511) )
+
+		)#end have enough money
+		#don't have enough money
+		else( tb(6510) )		
+
+	)#end chose to buy
+)#end chose to craft
+end
+###
+
+##############################################
+script, iconanimacheck, animacost, spot, begin
+if(spot==79,or,spot==87) then(
+	if(animacost <= hp ) then(
+		set variable(hp,hp--animacost)
+		return(true)
+	)
+	else(
+		return(false)
+	)
+)
+if(spot==81,or,spot==89) then(
+	if(animacost <= sp ) then(
+		set variable(sp,sp--animacost)
+		return(true)
+	)
+	else(
+		return(false)
+	)
+)
+if(spot==83,or,spot==91) then(
+	if(animacost <= str ) then(
+		set variable(str,str--animacost)
+		return(true)
+	)
+	else(
+		return(false)
+	)
+)
+if(spot==85,or,spot==93) then(
+	if(animacost <= acc ) then(
+		set variable(acc,acc--animacost)
+		return(true)
+	)
+	else(
+		return(false)
+	)
+)
+if(spot==80,or,spot==88) then(
+	if(animacost <= def ) then(
+		set variable(def,def--animacost)
+		return(true)
+	)
+	else(
+		return(false)
+	)
+)
+if(spot==82,or,spot==90) then(
+	if(animacost <= ddg ) then(
+		set variable(ddg,ddg--animacost)
+		return(true)
+	)
+	else(
+		return(false)
+	)
+)
+if(spot==84,or,spot==92) then(
+	if(animacost <= skl ) then(
+		set variable(skl,skl--animacost)
+		return(true)
+	)
+	else(
+		return(false)
+	)
+)
+if(spot==86,or,spot==94) then(
+	if(animacost <= evd ) then(
+		set variable(evd,evd--animacost)
+		return(true)
+	)
+	else(
+		return(false)
+	)
+)
+end
+###
+
+################################################
+script, iconwaitcheck, isave, ihour, iday, begin
+#returns if get item or not
+
+#check to see if waiting
+if( isave <> 0 ) then(
+
+	#noontime
+	if( ihour >= noontime ,and, ihour << afternoontime ) then(
+		if( (hour >= nighttime, or, hour << noontime) ,or, (iday << day) ) then(
+			return(true)
+		)
+		else(
+			return(false)
+		)
+	)
+
+	#afternoontime
+	if( ihour >= afternoontime ,and, ihour << nighttime ) then(
+		if( (hour >= morningtime, and, hour << afternoontime) ,or, (iday << day) ) then(
+			return(true)
+		)
+		else(
+			return(false)
+		)
+	)
+
+	#nighttime
+	if( ihour >= nighttime ,or, ihour << morningtime ) then(
+		if( (hour >= noontime, and, hour << nighttime) ,or, (iday << day) ) then(
+			return(true)
+		)
+		else(
+			return(false)
+		)
+	)
+
+	#morningtime
+	if( ihour >= morningtime ,and, ihour << noontime ) then(
+		if( (hour >= afternoontime, or, hour << morningtime) ,or, (iday << day) ) then(
+			return(true)
+		)
+		else(
+			return(false)
+		)
+	)
+
+)#end waiting for icon check
+
+end
+###
+
+####################################################
+script, rorciconwaitcheck, isave, ihour, iday, begin
+#returns if get item or not
+
+#check to see if waiting
+if( isave <> 0 ) then(
+
+	#noontime
+	if( ihour >= noontime ,and, ihour << afternoontime ) then(
+		if( ( iday << day ,and, hour >=noontime ) ,or, (iday+1)<<day ) then(
+			return(true)
+		)
+		else(
+			return(false)
+		)
+	)
+
+	#afternoontime
+	if( ihour >= afternoontime ,and, ihour << nighttime ) then(
+		if( ( iday << day ,and, hour >= afternoontime ) ,or, (iday+1)<<day ) then(
+			return(true)
+		)
+		else(
+			return(false)
+		)
+	)
+
+	#nighttime
+	if( ihour >= nighttime ,or, ihour << morningtime ) then(
+		if( ( iday << day ,and, hour >= nighttime) ,or, (iday+1)<<day ) then(
+			return(true)
+		)
+		else(
+			return(false)
+		)
+	)
+
+	#morningtime
+	if( ihour >= morningtime ,and, ihour << noontime ) then(
+		if( ( iday << day ,and, hour >= morningtime) ,or, (iday+1)<<day ) then(
+			return(true)
+		)
+		else(
+			return(false)
+		)
+	)
+
+)#end waiting for icon check
+
+end
+###
+
+#####################################
+script, returnanima, animacost, spot, begin
+if(spot==79,or,spot==87) then(
+	set variable(hp,hp+animacost)
+)
+if(spot==81,or,spot==89) then(
+	set variable(sp,sp+animacost)
+)
+if(spot==83,or,spot==91) then(
+	set variable(str,str+animacost)
+)
+if(spot==85,or,spot==93) then(
+	set variable(acc,acc+animacost)
+)
+if(spot==80,or,spot==88) then(
+	set variable(def,def+animacost)
+)
+if(spot==82,or,spot==90) then(
+	set variable(ddg,ddg+animacost)
+)
+if(spot==84,or,spot==82) then(
+	set variable(skl,skl+animacost)
+)
+if(spot==86,or,spot==94) then(
+	set variable(evd,evd+animacost)
+)
+end
+###
+
+################################################
+script, returniconnumber, firstitem, spot, begin
+variable(iconnum)
+
+if(spot==79) then(setvariable(iconnum,0))
+if(spot==80) then(setvariable(iconnum,4))
+if(spot==81) then(setvariable(iconnum,1))
+if(spot==82) then(setvariable(iconnum,5))
+if(spot==83) then(setvariable(iconnum,2))
+if(spot==84) then(setvariable(iconnum,6))
+if(spot==85) then(setvariable(iconnum,3))
+if(spot==86) then(setvariable(iconnum,7))
+if(spot==87) then(setvariable(iconnum,8))
+if(spot==88) then(setvariable(iconnum,12))
+if(spot==89) then(setvariable(iconnum,9))
+if(spot==90) then(setvariable(iconnum,13))
+if(spot==91) then(setvariable(iconnum,10))
+if(spot==92) then(setvariable(iconnum,14))
+if(spot==93) then(setvariable(iconnum,11))
+if(spot==94) then(setvariable(iconnum,15))
+
+return(firstitem + iconnum)
+end
+###
+
+#################################
+script, seticoncolor, spot, begin
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+32,0,read color(2,0))
+write color(spot+32,1,read color(2,1))
+write color(spot+32,2,read color(2,2))
+end
+###
+
+#############################
+script, itempalrefresh, begin
+variable(i)
+
+for(i,80,88,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,104,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+#################################
+script, setitemcolor, spot, begin
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+end
+###
+
+#########################
+script, itemfralin, begin
+palout(1)
+show backdrop(0)
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(68)
+
+item pal refresh
+update palette
+
+wait(10)
+show backdrop(69)
+wait(5)
+show backdrop(70)
+wait(2)
+
+variable (spot)
+set variable (spot,80)
+
+item pal refresh
+set item color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>82 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>82 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	item pal refresh
+	itembuyfralin(spot)
+	wait(2)
+	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	item pal refresh
+	set tag(258,0)
+	wait(2)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+
+
+item pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(69)
+wait(4)
+show backdrop(68)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+end
+###
+
+##################################
+script, itembuyfralin, spot, begin
+set tag(258,0)
+
+variable(g)
+set variable(g,1)
+if(check tag(269)) then(set variable(g,2))
+
+#hp
+if(spot==80) then(
+setmoneyanima(1,1)
+#robber stole, higher price
+if(check tag(269)) then(tb(6650))
+else(tb(6556))
+	if(check tag(258)) then(
+		if(pay money(2*g)) then(
+			if( hp >= 1 ) then(
+				set variable(hp,hp--1)
+				wait(3)
+				tb(6574)
+				get item(50,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#up
+if(spot==81) then(
+setmoneyanima(2,1)
+#robber stole, higher price
+if(check tag(269)) then(tb(6651))
+else(tb(6561))
+	if(check tag(258)) then(
+		if(pay money(5*g)) then(
+			if( sp >= 5 ) then(
+				set variable(sp,sp--5)
+				wait(3)
+				tb(6579)
+				get item(55,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#exit
+if(spot==82) then(
+	wait(3)
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+end
+###
+
+#########################
+script, itemadlez, begin
+palout(1)
+show backdrop(0)
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(71)
+
+item pal refresh
+update palette
+
+wait(10)
+show backdrop(72)
+wait(5)
+show backdrop(73)
+wait(2)
+
+variable (spot)
+set variable (spot,80)
+
+item pal refresh
+set item color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>83 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>83 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	item pal refresh
+	itembuyadlez(spot)
+	wait(2)
+	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	item pal refresh
+	set tag(258,0)
+	wait(2)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+
+
+item pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(72)
+wait(4)
+show backdrop(71)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+end
+###
+
+##################################
+script, itembuyadlez, spot, begin
+set tag(258,0)
+
+#hp
+if(spot==80) then(
+setmoneyanima(1,1)
+	tb(6556)
+	if(check tag(258)) then(
+		if(pay money(2)) then(
+			if( hp >= 1 ) then(
+				set variable(hp,hp--1)
+				wait(3)
+				tb(6574)
+				get item(50,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#hp+
+if(spot==81) then(
+setmoneyanima(1,1)
+	tb(6557)
+	if(check tag(258)) then(
+		if(pay money(5)) then(
+			if( hp >= 3 ) then(
+				set variable(hp,hp--3)
+				wait(3)
+				tb(6575)
+				get item(51,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#up
+if(spot==82) then(
+setmoneyanima(2,1)
+	tb(6561)
+	if(check tag(258)) then(
+		if(pay money(5)) then(
+			if( sp >= 5 ) then(
+				set variable(sp,sp--5)
+				wait(3)
+				tb(6579)
+				get item(55,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#exit
+if(spot==83) then(
+	wait(3)
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+end
+###
+
+#########################
+script, itemkeltan, begin
+palout(1)
+show backdrop(0)
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(74)
+
+item pal refresh
+update palette
+
+wait(10)
+show backdrop(75)
+wait(5)
+show backdrop(76)
+wait(2)
+
+variable (spot)
+set variable (spot,80)
+
+item pal refresh
+set item color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>84 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>84 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	item pal refresh
+	itembuykeltan(spot)
+	wait(2)
+	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	item pal refresh
+	set tag(258,0)
+	wait(2)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+
+
+item pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(75)
+wait(4)
+show backdrop(74)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+end
+###
+
+##################################
+script, itembuykeltan, spot, begin
+set tag(258,0)
+
+#hp+
+if(spot==80) then(
+setmoneyanima(1,1)
+	tb(6557)
+	if(check tag(258)) then(
+		if(pay money(5)) then(
+			if( hp >= 3 ) then(
+				set variable(hp,hp--3)
+				wait(3)
+				tb(6575)
+				get item(51,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#hp++
+if(spot==81) then(
+setmoneyanima(1,1)
+	tb(6558)
+	if(check tag(258)) then(
+		if(pay money(9)) then(
+			if( hp >= 7 ) then(
+				set variable(hp,hp--7)
+				wait(3)
+				tb(6576)
+				get item(52,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#up
+if(spot==82) then(
+setmoneyanima(2,1)
+	tb(6561)
+	if(check tag(258)) then(
+		if(pay money(5)) then(
+			if( sp >= 5 ) then(
+				set variable(sp,sp--5)
+				wait(3)
+				tb(6579)
+				get item(55,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#up+
+if(spot==83) then(
+setmoneyanima(2,1)
+	tb(6562)
+	if(check tag(258)) then(
+		if(pay money(15)) then(
+			if( sp >= 10 ) then(
+				set variable(sp,sp--10)
+				wait(3)
+				tb(6580)
+				get item(56,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#exit
+if(spot==84) then(
+	wait(3)
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+end
+###
+
+#########################
+script, itemcyport, begin
+palout(1)
+show backdrop(0)
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(74)
+
+item pal refresh
+update palette
+
+wait(10)
+show backdrop(75)
+wait(5)
+show backdrop(76)
+wait(2)
+
+variable (spot)
+set variable (spot,80)
+
+item pal refresh
+set item color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>84 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>84 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	item pal refresh
+	itembuykeltan(spot)
+	wait(2)
+	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	item pal refresh
+	set tag(258,0)
+	wait(2)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+
+
+item pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(75)
+wait(4)
+show backdrop(74)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+end
+###
+
+##################################
+script, itembuycyport, spot, begin
+set tag(258,0)
+
+#hp+
+if(spot==80) then(
+setmoneyanima(1,1)
+	tb(6557)
+	if(check tag(258)) then(
+		if(pay money(5)) then(
+			if( hp >= 3 ) then(
+				set variable(hp,hp--3)
+				wait(3)
+				tb(6575)
+				get item(51,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#hp++
+if(spot==81) then(
+setmoneyanima(1,1)
+	tb(6558)
+	if(check tag(258)) then(
+		if(pay money(9)) then(
+			if( hp >= 7 ) then(
+				set variable(hp,hp--7)
+				wait(3)
+				tb(6576)
+				get item(52,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#up
+if(spot==82) then(
+setmoneyanima(2,1)
+	tb(6561)
+	if(check tag(258)) then(
+		if(pay money(5)) then(
+			if( sp >= 5 ) then(
+				set variable(sp,sp--5)
+				wait(3)
+				tb(6579)
+				get item(55,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#up+
+if(spot==83) then(
+setmoneyanima(2,1)
+	tb(6562)
+	if(check tag(258)) then(
+		if(pay money(15)) then(
+			if( sp >= 10 ) then(
+				set variable(sp,sp--10)
+				wait(3)
+				tb(6580)
+				get item(56,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#exit
+if(spot==84) then(
+	wait(3)
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+end
+###
+
+#######################
+script, itemrorc, begin
+palout(1)
+show backdrop(0)
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(80)
+
+item pal refresh
+update palette
+
+wait(10)
+show backdrop(81)
+wait(5)
+show backdrop(82)
+wait(2)
+
+variable (spot)
+set variable (spot,80)
+
+item pal refresh
+set item color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>82 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>82 )
+	then(
+	set variable(spot,spot+1)
+	item pal refresh
+	set item color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	item pal refresh
+	itembuyrorc(spot)
+	wait(2)
+	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	item pal refresh
+	set tag(258,0)
+	wait(2)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+
+
+item pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(81)
+wait(4)
+show backdrop(80)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+end
+###
+
+################################
+script, itembuyrorc, spot, begin
+set tag(258,0)
+
+#hp+++
+if(spot==80) then(
+setmoneyanima(1,1)
+	tb(6559)
+	if(check tag(258)) then(
+		if(pay money(14)) then(
+			if( hp >= 11 ) then(
+				set variable(hp,hp--11)
+				wait(3)
+				tb(6577)
+				get item(53,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#aid+
+if(spot==81) then(
+setmoneyanima(3,1)
+	tb(6565)
+	if(check tag(258)) then(
+		if(pay money(25)) then(
+			if( str >= 15 ,and, def >= 15 ) then(
+				set variable(str,str--15)
+				set variable(def,def--15)
+				wait(3)
+				tb(6583)
+				get item(59,1)
+			)#end anima check
+			else(tb(6511))
+		)#end money check
+		else(tb(6510))
+	)#end chose to buy
+)
+#exit
+if(spot==82) then(
+	wait(3)
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+end
+###
+
+##################################################
+##################################################
+##################################################
+script, stattrain, nnn, firstscreen, firsttextbox, cost, phasecost, strup, accup, defup, ddgup, sklup, evdup, strcap, acccap, defcap, ddgcap, sklcap, evdcap, dao, begin
+palout(1)
+show backdrop(0)
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(firstscreen)
+
+stat pal refresh
+update palette
+
+wait(10)
+show backdrop(firstscreen+1)
+wait(5)
+show backdrop(firstscreen+2)
+wait(2)
+
+variable (spot)
+set variable (spot,80)
+
+stat pal refresh
+set stat color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(scheck,false)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	stat pal refresh
+	set stat color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>86 )
+	then(
+	set variable(spot,spot+1)
+	stat pal refresh
+	set stat color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	stat pal refresh
+	set stat color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>86 )
+	then(
+	set variable(spot,spot+1)
+	stat pal refresh
+	set stat color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	stat pal refresh
+	set variable(seemoney,playermoney)
+	if(dao) then(
+		statdao(spot, firsttextbox, cost, strup, accup, defup, ddgup, sklup, evdup)
+	)
+	else(
+		statbuy(spot, firsttextbox, cost, strup, accup, defup, ddgup, sklup, evdup, strcap, acccap, defcap, ddgcap, sklcap, evdcap)
+	)
+	wait(1)
+	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	stat pal refresh
+	set tag(258,0)
+	wait(3)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+
+
+stat pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(firstscreen+1)
+wait(4)
+show backdrop(firstscreen)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+
+#a stat was trained
+if(scheck) then(trainfancy(nnn,firsttextbox,phasecost,dao))
+end
+###
+
+#############################
+script, statpalrefresh, begin
+variable(i)
+
+for(i,80,86,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,102,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+#################################
+script, setstatcolor, spot, begin
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+end
+###
+
+############################################################################################################################
+script, statbuy, spot, firsttextbox, cost, strup, accup, defup, ddgup, sklup, evdup, strcap, acccap, defcap, ddgcap, sklcap, evdcap, begin
+set tag(258,0)
+set variable(scheck,false)
+
+#set cost based on how many heroes in party
+variable(herocount)
+set variable(herocount,1)
+if(check tag(45)) then(set variable(herocount,herocount+1))
+if(check tag(46)) then(set variable(herocount,herocount+1))
+if(check tag(47)) then(set variable(herocount,herocount+1))
+set variable(text1,cost*herocount)
+
+#str
+if(spot==80) then( statbuystr(strup,strcap,firsttextbox) )#end
+
+#acc
+if(spot==81) then( statbuyacc(accup,acccap,firsttextbox) )#end
+
+#def
+if(spot==82) then( statbuydef(defup,defcap,firsttextbox) )#end
+
+#ddg
+if(spot==83) then( statbuyddg(ddgup,ddgcap,firsttextbox) )#end
+
+#skl
+if(spot==84) then( statbuyskl(sklup,sklcap,firsttextbox) )#end
+
+#evd
+if(spot==85) then( statbuyevd(evdup,evdcap,firsttextbox) )#end
+
+if(spot==86) then(
+	wait(3)
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+end
+###
+
+######################################################
+script, statbuystr, strup, strcap, firsttextbox, begin
+	set variable(text2, dostr + strup)
+	tb(firsttextbox)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( statcapcheck(2,strcap) ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				statget(2,strup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+end
+###
+######################################################
+script, statbuyacc, accup, acccap, firsttextbox, begin
+	set variable(text2, doacc + accup)
+	tb(firsttextbox+1)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( statcapcheck(3,acccap) ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				statget(3,accup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+end
+###
+######################################################
+script, statbuydef, defup, defcap, firsttextbox, begin
+	set variable(text2, dodef + defup)
+	tb(firsttextbox+2)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( statcapcheck(4,defcap) ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				statget(4,defup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+end
+###
+######################################################
+script, statbuyddg, ddgup, ddgcap, firsttextbox, begin
+	set variable(text2, doddg + ddgup)
+	tb(firsttextbox+3)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( statcapcheck(5,ddgcap) ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				statget(5,ddgup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+end
+###
+######################################################
+script, statbuyskl, sklup, sklcap, firsttextbox, begin
+	set variable(text2, doskl + sklup)
+	tb(firsttextbox+4)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( statcapcheck(6,sklcap) ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				statget(6,sklup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+end
+###
+######################################################
+script, statbuyevd, evdup, evdcap, firsttextbox, begin
+	set variable(text2, doevd + evdup)
+	tb(firsttextbox+5)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( statcapcheck(7,evdcap) ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				statget(7,evdup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+end
+###
+
+############################################################################################################################
+script, statdao, spot, firsttextbox, cost, strup, accup, defup, ddgup, sklup, evdup, begin
+set tag(258,0)
+set variable(scheck,false)
+
+#set cost based on how many heroes in party
+variable(herocount)
+set variable(herocount,1)
+if(check tag(45)) then(set variable(herocount,herocount+1))
+if(check tag(46)) then(set variable(herocount,herocount+1))
+if(check tag(47)) then(set variable(herocount,herocount+1))
+set variable(text1,cost*herocount)
+
+#str
+if(spot==80) then(
+
+	set variable(text2, dostr + strup)
+
+	tb(firsttextbox)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( check tag(509)==false ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				set tag(509,1)
+				statget(2,strup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+)#end
+
+#acc
+if(spot==81) then(
+
+	set variable(text2, doacc + accup)
+
+	tb(firsttextbox+1)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( check tag(510)==false ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				set tag(510,1)
+				statget(3,accup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+)#end
+
+#def
+if(spot==82) then(
+
+	set variable(text2, dodef + defup)
+
+	tb(firsttextbox+2)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( check tag(511)==false ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				set tag(511,1)
+				statget(4,defup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+)#end
+
+#ddg
+if(spot==83) then(
+
+	set variable(text2, doddg + ddgup)
+
+	tb(firsttextbox+3)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( check tag(512)==false ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				set tag(512,1)
+				statget(5,ddgup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+)#end
+
+#skl
+if(spot==84) then(
+
+	set variable(text2, doskl + sklup)
+
+	tb(firsttextbox+4)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( check tag(513)==false ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				set tag(513,1)
+				statget(6,sklup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+)#end
+
+#evd
+if(spot==85) then(
+
+	set variable(text2, doevd + evdup)
+
+	tb(firsttextbox+5)
+	wait(1)
+
+	#check if want to train
+	if(check tag(258)) then(
+
+		#check cap
+		if( check tag(514)==false ) then(
+
+			#pay money
+			if(paymoney(text1)) then(
+
+				set tag(514,1)
+				statget(7,evdup)
+				set variable(scheck,true)
+				set variable(hm,0)#end loop
+
+			)#end pay money
+			else(tb(6510))#don't have enough money
+
+		)#end check cap
+		else(tb(firsttextbox+6))#all heroes are over cap
+
+	)#end check if want to train
+	wait(1)
+)#end
+
+if(spot==86) then(
+	wait(3)
+	set tag(258,0)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+end
+###
+
+######################################
+script, statcapcheck, stat, cap, begin
+#change of plans
+#it only checks dogero's stats
+#dogero defines the caps, since other party members' stats are based off of his
+
+if(stat==2) then(
+	if(dostr << cap) then(return(true))
+	else(return(false))
+)
+if(stat==3) then(
+	if(doacc << cap) then(return(true))
+	else(return(false))
+)
+if(stat==4) then(
+	if(dodef << cap) then(return(true))
+	else(return(false))
+)
+if(stat==5) then(
+	if(doddg << cap) then(return(true))
+	else(return(false))
+)
+if(stat==6) then(
+	if(doskl << cap) then(return(true))
+	else(return(false))
+)
+if(stat==7) then(
+	if(doevd << cap) then(return(true))
+	else(return(false))
+)
+
+#variable(dook)
+#variable(miok)
+#variable(jook)
+#variable(pyok)
+
+#if( get hero stat(find hero(0),stat,maximumstat) << cap ) then( set variable(dook,true) )
+#else(set variable(dook,false))
+
+#if( rank in caterpillar(1) <> -1 ) then(
+#	if( get hero stat(find hero(1),stat,maximumstat) << cap ) then( set variable(miok,true) )
+#	else(set variable(miok,false))
+#)
+#else(set variable(miok,false))
+
+#if( rank in caterpillar(2) <> -1 ) then(
+#	if( get hero stat(find hero(2),stat,maximumstat) << cap ) then( set variable(jook,true) )
+#	else(set variable(jook,false))
+#)
+#else(set variable(jook,false))
+
+#if( rank in caterpillar(3) <> -1 ) then(
+#	if( get hero stat(find hero(3),stat,maximumstat) << cap ) then( set variable(pyok,true) )
+#	else(set variable(pyok,false))
+#)
+#else(set variable(pyok,false))
+
+#final check
+#if( dook,or,miok,or,jook,or,pyok ) then( return(true) )
+#else( return(false) )
+
+end
+###
+
+################################
+script, statget, sss, sup, begin
+
+#str
+if(sss==2) then( statgetstr(sup) )
+#acc
+if(sss==3) then( statgetacc(sup) )
+#def
+if(sss==4) then( statgetdef(sup) )
+#ddg
+if(sss==5) then( statgetddg(sup) )
+#skl
+if(sss==6) then( statgetskl(sup) )
+#evd
+if(sss==7) then( statgetevd(sup) )
+
+
+#remember to check if a stat is less than 1, to set it to 1
+variable(j)
+for(j,2,7,1) do(
+	if (get hero stat(find hero(0),j,current stat) << 1)
+	then(set hero stat(find hero(0),j,1,currentstat))
+	if(check tag(45)) then(
+		if (get hero stat(find hero(1),j,current stat) << 1)
+		then(set hero stat(find hero(1),j,1,currentstat))
+	)
+	if(check tag(46)) then(
+		if (get hero stat(find hero(2),j,current stat) << 1)
+		then(set hero stat(find hero(2),j,1,currentstat))
+	)
+	if(check tag(47)) then(
+		if (get hero stat(find hero(3),j,current stat) << 1)
+		then(set hero stat(find hero(3),j,1,currentstat))
+	)
+)
+end
+###
+
+##############################
+script, statgetstr, sup, begin
+#	variable(adjust)
+#	set variable(adjust,get hero stat(find hero(0),2,maximumstat)--dostr)
+	set variable(dostr,dostr+sup)
+#	set hero stat(find hero(0),2,dostr+adjust,maximumstat)
+	set hero stat(find hero(0),2,get hero stat(find hero(0),2,currentstat)--sup,currentstat)
+	set hero stat(find hero(0),2,get hero stat(find hero(0),2,currentstat),maximumstat)
+	if( rank in caterpillar(1) <> -1 ) then(
+#		set variable(adjust,get hero stat(find hero(1),2,maximumstat)--mistr)
+		set variable(mistr,mistr+sup)
+#		set hero stat(find hero(1),2,mistr+adjust,maximumstat)
+		set hero stat(find hero(1),2,get hero stat(find hero(1),2,currentstat)--sup,currentstat)
+		set hero stat(find hero(1),2,get hero stat(find hero(1),2,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(2) <> -1 ) then(
+#		set variable(adjust,get hero stat(find hero(2),2,maximumstat)--jostr)
+		set variable(jostr,jostr+sup)
+#		set hero stat(find hero(2),2,jostr+adjust,maximumstat)
+		set hero stat(find hero(2),2,get hero stat(find hero(2),2,currentstat)--sup,currentstat)
+		set hero stat(find hero(2),2,get hero stat(find hero(2),2,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(3) <> -1 ) then(
+#		set variable(adjust,get hero stat(find hero(3),2,maximumstat)--pystr)
+		set variable(pystr,pystr+sup)
+#		set hero stat(find hero(3),2,pystr+adjust,maximumstat)
+		set hero stat(find hero(3),2,get hero stat(find hero(3),2,currentstat)--sup,currentstat)
+		set hero stat(find hero(3),2,get hero stat(find hero(3),2,currentstat),maximumstat)
+	)
+end
+###
+##############################
+script, statgetacc, sup, begin
+	set variable(doacc,doacc+sup)
+	set hero stat(find hero(0),3,get hero stat(find hero(0),3,currentstat)--sup,currentstat)
+	set hero stat(find hero(0),3,get hero stat(find hero(0),3,currentstat),maximumstat)
+	if( rank in caterpillar(1) <> -1 ) then(
+		set variable(miacc,miacc+sup)
+		set hero stat(find hero(1),3,get hero stat(find hero(1),3,currentstat)--sup,currentstat)
+		set hero stat(find hero(1),3,get hero stat(find hero(1),3,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(2) <> -1 ) then(
+		set variable(joacc,joacc+sup)
+		set hero stat(find hero(2),3,get hero stat(find hero(2),3,currentstat)--sup,currentstat)
+		set hero stat(find hero(2),3,get hero stat(find hero(2),3,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(3) <> -1 ) then(
+		set variable(pyacc,pyacc+sup)
+		set hero stat(find hero(3),3,get hero stat(find hero(3),3,currentstat)--sup,currentstat)
+		set hero stat(find hero(3),3,get hero stat(find hero(3),3,currentstat),maximumstat)
+	)
+end
+###
+##############################
+script, statgetdef, sup, begin
+	set variable(dodef,dodef+sup)
+	set hero stat(find hero(0),4,get hero stat(find hero(0),4,currentstat)--sup,currentstat)
+	set hero stat(find hero(0),4,get hero stat(find hero(0),4,currentstat),maximumstat)
+	if( rank in caterpillar(1) <> -1 ) then(
+		set variable(midef,midef+sup)
+		set hero stat(find hero(1),4,get hero stat(find hero(1),4,currentstat)--sup,currentstat)
+		set hero stat(find hero(1),4,get hero stat(find hero(1),4,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(2) <> -1 ) then(
+		set variable(jodef,jodef+sup)
+		set hero stat(find hero(2),4,get hero stat(find hero(2),4,currentstat)--sup,currentstat)
+		set hero stat(find hero(2),4,get hero stat(find hero(2),4,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(3) <> -1 ) then(
+		set variable(pydef,pydef+sup)
+		set hero stat(find hero(3),4,get hero stat(find hero(3),4,currentstat)--sup,currentstat)
+		set hero stat(find hero(3),4,get hero stat(find hero(3),4,currentstat),maximumstat)
+	)
+end
+###
+##############################
+script, statgetddg, sup, begin
+	set variable(doddg,doddg+sup)
+	set hero stat(find hero(0),5,get hero stat(find hero(0),5,currentstat)--sup,currentstat)
+	set hero stat(find hero(0),5,get hero stat(find hero(0),5,currentstat),maximumstat)
+	if( rank in caterpillar(1) <> -1 ) then(
+		set variable(middg,middg+sup)
+		set hero stat(find hero(1),5,get hero stat(find hero(1),5,currentstat)--sup,currentstat)
+		set hero stat(find hero(1),5,get hero stat(find hero(1),5,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(2) <> -1 ) then(
+		set variable(joddg,joddg+sup)
+		set hero stat(find hero(2),5,get hero stat(find hero(2),5,currentstat)--sup,currentstat)
+		set hero stat(find hero(2),5,get hero stat(find hero(2),5,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(3) <> -1 ) then(
+		set variable(pyddg,pyddg+sup)
+		set hero stat(find hero(3),5,get hero stat(find hero(3),5,currentstat)--sup,currentstat)
+		set hero stat(find hero(3),5,get hero stat(find hero(3),5,currentstat),maximumstat)
+	)
+end
+###
+##############################
+script, statgetskl, sup, begin
+	set variable(doskl,doskl+sup)
+	set hero stat(find hero(0),6,get hero stat(find hero(0),6,currentstat)--sup,currentstat)
+	set hero stat(find hero(0),6,get hero stat(find hero(0),6,currentstat),maximumstat)
+	if( rank in caterpillar(1) <> -1 ) then(
+		set variable(miskl,miskl+sup)
+		set hero stat(find hero(1),6,get hero stat(find hero(1),6,currentstat)--sup,currentstat)
+		set hero stat(find hero(1),6,get hero stat(find hero(1),6,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(2) <> -1 ) then(
+		set variable(joskl,joskl+sup)
+		set hero stat(find hero(2),6,get hero stat(find hero(2),6,currentstat)--sup,currentstat)
+		set hero stat(find hero(2),6,get hero stat(find hero(2),6,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(3) <> -1 ) then(
+		set variable(pyskl,pyskl+sup)
+		set hero stat(find hero(3),6,get hero stat(find hero(3),6,currentstat)--sup,currentstat)
+		set hero stat(find hero(3),6,get hero stat(find hero(3),6,currentstat),maximumstat)
+	)
+end
+###
+##############################
+script, statgetevd, sup, begin
+	set variable(doevd,doevd+sup)
+	set hero stat(find hero(0),7,get hero stat(find hero(0),7,currentstat)--sup,currentstat)
+	set hero stat(find hero(0),7,get hero stat(find hero(0),7,currentstat),maximumstat)
+	if( rank in caterpillar(1) <> -1 ) then(
+		set variable(mievd,mievd+sup)
+		set hero stat(find hero(1),7,get hero stat(find hero(1),7,currentstat)--sup,currentstat)
+		set hero stat(find hero(1),7,get hero stat(find hero(1),7,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(2) <> -1 ) then(
+		set variable(joevd,joevd+sup)
+		set hero stat(find hero(2),7,get hero stat(find hero(2),7,currentstat)--sup,currentstat)
+		set hero stat(find hero(2),7,get hero stat(find hero(2),7,currentstat),maximumstat)
+	)
+	if( rank in caterpillar(3) <> -1 ) then(
+		set variable(pyevd,pyevd+sup)
+		set hero stat(find hero(3),7,get hero stat(find hero(3),7,currentstat)--sup,currentstat)
+		set hero stat(find hero(3),7,get hero stat(find hero(3),7,currentstat),maximumstat)
+	)
+end
+###
+
+###################
+script, avis, begin
+suspend player
+suspend npcs
+suspend obstruction
+suspend npc walls
+
+#check if can use avis on current map
+if(current map==1,or,current map==2,or,current map==3,or,current map==4,or,current map==9,or,current map==10,or,current map==11,or,current map==12,or,current map==14,or,current map==15,or,current map==16,or,current map==17,or,current map==24,or,current map==25,or,current map==26,or,current map==27,or,current map==28,or,current map==29,or,current map==30,or,current map==31,or,current map==37,or,current map==38,or,current map==39,or,current map==40,or,current map==45,or,current map==46,or,current map==47,or,current map==48,or,current map==53,or,current map==54,or,current map==55,or,current map==56,or,current map==58,or,current map==59,or,current map==60,or,current map==61,or,current map==73,or,current map==74,or,current map==75,or,current map==76,or,current map==81,or,current map==82,or,current map==83,or,current map==84) then(
+
+	#also check if avis is turned off, (tag 280==on, if so)
+	if(check tag(280)==false) then(
+
+		variable( Aspot )
+
+		set variable( Aspot, avisloop )
+
+		if( scheck ) then( avisgo(Aspot) )
+
+	)
+
+	#avis disabled
+	else(
+		jig gahn
+		tb(6640)
+	)
+
+)
+#map doesn't allow use of avis
+else(tb(6641))
+
+resume npc walls
+resume obstruction
+resume npcs
+resume player
+end
+###
+
+#######################
+script, avisloop, begin
+palout(1)
+show backdrop(0)
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(98)
+
+wait(10)
+
+variable (spot)
+variable (topmost)
+set variable(topmost,80)
+
+if(check tag(262)==false) then(
+	set variable(topmost,81)
+	if(check tag(263)==false) then(
+		set variable(topmost,82)
+		if(check tag(264)==false) then(
+			set variable(topmost,83)
+			if(check tag(265)==false) then(
+				set variable(topmost,84)
+				if(check tag(266)==false) then(
+
+					#if you get here, you don't have any avis!
+
+				)
+				else(set variable(spot,84))#Rorc
+			)
+			else(set variable(spot,83))#Cyport
+		)
+		else(set variable(spot,82))#Keltan
+	)
+	else(set variable(spot,81))#adlez
+)
+else(set variable(spot,80))#fralin
+
+show backdrop(99)
+
+avis pal refresh
+set avis color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+avis pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>topmost )
+	then(
+	set variable(spot,avisdis(spot,up))
+	avis pal refresh
+	set avis color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>86 )
+	then(
+	set variable(spot,avisdis(spot,down))
+	avis pal refresh
+	set avis color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>topmost )
+	then(
+	set variable(spot,avisdis(spot,up))
+	avis pal refresh
+	set avis color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>86 )
+	then(
+	set variable(spot,avisdis(spot,down))
+	avis pal refresh
+	set avis color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	avis pal refresh
+	set maps
+	if(spot<>85,and,spot<>86) then(
+		set variable(avishx,herox(0))
+		set variable(avishy,heroy(0))
+		set variable(avishmap,noonmap)
+		set variable(scheck,true)
+	)
+	if(spot==85) then(set variable(scheck,true))
+	set variable(hm,0)
+	wait(1)
+#	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	avis pal refresh
+	set variable(hm,0)
+)
+
+#show value(spot)
+
+wait(1)
+end
+
+show backdrop(98)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+
+return(spot)
+
+end
+###
+
+################################
+script, avispalrefresh, begin
+variable(i)
+
+for(i,80,86,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,102,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+
+if( check tag(262)==false ) then(
+	write color (80,0,read color(34,0))
+	write color (80,1,read color(34,1))
+	write color (80,2,read color(34,2)))
+if( check tag(263)==false ) then(
+	write color (81,0,read color(34,0))
+	write color (81,1,read color(34,1))
+	write color (81,2,read color(34,2)))
+if( check tag(264)==false ) then(
+	write color (82,0,read color(34,0))
+	write color (82,1,read color(34,1))
+	write color (82,2,read color(34,2)))
+if( check tag(265)==false ) then(
+	write color (83,0,read color(34,0))
+	write color (83,1,read color(34,1))
+	write color (83,2,read color(34,2)))
+if( check tag(266)==false ) then(
+	write color (84,0,read color(34,0))
+	write color (84,1,read color(34,1))
+	write color (84,2,read color(34,2)))
+if( avishmap==0 ) then(
+	write color (85,0,read color(34,0))
+	write color (85,1,read color(34,1))
+	write color (85,2,read color(34,2)))
+end
+###
+
+#################################
+script, setaviscolor, spot, begin
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+end
+###
+
+#################################
+script, avisdis, spot, dir, begin
+
+if(dir==up) then(
+	if(spot==81) then(return(80))
+	if(spot==82) then(
+		if(check tag(263)) then(return(81))
+		else(return(80))
+	)
+	if(spot==83) then(
+		if(check tag(264)) then(return(82))
+		else(
+			if(check tag(263)) then(return(81))
+			else(return(80))
+		)
+	)
+	if(spot==84) then(
+		if(check tag(265)) then(return(83))
+		else(
+			if(check tag(264)) then(return(82))
+			else(
+				if(check tag(263)) then(return(81))
+				else(return(80))
+			)
+		)
+	)
+	if(spot==85) then(
+		if(check tag(266)) then(return(84))
+		else(
+			if(check tag(265)) then(return(83))
+			else(
+				if(check tag(264)) then(return(82))
+				else(
+					if(check tag(263)) then(return(81))
+					else(return(80))
+				)
+			)
+		)
+	)
+	if(spot==86) then(
+		if(avishmap<>0) then(return(85))
+		else(
+			if(check tag(266)) then(return(84))
+			else(
+				if(check tag(265)) then(return(83))
+				else(
+					if(check tag(264)) then(return(82))
+					else(
+						if(check tag(263)) then(return(81))
+						else(return(80))
+					)
+				)
+			)
+		)
+	)
+)
+
+if(dir==down) then(
+	if(spot==80) then(
+		if(check tag(263)) then(return(81))
+		else(
+			if(check tag(264)) then(return(82))
+			else(
+				if(check tag(265)) then(return(83))
+				else(
+					if(check tag(266)) then(return(84))
+					else(
+						if(avishmap<>0) then(return(85))
+						else(return(86))
+					)
+				)
+			)
+		)
+	)
+	if(spot==81) then(
+		if(check tag(264)) then(return(82))
+		else(
+			if(check tag(265)) then(return(83))
+			else(
+				if(check tag(266)) then(return(84))
+				else(
+					if(avishmap<>0) then(return(85))
+					else(return(86))
+				)
+			)
+		)
+	)
+	if(spot==82) then(
+		if(check tag(265)) then(return(83))
+		else(
+			if(check tag(266)) then(return(84))
+			else(
+				if(avishmap<>0) then(return(85))
+				else(return(86))
+			)
+		)
+	)
+	if(spot==83) then(
+		if(check tag(266)) then(return(84))
+		else(
+			if(avishmap<>0) then(return(85))
+			else(return(86))
+		)
+	)
+	if(spot==84) then(
+		if(avishmap<>0) then(return(85))
+		else(return(86))
+	)
+	if(spot==85) then(return(86))
+)
+
+end
+###
+
+###########################
+script, avisgo, spot, begin
+set variable(scheck,false)
+
+wait(2)
+
+suspend hero walls
+
+if(spot==85) then( avissplicereturn )
+else( avissplicego(spot) )
+
+resume hero walls
+
+end
+###
+
+###############################
+script, avissplicereturn, begin
+	variable(avispal)
+	if(avisbird==427) then(set variable(avispal,201))
+	if(avisbird==418) then(set variable(avispal,189))
+	if(avisbird==424) then(set variable(avispal,9))
+	if(avisbird==421) then(set variable(avispal,213))
+	if(avisbird==433) then(set variable(avispal,33))
+
+	palout(2)
+
+set party out
+swap by position(find hero(0),0)
+
+variable(hpic1)
+variable(hpal1)
+variable(hpic2)
+variable(hpal2)
+variable(hpic3)
+variable(hpal3)
+
+if(check tag(45)) then(
+	swap by position(find hero(1),1)
+	set variable(hpal1,get hero palette(find hero(1)))
+	set variable(hpic1,get hero picture(find hero(1)))
+	set hero picture(find hero(1),0)
+)
+else(
+	set tag(713,1)
+	add hero(16)
+)
+if(check tag(46)) then(
+	swap by position(find hero(2),2)
+	set variable(hpal2,get hero palette(find hero(2)))
+	set variable(hpic2,get hero picture(find hero(2)))
+	set hero picture(find hero(2),0)
+)
+else(
+	set tag(714,1)
+	add hero(17)
+)
+if(check tag(47)) then(
+	swap by position(find hero(3),3)
+	set variable(hpal3,get hero palette(find hero(3)))
+	set variable(hpic3,get hero picture(find hero(3)))
+	set hero picture(find hero(3),0)
+)
+else(
+	set tag(715,1)
+	add hero(18)
+)
+
+set caterpillar mode(ON)
+suspend caterpillar
+
+	camera follows hero(0)
+	teleport to map(avishmap+poff,avishx,avishy)
+	suspend npcs
+	wait(1)
+
+	variable(hpic)
+	set variable(hpic,get hero picture(0))
+	set hero picture(0,0)
+
+	set hero picture(1,avisbird+1)
+	set hero picture(2,avisbird+1)
+	set hero picture(3,avisbird+1)
+	set hero palette(1,avispal+poff)
+	set hero palette(2,avispal+poff)
+	set hero palette(3,avispal+poff)
+	set hero speed(1,10)
+	set hero speed(2,10)
+	set hero speed(3,10)
+	set hero position(1,avishx,avishy--6)
+	set hero position(2,avishx--1,avishy--6)
+	set hero position(3,avishx+1,avishy--6)
+	set hero frame(1,0)
+	set hero frame(2,0)
+	set hero frame(3,0)
+
+	#let's see if this works
+	#saving pass blocks, so no overhead for avis
+	suspend overlay
+	suspend hero walls
+
+	wait(15)
+	palin(2)
+
+	walk hero(1,down,4)
+	walk hero(2,down,4)
+	walk hero(3,down,4)
+	set hero direction(2,left)
+	set hero direction(3,right)
+	wait for hero(3)
+	set hero speed(1,2)
+	set hero speed(2,2)
+	set hero speed(3,2)
+	set hero picture(1,avisbird)
+	set hero picture(2,avisbird)
+	set hero picture(3,avisbird)
+	walk hero(1,down,2)
+	walk hero(2,down,2)
+	walk hero(3,down,2)
+	set hero direction(1,up)
+	set hero direction(2,left)
+	set hero direction(3,right)
+	set hero picture(0,71)
+	wait for hero(3)
+	set hero position(1,0,0)
+	set hero position(2,0,0)
+	set hero position(3,0,0)
+	set hero picture(0,hpic)
+	set hero direction(0,down)
+	set hero frame(0,0)
+	camera follows hero(0)
+
+resume caterpillar
+set caterpillar mode(OFF)
+
+if(check tag(713)) then(
+	delete hero(16)
+	set tag(713,0)
+)
+else(
+	set hero picture(find hero(1),hpic1)
+	set hero palette(find hero(1),hpal1)
+)
+if(check tag(714)) then(
+	delete hero(17)
+	set tag(714,0)
+)
+else(
+	set hero picture(find hero(2),hpic2)
+	set hero palette(find hero(2),hpal2)
+)
+if(check tag(715)) then(
+	delete hero(18)
+	set tag(715,0)
+)
+else(
+	set hero picture(find hero(3),hpic3)
+	set hero palette(find hero(3),hpal3)
+)
+
+set party in
+
+	set hero speed(1,4)
+	set hero speed(2,4)
+	set hero speed(3,4)
+	wait(1)
+
+	set variable(avishx,0)
+	set variable(avishy,0)
+	set variable(avishmap,0)
+	set variable(avisbird,0)
+
+	#setting pass blocks back
+	resume hero walls
+	resume overlay
+end
+###
+
+#################################
+script, avissplicego, spot, begin
+	variable(birdgfx)
+	variable(birdpal)
+	variable(desx)
+	variable(desy)
+	variable(desmap)
+	variable(hpic)
+
+	if(spot==80) then(
+		set variable(birdgfx,427)
+		set variable(birdpal,201+poff)
+		set variable(desx,93)
+		set variable(desy,61)
+		set variable(desmap,1+poff)
+		set variable(avisbird,427)
+	)
+	if(spot==81) then(
+		set variable(birdgfx,418)
+		set variable(birdpal,189+poff)
+		set variable(desx,102)
+		set variable(desy,58)
+		set variable(desmap,14+poff)
+		set variable(avisbird,418)
+	)
+	if(spot==82) then(
+		set variable(birdgfx,424)
+		set variable(birdpal,9+poff)
+		set variable(desx,10)
+		set variable(desy,20)
+		set variable(desmap,28+poff)
+		set variable(avisbird,424)
+	)
+	if(spot==83) then(
+		set variable(birdgfx,421)
+		set variable(birdpal,213+poff)
+		set variable(desx,55)
+		set variable(desy,74)
+		set variable(desmap,45+poff)
+		set variable(avisbird,421)
+	)
+	if(spot==84) then(
+		set variable(birdgfx,433)
+		set variable(birdpal,33+poff)
+		set variable(desx,137)
+		set variable(desy,41)
+		set variable(desmap,73+poff)
+		set variable(avisbird,433)
+	)
+
+	palout(2)
+
+set party out
+swap by position(find hero(0),0)
+
+variable(hpic1)
+variable(hpal1)
+variable(hpic2)
+variable(hpal2)
+variable(hpic3)
+variable(hpal3)
+
+if(check tag(45)) then(
+	swap by position(find hero(1),1)
+	set variable(hpal1,get hero palette(find hero(1)))
+	set variable(hpic1,get hero picture(find hero(1)))
+	set hero picture(find hero(1),0)
+)
+else(
+	set tag(713,1)
+	add hero(16)
+)
+if(check tag(46)) then(
+	swap by position(find hero(2),2)
+	set variable(hpal2,get hero palette(find hero(2)))
+	set variable(hpic2,get hero picture(find hero(2)))
+	set hero picture(find hero(2),0)
+)
+else(
+	set tag(714,1)
+	add hero(17)
+)
+if(check tag(47)) then(
+	swap by position(find hero(3),3)
+	set variable(hpal3,get hero palette(find hero(3)))
+	set variable(hpic3,get hero picture(find hero(3)))
+	set hero picture(find hero(3),0)
+)
+else(
+	set tag(715,1)
+	add hero(18)
+)
+
+set caterpillar mode(ON)
+suspend caterpillar
+
+	set hero picture(1,birdgfx)
+	set hero picture(2,birdgfx)
+	set hero picture(3,birdgfx)
+	set hero palette(1,birdpal)
+	set hero palette(2,birdpal)
+	set hero palette(3,birdpal)
+
+	camera follows hero(0)
+	teleport to map(desmap,desx,desy)
+	suspend npcs
+	wait(1)
+
+	set variable(hpic,get hero picture(0))
+	set hero picture(0,0)
+
+	set hero picture(1,birdgfx+1)
+	set hero picture(2,birdgfx+1)
+	set hero picture(3,birdgfx+1)
+	set hero palette(1,birdpal)
+	set hero palette(2,birdpal)
+	set hero palette(3,birdpal)
+	set hero speed(1,10)
+	set hero speed(2,10)
+	set hero speed(3,10)
+	set hero position(1,desx,desy--6)
+	set hero position(2,desx--1,desy--6)
+	set hero position(3,desx+1,desy--6)
+	set hero frame(1,0)
+	set hero frame(2,0)
+	set hero frame(3,0)
+	wait(15)
+	palin(2)
+
+	walk hero(1,down,4)
+	walk hero(2,down,4)
+	walk hero(3,down,4)
+	set hero direction(2,left)
+	set hero direction(3,right)
+	wait for hero(3)
+	set hero speed(1,2)
+	set hero speed(2,2)
+	set hero speed(3,2)
+	set hero picture(1,birdgfx)
+	set hero picture(2,birdgfx)
+	set hero picture(3,birdgfx)
+	walk hero(1,down,2)
+	walk hero(2,down,2)
+	walk hero(3,down,2)
+	set hero direction(1,up)
+	set hero direction(2,left)
+	set hero direction(3,right)
+	set hero picture(0,71)
+	wait for hero(3)
+	set hero position(1,0,0)
+	set hero position(2,0,0)
+	set hero position(3,0,0)
+	set hero picture(0,hpic)
+	set hero direction(0,down)
+	set hero frame(0,0)
+	camera follows hero(0)
+
+resume caterpillar
+set caterpillar mode(OFF)
+
+if(check tag(713)) then(
+	delete hero(16)
+	set tag(713,0)
+)
+else(
+	set hero picture(find hero(1),hpic1)
+	set hero palette(find hero(1),hpal1)
+)
+if(check tag(714)) then(
+	delete hero(17)
+	set tag(714,0)
+)
+else(
+	set hero picture(find hero(2),hpic2)
+	set hero palette(find hero(2),hpal2)
+)
+if(check tag(715)) then(
+	delete hero(18)
+	set tag(715,0)
+)
+else(
+	set hero picture(find hero(3),hpic3)
+	set hero palette(find hero(3),hpal3)
+)
+
+set party in
+
+	set hero speed(1,4)
+	set hero speed(2,4)
+	set hero speed(3,4)
+	wait(1)
+end
+###
+
+###############################################
+script, trader, firsttextbox, sellamount, begin
+palout(1)
+show backdrop(0)
+
+#initialize the prices
+if(hpprice==0) then(
+set variable(hpprice,2)
+set variable(spprice,2)
+set variable(strprice,2)
+set variable(accprice,2)
+set variable(defprice,2)
+set variable(ddgprice,2)
+set variable(sklprice,2)
+set variable(evdprice,2)
+)
+
+wait(1)
+palin(1)
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(100)
+wait(10)
+show backdrop(101)
+
+variable (spot)
+set variable (spot,80)
+
+item pal refresh
+set item color(spot)
+update palette
+
+wait(2)
+
+set variable(flash,0)
+
+set variable(hm, 1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	trader pal refresh
+	set trader color(spot)
+	update palette	
+	wait(2)
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>88 )
+	then(
+	set variable(spot,spot+1)
+	trader pal refresh
+	set trader color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	trader pal refresh
+	set trader color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>88 )
+	then(
+	set variable(spot,spot+1)
+	trader pal refresh
+	set trader color(spot)
+	update palette
+	wait(2)
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	trader pal refresh
+	if(spot==88) then(
+		set tag(258,0)
+		wait(1)
+		tb(6508)
+		if(check tag(258)) then(set variable(hm,0))
+	)
+	else(
+	traderbuysell(spot,firsttextbox,sellamount)
+	)
+	wait(1)
+	reset palette
+
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	trader pal refresh
+	set tag(258,0)
+	wait(2)
+	tb(6508)
+	if(check tag(258)) then(set variable(hm,0))
+)
+
+
+trader pal refresh
+
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(100)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+palout(1)
+show map
+wait(1)
+palin(1)
+end
+###
+
+###############################
+script, traderpalrefresh, begin
+variable(i)
+
+for(i,80,88,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,104,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+###################################
+script, settradercolor, spot, begin
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+end
+###
+
+############################################################
+script, traderbuysell, spot, firsttextbox, sellamount, begin
+set tag(258,0)
+
+#ask if buy or sell
+#258 is buy, off is sell
+tb(6619)
+wait(2)
+
+set variable(seemoney,playermoney)
+
+#visnus
+if(spot==80) then(
+	set variable(text2,HP)
+	#chose to buy
+	if(check tag(258)) then(
+		set variable(text1,hpprice*sellamount)
+		if(pay money(text1)) then(
+			set tag(258,0)
+			tb(firsttextbox)
+			wait(2)
+			if(check tag(258)) then(
+				tb(6636)
+				set variable(hp,hp+sellamount)
+				set variable(hpprice,hpprice+1)
+			)
+			#get money back if don't buy
+			else(	get money(text1))
+		)
+		#don't have enough money
+		else(tb(6510))
+	)
+	#chose to sell
+	else(
+		if(hp >= sellamount) then(
+			set tag(258,0)
+			tb(firsttextbox+1)
+			wait(2)
+			if(check tag(258)) then(
+				set variable(hp,hp--sellamount)
+				get money(sellamount)
+				tb(6636)
+				if(hpprice >> 2) then(set variable(hpprice,hpprice--1))
+			)
+		)
+		#don't have enough anima
+		else(tb(6511))
+	)
+)
+#navita
+if(spot==81) then(
+	set variable(text2,SP)
+	#chose to buy
+	if(check tag(258)) then(
+		set variable(text1,spprice*sellamount)
+		if(pay money(text1)) then(
+			set tag(258,0)
+			tb(firsttextbox+2)
+			wait(2)
+			if(check tag(258)) then(
+				tb(6636)
+				set variable(sp,sp+sellamount)
+				set variable(spprice,spprice+1)
+			)
+			#get money back if don't buy
+			else(	get money(text1))
+		)
+		#don't have enough money
+		else(tb(6510))
+	)
+	#chose to sell
+	else(
+		if(sp >= sellamount) then(
+			set tag(258,0)
+			tb(firsttextbox+3)
+			wait(2)
+			if(check tag(258)) then(
+				set variable(sp,sp--sellamount)
+				get money(sellamount)
+				tb(6636)
+				if(spprice >> 2) then(set variable(spprice,spprice--1))
+			)
+		)
+		#don't have enough anima
+		else(tb(6511))
+	)
+)
+#rumboro
+if(spot==82) then(
+	set variable(text2,Str)
+	#chose to buy
+	if(check tag(258)) then(
+		set variable(text1,strprice*sellamount)
+		if(pay money(text1)) then(
+			set tag(258,0)
+			tb(firsttextbox+4)
+			wait(2)
+			if(check tag(258)) then(
+				tb(6636)
+				set variable(str,str+sellamount)
+				set variable(strprice,strprice+1)
+			)
+			#get money back if don't buy
+			else(	get money(text1))
+		)
+		#don't have enough money
+		else(tb(6510))
+	)
+	#chose to sell
+	else(
+		if(str >= sellamount) then(
+			set tag(258,0)
+			tb(firsttextbox+5)
+			wait(2)
+			if(check tag(258)) then(
+				set variable(str,str--sellamount)
+				get money(sellamount)
+				tb(6636)
+				if(strprice >> 2) then(set variable(strprice,strprice--1))
+			)
+		)
+		#don't have enough anima
+		else(tb(6511))
+	)
+)
+#calx
+if(spot==83) then(
+	set variable(text2,Acc)
+	#chose to buy
+	if(check tag(258)) then(
+		set variable(text1,accprice*sellamount)
+		if(pay money(text1)) then(
+			set tag(258,0)
+			tb(firsttextbox+6)
+			wait(2)
+			if(check tag(258)) then(
+				tb(6636)
+				set variable(acc,acc+sellamount)
+				set variable(accprice,accprice+1)
+			)
+			#get money back if don't buy
+			else(	get money(text1))
+		)
+		#don't have enough money
+		else(tb(6510))
+	)
+	#chose to sell
+	else(
+		if(acc >= sellamount) then(
+			set tag(258,0)
+			tb(firsttextbox+7)
+			wait(2)
+			if(check tag(258)) then(
+				set variable(acc,acc--sellamount)
+				get money(sellamount)
+				tb(6636)
+				if(accprice >> 2) then(set variable(accprice,accprice--1))
+			)
+		)
+		#don't have enough anima
+		else(tb(6511))
+	)
+)
+#durnus
+if(spot==84) then(
+	set variable(text2,Def)
+	#chose to buy
+	if(check tag(258)) then(
+		set variable(text1,defprice*sellamount)
+		if(pay money(text1)) then(
+			set tag(258,0)
+			tb(firsttextbox+8)
+			wait(2)
+			if(check tag(258)) then(
+				tb(6636)
+				set variable(def,def+sellamount)
+				set variable(defprice,defprice+1)
+			)
+			#get money back if don't buy
+			else(	get money(text1))
+		)
+		#don't have enough money
+		else(tb(6510))
+	)
+	#chose to sell
+	else(
+		if(def >= sellamount) then(
+			set tag(258,0)
+			tb(firsttextbox+9)
+			wait(2)
+			if(check tag(258)) then(
+				set variable(def,def--sellamount)
+				get money(sellamount)
+				tb(6636)
+				if(defprice >> 2) then(set variable(defprice,defprice--1))
+			)
+		)
+		#don't have enough anima
+		else(tb(6511))
+	)
+)
+#desidero
+if(spot==85) then(
+	set variable(text2,Ddg)
+	#chose to buy
+	if(check tag(258)) then(
+		set variable(text1,ddgprice*sellamount)
+		if(pay money(text1)) then(
+			set tag(258,0)
+			tb(firsttextbox+10)
+			wait(2)
+			if(check tag(258)) then(
+				tb(6636)
+				set variable(ddg,ddg+sellamount)
+				set variable(ddgprice,ddgprice+1)
+			)
+			#get money back if don't buy
+			else(	get money(text1))
+		)
+		#don't have enough money
+		else(tb(6510))
+	)
+	#chose to sell
+	else(
+		if(ddg >= sellamount) then(
+			set tag(258,0)
+			tb(firsttextbox+11)
+			wait(2)
+			if(check tag(258)) then(
+				set variable(ddg,ddg--sellamount)
+				get money(sellamount)
+				tb(6636)
+				if(ddgprice >> 2) then(set variable(ddgprice,ddgprice--1))
+			)
+		)
+		#don't have enough anima
+		else(tb(6511))
+	)
+)
+#virtoro
+if(spot==86) then(
+	set variable(text2,Skl)
+	#chose to buy
+	if(check tag(258)) then(
+		set variable(text1,sklprice*sellamount)
+		if(pay money(text1)) then(
+			set tag(258,0)
+			tb(firsttextbox+12)
+			wait(2)
+			if(check tag(258)) then(
+				tb(6636)
+				set variable(skl,skl+sellamount)
+				set variable(sklprice,sklprice+1)
+			)
+			#get money back if don't buy
+			else(	get money(text1))
+		)
+		#don't have enough money
+		else(tb(6510))
+	)
+	#chose to sell
+	else(
+		if(skl >= sellamount) then(
+			set tag(258,0)
+			tb(firsttextbox+13)
+			wait(2)
+			if(check tag(258)) then(
+				set variable(skl,skl--sellamount)
+				get money(sellamount)
+				tb(6636)
+				if(sklprice >> 2) then(set variable(sklprice,sklprice--1))
+			)
+		)
+		#don't have enough anima
+		else(tb(6511))
+	)
+)
+#paro
+if(spot==87) then(
+	set variable(text2,Evd)
+	#chose to buy
+	if(check tag(258)) then(
+		set variable(text1,evdprice*sellamount)
+		if(pay money(text1)) then(
+			set tag(258,0)
+			tb(firsttextbox+14)
+			wait(2)
+			if(check tag(258)) then(
+				tb(6636)
+				set variable(evd,evd+sellamount)
+				set variable(evdprice,evdprice+1)
+			)
+			#get money back if don't buy
+			else(	get money(text1))
+		)
+		#don't have enough money
+		else(tb(6510))
+	)
+	#chose to sell
+	else(
+		if(evd >= sellamount) then(
+			set tag(258,0)
+			tb(firsttextbox+15)
+			wait(2)
+			if(check tag(258)) then(
+				set variable(evd,evd--sellamount)
+				get money(sellamount)
+				tb(6636)
+				if(evdprice >> 2) then(set variable(evdprice,evdprice--1))
+			)
+		)
+		#don't have enough anima
+		else(tb(6511))
+	)
+)
+#wait(2)
+end
+###
+
+#######################
+script, itemhunt, begin
+suspend player
+suspend npcs
+
+#no hunt maps
+#01-08 Fralin
+#13 Anon Tomb
+#14-21 Adlez
+#23 Gitleh Tomb
+#28-35 New Keltan
+#36 Fedora Tomb
+#37-56 Cyport
+#57 Unknown Tomb
+#62-65 Shoda Tomb
+#66-68 Grinlow
+#69-72 Scarf
+#77-80 Rorc
+#89 Cabin
+#91-92 Outer & Inner Shoda
+#93-94 Flashback
+#96-97 Intro Fralin
+#98 Final
+if(itemhunt1) then(
+	jig hero(0)
+	tb(7316)
+)
+else(
+	itemhunt2
+	itemhunt3
+	itemhunt4
+	itemhunt5
+	itemhunt6
+	itemhunt7
+)
+
+resume npcs
+resume player
+end
+###
+
+########################
+script, itemhunt1, begin
+if(check tag(433),or,(currentmap==1),or,(currentmap==2),or,(currentmap==3),or,(currentmap==4),or,(currentmap==5),or,(currentmap==6),or,(currentmap==7),or,(currentmap==8),or,(currentmap==13),or,(currentmap==14),or,(currentmap==15),or,(currentmap==16),or,(currentmap==17),or,(currentmap==18),or,(currentmap==19),or,(currentmap==20),or,(currentmap==21),or,(currentmap==22),or,(currentmap==23),or,(currentmap==28),or,(currentmap==29),or,(currentmap==30),or,(currentmap==31),or,(currentmap==32),or,(currentmap==33),or,(currentmap==34),or,(currentmap==35),or,(currentmap==36),or,(currentmap==37),or,(currentmap==38),or,(currentmap==39),or,(currentmap==40),or,(currentmap==41),or,(currentmap==42),or,(currentmap==43),or,(currentmap==44),or,(currentmap==45),or,(currentmap==46),or,(currentmap==47),or,(currentmap==48),or,(currentmap==49),or,(currentmap==50),or,(currentmap==51),or,(currentmap==52),or,(currentmap==53),or,(currentmap==54),or,(currentmap==55),or,(currentmap==56),or,(currentmap==57),or,(currentmap==62),or,(currentmap==63),or,(currentmap==64),or,(currentmap==65),or,(currentmap==66),or,(currentmap==67),or,(currentmap==68),or,(currentmap==69),or,(currentmap==70),or,(currentmap==71),or,(currentmap==72),or,(currentmap==77),or,(currentmap==78),or,(currentmap==79),or,(currentmap==80),or,(currentmap==89),or,(currentmap==91),or,(currentmap==92),or,(currentmap==93),or,(currentmap==94),or,(currentmap==96),or,(currentmap==97),or,(currentmap==98)) then( return(true) )
+end
+###
+########################
+script, itemhunt2, begin
+#09-12 Forest Pass
+if(currentmap==9) then(
+	battleflash
+	ff(random(36,45),1,true)
+)
+else(
+	if(currentmap==10) then(
+		battleflash
+		ff(random(46,58),1,true)
+	)
+	else(
+		if(currentmap==11) then(
+			battleflash
+			ff(random(59,69),1,true)
+		)
+		else(
+			if(currentmap==12) then(
+				battleflash
+				ff(random(70,85),1,true)
+			)
+		)
+	)
+)
+end
+###
+########################
+script, itemhunt3, begin
+#24-27 Desert of Despair
+if(currentmap==24) then(
+	battleflash
+	ff(random(172,183),2,true)
+	restingbythefire
+)
+else(
+	if(currentmap==25) then(
+		battleflash
+		ff(random(184,195),2,true)
+		restingbythefire
+	)
+	else(
+		if(currentmap==26) then(
+			battleflash
+			ff(random(196,208),2,true)
+			restingbythefire
+		)
+		else(
+			if(currentmap==27) then(
+				battleflash
+				ff(random(209,220),2,true)
+				restingbythefire
+			)
+		)
+	)
+)
+end
+###
+########################
+script, itemhunt4, begin
+#58-61 Snowfall Trail
+if(currentmap==58) then(
+	battleflash
+	ff(random(334,346),4,true)
+)
+else(
+	if(currentmap==59) then(
+		battleflash
+		ff(random(347,360),4,true)
+	)
+	else(
+		if(currentmap==60) then(
+			battleflash
+			ff(random(361,373),4,true)
+		)
+		else(
+			if(currentmap==61) then(
+				battleflash
+				ff(random(374,386),4,true)
+			)
+		)
+	)
+)
+end
+###
+########################
+script, itemhunt5, begin
+#73-76 Snowfall Mountain
+if(currentmap==73) then(
+	battleflash
+	ff(random(413,418),4,true)
+)
+else(
+	if(currentmap==74) then(
+		battleflash
+		ff(random(419,424),4,true)
+	)
+	else(
+		if(currentmap==75) then(
+			battleflash
+			ff(random(425,430),4,true)
+		)
+		else(
+			if(currentmap==76) then(
+				battleflash
+				ff(random(431,436),4,true)
+			)
+		)
+	)
+)
+end
+###
+########################
+script, itemhunt6, begin
+#81-84 Northwest of Fralin
+
+variable(ih6)
+set variable(ih6,random(1,4))
+
+if(currentmap==81) then(
+	battleflash
+	if(ih6==1) then(ff(315,1,true))
+	if(ih6==2) then(ff(319,1,true))
+	if(ih6==3) then(ff(324,1,true))
+	if(ih6==4) then(ff(327,1,true))
+)
+else(
+	if(currentmap==82) then(
+		battleflash
+		if(ih6==1) then(ff(316,1,true))
+		if(ih6==2) then(ff(320,1,true))
+		if(ih6==3) then(ff(325,1,true))
+		if(ih6==4) then(ff(328,1,true))
+	)
+	else(
+		if(currentmap==83) then(
+			battleflash
+			if(ih6==1) then(ff(317,1,true))
+			if(ih6==2) then(ff(321,1,true))
+			if(ih6==3) then(ff(323,1,true))
+			if(ih6==4) then(ff(323,1,true))
+		)
+		else(
+			if(currentmap==84) then(
+				battleflash
+				if(ih6==1) then(ff(318,1,true))
+				if(ih6==2) then(ff(322,1,true))
+				if(ih6==3) then(ff(326,1,true))
+				if(ih6==4) then(ff(329,1,true))
+			)
+		)
+	)
+)
+end
+###
+########################
+script, itemhunt7, begin
+#85-88 Ruins
+
+if(currentmap==85,or,currentmap==86,or,currentmap==87,or,currentmap==88) then(
+	variable(bibcoo)
+	set variable(bibcoo,random(1,2))
+	battleflash
+	if(bibcoo==1) then(ff(397+poff,0,true))
+	if(bibcoo==2) then(ff(401+poff,0,true))
+)
+end
+###
+
+############################################################
+script, trainfancy, nnn, firsttextbox, phasecost, dao, begin
+set variable(scheck,false)
+wait(1)
+tb(firsttextbox+7)
+wait(1)
+palout(1)
+variable(hx)
+variable(hy)
+variable(hmap)
+variable(nx)
+variable(ny)
+variable(ndir)
+set maps
+set variable(hx,herox(0))
+set variable(hy,heroy(0))
+set variable(hmap,noonmap)
+set variable(nx,npcx(nnn))
+set variable(ny,npcy(nnn))
+set variable(ndir,npcdirection(nnn))
+teleport to map(0,0,0)
+wait(1)
+set hero position(0,9,6)
+
+#if Dao, then play beach sounds
+if(dao) then(play song(17))
+
+#set me up the general use variables
+variable(picero)
+variable(palero)
+variable(reps)
+
+#choose the correct phase for maptile blocks
+variable(blockoffset)
+#noon
+if(check tag(4)) then(set variable(blockoffset,0))
+#afternoon
+if(check tag(5)) then(set variable(blockoffset,16))
+#night
+if(check tag(6)) then(set variable(blockoffset,32))
+#morning
+if(check tag(3)) then(set variable(blockoffset,48))
+
+#place npcs & generate terrain
+#fralin
+if(hmap==1) then(
+	set variable(reps,4)
+	set variable(picero,257)
+	set variable(palero,217)
+	write map block(7,6,1+blockoffset)
+	write map block(8,6,2+blockoffset)
+	write map block(9,6,2+blockoffset)
+	write map block(10,6,2+blockoffset)
+	write map block(11,6,3+blockoffset)
+)
+#adlez
+if(hmap==14) then(
+	set variable(reps,5)
+	set variable(picero,261)
+	set variable(palero,229)
+	write map block(7,6,4+blockoffset)
+	write map block(8,6,5+blockoffset)
+	write map block(9,6,5+blockoffset)
+	write map block(10,6,5+blockoffset)
+	write map block(11,6,6+blockoffset)
+)
+#keltan
+if(hmap==28) then(
+	set variable(reps,6)
+	set variable(picero,263)
+	set variable(palero,25)
+	write map block(7,6,7+blockoffset)
+	write map block(8,6,8+blockoffset)
+	write map block(9,6,8+blockoffset)
+	write map block(10,6,8+blockoffset)
+	write map block(11,6,9+blockoffset)
+)
+#cyport
+if(hmap==41) then(
+	set variable(reps,7)
+	set variable(picero,317)
+	set variable(palero,153)
+	write map block(7,6,10+blockoffset)
+	write map block(8,6,11+blockoffset)
+	write map block(9,6,11+blockoffset)
+	write map block(10,6,11+blockoffset)
+	write map block(11,6,12+blockoffset)
+)
+#rorc
+if(hmap==77) then(
+	set variable(reps,10)
+	set variable(picero,504)
+	set variable(palero,45)
+	write map block(7,6,13+blockoffset)
+	write map block(8,6,14+blockoffset)
+	write map block(9,6,14+blockoffset)
+	write map block(10,6,14+blockoffset)
+	write map block(11,6,15+blockoffset)
+)
+
+create npc(1,8,5,right)
+alter npc(1,NPCstat:picture,picero)
+alter npc(1,NPCstat:palette,palero+poff)
+
+#place hero
+#dogero
+if(check tag(19)) then(
+	set variable(picero,604)
+	set variable(palero,1)
+)
+#mi'la
+if(check tag(20)) then(
+	set variable(picero,605)
+	set variable(palero,29)
+)
+#johan
+if(check tag(21)) then(
+	set variable(picero,606)
+	set variable(palero,33)
+)
+#pyrus
+if(check tag(22)) then(
+	set variable(picero,607)
+	set variable(palero,65)
+)
+
+create npc(2,10,5)
+alter npc(2,NPCstat:picture,picero)
+alter npc(2,NPCstat:palette,palero+poff)
+create npc(3,10,4,left)
+alter npc(3,NPCstat:picture,24)
+alter npc(3,NPCstat:palette,1+poff)
+
+#random direction
+variable(randdir)
+set variable(randdir,random(1,4))
+if(randdir==1) then(set npc direction(2,up))
+if(randdir==2) then(set npc direction(2,left))
+if(randdir==3) then(set npc direction(2,down))
+if(randdir==4) then(set npc direction(2,right))
+
+palin(2)
+
+#animation time
+variable(l)
+for(l,1,reps,1) do(
+set npc frame(1,0)
+set npc frame(2,0)
+set npc frame(3,0)
+wait(4)
+set npc frame(1,1)
+set npc frame(2,1)
+set npc frame(3,1)
+wait(4)
+)
+
+set maps
+advance time of day (phasecost)
+wait(2)
+palout(2)
+wait(1)
+teleport to map(hmap+poff,hx,hy)
+if(check tag(6)==false) then(alter npc(nnn,NPCstat:movespeed,0))
+suspend player
+suspend npcs
+suspend obstruction
+resume npc walls
+if(check tag(6)==false) then(
+	set npc position(nnn,nx,ny)
+	set npc direction(nnn,ndir)
+)
+set hp
+wait(1)
+palin(5)
+wait(1)
+if(check tag(6)) then(tb(firsttextbox+9))
+	else(tb(firsttextbox+8))
+end
+###
+
+#######################
+script, innfancy, begin
+
+#making sure the right hero is used
+#in case there is no hero in slot 0
+variable(hslot)
+if(hero by slot(0) >= 0) then(set variable(hslot,0))
+else(
+	if(hero by slot(1) >= 0) then(set variable(hslot,1))
+	else(
+		if(hero by slot(2) >= 0) then(set variable(hslot,2))
+		else(set variable(hslot,3))
+	)
+)
+
+#what map are you from
+set maps
+variable(mapero)
+set variable(mapero,noonmap)
+
+teleport to map(0,0,0)
+wait(1)
+set hero position(0,9,6)
+create npc(1,9,5,left)
+alter npc(1,NPCstat:picture,47)
+alter npc(1,NPCstat:palette,1+poff)
+write pass block(9,6,128)
+write pass block(9,5,0)
+
+#make your bed
+#fralin AND adlez AND rorc
+if(mapero==5,or,mapero==18,or,mapero==77) then(
+	write map block(9,5,1+(4*16)+poff)
+	write map block(9,6,1+(5*16)+poff)
+	write map block(9,7,1+(6*16)+poff)
+)
+#keltan
+if(mapero==32) then(
+	variable(hohoho)
+	if(check tag(19)) then(set variable(hohoho,0))
+	if(check tag(20)) then(set variable(hohoho,4))
+	if(check tag(21)) then(set variable(hohoho,8))
+	if(check tag(22)) then(set variable(hohoho,12))
+	write map block(9,5,(7*16)+poff+hohoho)
+	write map block(9,6,(8*16)+poff+hohoho)
+	write map block(9,7,(9*16)+poff+hohoho)
+)
+#cyport
+if(mapero==49) then(
+	write map block(9,5,5+(4*16)+poff)
+	write map block(9,6,5+(5*16)+poff)
+	write map block(9,7,5+(6*16)+poff)
+)
+
+#lay yourself down to sleep
+variable(lalala)
+set variable(lalala,get hero picture(hslot))
+put hero(0,(9*20),(6*20)--8)
+put npc(1,(9*20),(5*20)--8)
+set hero direction(0,down)
+set hero frame(0,0)
+
+#dogero
+if(check tag(19)) then(
+	#winter clothes
+	if(check tag(174)) then(
+		set hero picture(hslot,378)
+		set hero frame(0,1)
+	)
+	else(
+		#desert clothes
+		if(check tag(123)) then(set hero picture(hslot,344))
+		#standard
+		else(set hero picture(hslot,38))
+	)
+)
+#mi'la
+if(check tag(20)) then(
+	#winter clothes
+	if(check tag(174)) then(
+		set hero picture(hslot,386)
+		set hero frame(0,1)
+	)
+	else(
+		#desert clothes
+		if(check tag(123)) then(set hero picture(hslot,345))
+		#standard
+		else(
+			set hero picture(hslot,73)
+			set hero frame(0,1)
+		)
+	)
+)
+#johan
+if(check tag(21)) then(
+	#winter clothes
+	if(check tag(174)) then(
+		set hero picture(hslot,392)
+		set hero frame(0,1)
+	)
+	else(
+		#desert clothes
+		if(check tag(123)) then(set hero picture(hslot,346))
+		#standard
+		else(set hero picture(hslot,171))
+	)
+)
+#pyrus
+if(check tag(22)) then(
+	#winter clothes
+	if(check tag(174)) then(
+		set hero picture(hslot,208)
+		set hero direction(0,up)
+	)
+	else(
+		set hero picture(hslot,208)
+		set hero direction(0,right)
+	)
+)
+
+wait(1)
+palin(1)
+
+#zzz
+variable(l)
+for(l,1,4,1) do(
+	set npc frame(1,0)
+	wait(4)
+	set npc frame(1,1)
+	wait(4)
+)
+
+advance time of day (1)
+wait(1)
+palout(1)
+set hero picture(hslot,lalala)
+set hero frame(0,0)
+
+end
+###
+
+########################
+script, restfancy, begin
+
+#making sure the right hero is used
+#in case there is no hero in slot 0
+variable(hslot)
+if(hero by slot(0) >= 0) then(set variable(hslot,0))
+else(
+	if(hero by slot(1) >= 0) then(set variable(hslot,1))
+	else(
+		if(hero by slot(2) >= 0) then(set variable(hslot,2))
+		else(set variable(hslot,3))
+	)
+)
+
+restfancy1
+
+#saving hero picture
+variable(lalala)
+set variable(lalala,get hero picture(hslot))
+
+restfancy2(hslot)
+
+set hero frame(0,0)
+
+#set sleeping hero
+#dogero
+if(check tag(19)) then( restfancy2(hslot) )
+
+#mi'la
+if(check tag(20)) then( restfancy3(hslot) )
+
+#johan
+if(check tag(21)) then( restfancy4(hslot) )
+
+#pyrus
+if(check tag(22)) then( restfancy5(hslot) )
+
+restfancy6(hslot,lalala)
+
+end
+###
+
+#########################
+script, restfancy1, begin
+camera follows hero(0)
+teleport to map(0,9,6)
+wait(1)
+
+create npc(1,9,5,left)
+alter npc(1,NPCstat:picture,47)
+alter npc(1,NPCstat:palette,1+poff)
+write pass block(9,6,0)
+write pass block(9,5,0)
+end
+###
+
+################################
+script, restfancy2, hslot, begin
+	#winter clothes
+	if(check tag(174)) then(
+		set hero picture(hslot,406)
+		set hero direction(0,down)
+	)
+	else(
+		#desert clothes
+		if(check tag(123)) then(
+			set hero picture(hslot,191)
+			set hero direction(0,left)
+		)
+		#standard
+		else(
+			set hero picture(hslot,191)
+			set hero direction(0,down)
+		)
+	)
+end
+###
+
+################################
+script, restfancy3, hslot, begin
+	#winter clothes
+	if(check tag(174)) then(
+		set hero picture(hslot,191)
+		set hero direction(0,right)
+	)
+	else(
+		#desert clothes
+		if(check tag(123)) then(
+			set hero picture(hslot,191)
+			set hero direction(0,up)
+		)
+		#standard
+		else(
+			set hero picture(hslot,192)
+			set hero direction(0,down)
+		)
+	)
+end
+###
+
+################################
+script, restfancy4, hslot, begin
+	#winter clothes
+	if(check tag(174)) then(
+		set hero picture(hslot,404)
+		set hero direction(0,down)
+		set hero frame(0,1)
+	)
+	else(
+		#desert clothes
+		if(check tag(123)) then(
+			set hero picture(hslot,193)
+			set hero direction(0,up)
+		)
+		#standard
+		else(
+			set hero picture(hslot,193)
+			set hero direction(0,down)
+			set hero frame(0,1)
+		)
+	)
+end
+###
+
+################################
+script, restfancy5, hslot, begin
+	#winter clothes
+	if(check tag(174)) then(
+		set hero picture(hslot,405)
+		set hero direction(0,right)
+		set hero frame(0,1)
+	)
+	else(
+	#standard
+		set hero picture(hslot,180)
+		set hero direction(0,up)
+	)
+end
+###
+
+########################################
+script, restfancy6, hslot, lalala, begin
+palin(2)
+
+variable(l)
+for(l,1,4,1) do(
+	set npc frame(1,0)
+	wait(4)
+	set npc frame(1,1)
+	wait(4)
+)
+
+advance time of day (1)
+wait(2)
+palout(2)
+set hero frame(0,0)
+set hero picture(hslot,lalala)
+end
+###
+
+########################################
+script, setmoneyanima, spot, item, begin
+
+#set money first
+set variable(seemoney,playermoney)
+
+#set anima
+#if an item, different whichones apply
+if(item==1) then(
+	if(spot==1) then(set variable(seeanima,hp))
+	if(spot==2) then(set variable(seeanima,sp))
+	if(spot==3) then(
+		set variable(seeanima,str)
+		set variable(scheck,def)
+	)
+)
+
+#if an icon
+else(
+	if(spot==79,or,spot==87) then(set variable(seeanima,hp))
+	if(spot==81,or,spot==89) then(set variable(seeanima,sp))
+	if(spot==83,or,spot==91) then(set variable(seeanima,str))
+	if(spot==85,or,spot==93) then(set variable(seeanima,acc))
+	if(spot==80,or,spot==88) then(set variable(seeanima,def))
+	if(spot==82,or,spot==90) then(set variable(seeanima,ddg))
+	if(spot==84,or,spot==92) then(set variable(seeanima,skl))
+	if(spot==86,or,spot==94) then(set variable(seeanima,evd))
+)
+end
+###
+
+###########################
+script, player money, begin
+ 	variable(money loop)
+ 	money loop := 0 #init
+ 	while( pay money ( money loop ) ) do, begin
+ 		get money ( money loop )
+ 		return ( money loop )
+ 		money loop := money loop + 1
+ 	end
+end
+###
+
+########################
+script, skillitem, begin
+suspend player
+suspend npcs
+
+if(check tag(642)) then(tb(8271))
+else(
+
+#choose the hero
+variable(whichone)
+set variable(whichone,hero by slot(pick hero))
+
+#setvariable(whichone,pickhero)
+#show value(whichone)
+#wait(20)
+#setvariable(whichone,herobyslot(whichone))
+#show value(whichone)
+
+if(whichone==0) then(doskillitem)
+if(whichone==1) then(miskillitem)
+if(whichone==2) then(joskillitem)
+if(whichone==3) then(pyskillitem)
+
+)
+
+resume npcs
+resume player
+end
+###
+
+###########################################################
+script, skitemgo, sk1, sk2, sk3, sk4, txbx, whichone, begin
+if(knows spell(findhero(whichone),sk1+1)) then(tb(txbx))
+else(
+	if(knows spell(findhero(whichone),sk2+1)) then(tb(txbx+1))
+	else(
+		if(knows spell(findhero(whichone),sk3+1)) then(tb(txbx+2))
+		else(
+			if(knows spell(findhero(whichone),sk4+1)) then(tb(txbx+3))
+		)
+	)
+)
+end
+###
+
+##########################
+script, doskillitem, begin
+palout(1)
+show backdrop(0)
+palin(1)
+
+wait(1)
+show backdrop(8)
+wait(1)
+show backdrop(238)
+
+do sk it pal refresh
+update palette
+
+variable (spot)
+set variable (spot,80)
+
+do sk it pal refresh
+set color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm,1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 ,and, spot<>81 ,and, spot<>82 )
+	then(
+	set variable(spot,spot--3)
+	do sk it pal refresh
+	set color(spot)
+	update palette	
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>95 )
+	then(
+		if( spot==93 ) then( set variable(spot,spot+2) )
+		else( if( spot==94 ) then( set variable(spot,spot+1) )
+		else( set variable(spot,spot+3)))
+	do sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	do sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>95 )
+	then(
+	set variable(spot,spot+1)
+	do sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	do sk it pal refresh
+	if( read color(spot,0) == read color(15,0) )
+	then(
+	doskillitemcheck(spot)
+	reset palette
+	)
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	do sk it pal refresh
+	set variable(hm,0)
+)
+
+do sk it pal refresh
+dflash(spot)
+
+wait(1)
+end
+
+wait(1)
+show backdrop(8)
+wait(1)
+show backdrop(0)
+wait(1)
+palout(1)
+show map
+wait(1)
+if(dunred==0,and,dungreen==0,and,dunblue==0) then(palin(1))
+else(
+	reset palette
+	tweak palette (-40,-40,-40)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-20,-20,-20)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-10,-10,-10)
+	update palette
+	wait (1)
+	tp
+)
+end
+###
+
+###################################
+script, do sk it pal refresh, begin
+
+do sk it pal refresh 1
+do sk it pal refresh 2
+do sk it pal refresh 3
+do sk it pal refresh 4
+do sk it pal refresh 5
+
+end
+###
+
+######################################
+script, do sk it pal refresh 1, begin
+variable(i)
+
+for(i,80,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,111,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+#####################################
+script, do sk it pal refresh 2, begin
+if( read spell(find hero(0),0,0)==false ) then(
+	write color (80,0,read color(251,0))
+	write color (80,1,read color(251,1))
+	write color (80,2,read color(251,2)))
+if( read spell(find hero(0),0,1)==false ) then(
+	write color (81,0,read color(251,0))
+	write color (81,1,read color(251,1))
+	write color (81,2,read color(251,2)))
+if( read spell(find hero(0),0,2)==false ) then(
+	write color (82,0,read color(251,0))
+	write color (82,1,read color(251,1))
+	write color (82,2,read color(251,2)))
+if( read spell(find hero(0),0,3)==false ) then(
+	write color (83,0,read color(251,0))
+	write color (83,1,read color(251,1))
+	write color (83,2,read color(251,2)))
+end
+###
+
+#####################################
+script, do sk it pal refresh 3, begin
+if( read spell(find hero(0),0,4)==false ) then(
+	write color (84,0,read color(251,0))
+	write color (84,1,read color(251,1))
+	write color (84,2,read color(251,2)))
+if( read spell(find hero(0),0,5)==false ) then(
+	write color (85,0,read color(251,0))
+	write color (85,1,read color(251,1))
+	write color (85,2,read color(251,2)))
+if( read spell(find hero(0),0,6)==false ) then(
+	write color (86,0,read color(251,0))
+	write color (86,1,read color(251,1))
+	write color (86,2,read color(251,2)))
+if( read spell(find hero(0),0,7)==false ) then(
+	write color (87,0,read color(251,0))
+	write color (87,1,read color(251,1))
+	write color (87,2,read color(251,2)))
+end
+###
+
+#####################################
+script, do sk it pal refresh 4, begin
+if( read spell(find hero(0),0,8)==false ) then(
+	write color (88,0,read color(251,0))
+	write color (88,1,read color(251,1))
+	write color (88,2,read color(251,2)))
+if( read spell(find hero(0),0,12)==false ) then(
+	write color (89,0,read color(251,0))
+	write color (89,1,read color(251,1))
+	write color (89,2,read color(251,2)))
+if( read spell(find hero(0),0,13)==false ) then(
+	write color (90,0,read color(251,0))
+	write color (90,1,read color(251,1))
+	write color (90,2,read color(251,2)))
+if( read spell(find hero(0),0,14)==false ) then(
+	write color (91,0,read color(251,0))
+	write color (91,1,read color(251,1))
+	write color (91,2,read color(251,2)))
+end
+###
+
+#####################################
+script, do sk it pal refresh 5, begin
+if( read spell(find hero(0),0,15)==false ) then(
+	write color (92,0,read color(251,0))
+	write color (92,1,read color(251,1))
+	write color (92,2,read color(251,2)))
+if( read spell(find hero(0),0,16)==false ) then(
+	write color (93,0,read color(251,0))
+	write color (93,1,read color(251,1))
+	write color (93,2,read color(251,2)))
+if( read spell(find hero(0),0,17)==false ) then(
+	write color (94,0,read color(251,0))
+	write color (94,1,read color(251,1))
+	write color (94,2,read color(251,2)))
+end
+###
+
+#####################################
+script, doskillitemcheck, spot, begin
+
+if(spot >= 80, and, spot <= 83) then( doskitch 1 (spot) )
+else(
+	if( spot >= 84, and, spot <= 87) then( doskitch 2 (spot) )
+	else(
+		if( spot >= 88, and, spot <= 91) then( doskitch 3 (spot) )
+		else( doskitch 4 (spot) )
+	)
+)
+
+end
+###
+
+##############################
+script, doskitch1, spot, begin
+#clash
+if (spot == 80) then( skitemgo(13,64,66,65,8031,0) )
+#clash+
+if (spot == 81) then( skitemgo(16,69,71,70,8035,0) )
+#clash++
+if (spot == 82) then( skitemgo(23,78,80,79,8039,0) )
+#airslash
+if (spot == 83) then( skitemgo(35,92,94,93,8043,0) )
+end
+###
+
+##############################
+script, doskitch2, spot, begin
+#contest
+if (spot == 84) then( skitemgo(36,95,97,96,8047,0) )
+#dire rage
+if (spot == 85) then( skitemgo(37,98,100,99,8051,0) )
+#blind
+if (spot == 86) then( skitemgo(40,103,105,104,8055,0) )
+#cripple
+if (spot == 87) then( skitemgo(42,107,109,108,8059,0) )
+end
+###
+
+##############################
+script, doskitch3, spot, begin
+#daze
+if (spot == 88) then( skitemgo(44,111,113,112,8063,0) )
+#enable
+if (spot == 89) then( skitemgo(46,115,117,116,8067,0) )
+#support
+if (spot == 90) then( skitemgo(49,120,122,121,8071,0) )
+#rally
+if (spot == 91) then( skitemgo(52,125,127,126,8075,0) )
+end
+###
+
+##############################
+script, doskitch4, spot, begin
+#hone skill
+if (spot == 92) then( skitemgo(55,130,132,131,8079,0) )
+#overpower
+if (spot == 93) then( skitemgo(57,134,136,135,8083,0) )
+#hope surge
+if (spot == 94) then( skitemgo(59,138,140,139,8087,0) )
+#exit
+if (spot == 95) then( set variable(hm,0) )
+end
+###
+
+############################
+script, mi skill item, begin
+palout(1)
+show backdrop(0)
+palin(1)
+
+wait(1)
+show backdrop(8)
+wait(1)
+show backdrop(239)
+
+mi sk it pal refresh
+update palette
+
+variable (spot)
+set variable (spot,80)
+
+mi sk it pal refresh
+set color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm,1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 ,and, spot<>81 ,and, spot<>82 )
+	then(
+		if ( spot==90 ) then ( set variable(spot, spot--5) )
+		else(
+		if ( spot==88 ,or, spot==89 ) then ( set variable(spot, spot--2) )
+		else(
+		if ( spot==95 ) then ( set variable(spot, spot--1) )
+		else ( set variable(spot,spot--3) ) ))
+	mi sk it pal refresh
+	set color(spot)
+	update palette	
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>95 )
+	then(
+		if ( spot==93 ,or, spot==94 ) then( set variable(spot, spot+1) )
+		else(
+		if ( spot==92 ,or, spot==86 ,or, spot==87 ) then( set variable(spot, spot+2) )
+		else(
+		if ( spot==85 ) then( set variable(spot, spot+5) )
+		else( set variable(spot, spot+3))))
+	mi sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	mi sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>95 )
+	then(
+	set variable(spot,spot+1)
+	mi sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	mi sk it pal refresh
+	if( read color(spot,0) == read color(15,0) )
+	then(
+	miskillitemcheck(spot)
+	reset palette
+	)
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	mi sk it pal refresh
+	set variable(hm,0)
+)
+
+mi sk it pal refresh
+mflash(spot)
+
+wait(1)
+end
+
+wait(1)
+show backdrop(8)
+wait(1)
+show backdrop(0)
+wait(1)
+palout(1)
+show map
+wait(1)
+if(dunred==0,and,dungreen==0,and,dunblue==0) then(palin(1))
+else(
+	reset palette
+	tweak palette (-40,-40,-40)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-20,-20,-20)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-10,-10,-10)
+	update palette
+	wait (1)
+	tp
+)
+end
+###
+
+###################################
+script, mi sk it pal refresh, begin
+
+mi sk it pal refresh 1
+mi sk it pal refresh 2
+mi sk it pal refresh 3
+mi sk it pal refresh 4
+mi sk it pal refresh 5
+
+end
+###
+
+######################################
+script, mi sk it pal refresh 1, begin
+variable(i)
+
+for(i,80,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,111,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+#####################################
+script, mi sk it pal refresh 2, begin
+if( read spell(find hero(1),0,0)==false ) then(
+	write color (80,0,read color(251,0))
+	write color (80,1,read color(251,1))
+	write color (80,2,read color(251,2)))
+if( read spell(find hero(1),0,1)==false ) then(
+	write color (81,0,read color(251,0))
+	write color (81,1,read color(251,1))
+	write color (81,2,read color(251,2)))
+if( read spell(find hero(1),0,2)==false ) then(
+	write color (82,0,read color(251,0))
+	write color (82,1,read color(251,1))
+	write color (82,2,read color(251,2)))
+if( read spell(find hero(1),0,3)==false ) then(
+	write color (83,0,read color(251,0))
+	write color (83,1,read color(251,1))
+	write color (83,2,read color(251,2)))
+end
+###
+
+#####################################
+script, mi sk it pal refresh 3, begin
+if( read spell(find hero(1),0,4)==false ) then(
+	write color (84,0,read color(251,0))
+	write color (84,1,read color(251,1))
+	write color (84,2,read color(251,2)))
+if( read spell(find hero(1),0,5)==false ) then(
+	write color (85,0,read color(251,0))
+	write color (85,1,read color(251,1))
+	write color (85,2,read color(251,2)))
+if( read spell(find hero(1),0,9)==false ) then(
+	write color (86,0,read color(251,0))
+	write color (86,1,read color(251,1))
+	write color (86,2,read color(251,2)))
+if( read spell(find hero(1),0,10)==false ) then(
+	write color (87,0,read color(251,0))
+	write color (87,1,read color(251,1))
+	write color (87,2,read color(251,2)))
+end
+###
+
+#####################################
+script, mi sk it pal refresh 4, begin
+if( read spell(find hero(1),0,12)==false ) then(
+	write color (88,0,read color(251,0))
+	write color (88,1,read color(251,1))
+	write color (88,2,read color(251,2)))
+if( read spell(find hero(1),0,13)==false ) then(
+	write color (89,0,read color(251,0))
+	write color (89,1,read color(251,1))
+	write color (89,2,read color(251,2)))
+if( read spell(find hero(1),0,14)==false ) then(
+	write color (90,0,read color(251,0))
+	write color (90,1,read color(251,1))
+	write color (90,2,read color(251,2)))
+if( read spell(find hero(1),0,18)==false ) then(
+	write color (91,0,read color(251,0))
+	write color (91,1,read color(251,1))
+	write color (91,2,read color(251,2)))
+end
+###
+
+#####################################
+script, mi sk it pal refresh 5, begin
+if( read spell(find hero(1),0,19)==false ) then(
+	write color (92,0,read color(251,0))
+	write color (92,1,read color(251,1))
+	write color (92,2,read color(251,2)))
+if( read spell(find hero(1),0,20)==false ) then(
+	write color (93,0,read color(251,0))
+	write color (93,1,read color(251,1))
+	write color (93,2,read color(251,2)))
+if( read spell(find hero(1),0,21)==false ) then(
+	write color (94,0,read color(251,0))
+	write color (94,1,read color(251,1))
+	write color (94,2,read color(251,2)))
+end
+###
+
+#####################################
+script, miskillitemcheck, spot, begin
+
+if(spot >= 80, and, spot <= 83) then( miskitch 1 (spot) )
+else(
+	if( spot >= 84, and, spot <= 87) then( miskitch 2 (spot) )
+	else(
+		if( spot >= 88, and, spot <= 91) then( miskitch 3 (spot) )
+		else( miskitch 4 (spot) )
+	)
+)
+
+end
+###
+
+##############################
+script, miskitch1, spot, begin
+#speed strike
+if (spot == 80) then( skitemgo(144,146,148,147,8091,1) )
+#accuracy strike
+if (spot == 81) then( skitemgo(150,152,154,153,8095,1) )
+#zig strike
+if (spot == 82) then( skitemgo(156,158,160,159,8099,1) )
+#skill strike
+if (spot == 83) then( skitemgo(162,164,166,165,8103,1) )
+end
+###
+
+##############################
+script, miskitch2, spot, begin
+#blaze
+if (spot == 84) then( skitemgo(168,169,171,170,8107,1) )
+#overwhelm
+if (spot == 85) then( skitemgo(174,178,180,179,8111,1) )
+#swipe
+if (spot == 86) then( skitemgo(184,185,187,186,8115,1) )
+#poison
+if (spot == 87) then( skitemgo(188,189,191,190,8119,1) )
+end
+###
+
+##############################
+script, miskitch3, spot, begin
+#disable
+if (spot == 88) then( skitemgo(192,194,196,195,8123,1) )
+#enfeeble
+if (spot == 89) then( skitemgo(198,200,202,201,8127,1) )
+#ensnare
+if (spot == 90) then( skitemgo(204,206,208,207,8131,1) )
+#heal
+if (spot == 91) then( skitemgo(210,212,214,213,8135,1) )
+end
+###
+
+##############################
+script, miskitch4, spot, begin
+#do not die
+if (spot == 92) then( skitemgo(215,218,220,219,8139,1) )
+#wakeup
+if (spot == 93) then( skitemgo(222,223,225,224,8143,1) )
+#quick gain
+if (spot == 94) then( skitemgo(227,229,231,230,8147,1) )
+#exit
+if (spot == 95) then( set variable(hm,0) )
+end
+###
+
+
+##########################
+script, joskillitem, begin
+palout(1)
+show backdrop(0)
+palin(1)
+
+wait(1)
+show backdrop(8)
+wait(1)
+show backdrop(240)
+
+jo sk it pal refresh
+update palette
+
+variable (spot)
+set variable (spot,80)
+
+jo sk it pal refresh
+set color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm,1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 ,and, spot<>81 ,and, spot<>82 )
+	then(
+		if ( spot==91 ,or, spot==92 ,or, spot==93 ,or, spot==94 ,or, spot==95 ) then ( set variable(spot, spot--2) )
+		else ( set variable(spot,spot--3) )
+	jo sk it pal refresh
+	set color(spot)
+	update palette	
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>95 )
+	then(
+		if ( spot==94 ) then( set variable(spot, spot+1) )
+		else(
+		if ( spot==88 ,or, spot==89 ,or, spot==90 ,or, spot==91 ,or, spot==92 ,or, spot==93 ) then( set variable(spot, spot+2) )
+		else( set variable(spot, spot+3)))
+	jo sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	jo sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>95 )
+	then(
+	set variable(spot,spot+1)
+	jo sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	jo sk it pal refresh
+	if( read color(spot,0) == read color(15,0) )
+	then(
+	joskillitemcheck(spot)
+	reset palette
+	)
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	jo sk it pal refresh
+	set variable(hm,0)
+)
+
+jo sk it pal refresh
+jflash(spot)
+
+wait(1)
+end
+
+wait(1)
+show backdrop(8)
+wait(1)
+show backdrop(0)
+wait(1)
+palout(1)
+show map
+wait(1)
+if(dunred==0,and,dungreen==0,and,dunblue==0) then(palin(1))
+else(
+	reset palette
+	tweak palette (-40,-40,-40)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-20,-20,-20)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-10,-10,-10)
+	update palette
+	wait (1)
+	tp
+)
+end
+###
+
+###################################
+script, jo sk it pal refresh, begin
+
+jo sk it pal refresh 1
+jo sk it pal refresh 2
+jo sk it pal refresh 3
+jo sk it pal refresh 4
+jo sk it pal refresh 5
+
+end
+###
+
+#####################################
+script, jo sk it pal refresh 1, begin
+variable(i)
+
+for(i,80,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,111,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+#####################################
+script, jo sk it pal refresh 2, begin
+if( read spell(find hero(2),0,0)==false ) then(
+	write color (80,0,read color(251,0))
+	write color (80,1,read color(251,1))
+	write color (80,2,read color(251,2)))
+if( read spell(find hero(2),0,1)==false ) then(
+	write color (81,0,read color(251,0))
+	write color (81,1,read color(251,1))
+	write color (81,2,read color(251,2)))
+if( read spell(find hero(2),0,2)==false ) then(
+	write color (82,0,read color(251,0))
+	write color (82,1,read color(251,1))
+	write color (82,2,read color(251,2)))
+if( read spell(find hero(2),0,3)==false ) then(
+	write color (83,0,read color(251,0))
+	write color (83,1,read color(251,1))
+	write color (83,2,read color(251,2)))
+end
+###
+
+#####################################
+script, jo sk it pal refresh 3, begin
+if( read spell(find hero(2),0,4)==false ) then(
+	write color (84,0,read color(251,0))
+	write color (84,1,read color(251,1))
+	write color (84,2,read color(251,2)))
+if( read spell(find hero(2),0,5)==false ) then(
+	write color (85,0,read color(251,0))
+	write color (85,1,read color(251,1))
+	write color (85,2,read color(251,2)))
+if( read spell(find hero(2),0,6)==false ) then(
+	write color (86,0,read color(251,0))
+	write color (86,1,read color(251,1))
+	write color (86,2,read color(251,2)))
+if( read spell(find hero(2),0,7)==false ) then(
+	write color (87,0,read color(251,0))
+	write color (87,1,read color(251,1))
+	write color (87,2,read color(251,2)))
+end
+###
+
+#####################################
+script, jo sk it pal refresh 4, begin
+if( read spell(find hero(2),0,8)==false ) then(
+	write color (88,0,read color(251,0))
+	write color (88,1,read color(251,1))
+	write color (88,2,read color(251,2)))
+if( read spell(find hero(2),0,12)==false ) then(
+	write color (89,0,read color(251,0))
+	write color (89,1,read color(251,1))
+	write color (89,2,read color(251,2)))
+if( read spell(find hero(2),0,13)==false ) then(
+	write color (90,0,read color(251,0))
+	write color (90,1,read color(251,1))
+	write color (90,2,read color(251,2)))
+if( read spell(find hero(2),0,15)==false ) then(
+	write color (91,0,read color(251,0))
+	write color (91,1,read color(251,1))
+	write color (91,2,read color(251,2)))
+end
+###
+
+#####################################
+script, jo sk it pal refresh 5, begin
+if( read spell(find hero(2),0,16)==false ) then(
+	write color (92,0,read color(251,0))
+	write color (92,1,read color(251,1))
+	write color (92,2,read color(251,2)))
+if( read spell(find hero(2),0,18)==false ) then(
+	write color (93,0,read color(251,0))
+	write color (93,1,read color(251,1))
+	write color (93,2,read color(251,2)))
+if( read spell(find hero(2),0,19)==false ) then(
+	write color (94,0,read color(251,0))
+	write color (94,1,read color(251,1))
+	write color (94,2,read color(251,2)))
+end
+###
+
+#####################################
+script, joskillitemcheck, spot, begin
+
+if(spot >= 80, and, spot <= 83) then( joskitch 1 (spot) )
+else(
+	if( spot >= 84, and, spot <= 87) then( joskitch 2 (spot) )
+	else(
+		if( spot >= 88, and, spot <= 91) then( joskitch 3 (spot) )
+		else( joskitch 4 (spot) )
+	)
+)
+
+end
+###
+
+##############################
+script, joskitch1, spot, begin
+#target
+if (spot == 80) then( skitemgo(234,235,237,236,8151,2) )
+#snipe
+if (spot == 81) then( skitemgo(240,242,244,243,8155,2) )
+#full burst
+if (spot == 82) then( skitemgo(246,248,250,249,8159,2) )
+#null vortex
+if (spot == 83) then( skitemgo(252,254,256,255,8163,2) )
+end
+###
+
+##############################
+script, joskitch2, spot, begin
+#sunflash
+if (spot == 84) then( skitemgo(258,260,262,261,8167,2) )
+#water bomb
+if (spot == 85) then( skitemgo(264,266,268,267,8171,2) )
+#provoke
+if (spot == 86) then( skitemgo(270,272,274,273,8175,2) )
+#gauge HP
+if (spot == 87) then( skitemgo(276,278,280,279,8179,2) )
+end
+###
+
+##############################
+script, joskitch3, spot, begin
+#gauge SD
+if (spot == 88) then( skitemgo(282,285,287,286,8183,2) )
+#Alert
+if (spot == 89) then( skitemgo(290,293,295,294,8187,2) )
+#Warn
+if (spot == 90) then( skitemgo(297,300,302,301,8191,2) )
+#Motivate
+if (spot == 91) then( skitemgo(311,313,315,314,8195,2) )
+end
+###
+
+##############################
+script, joskitch4, spot, begin
+#Quick
+if (spot == 92) then( skitemgo(304,307,309,308,8199,2) )
+#Pinpoint
+if (spot == 93) then( skitemgo(323,325,327,326,8203,2) )
+#hurry
+if (spot == 94) then( skitemgo(317,319,321,320,8207,2) )
+#exit
+if (spot == 95) then( set variable(hm,0) )
+end
+###
+
+##########################
+script, pyskillitem, begin
+palout(1)
+show backdrop(0)
+palin(1)
+
+wait(1)
+show backdrop(8)
+wait(1)
+show backdrop(241)
+
+py sk it pal refresh
+update palette
+
+variable (spot)
+set variable (spot,80)
+
+py sk it pal refresh
+set color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm,1)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 ,and, spot<>81 ,and, spot<>82 )
+	then(
+		if ( spot==88 ,or, spot==94 ) then ( set variable(spot, spot--2) )
+		else(
+		if ( spot==95 ,or, spot==89 ) then ( set variable(spot, spot--1) )
+		else(
+		if ( spot==91 ) then( set variable(spot, spot--6) )
+		else ( set variable(spot,spot--3) ) ))
+	py sk it pal refresh
+	set color(spot)
+	update palette	
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>95 )
+	then(
+		if ( spot==88 ,or, spot==93 ,or, spot==94 ) then( set variable(spot, spot+1) )
+		else(
+		if ( spot==86 ,or, spot==91 ,or, spot==92 ) then( set variable(spot, spot+2) )
+		else(
+		if ( spot==85 ) then( set variable(spot, spot+6) )
+		else( set variable(spot, spot+3))))
+	py sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	py sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>95 )
+	then(
+	set variable(spot,spot+1)
+	py sk it pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	py sk it pal refresh
+	if( read color(spot,0) == read color(15,0) )
+	then(
+	pyskillitemcheck(spot)
+	reset palette
+	)
+)
+if (key is pressed(1),or,key is pressed(56))	#cancel key
+then(
+	py sk it pal refresh
+	set variable(hm,0)
+)
+
+py sk it pal refresh
+pflash(spot)
+
+wait(1)
+end
+
+wait(1)
+show backdrop(8)
+wait(1)
+show backdrop(0)
+wait(1)
+palout(1)
+show map
+wait(1)
+if(dunred==0,and,dungreen==0,and,dunblue==0) then(palin(1))
+else(
+	reset palette
+	tweak palette (-40,-40,-40)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-20,-20,-20)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-10,-10,-10)
+	update palette
+	wait (1)
+	tp
+)
+end
+###
+
+###################################
+script, py sk it pal refresh, begin
+
+py sk it pal refresh 1
+py sk it pal refresh 2
+py sk it pal refresh 3
+py sk it pal refresh 4
+py sk it pal refresh 5
+
+end
+###
+
+#####################################
+script, py sk it pal refresh 1, begin
+variable(i)
+
+for(i,80,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,111,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+#####################################
+script, py sk it pal refresh 2, begin
+if( read spell(find hero(3),0,0)==false ) then(
+	write color (80,0,read color(251,0))
+	write color (80,1,read color(251,1))
+	write color (80,2,read color(251,2)))
+if( read spell(find hero(3),0,1)==false ) then(
+	write color (81,0,read color(251,0))
+	write color (81,1,read color(251,1))
+	write color (81,2,read color(251,2)))
+if( read spell(find hero(3),0,2)==false ) then(
+	write color (82,0,read color(251,0))
+	write color (82,1,read color(251,1))
+	write color (82,2,read color(251,2)))
+if( read spell(find hero(3),0,3)==false ) then(
+	write color (83,0,read color(251,0))
+	write color (83,1,read color(251,1))
+	write color (83,2,read color(251,2)))
+end
+###
+
+#####################################
+script, py sk it pal refresh 3, begin
+if( read spell(find hero(3),0,4)==false ) then(
+	write color (84,0,read color(251,0))
+	write color (84,1,read color(251,1))
+	write color (84,2,read color(251,2)))
+if( read spell(find hero(3),0,5)==false ) then(
+	write color (85,0,read color(251,0))
+	write color (85,1,read color(251,1))
+	write color (85,2,read color(251,2)))
+if( read spell(find hero(3),0,6)==false ) then(
+	write color (86,0,read color(251,0))
+	write color (86,1,read color(251,1))
+	write color (86,2,read color(251,2)))
+if( read spell(find hero(3),0,7)==false ) then(
+	write color (87,0,read color(251,0))
+	write color (87,1,read color(251,1))
+	write color (87,2,read color(251,2)))
+end
+###
+
+#####################################
+script, py sk it pal refresh 4, begin
+if( read spell(find hero(3),0,9)==false ) then(
+	write color (88,0,read color(251,0))
+	write color (88,1,read color(251,1))
+	write color (88,2,read color(251,2)))
+if( read spell(find hero(3),0,15)==false ) then(
+	write color (89,0,read color(251,0))
+	write color (89,1,read color(251,1))
+	write color (89,2,read color(251,2)))
+if( read spell(find hero(3),0,16)==false ) then(
+	write color (90,0,read color(251,0))
+	write color (90,1,read color(251,1))
+	write color (90,2,read color(251,2)))
+if( read spell(find hero(3),0,17)==false ) then(
+	write color (91,0,read color(251,0))
+	write color (91,1,read color(251,1))
+	write color (91,2,read color(251,2)))
+end
+###
+
+#####################################
+script, py sk it pal refresh 5, begin
+if( read spell(find hero(3),0,18)==false ) then(
+	write color (92,0,read color(251,0))
+	write color (92,1,read color(251,1))
+	write color (92,2,read color(251,2)))
+if( read spell(find hero(3),0,19)==false ) then(
+	write color (93,0,read color(251,0))
+	write color (93,1,read color(251,1))
+	write color (93,2,read color(251,2)))
+if( read spell(find hero(3),0,21)==false ) then(
+	write color (94,0,read color(251,0))
+	write color (94,1,read color(251,1))
+	write color (94,2,read color(251,2)))
+end
+###
+
+#####################################
+script, pyskillitemcheck, spot, begin
+
+if(spot >= 80, and, spot <= 83) then( pyskitch 1 (spot) )
+else(
+	if( spot >= 84, and, spot <= 87) then( pyskitch 2 (spot) )
+	else(
+		if( spot >= 88, and, spot <= 91) then( pyskitch 3 (spot) )
+		else( pyskitch 4 (spot) )
+	)
+)
+
+end
+###
+
+##############################
+script, pyskitch1, spot, begin
+#crush
+if (spot == 80) then( skitemgo(330,332,334,333,8211,3) )
+#crush+
+if (spot == 81) then( skitemgo(336,339,341,340,8215,3) )
+#death and decay
+if (spot == 82) then( skitemgo(344,346,348,347,8219,3) )
+#dehydrate
+if (spot == 83) then( skitemgo(350,353,355,354,8223,3) )
+end
+###
+
+##############################
+script, pyskitch2, spot, begin
+#mist spray
+if (spot == 84) then( skitemgo(358,361,363,362,8227,3) )
+#ignite
+if (spot == 85) then( skitemgo(366,369,371,370,8231,3) )
+#gale blast
+if (spot == 86) then( skitemgo(374,377,379,378,8235,3) )
+#tremor
+if (spot == 87) then( skitemgo(382,387,389,388,8239,3) )
+end
+###
+
+##############################
+script, pyskitch3, spot, begin
+#parity
+if (spot == 88) then( skitemgo(394,404,406,405,8243,3) )
+#recover
+if (spot == 89) then( skitemgo(422,424,426,425,8247,3) )
+#recover+
+if (spot == 90) then( skitemgo(427,428,430,429,8251,3) )
+#get up
+if (spot == 91) then( skitemgo(431,432,434,433,8255,3) )
+end
+###
+
+##############################
+script, pyskitch4, spot, begin
+#courage
+if (spot == 92) then( skitemgo(435,437,439,438,8259,3) )
+#anti toxin
+if (spot == 93) then( skitemgo(440,441,443,442,8263,3) )
+#overpower
+if (spot == 94) then( skitemgo(57,134,136,135,8267,3) )
+#exit
+if (spot == 95) then( set variable(hm,0) )
+end
+###

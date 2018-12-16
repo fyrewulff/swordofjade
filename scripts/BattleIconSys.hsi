@@ -1,0 +1,1989 @@
+#Battle and Icon Systems
+#For Sword of Jade
+
+define script(autonumber,ff,3,0,0,0)
+define script(autonumber,ff1,4,0,0,0,0)
+define script(autonumber,ff2,1,false)
+define script(autonumber,dolevelupcheck,1,0)
+define script(autonumber,milevelupcheck,1,0)
+define script(autonumber,jolevelupcheck,1,0)
+define script(autonumber,pylevelupcheck,1,0)
+define script(autonumber,dogero level up,2,1,9)
+define script(autonumber,mila   level up,2,1,12)
+define script(autonumber,johan  level up,2,1,15)
+define script(autonumber,pyrus  level up,2,1,18)
+define script(autonumber,dogero hp calculator,0)
+define script(autonumber,mila hp calculator,0)
+define script(autonumber,johan hp calculator,0)
+define script(autonumber,pyrus hp calculator,0)
+define script(autonumber,dogero pal refresh,0)
+define script(autonumber,dogero skill check,1,80)
+define script(autonumber,mila pal refresh,0)
+define script(autonumber,mila skill check,1,80)
+define script(autonumber,johan pal refresh,0)
+define script(autonumber,johan skill check,1,80)
+define script(autonumber,pyrus pal refresh,0)
+define script(autonumber,pyrus skill check,1,80)
+define script(autonumber,set color,1,0)
+define script(autonumber,spell select,5,0,0,0,0,0)
+define script(autonumber,ksone,3,0,0,0)
+define script(autonumber,kstwo,5,0,0,0,0,0)
+
+define script(autonumber,dflash,1,0)
+define script(autonumber,dogpalrefresh1,0)
+define script(autonumber,dogpalrefresh2,0)
+define script(autonumber,dogpalrefresh3,0)
+define script(autonumber,dogpalrefresh4,0)
+define script(autonumber,dogpalrefresh5,0)
+define script(autonumber,dogskch1,1,0)
+define script(autonumber,dogskch2,1,0)
+define script(autonumber,dogskch3,1,0)
+define script(autonumber,dogskch4,1,0)
+
+define script(autonumber,mflash,1,0)
+define script(autonumber,mipalrefresh1,0)
+define script(autonumber,mipalrefresh2,0)
+define script(autonumber,mipalrefresh3,0)
+define script(autonumber,mipalrefresh4,0)
+define script(autonumber,mipalrefresh5,0)
+define script(autonumber,miskch1,1,0)
+define script(autonumber,miskch2,1,0)
+define script(autonumber,miskch3,1,0)
+define script(autonumber,miskch4,1,0)
+
+define script(autonumber,jflash,1,0)
+define script(autonumber,jopalrefresh1,0)
+define script(autonumber,jopalrefresh2,0)
+define script(autonumber,jopalrefresh3,0)
+define script(autonumber,jopalrefresh4,0)
+define script(autonumber,jopalrefresh5,0)
+define script(autonumber,joskch1,1,0)
+define script(autonumber,joskch2,1,0)
+define script(autonumber,joskch3,1,0)
+define script(autonumber,joskch4,1,0)
+
+define script(autonumber,pflash,1,0)
+define script(autonumber,pypalrefresh1,0)
+define script(autonumber,pypalrefresh2,0)
+define script(autonumber,pypalrefresh3,0)
+define script(autonumber,pypalrefresh4,0)
+define script(autonumber,pypalrefresh5,0)
+define script(autonumber,pyskch1,1,0)
+define script(autonumber,pyskch2,1,0)
+define script(autonumber,pyskch3,1,0)
+define script(autonumber,pyskch4,1,0)
+
+define script(autonumber,gainanima,1,0)
+define script(autonumber,addanima,1,0)
+
+
+##############################################################################################
+script, f f, formation, anima, monster, begin
+
+#adding one to battles fought
+set variable(battlesfought,battlesfought+1)
+
+#if idiot monster fight, party can survive if they all fall
+if(monster==true) then(set death script(294))
+else(set death script(3))
+
+variable(dogero level)
+variable(mila level)
+variable(johan level)
+variable(pyrus level)
+set variable(dogero level, get hero level (find hero(0)))
+set variable(mila   level, get hero level (find hero(1)))
+set variable(johan  level, get hero level (find hero(2)))
+set variable(pyrus  level, get hero level (find hero(3)))
+
+if(fightformation(formation)) then(
+	#won battle!
+	set variable(battleswon,battleswon+1)
+	#Gain Anima if battle is won
+	gainanima(anima)
+)
+
+set death script(3)
+
+#Check for game over (cut--if all heroes die, then game over)
+#if(get hero stat(find hero(0),0,currentstat)==0) then(overgame)
+
+#level up
+ff1(dogero level, mila level, johan level, pyrus level)
+
+#rest
+ff2(monster)
+
+end
+###
+
+######################################################################
+script, ff1, dogero level, mila level, johan level, pyrus level, begin
+#Level UP!!
+if (	dogero level << get hero level(findhero(0)), or
+	mila level << get hero level(findhero(1)), or
+	johan level << get hero level(findhero(2)), or
+	pyrus level << get hero level(findhero(3)))
+then(
+palout(1)
+show backdrop(0)
+palin(1)
+
+dolevelupcheck(dogero level)
+milevelupcheck(mila level)
+jolevelupcheck(johan level)
+pylevelupcheck(pyrus level)
+
+wait(4)
+show backdrop(0)
+wait(4)
+palout(1)
+show map
+wait(1)
+if(dunred==0,and,dungreen==0,and,dunblue==0) then(palin(1))
+else(
+	reset palette
+	tweak palette (-40,-40,-40)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-20,-20,-20)
+	update palette
+	wait (1)
+	reset palette
+	tweak palette (-10,-10,-10)
+	update palette
+	wait (1)
+	tp
+)
+)
+end
+###
+
+###########################################
+script, dolevelupcheck, dogero level, begin
+	if (dogero level << get hero level(findhero(0)),and,checktag(44))
+	then(
+		dogero hp calculator
+		dogero level up(get hero level(find hero(0))--dogero level)
+		wait(1)
+	)
+end
+###
+
+#########################################
+script, milevelupcheck, mila level, begin
+	if (mila level << get hero level(findhero(1)),and,checktag(45))
+	then(
+		mila hp calculator
+		mila level up(get hero level(find hero(1))--mila level)
+		wait(1)
+	)
+end
+###
+
+##########################################
+script, jolevelupcheck, johan level, begin
+	if (johan level << get hero level(findhero(2)),and,checktag(46))
+	then(
+		johan hp calculator
+		johan level up(get hero level(find hero(2))--johan level)
+		wait(1)
+	)
+end
+###
+
+##########################################
+script, pylevelupcheck, pyrus level, begin
+	if (pyrus level << get hero level(findhero(3)),and,checktag(47))
+	then(
+		pyrus hp calculator
+		pyrus level up(get hero level(find hero(3))--pyrus level)
+		wait(1)
+	)
+end
+###
+
+##################
+script, ff2, monster, begin
+#Set SP to Maximum
+set hero stat (findhero(0),1,get hero stat(findhero(0),1,maximumstat),currentstat)
+set hero stat (findhero(1),1,get hero stat(findhero(1),1,maximumstat),currentstat)
+set hero stat (findhero(2),1,get hero stat(findhero(2),1,maximumstat),currentstat)
+set hero stat (findhero(3),1,get hero stat(findhero(3),1,maximumstat),currentstat)
+
+#Revive dead heroes
+if(get hero stat(find hero(0),0,currentstat)==0,and,check tag(44)) then(
+	set hero stat (findhero(0),0,(get hero stat(findhero(0),0,maximumstat)/4),currentstat)
+	if(monster) then(
+		advance time of day
+		if(dochange<>false) then(teleporttomap(noonmap+poff,herox(me),heroy(me)))
+	)
+)
+if(get hero stat(find hero(1),0,currentstat)==0,and,check tag(45)) then(
+	set hero stat (findhero(1),0,(get hero stat(findhero(1),0,maximumstat)/4),currentstat)
+	if(monster) then(
+		advance time of day
+		if(dochange<>false) then(teleporttomap(noonmap+poff,herox(me),heroy(me)))
+	)
+)
+if(get hero stat(find hero(2),0,currentstat)==0,and,check tag(46)) then(
+	set hero stat (findhero(2),0,(get hero stat(findhero(2),0,maximumstat)/4),currentstat)
+	if(monster) then(
+		advance time of day
+		if(dochange<>false) then(teleporttomap(noonmap+poff,herox(me),heroy(me)))
+	)
+)
+if(get hero stat(find hero(3),0,currentstat)==0,and,check tag(47)) then(
+	set hero stat (findhero(3),0,(get hero stat(findhero(3),0,maximumstat)/4),currentstat)
+	if(monster) then(
+		advance time of day
+		if(dochange<>false) then(teleporttomap(noonmap+poff,herox(me),heroy(me)))
+	)
+)
+end
+###
+
+################################################
+script, dogero level up, how many, screen, begin
+
+#slot	txt,bx	basic,cheap,perfect,upgrade
+#1	80,96	13,64,65,66	Clash
+#2	81,97	16,69,70,71	Clash +
+#3	82,98	23,78,79,80	Clash ++
+#4	83,99	35,92,93,94	Air Slash
+#5	84,100	36,95,96,97	Contest
+#6	85,101	37,98,99,100	Dire Rage
+#7	86,102	40,103,104,105	Blind
+#8	87,103	42,107,108,109	Cripple
+#9	88,104	44,111,112,113	Daze
+#13	89,105	46,115,116,117	Enable
+#14	90,106	49,120,121,122	Support
+#15	91,107	52,125,126,127	Rally
+#16	92,108	55,130,131,132	Hone Skill
+#17	93,109	57,134,135,136	Overpower
+#18	94,110	59,138,139,140	Hope Surge
+#SP	95,111			SP
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(screen)
+
+dogero pal refresh
+update palette
+
+wait(20)
+show backdrop(screen+1)
+wait(5)
+show backdrop(screen+2)
+wait(2)
+
+#2 14
+variable (spot)
+set variable (spot,80)
+
+dogero pal refresh
+set color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, how many)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 ,and, spot<>81 ,and, spot<>82 )
+	then(
+	set variable(spot,spot--3)
+	dogero pal refresh
+	set color(spot)
+	update palette	
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>95 )
+	then(
+		if( spot==93 ) then( set variable(spot,spot+2) )
+		else( if( spot==94 ) then( set variable(spot,spot+1) )
+		else( set variable(spot,spot+3)))
+	dogero pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	dogero pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>95 )
+	then(
+	set variable(spot,spot+1)
+	dogero pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	dogero pal refresh
+	if( read color(spot,0) == read color(15,0) )
+	then(
+	dogero skill check(spot)
+	reset palette
+	)
+)
+
+dogero pal refresh
+dflash(spot)
+
+wait(1)
+end
+
+
+wait(2)
+show backdrop(screen+1)
+wait(4)
+show backdrop(screen)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+end
+###
+
+###################
+script, dflash, spot, begin
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+end
+###
+
+##############################################
+script, mila level up, how many, screen, begin
+
+#slot	txt,bx	basic,cheap,perfect,upgrade
+#1	80,96	144,146,147,148	SpdStrike
+#2	81,97	150,152,153,154	AccStrike
+#3	82,98	156,158,159,160	ZigStrike
+#4	83,99	162,164,165,166	SklStrike
+#5	84,100	168,169,170,171	Blaze
+#6	85,101	174,178,179,180	Overwhelm
+#7	86,102	184,185,186,187	Swipe
+#8	87,103	188,189,190,191	Poison
+#9	88,104	192,194,195,196	Diable
+#13	89,105	198,200,201,202	Enfeeble
+#14	90,106	204,206,207,208	Ensnare
+#15	91,107	210,212,213,214	Heal
+#16	92,108	215,218,219,220	DoNotDie
+#17	93,109	222,223,224,225	Wakeup
+#18	94,110	227,229,230,231	QuickGain
+#SP	95,111			SP
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(screen)
+
+mila pal refresh
+update palette
+
+wait(20)
+show backdrop(screen+1)
+wait(5)
+show backdrop(screen+2)
+wait(2)
+
+#2 14
+variable (spot)
+set variable (spot,80)
+
+mila pal refresh
+set color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, how many)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 ,and, spot<>81 ,and, spot<>82 )
+	then(
+		if ( spot==90 ) then ( set variable(spot, spot--5) )
+		else(
+		if ( spot==88 ,or, spot==89 ) then ( set variable(spot, spot--2) )
+		else(
+		if ( spot==95 ) then ( set variable(spot, spot--1) )
+		else ( set variable(spot,spot--3) ) ))
+	mila pal refresh
+	set color(spot)
+	update palette	
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>95 )
+	then(
+		if ( spot==93 ,or, spot==94 ) then( set variable(spot, spot+1) )
+		else(
+		if ( spot==92 ,or, spot==86 ,or, spot==87 ) then( set variable(spot, spot+2) )
+		else(
+		if ( spot==85 ) then( set variable(spot, spot+5) )
+		else( set variable(spot, spot+3))))
+	mila pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	mila pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>95 )
+	then(
+	set variable(spot,spot+1)
+	mila pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	mila pal refresh
+	if( read color(spot,0) == read color(15,0) )
+	then(
+	mila skill check(spot)
+	reset palette
+	)
+)
+
+mila pal refresh
+mflash(spot)
+
+wait(1)
+end
+
+wait(2)
+show backdrop(screen+1)
+wait(4)
+show backdrop(screen)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+end
+###
+
+###########################
+script, mflash, spot, begin
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+end
+###
+
+#######################################
+script, johan level up, how many, screen, begin
+
+#slot	txt,bx	basic,cheap,perfect,upgrade
+#1	80,96	234,235,236,237	Target
+#2	81,97	240,242,243,244	Snipe
+#3	82,98	246,248,249,250	Full Burst
+#4	83,99	252,254,255,256	Null Vortex
+#5	84,100	258,260,261,262	Sun-flash
+#6	85,101	264,266,267,268	Water Bomb
+#7	86,102	270,272,273,274	Provoke
+#8	87,103	276,278,279,280	Gauge HP
+#9	88,104	282,285,286,287	Gauge AD
+#13	89,105	290,293,294,295	Alert Ddg
+#14	90,106	297,300,301,302	Warn Evd
+#15	92,108	311,313,314,315	Motivate
+#16	91,107	304,307,308,309	Quick
+#17	93,109	323,325,326,327	Pinpoint
+#18	94,110	317,319,320,321	Hurry
+#SP	95,111			SP
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(screen)
+
+johan pal refresh
+update palette
+
+wait(20)
+show backdrop(screen+1)
+wait(5)
+show backdrop(screen+2)
+wait(2)
+
+#2 14
+variable (spot)
+set variable (spot,80)
+
+johan pal refresh
+set color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, how many)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 ,and, spot<>81 ,and, spot<>82 )
+	then(
+		if ( spot==91 ,or, spot==92 ,or, spot==93 ,or, spot==94 ,or, spot==95 ) then ( set variable(spot, spot--2) )
+		else ( set variable(spot,spot--3) )
+	johan pal refresh
+	set color(spot)
+	update palette	
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>95 )
+	then(
+		if ( spot==94 ) then( set variable(spot, spot+1) )
+		else(
+		if ( spot==88 ,or, spot==89 ,or, spot==90 ,or, spot==91 ,or, spot==92 ,or, spot==93 ) then( set variable(spot, spot+2) )
+		else( set variable(spot, spot+3)))
+	johan pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	johan pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>95 )
+	then(
+	set variable(spot,spot+1)
+	johan pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	johan pal refresh
+	if( read color(spot,0) == read color(15,0) )
+	then(
+	johan skill check(spot)
+	reset palette
+	)
+)
+
+johan pal refresh
+jflash(spot)
+
+wait(1)
+end
+
+wait(2)
+show backdrop(screen+1)
+wait(4)
+show backdrop(screen)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+end
+###
+
+###########################
+script, jflash, spot, begin
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+end
+###
+
+###############################################
+script, pyrus level up, how many, screen, begin
+
+#slot	txt,bx	basic,cheap,perfect,upgrade
+#1	80,96	330,332,333,334	Crush
+#2	81,97	336,339,340,341	Crush+
+#3	82,98	344,346,347,348	Death & Decay
+#4	83,99	350,353,354,355	Dehydrate
+#5	84,100	358,361,362,363	Mist Spray
+#6	85,101	366,369,370,371	Ignite
+#7	86,102	374,377,378,379	Gale Blast
+#8	87,103	382,387,388,389	Tremor
+#9	88,104	394,404,405,406	Parity
+#13	89,105	422,424,425,426	Recover
+#14	90,106	427,428,429,430	Recover+
+#15	91,107	431,432,433,434	Get up
+#16	92,108	435,437,438,439	Courage
+#17	93,109	440,441,442,443	Antitoxin
+#18	94,110	57,134,135,136	Overpower
+
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(screen)
+
+pyrus pal refresh
+update palette
+
+wait(20)
+show backdrop(screen+1)
+wait(5)
+show backdrop(screen+2)
+wait(2)
+
+#2 14
+variable (spot)
+set variable (spot,80)
+
+pyrus pal refresh
+set color(spot)
+update palette
+
+set variable(flash,0)
+
+set variable(hm, how many)
+
+while(hm <> 0)
+do, begin
+
+reset palette
+
+if (key is pressed(72))	#up
+then(
+	if( spot<>80 ,and, spot<>81 ,and, spot<>82 )
+	then(
+		if ( spot==88 ,or, spot==94 ) then ( set variable(spot, spot--2) )
+		else(
+		if ( spot==95 ,or, spot==89 ) then ( set variable(spot, spot--1) )
+		else(
+		if ( spot==91 ) then( set variable(spot, spot--6) )
+		else ( set variable(spot,spot--3) ) ))
+	pyrus pal refresh
+	set color(spot)
+	update palette	
+	)
+)
+if (key is pressed(80))	#down
+then(
+	if( spot<>95 )
+	then(
+		if ( spot==88 ,or, spot==93 ,or, spot==94 ) then( set variable(spot, spot+1) )
+		else(
+		if ( spot==86 ,or, spot==91 ,or, spot==92 ) then( set variable(spot, spot+2) )
+		else(
+		if ( spot==85 ) then( set variable(spot, spot+6) )
+		else( set variable(spot, spot+3))))
+	pyrus pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(75))	#left
+then(
+	if( spot<>80 )
+	then(
+	set variable(spot,spot--1)
+	pyrus pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(77))	#right
+then(
+	if( spot<>95 )
+	then(
+	set variable(spot,spot+1)
+	pyrus pal refresh
+	set color(spot)
+	update palette
+	)
+)
+if (key is pressed(57),or,key is pressed(28),or,key is pressed(29))	#use key
+then(
+	pyrus pal refresh
+	if( read color(spot,0) == read color(15,0) )
+	then(
+	pyrus skill check(spot)
+	reset palette
+	)
+)
+
+pyrus pal refresh
+pflash(spot)
+
+wait(1)
+end
+
+wait(2)
+show backdrop(screen+1)
+wait(4)
+show backdrop(screen)
+wait(4)
+show backdrop(8)
+wait(4)
+show backdrop(0)
+
+end
+###
+
+###########################
+script, pflash, spot, begin
+if (flash==0) then(
+write color(spot,0,read color(14,0))
+write color(spot,1,read color(14,1))
+write color(spot,2,read color(14,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,1)
+)else(
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+set variable(flash,0)
+)
+update palette
+end
+###
+
+############################
+script, dogero HP calculator, begin
+
+#there is a problem with icons affecting HP calculation
+#here is an infantry implementation fix
+
+variable(adjust)
+set variable(adjust, get hero stat(find hero(0),0,maximumstat)--doHP)
+
+if(get hero level(find hero(0)) >= 10) then(
+set variable(doHP, (get hero level(find hero(0)) * 10) + 5 )
+)
+else(
+if(get hero level(find hero(0)) == 1) then(set variable(doHP,51))
+if(get hero level(find hero(0)) == 2) then(set variable(doHP,53))
+if(get hero level(find hero(0)) == 3) then(set variable(doHP,56))
+if(get hero level(find hero(0)) == 4) then(set variable(doHP,60))
+if(get hero level(find hero(0)) == 5) then(set variable(doHP,65))
+if(get hero level(find hero(0)) == 6) then(set variable(doHP,71))
+if(get hero level(find hero(0)) == 7) then(set variable(doHP,78))
+if(get hero level(find hero(0)) == 8) then(set variable(doHP,86))
+if(get hero level(find hero(0)) == 9) then(set variable(doHP,95))
+)
+
+set hero stat(find hero(0),0,doHP+adjust,maximum stat)
+
+#just in case
+#set hero stat(find hero(0),0,doHP,maximum stat)
+
+#Initial HP raise
+#set variable(previous level, previous level + 1)
+
+#if (previous level >> 10) then(
+#	set hero stat(find hero(0),0,get hero stat(findhero(0),0,maximum stat) + 10,maximum stat)
+#)else(
+#	set hero stat(find hero(0),0,get hero stat(findhero(0),0,maximum stat) + previous level,maximum stat)
+#)
+
+
+#Extra raise if more than 1 level was gained
+#while(previous level <> get hero level(find hero(0)))
+#do(
+#	set variable(previous level, previous level + 1)
+
+#	if (previous level >> 10)
+#	then(
+#		set hero stat(find hero(0),0,get hero stat(findhero(0),0,maximum stat) + 10,maximum stat)
+#	)else(
+#		set hero stat(find hero(0),0,get hero stat(findhero(0),0,maximum stat) + previous level,maximum stat)
+#	)
+#)
+
+#set variable(doHP, get hero stat(find hero(0),0,maximum stat))
+
+end
+###
+
+############################
+script, mila HP calculator, begin
+
+#there is a problem with icons affecting HP calculation
+#here is an infantry implementation fix
+
+variable(adjust)
+set variable(adjust, get hero stat(find hero(1),0,maximumstat)--miHP)
+
+if(get hero level(find hero(1)) >= 10) then(
+set variable(miHP, (get hero level(find hero(1)) * 10) )
+)
+else(
+if(get hero level(find hero(1)) == 1) then(set variable(miHP,46))
+if(get hero level(find hero(1)) == 2) then(set variable(miHP,48))
+if(get hero level(find hero(1)) == 3) then(set variable(miHP,51))
+if(get hero level(find hero(1)) == 4) then(set variable(miHP,55))
+if(get hero level(find hero(1)) == 5) then(set variable(miHP,60))
+if(get hero level(find hero(1)) == 6) then(set variable(miHP,66))
+if(get hero level(find hero(1)) == 7) then(set variable(miHP,73))
+if(get hero level(find hero(1)) == 8) then(set variable(miHP,81))
+if(get hero level(find hero(1)) == 9) then(set variable(miHP,90))
+)
+
+set hero stat(find hero(1),0,miHP+adjust,maximum stat)
+
+#just in case
+#set hero stat(find hero(1),0,miHP,maximum stat)
+
+#Initial HP raise
+#set variable(previous level, previous level + 1)
+
+#if (previous level >> 10) then(
+#	set hero stat(find hero(1),0,get hero stat(findhero(1),0,maximum stat) + 10,maximum stat)
+#)else(
+#	set hero stat(find hero(1),0,get hero stat(findhero(1),0,maximum stat) + previous level,maximum stat)
+#)
+
+
+#Extra raise if more than 1 level was gained
+#while(previous level <> get hero level(find hero(1)))
+#do(
+#	set variable(previous level, previous level + 1)
+
+#	if (previous level >> 10)
+#	then(
+#		set hero stat(find hero(1),0,get hero stat(findhero(1),0,maximum stat) + 10,maximum stat)
+#	)else(
+#		set hero stat(find hero(1),0,get hero stat(findhero(1),0,maximum stat) + previous level,maximum stat)
+#	)
+#)
+
+#set variable(miHP, get hero stat(find hero(1),0,maximum stat))
+
+end
+###
+
+############################
+script, johan HP calculator, begin
+
+#there is a problem with icons affecting HP calculation
+#here is an infantry implementation fix
+
+variable(adjust)
+set variable(adjust, get hero stat(find hero(2),0,maximumstat)--joHP)
+
+if(get hero level(find hero(2)) >= 10) then(
+set variable(joHP, (get hero level(find hero(2)) * 10) -- 10 )
+)
+else(
+if(get hero level(find hero(2)) == 1) then(set variable(joHP,36))
+if(get hero level(find hero(2)) == 2) then(set variable(joHP,38))
+if(get hero level(find hero(2)) == 3) then(set variable(joHP,41))
+if(get hero level(find hero(2)) == 4) then(set variable(joHP,45))
+if(get hero level(find hero(2)) == 5) then(set variable(joHP,50))
+if(get hero level(find hero(2)) == 6) then(set variable(joHP,56))
+if(get hero level(find hero(2)) == 7) then(set variable(joHP,63))
+if(get hero level(find hero(2)) == 8) then(set variable(joHP,71))
+if(get hero level(find hero(2)) == 9) then(set variable(joHP,80))
+)
+
+set hero stat(find hero(2),0,joHP+adjust,maximum stat)
+
+#just in case
+#set hero stat(find hero(2),0,joHP,maximum stat)
+
+#Initial HP raise
+#set variable(previous level, previous level + 1)
+
+#if (previous level >> 10) then(
+#	set hero stat(find hero(2),0,get hero stat(findhero(2),0,maximum stat) + 10,maximum stat)
+#)else(
+#	set hero stat(find hero(2),0,get hero stat(findhero(2),0,maximum stat) + previous level,maximum stat)
+#)
+
+
+#Extra raise if more than 1 level was gained
+#while(previous level <> get hero level(find hero(2)))
+#do(
+#	set variable(previous level, previous level + 1)
+
+#	if (previous level >> 10)
+#	then(
+#		set hero stat(find hero(2),0,get hero stat(findhero(2),0,maximum stat) + 10,maximum stat)
+#	)else(
+#		set hero stat(find hero(2),0,get hero stat(findhero(2),0,maximum stat) + previous level,maximum stat)
+#	)
+#)
+
+#set variable(joHP, get hero stat(find hero(2),0,maximum stat))
+
+end
+###
+
+############################
+script, pyrus HP calculator, begin
+
+#there is a problem with icons affecting HP calculation
+#here is an infantry implementation fix
+
+variable(adjust)
+set variable(adjust, get hero stat(find hero(3),0,maximumstat)--pyHP)
+
+if(get hero level(find hero(3)) >= 10) then(
+set variable(pyHP, (get hero level(find hero(3)) * 10) -- 5 )
+)
+else(
+if(get hero level(find hero(3)) == 1) then(set variable(pyHP,41))
+if(get hero level(find hero(3)) == 2) then(set variable(pyHP,43))
+if(get hero level(find hero(3)) == 3) then(set variable(pyHP,46))
+if(get hero level(find hero(3)) == 4) then(set variable(pyHP,50))
+if(get hero level(find hero(3)) == 5) then(set variable(pyHP,55))
+if(get hero level(find hero(3)) == 6) then(set variable(pyHP,61))
+if(get hero level(find hero(3)) == 7) then(set variable(pyHP,68))
+if(get hero level(find hero(3)) == 8) then(set variable(pyHP,76))
+if(get hero level(find hero(3)) == 9) then(set variable(pyHP,85))
+)
+
+set hero stat(find hero(3),0,pyHP+adjust,maximum stat)
+
+#just in case
+#set hero stat(find hero(3),0,pyHP,maximum stat)
+
+#Initial HP raise
+#set variable(previous level, previous level + 1)
+
+#if (previous level >> 10) then(
+#	set hero stat(find hero(3),0,get hero stat(findhero(3),0,maximum stat) + 10,maximum stat)
+#)else(
+#	set hero stat(find hero(3),0,get hero stat(findhero(3),0,maximum stat) + previous level,maximum stat)
+#)
+
+
+#Extra raise if more than 1 level was gained
+#while(previous level <> get hero level(find hero(3)))
+#do(
+#	set variable(previous level, previous level + 1)
+
+#	if (previous level >> 10)
+#	then(
+#		set hero stat(find hero(3),0,get hero stat(findhero(3),0,maximum stat) + 10,maximum stat)
+#	)else(
+#		set hero stat(find hero(3),0,get hero stat(findhero(3),0,maximum stat) + previous level,maximum stat)
+#	)
+#)
+
+#set variable(pyHP, get hero stat(find hero(3),0,maximum stat))
+
+end
+###
+
+################################
+script, dogero pal refresh, begin
+
+dog pal refresh 1
+dog pal refresh 2
+dog pal refresh 3
+dog pal refresh 4
+dog pal refresh 5
+
+end
+###
+
+################################
+script, dog pal refresh 1, begin
+variable(i)
+
+for(i,80,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,111,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+################################
+script, dog pal refresh 2, begin
+if( knows spell(find hero(0),65+1) ) then(
+	write color (80,0,read color(251,0))
+	write color (80,1,read color(251,1))
+	write color (80,2,read color(251,2)))
+if( knows spell(find hero(0),70+1) ) then(
+	write color (81,0,read color(251,0))
+	write color (81,1,read color(251,1))
+	write color (81,2,read color(251,2)))
+if( knows spell(find hero(0),79+1) ) then(
+	write color (82,0,read color(251,0))
+	write color (82,1,read color(251,1))
+	write color (82,2,read color(251,2)))
+if( knows spell(find hero(0),93+1) ) then(
+	write color (83,0,read color(251,0))
+	write color (83,1,read color(251,1))
+	write color (83,2,read color(251,2)))
+end
+###
+
+################################
+script, dog pal refresh 3, begin
+if( knows spell(find hero(0),96+1) ) then(
+	write color (84,0,read color(251,0))
+	write color (84,1,read color(251,1))
+	write color (84,2,read color(251,2)))
+if( knows spell(find hero(0),99+1) ) then(
+	write color (85,0,read color(251,0))
+	write color (85,1,read color(251,1))
+	write color (85,2,read color(251,2)))
+if( knows spell(find hero(0),104+1) ) then(
+	write color (86,0,read color(251,0))
+	write color (86,1,read color(251,1))
+	write color (86,2,read color(251,2)))
+if( knows spell(find hero(0),108+1) ) then(
+	write color (87,0,read color(251,0))
+	write color (87,1,read color(251,1))
+	write color (87,2,read color(251,2)))
+end
+###
+
+################################
+script, dog pal refresh 4, begin
+if( knows spell(find hero(0),112+1) ) then(
+	write color (88,0,read color(251,0))
+	write color (88,1,read color(251,1))
+	write color (88,2,read color(251,2)))
+if( knows spell(find hero(0),116+1) ) then(
+	write color (89,0,read color(251,0))
+	write color (89,1,read color(251,1))
+	write color (89,2,read color(251,2)))
+if( knows spell(find hero(0),121+1) ) then(
+	write color (90,0,read color(251,0))
+	write color (90,1,read color(251,1))
+	write color (90,2,read color(251,2)))
+if( knows spell(find hero(0),126+1) ) then(
+	write color (91,0,read color(251,0))
+	write color (91,1,read color(251,1))
+	write color (91,2,read color(251,2)))
+end
+###
+
+################################
+script, dog pal refresh 5, begin
+if( knows spell(find hero(0),131+1) ) then(
+	write color (92,0,read color(251,0))
+	write color (92,1,read color(251,1))
+	write color (92,2,read color(251,2)))
+if( knows spell(find hero(0),135+1) ) then(
+	write color (93,0,read color(251,0))
+	write color (93,1,read color(251,1))
+	write color (93,2,read color(251,2)))
+if( knows spell(find hero(0),139+1) ) then(
+	write color (94,0,read color(251,0))
+	write color (94,1,read color(251,1))
+	write color (94,2,read color(251,2)))
+end
+###
+
+###########################
+script, dogero skill check, spot, begin
+
+dog sk ch 1 (spot)
+dog sk ch 2 (spot)
+dog sk ch 3 (spot)
+dog sk ch 4 (spot)
+
+end
+###
+
+################################
+script, dog sk ch 1, spot, begin
+set tag(48,0)
+
+if (spot == 80)
+then( spell select(0,0,13,64,777) )
+if (spot == 81)
+then(
+	if ( ksone(0,13,64) ) then( spell select(0,1,16,69,781) )
+	else( tb(1017) )
+)
+if (spot == 82)
+then(
+	if ( ksone(0,16,69) ) then( spell select(0,2,23,78,785) )
+	else( tb(1018) )
+)
+if (spot == 83)
+then( spell select(0,3,35,92,789) )
+end
+###
+
+################################
+script, dog sk ch 2, spot, begin
+if (spot == 84)
+then( spell select(0,4,36,95,793) )
+if (spot == 85)
+then( spell select(0,5,37,98,797) )
+if (spot == 86)
+then( spell select(0,6,40,103,801) )
+if (spot == 87)
+then( spell select(0,7,42,107,805) )
+end
+###
+
+################################
+script, dog sk ch 3, spot, begin
+if (spot == 88)
+then(
+	if ( kstwo(0,42,107,40,103) ) then( spell select(0,8,44,111,809) )
+	else( tb(1019) )
+)
+if (spot == 89)
+then( spell select(0,12,46,115,813) )
+if (spot == 90)
+then( spell select(0,13,49,120,817) )
+if (spot == 91)
+then(
+	if ( kstwo(0,46,115,49,120) ) then( spell select(0,14,52,125,821) )
+	else( tb(1020) )
+)
+end
+###
+
+################################
+script, dog sk ch 4, spot, begin
+if (spot == 92)
+then( spell select(0,15,55,130,825) )
+if (spot == 93)
+then(
+	if ( ksone(0,55,130) ) then( spell select(0,16,57,134,829) )
+	else( tb(1021) )
+)
+if (spot == 94)
+then(
+	if ( ksone(0,57,134) ) then( spell select(0,17,59,138,833) )
+	else( tb(1022) )
+)
+if (spot == 95)
+then(
+	set variable( Text1, get hero stat(find hero(0),1,maximum stat) )
+	set variable( Text2, (get hero stat(find hero(0),1,maximum stat))+1 )
+	tb(776)
+	if( check tag(48) )
+	then(
+		variable(adjust)
+		set variable(adjust,get hero stat(find hero(0),1,maximumstat)--dosp)
+		set variable(dosp,dosp+1)
+		set hero stat(find hero(0),1,dosp+adjust,maximumstat)
+		set variable(hm, hm--1)
+	)
+)
+end
+###
+
+################################
+script, mila pal refresh, begin
+
+mi pal refresh 1
+mi pal refresh 2
+mi pal refresh 3
+mi pal refresh 4
+mi pal refresh 5
+
+end
+###
+
+###############################
+script, mi pal refresh 1, begin
+variable(i)
+
+for(i,80,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,111,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+###############################
+script, mi pal refresh 2, begin
+if( knows spell(find hero(1),147+1) ) then(
+	write color (80,0,read color(251,0))
+	write color (80,1,read color(251,1))
+	write color (80,2,read color(251,2)))
+if( knows spell(find hero(1),153+1) ) then(
+	write color (81,0,read color(251,0))
+	write color (81,1,read color(251,1))
+	write color (81,2,read color(251,2)))
+if( knows spell(find hero(1),159+1) ) then(
+	write color (82,0,read color(251,0))
+	write color (82,1,read color(251,1))
+	write color (82,2,read color(251,2)))
+if( knows spell(find hero(1),165+1) ) then(
+	write color (83,0,read color(251,0))
+	write color (83,1,read color(251,1))
+	write color (83,2,read color(251,2)))
+end
+###
+
+###############################
+script, mi pal refresh 3, begin
+if( knows spell(find hero(1),170+1) ) then(
+	write color (84,0,read color(251,0))
+	write color (84,1,read color(251,1))
+	write color (84,2,read color(251,2)))
+if( knows spell(find hero(1),179+1) ) then(
+	write color (85,0,read color(251,0))
+	write color (85,1,read color(251,1))
+	write color (85,2,read color(251,2)))
+if( knows spell(find hero(1),186+1) ) then(
+	write color (86,0,read color(251,0))
+	write color (86,1,read color(251,1))
+	write color (86,2,read color(251,2)))
+if( knows spell(find hero(1),190+1) ) then(
+	write color (87,0,read color(251,0))
+	write color (87,1,read color(251,1))
+	write color (87,2,read color(251,2)))
+end
+###
+
+###############################
+script, mi pal refresh 4, begin
+if( knows spell(find hero(1),195+1) ) then(
+	write color (88,0,read color(251,0))
+	write color (88,1,read color(251,1))
+	write color (88,2,read color(251,2)))
+if( knows spell(find hero(1),201+1) ) then(
+	write color (89,0,read color(251,0))
+	write color (89,1,read color(251,1))
+	write color (89,2,read color(251,2)))
+if( knows spell(find hero(1),207+1) ) then(
+	write color (90,0,read color(251,0))
+	write color (90,1,read color(251,1))
+	write color (90,2,read color(251,2)))
+if( knows spell(find hero(1),213+1) ) then(
+	write color (91,0,read color(251,0))
+	write color (91,1,read color(251,1))
+	write color (91,2,read color(251,2)))
+end
+###
+
+###############################
+script, mi pal refresh 5, begin
+if( knows spell(find hero(1),219+1) ) then(
+	write color (92,0,read color(251,0))
+	write color (92,1,read color(251,1))
+	write color (92,2,read color(251,2)))
+if( knows spell(find hero(1),224+1) ) then(
+	write color (93,0,read color(251,0))
+	write color (93,1,read color(251,1))
+	write color (93,2,read color(251,2)))
+if( knows spell(find hero(1),230+1) ) then(
+	write color (94,0,read color(251,0))
+	write color (94,1,read color(251,1))
+	write color (94,2,read color(251,2)))
+end
+###
+
+###########################
+script, mila skill check, spot, begin
+
+mi sk ch 1 (spot)
+mi sk ch 2 (spot)
+mi sk ch 3 (spot)
+mi sk ch 4 (spot)
+
+end
+###
+
+###############################
+script, mi sk ch 1, spot, begin
+set tag(48,0)
+
+if (spot == 80)
+then( spell select(1,0,144,146,837) )
+if (spot == 81)
+then( spell select(1,1,150,152,841) )
+if (spot == 82)
+then(
+	if ( kstwo(1,144,146,150,152) ) then( spell select(1,2,156,158,845) )
+	else( tb(1023) )
+)
+if (spot == 83)
+then( spell select(1,3,162,164,849) )
+end
+###
+
+###############################
+script, mi sk ch 2, spot, begin
+if (spot == 84)
+then( spell select(1,4,168,169,853) )
+if (spot == 85)
+then(
+	if ( kstwo(1,162,164,168,169) ) then( spell select(1,5,174,178,857) )
+	else( tb(7326) )
+)
+if (spot == 86)
+then( spell select(1,9,184,185,861) )
+if (spot == 87)
+then( spell select(1,10,188,189,865) )
+end
+###
+
+###############################
+script, mi sk ch 3, spot, begin
+if (spot == 88)
+then( spell select(1,12,192,194,869) )
+if (spot == 89)
+then( spell select(1,13,198,200,873) )
+if (spot == 90)
+then(
+	if ( kstwo(1,192,194,198,200) ) then( spell select(1,14,204,206,877) )
+	else( tb(1024) )
+)
+if (spot == 91)
+then( spell select(1,18,210,212,881) )
+end
+###
+
+###############################
+script, mi sk ch 4, spot, begin
+if (spot == 92)
+then( spell select(1,19,215,218,885) )
+if (spot == 93)
+then(
+	if ( ksone(1,215,218) ) then( spell select(1,20,222,223,889) )
+	else( tb(1025) )
+)
+if (spot == 94)
+then( spell select(1,21,227,229,893) )
+if (spot == 95)
+then(
+	set variable( Text1, get hero stat(find hero(1),1,maximum stat) )
+	set variable( Text2, (get hero stat(find hero(1),1,maximum stat))+1 )
+	tb(776)
+	if( check tag(48) )
+	then(
+		variable(adjust)
+		set variable(adjust,get hero stat(find hero(1),1,maximumstat)--misp)
+		set variable(misp,misp+1)
+		set hero stat(find hero(1),1,misp+adjust,maximumstat)
+		set variable(hm, hm--1)
+	)
+)
+end
+###
+
+################################
+script, johan pal refresh, begin
+
+jo pal refresh 1
+jo pal refresh 2
+jo pal refresh 3
+jo pal refresh 4
+jo pal refresh 5
+
+end
+###
+
+###############################
+script, jo pal refresh 1, begin
+variable(i)
+
+for(i,80,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,111,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+###############################
+script, jo pal refresh 2, begin
+if( knows spell(find hero(2),236+1) ) then(
+	write color (80,0,read color(251,0))
+	write color (80,1,read color(251,1))
+	write color (80,2,read color(251,2)))
+if( knows spell(find hero(2),243+1) ) then(
+	write color (81,0,read color(251,0))
+	write color (81,1,read color(251,1))
+	write color (81,2,read color(251,2)))
+if( knows spell(find hero(2),249+1) ) then(
+	write color (82,0,read color(251,0))
+	write color (82,1,read color(251,1))
+	write color (82,2,read color(251,2)))
+if( knows spell(find hero(2),255+1) ) then(
+	write color (83,0,read color(251,0))
+	write color (83,1,read color(251,1))
+	write color (83,2,read color(251,2)))
+end
+###
+
+###############################
+script, jo pal refresh 3, begin
+if( knows spell(find hero(2),261+1) ) then(
+	write color (84,0,read color(251,0))
+	write color (84,1,read color(251,1))
+	write color (84,2,read color(251,2)))
+if( knows spell(find hero(2),267+1) ) then(
+	write color (85,0,read color(251,0))
+	write color (85,1,read color(251,1))
+	write color (85,2,read color(251,2)))
+if( knows spell(find hero(2),273+1) ) then(
+	write color (86,0,read color(251,0))
+	write color (86,1,read color(251,1))
+	write color (86,2,read color(251,2)))
+if( knows spell(find hero(2),279+1) ,or, check tag(695) ) then(
+	write color (87,0,read color(251,0))
+	write color (87,1,read color(251,1))
+	write color (87,2,read color(251,2)))
+end
+###
+
+###############################
+script, jo pal refresh 4, begin
+if( knows spell(find hero(2),286+1) ,or, check tag(695) ) then(
+	write color (88,0,read color(251,0))
+	write color (88,1,read color(251,1))
+	write color (88,2,read color(251,2)))
+if( knows spell(find hero(2),294+1) ) then(
+	write color (89,0,read color(251,0))
+	write color (89,1,read color(251,1))
+	write color (89,2,read color(251,2)))
+if( knows spell(find hero(2),301+1) ) then(
+	write color (90,0,read color(251,0))
+	write color (90,1,read color(251,1))
+	write color (90,2,read color(251,2)))
+if( knows spell(find hero(2),314+1) ) then(
+	write color (91,0,read color(251,0))
+	write color (91,1,read color(251,1))
+	write color (91,2,read color(251,2)))
+end
+###
+
+###############################
+script, jo pal refresh 5, begin
+if( knows spell(find hero(2),308+1) ) then(
+	write color (92,0,read color(251,0))
+	write color (92,1,read color(251,1))
+	write color (92,2,read color(251,2)))
+if( knows spell(find hero(2),326+1) ) then(
+	write color (93,0,read color(251,0))
+	write color (93,1,read color(251,1))
+	write color (93,2,read color(251,2)))
+if( knows spell(find hero(2),320+1) ) then(
+	write color (94,0,read color(251,0))
+	write color (94,1,read color(251,1))
+	write color (94,2,read color(251,2)))
+end
+###
+
+################################
+script, johan skill check, spot, begin
+
+jo sk ch 1 (spot)
+jo sk ch 2 (spot)
+jo sk ch 3 (spot)
+jo sk ch 4 (spot)
+
+end
+###
+
+###############################
+script, jo sk ch 1, spot, begin
+set tag(48,0)
+
+if (spot == 80)
+then( spell select(2,0,234,235,897) )
+if (spot == 81)
+then(
+	if ( ksone(2,234,235) ) then( spell select(2,1,240,242,901) )
+	else( tb(1026) )
+)
+if (spot == 82)
+then(
+	if ( ksone(2,234,235) ) then( spell select(2,2,246,248,905) )
+	else( tb(1026) )
+)
+if (spot == 83)
+then( spell select(2,3,252,254,909) )
+end
+###
+
+###############################
+script, jo sk ch 2, spot, begin
+if (spot == 84)
+then( spell select(2,4,258,260,913) )
+if (spot == 85)
+then( spell select(2,5,264,266,917) )
+if (spot == 86)
+then( spell select(2,6,270,272,921) )
+if (spot == 87, and, check tag(695)==false)
+then( spell select(2,7,276,278,925) )
+end
+###
+
+###############################
+script, jo sk ch 3, spot, begin
+if (spot == 88, and, check tag(695)==false)
+then( spell select(2,8,282,285,929) )
+if (spot == 89)
+then( spell select(2,12,290,293,933) )
+if (spot == 90)
+then( spell select(2,13,297,300,937) )
+if (spot == 91)
+then(
+	if ( kstwo(2,290,293,297,300) ) then( spell select(2,15,311,313,941) )
+	else( tb(1027) )
+)
+end
+###
+
+###############################
+script, jo sk ch 4, spot, begin
+if (spot == 92)
+then( spell select(2,16,304,307,945) )
+if (spot == 93)
+then( spell select(2,18,323,325,949) )
+if (spot == 94)
+then( spell select(2,19,317,319,953) )
+if (spot == 95)
+then(
+	set variable( Text1, get hero stat(find hero(2),1,maximum stat) )
+	set variable( Text2, (get hero stat(find hero(2),1,maximum stat))+1 )
+	tb(776)
+	if( check tag(48) )
+	then(
+		variable(adjust)
+		set variable(adjust,get hero stat(find hero(2),1,maximumstat)--josp)
+		set variable(josp,josp+1)
+		set hero stat(find hero(2),1,josp+adjust,maximumstat)
+		set variable(hm, hm--1)
+	)
+)
+end
+###
+
+################################
+script, pyrus pal refresh, begin
+
+py pal refresh 1
+py pal refresh 2
+py pal refresh 3
+py pal refresh 4
+py pal refresh 5
+
+end
+###
+
+###############################
+script, py pal refresh 1, begin
+variable(i)
+
+for(i,80,95,1)
+	do, begin
+	write color (i,0,read color(15,0))
+	write color (i,1,read color(15,1))
+	write color (i,2,read color(15,2))
+	end
+
+for(i,96,111,1)
+	do, begin
+	write color (i,0,read color(34,0))
+	write color (i,1,read color(34,1))
+	write color (i,2,read color(34,2))
+	end
+end
+###
+
+###############################
+script, py pal refresh 2, begin
+if( knows spell(find hero(3),333+1) ) then(
+	write color (80,0,read color(251,0))
+	write color (80,1,read color(251,1))
+	write color (80,2,read color(251,2)))
+if( knows spell(find hero(3),340+1) ) then(
+	write color (81,0,read color(251,0))
+	write color (81,1,read color(251,1))
+	write color (81,2,read color(251,2)))
+if( knows spell(find hero(3),347+1) ) then(
+	write color (82,0,read color(251,0))
+	write color (82,1,read color(251,1))
+	write color (82,2,read color(251,2)))
+if( knows spell(find hero(3),354+1) ) then(
+	write color (83,0,read color(251,0))
+	write color (83,1,read color(251,1))
+	write color (83,2,read color(251,2)))
+end
+###
+
+###############################
+script, py pal refresh 3, begin
+if( knows spell(find hero(3),362+1) ) then(
+	write color (84,0,read color(251,0))
+	write color (84,1,read color(251,1))
+	write color (84,2,read color(251,2)))
+if( knows spell(find hero(3),370+1) ) then(
+	write color (85,0,read color(251,0))
+	write color (85,1,read color(251,1))
+	write color (85,2,read color(251,2)))
+if( knows spell(find hero(3),378+1) ) then(
+	write color (86,0,read color(251,0))
+	write color (86,1,read color(251,1))
+	write color (86,2,read color(251,2)))
+if( knows spell(find hero(3),388+1) ) then(
+	write color (87,0,read color(251,0))
+	write color (87,1,read color(251,1))
+	write color (87,2,read color(251,2)))
+end
+###
+
+###############################
+script, py pal refresh 4, begin
+if( knows spell(find hero(3),405+1) ) then(
+	write color (88,0,read color(251,0))
+	write color (88,1,read color(251,1))
+	write color (88,2,read color(251,2)))
+if( knows spell(find hero(3),425+1) ) then(
+	write color (89,0,read color(251,0))
+	write color (89,1,read color(251,1))
+	write color (89,2,read color(251,2)))
+if( knows spell(find hero(3),429+1) ) then(
+	write color (90,0,read color(251,0))
+	write color (90,1,read color(251,1))
+	write color (90,2,read color(251,2)))
+if( knows spell(find hero(3),433+1) ) then(
+	write color (91,0,read color(251,0))
+	write color (91,1,read color(251,1))
+	write color (91,2,read color(251,2)))
+end
+###
+
+###############################
+script, py pal refresh 5, begin
+if( knows spell(find hero(3),438+1) ) then(
+	write color (92,0,read color(251,0))
+	write color (92,1,read color(251,1))
+	write color (92,2,read color(251,2)))
+if( knows spell(find hero(3),442+1) ) then(
+	write color (93,0,read color(251,0))
+	write color (93,1,read color(251,1))
+	write color (93,2,read color(251,2)))
+if( knows spell(find hero(3),135+1) ) then(
+	write color (94,0,read color(251,0))
+	write color (94,1,read color(251,1))
+	write color (94,2,read color(251,2)))
+end
+###
+
+################################
+script, pyrus skill check, spot, begin
+
+py sk ch 1 (spot)
+py sk ch 2 (spot)
+py sk ch 3 (spot)
+py sk ch 4 (spot)
+
+end
+###
+
+###############################
+script, py sk ch 1, spot, begin
+set tag(48,0)
+
+if (spot == 80)
+then( spell select(3,0,330,332,957) )
+if (spot == 81)
+then(
+	if ( ksone(3,330,332) ) then( spell select(3,1,336,339,961) )
+	else( tb(1028) )
+)
+if (spot == 82)
+then( spell select(3,2,344,346,965) )
+if (spot == 83)
+then( spell select(3,3,350,353,969) )
+end
+###
+
+###############################
+script, py sk ch 2, spot, begin
+if (spot == 84)
+then( spell select(3,4,358,361,973) )
+if (spot == 85)
+then( spell select(3,5,366,369,977) )
+if (spot == 86)
+then( spell select(3,6,374,377,981) )
+if (spot == 87)
+then( spell select(3,7,382,387,985) )
+end
+###
+
+###############################
+script, py sk ch 3, spot, begin
+if (spot == 88)
+then( spell select(3,9,394,404,989) )
+if (spot == 89)
+then( spell select(3,15,422,424,993) )
+if (spot == 90)
+then(
+	if ( ksone(3,422,424) ) then( spell select(3,16,427,428,997) )
+	else( tb(1029) )
+)
+if (spot == 91)
+then( spell select(3,17,431,432,1001) )
+end
+###
+
+###############################
+script, py sk ch 4, spot, begin
+if (spot == 92)
+then( spell select(3,18,435,437,1005) )
+if (spot == 93)
+then( spell select(3,19,440,441,1009) )
+if (spot == 94)
+then( spell select(3,21,57,134,1013) )
+if (spot == 95)
+then(
+	set variable( Text1, get hero stat(find hero(3),1,maximum stat) )
+	set variable( Text2, (get hero stat(find hero(3),1,maximum stat))+1 )
+	tb(776)
+	if( check tag(48) )
+	then(
+		variable(adjust)
+		set variable(adjust,get hero stat(find hero(3),1,maximumstat)--pysp)
+		set variable(pysp,pysp+1)
+		set hero stat(find hero(3),1,pysp+adjust,maximumstat)
+		set variable(hm, hm--1)
+	)
+)
+end
+###
+
+########################
+script, set color, spot, begin
+write color(spot,0,read color(15,0))
+write color(spot,1,read color(15,1))
+write color(spot,2,read color(15,2))
+write color(spot+16,0,read color(2,0))
+write color(spot+16,1,read color(2,1))
+write color(spot+16,2,read color(2,2))
+end
+###
+
+###########################
+script, spell select, hero, slot, basic, cheap, first text box num, begin
+	if ( knows spell (find hero(hero),basic+1) )
+	then(
+		tb(first text box num+1)
+		if (check tag(48))
+		then(
+		tb(first text box num+2)
+		if (check tag(48))
+		then(write spell (find hero(hero),0,slot,cheap+1),set variable(hm, hm--1))
+		)
+		else(
+		tb(first text box num+3)
+		if (check tag(48))
+		then(write spell (find hero(hero),0,slot,cheap+2+1),set variable(hm, hm--1))
+		)
+	)else(
+	if ( knows spell (find hero(hero),cheap+2+1) )
+	then(
+		tb(first text box num+2)
+		if (check tag(48))
+		then(write spell (find hero(hero),0,slot,cheap+1+1),set variable(hm, hm--1))
+	)else(
+	if ( knows spell (find hero(hero),cheap+1) )
+	then(
+		tb(first text box num+3)
+		if (check tag(48))
+		then(write spell (find hero(hero),0,slot,cheap+1+1),set variable(hm, hm--1))
+	)else(
+		tb(first text box num)
+		if (check tag(48))
+		then(write spell (find hero(hero),0,slot,basic+1),set variable(hm, hm--1))
+	)))
+end
+###
+
+#########################################
+script, ksone, hero, frst, scnd, begin
+
+if ( knows spell(find hero(hero),frst+1) ,or, knows spell(find hero(hero),scnd+1) ,or, knows spell(find hero(hero),scnd+2) ,or, knows spell(find hero(hero),scnd+3) )
+then( return(true) )
+else( return(false) )
+
+end
+###
+
+##########################################################
+script, kstwo, hero, frst, scnd, ffrst, sscnd, begin
+
+if ( (knows spell(find hero(hero),frst+1) ,or, knows spell(find hero(hero),scnd+1) ,or, knows spell(find hero(hero),scnd+2) ,or, knows spell(find hero(hero),scnd+3)) ,and, (knows spell(find hero(hero),ffrst+1) ,or, knows spell(find hero(hero),sscnd+1) ,or, knows spell(find hero(hero),sscnd+2) ,or, knows spell(find hero(hero),sscnd+3)) )
+then( return(true) )
+else( return(false) )
+
+end
+###
+
+###############################
+script, gainanima, anima, begin
+#okay
+#this is it
+#down to the last few scripts
+#let's make it happen.
+
+#Here is how this works:
+#the argument "anima" is a number 1-whatever
+#it is used to determine how many anima received on victory
+#it is randomized
+# num + random(1,num*2)
+#so
+# if 1  then 2-3   #Forest Pass
+# if 2  then 3-6   #Anon Tomb, Underground Quarry
+# if 3  then 4-9   #Gitleh Tomb, Desert of Despair
+# if 4  then 5-12  #Fedora Tomb, Unknown Tomb
+# if 5  then 6-15  #Snowfall
+# if 6  then 7-18  #Shoda Tomb
+# if 7  then 8-21  #***special
+# if 8  then 9-24  #***special
+# if 9  then 10-27 #***special
+# if 10 then 11-30 #***special
+
+if(anima<>0) then(
+
+addanima( anima + random( 1, anima * 2 ) )
+
+)
+end
+###
+
+############################
+script, addanima, aup, begin
+variable(aynrand)
+variable(onward)
+for(onward,aup,0,-1) do(
+	set variable(aynrand,random(1,8))
+	if(aynrand==1) then( set variable(HP , HP  + 1 ) )
+	if(aynrand==2) then( set variable(SP , SP  + 1 ) )
+	if(aynrand==3) then( set variable(Str, Str + 1 ) )
+	if(aynrand==4) then( set variable(Def, Def + 1 ) )
+	if(aynrand==5) then( set variable(Acc, Acc + 1 ) )
+	if(aynrand==6) then( set variable(Ddg, Ddg + 1 ) )
+	if(aynrand==7) then( set variable(Skl, Skl + 1 ) )
+	if(aynrand==8) then( set variable(Evd, Evd + 1 ) )
+)
+end
+###

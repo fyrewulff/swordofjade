@@ -1,0 +1,129 @@
+#global variables (shared between ALL scripts)
+
+global variable,begin
+######>>>>>>>>>      Variables for time system <<<<<<<<<<<<#######
+1,hour #Current hour (1-24) (Converted into normal time by displaytime)
+2,minute #Current min (1-60) (Of course)
+3,second #Current second (1-60) (REALLY precise, nay?)
+4,currenttime #Time, in military
+5,isrunning #Is the time system still s'posed to run?
+6,morningmap #morning map
+7,noonmap #noon map
+8,nightmap #night map
+9,afternoonmap #afternoon map  (put after others for backwards compat.)
+10,dochange
+11,hspeed
+12,txtred
+13,txtgreen
+14,txtblue
+15,saveplace1
+16,saveplace2
+17,saveplace3
+18,saveplace4
+19,HP #19-26 store how much anima the player has
+20,SP
+21,Str
+22,Acc
+23,Def
+24,Ddg
+25,Skl
+26,Evd
+27,JadeCounter
+28,JadeCounter2
+29,JadeStep
+30,WearyCounter
+31,Text1 #used to display stat training price
+32,Text2
+33,Hm #How many, for use with level up scripts
+34,saveherox #used with jade dart, not avis
+35,saveheroy #used with jade dart, not avis
+36,day #current day
+37,saves
+38,jadedart
+39,h1 #39-42 used to save chosen hero order, dart final sequence
+40,h2 #39-41 also used for days/hours/minutes of play in credits
+41,h3
+42,h4
+43,dohp #just to be safe, saving stats for each hero with globals
+44,dosp #43-74
+45,dostr
+46,dodef
+47,doacc
+48,doddg
+49,doskl
+50,doevd
+51,mihp
+52,misp
+53,mistr
+54,midef
+55,miacc
+56,middg
+57,miskl
+58,mievd
+59,johp
+60,josp
+61,jostr
+62,jodef
+63,joacc
+64,joddg
+65,joskl
+66,joevd
+67,pyhp
+68,pysp
+69,pystr
+70,pydef
+71,pyacc
+72,pyddg
+73,pyskl
+74,pyevd
+75,actnumber #used for the weary check, should equal the current act (1-5)
+76,fraliniconsave
+77,fraliniconhour
+78,fraliniconday
+79,flash #used with battleflash script???
+80,scheck #used in stat/avis buying
+81,avishx #81-84 used to save avis return position
+82,avishy
+83,avishmap
+84,avisbird
+85,hpprice #85-92 is used to store trader buying rates
+86,spprice
+87,strprice
+88,accprice
+89,defprice
+90,ddgprice
+91,sklprice
+92,evdprice
+93,adleziconsave #93-104 used with icon shop scripts
+94,adleziconhour
+95,adleziconday
+96,keltaniconsave
+97,keltaniconhour
+98,keltaniconday
+99,cyporticonsave
+100,cyporticonhour
+101,cyporticonday
+102,rorciconsave
+103,rorciconhour
+104,rorciconday
+105,jayday #used with adlez avis quest
+106,missinghour #106-107 used with missing person quest
+107,missingday
+108,orehour #108-109 used with refined ore quest
+109,oreday
+110,castleday #used with rebuild castle quest
+111,castlepay #MONEY! used to check if 5 days have past since last collecting money
+112,amazing #used with mazing upgrading weapons
+113,battlesfought #used in script "ff"
+114,battleswon
+115,wobblermoney #stores how much was lost if any, can get it back later
+116,dunred #below used for the rest item, to set the palette tweaks in dungeons
+117,dungreen
+118,dunblue
+119,dunred2
+120,dungreen2
+121,dunblue2
+122,musicsave #used to play music at load
+123,seemoney
+124,seeanima
+end

@@ -1,0 +1,804 @@
+#CSS: Core Scene Scripts
+#Also includes
+#Zelda style map scrolling
+#and
+#Palette block fade in/out
+#and
+#enemy scripts!
+
+include,plotscr.hsd
+
+define script (1,intro,0)
+define script (2,fralindoor,0)
+define script (3,fralinindoordoor,0)
+define script (4,aletter,0)
+define script (5,heroesoffralin,0)
+define script (6,test,0)
+define script (7,load,0)
+
+define script (autonumber,tb,1,0)
+define script (autonumber,palout,1,1)
+define script (autonumber,palin,1,1)
+define script (autonumber,jighero,1,0)
+define script (autonumber,jignpc,1,0)
+define script (autonumber,checkinventory,0)
+define script (autonumber,battleflash,0)
+#global variable (walking_speed)
+
+script, battle flash, begin
+write color (240,0,50)
+write color (0,0,50)
+update palette
+wait (1)
+reset palette
+update palette
+tweak palette (30,0,0)
+update palette
+wait (1)
+reset palette
+update palette
+show backdrop (1)
+wait (1)
+show map
+write color (240,0,50)
+write color (0,0,50)
+update palette
+wait (1)
+reset palette
+update palette
+tweak palette (30,0,0)
+update palette
+wait (1)
+reset palette
+update palette
+show backdrop (1)
+wait (1)
+show map
+end
+
+script, checkinventory, begin
+variable (i)
+set variable (i,0)
+variable (total)
+set variable (total,0)
+for (i,0,254,1) do(
+if (inventory(i)>>0) then(
+set variable (total,total+1))
+)
+return (total)
+end
+
+script,tb,which,begin
+showtextbox(which)
+waitfortextbox
+end
+
+script,palout,time,begin
+if (time<>0) then(
+tweak palette (-10,-10,-10)
+update palette
+wait (time)
+tweak palette (-20,-20,-20)
+update palette
+wait (time)
+tweak palette (-40,-40,-40)
+update palette
+wait (time)
+tweak palette (-111,-111,-111)
+update palette
+wait (time)
+)
+end
+
+script,palin,time,begin
+if (time<>0) then(
+reset palette
+tweak palette (-40,-40,-40)
+update palette
+wait (time)
+reset palette
+tweak palette (-20,-20,-20)
+update palette
+wait (time)
+reset palette
+tweak palette (-10,-10,-10)
+update palette
+wait (time)
+reset palette
+update palette
+)
+end
+
+script,jighero,who,begin
+wait (2)
+set hero frame (who,1)
+wait (2)
+set hero frame (who,0)
+wait (2)
+end
+
+script,jignpc,who,begin
+wait (2)
+set npc frame (who,1)
+wait (2)
+set npc frame (who,0)
+wait (2)
+end
+
+
+
+####################
+script, intro, begin
+end
+###
+
+####################
+script, fralin door, begin
+suspend player
+set tag (8,1)
+variable (time)
+set variable (time,1)
+
+if (herox(0)==59,and,heroy(0)==10) then(
+set variable (time,0)
+set hero speed (0,10)
+pan camera (right,18,20)
+walk hero (0,right,18)
+wait for camera
+set hero speed (0,5)
+wait for hero (0)
+set hero speed (0,4)
+camera follows hero)
+else(
+if (herox(0)==59,and,heroy(0)==11) then(
+set variable (time,0)
+set hero speed (0,10)
+pan camera (right,18,20)
+walk hero (0,right,18)
+wait for camera
+set hero speed (0,5)
+wait for hero (0)
+set hero speed (0,4)
+camera follows hero)
+)else(
+if (herox(0)==76,and,heroy(0)==10) then(
+set variable (time,0)
+set hero speed (0,10)
+pan camera (left,18,20)
+walk hero (0,left,18)
+wait for camera
+set hero speed (0,5)
+wait for hero (0)
+set hero speed (0,4)
+camera follows hero)
+)else(
+if (herox(0)==76,and,heroy(0)==11) then(
+set variable (time,0)
+set hero speed (0,10)
+pan camera (left,18,20)
+walk hero (0,left,18)
+wait for camera
+set hero speed (0,5)
+wait for hero (0)
+set hero speed (0,4)
+camera follows hero)
+)else(
+if (herox(0)==94,and,heroy(0)==26) then(
+set variable (time,0)
+set hero speed (0,10)
+pan camera (down,9,20)
+walk hero (0,down,9)
+wait for camera
+set hero speed (0,5)
+wait for hero (0)
+set hero speed (0,4)
+camera follows hero)
+)else(
+if (herox(0)==94,and,heroy(0)==34) then(
+set variable (time,0)
+set hero speed (0,10)
+pan camera (up,9,20)
+walk hero (0,up,9)
+wait for camera
+set hero speed (0,5)
+wait for hero (0)
+set hero speed (0,4)
+camera follows hero)
+)else(
+if (herox(0)==92,or,herox(0)==93,or,herox(0)==94,and,heroy(0)==63) then(
+set variable (time,3)
+set hero speed (0,10)
+pan camera (down,27,20)
+walk hero (0,down,10)
+wait for camera
+set hero speed (0,5)
+wait for hero (0)
+set hero speed (0,4))
+)
+
+palout(time)
+
+if (herox(0)==51,and,heroy(0)==10) then(
+teleport to map (5,6,7))
+else(
+if (herox(0)==94,and,heroy(0)==13) then(
+teleport to map (5,5,25))
+)else(
+if (herox(0)==87,and,heroy(0)==42) then(
+teleport to map (5,7,60))
+)else(
+if (herox(0)==85,and,heroy(0)==56) then(
+teleport to map (5,11,80))
+)else(
+if (herox(0)==104,and,heroy(0)==54) then(
+teleport to map (5,9,101))
+)else(
+if (herox(0)==105,and,heroy(0)==54) then(
+teleport to map (5,10,101))
+)else(
+if (herox(0)==107,and,heroy(0)==40) then(
+teleport to map (5,3,118))
+)else(
+if (herox(0)==122,and,heroy(0)==58) then(
+teleport to map (5,3,135))
+)else(
+if (herox(0)==112,and,heroy(0)==64) then(
+teleport to map (5,3,153))
+)else(
+if (herox(0)==159,and,heroy(0)==21) then(
+teleport to map (5,3,170))
+)else(
+if (herox(0)==133,and,heroy(0)==79) then(
+teleport to map (5,4,187))
+)else(
+if (herox(0)==57,and,heroy(0)==36) then(
+teleport to map (5,3,204))
+)else(
+if (herox(0)==25,and,heroy(0)==79) then(
+teleport to map (5,3,221))
+)else(
+if (herox(0)==92,and,heroy(0)==73) then(
+camera follows hero (0)
+teleport to map (9,10,8))
+)else(
+if (herox(0)==93,and,heroy(0)==73) then(
+camera follows hero (0)
+teleport to map (9,11,8))
+)else(
+if (herox(0)==94,and,heroy(0)==73) then(
+camera follows hero (0)
+teleport to map (9,12,8))
+)
+
+#set hero speed (0,10)
+palin(time)
+set tag (8,0)
+resume player
+end
+###
+
+####################
+script, fralin indoor door, begin
+suspend player
+set tag (8,1)
+variable (time)
+set variable (time,1)
+
+if (herox(0)==6,and,heroy(0)==20) then(
+set variable (time,2))
+else(
+if (herox(0)==1,and,heroy(0)==37) then(
+set variable (time,2))
+)
+
+palout(time)
+
+if (herox(0)==6,and,heroy(0)==8) then(
+teleport to map (1,51,11))
+else(
+if (herox(0)==6,and,heroy(0)==20) then(
+teleport to map (5,1,36))
+)else(
+if (herox(0)==5,and,heroy(0)==26) then(
+teleport to map (1,94,14))
+)else(
+if (herox(0)==1,and,heroy(0)==37) then(
+teleport to map (5,6,21))
+)else(
+if (herox(0)==7,and,heroy(0)==61) then(
+teleport to map (1,87,43))
+)else(
+if (herox(0)==11,and,heroy(0)==81) then(
+teleport to map (1,85,57))
+)else(
+if (herox(0)==9,and,heroy(0)==102) then(
+teleport to map (1,104,55))
+)else(
+if (herox(0)==10,and,heroy(0)==102) then(
+teleport to map (1,105,55))
+)else(
+if (herox(0)==3,and,heroy(0)==119) then(
+teleport to map (1,107,41))
+)else(
+if (herox(0)==3,and,heroy(0)==136) then(
+teleport to map (1,122,59))
+)else(
+if (herox(0)==3,and,heroy(0)==154) then(
+teleport to map (1,112,65))
+)else(
+if (herox(0)==3,and,heroy(0)==171) then(
+teleport to map (1,159,22))
+)else(
+if (herox(0)==4,and,heroy(0)==188) then(
+teleport to map (1,133,80))
+)else(
+if (herox(0)==3,and,heroy(0)==205) then(
+teleport to map (1,57,37))
+)else(
+if (herox(0)==3,and,heroy(0)==222) then(
+teleport to map (1,25,80))
+)
+
+#set hero speed (0,10)
+palin(time)
+set tag (8,0)
+resume player
+end
+###
+
+#######################
+script, a letter, begin
+suspend player
+walk hero (0,down,1)
+wait for hero (0)
+write map block (3,19,86)
+write map block (3,20,102)
+walk hero(0,left,3)
+wait for hero (0)
+set hero direction (0,up)
+pan camera (up,0,0)
+jig hero
+tb(2)
+wait (5)
+show text box (3)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (2)
+write map block (3,19,86)
+write map block (3,20,102)
+wait (2)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (2)
+write map block (3,19,86)
+write map block (3,20,102)
+wait for text box
+jig hero
+tb(4)
+write map block (3,19,113)
+write map block (3,20,129)
+wait (5)
+tb(5)
+write map block (3,19,87)
+write map block (3,20,103)
+wait (5)
+tb(6)
+jig hero
+tb(7)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (5)
+tb(8)
+jig hero
+tb(9)
+wait (5)
+tb(10)
+jig hero
+tb(11)
+wait (5)
+tb(12)
+jig hero
+tb(13)
+write map block (3,19,87)
+write map block (3,20,103)
+wait (5)
+tb(14)
+jig hero
+tb(15)
+wait (5)
+show text box (16)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (1)
+write map block (3,19,87)
+write map block (3,20,103)
+wait (2)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (1)
+write map block (3,19,87)
+write map block (3,20,103)
+wait (2)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (1)
+write map block (3,19,87)
+write map block (3,20,103)
+wait (2)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (1)
+write map block (3,19,87)
+write map block (3,20,103)
+wait (2)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (1)
+write map block (3,19,87)
+write map block (3,20,103)
+wait for text box
+wait (5)
+tb(17)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (5)
+tb(18)
+wait (5)
+tb(19)
+jig hero
+tb(20)
+wait (5)
+tb(21)
+set hero direction (0,left)
+wait (2)
+walk hero (0,down,1)
+wait for hero (0)
+show text box (22)
+walk hero (0,down,1)
+wait for text box
+wait for hero (0)
+set hero direction (0,right)
+wait (2)
+set hero direction (0,up)
+jig hero
+tb(23)
+wait (5)
+tb(24)
+wait (5)
+tb(25)
+walk hero (0,up,2)
+wait for hero (0)
+jig hero
+tb(26)
+wait (5)
+tb(27)
+write map block (3,19,86)
+write map block (3,20,102)
+wait (10)
+tb(28)
+jig hero
+tb(29)
+write map block (3,19,120)
+write map block (3,20,136)
+wait (5)
+tb(30)
+jig hero
+tb(31)
+show text box (32)
+set hero direction (0,left)
+wait (2)
+walk hero (0,down,2)
+wait for hero (0)
+walk hero (0,right,2)
+wait for hero (0)
+walk hero (0,down,2)
+wait for hero (0)
+set hero position (0,0,0)
+wait for text box
+palout(1)
+camera follows hero (0)
+teleport to map (1,94,14)
+palin(1)
+suspend box advance
+show text box (33)
+wait(1)
+advance text box
+resume player
+resume box advance
+end
+###
+
+###############################
+script, heroes of fralin, begin
+suspend player
+suspend obstruction
+variable (i)
+
+set hero frame (0,0)
+focus camera (93,61,2)
+wait for camera
+wait (15)
+jig npc (33)
+tb(34)
+show text box (35)
+ for (i,0,3,1) do(
+ put npc (30,1880,1175)
+ wait (1)
+ put npc (30,1880,1170)
+ wait (1)
+ put npc (30,1880,1175)
+ wait (1)
+ put npc (30,1880,1180)
+ wait (1))
+wait for text box
+wait (2)
+set npc direction (31,right)
+wait (2)
+tb(36)
+wait (2)
+set npc direction (29,left)
+wait (2)
+tb(37)
+jig npc (33)
+show text box (38)
+wait (2)
+set npc direction (31,down)
+set npc direction (29,down)
+wait for text box
+walk npc (29,down,1)
+wait for npc (29)
+set npc frame (29,0)
+jig npc (29)
+tb(39)
+walk npc (31,down,1)
+wait for npc (31)
+set npc frame (31,0)
+set npc direction (30,left)
+wait (2)
+set npc direction (30,down)
+wait (2)
+walk npc (30,down,1)
+wait for npc (30)
+set npc frame (30,0)
+ for (i,0,3,1) do(
+ put npc (30,1880,1195)
+ wait (1)
+ put npc (30,1880,1190)
+ wait (1)
+ put npc (30,1880,1195)
+ wait (1)
+ put npc (30,1880,1200)
+ wait (1))
+tb(40)
+jig npc (29)
+tb(41)
+ if (heroy(0)<<57) then(
+ walk hero to Y (0,57)
+ wait for hero (0))
+walk hero to X (0,92)
+wait for hero (0)
+walk hero to Y (0,57)
+wait for hero (0)
+set hero direction (0,down)
+set hero frame (0,0)
+jig hero
+tb(42)
+wait (2)
+set npc direction (32,right)
+wait (2)
+set npc direction (32,up)
+jig npc (32)
+tb(43)
+jig hero
+tb(44)
+jig npc (32)
+tb(45)
+jig hero
+tb(46)
+show text box (47)
+wait (2)
+set npc direction (32,left)
+wait (2)
+set npc direction (32,down)
+wait for text box
+walk npc (32,down,1)
+set npc direction (31,left)
+wait (2)
+set npc direction (31,up)
+set npc direction (29,left)
+set npc direction (30,right)
+wait (3)
+set npc direction (29,up)
+set npc direction (30,up)
+wait for npc (32)
+walk npc (32,right,1)
+wait for npc (32)
+walk npc (32,right,1)
+wait for npc (32)
+set npc direction (32,down)
+wait (2)
+set npc direction (32,left)
+set npc frame (32,0)
+jig npc (31)
+tb(48)
+ for (i,0,3,1) do(
+ put npc (30,1880,1195)
+ wait (1)
+ put npc (30,1880,1190)
+ wait (1)
+ put npc (30,1880,1195)
+ wait (1)
+ put npc (30,1880,1200)
+ wait (1))
+tb(49)
+jig hero
+tb(50)
+jig npc (29)
+tb(51)
+jig npc (30)
+tb(52)
+jig hero
+tb(53)
+wait (15)
+tb(54)
+wait (5)
+set npc direction (31,right)
+set npc direction (29,left)
+wait (3)
+set npc direction (31,up)
+set npc direction (30,left)
+wait (3)
+set npc direction (32,down)
+set npc direction (29,right)
+wait (3)
+set npc direction (31,left)
+wait (3)
+set npc direction (32,left)
+set npc direction (29,up)
+wait (3)
+set npc direction (31,up)
+set npc direction (30,up)
+wait (5)
+jig npc (55)
+tb(55)
+jig hero
+tb(56)
+jig npc (29)
+tb(57)
+jig hero
+show text box (58)
+set hero picture (0,49,outside battle)
+wait for text box
+wait (2)
+set hero picture (0,38,outside battle)
+wait (5)
+set hero picture (0,39,outside battle)
+wait (5)
+tb(59)
+jig npc (29)
+tb(60)
+jig npc (32)
+tb(61)
+jig npc (31)
+tb(62)
+jig npc (30)
+tb(63)
+wait (2)
+set hero picture (0,38,outside battle)
+wait (2)
+set hero picture (0,49,outside battle)
+wait (5)
+tb(64)
+jig npc (31)
+tb(65)
+battle flash
+fade screen out
+set npc direction (32,up)
+set NPC position (29,92,59)
+set NPC position (30,93,59)
+set NPC position (31,91,59)
+set NPC position (32,92,60)
+wait (1)
+fight formation (4)
+fade screen in
+wait (2)
+ for (i,0,3,1) do(
+ put npc (30,1860,1175)
+ wait (1)
+ put npc (30,1860,1170)
+ wait (1)
+ put npc (30,1860,1175)
+ wait (1)
+ put npc (30,1860,1180)
+ wait (1))
+tb (66)
+wait (2)
+set npc direction (30,right)
+wait (2)
+alter NPC (30,NPCstat:move speed,10)
+walk npc (30,down,2)
+wait for npc (30)
+walk npc (30,right,1)
+wait for npc (30)
+walk npc (30,down,7)
+wait for npc (30)
+jig npc (32)
+tb(67)
+alter NPC (32,NPCstat:move speed,10)
+walk npc (32,down,7)
+wait (2)
+set npc direction (29,right)
+wait (2)
+set npc direction (29,down)
+jig npc (29)
+tb(68)
+jig npc (31)
+tb(69)
+wait (2)
+walk npc (29,down,1)
+set npc direction (31,right)
+wait for npc (29)
+walk npc (31,right,1)
+walk npc (29,down,1)
+wait for npc (31)
+wait for npc (29)
+set npc direction (33,left)
+walk npc (31,down,3)
+walk npc (29,down,3)
+wait for npc (31)
+wait for npc (29)
+set npc direction (33,down)
+walk npc (31,down,6)
+walk npc (29,down,6)
+wait for npc (31)
+wait for npc (29)
+set hero picture (0,1,outside battle)
+walk hero (0,down,3)
+wait for hero (0)
+walk hero (0,right,1)
+wait for hero (0)
+set hero direction (0,down)
+jig hero
+tb(70)
+wait (2)
+set npc direction (33,left)
+wait (2)
+set npc direction (33,up)
+jig npc (33)
+tb(71)
+jig hero
+tb(72)
+jig npc (33)
+tb(73)
+tb(74)
+show text box (75)
+wait (2)
+set npc direction (33,left)
+wait (2)
+set npc direction (33,down)
+wait (2)
+walk npc (33,down,5)
+wait for text box
+pan camera (north,1,2)
+wait for camera
+camera follows hero (0)
+wait for npc (33)
+set tag (9,1)
+suspend box advance
+show text box (33)
+wait(1)
+advance text box
+resume player
+resume box advance
+resume obstruction
+end
+###
+
+###################
+script, load, begin
+resume player
+resume box advance
+resume obstruction
+wait (1)
+end
+###

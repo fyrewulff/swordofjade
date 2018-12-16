@@ -1,0 +1,23 @@
+# HamsterSpeak constant definitions for jade
+
+define constant, begin
+0,hero:Dogero
+1,hero:Mi'la
+2,hero:Johan
+3,hero:Pyrus
+4,hero:Talon
+5,hero:Sparra
+6,hero:Wanderer
+7,hero:Dart
+8,hero:Scarf
+9,hero:Manx
+10,hero:Bro
+11,hero:Shoda
+12,hero:Fedora
+13,hero:Gitleh
+14,hero:Anon
+15,hero:Dart2
+16,hero:avis1
+17,hero:avis2
+18,hero:avis3
+end
