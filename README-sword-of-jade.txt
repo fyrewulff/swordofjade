@@ -1,5 +1,5 @@
 Sword of Jade
-(C) Copyright 2015 FyreWulff Independent Software
+(C) Copyright 2018 FyreWulff Independent Software
 
 Sword of Jade: Parallel Dreams
 (C)2005, 2013
@@ -12,7 +12,9 @@ Contains music tracks authored by
 Morusque
 
 Morusque tracks are used under
-Creative Commons license CC-BY-A
+CC BY 3.0
+
+creativecommons.org/licenses/by/3.0
 
 Any distribution of Sword of Jade that contains these tracks must
 include this attribution
