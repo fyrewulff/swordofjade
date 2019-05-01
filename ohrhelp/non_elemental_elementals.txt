@@ -1,0 +1,9 @@
+You can mark certain elements as "non-elemental" ti have those elements ignored for determining whether an attack counts as "non-elemental".. An attack is non-elemental if it doesn't do damage of any element, except for non-elemental ones.
+
+Non-elemental attacks have the additional properties:
+-Heroes and enemies can have a counterattack against non-elemental attacks.
+-Enemies can spawn a new enemy in response to being hit by or dying from a non-elemental attack.
+
+Typically non-elemental elements would be used for special-use elementals, such as an elemental that exists only to trigger spawning in a special situation.
+
+This is unlikely to be desired for your standard "Fire", "Water", "Air" type of elementals.

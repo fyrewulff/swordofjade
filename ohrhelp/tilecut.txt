@@ -1,0 +1,13 @@
+The tile cutter lets you grab tiles from other tilesets or from backdrops.
+
+Press < and > to choose the tileset or backdrop that you want to cut from. You can also type in an ID number.
+
+Use the arrow keys or the mouse to move the cut box.
+
+If Shift is pressed or grid-snap is on, arrows move in 20x20 steps.
+
+Press G to toggle grid-snap, aligning the cut box to a 20x20 grid.
+
+Press SPACE or left-click to cut a tile and return to the tile selection screen.
+
+Press ENTER or right-click to cut a tile and advance automatically to the next tile to the right. This allows you to quickly copy multiple tiles.

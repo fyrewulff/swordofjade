@@ -1,0 +1,11 @@
+This is the item stat bonus editor.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate the menu, or type a stat name to jump to it.
+
+Use the Left and Right arrow keys to change values, or type in numbers.
+
+Positive numbers will increase the selected stat when the item is equipped.
+
+Negative numbers will decrease the stat when the item is equipped.
+
+Press - to switch between positive and negative.

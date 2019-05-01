@@ -1,0 +1,124 @@
+The map editor is in Picture mode (also known as "Tilemap mode").
+
+F2 switch to picture mode
+F3 switch to passability mode
+F4 switch to door placement mode
+F5 switch to NPC placement mode
+F6 switch to foemap mode
+F7 switch to zonemap mode
+F8 show settings menu
+
+Use the arrow keys or RIGHT CLICK and drag to move around the map.
+
+Use SHIFT+arrow keys to move around the map faster.
+
+Use ALT+arrow keys to move the view of the map.
+
+Along the top of the screen you will see a row of maptiles, with your currently selected maptile highlighted. You can click on them, press < and > to change your selected maptile, or use the MOUSE WHEEL, or press ENTER or RIGHT CLICK on the top bar to bring up a full-screen maptile picker.
+
+Press G or RIGHT CLICK if you want to get the tile under the cursor as the current tile to place.
+
+At the top right corner the current drawing tool is shown. Press SPACE or LEFT CLICK to draw on the current map layer. The tools are:
+
+D - Draw tool:
+  Place a maptile on the map. Hold 
+  down SPACE and move, or drag the
+  mouse to draw lines.
+
+B - Box tool:
+  Press SPACE/CLICK once to place one 
+  corner of the box, and SPACE/CLICK 
+  a second time at the opposite
+  corner to draw a rectangle of
+  tiles.
+
+F - Fill (Paint bucket) tool:
+  Flood fills a continuous region (on
+  current layer) under the cursor 
+  with the current tile.
+
+R - Replace tool:
+  Replaces completely across the 
+  whole map layer all tiles like the 
+  one under the cursor with the 
+  current tile.
+
+M - Mark tool:
+  Use to select a rectangular of the
+  map to copy. Press SPACE/CLICK once
+  to place one corner of the
+  rectangle, and SPACE/CLICK a second
+  time at the opposite corner. The
+  tool will then be changed to the
+  Clone tool. Mark copies the visible
+  tilemap layers, wallmap, foemap,
+  and zones in the rectangle.
+
+C - Clone tool:
+  Press SPACE/CLICK to paste a
+  selection copied with the Mark
+  tool.  You can switch to different
+  editing modes to preview the
+  changes to walls, foemap, and
+  zones.  If default passability is
+  on (press CTRL+D to toggle), the
+  wallmap will updated using default
+  walls instead of the copied walls.
+  Only visible map layers are
+  modified (press ALT+~ to toggle
+  visibility of the current map
+  layer), so a map layer has to be
+  visible both when Marking and when
+  Cloning.
+
+CTRL+Z undoes a change to the tilemap, wallmap, foemap or zonemap. Changes to NPCs and doors are not undoable. The undo history buffer is near-infinite, but certain things cause it to be cleared: resizing the map, deleting or swapping map layers, erasing map data, and leaving the map editor.
+
+CTRL+Y redoes an undone change.
+
+~ shows a preview of the entire map.
+
+TAB toggles a blue rectangle that shows roughly what portion of the map you are currently looking at.
+
+CTRL+O shows an outline indicating where the edges of screen will be in-game, when the hero is standing on the current tile. Use this to check what wil be visible. Press CTRL+O to make the outline follow the cursor. (This option is also in the F8 menu.)
+
+CTRL+H moves the hero's starting location to this location on this map. Remember that only one map in your game needs a hero starting location.
+
+Press 1 or 2 to make the tile under the cursor animate using animation pattern 0 or 1.
+
+Hold CTRL and press 1 or 2 to make all tiles on the current layer like the one under the cursor animate using animation pattern 0 or 1.
+
+CTRL+D toggles whether default tile passability (which you assign to tiles in the tileset editor) will be used for any new tiles that you place.
+
+--------------------
+---- Map layers ----
+
+CTRL+L opens the Layer menu, where you can change tilesets and layer visibility and add or name layers.
+
+PageUp and PageDown change which layer you are working on. Remember that layer 0 is the bottommost. (You can also use CTRL+period and CTRL+comma in case you are one of those poor souls with a laptop that doesn't have PageUp and PageDown keys!)
+
+Or hold CTRL or hold the LEFT or RIGHT MOUSE button and use the MOUSE WHEEL to change map layer.
+
+CTRL+J makes the current layer jiggle. This can be useful to visually distinguish a layer you are working on from another layer that covers it up. Press CTRL+J again to stop the jiggling.
+
+ALT+~ toggles visibility of the current map layer.
+
+ALT+# (a number key) disables or enables that layer (you can't disable layer 0). Disabled layers aren't drawn while editing or playing.
+
+CTRL+F# toggles visibility of a layer: F1 is layer 0, and so on.
+
+Hold CTRL+SHIFT and press arrow keys, or press CTRL and drag with the RIGHT MOUSE button, to "skew" the map layers, drawing them with a 3D perspective so that you can tell them apart.
+
+T tints the map layers, so that you can tell them apart. 
+Press T once to tint by layer height: from layer 0 to the topmost (including overhead tiles), tints shift through cyan, green, yellow, red and purple.
+Press T twice to make layers other than the selected one grey.
+Press T again to cancel.
+
+-------------------
+
+CTRL+BACKSPACE deletes everything placed at a tile: tiles in all layers, walls, doors, and NPCs. But not zones.
+
+CTRL+S immediately saves, useful when live-previewing a game.
+
+CTRL+W paints the tiles visible in the window/screen with the current tile.
+
+Any tiles that have the obsolete overhead bit set will be marked with O's if you are using multiple layers. This is normally a mistake: Use layers instead of `overhead' tiles!

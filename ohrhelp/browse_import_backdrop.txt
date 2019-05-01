@@ -1,0 +1,7 @@
+Here you can browse for an image file to import as a background (aka backdrop).
+
+You can import BMP, PNG and JPEG (aka JPG) images of any size and any bit-depth.
+
+You can type in the beginning of a folder or file name to move the cursor to it. You can also press a letter repeatedly to cycle through files and folders starting with that letter.
+
+Press F5 to refresh the directory as well as poll the names of all removeable drives (on Windows only).

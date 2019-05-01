@@ -1,0 +1,9 @@
+Global Text Strings are all the little pieces of text that are used in the standard menus and the standard battle system. You can customize the text of your game here. Editing your global text strings is also essential if you are making a game in some language other than English.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate the menu. The currently selected text string will be displayed in the blue box at the bottom of the screen. You can type in a new value.
+
+The size of the blue box shows you how long the text string is allowed to be.
+
+To search through the list, press CTRL+S and type the word to search for and then press ENTER. The search tool searches both the values and the descriptions.
+
+Press CTRL+D to revert a string to its default value.

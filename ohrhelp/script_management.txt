@@ -1,0 +1,55 @@
+The script management menu allows you to access some tasks and tools related to your Plotscripts. (Check the documentation wiki at http://HamsterRepublic.com/ohrrpgce/ if you want to learn more about plotscripting)
+
+* "Compile and/or Import plotscripts
+   (.hss/.hs)"
+  Imports scripts. The .hsi file for
+  your game is first exported, then
+  the selected scripts file (.hss
+  extension recommended, .txt can
+  also be used) is compiled with
+  the HSpeak compiler. It's also
+  possible to compile your scripts
+  with HSpeak yourself and import
+  the resulting .hs file.
+  Importing overwrites any existing
+  scripts - you must put them all in
+  the same file (or 'include' them
+  all in the same file) and import
+  them all at once.
+
+* "Export names for scripts (.hsi)"
+  creates or updates a list of names
+  (constants) that you can use while
+  writing your scripts. Normally you
+  don't need to manually export the
+  .hsi file, as it's exported
+  automatically when importing
+  .hss/.txt files.
+
+* "Export scripts backup copy"
+  exports the backup copy of your
+  scripts source code. Use this if
+  you've accidentally lost the
+  original .hss/.txt files. Normally
+  you should have no use for this.
+  HSpeak automatically includes a
+  backup when compiling. (You can
+  prevent this by passing the -n
+  argument to HSpeak -- you will have
+  to compile manually).
+  Backup copies have been included
+  by HSpeak since Ypsiliform.
+  If the compiled scripts are older
+  than that, then Custom will attempt
+  to decompile the scripts instead,
+  using the HSDECMPL tool.
+
+* "Check where scripts are used"
+  produces a list of all the places
+  where your game triggers a script.
+
+* "Find broken script triggers"
+  searches for references to scripts
+  that have been renamed or removed.
+
+You can press F5 on this menu or on Custom's main menu to immediately recompile and reimport the last script file that you imported. (Note that scripts aren't reimported automatically by the Game runner when using `Test Game' live-previewing; you will have to press F5 in-game to reload scripts.)

@@ -1,0 +1,36 @@
+Oh! You found a secret advanced tool!
+This is the RELOAD Editor. It is for editing raw data files in RELOAD format. If you aren't an OHRRPGCE developer and don't know what RELOAD is, then you probably don't want to do that (but if you are curious, check the wiki)
+
+Press F3 to open a RELOAD file.
+Press F2 to save a RELOAD file.
+Press F4 to load one of the game's RELOAD lumps.
+
+Press TAB to switch editing mode.
+
+In value editing mode, you can type a value for the currently selected node.
+
+In name editing mode, you can type a name for the currently selected node.
+
+Press CTRL+I to turn the current node into an Integer.
+
+Press CTRL+S to turn the current node into a String of text.
+
+Press CTRL+N to turn the current node into a Null node with no data.
+
+To edit a long text string node, press ENTER and you will be taken to a full-screen multiline text editor.
+
+Press Insert to add a new node.
+
+Press Delete to remove the selected node.
+
+Hold SHIFT and press the up and down arrow keys to re-order nodes.
+
+Press SHIFT+Left arrow to move the selected node to be a sibling of its parent.
+
+Press Shift+Right arrow to move the selected node to be a child of its previous sibling.
+
+Press CTRL+C to copy a name or a value and CTRL+V to paste a name or a value.
+
+Press CTRL+SHIFT+C to copy a node and all of its children. Press CTRL+SHIFT+V to paste a previously copied node and its children.
+
+The nodes currently in the clipboard will be prefixed with a * symbol.

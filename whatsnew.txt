@@ -1,0 +1,3869 @@
+WHAT IS NEW?
+
+April ? 2019 [Fufluns]
+
+  Highlights:
+    * ~~Fill this in later~~
+
+  * New Features
+    * New spriteset editor [Ralph]
+    * Backdrops can now be any size [Ralph]
+    * You can now import PNG and JPG files as well as BMP (they're
+      decompressed on import, so beware of importing large images) [Ralph]
+    * When importing a backdrop or tileset from an unpaletted image you can use
+      dithering for hopefully-better conversion to your master palette [Ralph]
+    * Added a "wall display style" setting to the passmap editor; walls now
+      pulse rather than flash, and there's a new "outlined" style [Ralph]
+    * Heroes can have intrinsic counter-attacks just like Enemies [James]
+    * Add the ability to browse for Attacks, Enemies, Heroes, Textboxes,
+      Shops, stuff in shops, Sound Effects, Songs.
+    * You can press Ctrl+F or click the "Filter" button to filter/search the
+      thingbrowser screen by name. [James]
+    * Line slices [Ralph]
+    * New attack target class: "Counter (last to hit attacker)", which you
+      should normally use for counterattacks instead of Revenge [Ralph]
+    * Previewing MP3 files in the file browser reenabled (Windows only) [Ralph]
+    * New bitset "Cap minimum stats to zero" can prevent equipment with
+      negative stat bonuses from making a hero's stats negative [James]
+    * Maximum Shop ID has been raised from 99 to 32767 [James]
+    * Added a general bitset to hide empty save slots at the bottom of the
+      save/load menu. (Won't shows less than 4 slots unless you specifically
+      set a max lower than 4) [James]
+    * Max number of save slots increased from 32 to 1000 [James]
+    * "Can't be selected" subtype for "Label" menu items. (The "Caption"
+      item type is renamed "Label", and the old badly named "Unselectable"
+      subtype is renamed "Disabled") [Ralph]
+    * In user-defined menus each menu item can now have its own color and
+      'disabled' color [Ralph]
+    * Mouse Options menu allows you to enable built-in mouse support for
+      walking around on maps, activating NPCs, using menus and special
+      screens and in battles. [James] 
+    * Ctrl-F2 and Ctrl-F3 debug keys to access save/load menus [Ralph]
+    * You can now pick the color used to display damage, healing, absorb
+      poison and regen in battle. You can also override the color
+      in the attack editor. [James]
+    * Option to show outline of the in-game screen size in the map editor so
+      you can check what will be visible. Press Ctrl-O once/twice or toggle in
+      the Map Editor Settings menu. [Ralph]
+    * All the fade-out colors are now customisable User Interface Colors [Ralph]
+    * Option to give rewards from an enemy before it is transmogrified [Ralph]
+    * You can preview hero formations with hero sprites [Ralph]
+    * You can share save files between games by overriding the name of the
+      .saves folder (useful if you create additional .rpg files which are
+      sequels, variants (eg a Hardtype) or have bonus content) [Ralph]
+    * Screenshots saved as PNGs instead of BMPs (but when using gfx_directx
+      the Screenshot setting in the Options menu has priority) [Ralph]
+    * While using Test Game, a "Record combined editor+player .gif" option
+      appears in the editor's F9 Global Options menu [Ralph]
+    * Minimaps look much better. Also, you can change the minimap generation
+      method in the General Game Settings menu, with three options [Ralph]
+    * The map editor's map picker shows a preview of each map [Ralph]
+    * In turn-based mode negative attack delays are now allowed, to make the
+      attack jump ahead in the turn-order queue [Ralph]
+    * Enemy spawning option to allow multi-elemental attacks to trigger multiple
+      on-hit elemental spawning conditions, not just the first [Ralph]
+    * Attack option to control whether counterattacks are triggered on a hit,
+      miss or fail, with a global default in Battle System Options menu [Ralph]
+    * Re-organised various menus, especially Attack Bitsets menu and the
+      General Game Settings menu:
+      * General Preference/Battle/Backcompat bitsets rearranged - all battle-
+        related bitsets have been moved into the Battle System Options menu.
+        Some bits have been renamed and now all Backcompat Bits are
+        off by default in new games; if one of them is on then you know you're
+        missing out on some feature or bugfix [Ralph]
+    * See how long you've been working on your game in General Game Settings
+      (starts counting from zero with Fufluns) [Ralph]
+    * Added missing attack target class "All (including dead heroes)" [Ralph]
+    * C to cycle through NPC instances in map editor [Ralph]
+    * Preference bitset "Negative-damage harmtiles can cure above max HP"
+      (defaults to on) [Ralph]
+    * Added fuzzy rect slice settings: fuzzy zoom, stationary pattern [Ralph]
+    * Much nicer interactive stat preview graph in the Hero Stats menu [Ralph]
+    * New F8 debug option "Show/test any battle formation" [Ralph]
+    * You can copy & paste palettes inside the palette browser [Ralph]
+    * Shop stock levels in saved games and when Testing Game are now updated if
+      you edit the things in a shop - reset if needed, or increased/decreased
+      to reflect the change [Ralph]
+    * Copy/pasting of item definitions [Ralph]
+    * New attack animation "Screen Center" [James]
+    * Windows 95 is supported again! (But hspeak doesn't run on 95; upgrade to
+      Windows 98) [Ralph]
+    * Joystick controls should now work everywhere in-game again - been broken
+      for over a decade! [Ralph]
+      * New general bitset "Map joystick controls to keyboard keys for scripts"
+        (ON by default) allows existing scripts which check keyboard keys
+        key:enter, key:esc, and key:left/right/up/down to work when the
+        player uses a joystick.
+    * Vehicles are reloaded while using Test Game [Ralph]
+    * Turn-based battles bitset to disallow cancelling/changing a hero's attack
+      [Ralph]
+    * Displaying "x1" after singular items in the inventory is now optional
+      (in General Game Settings) [Ralph]
+    * New graphics backend gfx_sdl2 (and music_sdl2). Better fullscreen handling
+      than gfx_sdl. Only available in non-default nightly builds for now [Ralph]
+    * "Camera following a hero/NPC centers on..." general setting [Ralph]
+    * Enemy Usage menu shows where an enemy is used, and chance of encountering
+      it, and Foemap Statistics menu shows chance of each encounter [Ralph]
+    * "Ignore harmtiles" vehicle bit [Ralph]
+    * Rect slices can now be "truly" transparent (uses nearest-color) [Ralph]
+    * Hero MP meter, along bottom of the HP meter. Disabled by default in
+      existing games. [Sword, Ralph]
+    * All stat caps and equipment stat bonuses can now be up to 32767 [Ralph]
+
+  * New Plotscripting Features
+    * "save screenshot" [Ralph]
+    * "append number": added "min length" and "pad with zeroes" args [Ralph]
+    * "use door": added "fade screen" argument, so you can use a door without
+      fading [Ralph]
+    * "npc copy number" (opposite to "npc reference") [Ralph]
+    * "npc reference" can find tag-disabled npcs with "allow disabled" arg
+      [Ralph]
+    * "create line", "slice is line", "get line color", "set line color" [Ralph]
+    * "force mount vehicle", "current vehicle id", "current vehicle npc" [James]
+    * Missing constants for "get/set menu item subtype":
+      menulabel:selectable, menulabel:disabled, menulabel:unselectable,
+      menuspecial:map always, menuspecial:save always, menuspecial:margins,
+      menuspecial:purchases, menuspecial:windowed, menuspecial:fullscreen,
+      menuspecial:music volume, menuspecial:sound volume,
+      and menutype:caption alias for menutype:label,
+      and alias "menuitembit:close menu when activated",
+      and missing constant "menubit:remember selection" [Ralph]
+    * "get/set menu cancel button menu" and "get/set menu item spacing" [Ralph]
+    * "menu item disabled", "menu item visible", "menu item selectable" [Ralph]
+    * "get/set menu disabled textcolor", "get/set menu item color",
+      "get/set menu item disabled color" [Ralph]
+    * "pathfind hero to", "hero chases npc" and "cancel hero walk" [James]
+    * NPCstat:pathfindingrule constant for "read npc"/"alter npc"
+    * "read preference bit", "write preference bit" [Ralph]
+    * "pick hero" has two new args to let you pick the prompt message, and to
+      auto-pick if there's only one active hero [Ralph]
+    * hspeak is several times faster when compiling very large scripts [Ralph]
+    * "set last save slot" [Ralph]
+    * "speaking npc" [Ralph]
+    * All key commands accept all key constants - no more hassles! You can pass
+      "any key", "use key", etc, to "key is pressed", "keyval" and "wait for
+      scancode", and pass key: and joy: constants to "wait for key" [Ralph]
+    * Added key:AnyEnter, key:Meta/key:WinLogo/key:Command, "run key",
+      "joy:button 17" to "joy:button 32", and joy:up/down/left/right
+      (aliases to "joy:y up", etc)
+    * Long-missing "keypress" and "new keypress" commands: you should often use
+      these instead of "key is pressed" and "keyval" [Ralph]
+    * "keyval" now takes the joystick number as a second argument (for use
+      with joy: key constants), like "key is pressed" did [Ralph]
+    * "get joystick name", "joystick button count", "joystick axis count",
+      "joystick hat count" [Ralph]
+    * "suspend/resume textbox controls" and "textbox controls are suspended" are
+      aliases to "suspend/resume box advance" and "box advance is suspended"
+    * "find color" [Ralph]
+    * "set selected child", "get selected child" (only for convenience) [Ralph]
+    * "override tick milliseconds" and "cancel override tick milliseconds" [James]
+
+  * Changes
+    * "Previous attack" base ATK stat renamed to "Last damage by attacker"
+    * "Caption" menu item type renamed to "Label", the "Unselectable" subtype
+      of Labels renamed to "Disabled", and the "Close menu if selected" bit
+      renamed to "Close menu when activated"
+    * In-battle instant-run debug key moved from Ctrl-F4 to Ctrl-F5
+    * "suspend box advance" now suspends choicebox selection controls too
+    * Sorting inventory "by whether usable" considers battle uses too [Ralph]
+    * Shops auto-quit when there's nothing left to buy, as they used to [Ralph]
+    * Sprite slices can no longer be resized in the slice editor (except by
+      setting to Fill Parent -- not recommended) [Ralph]
+    * Camera is now focused by default on hero walkabout container instead of
+      sprite (see "Camera following a hero/NPC centers on" setting) to fix
+      glitches when using camera script commands with large walkabouts [Ralph]
+
+  * Bugfixes
+    * Fix a major memory leak while recording .gifs [Ralph]
+    * Couldn't copy-paste text containing characters above ASCII 127 [Ralph]
+    * Panel slices set to clip had broken child clipping and positioning
+      when inside another clipping slice or over the screen edge [Ralph]
+    * In the textbox editor, pressing Ctrl+Left/Right to link to another box
+      appeared to work but actually the "After" tag condition may not have
+      gotten set to "Always", although it appeared it was. If you have any
+      secretly-wrong textbox chains in your game you will be warned when you
+      open it in Custom so you can fix them. (The in-game F1 textbox debug
+      screen also showed "ALWAYS" instead of "NEVER"!) [Ralph]
+    * Fixed "delete_ScriptData" error when quitting after having stopped
+      a script in the script debugger [Ralph]
+    * "hero z" could incorrectly throw "invalid party slot" errors, but
+      its argument is actually party caterpillar rank [Ralph]
+    * "hero is walking", "npc is walking" didn't consider pathfinding [James]
+    * The width of a Text slice didn't update after changing the text in the
+      slice editor [Ralph]
+    * Bad results if "scroll to child" was called twice in a row, or after the
+      slice tree was modified, without a "wait" in-between [Ralph]
+    * Fixed exporting a blank BMP file instead of a tileset or backdrop
+      when you browse to pick a different export location other than
+      the default. [James]
+    * Reimporting scripts by pressing F9 in the tileset editor would wipe
+      the tileset [James]
+    * Fix a crash that happened when you used ellipse-related scripting
+      commands on a non-ellipse slice [sotrain515, James]
+    * F4 to access the tag debugger in battles no longer worked [Ralph]
+    * "rename hero" didn't return false if the player cancelled [Ralph]
+    * If an Untargetable enemy was at exactly the same position as a
+      targetable one it was possible to target it [Ralph]
+    * "swap menu items" swapped the wrong items [Ralph]
+    * "get NPC speed" always returned 0! [Ralph]
+    * If you died with a textbox open and an on-death script cancelled the
+      death, the textbox slice wasn't removed [Ralph]
+    * In zone-editing mode the key to change indicator graphics was documented
+      as G but was actually T. It's now actually G. And the keys to change
+      selected zone were documented as +/- but are actually </>! Made some
+      other improvements too [Ralph]
+    * NPCs could walk through pushable NPCs being pushed against a wall. (Fix
+      only enabled if "Simulate Pushable NPC obstruction bug" is off) [Ralph]
+    * Bug 2037: "Attacker must know chained attack" didn't work correctly for
+      known attacks in spell lists (it searched for attack ID+1) [Ralph]
+    * Bug 2038: If the last enemy has the "Ignored for "Alone" AI" bit set,
+      it doesn't count as alone [Ralph]
+    * In turn-based mode, delaying an attack didn't always delay long enough.
+      E.g. setting the delay to 1 attack could have no effect. [Ralph]
+    * On Windows, if custom.exe crashed and you re-run, it might think the
+      previous copy is still running and refuse to edit the game [Ralph]
+    * "Don't chain if attack misses/fails" bit would skip Instead chains if
+      the attacker's last attack missed/failed [Ralph]
+    * In active-time battle mode, when a hero used an "Automatically choose
+      target" attack or an enemy attacked, any queued turn-delayed attacks
+      didn't have their delays count down [Chronas, Ralph]
+    * The Experience Curve hero setting defaulted to 0.00 instead of 0.20 for
+      pre-Beelzebufo games (specifically, any heroes which haven't been edited
+      since then), resulting in very low XP needed to level [Ralph]
+    * Hiding the HP stat would display garbage in Status menu instead. Also,
+      it now hides the HP display/bar in battles too. [Ralph]
+    * Test Game often didn't work when run on Mac OS 10.12+ (Sierra) [Ralph]
+    * Crash when attack targetting mute/etc register used out-of-battle [Ralph]
+    * "gain hero stat" could divide by zero and set a stat to 2147483647 [Ralph]
+    * If stealing has 0% chance but isn't "Disabled", show "Has Nothing" message
+    * Crash or freeze when switching between slice collections [Sword/Ralph]
+
+  * Stuff Only Developers Will Notice
+    * The .pt# 4-bit graphics lumps and .mxs backdrops lump have been replaced
+      with a new RELOAD-based rgfx file format [Ralph]
+
+Dec 3 2017 [Etheldreme]
+
+  Highlights:
+    * Many new map-editor features, including mouse support.
+    * Enemy "appear" animations.
+    * Customizable hero experience curve.
+    * Textbox save/load/delete/end game conditionals.
+    * Unhid still-experimental option for non-320x200 games.
+    * Copy-paste text between the editor and other applications.
+    * Visual browsers for sprites and many other things.
+    * See below for more...
+
+  * New Features
+    * You can now browse for sprites, items, and many other properties
+      rather than typing in their ID numbers. [James]
+    * In the text box condition editor, you can browse for shops [James]
+    * Menu bit "Remember selection when reopening" [Ralph]
+    * Removed 100% upper limits on attack chain stat % conditions, and
+      removed most hero/enemy stat limits
+    * Rectangle slices can now optionally use any box border set.
+      They are no longer limited to just the box borders defined in
+      box styles [James]
+    * Battle victory screens can optionally auto-advance after a given
+      amount of time [James]
+    * Slice editor/debugger improvements:
+      * Organised the menu, irrelevant settings hidden
+      * Indicate NPC and hero slices, and protected status
+      * Press R to reset a slice's position to 0,0 and alignment/anchoring
+        to top-left corner
+      * Press F7 to hide the 'ants' outline around the selected slice
+      [Ralph]
+    * Ctrl+C/V to copy-and-paste text now uses the Mac/Windows/X11
+      clipboard, so you can copy-paste from/to other applications [Ralph]
+    * Customizable Experience Curve for each hero [MirceaKitsune]
+    * You can choose tags that will be turned on when heroes are at
+      specific levels [James]
+    * Support for games created in 1997 (OK, just the one game) [Ralph]
+    * Enemies can use optional "Appear" animations, which are reversed
+      versions of the death fades. [James]
+    * New textbox conditionals to save, load, or end the game, delete a
+      save, or show the load/save menus [MirceaKitsune]
+    * The option to use resolutions other than 320x200 (in the
+      Window-size Options menu). This has been in testing for a long
+      time, but still isn't complete -- for example backdrops and battles
+      are still 320x200. Nothing has changed in this release except that
+      the option isn't hidden any more [Ralph]
+    * Three new ways to visualise map layers in the map editor:
+      * Press Ctrl+Shift+arrows or Ctrl+right-click-drag to "skew" map
+        layers (offset from each other)
+      * Press T to tint each map layer a different color
+      * Press T twice to grey out layers other than the selected one
+      [Ralph]
+    * Mouse support in the map editor! Not complete, but has the
+      basics. You can't click on any of the overlays or bits of text (eg
+      the list of zones) but you can click on toolbars and NPCs, doors,
+      etc. Includes a new Stamp tool in wallmap mode. [Ralph]
+    * Option to export a full resolution image of a map, optionally with
+      NPCs [Ralph]
+    * Map editor settings menu, accessed with F8. Most of the settings
+      are new, including showing a grid [Ralph]
+    * ID3 metadata info is preserved when imported MP3 files are converted
+      to OGG [Ralph]
+    * You can now (incrementally) search F1 help pages, just type! [Ralph]
+    * New attack options:
+      * Base attack stats:
+        * 100 * number of targets
+        * Lost MP (attacker)
+        * Lost MP or HP (target)
+      * Attack chain conditions:
+        * All targets' X stat > attacker Y stat
+        * All targets' X stat < attacker Y stat
+        * Attacker X stat < attacker Y stat
+        * Stat-based chance (attacker, max any target, min all targets)
+      * Attack chain bitset "Invert condition"
+      [zzo38, James]
+
+  * New Plotscripting Features
+    * "get rect raw border" and "set rect raw border" [James]
+    * "clone slice" [Ralph]
+    * "expand string" now has an optional argument that allows it to
+      expand ${} codes based on the data in a save slot instead of the
+      currently running game state [James]
+    * "reset formation" and "reset formation slot" command to undo
+      scripted modifications to battle formations. [James]
+    * "set slice size" and "slice is map layer" [Ralph]
+    * "NPCstat:tag1", "NPCstat:tag2" and "NPCstat:onetime use flag"
+      constants for "read NPC"/"alter NPC" [Ralph]
+    * "string sprintf" takes %b and %o codes for binary and octal [Ralph]
+    * "check wall collision x/y" and "move slice with wallchecking" now
+      allow sliding along walls instead of stopping on touching them:
+      added a 'friction%' argument to each [Ralph]
+    * Script reloading while live previewing now defaults to on; it no
+      longer tries to reload unmodified scripts [Ralph]
+    * "npc reference from slice", "hero rank from slice" [Ralph]
+    * "slice type" [Ralph]
+    * "first slice of type", "next sibling of type", and missing commands
+      like "first text slice", "next text sibling", etc. [Ralph]
+    * "assert(x==y)" now adds x and y values to the assert message [Ralph]
+    * Global default Map autorun, On-keypress, Instead-of-battle, After-
+      battle and Each-step script triggers [Ralph]
+
+  * Changes
+    * "greyscale palette" command now looks better; just averaging red,
+      green and blue is perceptually very wrong [Ralph]
+
+  * Bugfixes
+    * Copy-paste in slice editor didn't copy slice extra data or autosort
+      (also, couldn't edit the autosort sort order) [Ralph]
+    * Windows only: Fixed a whole bunch of console windows popping up when
+      entering Distribute Game menu, and elsewhere [Ralph]
+    * "fill parent" and "set slice width/height" didn't work on Panel
+      or Special slices [Ralph]
+    * ${} codes in map names display correctly in the save/load screen
+      [James]
+    * A nonsensical item ownership number was showing up when hiring
+      heroes at a shop [James]
+    * Heroes killed by HP-cost in battle now correctly show their
+      death frame instead of vanishing [James]
+    * "add enemy to formation" was not putting enemies at the correct
+      Y coordinate [James]
+    * Fixed "check wall collision x/y" and "move slice with wallchecking"
+      often failing to detect collision with corners of walls. Also,
+      "move slice with wallchecking" now returns special values when it hit
+      a corner rather than returing that it hit walls on two sides [Ralph]
+    * Fix lots of g_debug.txt errors and long lags when using the Ctrl-F1
+      teleport tool [Ralph]
+    * Ancient .rpg files couldn't be played if they were renamed [Ralph]
+    * Couldn't delete BAM files [Ralph]
+    * Changing the zoom in Custom no longer changes window size [Ralph]
+    * The height of awrapped text slice didn't update when its width
+      changed (except in the slice editor) [Ralph]
+    * The scroll bar of a scroll slice inside a clipping slice was drawn
+      at the wrong position [Ralph]
+
+  * Stuff Only Developers Will Notice
+    * --nowait option when importing scripts from the commandline [Ralph]
+
+September 22 2017 [Dwimmercrafty+1]
+
+  * Bugfixes
+     * Fixed a critical bug that erased On-Death-Bequest attacks and
+       Non-Elemental-Counterattacks from all enemies when a game was
+       loaded into custom. If you lost enemy data, and you still have
+       a backup copy of your game from before August 29 2017, please
+       ask the developers for help on the Forums. If you do not have
+       a backup from before that date, you will have to re-add the
+       missing On-Death-Bequest and Non-Elemental-Counter attacks
+       to each enemy's attack list.
+       We are very sorry about the bug!
+
+August 31 2017 [Dwimmercrafty]
+
+  Highlights:
+    * NPC pathfinding, and other new NPC movetypes including follow-walls
+    * Record .gif videos with Ctrl-F12
+    * More map layers, hero definitions, and global variables
+    * More info shown in-game in shops and spell lists
+    * One-way walls
+    * Lots of new in-game debug keys/F8 debug menu options, and a similar
+      new menu in Custom accessed with F9
+    * Can jump to attack, enemy, textbox and npc editors from other editors
+    * Lots of progress on mouse support
+    * On Windows, Custom's window is now resizable; resizing works almost
+      everywhere
+    * Sound effect volume control
+
+  * New Features
+    * Mark Non-elemental Elementals menu lets you define which elements
+      shouldn't count as elemental for enemy spawning purposes [James]
+    * Dramatic Pause for attack animations. Unlike "Delay Ticks" this
+      always pauses time for everybody in battle. Dramatic pause starts
+      after the (undelayed) caption appears, but before the visible
+      animation begins [James]
+    * New attacker animation "Standing Strike" [James]
+    * Enemies can now do a non-elemental counterattack for any attack
+      that lacks elemental damage. Similar to non-elemental spawning
+      [James]
+    * Spells in spell lists can now also display HP, Money, and Item
+      costs. MP costs are no longer invisible in Level-MP spell lists
+      [James]
+    * If your max level is lower than 99, the hero stat editor now
+      shows a middle column that displays stats at max level [James]
+    * Per-textbox each-line sound effects, overriding the global option
+      [MirceaKitsune]
+    * 'Silence' as an option for textbox Music setting [MirceaKitsune]
+    * Removed NPC definitions limit (NPC instance limit remains) [Ralph]
+    * Added Redo (Ctrl+Y) to the sprite editor, and made the undo
+      history size a few hundred times larger [Ralph]
+    * Hold Shift in sprite and maptile editor to move faster, and use
+      the number keys to change selected colour in sprite editor [Ralph]
+    * Delete key in doorlinks menu deletes a doorlink [Ralph]
+    * The hero battle menu editor now lets you change the text (caption)
+      and color of an option, set tag conditions to disable it, and
+      specify whether to hide it if disabled [Ralph]
+    * Press Ctrl+F11 anywhere (in Game/Custom) to access a menu to
+      record and replay macros (recorded keyboard input). You can use
+      this to record game playthroughs, but it is still quite brittle
+      for that purpose (many commands can cause desyncs) [James, Ralph]
+    * Press Ctrl+F12 anywhere to start/stop recording a .gif video,
+      saved next to the F12 screenshots. (You can use a .gif compressor
+      program to considerably shrink the files.) [Ralph]
+    * Map names can use the same ${} codes as textboxes, for example
+      you could name a map "${H0}'s House". [James]
+    * "Ignore Passmap" NPC setting, to walk through walls but not zones,
+      the map edge, or NPCs/heroes. (Unlike "set npc ignores walls",
+      which causes zones and map edge to be ignored.) [Ralph]
+    * Added "Music Volume" and "Sound Volume" menu options. These
+      replace the "Volume" option in the default main menu (which is
+      the same as "Music Volume" except pressing Enter on it now opens
+      another menu with Music and Sound Volume options). [Ralph]
+    * Add "Initial music/sound effects volume" settings to the General
+      Preference Menu. Relatedly, you can now also change the volume
+      for Custom itself, see next... [Ralph]
+    * A Global Editor Options menu accessible by pressing F9 anywhere
+      in Custom, including options "Reimport Scripts", "Test Game",
+      "Volume", "Zoom" and more [Ralph]
+    * One-way walls. You can turn the walls on a tile into one-way walls
+      by pressing W in the passmap editor. All the walls on a tile are
+      either normal or one-way; you can't mix them on the same tile.
+      Not supported with default passability yet. [Ralph]
+    * Press +/- in wallmap mode to change the way walls are drawn [Ralph]
+    * Press H in the slice collection editor to toggle whether the
+      children of a slice are shown in the menu (does not affect slice
+      visibility) [James]
+    * New NPC movement types:
+     * "Chase You (Pathfinding)" finds the shortest path to the hero,
+       moving around obstacles, or else gets as close as possible [James]
+     * "Chase You (Direct)" and "Avoid You (Direct)" which don't randomize
+       and do nothing when stuck behind an obstacle. The old Chase/Avoid
+       movement types are now captioned "(Meandering)" [James]
+     * "Follow Walls (Right)" and "Follow Walls (Left)" as well as "Stops
+       for others" variants of both. [James]
+    * New or improved in-game debug keys (all available in F8 menu):
+     * F1 text box debug info (only when a text box is displayed) [Ralph]
+     * F4 tag debug mode sane controls and display improvements [Ralph]
+     * Press F6 twice to display NPC debug info with additional NPC
+       collision information [James]
+     * Also, in F6 NPC debug mode you can view NPC info by mousing-over
+       an NPC [Ralph]
+     * Re-added F7 debug key to pan the camera (we used to have a similar
+       debug key a while ago) [Ralph]
+     * Added PAUSE debug key which works while walking around [Ralph]
+     * Options to make the window resizable, or change the zoom [Ralph]
+     * Ctrl-F8 (both Game and Custom) to switch graphics backends [Ralph]
+    * General bitset "Don't stop music when starting/loading game" [Ralph]
+    * Ability to reorder shop items/things in the editor [Ralph]
+    * Preview of the surrounding tiles, or tiling of the current tile
+      while drawing a maptile (click on the preview to toggle or hit P)
+      [Matthias Meike]
+    * You can now also remap the background color from the Import/Export
+      Backdrop/Tileset menu; also added 'View with background' [Ralph]
+    * Numbers can be typed with Numpad keys (I never even tried!) [Ralph]
+    * Text editing: Ctrl-Backspace/Delete to delete the previous/next word
+      (and for Mac, Option(aka Alt)-Delete/ForwardDelete, and move by word
+      with Option-Left/Right).  The old Ctrl-Backspace key to delete all
+      records after the current has changed to Shift-Backspace.  You can
+      also press Delete on the <-- Record # --> line instead. [Ralph]
+    * Raised the limit on hero definitions from 60 to 512 [Ralph]
+    * Raised map layer limit from 8 to 16 [Ralph]
+    * Added "Export scripts backup copy" option to Script Management menu
+      (HSpeak has saved a backup copy of scripts for years now) [Ralph]
+    * New preference bitset "Keep caterpillar length the same when speed
+      changes" [James]
+    * "Export to File" option in Script Usage and Find Broken Script
+      Triggers menus [Ralph]
+    * Added general preference bitset "Heroes use Walk in Place animation
+      while idle" [James]
+    * You can jump to the attack, enemy and textbox editors from anywhere
+      you select an attack/enemy/box, or add a new one directly [Ralph]
+    * In NPC placement mode you can open the NPC editor by pressing ENTER
+      on tiles with NPCs (edit them) or without (edit current NPC) [Ralph]
+    * Shops now display how many of an item you already own as well as
+      how many you have equipped [James]
+    * Metadata is shown for .ogg files in the music and sfx menus [Ralph]
+    * Ctrl+C/Ctrl+V in the NPC definition editor copy/pastes NPCs [Ralph]
+    * Most of Custom (except the map editor) now has at least partial
+      mouse support. Also, experimental in-game mouse support (can be
+      activated in the F8 debug menu) [James, Ralph]
+    * (For now) made gfx_sdl the default backend for Custom on Windows, so
+      that you can resize the window! Try it in the map or slice editors!
+      Almost all editors can now run at higher resolutions [Ralph, James]
+    * Image previewing when browsing for an image to import (only when
+      the window is larger than 320x200) [Ralph]
+
+  * New Plotscripting Features
+    * "menu item at pixel" [Ralph, James]
+    * You can now profile scripts (collect statistics on running times)
+      by pressing Ctrl+F9. (Before, you had to download a special build
+      to profile scripts.) More useful stats are now collected. [Ralph]
+    * "run game" quits the current game and loads a different game
+      (.rpg file/.rpgdir), and "check game exists" [Ralph]
+    * You can now pass arguments to the newgame and loadgame scripts by
+      giving extra arguments to "resetgame" and "loadfromslot" [Ralph]
+    * "reparent to npc" and "reparent to hero" convenience functions
+      [James]
+    * Added "show new game" argument to "load menu" command [Ralph]
+    * "get battle countdown" and "set battle countdown" [Ralph]
+    * "check wall collision x", "check wall collision y",
+      "move slice with wallchecking" [Ralph]
+    * "slice parent" alias to "parent slice"
+    * "get npc speed"
+    * Added "textbox text" to read all lines from a textbox into a
+      string variable at once [Matthias]
+    * "load sprite" and "replace sprite" (general versions of "load
+      hero sprite", etc) [Ralph]
+    * Commands to check whether or not each of the suspend states is
+      active, for example: "player is suspended", "npc walls are
+      suspended", etc... [James]
+    * NPC pathfinding commands: "pathfind npc to" "npc chases npc"
+      "cancel npc walk" [James]
+    * "get screen width" and "get screen height" [James]
+    * "mouse release" to check if a click has just ended [James]
+    * Commands for reading door information can now optionally read
+      information about doors on other maps instead of the current map
+      [James]
+    * Changes to the language:
+      * -= and += now return their result, like := does, so they can be
+        used as expressions [Ralph]
+      * subscript variables and arguments can now have the same name as
+        variables in the parent script, "shadowing" them [Ralph]
+      * Hexidecimal, octal and binary number constants, written like
+        0xCABBA9E, 0o377 and 0b1101111000011 [Ralph]
+    * Added "allow switching" argument to "equip menu" command [Ralph]
+    * "gain hero stat", to easily increase/decrease a stat [Ralph]
+    * "slice at pixel" and "find colliding slice" now respect clipping
+    * Increased highest available global variable id number from
+      16383 -> 50000 [James]
+    * "set active battle pause for animations" [Ralph]
+
+  * Changes
+    * Sound effects used to play at max volume, which has now changed
+      to a default of 80% (because music defaulted to just 50%). In
+      newly created games the defaults are both 75%. [Ralph]
+    * When importing a BMP, unless the palette is identical, color 0
+      won't be used unless you explicitly pick it [Ralph]
+    * Can input ID of unnamed lookup codes in slice editor [Ralph]
+    * HSpeak now disallows most stray commas [Ralph]
+    * Scripts triggered from a menu item now always get passed the menu
+      item extra data, even if the first argument is the menu item
+      handle [Ralph]
+    * Custom's splash screen [Ralph]
+    * Rearranged and renamed Custom's main menu items a bit; Edit Font is
+      now under Edit Graphics [Ralph]
+
+  * Bugfixes
+    * 64-bit builds of Custom work now... for real this time! They
+      would crash in several menus. 64 bit Linux builds now available.
+      [James, Ralph, Matthias]
+    * In old games, attacks with enemy type-killer bits wrongly counted
+      as elemental for the purpose of spawning. This fix is only
+      applied if the game has not been edited since Ypsiliform. [James]
+    * The party leader will always draw on top of other heroes with the
+      same Y position, and when heroes and NPCs are on the same layer,
+      on top of NPCs that have the same Y position (instead of being
+      layered unpredictably) This is most noticeable with vehicles that
+      do not hide the leader. [Ralph, James]
+    * "use item in slot" was not immediately updating item ownership
+      tags [James]
+    * Fix broken self-targeting on-death-bequest attacks [James]
+    * gfx_directx: fixed incorrect positioning of the mouse cursor when
+      the window was stretched or maximised, which caused problems with
+      tile cursor movement in the tile browser and tile cutter [Ralph]
+    * Bug 2006: gfx_directx: major slowdown after switching to another
+      program while a joystick is plugged in [Ralph]
+    * If you skipped the title instantly by pressing a key at the wrong
+      moment then the load menu would have a blacked-out palette [Ralph]
+    * Harm tiles didn't work if there are 'gaps' in the active party
+      (caterpillar rank and party slots aren't equal) and caterpillar
+      party was disabled [Ralph]
+    * The Battle Formation Set menu miscalculated the number of steps
+      until a battle occurs (it was too low). Also added average [Ralph]
+    * music_native/native2: Changing the music volume only worked for
+      MIDI, while everything else was played at max volume [Ralph]
+    * Reload sound effects replaced while live-previewing. And
+      reloading of UI colors & box styles had stopped working. [Ralph]
+    * "write zone" was meant to return true on success, but didn't [Ralph]
+    * "running on linux" returned true on Mac and BSD [Ralph]
+    * Bug 2022: Can't run faster than 60fps under OSX [Ralph]
+    * Script profiling "time/call" stats were wrong: now #calls only
+      counts the number of calls while profiling enabled [Ralph]
+    * gfx_directx: commandline args -f/--fullscreen, --width, --height
+      and -z/--zoom now work [Ralph]
+    * Fix a bug in turn-based battles that prevented cancelling backwards
+      through hero action selection when there was a gap in the party
+      [James]
+    * Minimaps now display obsolete Overhead tiles correctly [Ralph]
+    * If the Background UI color wasn't 0, ellipse slice border/fill color
+      set to 0 didn't appear transparent [Ralph]
+    * Textbox line sounds weren't played for the first two lines [Ralph]
+    * SDL_mixer.dll (Windows only) recompiled to use modplug instead of
+      mikmod to play modules. This fixes bad sound quality, broken
+      looping, some files not playing, and too-low volume [Ralph]
+    * If you used Zenzizenzic (2011) or later to open a game last edited
+      with Ubersetzung (2007) or earlier, all your enemy "is <enemytype>"
+      and "weak to/strong to/absorbs" element bits bits were discarded
+      instead of being upgraded to "takes X% damage from ..." settings.
+      The upgrade routine has been fixed, but your data is gone. If you
+      still have an old copy of your game, ask for help. [Ralph]
+
+  * Stuff Only Developers Will Notice
+    * Support latest FreeBASIC version, by adding OPENFILE layer [Ralph]
+    * Cross-compiling support using "scons target=..." [Ralph]
+    * After 12 years of cleanup, the source is now free of GOSUBs!
+      [James, Mike, Ralph, Matthias]
+    * FreeBSD support [Ralph]
+
+June 06 2016 [Callipygous+1]
+
+  * New Features
+    * If you are using the gfx_sdl backend, almost all menus in
+      custom can make use of the extra space when the window is
+      maximized
+
+  * Bugfixes
+    * You weren't meant to be able to resize the window in the sprite
+      editor; doing so would corrupt graphics (gfx_sdl only) [Ralph]
+    * Under Unix, utilities couldn't be run (e.g. to encode and import
+      audio or distribute the game) on files containing the characters
+      ( ) | < > # ; &.
+    * Running utilities (like hspeak) didn't work on Macs where the
+      OHRRPGCE hadn't been installed previously [Ralph]
+    * Delete key didn't work while typing on Macs. And after resizing
+      the window, text input stopped working. [Ralph]
+    * Fix the Android virtual gamepad being hidden if you open a game,
+      exit to the file-picker and then open a game again
+    * Options for changing the window size now work on Macs [Ralph]
+    * "unhide mouse cursor" now works in fullscreen too [Ralph]
+
+  * Stuff Only Developers Will Notice
+    * 64 bit builds work now.
+
+April 04 2016 [Callipygous]
+
+  * New Features
+    * Ported to Android phones and tablets, as well as specific support
+      for the OUYA, Gamestick and FireTV Android-based consoles!
+      New "Platform-specific options" menu in General Game Data.
+      See http://rpg.hamsterrepublic.com/ohrrpgce/Making_Android_games
+      for information about how to port your game. You can't yet use
+      the Distribute Game menu for Android. [James, Ralph]
+    * While placing doors in the map editor you can now specify door
+      number, and jump to existing door locations [Ralph]
+    * When buying equipment in a shop, show stat bonuses [James]
+    * When hiring heroes in a shop, show hero portraits [James]
+    * Split "Change Box Styles", "Change User-Interface Colors" into
+      two separate menus [James]
+    * Split "General Preference Bitsets" and "Backwards-compatibility
+      Bitsets" into two menus [Ralph]
+    * Clean up orphaned temporary folders when you exit game [James]
+    * Games can now optionally increase (or decrease) the number of
+      save/load slots that are available. [James]
+    * In the font editor you can set roughly which characters are
+      icons. If you use a font with the extra Latin-1 characters
+      (eg. with accents), then those letters will now show correctly in
+      the .txt file when exporting textboxes.  And characters which are
+      icons won't be exported as garbage in .hsi files. [Ralph]
+    * Attack chains conditions can now be based on the stats of the
+      targets [James]
+    * Attack bitset "Never trigger elemental counterattack" [James]
+    * The map editor's Clone tool now has separate 'merge' and 'replace'
+      modes (Ctrl+M to toggle) [Ralph]
+    * When adding a new map layer you may copy an existing one [Ralph]
+    * When importing an 8-bit backdrop or tileset (eg. exported from
+      another game) color 0 (transparency) is preserved; when importing
+      a 24/32-bit one you now have the option to pick the background
+      color [Ralph]
+    * Ability to specify the positions of the frames in the source
+      spritesheet when importing with the sprite editor in full-set
+      mode (regular offsets between frames only) [Ralph]
+    * Additional master palettes in import/ [Soda_piggy, Dragontao]
+    * Added Saved Game Settings menu, with new options to enable saving
+      and restoring of:
+      * the spritelayer slice (default parent for new slices). Slice
+        handles to these slices remain valid after loading.
+      * strings (including display settings)
+      [Ralph]
+    * Most 32 bit BMPs should be importable now [Ralph]
+    * Attack damage bitset "Healing poison causes regen, and reverse";
+      useful when attacker or target absorbs damage [Ralph]
+    * Press F8 in-game to access the Debug Menu; works in battles too.
+      It's the only debug key you'll ever need to remember! Includes
+      new debug options including:
+      * Test Battles, to fight any formation
+      * Edit backcompat bitsets
+      * Email saved game (Android only)
+      * Toggle debug/reload mode
+      Also, a few debug keys changed or were removed.
+      [Ralph, James]
+    * Added F7 debug key to kill all targettable enemies. Also, the tag
+      debugger is available in-battle with F4; instant-run moved to
+      Ctrl+F4. [Ralph, James]
+    * Added Shift+Tab debug key to speed up the game while held down
+      (an alternative to Ctrl+Plus/Minus debug keys) [Ralph]
+    * New formation options: Victory tag to set a tag according to
+      whether the battle was won, and an option to prevent game over
+      on death. [MirceaKitsune, Ralph]
+    * The textbox editor now wraps text as you type [Ralph]
+    * Automatically keep a few backup copies of any rpg file you edit
+      This is no substitute for manual backups! Do not forget to
+      back up your own work! [James]
+    * Menu for basic importing and exporting of tilemap data from/to
+      .tilemap and .bmp files (the .bmps are minimaps). [Ralph]
+      To export images of maps, use RMSephy's tool instead:
+      https://github.com/Spencer-Zhang/ohr-cartographer
+    * Option to adjust the framerate. This isn't really a finished
+      feature, as increasing the framerate leads to crazy walking
+      animations.  You probably shouldn't change the framerate in an
+      existing game, as it will break all your wait() lengths and hero,
+      npc, camera, etc. movement speeds. [Ralph]
+    * Global sound effect options for steal attack success, failure,
+      and no item to steal. [Ralph]
+    * Added Regen icon to Battle System Options. [Ralph]
+    * Hero positions in battle can be customized. [James]
+    * Enemies can now be placed anywhere onscreen in formations [Ralph]
+    * Starting hero ID can be customized, and you can also set a
+      'starting' textbox to display on a new game. [Ralph]
+    * Added "Old attack positioning at bottom-left of target" back-
+      compat bitset, which if you turn off places attack sprites at
+      the center of the target instead. [Ralph]
+    * You can now run multiple copies of Custom at once (but can't
+      open the same .rpg more than once). [Ralph]
+    * You can now use the mouse to select or highlight slices in the
+      slice editor, press F5 to edit the hidden root slice, F6 to shift
+      around the view, and V to toggle slice visibility. [Ralph]
+    * New .rpg files start with a few template walkabout sets, donated
+      by FnrrfYgmSchnish
+    * Added options to set how large the game's window should be by
+      default (by changing the scaling factor). The default size will
+      for most people be larger than the old 2x default.
+      Also added a setting to make the game run in fullscreen by
+      default, unless the player has a remembered preference. [Ralph]
+    * "Windowed" and "Fullscreen" special menu items. They appear in
+      the default menu in new games; other games need updating. [Ralph]
+    * The Distribute Game options will make use of Mac or Windows icons
+      if it finds the icon files next to your .rpg file. See
+      http://rpg.hamsterrepublic.com/ohrrpgce/Icons for details [James]
+
+  * Changes
+    * Hidden menu items no longer affect the width of a menu [Ralph]
+    * A new Debug/Release mode setting replaces the old script
+      errorlevel. All existing games default to Release mode. Release
+      mode hides almost all script errors and warnings; Debug mode
+      should be used for testing but not for release. [James]
+
+  * Bugfixes
+    * Fixed a few cosmetic bugs in the equip menu including possibly
+      wrong resultant stat value being shown [Ralph]
+    * Hero stats menu would freeze if Maximum Level was zero [Ralph]
+    * You can now change the music with a script immediately after a
+      map change without the ambient music playing for a moment [Ralph]
+    * Bug 857: Focus camera cannot focus on spots close to map edge
+      [James]
+    * Fix heroes getting stuck in active-time battle mode if they are
+      in the middle of targetting an attack and get hit with a stun
+      or mute attack. [James]
+    * "showtextbox happens immediately" backcompat bitset (on for new
+      games) helps to prevent bugs due to showing two boxes at once;
+      "show textbox" now affects "current textbox" immediately [Ralph]
+    * HSpeak accepts files with Mac line-endings again [Ralph]
+    * Fix attacks that use the attacker's max stats as the base attack
+      stat [James]
+    * Fix vehicles that are configured to disable random battles [James]
+    * Bug 997: Crash/freeze when fullscreening in Mac OS 10.7 and later
+    * Bug 777: 'Load' menu called from a customisable menu showed a
+      'New Game' button which did nothing [Ralph]
+    * Disabling palette colours for backdrop/tileset import didn't work
+      for 8-bit BMPs. (Also added mouse support.) [Ralph]
+    * Bug 1004: Copying a shop didn't copy all the shop items [Ralph]
+    * Hero attack animations didn't occur if they were weak [Ralph]
+    * Bug 1005: "hero is walking" didn't work for heroes other than
+      leader when the caterpillar party was enabled [Ralph]
+    * Bug 763: NPCs and heros flickered when you walked over the edge
+      of a wrapping map [Ralph]
+    * Multi-hit attacks no longer causing dying enemies to dissolve/
+      fade multiple times, and additional hits are cancelled once all
+      targets have died [Ralph]
+    * On-keypress scripts are now always triggered when mouse buttons,
+      or keys other than move, use and cancel, are held down [Ralph]
+    * Fix general map data corruption that occured when loading certain
+      very old games released before July 8 1999 [James]
+    * Fix a few problems when installed in a read-only location [Ralph]
+    * Bug 2013: Pre-Beelzebufo games expected backdrops to appear
+      above the sprite layer [Ralph]
+
+  * New Plotscripting Stuff
+    * "Menu action plotscript" special script trigger to run a script
+      instead of opening the main menu [Lakan Inocencio]
+    * subscripts: scripts embeddable inside other scripts, with access
+      to their local variables [Ralph]
+    * "read item description" counterpart to existing "read item name"
+      [James]
+    * "get sprite default pal" [James]
+    * "NPC is disabled" for detecting when an NPC reference is disabled
+      by tags or by one-time-use [James]
+    * "string sprintf" for easier piecing together of strings [Ralph]
+    * "script error", "get calling script id", "get script name",
+      "dump slice tree" [Ralph]
+    * Make $id="foo" return id so that you can write showstring($1="foo")
+    * Press F5 in Custom's main menu or Script Management menu to
+      reimport the last imported scripts. And while testing a game
+      you can now set the scripts to be reloaded automatically (from the
+      data reload menu, press F5 in-game to access it) [Ralph]
+    * "camera follows slice" [Ralph]
+    * "get/set/reset hero picture/palette" family of commands can now
+      also manipulate hero portrait pictures [James]
+    * "get level mp" now takes an additional argument, "current stat"
+      or "maximum stat" [Ralph]
+    * plotscr.hsd, scancodes.hsi and your game's .hsi file are now all
+      included automatically, so there's no need to put those "include"
+      lines at the top of your scripts file [Ralph]
+    * "get/set active battle pause on all menus" [James]
+    * "dissolve sprite", "cancel dissolve", "sprite is dissolving",
+      "wait for dissolve" [James]
+    * "running on desktop", "running on mobile", "running on console",
+      "running on windows", "running on mac", "running on linux"
+    * "show virtual gamepad", "hide virtual gamepad",
+      "auto virtual gamepad" [James]
+    * "get horiz align", "get vert align", "get horiz anchor",
+      "get vert anchor" [James]
+    * "create select" "slice is select" "set slice select index"
+      "get slice select index" "slice child index" [James]
+    * "create scroll" "slice is scroll" "set scroll bar style"
+      "get scroll bar style" "set scroll check depth"
+      "get scroll check depth" "scroll to child" [James]
+    * "create panel", "slice is panel", "get panel is vertical",
+      "set panel is vertical", "get panel primary index",
+      "set panel primary index", "get panel percent as int",
+      "set panel percent", "get panel pixels", "set panel pixels",
+      "get panel padding", "set panel padding" [James]
+    * "next npc reference" [Ralph]
+    * "input string with virtual keyboard",
+      "input string with mouse keyboard" [James]
+    * "unhide mouse cursor", "hide mouse cursor" [James]
+    * "pixel focus camera" [James]
+    * Added 'visible only' argument to "slice at pixel" and
+      "find colliding slice" [Ralph]
+    * "send email" (Android only), "debug menu" [Ralph]
+
+  * Performance Fixes
+    * Fixed delay when opening a menu that happened when a large number
+      of menus were defined [Ralph]
+    * HSpeak was extremely slow (potentially hours) at reading files
+      with DOS/Windows line-endings on Linux/Mac [Ralph]
+    * The script interpreter was running tight loops much (eg 2x) slower
+      than it used to before Beelzebufo [Ralph]
+    * Creating or reparenting thousands of slices was slow [Ralph]
+
+  * Stuff Only Developers Will Notice
+    * Experimental support for ARM and other non-x86 devices, such as
+      the Raspberry Pi, and for native 64-bit builds. All thanks to the
+      FreeBASIC developers! [Ralph]
+
+April 9 2013 [Beelzebufo]
+
+  * New Features
+    * General preference bitset "Don't reset max stats after OOB attack"
+      to prevent stat maximum values from being altered by attacks and
+      items outside of battle [Ralph]
+    * Max tag is now 15999 instead of 999 [James]
+    * Max NPC onetime tag is now 15999 instead of 1000 [James]
+    * A bunch of attack bitsets have moved into the Attack Damage
+      Settings Menu, which now dynamically hides settings and bitsets
+      that have no effect, and shows in detail how the attack damage
+      will actually be calculated. [Ralph]
+    * When adding a new hero, attack, enemy or shop, added the option
+      to copy an existing one [Ralph]
+    * Attack can optionally override the hero's weapon sprite [James]
+    * Enemies can do an On-Death Bequest attack when killed [James]
+    * Textbox backdrops can optionally allow color 0 to be transparent
+      [Ralph, James]
+    * The battle system can now be switched into Turn-based mode [James]
+    * Attacks can be given a turn-delay in addition to a tick delay
+      [James]
+    * Attack base stat is no longer limited to the attacker's current
+      stat. Now it can also be attacker's max stat, targets current
+      stat, or target's max stat [James]
+    * Press Enter or Space on "Base ATK Stat" to browse a menu of all
+      available base attack stats [James]
+    * Revamped the hero spell list editor to make it easier to use
+      [James]
+    * Menu editor now allows you to adjust the line-spacing [James]
+    * Menu editor allows the selected item to be highlighted with
+      the highlight background color in addition to flickering the text
+      [James]
+    * Hero battle menus are now customizable. You can remove weapon
+      attack and the items menu, add specific attacks, add more than 6
+      menu items, and reorder battle menu items [James]
+    * Stats can be hidden for a hero. This prevents them from appearing
+      on the Status and Equip menus. [James]
+    * Map layers can now be named [Ralph]
+    * You can set the maximum size of a stack of items in the inventory
+      with per-item and default settings [Ralph]
+    * Goodbye 4-bit BMPs! You can now import sprites, backdrops and
+      tilesets from BMP files saved at (almost) any bitdepth (but
+      sprites are still limited to 16 colors), and most common versions
+      of the BMP file format are now supported. Greatly improved the
+      sprite importer's handling of palettes and previewing. [Ralph]
+    * Map editor improvements:
+      * Mark and Clone (copy/paste) tools. They simultaneously copy all
+        visible map layers, walls, foemap and zones.
+      * Changes to key bindings so that you no longer need to press
+        Ctrl to switch the tool. A and B vehicle bits are now Ctrl+A/B.
+      * In wallmap mode you can now use the Box and Paint tools to
+        set any wall directions/bits
+      * You can select a block of tiles on the tileset to draw with
+      [Ralph]
+
+  * Bugfixes
+    * Fix the arrow key problem in Custom on Mac OS X for the third
+      time (this time for real!) [Ralph]
+    * Mac OS 10.4 and 10.5 are now supported again [Ralph]
+    * "run script by id" was far slower than it should have been [Ralph]
+    * ${H#} codes in text boxes are no longer limited to heroes that
+      are in the party.
+    * Bug 968: "Reset target stat to max before hit" attack bit takes
+      effect even if the attack fails due to elemental resistance or
+      "Show damage without inflicting" is set [Ralph]
+    * Fix inns called directly from textboxes with no shop, which were
+      restoring the party even if you refused to pay [James]
+    * zone at spot(X, Y, getcount) returned 1 less than the actual count
+    * Bug 973: Strange behaviour when closing one game and playing
+      another without quitting Game [Ralph]
+    * Loop points in module music work in music_sdl again (Windows only)
+    * Problems when Custom or a game was placed in a folder containing
+      spaces or other special characters, especially on Mac [Ralph]
+    * Shops no longer allow you to buy items if you don't have room for
+      them in your inventory [James]
+    * Fixed F12 screenshots on the following menus: Items, Spells,
+      Status, Equip, Order/Team, Shop, Save, Load [James, Ralph]
+    * Fixed shop-stock limits not working [James]
+    * "get hero stat cap" and "set capped hero stat" didn't work [Ralph]
+    * Bug 800: Choice boxes misplaced for autosized textboxes [Ralph]
+    * Fix a couple places where stat caps were not applied [Ralph]
+    * Bug 743: Unequipping items when stats have reached stat limits
+      is broken [Ralph]
+    * If your whole party died outside of battle (via harm tiles, spells,
+      items or "map cure") a game over wasn't triggered [Ralph]
+
+  * New Plotscripting Stuff
+    * If a script runs for a long time without "wait"ing you can now
+      interrupt it by pressing any key. [Ralph]
+    * New commands "set onetime" and "check onetime" that work similarly
+      to "set tag" and "check tag" [James]
+    * When browsing plotscripts in custom, you can jump to scripts by
+      typing more than just the first letter of the scripts name [James]
+    * "delete npc" as an alias to "destroy npc"
+    * HamsterSpeak syntax changes:
+      * "include" syntax is more lenient, like it used to be. Quotes
+        around filenames containing paths, upper case or spaces optional
+      * The characters '{', '}', '[', ']', '.' are now totally disallowed
+      * < and > can be used instead of << and >>
+      * "do" after a case is optional, and you may write case(else) ...
+        instead of else(...). Example:
+            switch (dir) do (
+              case (north, south) return (1)
+              case (else)         return (0)
+            )
+      * "else if" is a shortcut which lets you omit a pair of brackets:
+            if (condition) then (...)
+            else if (condition 2) then (...)
+            else (...)
+      [Ralph]
+    * "enemy elemental resist as int" [Ralph]
+    * "hero Z", "NPC Z", "set NPC Z" [Ralph]
+    * "set hero stat cap" [Ralph]
+    * "wait for sound"
+    * Each of a hero's stats now has a base value in addition to
+      current and maximum values. See "base stat" in the Plotscripting
+      Dictionary for information. [Ralph]
+    * "get item maximum stack size" [Ralph]
+    * "door at spot", "suspend doors", "resume doors" [Ralph]
+
+  * Stuff Only Developers Will Notice
+
+July 31 2012 [Alectormancy+2]
+
+  * Bugfixes
+    * An arrow key fix from Alectormancy+1 broke adding new sprite
+      sets in the sprite editor. This release fixes it properly.
+
+July 27 2012 [Alectormancy+1]
+
+  * Bugfixes
+    * Fix the arrow key problem in Custom on Mac OS X
+    * Fix new enemy formations being filled with enemy 0 instead of
+      empty slots
+    * NPCs that are intended to disappear when a text box advances
+      no longer disappear when it first opens.
+    * Mac OS X version now defaults to your Documents folder instead of
+      defaulting to the Applications folder
+    * Fix "Distribute Game as Mac OS X App" when running on Windows
+    * Fix "Distribute Game as Debian Package" when running on Mac OS X
+    * Fix "Distribute Game as Windows Installer" when running from
+      Linux+Wine
+    * Fix distribute failures caused by trying to download support
+      utilities into read-only locations.
+    * Use curl when wget isn't available
+
+  * Update to Vikings of Midgard
+
+Jun 15 2012 [Alectormancy]
+
+  * New Features
+    * Adjustable global HP thresholds for hero and enemy Weak states
+      (hero graphics and enemy desperation attacks) [Adam Perry]
+    * New in-game debug key: CTRL+F4 to view/edit/export the slice
+      tree with the slice collection editor [Ralph]
+    * A general game option to change how the inventory Autosort
+      option works [Ralph]
+    * Master Palettes menu: added export option [Ralph]
+    * Play-as-you-edit, AKA live previewing of games, with a new
+      "Test Game" option in Custom. Still unfinished! [Ralph]
+      * New debug key: press F5 in-game to access a menu where you can
+        reload various game data. Most useful when live-previewing a
+        game. The old F5 and Ctrl+F5 debug keys (free camera movement)
+        have been changed to F7 and Ctrl+F7. [Ralph]
+      * Ctrl+S in the map and tileset editors immediately saves.
+        (Moved old Ctrl+S (paint the screen) to Ctrl+W (ie. paint the
+        "window")) [Ralph]
+    * New general bitset "Attacks will ignore extra hits stat" [James]
+    * NPCs can now be assigned avoidance (wall) zones as well as
+      movement zones. The avoidance zones have precedence. [Ralph]
+    * Default NPC movement and avoidance zones can be set in the
+      General Map Data menu [Ralph]
+    * Distribute Game menu, where you can automatically package your
+      game to distribute to other people. [James]
+      * Distribute as Zip file
+      * Distribute as Windows installer
+      * Distribute as Debian Linux package
+    * Script trigger log: press CTRL+F10 in-game to cause triggered
+      scripts (not called from other scripts) to be logged to
+      script_log.txt. It might help to restart/reload the game
+      after enabling it if running scripts are missing. [Ralph]
+    * Formation sets can now be disabled by tag conditions [Ralph]
+    * Partial Unicode support, currently limited to the Latin-1
+      character set:
+      * A new default font which includes the Latin-1 characters
+      * Your operating system's native keyboard layout/text inputting
+        methods are used when entering text, both in Game and Custom.
+        The input is restricted to Latin-1, though of course you'll
+        need the characters in your font to see them.
+        (Does not work with the gfx_fb backend).
+      * Support for non-ASCII filename encodings while browsing
+      * HSpeak has better, full Unicode support. It automatically
+        recognises the encoding as ASCII/Latin-1, UTF-8, or UTF-16.
+        Script names and strings are dumbed down to Latin-1 on import.
+      [Ralph]
+    * New general bitset "Don't divide experience between heroes" [James]
+
+  * Bugfixes
+    * Wrong names used for reserve party heroes who level during
+      battles [Ralph]
+    * In the map editor, tile 0 on map layers did not correctly become
+      transparent after swapping map layers [Ralph]
+    * Fixed a whole lot of things which failed to immediately update
+      tags they were meant to (eg. the "unequip" and "items menu"
+      commands). Also tag changes didn't immediately update disabled
+      menu items and often didn't update disabled NPCs [Ralph]
+    * Menus didn't resize or scroll properly/immediately after items
+      were added/removed/enabled/disabled/selected, and similarly
+      the "set menu max rows" command was broken [Ralph]
+    * You can now type negative numbers more naturally. No need to
+      type a positive number and toggle it negative [James]
+    * NPC definitions weren't being saved by "save map state" and
+      the "Remember NPC data" option, and "delete map state" didn't
+      work on NPC locations/instances [Ralph]
+    * 'Set target stat to %' attacks were being affected by the damage
+      cap [Ralph]
+    * Harm tile mess:
+      * Harm tiles didn't affect non-visible heroes when the
+        caterpillar party was disabled (fix enabled only with "Harm
+        tiles harm non-caterpillar party" general preference bitset)
+      * Didn't trigger when crossing over them using walkhero with
+        distance more than 1 [Ralph]
+    * "export globals" was broken in strange ways [Ralph]
+    * "input string" would hide string 0 instead of the one it was
+      meant to; also changed the way the 'center' and position
+      arguments behave to make more sense [Ralph]
+    * Bug 942: Attacks didn't chain if they depended on a tag with
+      ID >= 128 [San]
+    * It was no longer possible to import BAM files [Ralph]
+    * In-battle music option 'silence' acted the same as 'same as
+      last map'. Broken since xocolatl! [Ralph]
+    * When "camera follows NPC" was used the camera lagged one tick
+      behind the NPC [Ralph]
+    * The pause key didn't pause battles anymore [Ralph]
+    * Bug 945: Attacks used from a hero's spell list out-of-battle
+      used the average party stats instead of that hero's [Ralph]
+    * Fix ${C#} codes in textboxes which have been (embarrasingly)
+      broken for as long as the feature has existed [James]
+    * Bug 956: gfx_directx: graphics could be mangled at startup
+      until the window is resized [Jay]
+
+  * New Plotscripting Stuff
+    * You can now have global variables up to 16383 instead of 4095
+      [James]
+    * Slice velocity commands to make a slice move automatically at
+      pixels-per-tick speeds. [James]
+    * Slice movement commands to make a command move to a target
+      position over a desired number of ticks. [James, Ralph]
+    * "wait for slice" command to make the script wait for slice
+      movement [James]
+    * New "Ellipse" slice type, and related commands [James, Ralph]
+    * "NPCstat: default movement zone" constant for "read/alter npc"
+    * "assert" [Ralph]
+    * "menu item true slot", "menu item by true slot" [Ralph]
+    * "get hero slice" and "get NPC slice" commands [James]
+    * "get door x", "get door y", "get door destination id",
+      "get door destination map", "door exists" [Mogri]
+    * "get attack caption" [Mogri]
+    * "get rect fuzziness", "set rect fuzziness" [Ralph]
+    * "textbox line" replaces "string from textbox", fixing the
+      broken 'expand' argument and adding 'strip' argument [Ralph]
+    * "get slice text" [Ralph]
+    * "get input text" (and "enable input text") which obsoletes
+      "last ascii" [Ralph]
+    * "get hero hand x", "get hero hand y", "set hero hand x",
+      "set hero hand y", "get default hero hand x",
+      "get default hero hand y" [James]
+    * Increased number of strings to 100 (0 to 99) [Ralph]
+
+  * Stuff Only Developers Will Notice
+    * Certain special engine-related Slices are marked as protected
+      to indicate that plotscripts are not permitted to delete or
+      reparent them.
+    * New comand-line options:
+      -autosnap N         Automatically save a screen snapshot every N ticks
+      -runfast            Run quickly (without speed control)
+      -autotest           Run quickly and write screenshots on _checkpoints
+      -recordinput file   Record keyboard input to a file
+      -replayinput file   Replay keyboard input from a previously recorded file
+      -no-native-kbd      Use US keyboard layout instead of OS-based text input
+
+May 6 2011 [Zenzizenzic]
+
+  * New Features
+    * Ported  to Mac OS X! (Intel Macs only) [Ralph]
+    * New general bitset "Locked heroes can't be re-ordered" [James]
+    * Slice collection editor can create complex collections of slices
+      to load into plotscripts [James]
+    * New general bitset, "Attack captions pause battle meters" [James]
+    * Savegames are now in a new format. Instead of a gamename.sav
+      file you will have a gamename.saves folder. (the conversion is
+      automagical and you will not lose any saves) [James]
+    * Rewrote script usage menu to be enormously faster and sort
+      scripts into numerical/alphabetical order [Ralph]
+    * You may now have up to 500 NPC definitions per map [Ralph]
+    * Maximum map size raised to 100,000 tiles [Ralph]
+    * New menu item bitset to suppress the on-load script if the
+      menu item closes the menu [James]
+    * New menu feature to automatically open another menu when you
+      close the current menu with ESC [James]
+    * Expanded (and fixed) Erase Map Data menu [Ralph]
+    * The line and oval tools are now pleasant to use instead of
+      teeth-gnashingly awful, and the pixels in the tile editor are
+      no longer stretched [Ralph]
+    * Added Replace Colour tool to tile and sprite editors [Ralph]
+    * New general bitset "Don't randomize battle ready meters" [James]
+    * New attack bitset "Delay doesn't block further actions" allows
+      attacks to be queued without blocking the attacker from taking
+      other actions [James]
+    * Jay Tennant's gfx_directx is now the default graphics backend
+      under Windows (automatic fallback to gfx_sdl on old computers).
+      Click the window icon to access gfx_directx's Options menu, and
+      drag the corner of the window to change zoom!
+    * gfx_directx input rewrite: adds joystick support, normal mouse
+      speed/acceleration, removes forced mouse clipping and adds
+      "mouse region" support [Jay]
+    * gfx_directx expanded hardware support [Jay]
+    * gfx_directx added option in Options dialog to disable system
+      messages (like Alt-Space) from operating--Alt-Tab and Alt-Enter
+      still function as expected [Jay]
+    * When using an item in the item menu, there is now visual feedback
+      when you use the last item in a stack. [James]
+    * Lots of new scancodes added for scripts: you can now, for example,
+      tell apart Numpad 2 and the Down key. You have to turn on the
+      general bitset "Enable better scancodes" for these to fully work,
+      see "key is pressed" in the dictionary for more details. [Ralph]
+    * New dissolve animations Squeeze, Shrink and Flicker [Ralph]
+    * Page up/page down/home/end keys now work in most built-in
+      in-game menus [Ralph]
+    * You can set a cap on the maximum hero level, from 0 to 99 [Ralph]
+    * (Anti-feature) The internal password format has changed a 3rd
+      time. Old utilities and versions of Custom will not be able to
+      open passworded games; remove the password to use them. [Ralph]
+    * Lots of element related stuff:
+      * Enemy, hero, and equipment elemental strong/weak/absorb bits
+        have been replaced with percentage-based "Damage from <element>"
+        options. The second Status menu screen now shows percentages.
+      * Attack "Fail vs. <element> resistance" bits have been replaced
+        with percentage-based elemental resistance failure thresholds.
+      * The enemy types have been replaced by elements 9-16: "Is
+        <enemytype>", "Bonus to <enemytype>" and "Fail vs. <enemytype>"
+        have been translated to elemental equivalents.
+      * In Battle System Options you can select from three formulae
+        for combining equipment elemental resistances into the
+        effective elemental resistances for heroes.
+      * You can now have up to 64 elements (you have to set a
+        higher number of elements before they become available).
+      [Ralph]
+    * You can select menu items on Custom's main menu and graphics menu
+      by hotkey (eg. I for Edit Items or Import Music) [Ralph]
+    * Ctrl+F8 debug to print out the slice tree to g_debug.txt
+    * Added Zones to maps. A zone is just a group of tiles on the map,
+      with data attached (sadly no triggers are implemented yet). There
+      are 9999 zones per map. Each NPC type may have a 'movement zone',
+      confining where it can move. [Ralph]
+    * Added drawing tools -- Draw, Box, Fill, Replace, and Paint
+      Tilemap -- to the map editor, available in Tile, Wall, Foe, and
+      Zone modes! [Ralph]
+    * Press Ctrl+Z and Ctrl+Y to Undo and Redo changes in the tilemap,
+      wallmap, foemap, and zonemap editors! These share a single
+      near-infinite history. Certain operations delete the history.
+      [Ralph]
+    * Attack maximum Extra Damage raised to 32767%
+    * You can customise the amount of experience given to heroes not
+      in the active party in the Battle System Options menu [Ralph]
+    * Import .hss files in Custom, and they will be automatically
+      compiled with hspeak [Ralph]
+    * You can now define enemy counterattacks against elemental
+      and stat-damaging attacks! Does not use the CTR stat. [James]
+
+  * Bugfixes
+    * Bug 749: Attacks configured to do No Damage still do damage when
+      used outside battle [James]
+    * Bug 819: %-based attacks don't heal outside of battle [James]
+    * Bug 9: Elemental strength/weakness/absorbtion is not yet applied
+      to spells used outside of battle. [James]
+    * Fixed a case where "add hero" could add more heroes than you
+      are supposed to be able to have under certain conditions [James]
+    * Bug 486: Chained attacks fail on stored dead targets
+      [James, msw188]
+    * Bug 851: Instead-chains fail or cause other chains to fail under
+      certain conditions [James msw188]
+    * Using an item that triggers a text box could cause a menu
+      double-close warning if the menu item that opened the items menu
+      was set to always close the menu [James]
+    * Bug 845: upgrading old games that contain no shop stuff lump
+      always produced a confusing warning [James]
+    * 'Set tag', 'Toggle tag' and 'Close menu' options were ignored
+      when menu items were triggered via "use menu item" [Ralph]
+    * NPCs appearance was not updated according to tags set from a
+      menu item or from the tag debug menu [Ralph]
+    * "create NPC" could create NPCs with garbage 'extra data' [Ralph]
+    * gfx_directx: fixed garbage and window resizing at startup [Jay]
+    * gfx_directx: fixed slow screen fades and framerate [Jay]
+    * gfx_directx: added support for all all key scancodes [Ralph, Jay]
+    * gfx_directx: fixed fast keypresses being lost [Ralph, Jay]
+    * gfx_directx: fixed keyboard/mouse clearing state leaving window [Jay]
+    * gfx_directx: fixed graphical errors in Vista/Win7 [Jay]
+    * gfx_directx: fixed Ctrl-Alt-Del crashes in Vista/Win7 [Jay]
+    * gfx_directx: fixed slow downs caused by leaving the window [Jay]
+    * gfx_directx: fixed window resizing/engine cursor issues [Jay]
+    * gfx_directx: fixed garbage occurring when enabling/disabling
+      Aspect Ratio Preservation in Options dialog [Jay]
+    * Your MP (and the rest of the spell menu) is no longer hidden
+      while you target a spell outside of battle. [James]
+    * Scrolling a sprite or a maptile is now done with the new scroll
+      tool instead of holding down the CAPSLOCK key, which was rather
+      annoying. You can now click and drag to scroll. [Ralph]
+    * Getting the maptile under the cursor is now done with the G key
+      (instead of the CAPSLOCK key, which we can all agree was
+      confusing!) [James]
+    * "string to globals" and "globals to string" weren't working
+      with global variable IDs > 1024 [Ralph]
+    * Bug 863: "load tileset" and "change tileset" did not
+      (completely) work on map layers 3 and above [Ralph]
+    * music_sdl no longer secretly keeps seperate volume levels for
+      MIDIs and non-MIDIs, which confused people and broke fading
+      scripts. [Ralph]
+    * Cursor, accept and cancel sound effects weren't used in battles
+      [Ralph]
+    * Could not exit from empty menus with Esc key [Ralph]
+    * Fixes to fatal error reporting: no longer gives the option to
+      continue if it means corrupting the game, and Custom no longer
+      deletes working.tmp, so that you can recover your work [Ralph]
+    * "horiz flip sprite" and "vert flip sprite" reset the sprite's
+      palette to default [Ralph]
+    * Trying to reorder map layers if there's only one crashed [Ralph]
+    * Bug 865: Slices attached to map layer 0 were drawn on top of all
+      map layers [Ralph]
+    * Fixed an assortment of 19 bugs in HSpeak: crashes, missing error
+      checking, miscompiling and misoptimising scripts, incorrect
+      error messages [Ralph]
+    * Bug 827: Flood fill in the sprite editors could count all pixels
+      of one colour around the sprite edges as connected [Ralph]
+
+  * New Plotscripting Stuff
+    * You may no longer used the characters ", $ or = in script and
+      variable names.
+    * "include" is parsed differently; enclose your filenames in quotes
+      if they contain spaces, a path, or are case sensitive
+    * "reset hero picture" and "reset hero palette" [James]
+    * "set slice clipping", "get slice clipping" [James, Ralph]
+    * "create grid", "slice is grid", "set grid columns",
+      "get grid columns", "set grid rows", "get grid rows",
+      "show grid", "grid is shown" [James]
+    * "load slice collection" [James]
+    * "add hero" command now returns the party slot it added the hero
+      to, or -1 if the party is full. [James]
+    * "set slice edge x", "set slice edge y" [James]
+    * "get slice lookup", "set slice lookup" [James]
+    * "trace value" [Ralph]
+    * "abs", "sign", "sqrt" [Ralph]
+    * "map cure" replaces deprecated "outside battle cure" [James]
+    * "read attack name" replaces deprecated "get attack name" [James]
+    * "spells learned" replaces deprecated "spells learnt" [James]
+    * "allocate timers" (removes 16 timer limit) [Ralph, James]
+    * New script trigger for when you close a menu. [James]
+    * "set npc ignores walls", "get npc ignores walls",
+      "set npc obstructs", "get npc obstructs", "set npc usable",
+      "get npc usable", "set npc moves", "get npc moves" [Ralph]
+    * "init mouse" no longer locks the mouse to the window
+    * "read zone", "write zone", "zone at spot",
+      "zone number of tiles", "get zone name", "get zone extra",
+      "set zone extra" [Ralph]
+    * "use item", "use item in slot" [James]
+    * "map width" and "map height" now take an optional argument,
+      the map number [Ralph]
+    * "mouse click"; you can test the middle mouse button now [Ralph]
+    * "extended scancodes enabled" [Ralph]
+    * Resolution of "get/set music volume" increased [Ralph]
+    * "get level cap", "set level cap" [Ralph]
+    * "load backdrop sprite", "replace backdrop sprite",
+      "set sprite trans", "get sprite trans" [Ralph]
+    * "hero base elemental resist as int",
+      "set hero base elemental resist",
+      "hero total elemental resist as int" [Ralph]
+
+  * Vikings of Midgard
+
+  * Stuff Only Developers Will Notice
+    * Test suite and benchmarks for RELOAD format [Mike]
+    * Comprehensive SCons-based build system, to replace all the others
+      [David Gowers]
+    * Generic resizable arrays ('vector's) to replace FreeBASIC's
+      horrible builtin arrays. This is why you should not rush
+      programming language features :) [Ralph]
+
+Nov 8 2010 [Ypsiliform+3]
+
+  * Bugfixes
+    * Bug 816: Freeze on attack instead-chaining on multi-stage chains
+    * The "leader" command has never worked.
+    * "set dead heroes gain experience" did nothing.
+    * Bug 829: Shrinking a map could cause garbage map layers to appear;
+      also, deleting map layers did not work
+    * Script string literals were broken when playing games made in
+      late 2006.
+    * Bug 824: Back-compat issue with Curse of Vampire (affected other
+      games) [James]
+    * Cancel hero movement if hero speed is zero. Prevents a situation
+      where walking a zero-speed hero could get stuck in an infinite
+      battle loop [Ralph]
+    * "wait for all" did not wait for NPCs when it was meant to [Ralph]
+    * "hero pixel x/y" always returned the leader's position [Ralph]
+    * Fix display of the airbrush options in the tile editor. [Ralph]
+    * Music and sound effects can be previewed everywhere in
+      Custom by hitting Enter [Ralph]
+    * Prompt for confirmation before deleting a song or sound effect
+      [James]
+    * Under Unix you usually couldn't play unlumped .rpgdir games which
+      were on a mounted filesystem other than the one containing your
+      home directory [Ralph]
+    * Sound effects did not stop when quitting to the title screen or
+      loading a game [Ralph]
+    * Windows music/sound import fixes (bug 826):
+      * MP3/WAV import failed when Custom's path contained spaces
+      * Sometimes MP3/WAV import went bonkers, looping over and over
+      * MP3/OGG music couldn't be deleted or replaced with other OGGs
+      [Ralph]
+
+Feb 8 2010 [Ypsiliform+2]
+
+  * Bugfixes
+    * Bug 815: Trailblazers Frozen
+    * Fix crash when saving an empty menu
+
+Jan 24 2010 [Ypsiliform+1]
+
+  * Bugfixes
+    * Bug 802: tileset confusion when adding a layer
+    * Bug 812: crash after adding a new spriteset while in
+      full-set mode
+    * Bug 813: crash and map corruption when linking doors to a
+      map with more than 3 layers
+    * Bug 814: F12 for screenshots not working for SDL backend
+    * No longer prevents importing WAV files over 500k in size
+      (they often become smaller than 500k when converted to ogg)
+    * Fix missing "Quit Editing" on main menu
+    * Fix palette browser to update added palettes and to not
+      crash the sprite editor.
+
+Jan 08 2010 [Ypsiliform]
+
+  * New Features
+    * Press F1 anywhere in custom for help [James, Ralph, Msw, NN]
+    * Plotscripting can now load sprites, and place them on screen.
+      [Mike, James]
+    * Limit on maximum items has been raised from 254 to 32000 [James]
+    * Limit on how many item slots you have in your inventory has been
+      raised from 198 to 600. You can also manually choose a smaller
+      maximum. [James]
+    * The hero editor now has an "Equipment" submenu which provides a
+      convenient way to choose which items a hero can equip without
+      needing to go back to the item editor [James]
+    * Text box "shrink" can now be set to Auto, so the vertical size
+      of the box is determined by the text in it. [James]
+    * Press + in the text box editor to create a new box with the same
+      style as the current box [James]
+    * ALT+C and ALT+V to copy/paste text box styles [James]
+    * Added "Connected boxes" navigation tool to the text box editor
+      [James]
+    * New enemy bitset "Never flinch when hit" [James]
+    * New enemy bitset "Ignore for "Alone" AI" [James]
+    * New attack bitselt "Do not cause target to flinch" [James]
+    * Attack target modes for "Thankvenge", just like Revenge,
+      but works on those who have cured the attacker instead
+      of those who have harmed the attacker [James]
+    * Last cure is now usable as an attack base stat [James]
+    * Option in Master Palettes menu to clone the active palette's UI
+      colour indices plus other data, without colour remapping [Ralph]
+    * Text box exporter escapes non-printable ascii as \NNN sequences
+      where NNN is the three digit decmal representation of the ascii
+      code [James]
+    * New general bitset "Don't save gameover/loadgame script IDs"
+      [James]
+    * New "check where scripts are used" tool, which can list all
+      script usage (except for scripts calling other scripts) [James]
+    * New "find broken script triggers" tool, which can list all
+      places where a non-existant script will be triggered. [James]
+    * The sprite editor now has a full-spriteset mode which allows you
+      to import (or manipulate) full sprite sets instead of working
+      one frame at a time [James]
+    * Press E in the sprite editor to export your sprite to a file
+      [Ralph, James]
+    * Press + and - in the sprite editor to rotate your sprite [James]
+    * The clone tool in the sprite editor now allows you to rotate the
+      cloned area. [James]
+    * The global text string editor now has a search tool [James]
+    * Show cursor coordinates in the sprite editor [James]
+    * g/c_debug.txt are deleted when quitting if nothing interesting
+      happened. Older output is moved to g/c_debug_archive.txt [Ralph]
+    * New general bitset "Dead heroes gain share of experience" [Ralph]
+    * Pressing Esc+PgDown+PgUp or clicking the window's X (or Alt+F4
+      and so on) in Custom quits all the way to the save/quit menu.
+      Pressing it again quits, saving the game as a .BAK file [Ralph]
+    * The General Game Data menu has finally been cleaned up [Ralph]
+    * Enemies can now have a cursor offset position so the cursor does
+      not always have to go directly over their head. [James]
+    * Extended attack chaining options. Now you can make an attack
+      chain based on a tag check or a stat check. [James]
+    * Else-Chain which is evaluated whenever the default chain is not
+      used [James]
+    * Instead-Chain which is evaluated right after the attack is
+      targeted, and if it succeeds it entirely replaces the orignal
+      attack [James]
+    * Damage display in battles can be customized to display longer
+      [James]
+    * Attack chain browser for navigating and visualizing chains of
+      attacks [James]
+    * Attacks now have a "Learned" sound effect that can be played when
+      the attack is learned as a spell from an item or levelup. [James]
+    * You can test enemy dissolve animations in the enemy editor [Ralph]
+    * The random scatter (default) enemy dissolve animation now fades
+      out smoothly and completely [Ralph]
+    * Added new enemy dissolve animations: Squash, Melt, Vapourise
+      and Phase out [Ralph]
+    * When a script error occurs, you are now shown the script callstack
+      and given options such as entering the slightly improved script
+      debugger. But many script errors still occur silently. [Ralph]
+    * Each text box can now have a sound effect attached. [James]
+    * F12 to take a screenshot, alt+tab to toggle fullscreen, and alt+F4
+      now work everywhere in Game and Custom with all backends [Ralph]
+    * Attacks can transmogrify enemies into different enemies [James]
+    * Menus are no longer limited to 21 items [Ralph]
+    * Maps may now have up to 8 layers. You can insert, delete, and
+      reorder layers and set the number of layers drawn beneath NPCs and
+      heroes. [Ralph]
+    * A new graphics backend, gfx_directx, which supports vsync, a
+      resizeable window, and other excellent improvements over the other
+      backends. All builds of the OHR include support for it, as long as
+      gfx_directx.dll is present.
+      Enable with the commandline option "-gfx directx" [Jay Tennant]
+
+  * Bugfixes
+    * Fix bug 325 "Cleaner upgrade from old-style to new-style scripts"
+      Now you can convert your scripts to new-style and the triggers
+      will be automatically updated for you. [James]
+    * Fix bug 449 "Some debug keys not reset when exiting back to the
+      game select menu" [James]
+    * Using "advance text box" when no text box is open no longer
+      re-evaluates the conditionals of the most recently closed text
+      box [James]
+    * Fix a crash bug in the script interpreter when running very
+      large/many scripts [Ralph]
+    * "random" didn't work when max - min > 2^31, and could be totally
+      non-uniform. "seed random" now causes different sequences! [Ralph]
+    * Using Ctrl+R in the tilemap editor could corrupt memory [Ralph]
+    * The tilemap editor fill tool, Ctrl+P, would overflow and crash
+      when filling huge areas [Ralph]
+    * Fixed box borders being drawn wrong for small boxes, and resized
+      boxes throughout the builtin menus to accommodate borders [Ralph] 
+    * Fixed bug 747 which was causing hero tags to not be updated
+      immediately when a hero was added or removed [James]
+    * Fixed bug 756 "Holding ENTER or SPACE while dismounting a vehicle
+      can result the hero getting stuck" [James]
+    * The default master palette is also saved in the old format,
+      so old graphics utilities have a greater chance of working [Ralph]
+    * Fix crash on using items that teach spells which also have
+      textboxes selected (see Bug 750) [James]
+    * Fix bug 547, "Level MP" was missing from the list of global text
+      strings [James]
+    * Fix bug 588, Heroes get free attack if stunned while selecting a
+      target. Also fixed the fact that stun status was only pausing the
+      ready-meter, not pausing delays. [James]
+    * selectmenuitem and nextmenuitem did not work, unselected menus
+      didn't become inactive when the topmost menu was changed by script,
+      appendmenuitem sometimes added items in the middle of a menu, and
+      the order of menu items created by scripts changed in various
+      circumstances [Ralph]
+    * Renamed "Random Focus" attack target setting to "Random roulette"
+      to more accurately reflect what it does, and make sure it actually
+      behaves randomly when used in chains [James]
+    * EVIL bug 233 "OHR freezes on startup", unsolved for 3 years [Ralph]
+    * The default graphics backend has been changed to gfx_sdl. That
+      means the following gfx_fb bugs are gone:
+      * Bug 185 - Colors messed up in full-screen mode on some computers
+      * Bug 766 - Zonealarm thinks the OHRRPGCE is a keylogger
+      * Keypresses often blocked for a few seconds after switching app
+      * A whole lot of laptop keyboard problems seem to be gone or
+        less severe, eg. bugs 334, 785, and right shift key not working
+
+  * New Plotscripting Stuff
+    * "get inventory size" and "set inventory size" [James]
+    * "load hero sprite", "replace hero sprite",
+      "load walkabout sprite", "replace walkabout sprite",
+      "load small enemy sprite", "replace small enemy sprite",
+      "load medium enemy sprite", "replace small medium sprite",
+      "load large enemy sprite", "replace small large sprite",
+      "load attack sprite", "replace attack sprite",
+      "load weapon sprite", "replace weapon sprite",
+      "load border sprite", "replace border sprite",
+      "load portrait sprite", "replace portrait sprite",
+      "free sprite", "put sprite", "set sprite visible",
+      "get sprite type", "get sprite set number", "get sprite palette"
+      "set sprite palette", "clone sprite", "set sprite frame",
+      "get sprite frame", "sprite frame count", "slice is sprite",
+      "sprite layer", "horiz flip sprite", "vert flip sprite",
+      "sprite is horiz flipped", "sprite is vert flipped"
+      [Mike, James]
+    * "slice x", "slice y", "set slice x", "set slice y",
+      "put slice", "slice width", "slice height", "set horiz align",
+      "set vert align", "set horiz anchor", "set vert anchor",
+      "free slice", "slice child", "child count", "first child",
+      "next sibling", "last child", "previous sibling",
+      "free slice children", "create container", "check parentage",
+      "set parent", "parent slice", "slice screen x", "slice screen y",
+      "put slice screen", "slice is container", "set slice width", 
+      "set slice height", "create rect", "get rect style",
+      "set rect style", "get rect fgcol", "set rect fgcol",
+      "get rect bgcol", "set rect bgcol", "get rect border",
+      "set rect border", "get rect trans", "set rect trans",
+      "slice is rect", "first container child", "next container child",
+      "first sprite child", "next sprite sibling", "first rect child",
+      "next rect sibling", "realign slice", "center slice",
+      "slice collide point", "slice collide", "slice contains",
+      "slice at pixel", "find colliding slice", "lookup slice",
+      "set slice screen x", "set slice screen y", "clamp slice",
+      "set padding", "set top padding", "get top padding",
+      "set left padding", "get left padding", "set right padding",
+      "get right padding", "set bottom padding", "get bottom padding",
+      "fill parent", "is filling parent", "slice to back",
+      "slice to front", "Y sort children", "set sort order",
+      "get sort order", "sort children", "set slice extra",
+      "get slice extra", "slice edge x", "slice edge y", "create text",
+      "set slice text", "get text color", "set text color",
+      "get text bg", "set text bg", "get outline", "set outline",
+      "set wrap", "get wrap", "slice is text", "slice is valid",
+      "set slice visible", "get slice visible", "move slice below",
+      "move slice above". [James, Ralph]
+    * "number from string" [James]
+    * "set dead heroes gain experience" [James]
+    * There are now 3 NPC extra data fields (0-2) accessible with
+      "set NPC extra" instead of 2 [Ralph]
+    * "suspend timers", and "resume timers" [James]
+    * "use menu item" [James]
+    * "reset game" [James]
+    * Inventory manipulation commands: "item in slot", "set item in
+      slot", "item count in slot", "set item count in slot" [James]
+    * "update level up learning" [James]
+    * hspeak now automatically stores a backup copy of your script
+      inside the .hs file. Use the -n command line option if you
+      want to disable this feature [James]
+    * Calling initmouse now causes on-keypress scripts to be run when
+      the mouse is clicked, and restricts the mouse to the game window
+      so that you can actually move it to the edge. You can let the
+      mouse leave the window with mouseregion. [Ralph]
+
+  * Vikings of Midgard
+    * More story scenes for the plot to unfold more naturally.
+    * Enemies and elemental system completely revamped.
+    * Even MORE subquests to explore.
+    * "complete" up to the "world of ruin" part of the game.
+
+  * Stuff only Developers Will Notice
+    * New slice routines for rectangular objects of various styles that
+      can be organized into a tree and positioned and sized relative to
+      one another. [Mike]
+    * RPG format number has been incremented to provide
+      forward-compat warnings when loading new RPG files into
+      old versions of game [James]
+
+April 03 2009 [xocolatl+2]
+
+  * Bugfixes
+    * Bug 684: Lower half of inventory screen gets deleted when you
+      load [James]
+    * Bug 348: Weapon is drawn behind other heroes [James]
+    * Bug 689: When a hero who is currently picking a target dies,
+      next hero's targetting was broken [James]
+    * Bug 698: Global variables 1025-4095 couldn't be set [Ralph]
+    * "input string" was causing an endless loop if ESC was
+      pressed and "suspend player" was active [James]
+    * Bug 703: NPC extra's aren't cleaned on restart [James]
+    * Bug 700: Erroneous globals over 32767 when loading form save game
+      [James]
+    * Bug 710: Text box import loads door tag value into door id [James]
+    * Bug 712: default plotstring colors are wrong after a
+      non-title-screen load [James]
+    * Bug 674:A line of pixels is sometimes "vomited" into the corner
+      of the sprite editor [James]
+    * Removed obsolete warning about long filenames from relump
+    * Removed obsolete unneeded linux-specific hacks from unlump
+    * Bug 646: Delay before caption doesn't seem to work [James]
+    * importglobals and exportglobals did not work on globals
+      1025 - 4095 [Ralph]
+
+  * Plotscripting
+    * Show a future compatibility warning when using certain punctuation
+      such as [square brackets] or {curly braces} in script names or
+      variable names. This is to ease the transition for scripters when
+      arrays become available.
+
+October 03 2008 [xocolatl+]
+
+  * Vikings of Midgard
+    * Character portraits [Fenrir-Lunaris]
+    * New spell quests [Fenrir-Lunaris]
+    * Other minor fixes [Fenrir-Lunaris]
+
+October 02 2008 [xocolatl]
+
+  * New Features
+    * Spells and items used outside of battle now display their
+      target stat instead of always displaying HP [Mike]
+    * Visual placement of hero's hand positions and weapon's
+      handle positions. [James]
+    * Text boxes can be exported as a .TXT file, edited with
+       your favorite text editor or spellchecker, and then
+       re-imported back into your game [James, Mike]
+    * Character portraits! You can now draw 50x50 pictures for
+      heroes and NPCs that can be displayed in text boxes [James]
+    * You can now type in NPC numbers in NPC placement mode in the
+      map editor [James]
+    * You can now type in formation set numbers in foemapping mode
+      in the map editor [James]
+    * Draw your own graphical Text Box borders [James]
+    * NPC-per-map limit raised from 36 to 100 [James]
+    * New text box conditional to display menus [James]
+    * New menu bitset to advance any open text box when the menu
+      closes [James]
+    * New attack bitsets
+      * "Don't trigger spawning on kill" [James]
+      * "Check costs when used as an item" [James]
+      * "Re-check costs after attack delay" [James]
+
+  * Bugfixes
+    * bug 678: Ogg music problems in game with werewaffle version
+      [James]
+
+  * New Plotscripting Stuff
+    * get hero speed [MCW]
+
+  * Stuff only Developers Will Notice
+    * Many old variables re-organized into types
+    * Many GOSUB blocks converted to SUBs (many still remain)
+    * The code to automatically fade songs in and out has been
+      removed. It wasn't cool enough to warrant the headaches
+      it caused [James]
+
+August 20 2008 [werewaffle+]
+
+  * Bugfixes
+    * Bug 669: Music continues to play when you exit back to the game
+      browsing screen
+    * Bug 670: Sound effect cache not flushed on game exit
+    * Bug 671: Lingering ogg file prevents playing.tmp cleanup
+
+August 16 2008 [werewaffle]
+
+  * New Features
+    * While editing the tilemap of a map, use Ctrl+P to fill in the
+      current maptile and all maptiles of the same type touching
+      the current maptile with the selected maptile. This is analogous
+      in functionality to the paint can tool in most modern drawing
+      programs. [Cameron Wilkin]
+    * Mark/Clone brush tool in the sprite editor and the maptile editor.
+      Mark a rectangular region of a sprite and then use the clone tool
+      to duplicate it. [James Paige]
+    * Press F5 in the browser to refresh the listing, and to fetch the
+      names of all drives (under Windows); this is no longer done
+      automatically as it was too slow.
+      Press backspace to go up a directory.
+      Also sped up, and removed the 255 file limit. [Ralph Versteegen]
+    * New default Master Palette for new games. [NeoTA, Everybody]
+    * ohrrpgce.mas is no longer required at all, not even for
+      custom [James Paige]
+    * New attack bitset, "Can't be cancelled by other attacks" [James]
+    * New attack bitset, "Do not trigger spawning on hit" [James]
+    * *Vastly* reduced CPU usage due to allmodex and gfx_fb graphics
+      code rewrites [Ralph Versteegen]
+    * The script interpreter runs about 4 times faster on average
+      than Ubersetzung! (work ongoing) [Ralph Versteegen]
+    * Holding down the F12 key takes a screenshot every frame [James]
+    * Item descriptions show in-battle too [Ralph Versteegen]
+    * Full view option in backdrop & tileset import/export menus [Ralph]
+    * Fancy improved Map Layers menu (still also available by Ctrl-L)
+    * Each tilemap layer can now use a different tileset. [Ralph]
+    * You can cut from tilesets as well as backdrops; hit enter or
+      middle click to quickly cut a tile or sequence of tiles; hold
+      down shift to keep the cut box 20x20 tile aligned while moving
+      the mouse. [Ralph]
+    * Formation editor improvements; animations are shown now [Ralph]
+    * Shops display whether or not your heroes can equip weapons or
+      armor [James]
+    * Menu scripts on menus with the "suspend gameplay" bit turned on
+      receive extra menu data as arguments. (Menu scripts on normal
+      menus still receive a menu item handle) [James]
+    * Debug keys: Ctrl+F1 lets you teleport to any position on any map
+      instantly, using an easy minimap. Hold shift to speed about.
+      Ctrl+F11 to overlay NPC id and (negated) reference numbers.
+      Ctrl +/- for changing the framerate work again. Ctrl+~ to see
+      the FPS - this works everywhere. [Ralph]
+    * New enemy bitset, "Win battle even if alive" [Ralph]
+    * New sound effect triggers: Learnt from item, Can't learn, Buy,
+      Hire, Sell, Can't Buy, Can't Sell [Ralph]
+    * New aim math options for purely percentage based aim/dodge rates:
+      Aim%, Aim% * (100-Dog)%, Mag%, Mag% * (100-Mag)%  [Adam Perry]
+    * The mouse is usable for drawing now: the frame rate in the sprite
+      editors has been maximised (used to be 9fps!) [Ralph]
+
+  * Bugfixes
+    * Bug 585: Curative items used wrong attack after being arranged
+    * Custom now respects your chosen UI colors everywhere [James Paige]
+    * Bug 590: default death sound effect played after every hit
+    * Attempting to display a blank global text string, or the "fail"
+      message in certain cases, would crash under Linux, and "fail"
+      wouldn't display under Windows [Ralph Versteegen]
+    * Importing a new master palette could black out or fail to
+      remap UI colours. [Ralph]
+    * unlump and relump on Linux now correctly handle uppercase
+      rpgdirs [James Paige]
+    * Bug 605: array-out-of-bounds when playing sound effects when
+      no more sound effect slots are free [James Paige]
+    * Bug 577: Memory corruption when opening sub-menus [James Paige]
+    * Bug 608: New menus were checking equipment tags when the menu
+      opened instead of when the menu closed
+    * Bug 612: Problems with animating tiles on a map, including
+      potentially corrupting the map.
+      And changing the tileset didn't reload tile animations [Ralph]
+    * Bug 603: Shops ignore default item value for buy/sell prices
+      [James Paige]
+    * Bug 625: 'Damage instead of set' % based attacks now respect
+      the cure and harmed by cure bitsets [Yuriy, Ralph]
+    * Just about all missing sound effects added (any more missing?),
+      some wrong ones fixed [Ralph]
+    * Battle Music: silence now works again
+    * set formation song now actually works [Ralph]
+    * Bug 586: Textbox backdrop can become the tileset with showtextbox
+      without advancetextbox
+    * Bug 432: "use door" sometimes goes through the door you are
+      standing on instead of the intended one [Ralph]
+    * Bug 481: "hero levelled" and "spells learnt" don't reset after
+      running from battle. Also some other problems with inactive heroes
+      not reporting from the very last command/battle only [Ralph]
+    * Bug 637: Crash when editing doorlinks [Ralph]
+    * Bug 639: Enemies which spawn with 0hp or 'Die Without Boss' and no
+      bosses now die immediately, without being shown. [Ralph]
+    * If you try to use a tile with multiple NPCs on it, the bottommost 
+      use-activation NPC is triggered instead of failing if the
+      bottommost NPC isn't usable. [Ralph]
+    * Fixed the bug that prevented you from using the joystick buttons
+      to confirm certain prompts, for example, when learning a spell
+      from an item [James]
+    * Fixed Bug 650: One-time-use NPCs and tag-disabled NPCs no longer
+      block pushable NPCs [James]
+    * Bug 379: Enemies couldn't use Target: Self attacks if they had
+      "Untargetable by Enemies" set [Ralph]
+    * Sound effects should hopefully be less laggy now (music_sdl)
+    * Fixed Bug 626 Bitsets altered (memory corruption) after reaching
+      maximum number of Menu Items [James]
+    * Preferred target weak/strong stat setting now works [Ralph]
+
+  * New Plotscripting Stuff
+    * You can now have up to 4096 global variables (global ID numbers
+      0-4095) [James Paige]
+    * loadtileset, gettileanimationoffset, settileanimationoffset,
+      animationstarttile, currentdisplaytile now take layer arguments.
+      "change tileset" and "layer tileset" also added for layer tilesets
+    * Changed get formation song and set formation song have to not use
+      a +1 offset for songs, and can handle "same as map" song. This
+      only affects recompiled scripts [Ralph]
+    * add enemy to formation, delete enemy from formation,
+      find enemy in formation, formation slot enemy, formation slot x,
+      formation slot y, get formation background, set formation background,
+      last formation, formation set frequency, formation probability,
+      random formation [Ralph]
+    * current text box
+
+  * Vikings of Midgard
+    * New and updated locations
+    * New heroes and abilities
+    * New and improved graphics
+    * Characters now join the party through story events rather than being
+      hired in the pub.
+
+Jan 21 2008 [voxhumana]
+
+  * New Features
+    * Attack bitset 'Do not chain if attack fails' [Mike Caron]
+    * Equip screen displays the number by which a stat will change [James]
+    * -s pixel smoothing now works with all bit depths, not just 8-bit
+      [Reaxor Jones]
+    * Attack bitsets to disable specific target slots now work for enemies
+      also [James Paige]
+    * Attacks can have preferred default targets based on factors such as
+      distance or strongest stat or weakest stat [James Paige]
+    * Customizable main menus. [James Paige]
+    * New attack bitset "Cancel target's attack" [James Paige]
+    * A hero for hire in a shop can (optionally) be given a specific
+      experience level [James Paige]
+    * New, customizable enemy dissolving styles [Mike Caron]
+    * Tag name editor lets you browse tags at a glance, rather than
+      searching for them by tag number [James Paige]
+    * Browse for tags from any menu that takes tag numbers by pressing
+      enter or space on the tag [James Paige]
+    * Most (but not all) user interface colors in Game and Custom can now
+      be customized. Each master palette has its own set [Simon, James]
+    * User Interface color editor. [James Paige]
+    * In the door link editor, you can see a preview of each doorlinks
+      when you browse the list of doorlinks. [James Paige]
+    * Door link editor only shows the links that are actually used [James]
+    * Press Enter on a door in door-placement mode to go directly to the
+      doorlink editor for that door. (only works on the first link for
+      doors multiple conditional destinations) [James Paige]
+    * Enemies can have a death sound effect. [James Paige]
+    * TeeEmCee's pretty mini-map from the map-resize menu is now used for
+      all mini-map drawing [Ralph, James]
+    * General bitset to disable pressing ESC to run from battle [James]
+
+  * Bugfixes
+    * Temporary map state was not being deleted when exiting to the title
+      screen, meaning maps set to remember state would be in an unexpected
+      state from a previous game. deletemapstate was also broken.
+      [Ralph Versteegen]
+    * Fixed bug 257 "Mute status effect broken for enemies" [James Paige]
+    * Fixed bug 5 "First Target attacks can hit targets besides the first"
+      [James Paige]
+    * Fixed bug 476, off-by-one-error in "set victory music" [James Paige]
+    * Fixed bug 484 "Do not show spell lists if empty" was only working in
+      battle for the first spell list [James Paige]
+    * Having an after-battle script would prevent fightformation from
+      returning the correct battle result [Ralph Versteegen]
+    * More NPC activation/pushing over map edge fixes [Ralph Versteegen]
+    * Fixed bug 237, "Stun Attacks Cancel Actions"
+      (Old stun attacks will continue to work the same thanks to the
+      "Cancel target's attack" bitset) [James Paige]
+    * Fixed bug 473, "Shop data doesn't persist" [James Paige]
+    * Fixed bug 330, "Pushed npcs are obstructionless" for new games.
+      Old games can get the fix in the general game bitsets menu by turning
+      off the "Simulate pushed NPC obstruction bug" bitset. Do this
+      with caution if your game uses pushed-NPC puzzles that rely on
+      overlapping NPCs [James Paige]
+    * Fixed bug 21, "If you save on a door, you will go through the door
+      when you load" [James Paige]
+    * Outside-battle attacks that target only dead heroes no longer
+      work on the first hero slot when no dead heroes are present
+      [James Paige]
+    * Attacks with target class "Enemy" are usable on allies
+      outside battle if the "Usable outside battle" bitset is ON
+      [James Paige]
+    * Life spells/items that are not allowed to target live heroes are
+      no longer usable on a hero who you just revived. [James Paige]
+    * Fixed bug 553, "Cancelling level MP attack in battle still uses
+      cost for that turn" [James Paige]
+    * Input string actually works now! [Ralph Versteegen]
+    * Fixed bug 576 incorrect camera movment and vanishing hero when
+      using "focus camera" close to the top or left edge of a map
+      [James]
+
+  * New Plotscripting Commands
+    * There are **71** new commands for manipulating customisable menus,
+      too many to list! [James Paige]
+    * get victory music
+    * outside battle cure
+    * get level mp, set level mp [James Paige]
+
+  * Stuff only Developers Will Notice
+    * BattleStats UDT [James Paige]
+    * New sprite paradigm (currently used in battle) [Mike Caron]
+    * A lot of minor clean up in many places
+
+Sept 21 2007 [ubersetzung]
+  * New Features
+    * New sample game! Fenrir Lunaris's modern retro epic fantasy masterpiece
+      Vikings of Midgard! [Fenrir-Lunaris]
+    * New Music Formats. In addition to BAM and MIDI, you can also play
+      MP3, OGG, MOD, XM, S3M and IT [Mike Caron]
+    * New NPC movement type: Walk In Place [James Paige]
+    * 8-bit bitmaps can now be imported as backdrops and tilesets [Mike, Ralph]
+    * Sound effects. in WAV, OGG, or MP3 format [Mike Caron]
+    * Sound effect triggers in battle [Mike Caron]
+    * Attacks can now consume or give items (up to three at once!) [Mike Caron]
+    * "Transparent" colour in sprite editor can now be chosen (only affects the
+      sprite editor, so you can distinguish "transparent" from "black") [Mike]
+    * New functionality for the key is pressed() command, pertaining to
+      joysticks [Mike Caron]
+    * Browse menu (game + custom) now shows a drivelist under windows and lets
+      you browse to root [Ralph Versteegen]
+    * Press Ctrl + H while browsing to display hidden files and folders
+      [James Paige]
+    * Press a key in the browser to cycle through files and directories with
+      that first letter [Ralph Versteegen]
+    * Browse menu displays unlumped RPG files if the folder is named
+      with a .rpgdir extension [James Paige]
+    * You can choose an RPG to edit in custom with the same browse menu
+      that you use to pick an RPG to play in game. [James Paige]
+    * Custom can edit and save unlumped RPG files [James Paige]
+    * Full Long file name support (You can create RPG files with long file
+      names, even including spaces)
+    * Minimap now zooms in closer on smaller maps [James Paige]
+    * Activating an NPC who is walking away from you causes the
+      NPC to step back closer to you, preventing the ugly situation
+      where you are talking to an NPC who is standing a full tile
+      away [James Paige]
+    * Maps can be set to remember their state when you leave them, or to load
+      from state files saved with savemapstate. You can set separate loading
+      options for NPC and tile data. [Ralph Versteegen]
+    * HamsterSpeak is now 32-bit. This means you can use values from
+      -2147483648 to 2147483647 in your scripts [Ralph Versteegen]
+    * $id="..." and $id+"..." (string literals) rewritten to be speedy and
+      efficient [Ralph]
+    * HSIMPORT is now obsolete, and Custom has taken over its function.
+      Specify an RPG file/folder and an HS file on the commandline (or drag-
+      and-drop them onto Custom), and the HS file will be imported [Ralph]
+    * Add -z 3 to the command-line to run with a 3x zoomed screen. This
+      Only works when running in a window, not when running fullscreen
+      [James Paige]
+    * You no longer need to give your scripts ID numbers; definescript is now
+      optional. Instead, you can use this syntax to define default values for
+      script arguments:
+
+       script, myscript, required arg, optional arg = 3, begin
+
+      And to declare a script that's selectable in Custom use "plotscript"
+      instead of "script":
+
+       plotscript, introduction, begin
+
+      See http://rpg.hamsterrepublic.com/ohrrpgce/New_syntax
+      for more information. [Ralph Versteegen]
+    * Press enter/space on any field that accepts scripts to enter a script
+      browser where you can enter an id or browse by starting letter [Ralph]
+    * The sprite editor remembers a default palette for every sprite
+      [James Paige]
+    * You can use the Home/End keys in the sprite editors and browse by typing
+      in shop/item number
+    * You can import multiple master palettes and switch between them while
+      editing in the View Master Palettes menu and with scripting. Master
+      Palettes can now also be imported from the palettes of 8 bit BMP files,
+      and from 16x16 24-bit BMP files [Ralph Versteegen]
+    * Plotscripting Strings no longer have a max length of 40 [James Paige]
+    * New commands for dealing with 32-bit colors (0-255, as opposed to 0-63)
+    * Map music can be set to "same as previous map" and battle music as
+      "same music as map", previous "none" option renamed to "silence" [Ralph]
+    * Script buffer overflows are a thing of the past! Only a script larger
+      than maximum size (very generous) will cause an error. [Ralph]
+    * Tile map layers! In the map editor, use Ctrl-L to enable the new layers,
+      Alt-F1/2/3 to enable/disable them quickly, and Ctrl-F1/2/3 to toggle their
+      visibility. Press Ctrl+J to make the current layer jiggle so it stands
+      out from the other layers [Mike, James]
+    * You can export backdrops and tilesets as 8-bit BMP files [Ralph]
+    * Press DEL in the map editor to delete the current tile
+      Press BACKSPACE to delete tile, passability, npc, door, and foemap
+      for the current tile [James Paige]
+    * New zooming map resize screen to add or trim from any edge [Ralph]
+    * Hero start location is visible in the map editor. Press CTRL+H
+      to move the start location [James Paige]
+    * Optional graphics smoothing. Run with -s command-line option.
+      [Reaxor Jones]
+    * ohrrpgce.fnt is not used anymore. [James Paige]
+    * You can play two different RPG files at the same time and they will not
+      clobber each other's temporary files [James Paige]
+    * Linux version can be installed system-wide, for example, to /usr/games
+      [James Paige]
+    * Editing a read-only RPG file copies it to your home directory.
+      [James Paige]
+    * New general bitset to disable default passability by default
+      [James Paige]
+    * In the tile map editor you can press CTRL+R to replace every tile
+      like the selected one. [James Paige]
+    * Weapons can optionally require MP, HP, money or items, just like
+      spells do (a new attack bitset) [James Paige]
+    * Hold down Shift in the map editor to scroll quickly. [Ralph Versteegen]
+
+  * Bug Fixes
+    * Fixed bug 12: "An NPC at the edge of a wraparound map does not block the
+      hero at the opposite edge" and bug 27: "NPCs cannot walk across the
+      edges of a wraparound map" (consider that a feature if you want)
+      And bug where couldn't activate touch activation NPCs over map edge
+      And bug where avoid and chase NPCs did not know about wraparound maps
+      [Ralph Versteegen]
+    * Really fixed the "script arguments overflow into local variables" bug.
+      You need to recompile your scripts to get this fix [Ralph Versteegen]
+    * Joystick didn't work at all in the Windows version [Mike]
+    * Bug 68: Added days, hours, minutes to Global text Strings menu
+      for displaying playtime on the Save/Load screens [James]
+    * Fixed missing harm tile flash [James]
+    * Bug 155: "File browsing error: changing drives" [Ralph]
+    * Read-only and system folders are now browseable. [James Paige]
+    * Fixed catastrophic freezing on some computers for gfx_fb and gfx_fb2
+      backends [Ralph Versteegen]
+    * While playing games in windows mode, the [X] in the top right corner
+      that closes the window actually works now [James Paige]
+    * Fixed bug 11, which caused the hero to moonwalk backwards around
+      the map if you dismounted certain types of vehicles at the edge of
+      the map. [James Paige]
+    * Fixed bug 200, script errors and strange random behaviour when
+      activating the place were an already-activated one-time-usable
+      NPC was standing [James Paige]
+    * Fixed bug 210, HP and Gold costs are deducted more than once, and are
+      randomized [Mike Caron]
+    * Fixed bug 203, script interpreter crashes
+    * Fixed bug 226 Battle gets stuck when fighting a single jumping enemy
+      with the "pause on all battle menus" bitset is on
+    * Fixed bug 272 (Skip title screen makes input go nuts) [Mike]
+    * Fixed bug 274 (Ascii from string: position off by 1) [Mike]
+    * Fixed bug 240 (Background animations taking old unused formation data)
+      [James]
+    * Fixed bug 59 (Vehicle mount/dismount buggy if leader is not in first
+      slot in party) [Ralph]
+    * Fixed bug 184 "Dead" enemies can be attacked over and over again
+    * "current song" now always returns -1 when no music is playing
+    * Fixed bugs 30 and 58, both relating to weapon handle/hero hand points
+      [Mike]
+    * Fixed bug 321 (HSpeak crash with empty parentheses) [Ralph]
+    * Fixed bug 322 (Z position of enemies in battle randomness and
+      inconsistency between custom and game) [Ralph]
+    * Fixed bug 178 (Spell descriptions overrun menu box) [Ralph]
+    * Fix for bug 341 "After battle, the music speeds up" [Mike]
+    * Fix for bug 113 "Empty spell lists should not appear in Game" [Mike]
+    * Better command argument checking to fix crashing when moving/teleporting/
+      creating NPCs and heroes over map edge, and other non-fatal missing checks 
+      that allowed loading invalid heroes, items, tilesets, shops and graphics.
+      And fix crash when standing next to map edge. [Ralph Versteegen]
+
+  * New Plotscripting Commands
+    * New HamsterSpeak flow control commands: break, continue, exit script,
+      exit returning, switch (and case). See the HS Definition for details
+      [Ralph Versteegen]
+    * New HamsterSpeak reference syntax. A script name or global variable
+      name preceded by an @ symbol will compile to the ID number of that
+      script or global. [James Paige]
+    * "string from textbox" [Yuriy]
+    * "hero frame", "NPC frame" [Ralph Versteegen]
+    * "get hero stat cap", "set capped hero stat"
+    * "load menu"
+    * "set [days/hours/minutes/seconds] of play", "get seconds of play" [Mike
+      Caron]
+    * "npc extra", "set npc extra" [Mike Caron]
+    * "load sound", "free sound", "play sound", "stop sound", "pause sound"
+      [Mike Caron]
+    * "search string", "trim string" [Yuriy]
+    * "joystick button" and "joystick axis" [Mike Caron]
+    * new built-in logic command not() [James]
+    * new math operators "&&", "||", "^^" (and, or and xor respectively). These
+      are logical operators, as opposed to the bitwise "and", "or" and "xor"
+      operators. [Mike]
+    * "wait for scancode" [Mike Caron]
+    * "save map state", "load map state", "reset map state", "delete map state"
+      [Ralph Versteegen]
+    * "party money", "set money" [Ralph]
+    * "get tile animation offset", "set tile animation offset",
+      "current display tile", "animation start tile" [Ralph Versteegen]
+    * "check hero wall", "check NPC wall" [James Paige]
+    * "set timer", "stop timer", "read timer" [Mike Caron]
+    * "string is visible" [James Paige]
+    * "set/get color", "rgb", "extract color" [Mike Caron]
+    * "load palette" [Ralph Versteegen]
+    * HSPEAK no longer produces a warning for while(true). Endless while loops
+      were already useful, and the new "break" flow control command has
+      made them even more useful.
+    * "main menu" [James Paige]
+    * "total experience", "set experience", "experience to next level",
+      "experience to level" [Ralph Versteegen]
+    * "milliseconds"
+
+  * Unlump.exe
+    * Ported to FreeBasic [Mike Caron]
+    * Output directory defaults to gamename.rpgdir [James]
+    * When run without arguments, tells windows users to
+      drag-and-drop [James]
+    * Can be used to unlump other lumped files too [Ralph]
+    * cleans up on error [Ralph]
+
+  * Stuff only Developers Will Notice
+    * FreeBASIC 0.16b and newer support [Ralph]
+    * Removal of some QuickBasic-specific code
+    * New common.bas for code shared by game and custom
+    * New util.bas for code that does not depend on any other part
+      of the OHR
+    * Some rewritten map wrapping code [Ralph Versteegen]
+    * Rewritten Game & Custom map loading and saving [Ralph, James]
+    * Internal data formats for NPCs rewritten with UDTs [Mike]
+    * Same for inventory [Ralph]
+    * Internal data formats for battle sprites (heroes, enemies, attacks)
+      rewritten to use UDT's (in-progress) [James Paige]
+    * Hspeak's exit code is 2 if there were warnings [Mike Caron]
+    * Use keyval(-1) to detect when the OS has requested the program
+      to exit
+    * New internal master palette format has higher colour precision: 8 bits
+      instead of 6, and multiple palettes [Ralph]
+    * Experimental gfx_sdl graphics backend (may eventually become default
+      on Linux) [James Paige]
+    * Added UDTs for Hero data [Mike]
+    * Fixed browse$ to use UDTs [James]
+
+August 03 2006 [hasta-la-qb+]
+  * Okay, we lied. The last update wasn't nearly stable enough to
+    be the final DOS version.
+
+  * Fixed bug 220: "Hero plotscripting commands broken" [Ralph Versteegen]
+  * Backported Ralph Versteegen's thread safety fixes [James Paige]
+  * Backported unlump.exe and relump.exe [James Paige]
+
+July 09 2006 [hasta-la-qb]
+  * This is the final version to support a real DOS version (GAME-QB and
+    CUSTOMQB) You should be using the Windows or Linux versions already
+    anyway.
+
+  * New Features
+    * Input string gets 3 new arguments, center, positionx, positiony.
+      It also behaves a little different now. [Yuriy]
+    * Hspeak.exe now waits for a keypress when finished, which should avoid
+      a lot of confusion for new plotscripters who are unfamiliar with
+      command-line tools. Also added -k option to supress this new
+      behaviour [James Paige]
+    * Memory usage of the QB build has been trimmed a little. Requirement
+      for game-qb.exe is now 552kb [Ralph Versteegen]
+
+  * Bug Fixes
+    * Fixed a few bugs in inputstring, including backspace not working,
+      missing length checking and ESC popping up the menu [Yuriy, Ralph]
+    * Fixed bug 163, a random crash in the music import screen. [Simon, Mike]
+    * Bug 176: "Some files appear as subdirectories in Windows browsers"
+      [Ralph Versteegen]
+    * Fixed an ancient bug in both the Sprite editor and the MapTile editor
+      which caused the keyboard control to lag whenever the mouse cursor
+      was over the drawing area. [James Paige]
+    * Bug where filling in colour 15 (white) on edge of a tile filled in all
+      colour 15 pixels on the edge. [Ralph Versteegen]
+    * Bug 179: "Use of two keyispressed conditions in an if statement causes
+      massive weirdness" - "keyispressed" command has been changed so that it
+      now only returns a bool. It may help to recompile your scripts. If you
+      want the old behaviour, use the new "keyval" command [Ralph]
+    * "NPC X","NPC Y" and "NPC at spot" behaviour has been corrected: an
+      NPC's position is now the tile its top left corner stands on [Ralph]
+    * Bug 43: "OHR randomly locks up on the hour" [Ralph]
+    * Fixed a bug in "alter NPC" and "set NPC speed" that caused the
+      wrong NPC to be changed if used with an NPC reference [James Paige]
+    * Bug 174: "Quick keypresses and mouse clicks lost in FB port" [Ralph]
+    * Fixed a bug in "read NPC" and another bug which were causing script
+      interpreter errors like "clean noop" [Ralph Versteegen]
+    * Fixed script interpreter to return "1" for true in comparison operators
+      instead of -1 (for consistancy elsewhere) [Mike]
+
+  * New Plotscripting Commands
+    * "keyval"
+    * An existing command we forgot to mention in whatsnew: "string compare"
+
+Mar 15 2006 [tirgoviste]
+  * New Features
+    * Stat caps [Mike Caron]
+    * "% based attacks damage instead of set" attack bitset [Mike Caron]
+    * Precise weapon placement. (use . and , to choose which
+      frame to edit) [Mike Caron]
+    * NPC Placement Editor now shows the copy number of NPCs (the bottom
+      number) [Mike Caron]
+
+  * Bug Fixes
+    * Pausing the music will probably cause "stuck notes" (i.e. notes that never
+      get turned off) if any notes are playing at the time [Mike Caron]
+    * Browsing for a replacement song, and cancelling deleted the existing song.
+      [Mike Caron]
+    * Rewards in battle are rewarded multiple times. [Mike Caron]
+    * Linux: specifying a file on the command line now works even if the file
+      is in a different directory. [James Paige]
+    * Windows: bug 140 keyboard handling quirks [Simon Bradley, James Paige]
+    * music_native now supports volume [Mike Caron]
+    * fixed bug 143 and bug 150 which disabled some spells you should have
+      been able to use, and permitted usage of some spells that should have
+      been disabled [James Paige]
+    * fixed bug 151 which was causing shops in non-upgraded RPG files to
+      expect random trade-in items for all purchases [James Paige]
+    * fixed bug that prevented the name of a spell learned from an item from
+      being displayed [James Paige]
+
+  * New Plotscripting Commands
+    * get/set formation song [Mike Caron]
+
+  * Stuff only Developers Will Notice
+
+Feb 16 2006 [serendipity+]
+
+  * Emergency update to fix bug 138 (out-of-control file growth when
+    creating a new RPG file) [Simon Bradley, James Paige]
+  * Emergency fix to a bug which deletes all song names when 99th song
+    slot was in use [Ralph Versteegen]
+  * Fixed a bug in battle background animation [Mike Caron]
+  * Fixed a hidden bug in running unumped RPGs [Mike Caron]
+  * Fixed OoB spells [Mike Caron]
+  * Fixed broken item-rewards display in battles
+
+Feb 15 2006 [serendipity]
+
+  * New Features
+
+    * !!! Native Windows port of GAME.EXE [Simon Bradley] !!!
+
+    * !!! Native Windows port of CUSTOM.EXE [Simon Bradley] !!!
+
+    * You can copy and paste different sized sprites across the sprite
+      editors, and while you are drawing a sprite you now paste and
+      transparent-paste at the current cursor position instead of
+      top left corner [Ralph Versteegen]
+
+    * Attack bitsets to disable certain target slots on an
+      attack-by-attack basis. [James Paige]
+      (Unfinished! Only works for heroes right now, see bug 102)
+
+    * Animated backdrops in battle [Mike Caron]
+
+    * Attack bitset to force the heroes to run away [James Paige]
+
+    * General bitset to "Disable Hero's Battle Cursor" [Yuriy]
+
+    * Attack option to set a tag (with a number of options relating
+      to what triggers the tag, and conditional to another tag)
+      [Mike Caron]
+
+    * Added damage cap option (in General Game Data) [Mike Caron]
+
+    * Spell Descriptions! (set in Attacks->Appearance) [Mike Caron]
+
+    * Mute status affliction (and a bitset to make a spell mutable)
+      [Mike Caron]
+
+    * New attack bitsets:
+      Fail if target is [poisoned/regened/stunned/muted]
+      (so you can't mute someone twice, for example) [Mike Caron]
+
+    * In Attack editor and Enemy editor you can hold ALT and press
+      left and right to navigate records from anywhere in the menu
+      (This feature will eventually be added to other menus also)
+      [James Paige]
+
+    * Text box editor no longer sucks! You can insert, delete, and
+      edit anywhere in the line of text without needing to delete the
+      end of the line. [James Paige]
+
+    * New Import Music menu. This means:
+      * The 100 song limit is gone
+      * You can import .MIDs as well as .BAMs (and as we support more
+        music formats, you will be able to import them too.) You can
+        only play midis in FB GAME + CUSTOM.
+      * Export and delete songs
+      Until QBOHR is dropped, you can have a BAM fallback version of
+      any MIDI file you import. Just import a MIDI over top of a BAM.
+      [Ralph Versteegen]
+
+    * Music looping:
+      * RPG Maker style (Midi event #111 (0x6F) at the loop point), or
+      * OHR Music Code style (for more details see
+        http://rpg.hamsterrepublic.com/ohrrpgce/Music_Code )
+      [Mike Caron]
+
+    * Unlumped RPGs can now be played by Game (start game like this:
+      game foldername)
+
+    * Midi versions of many of the public domain pieces in the Import
+      folder have been added as alternatives [FyreWulff]
+
+    * You can specify upto 4 different items required to trade for an
+      item in a shop, and can set the amount required of each. Also can
+      set amount of items you recieve for trading in at a shop.
+      [Ralph Versteegen]
+
+  * Bug Fixes
+
+    * Fixed bug 107: "An MP~ stat over 66 makes all spells free"
+      [Ralph Versteegen]
+
+    * In the plotscripting dictionary, NPCcount was described as
+      returning number of npcs at spot with NPCatpixel or NPCatspot.
+      This is incorrect, the constant getcount does this (and more).
+
+    * c and v no longer appended to a string when copying and pasting
+      [Ralph Versteegen]
+
+    * Renamed attack bitset "No Reward from target" to
+      "Erase rewards (Enemy target only)" to clarify that it
+      happens even if the attack does not kill the target
+
+    * Fixed off by one bug in "get attack name" [Ralph Versteegen]
+
+    * Buggy "set enemy rewards" and "get enemy rewards" commands removed,
+      use (previously undocumented) "read enemy data" and "write enemy
+      data" instead (you can use the same constants)
+
+    * Fixed bug 13: "No math overflow checking in battle"
+      And bug 66: "Absorb-damage type attacks cannot drain a percent"
+      [Mike Caron]
+
+    * Worked around bug 78: "Using Custom under DosBox dosen't allow for
+      browsing certain areas." by avoiding the use of VAL() which is
+      buggy in some versions of DosBox and QEMU [James Paige]
+
+    * Fixed bug 98: "plotscript commands that alter enemys [sic] persist
+      after quitting" [Mike Caron]
+
+    * You can now no longer import invalid BAM music even though a
+      warning is given [Ralph Versteegen]
+
+    * Using formation sets 100+ no longer crashes game [Ralph Versteegen]
+
+    * Fixed bug 24: "Numbering is wrong for backdrops and songs in the
+      text-box appearance editor" [Ralph Versteegen]
+
+    * Fixed bugs in numerous menu items where typing in a number entered
+      incorrectly [Ralph Versteegen]
+
+    * Fixed bug 109: "Passing NPC references to alternpc crashes GAME"
+      [Yuriy]
+
+    * Fixed bug 136: "Use of quotes in BAM import list causes weirdness"
+      by scrapping .SNG storage scheme [Ralph Versteegen]
+
+  * New Plotscripting Commands
+
+    * "cancel map name display" [James Paige]
+    * "suspend map music", "resume map music" [Ralph Versteegen]
+    * "seconds of play", "set days of play", "set hours of play",
+      "set minutes of play", "set seconds of play" [Mike Caron]
+    * "read NPC" (counterpart of alter NPC) [James Paige]
+    * "set hero level", "give experience", "hero levelled",
+      "spells learnt" [Ralph Versteegen]
+    * "get damage cap", "set damage cap" [Mike Caron]
+    * "get music volume", "set music volume" [Ralph Versteegen]
+    * "trace" [Mike Caron]
+    * "get song name" [Ralph Versteegen]
+
+  * Stuff only Developers Will Notice
+
+    * More attack bitsets [Mike Caron]
+    * Unified item-name editor data (all item slots are formatted the
+      same now) [Mike Caron]
+    * New MIDI driver [Mike Caron]
+    * Native Linux port mostly working (games are playable and editable,
+      Browsing still has some problems, espeically in music importing,
+      and full-screen causes problems) [Simon Bradley, James Paige]
+    * .SNG lump replaced with binary expandable songdata.bin
+      [Ralph Versteegen]
+    * Incremented RPG file version to 6. (Game only shows backwards
+      compatability warnings when loading files in version 4 or older)
+      [James Paige]
+
+October 03 2005 [rusalka]
+
+  * Bug-Fixes
+
+    * Fixed bug 18: "In the map editor, CTRL+F doesn't use default
+      passability" [Ralph Versteegen]
+
+    * Fixed bug 76: "Hitting two keys at the same time allows you to
+      overflow text-entry fields" [James Paige]
+
+    * Fixed a bug that allowed argument values to pre-fill local
+      variables in scripts that did not have enough arguments declared
+      (It is now safe to assume that all your local variables will
+      start out set to zero) [James Paige]
+
+    * Fixed bug 81: "fight formation() with an invalid formation would
+      start a battle which would immediately end" [Yuriy]
+
+    * To bring up the Joystick calibration screen, you should now
+      press CTRL+J rather than just J
+
+    * Fixed bug 85: "menu called when exiting a script triggered menu or
+      screen with ESC" [Yuriy and Ralph Versteegen]
+
+    * Fixed bug 86: "Foot offset is not taken into account when culling
+      npcs and heroes to draw onscreen" [Ralph Versteegen]
+
+    * Fixed bug 88: "A script buffer overflow crashes or freezes game.exe
+      instead of displaying an error message" [Ralph Versteegen]
+
+    * "NPC is walking" now returns true when the NPC is walking and false
+      if not walking. Used to be backwards. Old compiled scripts that
+      depended on the backwards behaviour will still work as they did
+      before, but you will have fixed them if you recompile them.
+      [James Paige]
+
+  * New Features
+
+    * plotscripting commands to read system time: system hour, system
+      minute, system second. [Mike Caron]
+
+    * plotscripting commands to read system date: system day, system
+      month, system year. [Yuriy]
+
+    * plotscripting command to find out the currently playing song.
+      [Mike Caron]
+
+    * plotscripting command run script by ID which does just that
+      [Ralph Versteegen]
+
+    * status indicators (poison/stun) via characters appended to stats
+      in battle [Yuriy]
+
+    * "No reward for targets killed" bitset (useful for monsters "running
+      away") [Yuriy]
+
+    * Command to get the ASCII code of a key being pressed (last ascii())
+
+    * importglobals behaviour extended: importglobals(slot,id) returns
+      the value of a global without overwriting anything
+
+    * Strings! Specifically:
+
+      * New commands:
+          show string(string ID)
+          clear string(string ID)
+          append ascii(string ID, ascii code)
+          append number(string ID, number)
+          copy string(dest string, source string)
+          concatenate strings(dest string, source string)
+          string length(string ID)
+          replace char(string ID, position, ascii)
+          delete char(string ID, position)
+          ascii from string(string ID, position)
+          string to globals(string ID, starting global, length)
+          globals to string(string ID, starting global, length)
+        [BIG HUGE thanks to Yuriy (Draknight2@wmconnect.com)]
+
+      * New operators for strings:
+          destid $= srcid  instead of  copy string(destid,srcid)
+          destid $+ srcid  instead of  concatenate strings(destid,srcid)
+        Please note that  id $+ "TESTING"  is NOT valid
+        [Ralph Versteegen]
+
+      * Commands to get useful strings:
+          get hero name(string, hero)
+          set hero name(string, hero)
+          get item name(string, item)
+          get map name(string, map)
+          get attack name(string, attack)
+          get global string(string, global)
+          input string (string, use current)
+        [Mike Caron]
+
+      * Commands to display strings on the screen:
+          show string at (string, x, y)
+          center string at (string, x, y)
+          hide string (string)
+          string style (string, style)
+          string color (string, color, background color)
+          position string (string, x, y)
+          string X (string)
+          string Y (string)
+        [James Paige]
+
+       * ${S#} Meta String for textboxes
+
+       * Support in HSpeak for "auto strings":
+
+          $1="My string"
+
+          That will set the string with ID 1 to "My string"
+
+    *  get enemy name, set enemy name
+       get enemy stat, set enemy stat
+       get enemy appearance, set enemy appearance
+       get enemy rewards, set enemy rewards
+	             [Mike Caron and Yuriy]
+
+    *  Map limit increased from 100 to 32767 maps
+       [Ralph Versteegen]
+
+    *  Transparent tile and sprite pasting in all graphics editors.
+       Copy a sprite normally, then paste it with Ctrl + T. Transparent
+       (colour 0) areas will not get pasted [Ralph Versteegen]
+
+    *  You can now use capslock + directional keys to move a tile around
+       like you can in the sprite editor. In the tile editor however,
+       pieces of the tile that go over the edge wrap around to the other
+       side  [Ralph Versteegen]
+
+    *  Place tiles without overwriting passability with the default by
+       hitting Ctrl + D when tilemapping [Ralph Versteegen]
+
+    *  Attack bitset to ignore attacking hero's/enemy's Extra Hits
+       stat [Ralph Versteegen]
+
+    *  Plotscript command alternpc has been considerably optimised. It
+       no longer reloads all npcs and heros on the map [Ralph Versteegen]
+
+    *  New plotscript commands: get map tileset, get ambient music,
+       set ambient music, allow minimap, allow save anywhere, set map
+       edge mode, get map edge mode, set harm tile damage, set harm tile
+       flash, get foot offset, set foot offset, get instead of battle
+       script, set instead of battle script, get each step script, set
+       each step script, get on keypress script, set on keypress script,
+       draw npcs above heroes, map width, map height [Ralph Versteegen]
+
+    *  New general bitsets: skip title screen, skip load screen (which
+       can be set or off in any combination), pause on all battle menus
+       [Ralph Versteegen]
+
+  * Stuff only Developers Will Notice
+
+    * Plotscripting Dictionary Documentation is now in xml format instead
+      of html (but still exportable to html) [Big thanks to Mike Caron]
+
+    * Constants for the gen()/general() array data [James Paige]
+
+    * Combined save- and load- menus to save memory (about 3.7kb) and
+      make future changes easier [Ralph Versteegen]
+
+May 19 2005 [quaternion]
+
+  * GPL Licensed source code. See LICENSE.txt
+
+  * Added += and -= operators to Hspeak, thanks to a patch from
+    The Mad Cacti and Fyrewulff
+
+  * "Inns don't revive dead heroes" bitset now works on all Inns (bug 23)
+
+  * "Level up for (hero)" and "(#) levels for (hero)" battle text is now
+    customizable (bug 46)
+
+  * Fixed misspellings of "enemies" as in plotscripting commands "suspend
+    random enemies" and "resume random enemies" (Misspelled versions
+    still work for backwards compatability)
+
+  * New plotscripting commands: save in slot, last save slot, auto save,
+    save slot used, import globals, export globals, load from slot,
+    delete save. Thanks to Ysoft-entertainment and Ralph Versteegen
+    (TeeEmCee)
+
+  * It is now possible to display the save menu without actually saving
+    using "save menu (false)"
+
+  * New plotscripting commands: init mouse, mouse pixel x, mouse pixel
+    y, mouse button, put mouse, mouse region, NPC at pixel
+    Thanks to Ralph Versteegen (TeeEmCee)
+
+  * Very nice plotscript buffer usage optimization. Scripts that run more
+    than once take no extra space in the buffer, allowing you to write
+    recursive scripts without fear of buffer-overflow. Thanks to Ralph
+    Versteegen (TeeEmCee)
+
+  * Bugs fixed thanks to help from Simon Bradley
+
+    * "equip where" plotscripting command always uses hero #0's
+       equipability data no matter which hero you specify
+
+  * Bugs fixed thanks to help from Ralph Versteegen (TeeEmCee)
+
+    * bug  1: item-based stat increases go away after level-up
+    * bug 32: blank exp/gold box after battle when you earn no exp/gold
+    * bug 47: Off by one bug in assigning script buffer and heap wastes
+              memory
+    * bug 54: Aim math text for Magic damage in CUSTOM is incorrect
+
+  * Bugs fixed thanks to help from Mike Caron (pkmnfrk)
+
+    * bug 40: Maps can be resized to invalid dimensions
+    * bug 35: enemy spawned backwards in place of"flee-instead-of-die"...
+    * bug 20: CUSTOM does no error checking for NPCs that point to text
+              boxes that have been deleted
+    * bug 63: Crash when trying to rename a hero not in party
+
+  * Code cleanup (things that only developers will notice)
+
+     * Cleaned up build system to make it possible for people other than
+       me to compile if they can get ahold of a copy of QuickBasic 4.5
+     * (Partial) Support for compiling with QuickBasic 7.1 thanks to Mike
+       Caron (pkmnfrk) and Ralph Versteegen (TeeEmCee)
+     * Massive indentation cleanup thanks to David Gowers (NeoTA)
+     * Assembly DECLARE cleanup (moved to to allmodex.bi) thanks to Simon
+       Bradley
+
+
+June 28 2004 [ozarks]
+
+  * Everybody who has worked so hard to try to plotscript this is
+    going to simultaneously hate me and love me for this, but now
+    it is possible to choose whether heroes get drawn over NPCs or
+    NPCs get drawn over heroes. Look in the "General Map Data" menu
+
+  * The general game data screen now has a separate sub-menu for
+    password entry that explains the low-security nature of RPG file
+    password protection.
+
+  * Changed internal password storage format into something easier
+    for third-party utility authors to support.
+
+  * Fixed a bug that caused a crash if you typed a comma as the
+    first letter of an RPG file's filename either when creating a
+    new file or renaming an existing one. Totally re-wrote my
+    DOS-filename-typing code so that I trust it to be reliable now
+
+  * Added a few more missing customizable global text strings.
+    "THE INN COSTS (# gold)", "You have (# gold)", "CANNOT RUN"
+
+  * pressing ESC on the "Discard Changes and Quit?" menu cancels the
+    quit rather than confirming it
+
+  * fixed a math overflow in the "random" plotscripting command when
+    the difference betweeen the low and high limits was greater than
+    32767
+
+  * Quick program exit keys PgUp+PgDown+ESC now work inside battle
+
+  * Plotscripters rejoice! Added plotscripting commands: use shop,
+    status screen, show mini map, spells menu, items menu, equip menu
+    save menu, order menu, team menu
+
+October 05 2003 [paternoster]
+
+  * NPCs can now be activated across the edges of a wraparound
+    map
+
+  * Fixed caterpillar hero walkabout graphics to be correctly
+    displayed over the edges of a wraparound map.
+
+  * Improved the F12 BMP-format screenshot feature to take
+    screen shots virtually anywhere in GAME.EXE rather than
+    just on the map or in battle. Now you can take screen
+    shots of menus, title screen, whatever. (no such capability
+    in CUSTOM.EXE, sorry)
+
+  * Fixed the "put hero" plotscripting command so it now works
+    for all heroes instead of just the leader
+
+  * Made the "Found a (item)" and "Found (number) (items)"
+    victory captions customizable.
+
+  * Fixed a bug that caused the PAUSE key to be disabled in
+    battle if Debugging keys were disabled
+
+  * Fixed a bug that could cause recently drawn graphics to be
+    lost under certain conditions when pressing CTRL+BACKSPACE
+    to delete picture sets in the sprite editor
+
+  * Now if a hero has zero maximum HP it will not die. This
+    prevents the game from ending after you exit the menu
+    on games where the heros have not been given any stats
+    (for example, games that do not use battles)
+
+August 04 2003 [wolfwood]
+
+  * Fixed the bug that premitted you to cast MP-based spells
+    in battle even when you did not have enough MP
+
+  * Fixed the bug that resets the hero's picture and palette to
+    zero if the hero is renamed when added to the party
+
+  * It is no longer possible to get invalid item 255 (item 254
+    is the last item)
+
+  * Added plotscripting commands: set victory music, get death
+    script, set load script, get load script, set battle wait
+    mode, set caterpillar mode, set no HP level up restore, set
+    no MP level up restore, set inn no revive mode, set full
+    hero swap mode, hide battle ready meter, hide battle health
+    meter, set debug keys disable
+
+July 31 2003 [espereble]
+
+  * The Focus stat (MP-cost-reduction stat) now works
+
+  * Fixed the bug that caused enemies that die from poison to
+    vanish instantly rather than fading
+
+  * Fixed the bug that caused the battle to end after killing any
+    enemy with the boss bitset, even if other bosses or non-die-
+    without-boss enemies were still alive. Also fixed the bug
+    that caused die-without-boss enemies to double-die when the
+    boss died if you had already killed them previously
+
+  * Added the (optional) ability to allow players to rename heros!
+    You can enable this feature for specific heros in the hero
+    editor under "Bitsets". Heros can be renamed when the are
+    added to the party or on the status screen.
+
+  * Added plotscripting commands "rename hero" and "rename hero by
+    slot"
+
+  * Added the ability to embed hero names in text boxes by typeing
+    special codes that will be replaced with the names.
+    ${C#} is replaced by the name of the hero at position # in the
+          caterpillar party. So if you want the leader's name,
+          write ${C0}
+    ${P#} is replaced by the name of the hero at position # in the
+          party
+    ${H#} is replaced by the name of the first copy of hero ID#
+
+  * Added the ability to embed global variables in text boxes by
+    typing the special code ${V#} where # is the global variable's
+    ID number
+
+  * Added plotscripting command "pick hero" that pops up a hero
+    picker like the one you see when you go into the Equip menu
+    or the Status menu. The return-value of this command is the
+    hero that you picked (their position in the party)
+
+  * The correct "Equip Who?" caption is now used when the Equip
+    menu is opened from inside a shop
+
+  * Added the ability to copy maps in the map editor. Now when you
+    pick "Add new map" you get a choice between "New Blank Map" or
+    "Copy of Map N"
+
+  * Changed the way temporary files are cleaned up to work around
+    the "...The operating system is denying access to the files in
+    playing.tmp" error that occurs sometimes for some people.
+
+  * Added "If this problem persists, manually delete playing.tmp"
+    to the "...The operating system is denying access to the files in
+    playing.tmp" error message (just in case the other fix doesn't
+    solve all cases)
+
+  * Fixed an off-by-one bug in the "change NPC ID" plotscripting
+    command. If you were already using this command in your scripts,
+    you may need to change them (it is no longer neccisary to add 1
+    to the ID number, and it is no longer impossible to change the ID
+    to 35)
+
+  * Fixed the bug which caused enemies to die if cured over 32767 HP.
+    I believe there are still other math-overflow errors in battle
+    which could cause crashes or incorrect behavior for extremely
+    strong attacks or enemies and heros with extremely high stats.
+    If anybody finds such a bug, please send me a testcase.
+
+  * I have been misspelling the word "enemies" for years. If anybody
+    catches me saying "enemys" please yell at me.
+
+  * When you switch to a different map with the same music, or enter
+    a battle with different music, the song does not restart from the
+    beginning, it continues playing without interruption. You can
+    force a song to restart with plotscripting by doing a "stop song"
+    followed by a "play song"
+
+  * Switched back to the old version of MIDI2BAM. The new one in the
+    handshake update caused more problems than it fixed.
+
+  * Fixed a bug that occured in games that have caterpillar party
+    disabled. Walking over harm tiles would damage the empty spaces
+    behind the leader where other heros would have been if caterpillar
+    was on.
+
+  * Fixed a bug that caused items marked as "cannot be sold/dropped"
+    to be consumed if you learn a spell from them
+
+  * Fixed the bug that prevented the attack with ID 0 from working in
+    spell lists
+
+  * Fixed two bugs with the text-char-picker. One, that it would
+    insert an extra space along with every char, and second that it
+    would ignore the text-length limit
+
+Nov 29 2002 [handshake]
+
+  * I decree that henceforth all updates will have silly codenames.
+    This update shall be known as "handshake" in thanks to everybody
+    who helped me solve the NT/2000/XP bug.
+
+  * Fixed The crash on exit in GAME.EXE under Windows NT/2000/XP
+    If you still have an old locked playing.tmp file left over from
+    the previous version, you may need to manually delete it once
+    first before the new version will run.
+
+  * Fixed the bug that prevented consumable items that teach spells
+    from being consumed
+
+  * Added plotscripting command "load tileset" to dynamicly change
+    the tileset of the currently loaded map.
+
+  * Fixed a crash when viewing the status screen for certain heros
+    in some games (Powerstick Man, for example)
+
+  * I neglected to mention in the last update that I added an option
+    for "Base DEF stat" in the attack editor.
+
+  * Also, In the last update I mistakenly said the text-char picker
+    thingy was bought up by pressing ALT+SPACE. This was not true, it
+    was actually SHIFT+SPACE, but in this update I have changed it to
+    CTRL+SPACE, because SHIFT+SPACE was so easy to accadentally trigger
+    when TYPING A LINE IN ALL CAPS (is everyone sufficiently confused
+    now?)
+
+Nov 23 2002
+
+  * Made the text "(hero) has no spells" customizable. Are there any
+    more text strings that I missed?
+
+  * Fixed the mini-map when shown from a shop so it works like the
+    mini-map from the menu or F1
+
+  * Added an attack target type that can only target dead heros.
+
+  * Added pixel-perfect positioning plotscripting commands; put hero,
+    put npc, put camera, hero pixel x, hero pixel y, NPC pixel x, NPC
+    pixel y, camera pixel x, camera pixel y
+
+  * Fixed a bug that caused the hero to become misaligned with the
+    maptiles if you tried to mount a vehicle that was already moving
+
+  * Added "Save and continue editing" to the "Exit" menu.
+
+  * GAME.EXE and CUSTOM.EXE can now both detect when you attempt to
+    run a second instance of the program without first closing the
+    first.
+
+  * Added plotscripting commands "hero by slot" and "hero by rank"
+    which are the opposites of "find hero" and "rank in caterpillar"
+
+  * Added plotscripting commands "teach spell", "forget spell",
+    "read spell", "write spell", "knows spell", and "can learn spell"
+
+  * Added a caption when you teach a hero a spell from an item
+
+  * Updated HSPEAK.EXE to tolerate the corrupted line-endings
+    sometimes inserted into scripts under Windows XP
+
+  * Due to popular demand, set-to-percentage type attacks now display
+    the difference between the old and new value of the target stat
+    (use the "do not display damage" bitset if you want the old
+    behavior)
+
+  * Added an attack bitset for damage that is calculated and displayed
+    but not actually inflicted. Good for "scan" type spells
+
+  * Elemental bitsets on equipment now works
+
+  * Added Elemental Strength/Weakness display to the Status screen in
+    GAME.EXE. Press the "Use" key to toggle it on and off. Press the
+    "Cancel" key to exit status.
+
+  * Added Poison, Regen, and Stun afflictions in battle. To use them,
+    create attacks that target the new "Affliction Register" target
+    stats. For example, damage done to the Poison Register will be
+    repeated as poison damage. Damage done to the Stun Register will
+    become the number of seconds that the target is stunned. There is
+    currently no visual indicator of afflictions! That will be added
+    later.
+
+  * Greatly improved the font editor. You can now edit 224 text
+    characters, copy and paste, and import/export font files. Added
+    three importable sample fonts in the IMPORT directory, ASCII,
+    Japanese, and Cyrillic.
+
+  * Added a character-picker accessable from any text-entry
+    field by pressing ALT+SPACE [Edit: CTRL+SPACE]
+
+  * Added "Import New Master Palette" feature to "General Game Data"
+    menu. Now you can directly import new palettes created with Neo's
+    PalEdit and 2MAS utilites (note that importing a new palette screws
+    up all your existing graphics, so this is only really useful for
+    new RPG files)
+
+  * Various memory optimizations, in an attempt to further
+    reduce the "Not Enough Conventional DOS Memory" threshhold.
+
+  * Fixed the "set default weapon" plotscripting command
+
+  * Fixed the broken "Require Tag" feature in shops
+
+  * Fixed the crash that could occur after reloading the
+    default passability of a large map.
+
+  * Fixed bugs involving showing the tileset in GAME.EXE. If you spot
+    any more situations where a tileset displays, a backdrop fails to
+    display, or a map fails to reappear after a backdrop, please let
+    me know
+
+  * Fixed the bug that made it impossible for a script containing a
+    "wait for key" command to terminate when run on a map with an
+    on-keypress script active .
+
+  * Fixed the on-keypress script handler so you can hold down a key
+    without suspending all your other scripts. I am pretty sure that
+    this will not break anybody's existing on-keypress scripts, but
+    do let me know if you have any problems.
+
+  * Fixed a bug where if you were holding down a key and then tapped
+    a second key without releasing the first key, the on-keypress
+    script handler would not be triggered even though the first key
+    was still down
+
+  * Fixed an obscure plotscripting error that could cause strange
+    behavior after running a _very_ big script.
+
+  * Various trivial bugfixes
+
+Feb 27 2002
+
+  * The last sound fix solved the problem for some people, but not
+    everyone. Hopefully this willget sound back the way it was in
+    June 11 2002
+
+Feb 25 2002
+
+  * Scrounged around to free up a K or two of memory to lower the
+    "Not Enough Conventional DOS Memory" threshhold, which has been
+    slowly creeping upwards as I add features
+
+  * Fixed a bug that cause the map tileset to be displayed if you brought
+    up the menu while a "show backdrop" plotscripting command was active
+
+  * Fixed the bug that prevented NPCs from being drawn over the edges
+    of wraparound maps
+
+  * Scrapped the changes to the music-setup that did card autodetection
+    and INI reading altogether. They broke music for many people, and I
+    did not get one single report of them fixing music for anybody.
+    The soundcard is now blindly detected exactly as it was back in the
+    June 11 2001 version
+
+Feb 19 2002
+
+  * A change in the soundcard code that will hopefully fix the new
+    sound problems introduced in the last update. (if it doesnt, I
+    will regress to the June 11 2001 sound code.)
+
+  * Yet-another-fix for the "Dont restore HP/MP at levelup" feature,
+    which has probably been the most buggy feature in the history of
+    the whole program. I am fairly confident I got it right this time :)
+
+Feb 14 2002
+
+  * Fixed a bug that caused wait commands under certain circumstances
+    to wait one game cycle longer than they needed to. This should
+    make some complex plotscripts run a little smoother
+
+  * Fixed a bug that prevented you from getting items from battle if you
+    impatiently held down the button to skip the victory messages
+
+  * Joystick calibration info is now saved and restored to the file
+    JOYSET.INI so you do not have to re-calibrate each time you play.
+    Note that the joystick will still not be activated unless you use
+    a joystick button to advance the title-screen of a game
+
+  * Added a menu option in the map editor to re-load the default
+    passability for the entire map
+
+  * Saved games now correctly save and restore the positions of all four
+    heros, rather than just the leader.
+
+  * Fixed a bug introduced in the June 8 2001 version that caused
+    plotscripts to lock up if you attempted to use a "wait for NPC"
+    command on an NPC who didnt actually exist on the map.
+
+  * Implemented stealing. To try it out, make an attack with the
+    "Steal item" bitset turned on, and make sure to give your enemys
+    some stealable items in the enemy editor.
+
+  * Changed the F6 debug key. Now instead of uselessly panning the camera
+    to the center of the map, holding the F6 keys allows you to pan the
+    camera freely with the arrow keys (F5 to return to the hero)
+
+  * Added error checking for accessing out-of-range global script
+    variables (variables with ID numbers higher than 1024)
+
+  * Brian fixed the ASM code for importing BMP files so imported sprites
+    no longer lose their rightmost row of pixels. Yay!
+
+  * Re-wrote the Attack Menu and the Enemy Menu to save memory and make
+    future alterations easyer. Any small differences you see in these menus
+    are a result of the rewrite
+
+  * Re-enabled copy and paste while editing graphics with CTRL+C and
+    CTRL+V. Moved palette copying and pasting back to ALT+C and ALT+V
+
+  * Added Attack Captions that can display at the bottom of the screen
+    when you use an attack
+
+  * Re-fixed the "Do not Restore HP on Levelup" bug that had
+    resurfaced AGAIN. Added lots of comments to the code to prevent me
+    from messing it up again :)
+
+  * Added the ability to unequip one item at a time
+
+  * Fixed the bug that prevented the default weapon for being equiped when
+    you unequip a weapon with a plotscript
+
+  * Greatly improved crash trapping. If GAME.EXE or CUSTOM.EXE crash
+    they will now display useful error messages and terminate cleanly,
+    rather than the old behavior of garbling the screen and locking up :)
+
+  * Fixed a crasher in the item menu in GAME.EXE when you moved the cursor
+    to the right from the very bottom of the menu
+
+  * GAME.EXE can now read an alternate address to search for a soundcard.
+    To try this out, download http://HamsterRepublic.com/dl/bam_port.zip
+    and read the included .TXT file. (I expect that this will only
+    help a very small subset of troubled BAM users)
+
+  * Fixed the bug that prevented heros fourth spell list from working
+    if it was set to type: Random
+
+  * Almost every single menu in CUSTOM now supports PGUP PGDN HOME END and
+    wraparound (the only noticeable exception is the stat menu in the
+    hero editor)
+
+  * Password entry is now starred-out to protect from spys who peek over
+    your shoulder
+
+  * Expanded the "Edit Global Text Strings" menu to allow you to change
+    every bit of text in your game. Let me know if I missed anything.
+    (and I probably did miss a few things)
+
+  * Fixed bug that caused the game to appear to lock up if you pressed the
+    menu key right when you walked through a door (the menu was appearing
+    and blocking the fade-in)
+
+June 11 2001
+
+  * Repaired the glaring bug in the last version that caused corruption
+    in the graphics editor when the UNDO buffer overflowed (and in the
+    process, found a way to make the UNDO buffer 5 times bigger :)
+
+  * Expanded the "Edit Stat Names" menu to become the "Edit Global Strings"
+    menu that gives you the ability to change many other fixed-text strings
+    in GAME.EXE. Eventually all strings should be customizable, but this
+    will be a gradual process over the next few updates
+
+June 8 2001
+
+  * Cleaned up the hero spell list editor into a two-column menu where
+    you can actually type in all the values
+
+  * You can now type in the enemy number in the formation editor
+
+  * Improved map-picking menu to show long map names and support
+    PGUP and PGDN
+
+  * Fixed bug that prevented music from playing when you quit and reload
+    a saved game on a map with the same music
+
+  * Fixed battle lockup when "pause on battle menus" is enabled and a
+    hero dies when a menu is up.
+
+  * Added a vehicle bitset to disable the shadow when you are flying
+
+  * Updated the plotscript compiler to support := as an alternate to
+    "set variable" (If for some strange reason you are still using the
+    old HSPEAK version 1, this might cause some compatability problems.
+    If you are using the old HSPEAK let me know, and I will help)
+
+  * fixed a crasher caused by passing an out-of-range NPC ID to certain
+    plotscripting commands
+
+  * fixed a bug that prevented tag-dependant NPCs from immediately
+    appearing after their tag changed
+
+  * fixed a bug that could cause NPCs to get stuck mid-movement when you
+    bring up the menu or a text-box
+
+  * Added two plotscripting commands for getting NPC references which you
+    can store in variables for later use with most other NPC-related
+    commands. Manipulating NPCs by reference is faster than manipulating
+    them by ID, and references allow you to manipulate any copy of an NPC
+    not just the first one on the map. The new commands are "NPC reference"
+    and "NPC at spot"
+
+  * Updated the following plotscripting commands to accept NPC references
+    in addition to NPC ID numbers: waitfornpc,setNPCframe,camerafollowsNPC,
+    NPCx,NPCy,walkNPC,setNPCdirection,setNPCposition,NPCdirection,
+    NPCiswalking,walkNPCtoX, and walkNPCtoY. AlterNPC and setNPCspeed do
+    _not_ support NPC references because they both change data that is the
+    same for every copy of the same NPC on the map
+
+  * Added new plotscripting commands getNPCid,NPCcopycount,changeNPCID,
+    createNPC, destroyNPC, useNPC, and getherolevel. See the plotscripting
+    dictionary for more info.
+
+  * Added an UNDO feature to the Maptile editor and the Sprite editor
+    (keyboard shortcut CTRL+Z for both)
+
+  * Fixed several plotscipting commands that accept values returned
+    by "find hero". When "find hero" cannot find a particular hero
+    it returns -1. several commands were treating the -1 like a 0,
+    and therefore affecting the leader when the should have been
+    doing nothing at all. If you have a script that used to work fine
+    but stops working right in this version, check that you are
+    correctly using the "find hero" command
+
+  * PAUSE key no longer behaves like the USE key
+
+  * Fixed a crasher in the Equip menu in games that have no items.
+
+  * Fixed broken "suspendoverlay" and "resumeoverlay" plotscripting
+    commands
+
+  * An assortment of other minor fixes
+
+May 22 2001
+
+  * Added scancode.hsi plotscript include file that contains friendly
+    names for the scancodes for use with "key is pressed"
+
+  * Fixed a bug that allowed you to start a new game without triggering
+    the new-game script if the first save slot was empty but another save
+    slot had been used
+
+  * You can now import entire tilesets from 24-bit BMP files just like
+    you import backdrops
+
+  * Under Windows 9X/ME/NT/2K (and also OpenDOS and _maybe_ OS/2),
+    CUSTOM.EXE can now read filenames longer than 8 letters when
+    browsing BAM and BMP and HS files to import. Long filenames for
+    RPG files are still  _not_ supported.
+
+  * Added new debugging key F10 that shows plotscript interpreter
+    status.
+
+  * Added plotscripting commands "hero is walking", "NPC is walking"
+
+  * Fixed spelling of "suspend caterpillar" and "resume caterpillar"
+    plotscripting commands. the old misspelled versions still work for
+    backwards compatability
+
+  * Added load-game plotscript trigger so you can choose a plotscript
+    that will automatically be run every time you load a saved game
+
+  * Added three map-specific plotscript triggers, instead-of-battle,
+    each-step, and on-keypress.
+
+  * Added a chapter on different ways to trigger a plotscript to
+    plotscripttutor.html
+
+  * Fixed the hero-is-leader tag
+
+  * Fixed an error that caused "script # became stateless" (and other
+    errors) when scripts where double-activated
+
+  * Fixed a bug in the "set hero picture" command that bounded the max
+    walkabout picture you could set your hero to by the max number of
+    hero battle pictures
+
+  * Misc small bugfixes
+
+April 5 2001
+
+  * Added a nice 16-color-palette-browser that you can use top pick
+    your palette. In the sprite editor it is accessed by clicking on the
+    palette number or pressing P. You can also use it in the hero, enemy
+    attack, item and NPC editors by pressing ENTER on the palette number
+
+  * Fixed a bug-that-made-me-feel-very-stupid that was causing the
+    hero picture/palette setting commands crash
+
+  * Fixed palette-preview bugs in the NPC editor and the Attack editor
+
+  * Fixed the "dont hide hero" vehicle bitset
+
+  * Fixed a bug when using the CAPSLOCK key to choose a tile in maptile
+    mode when the tile you where picking was animating
+
+  * CUSTOM.EXE will now correctly load and use an altered master palette
+    if your RPG file contains one (there is currently no built-in support
+    for changing the master palette, but there are third-party utils that
+    can change it)
+
+  * Added a nag-screen to CUSTOM to remind people to make backup copies
+    of their work, in the hopes that future data-lost tragedies might
+    be averted :(
+
+March 31 2001
+
+  * Added plotscripting commands: set hero picture, get hero picture
+    set hero palette, get hero palette, read global, write global
+
+  * Maximum 16-color palettes is now 32767 instead of 99. (and they
+    take less memory than before too!) This change required a total
+    rewrite of the palette handling system, so be on the lookout for
+    palette related bugs and report anything you find.
+
+  * Fixed scrolling/clipping problems in the map editor after
+    resizing or deleting a map
+
+  * GAME.EXE no longer crashes trying to open a read-only RPG file
+    (this means it should now be possible to play RPG files off a
+    CD-ROM)
+
+  * Fixed the bug that prevented files from showing up when their
+    "Archive" bit was turned off
+
+  * Fixed a bug in HSPEAK.EXE that caused it to compile to the wrong
+    output file when you tried to compile a script file with no filename
+    extension
+
+  * If GAME.EXE fails to find OHRRPGCE.FNT then it loads the system
+    8x8 ROM font instead
+
+  * GAME.EXE shows its version number on the file-select screen
+
+  * really fixed the "dont restore HP/MP on levelup" bitsets. Honest!
+    I tested it! both on and off! It really finally works the way it is
+    supposed to! ... I hope :)
+
+Feb 27 2001
+
+  * After battle, gold and experience only display if you actually earn
+    more than zero
+
+  * Added a battle formation preview in the formation set editor
+
+  * Typing in a number in the formation set editor is no longer
+    off by 1
+
+  * Ally-including-dead target type now works outside of battle
+
+  * If two heros use the same item at the same time in battle, only
+    the first one will succeed and the item count will not go negative
+
+  * Fixed a menu bug in the shop editor when a shop contains both
+    items and heros
+
+  * double-triggering a script that is already currently running now
+    silently fails without displaying an error message or interrupting
+    the running script
+
+  * Added a general preference bitset to permit double-triggering
+    of a script that is already currently running (a good way to make
+    your game crash if you dont know what you are doing :)
+
+  * PageUP and PageDOWN work on the item editing menu in CUSTOM
+
+  * Larger animation buffer in battle to avoid lockups like the one
+    in ORIGIN
+
+  * Fixed reversed "Horizontal" and "Vertical" NPC pushability types
+
+  * No longer able to name non-existant tags over 999
+
+  * Fixed a longstanding bug that caused scripts to crash if you tried
+    to return() a value
+
+  * fixed hero's fourth spell menu
+
+  * correctly handle case-insenstive name conflicts in exported HSI files
+
+  * Fixed equipwhere plotscripting command
+
+  * Heros are now correctly Y-sorted
+
+  * NPCs with zero speed do not get stuck when forced to move
+
+  * You can now set default pasability data in the maptile editor that
+    will automatically be applied to tiles as you place them on the map.
+    Regular wallmapping-mode in the map editor is still available unchanged
+    for making exceptions and fine tuning your pasability.
+
+  * A new, much faster, better optimizing, version of the HSPEAK.EXE
+    plotscript compiler (HssED has also been updated)
+
+  * Added 13 more classical songs to the free BAM collection,
+    thanks to JD Shear
+
+  * Fixed RPGFIX.EXE to run in true DOS
+
+  * a few misc trivial fixes that nobody will notice
+
+December 9 2000
+
+  * Enlarged the collection of free BAM music, with many thanks to
+    Shael Riley
+
+  * Added Text-search in the Text Box editor
+
+  * Strengthened error-checking for corrupted data
+
+  * Fixed a lockup bug in the hero appearance menu
+
+  * Fixed bug that prevented the "dont restore HP on levelup" and
+    "Dont restore MP on levelup" bitsets from working properly
+
+  * Announces when you learn a new spell from a levelup
+
+  * You can get multiple levelups after one battle if you earn enough
+    experience
+
+  * Added new damage base-stats "previous attack", "Last damage to
+    attacker" and "Last damage to target"
+
+  * Added new target classes "Revenge (last hit)", "Revenge (Whole Battle)",
+    "Previous Target" and "Stored Target"
+
+  * Added attack bitset "Store Target" that memorizes the target for use
+    with later "Stored Target" class attacks.
+
+  * Added attack bitset "Autotarget" that picks a target automatically
+    when used by a hero
+
+  * Percentage damage now displays the amount it changed the target stat
+    (unless the "Do Not Show Damage" bitset is turned on)
+
+  * Cancelling a BMP import import in the sprite editor no longer
+    asks the palette question
+
+  * Fixed missing spread-ally-not-self and spread-ally-including-dead
+    enemy attack settings
+
+  * Fixed a bug that could occasionally cause attacks targeting heros to
+    fail randomly under certain circumstances
+
+  * Fixed a bug that prevented Rare Items from showing up after battle
+
+  * In CUSTOM.EXE you can now browse your Tag names by typing in their
+    number instead of scrolling through them all. (People with tag names
+    in existing games will need to scroll through them once before it will
+    work)
+
+  * When GAME.EXE is run, it checks its own filename. If it has been
+    renamed to anything other than GAME.EXE then it will automatically try
+    to load an RPG file of the same name from the same directory. This
+    means if your game's name is QUEST.RPG then you can distribute a copy
+    of GAME.EXE renamed to QUEST.EXE together with it and make it nice and
+    easy for users to run your game
+
+  * GAME.EXE no longer requires OHRRPGCE.MAS (but CUSTOM.EXE still needs it)
+
+  * Supressed the warning if OHRRPGCE.FNT is missing when you start a
+    specific RPG file from the command-line or from a renamed GAME.EXE
+    (although without OHRRPGCE.FNT, the "Loading..." wont appear)
+
+  * Fixed a bug in the "check tag" plotscripting command so that it returns
+    1 when the tag is true instead of -1
+
+  * Fixed a bug in damage calculation that caused defence to used
+    incorrectly in "Sharp", "Blunt", and "Pure" attacks
+
+  * Added a bitset to simulate the old Level-up bug found in very old
+    versions of GAME.EXE and a debugging key (F7) to turn it off and on.
+    This helps for playing old obsolete games like FUABMX that depended on
+    the bug for proper difficulty... or you can also enable it if you
+    happen to be making a game that would benefit from heros equipment
+    bonuses getting merged into their stats whenever you get a levelup.
+    Are you happy, Rya? :)
+
+  * Added new debugging keys F8 and F9 to raw-edit the gen() and gmap()
+    data. This isnt likely to mean anything to anybody but me, but it can
+    be fun to mess with it and try to crash your game :)
+
+Sept 15 2000
+
+  * Added plotscripting commands unequip,forceequip,equipwhere,
+    checkequipment,getdefaultweapon, setdefaultweapon, and rankincaterpillar
+
+  * Fixed an embarassingly stupid error in the "NPC direction" command
+
+  * Joystick buttons now behave more like keyboard keys.
+
+  * Tag-debug mode now lets you turn tags OFF with CTRL- and ON with CTRL+
+
+  * Changing maps while a background is displaying no longer displays the
+    tileset
+
+  * Riding a vehicle that has door use disabled does not disable the
+    "use door" plotscripting command, or doors that are forced by
+    text boxes
+
+  * Debugging keys can be disabled by a bitset in the General game Data
+    menu.
+
+  * Added two debugging keys to battle mode CTRL+F4 instantly runs from any
+    battle, and CTRL+F5 gives you a million experience points
+
+  * Fixed a longstanding bug that affected both the usedoor and the
+    teleporttomap plotscripting commands, that caused "noop" errors in
+    certain circumstances-- Woo! I have been hunting for that one for
+    SOOOO long! It feels great to fix it! ... Hope I didnt create any
+    new bugs in the process :)
+
+  * the teleporttomap plotscripting command takes its coordinates
+    in maptiles now, not pixels (adjust your scripts accordingly, sorry
+    for the inconvenience)
+
+  * GAME.EXE no longer leaves behind STACK.TMP in your TEMP directory
+
+  * If you try to import a .HS file that is not really a compiled
+    plotscript, CUSTOM.EXE now displays a helpful and slightly sarcastic
+    error message instead of crashing
+
+  * Added a pretty ready-meter and a health-meter to battle mode
+
+  * Names and menus dissapear after you win a battle, while it shows
+    you your winnings and levelups
+
+  * Displays the correct name for "MP" on the spell select screen
+
+  * Enemy's "harmed by cure" bitset no longer applies to absorbing
+    elemental damage
+
+  * Fixed lockup when trying to trigger a random battle from a completely
+    empty formation set
+
+  * Attacks can now have any stat as a "Base Stat" or "Target Stat"
+    The "Damage MP" bitset is now obsolete, but still works for backwards
+    compatability
+
+  * New Attack Bitsets; "Absorb Damage", "Do not Randomize"
+    "Damage can be Zero", "Reset target stat to max before hit",
+    "Allow cure to exceed maximum", "Do not display damage",
+    "Show attack name", "Fail vs Elemental Resistance", and
+    "Fail vs Enemy Type"
+
+  * New attack types that set the target stat to a percentage (intended for
+    near-kill spells, cure-all spells, spells that modify stats, etc.)
+
+  * Fixed a bug that could cause file bloat when pressing PGUP and PGDN
+    under certain curcumstances in the sprite editor
+
+  * Correctly checks for OHRRPGCE.MAS and OHRRPGCE.FNT and exits gracefully
+    if they are missing
+
+May 28 2000
+
+  * Added "After battle" plotscript, which can take a single argument
+    which is true if you won and false if you ran from the battle
+
+  * Screen shots taken with F12 are now stored in the same directory
+    as the RPG file
+
+  * Added a progress meter for loading especially large directories
+
+  * Now correctly cleans up temporary files when you quit a game and load
+    another
+
+  * Fixed a bug that sometimes caused scripts to interfere with each other
+    (the intro in Wandering Hamster works again)
+
+  * Fixed the bug that caused vehicles of speed 10 to freeze
+
+  * When activating an NPC that changes tags, the tag changes no longer
+    take effect instantly, they wait for the text box.
+
+  * Added plotscripting functions herodirection and NPCdirection
+
+May 8 2000
+
+  * Vehicle support! Mark your map with A and B tiles in wallmapping mode,
+    then set any NPC to one of the predefined vehicle types, or create
+    your own vehicle types.
+
+  * Converted HOWTO from text to html (with pictures!). There is still
+    a text version, based on the html version
+
+  * Added plotscript commands; dismountvehicle,iskeypressed,readmapblock
+    readpassblock,writemapblock,writepassblock
+
+  * waitforkeypress(anykey) plotscripting command now returns the value
+    of the pressed key
+
+  * Added an "After-Battle" plotscript in the "general map data" menu
+    that automatically sends true/false for its first argument based
+    on if you ran from battle. Also made the fightformation plotscripting
+    command return true if you ran from battle, false if you won
+
+  * Fixed a bug that caused the game timer stop if you where playing
+    at midnight.
+
+  * Maximum tag number is now 999 instead of 500
+
+  * Fixed a bug that prevented one-time usable NPCs from dissapearing
+    if they did not trigger a text box
+
+  * Added an "EXIT" button to the "Load Game" screen in GAME.EXE for the
+    benefit of people who dont instinctively know to press ESC to get out
+    of DOS games
+
+  * Screen-shots taken by GAME.EXE with F12 are now patched for
+    MS-paint compatability (grumble)
+
+  * Sprite editor now lets you go up to 99 palettes instead of 90
+
+  * Adjusted levelup calculation, and fixed starting-experience bug
+    for heros added at levels higher than 1
+
+  * Fixed a bug in the "resume hero walls" plotscripting command
+
+  * Fixed a big bug in the "while" looping command for plotscripting
+    now it is possible to use a while loop that iterates more than once
+    without crashing and burning :)
+
+  * You can give your game a long title and "about" information that will
+    be displayed instead of the filename when browsing for RPG files
+
+January 31 2000
+
+  * GAME.EXE now keeps track of how long you have played a game.
+    This is displayed on the save/load screens instead of HP
+
+  * Days, hours, and minutes of gameplay are available to plotscripts
+    via the plotscripting functions: days of play, hours of play,
+    minutes of play
+
+  * Heros and NPCs are no longer drawn 5 pixels up from the maptiles.
+    You can now set a custom "Foot Offset" for each map
+
+  * File browser now alphabetizes file listings
+    (only by the first letter, for speed)
+
+  * BMP files of the wrong size and bit depth now show up greyed-out
+    in the import browser
+
+  * The PlotScript interpreter is now more resistant to being crashed
+    by bad scripts
+
+  * Fixed cursor glytch while picking tiles in tilemap mode
+
+  * Fixed the swapped menu items in the graphics menu
+
+January 25 2000
+
+  * Reorganised the main menu, and put al graphics-related stuff in an
+    "Edit Graphics" submenu
+
+  * You can now make tiles on a map damage your hero when you step on them.
+    Press H in wallmap mode to place Harm-Tiles. (default damage is zero)
+
+  * The If-tag-set-tag conditional for text boxes can now set two tags
+    instead of just one. In making this change, I removed the
+    "If tag then stop" conditional, as it was pretty much completely
+    useless, and as far as I know nobody ever used it. If anyone out
+    there did actually use it, I appologise for the inconvenience.
+
+  * The airbrush tool in the MapTile editor can no longer wrap over the
+    edge of the screen and mess up other tiles.
+
+  * Yay! The mapeditor in wallmapping mode no longer flickers in a
+    seisure-inducing way. Yay!
+
+  * Eliminated OHRRPGCE.ALL and OHRRPGCE.PAL. These files are no longer
+    needed to run custom.exe.
+
+  * Fixed the bug that resulted in corrupt map data after deleting a map,
+    and repaired Map 0 in the default new-game.
+
+  * Fixed a bug that would cause CUSTOM.EXE to lock while exporting an HSI
+    file if you gave something a name that ended with a very long number.
+
+  * Fixed some crashes in the Shop Stuff editor
+
+December 21 1999
+
+  * Re-fixed the running-scripts-from-text-boxes bug.
+    Deja-vu! I couldve sworn I fixed that already :P
+
+December 19 1999
+
+  * The HamsterSpeak syntax for math and comparison has changed.
+    If you have a script that uses the old style of commands
+    it will not compile correctly. See hamsterspeak.html and
+    plotdictionary.html for details
+
+  * Added the following plotscripting commands:
+    getherostat, setherostat, setNPCspeed, suspendboxadvance,
+    resumeboxadvance, advancebox, setheroframe, setNPCframe
+
+  * Fixed bugs in the following plotscripting commands:
+    addhero, swapouthero, swapinhero, lockhero, unlockhero
+
+  * Global script variables are now stored in savegames
+
+  * Autodetection and repair of corrupted maps
+
+  * When you create a new text box, it takes its default appearance
+    from text box 0
+
+  * You can now set a hero's default level to "Party Average"
+
+  * TAB characters are now allowed in plotscripts
+
+  * HSPEAK.EXE now runs in DOS (for real this time :)
+
+November 17 1999
+
+  * Fixed the bug that stripped scripts from the text boxes that where
+    supposed to trigger them
+
+  * Fixed the bug in the "wait for hero" plotscripting command
+
+  * I had to restore from a backup copy of my code, and a few commands
+    present in the buggy November 12 update have not been reimplemented,
+    namely, findhero, swapspecifichero, setherostat, and getherostat
+
+November 11 1999
+
+  * Reduced the conventional memory requirements of GAME.EXE and CUSTOM.EXE
+    Im not happy about the way I had to do this, but too many people where
+    getting DOS memory errors.
+
+November 10 1999
+
+  * Fixed the bug in CUSTOM.EXE that sometimes caused animating maptiles to
+    crash the program
+
+  * Fixed the bug that prevented one-time-usable NPCs from disappearing
+    after you use them
+
+November 9 1999
+
+  * Plotscripting!
+    For more information, view plotscripttutor.html, plotdictionary.html
+    and hamsterspeak.html. I have also included the source for the
+    plotscripts in Wandering Hamster so you can look at them for examples
+
+  * fixed the nasty, but simple bug that used to cause GAME.EXE to crash
+    on maps numbered above 39
+
+  * CUSTOM.EXE now runs some checks on an RPG file before it will save it
+    to help prevent corruption
+
+  * Joystick support that actually works! Press J to calibrate at any time.
+
+  * You can now link together Text boxes without going into the conditionals
+    screen
+
+  * The conditionals screen for text boxes is now much easyer to look at.
+    Disabled conditions are greyed out
+    "Always" conditionals appear in blue
+    normal conditionals appear in brown
+
+  * Quiting, or dying in battle now takes you back to the title screen,
+    not all the way to the game select screen.
+
+  * You can make your map display a default tile beyond its borders
+    instead of usinging the camera to crop the edges. This way you can have
+    a map where your hero is always in the center of the screen, no matter
+    how close you come to the edges.
+
+  * You can make your map wrap at the edges, so if you walk off one side,
+    you automatically go to the other side. Great for overworld maps!
+    (NPCs no not wrap)
+
+  * GAME.EXE now prints an error message instead of locking if it cant find
+    OHRRPGCE.MAS or OHRRPGCE.FNT
+
+  * Consumable items that trigger text boxes are actually consumed now
+
+  * You can give names to your Maps.
+    these names can optionally be displayed when you enter a map,
+    and the name of the map that you saved on will be displayed
+    on the save/load screens
+    (your existing maps may start with gibberish names that you will
+     have to replace. this does not affect new maps)
+
+  * If you use hero swapping to remove all of the living heros from a
+    party, leaving an active party of all-dead heros, one of them will
+    automatically pop back to life with 1 HP
+
+  * When CUSTOM.EXE finds and attempts to recover unlumped data, it will
+    save it with a .BAK extention instead of overwriting the existing
+    .RPG file
+
+  * assorted minor/frivolous/gratuitous bugfixes that you wont notice
+
+Aug 26 1999
+
+  * Repaired a bug in RPG file unlumping
+
+  * Eliminated the delay after text boxes (actually just vastly reduced it)
+
+  * Improved built-in Sprite editor and built-in Maptile editor.
+    Added circle tool and airbrush. thanks to IronHoof for both
+
+  * Assorted Small bugfixes
+
+July 8 1999
+
+  * Fixes the bug in the July 5 version that causes GAME.EXE to crash when
+    you try to save. I cant believe I let that one slip past me! Argh!
+
+  * Fixes a problem some people had with the "Do I have this item?" tags
+
+  * A new feature has been added to several parts of CUSTOM.EXE that lets
+    you delete all records after the current record. For example, RPG files
+    created with older versions of custom.exe have 999 text boxes, even if
+    you have not put any text in any of them. By erasing extra data you can
+    fix the problem that some people experience with undefined heros, enemies
+    or items getting filled with copies of the last hero/enemy/item you made.
+    It can also slightly reduce the size of your RPG file.
+    To use this feature, find the last record (last hero, last text box,
+    last whatever) and press CTRL+BACKSPACE. this feature works for:
+     -text boxes
+     -hero data
+     -item data
+     -enemy data
+     -attack data
+     -enemy formations
+     -map tile sets
+     -imported backgrounds
+     -all sprite graphics
+     -shops
+
+  * Maximum enemy definitions increased from 500 to 32767
+    Maximum attack definitions increased from 200 to 32767
+    Maximum enemy formations increased from 1000 to 32767
+    Maximum map tile sets increased from 15 to 32767
+    Maximum shops sets increased from 255 to 32767
+    Maximum of all types of sprites increased to 32767
+    (note that making 32767 hero sprites would be silly, because the limit
+     for heros is still 40, and will remain 40 in the forseeable future)
+
+July 5 1999
+
+  * If you buy/hire everything in a shop and there is nothing left,
+    you get knocked out of the shop (instead of giving you an unlimited
+    free supply of the first item)
+
+  * You can make a item call a text box when used. A positive "when used
+    outside of battle" is still an attack, but a negative value now
+    represents a text box.
+
+  * Browsing for files in CUSTOM.EXE no longer crashes under real DOS
+
+  * GAME.EXE does not keep all of its .SAV files in its own directory
+    anymore. .SAV file now belong in the same directory as the .RPG files
+    that they go with
+
+  * Snapshot (F12) works again
+
+June 21 1999
+
+  * Fixed the bug that deleted the mouse cursor for some people.
+    people who already have this problem in their RPG files need
+    to go into the font editor and press CTRL+ALT+F to reload the
+    default font
+
+June 18 1999
+
+  * Fixed the _other_ bug in levelup calculation.
+    You will now have the correct stats at level 99
+
+  * Tag Naming-- You can give descriptions to your tags to help you
+    remember what each tag means
+
+  * Second "Check" and Second "Set" tags in the item data now apply to
+    selling items instead of buying items
+
+  * Save Changes/Discard Changes choice has been replaced with
+    Continue Editing/Save Changes/Discard Changes for the benefit of
+    people who get trigger-happy with the ESC key.
+
+  * GAME.EXE no longer crashes if you highlight "CANCEL" while picking
+    a spell to cast and press left or right
+
+  * The map editor no longer crashes when placing doors on a map numbered
+    20 or higher
+
+  * New animating maptiles! The last two tile in a set do NOT automatically
+    animate. Instead, you need to create animation-patterns. See HOWTO.TXT
+    for details
+
+  * GAME.EXE can now browse for RPG files in any directory
+    (browsing other drives is not yet supported)
+
+  * Windows users can now associate .RPG files with GAME.EXE and run any
+    game just by double clicking it
+
+  * CUSTOM.EXE can browse for BAM files and BMP files from any directory.
+    You no longer have to keep it all in the IMPORT subdirectory
+    (browsing other drives is not yet supported)
+
+  * The lockup bug in the shop editor has been fixed
+
+  * You can give descriptive names to BAM files after you import them
+
+  * A built-in font editor!
+
+  * NPCs set to "Chase" or "Avoid" no longer flicker
+
+  * Passwords are stored in a more secure way
+
+  * You can now add up to 32767 text boxes instead of just 999
+
+  * The dialogue editor allows you to jump to any text box by typing its
+    number
+
+  * Tag-debug mode in GAME.EXE. Press F4 to enable it, and + and -
+    to scroll through the tags
+
+  * You can assign tags to be automatically set when a hero is in your
+    party, is the leader, is alive, or is in your currently active
+    party
+
+  * You can assign tags to be automatically set when you own at least one
+    of a particular item, have that item in your inventory, have that
+    item equiped, or have that item equiped on a hero you are currently
+    using

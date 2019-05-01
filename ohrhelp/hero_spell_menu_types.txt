@@ -1,0 +1,5 @@
+This menu allows you to choose which of the hero's four spell menus that you want to edit.
+
+Use the Up and Down arrow keys to navigate the menu. Press ENTER to begin editing a spell list.
+
+You must type a name for a spell list in order to enable it.

@@ -1,0 +1,26 @@
+This screen allows you to edit a single battle menu item. Use the up and down arrow keys to navigate the menu.
+
+Kind - Press ENTER or SPACE to change the type of menu item.
+
+Some kinds of menu items require a number, for example:
+
+Kind: Specific Attack
+  Type the ID number of the attack
+  that will appear in the menu, or
+  press ENTER or SPACE to browse for
+  or edit an attack, or + or INSERT
+  to create and edit a new one.
+
+Kind: Spell List
+  Type the ID number of the hero's
+  Spell Menu (0 thru 3)
+
+Caption - Use this option to override the text/name of the menu item.
+
+Color - The color of the menu item. Press ENTER or SPACE to select a color. Ignored when the item is selected or disabled.
+
+Enable if Tag - Press ENTER or SPACE to browse a list of tags. If you specify one or more tags conditions they must all be true for the menu item to be enabled. Press - to toggle between requiring a tag to be ON or OFF.
+
+Note that some other conditions can disable a menu item, such as if costs for an attack aren't met.
+
+When disabled - If a menu item is disabled (e.g. due to a tag), sets whether disabled items are greyed out or hidden.

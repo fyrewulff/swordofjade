@@ -1,0 +1,13 @@
+This screen is a browseable list of all the door links on the current map.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate the list.
+
+The entrace door will be previewed in the top half of the screen. The exit door will be preview in the bottom half of the screen.
+
+Press ENTER or SPACE to start editing a doorlink.
+
+Press ESC to go back to the previous menu.
+
+To add a new doorlink, go to the very bottom of the list, and choose "Create a new Doorlink".
+
+To delete a doorlink, press DELETE or BACKSPACE. You can also set its source door to -1 to mark it "Unused".

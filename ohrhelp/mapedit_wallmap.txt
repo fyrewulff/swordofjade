@@ -1,0 +1,151 @@
+The map editor is in Passability mode (also known as "Wallmap mode").
+
+F2 switch to picture mode
+F3 switch to passability mode
+F4 switch to door placement mode
+F5 switch to NPC placement mode
+F6 switch to foemap mode
+F7 switch to zonemap mode
+F8 show settings menu
+
+Use the arrow keys or RIGHT CLICK and drag to move around the map.
+
+Use SHIFT+arrow keys to move around the map faster.
+
+Use ALT+arrow keys to move the view of the map.
+
+While you are in passability mode, you will see thick flashing lines that indicate where walls are located. (You can customise how these look in the Settings.)
+
+At the top right corner the current drawing tool is shown. The tools are:
+
+D - Draw tool:
+  Press one of the keys to modify
+  walls that are described below (see
+  "Drawing Keys" below), or press and
+  hold down SPACE while moving the
+  cursor to draw blocks of walls in a
+  line.  You can also use the mouse:
+  either LEFT CLICK to add or remove
+  one wall, or DRAG the mouse to draw
+  individual walls in a line.  If you
+  hold down space or drag the mouse,
+  then the tile you start dragging on
+  determines whether you add or
+  remove walls.  You can hold CTRL
+  while clicking or dragging to add
+  or remove blocks of walls (all four
+  sides at once).
+
+S - Stamp tool:
+  The stamp tool is like the draw
+  tool (it draws on one tile at a
+  time) but is for adding or removing
+  just one wall type. It can also add
+  or remove all walls to/from a tile.
+  First, select which wall bit you
+  want to draw, either by pressing
+  one of the drawing keys (see
+  "Drawing Keys" below), including
+  DELETE for all walls, or with the
+  MOUSE WHEEL.  Then press SPACE or
+  CLICK (and DRAG) on a tile to to
+  add that wall, or remove it if the
+  tile already had that wall.  You
+  can hold SPACE and move, or DRAG
+  the mouse to change a whole line of
+  tiles.
+
+B - Box tool:
+  Press SPACE/CLICK once to place one
+  corner of a rectangle, move the
+  cursor to the opposite corner, and
+  then press one of the Drawing Keys
+  to modify the walls for all tiles
+  in the box.
+
+P - Paint on Layer # tool:
+  Finds the continuous area on the
+  current tilemap layer under the
+  cursor, and changes the walls for
+  all those tiles according to the
+  Drawing Key pressed; like a flood
+  fill of a map layer except that the
+  map layer isn't modified. You can
+  use PageDown and PageUp to change
+  the selected layer. For example,
+  you can use this to cover a puddle
+  of acid with harmtiles by pressing
+  H.
+
+M - Mark tool:
+  Use to select a rectangular of the
+  map to copy. Press SPACE/CLICK once
+  to place one corner of the
+  rectangle, and SPACE/CLICK a second
+  time at the opposite corner. The
+  tool will then be changed to the
+  Clone tool. Mark copies the visible
+  tilemap layers, wallmap, foemap,
+  and zones in the rectangle.
+
+C - Clone tool:
+  Press SPACE/CLICK to paste a
+  selection copied with the Mark
+  tool.  You can switch to different
+  editing modes to preview the
+  changes to walls, foemap, and
+  zones.  If default passability is
+  on (press CTRL+D to toggle), the
+  wallmap will updated using default
+  walls instead of the copied walls.
+  Only visible map layers are
+  modified (press ALT+~ to toggle
+  visibility of the current map
+  layer), so a map layer has to be
+  visible both when Marking and when
+  Cloning.
+
+Drawing Keys:
+
+Press SPACE or CLICK while holding CTRL to make the tile under the cursor fully impassable in all four directions. Press SPACE/CLICK again to remove the walls and make the tile passable.
+
+CTRL+Up makes the selected tile impassable on the top.
+
+CTRL+Down makes the selected tile impassable on the bottom.
+
+CTRL+Left makes the selected tile impassable on the left side.
+
+CTRL+Right makes the selected tile impassable on the right side.
+
+CLICK or DRAG the mouse near the edge of a tile to make the tile impassable on that side.
+
+Press W to turn all the walls on the current tile into one-way walls. This means that the hero and NPCS can walk through the walls when they leave the tile. If there are no walls on the tile then the one-way bit does nothing, but is still indicated with a small circle.
+One-way walls are marked with a special zone, ID 10000, which you can also see and edit in the zone editor.
+
+H marks the tile as a harm tile that can damage heroes when the player steps on it.
+
+CTRL+A marks the tile as special for Airships (or other vehicle or scripting purposes which use the vehicle A bit).
+
+CTRL+B marks the tile as special for Boats (or other vehicle or scripting purposes which use the vehicle B bit).
+
+O marks the tile as overhead. This is obsolete. You should create a tilemap layer and place it above heroes and NPCs (in the Layers and Tilesets menu) instead if you want make tiles overhead.
+
+DELETE removes all walls and other bits from a tile and sets the current wall for the Stamp tool to All.
+
+Other Controls:
+
+Hold CTRL while using the Draw tool with the mouse to add/remove all four walls at once (if you use keyboard controls, nothing changes).
+
+CTRL+Z undoes a change to the tilemap, wallmap, foemap or zonemap. Changes to NPCs and doors are not undoable. The undo history buffer is near-infinite, but certain things cause it to be cleared: resizing the map, deleting or swapping map layers, erasing map data, and leaving the map editor.
+
+CTRL+Y redoes an undone change.
+
+CTRL+S immediately saves, useful when live-previewing a game.
+
++ and - change the way that the walls are drawn on the map. You can also adjust this in the Settings menu.
+
+CTRL+W paints the tiles visible in the window/screen using the last wall type you placed.
+
+TAB toggles a blue rectangle that shows roughly what area of the map you are currently looking at.
+
+~ shows a preview of the entire map.

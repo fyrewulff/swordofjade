@@ -5,10 +5,11 @@
 
 # Use same capitalisation as HSpeak does, pad to length 3
 plotscr version, begin
-  "3Tf",  # Version number used by hspeak to test whether this file
+  "3U ",  # Version number used by hspeak to test whether this file
           # supports necessary features, and also causes the
-          # display of future-version warnings in Game/Custom;
-          # only very rarely necessary to increment (don't when
+          # display of future-version warnings in Game/Custom
+          # or can be used by Game/Custom to change behaviour.
+          # Only very rarely necessary to increment (don't when
           # new commands are added; that's detected separately),
           # otherwise leave alone to allow forwards compatibility.
   "3S "   # Minimum supported version of hspeak;
@@ -30,12 +31,12 @@ define function, begin
 6,suspendplayer,0           # stop the player from controlling stuff (except text boxes)
 7,resumenpcs,0              # resume npc automation
 8,resumeplayer,0            # unlock players controls
-9,waitforkey,1,99           # wait for a keypress
+9,waitforkey,1,-1           # wait for a keypress (scancode)
 10,walkhero,3,0,2,1         # walk hero(who,direction,distance)
 11,showtextbox,1,1          # show a text box
 12,checktag,1,0             # returns the value of a tag
 13,settag,2,0,0             # set tag(#,true/false)
-15,usedoor,1,0              # use door(#)
+15,usedoor,2,0,1            # use door(#,fade screen in and out)
 16,fightformation,1,0       # fight formation(#)
 17,getitem,2,0,1            # get item(item,quantity)
 18,deleteitem,2,0,1         # delete item(item,quantity)
@@ -50,7 +51,7 @@ define function, begin
 27,suspendoverlay,0         # turns off overhead tiles
 28,playsong,1,0             # play song(#)
 29,stopsong,0               # stop the music
-30,keyval,1,0               # check key by scancode - returns value from keyval array
+30,keyval,2,0,0             # check key/joystick/virtual scancode state bits (scancode, joystick num)
 31,rankincaterpillar,1,0    # finds the heros position in the caterpillar
 32,showbackdrop,1,0         # showbackdrop (#)
 33,showmap,0                # cancels a showbackdrop
@@ -103,8 +104,10 @@ define function, begin
 81,setherospeed,2,0,4       # changes a heros walking speed
 82,inventory,1,0            # returns the count of a given item
 83,setherostat,4,0,0,1,0    # alters a hero's stats (who,stat,value,cur/max)
-84,suspendboxadvance,0      # prevents user from advancing text boxes
+84,suspendboxadvance,0      # prevents user from advancing text boxes/using choiceboxes
+84,suspendtextboxcontrols,0 # prevents user from advancing text boxes/using choiceboxes
 85,resumeboxadvance,0       # reverses suspendboxadvance
+85,resumetextboxcontrols,0  # reverses suspendboxadvance
 86,advancetextbox,0         # as if the user had pressed a key
 87,setheroposition,3,0,0,0  # arbitrarily set x,y
 88,setNPCposition,3,0,0,0   # arbitrarily set x,y
@@ -139,7 +142,7 @@ define function, begin
 #117,NPCiswalking,1,0       #x obsolete, backwards compatability only
 118,suspendcaterpillar,0    # other heros stop following the leader, and can be manipulated separately.
 119,resumecaterpillar,0     # turns catapillar party back on
-120,NPCreference,2,0,0      # get an NPC reference by ID number
+120,NPCreference,3,0,0,0    # get an NPC reference by ID number (ID, copynumber, allowdisabled)
 121,NPCatspot,3,0,0,0       # get nth NPC reference on tile (X,Y,n)
 122,getNPCID,1,0            # get the ID number of an NPC reference
 123,NPCcopycount,1,0        # find out how many copys of an NPC ID are on the map
@@ -165,7 +168,7 @@ define function, begin
 142,camerapixelx,0          #? get camera pixel x
 143,camerapixely,0          #? get camera pixel y
 144,loadtileset,2,-1,-1     # load a new tileset for the current map
-145,pickhero,0              # lets you manually pick a hero
+145,pickhero,2,-1,0         # lets you manually pick a hero (message string, skip if alone)
 146,renameherobyslot,1,0    # lets you manually rename a hero
 147,readgeneral,1,0         # directly read from the in-memory array of general game data
 148,writegeneral,2,0,0      # directly write to the in-memory array of general game data. If you crash your game with this command, don't be too surprised
@@ -231,7 +234,7 @@ define function, begin
 210,showstring,1,0            #shows string on the bottom(stringID)
 211,clearstring,1,0           #deletes the data from string(stringID)
 212,appendascii,2,0,0         #adds ascii to string(stringID,ascii)
-213,appendnumber,2,0,0        #adds number to string(stringID,number)
+213,appendnumber,4,0,0,0,0    #adds number to string(stringID,number,minlength,zeropad)
 214,copystring,2,0,0          #copies string from one to another(sourceID,destinationID)
 215,concatenatestrings,2,0,0  #adds two strings(sourceID,destinationID)
 216,stringlength,1,0          #returns the length of string(stringID)
@@ -253,7 +256,7 @@ define function, begin
 232,trace,1,0                 #writes the provided string to G_DEBUG.txt
 233,getsongname,2,0,0         #get song name and store in string (string id, song)
 234,loadmenu,2,1,1            #show loadmenu (really load/quit?, show new game)
-235,keyispressed,2,0,0        #check key by scancode, returns a bool
+235,keyispressed,2,0,0        #check key is down, returns true/false (scancode, joystick num)
 236,soundisplaying,1,0        #checks to see if a sound is playing (soundID)
 #237,soundslots,0              #returns the number of slots available
 238,searchstring,3,0,0,1      #Search string, (ID1,ID2,start)
@@ -262,7 +265,7 @@ define function, begin
 241,expandstring,2,0,0        #expand ${Hxx}, etc in a string(ID)
 242,joystickbutton,2,0,0      #returns whether a given button is pressed (button, joystick)
 243,joystickaxis,3,0,100,0    #returns the axis position (axis,multiplier,joystick)
-244,waitforscancode,1,0       #waits for a specific scancode
+244,waitforscancode,1,0       #waits for a specific scancode (identical to waitforkey!)
 245,savemapstate,2,255,255    #save map data to a temp file (savebits, customid)
 246,loadmapstate,2,255,255    #load map data from a temp file (loadbits, customid)
 247,resetmapstate,1,255       #reload original map data (loadbits)
@@ -662,6 +665,7 @@ define function, begin
 637,doorsaresuspended,0       # return true if "suspend doors" is active
 638,randomenemiesaresuspended,0  # return true if "suspend random enemies" is active
 639,boxadvanceissuspended,0   # return true if "suspend box advance" is active
+639,textboxcontrolsaresuspended,0 # return true if "suspend box advance" is active
 640,overlayissuspended,0      # return true if "suspend overlay" is active
 641,mapmusicissuspended,0     # return true if "suspend map music" is active
 642,timersaresuspended,0      # return true if "suspend timers" is active
@@ -682,6 +686,32 @@ define function, begin
 657,herorankfromslice,1,0     # Return the hero rank for a hero slice, or else 0
 658,slicetype,1,0             # Returns a slicetype:* constant
 659,_asserteq,4,0,0,0,0       # Used in the macro expansion of assert(x==y)
+660,savescreenshot,0          # Save a screenshot
+661,sliceisline,1,0           # Check slice type
+662,createline,3,0,0,0        # Create line slice (w, h, color)
+663,getlinecolor,1,0          # Line slice color
+664,setlinecolor,2,0,0        # Set line slice color
+665,forcemountvehicle,1,0     # Mount a vehicle without checking mounting permissions first
+666,currentvehicleid,0        # return vehicle id, or -1 if not riding
+667,currentvehiclenpc,0       # return npc reference to vehicle, or 0 if not riding
+668,pathfindheroto,4,0,0,0,0  # Make a hero pathfind to a specific position (hero, tile x, tile y, stop after stuckticks)
+669,herochasesnpc,4,0,0,0,0   # Make a hero chase an NPC (hero, target npc, stop when reached, stop after stuckticks)
+670,cancelherowalk,1,0        # Cancel walkhero, pathfindheroto, or herochasesnpc command (hero)
+671,menuitemselectable,1,0    # Whether selectable and not hidden
+672,menuitemdisabled,1,0      # Whether disabled
+673,menuitemvisible,1,0       # Isn't hidden
+674,setlastsaveslot,1,-1      # Set return value of lastsaveslot (0-1000)
+675,speakingnpc,0             # NPC reference for the NPC which is currently talking
+676,keypress,2,0,0            # check for new or keyrepeat key-press event, returns bool (scancode, joystick num)
+677,newkeypress,2,0,0         # check for new key-press event, returns bool (scancode, joystick num)
+678,getjoystickname,2,0,0     # Joystick name (string, joynum)
+679,joystickbuttoncount,1,0   # Number of buttons a joystick has (might be 0 if not known) (joynum)
+680,joystickaxiscount,1,0     # Number of axes a joystick has (joynum)
+681,joystickhatcount,1,0      # Number of hats (eg dpads) a joystick has (joynum)
+682,findcolor,4,0,0,0,0       # Index of nearest match in palette (r, g, b, searchstart)
+683,overridetickmilliseconds,1,0  # change game tick speed
+684,canceloverridetickmilliseconds,0 # revert tick speed back to the game default
+
 # Don't forget to update maxScriptCmdID in const.bi when adding new commands
 end
 
@@ -709,11 +739,27 @@ if (hsd:n>>NPCY(hsd:who)) then(walk NPC(hsd:who,south,hsd:n--NPCY(hsd:who)))
 end
 
 script,getNPCspeed,hsd:who,begin
- readNPC(hsd:who,NPCstat:movespeed)
+ return(readNPC(hsd:who,NPCstat:movespeed))
 end
 
 script,setNPCspeed,hsd:who,hsd:newspeed=4,begin
  alterNPC(hsd:who,NPCstat:movespeed,hsd:newspeed)
+end
+
+script, npc copy number, hsd:npc, begin
+  variable(hsd:id, hsd:copy, hsd:ref)
+  hsd:id := get NPC ID(hsd:npc)
+  if (hsd:id < 0) then (exit returning (-1))  # No such NPC
+  if (hsd:npc >= 0) then (exit returning (0))  # It's an NPC ID, not an NPC reference! ID refers to copy 0
+  # This works too, but kind of risky
+  #while(npc reference(hsd:id, hsd:copy, true) <> hsd:npc) do (hsd:copy += 1)
+  while(true) do (
+    hsd:ref := npc reference(hsd:id, hsd:copy, true)
+    if (hsd:ref == hsd:npc) then (break)
+    if (hsd:ref == 0) then (exit returning (-1))
+    hsd:copy += 1
+  )
+  return (hsd:copy)
 end
 
 script,swapbyname,hsd:hero1,hsd:hero2,begin
@@ -728,7 +774,7 @@ script,renamehero,hsd:who=0,begin
   variable(hsd:slot)
   hsd:slot:=findhero(hsd:who)
   if(hsd:slot>=0)
-    then(renameherobyslot(hsd:slot),return(true))
+    then(return(renameherobyslot(hsd:slot)))
     else(return(false))
 end
 
@@ -747,7 +793,7 @@ script, gainherostat, hsd:who, hsd:stat, hsd:change, hsd:resetcurrent=false, beg
   hsd:newbase := getherostat(hsd:who, hsd:stat, basestat) + hsd:change
   setherostat(hsd:who, hsd:stat, hsd:newbase, basestat)
   hsd:newmax := getherostat(hsd:who, hsd:stat, maximumstat)
-  if (hsd:resetcurrent) then (
+  if (hsd:resetcurrent || hsd:oldmax <= 0) then (
     # Set current to new max
     hsd:newcur := hsd:newmax
   ) else (
@@ -826,7 +872,7 @@ script,stringisvisible,hsd:stringID,begin
 end
 
 # Internal functions, do not use
-# To get around the 32 string limitation...
+# To get around the 100 string limitation...
 script, hsd:save string, hsd:id, begin
   variable (hsd:sl)
   hsd:sl := create text
@@ -929,16 +975,17 @@ script, last ascii, begin
 	return (hsd:code)
 end
 
-script, input string, hsd:str, hsd:max len=40, hsd:useexist=0, hsd:center=1, hsd:positionx=-654321, hsd:positiony=-654321, begin
+script, input string, hsd:str, hsd:max len=-1, hsd:useexist=0, hsd:center=1, hsd:positionx=-654321, hsd:positiony=-654321, begin
   variable(hsd:done, hsd:key, hsd:show, hsd:tmp str, hsd:saved, hsd:enable input)
   hsd:enable input := input text enabled
   enable input text (true)
   if(hsd:useexist) else(clear string(hsd:str))
   trim string(hsd:str,1,hsd:maxlen)
-  hsd:show:=getstringbit(hsd:str,0)==false
+  hsd:show:=(string is visible(hsd:str) == false)
+  if(hsd:max len < 0) then (hsd:max len := get screen width / 8)
   if(hsd:positiony <> -654321 || hsd:show) then(
-    if(hsd:positionx == -654321) then(hsd:positionx := 160)
-    if(hsd:positiony == -654321) then(hsd:positiony := 110)
+    if(hsd:positionx == -654321) then(hsd:positionx := get screen width / 2)
+    if(hsd:positiony == -654321) then(hsd:positiony := get screen height / 2 + 10)
     if(hsd:center) then(
       center string at(hsd:str,hsd:positionx,hsd:positiony)
     )else(
@@ -948,22 +995,23 @@ script, input string, hsd:str, hsd:max len=40, hsd:useexist=0, hsd:center=1, hsd
     hsd:positionx := string x(hsd:str)
     hsd:positiony := string y(hsd:str)
   )
-  hsd:tmp str := hsd:str,xor,1
+  hsd:tmp str := hsd:str,xor,1  # A string ID different to hsd:str
   hsd:saved := hsd:save string(hsd:tmp str)
   while(not(hsd:done)) do, begin
     if(hsd:center) then(center string at(hsd:str,hsd:positionx,hsd:positiony))
     wait
-    if(keyval(28)>>1 || keyval(103)>>1) then(hsd:done:=true, return(true)) else(
-      if(keyval(14)>>1) then(delete char(hsd:str,string length(hsd:str)))
+    if(keyval(key:Enter)>1 || keyval(key:Numpad Enter)>1) then(hsd:done:=true, return(true)) else(
+      if(keyval(key:Backspace)>1) then(delete char(hsd:str,string length(hsd:str)))
       get input text(hsd:tmp str)
       concatenate strings(hsd:str, hsd:tmp str)
       trim string(hsd:str, 1, hsd:max len)
-      while(key is pressed(1)) do, begin
+      while(key is pressed(key:Esc)) do, begin
+        # Wait for the player to let go of Esc before finishing
         hsd:done:=true
         return(false)
-        if(read general(44),and,2)
-          then(wait)
-          else(suspendplayer, wait, resumeplayer)
+        if(player is suspended)
+          then(wait)  # Esc will be ignored
+          else(suspendplayer, wait, resumeplayer)  # Ignore the Esc, don't bring up the menu
       end
     )
   end
@@ -1042,59 +1090,99 @@ script,set load script,hsd:ID=0,begin
   write general(57,hsd:ID)
 end
 
+script,hsd:pref bit index,hsd:bitnum, begin
+  if (hsd:bitnum >= 48) then (
+    return(222 + (hsd:bitnum--48)/16)  # genBits3
+  ) else if (hsd:bitnum >= 16) then (
+    return(177 + (hsd:bitnum--16)/16)  # genBits2
+  ) else (
+    return(101) # genBits
+  )
+end
+
+# See https://rpg.hamsterrepublic.com/ohrrpgce/GEN#General_bitsets for bitnum
+script,read preference bit,hsd:bitnum,begin
+  variable(hsd:index)
+  hsd:index := hsd:pref bit index(hsd:bitnum)
+  hsd:bitnum := hsd:bitnum,mod,16
+  return((read general(hsd:index),and,2^hsd:bitnum)<>0)
+end
+
+script,write preference bit,hsd:bitnum,hsd:value=1,begin
+  variable(hsd:index)
+  hsd:index := hsd:pref bit index(hsd:bitnum)
+  hsd:bitnum := hsd:bitnum,mod,16
+  if(hsd:value) then (hsd:value := 2^hsd:bitnum)
+  write general(hsd:index, (read general(hsd:index),and,(-1--2^hsd:bitnum))+hsd:value)
+end
+
 script,set battle wait mode,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=1)
-  write general(101,(read general(101),and,-2)+hsd:bit)
+  write preference bit(0, hsd:bit)
 end
 
 script,set caterpillar mode,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=2)
-  write general(101,(read general(101),and,-3)+hsd:bit)
+  write preference bit(1, hsd:bit)
 end
 
+#@obsolete(set HP level up restore)
 script,set no HP level up restore,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=4)
-  write general(101,(read general(101),and,-5)+hsd:bit)
+  write preference bit(2, hsd:bit)
 end
 
+#@obsolete(set MP level up restore)
 script,set no MP level up restore,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=8)
-  write general(101,(read general(101),and,-9)+hsd:bit)
+  write preference bit(3, hsd:bit)
 end
 
+#@obsolete(set inn revive mode)
 script,set inn no revive mode,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=16)
-  write general(101,(read general(101),and,-17)+hsd:bit)
+  write preference bit(4, hsd:bit)
+end
+
+script,set HP level up restore,hsd:bit=1,begin
+  write preference bit(2, not(hsd:bit))
+end
+
+script,set MP level up restore,hsd:bit=1,begin
+  write preference bit(3, not(hsd:bit))
+end
+
+script,set inn revive mode,hsd:bit=1,begin
+  write preference bit(4, not(hsd:bit))
 end
 
 script,set full hero swap mode,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=32)
-  write general(101,(read general(101),and,-33)+hsd:bit)
+  write preference bit(5, hsd:bit)
 end
 
+#@obsolete(show battle ready meter)
 script,hide battle ready meter,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=64)
-  write general(101,(read general(101),and,-65)+hsd:bit)
+  write preference bit(6, hsd:bit)
 end
 
+#@obsolete(show battle health meter)
 script,hide battle health meter,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=128)
-  write general(101,(read general(101),and,-129)+hsd:bit)
+  write preference bit(7, hsd:bit)
+end
+
+script,show battle ready meter,hsd:bit=1,begin
+  write preference bit(6, not(hsd:bit))
+end
+
+script,show battle health meter,hsd:bit=1,begin
+  write preference bit(7, not(hsd:bit))
 end
 
 script,set debug keys disable,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=256)
-  write general(101,(read general(101),and,-257)+hsd:bit)
+  write preference bit(8, hsd:bit)
 end
 
 script,set dead heroes gain experience,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=8)
-  write general(177,(read general(177),and,-9)+hsd:bit)
+  write preference bit(19, hsd:bit)
 end
 
 script,set active battle pause for animations,hsd:bit=1,begin
-  if(hsd:bit) then(hsd:bit:=2^7)
-  write general(177,(read general(177),and,(-1--2^7))+hsd:bit)
+  write preference bit(23, hsd:bit)
 end
 
 script,set capped hero stat,hsd:who,hsd:stat,hsd:value,hsd:stat type=current stat,begin
@@ -1127,7 +1215,7 @@ script, set inventory size, hsd:newsize, begin
 end
 
 script, extended scancodes enabled, begin
-  return((readgeneral(177),and,256)<>0)
+  return(read preference bit(24))
 end
 
 script, get level cap, begin
@@ -1285,6 +1373,14 @@ script, set menu textcolor, hsd:menuhandle, hsd:n=0, begin
   write menu int(hsd:menuhandle, 13, hsd:n)
 end
 
+script, get menu disabled textcolor, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 28))
+end
+
+script, set menu disabled textcolor, hsd:menuhandle, hsd:n=0, begin
+  write menu int(hsd:menuhandle, 28, hsd:n)
+end
+
 script, get menu max rows, hsd:menuhandle, begin
   exit returning(read menu int(hsd:menuhandle, 14))
 end
@@ -1363,6 +1459,22 @@ end
 
 script, set menu on close script, hsd:menuhandle, hsd:n=0, begin
   write menu int(hsd:menuhandle, 24, hsd:n)
+end
+
+script, get menu cancel button menu, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 25) -- 1)
+end
+
+script, set menu cancel button menu, hsd:menuhandle, hsd:n=-1, begin
+  write menu int(hsd:menuhandle, 25, hsd:n + 1)
+end
+
+script, get menu item spacing, hsd:menuhandle, begin
+  exit returning(read menu int(hsd:menuhandle, 27) -- 1)
+end
+
+script, set menu item spacing, hsd:menuhandle, hsd:n=-1, begin
+  write menu int(hsd:menuhandle, 27, hsd:n + 1)
 end
 
 script, get menu bit, hsd:handle, hsd:bit, begin
@@ -1459,6 +1571,22 @@ script, get menu item extra, hsd:handle, hsd:extra=0, begin
   if(hsd:extra >= 0 && hsd:extra <= 2) then, begin
     exit returning(read menu item int(hsd:handle, 29+hsd:extra))
   end
+end
+
+script, set menu item color, hsd:handle, hsd:n=0, begin
+  write menu item int(hsd:handle, 32, hsd:n)
+end
+
+script, get menu item color, hsd:handle, begin
+  exit returning(read menu item int(hsd:handle, 32))
+end
+
+script, set menu item disabled color, hsd:handle, hsd:n=0, begin
+  write menu item int(hsd:handle, 33, hsd:n)
+end
+
+script, get menu item disabled color, hsd:handle, begin
+  exit returning(read menu item int(hsd:handle, 33))
 end
 
 #--------------------------------------------------------------------------
@@ -1593,7 +1721,30 @@ script, next panel sibling, hsd:sib, begin
   return(next sibling of type(hsd:sib, slicetype:panel))
 end
 
+script, first line child, hsd:parent, begin
+  return(first child of type(hsd:parent, slicetype:line))
+end
+
+script, next line sibling, hsd:sib, begin
+  return(next sibling of type(hsd:sib, slicetype:line))
+end
+
 #### More slice commands
+
+script, get selected child, hsd:parent, begin
+  return(slice child(hsd:parent, get select slice index(hsd:parent)))
+end
+
+script, set selected child, hsd:parent, hsd:child, begin
+  if (parent slice(hsd:child) <> hsd:parent) then (
+    variable(hsd:tmp)
+    hsd:tmp := hsd:save string(99)
+    script error($99="set selected slice: 2nd slice must be a child of the 1st")
+    hsd:restore string(99, hsd:tmp)
+  ) else (
+    set select slice index(hsd:parent, slice child index(hsd:child))
+  )
+end
 
 script, free slice children, hsd:parent, begin
   variable(hsd:sl, hsd:next)
@@ -1721,14 +1872,16 @@ define constant, begin
 2,down
 3,left
 1,right
-0,upkey
-1,downkey
-2,leftkey
-3,rightkey
-4,usekey
-5,cancelkey
-5,menukey
-99,anykey
+# plotscr version >= "3U " has new *key constants
+-1,anykey
+-2,upkey
+-3,downkey
+-4,leftkey
+-5,rightkey
+-6,usekey
+-7,cancelkey
+-7,menukey
+-8,runkey
 0,me
 0,none
 -1,autonumber
@@ -1798,12 +1951,18 @@ define constant, begin
 9,NPCstat:tag1
 10,NPCstat:tag2
 11,NPCstat:onetimeusetag
+11,NPCstat:onetimeuseflag
 12,NPCstat:script
 13,NPCstat:scriptargument
 14,NPCstat:vehicle
 15,NPCstat:defaultmovementzone
 16,NPCstat:defaultavoidancezone
 17,NPCstat:ignorepassmap
+18,NPCstat:pathfindingrule
+# Values for NPCstat:pathfindingrule
+0,pathfinding:default
+1,pathfinding:npcs obstruct
+2,pathfinding:npcs ignored
 0,color:red
 1,color:green
 2,color:blue
@@ -1859,10 +2018,15 @@ define constant, begin
 0b10,timerflag:battle
 0b100,timerflag:menu
 0,menutype:label
+0,menutype:caption
 1,menutype:special
 2,menutype:menu
 3,menutype:textbox
 4,menutype:script
+0,menulabel:selectable
+1,menulabel:disabled
+2,menulabel:unselectable
+2,menulabel:cant be selected
 0,menuspecial:items
 1,menuspecial:spells
 2,menuspecial:status
@@ -1875,8 +2039,18 @@ define constant, begin
 9,menuspecial:load
 10,menuspecial:quit
 11,menuspecial:volume
-0,menuitembit:Hide when disabled
-1,menuitembit:Close menu when selected
+12,menuspecial:mapalways
+13,menuspecial:savealways
+14,menuspecial:margins
+15,menuspecial:purchases
+16,menuspecial:windowed
+17,menuspecial:fullscreen
+18,menuspecial:musicvolume
+19,menuspecial:soundvolume
+0,menuitembit:hide when disabled  #Renamed
+0,menuitembit:hide if disabled
+1,menuitembit:close menu when selected  #Renamed
+1,menuitembit:close menu when activated
 2,menuitembit:skip close script
 0,menubit:translucent box
 1,menubit:never show scrollbar
@@ -1888,6 +2062,7 @@ define constant, begin
 7,menubit:prevent main menu
 8,menubit:advance text box when menu closes
 9,menubit:highlight selection background
+10,menubit:remember selection
 ### The align: constants are for menu alignment, NOT for slices!
 0,align:center
 -1,align:left
@@ -2021,6 +2196,8 @@ define constant, begin
 -102024, sl:virtual keyboard entrytext
 -102025, sl:virtual keyboard del
 -102026, sl:virtual keyboard enter
+-102027, sl:shop buy info panel
+-102028, sl:status hide if no hp
 -102100, sl:pathfind dest display
 end
 #</SLICE LOOKUP CODES>

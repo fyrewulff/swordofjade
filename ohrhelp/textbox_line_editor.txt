@@ -1,0 +1,18 @@
+This is the text box line editor.
+
+Use the arrow keys to move the cursor, and CTRL+Left/Right or ALT+Left/Right to move by word. CTRL+Home/End moves to the start/end.
+
+Type to edit the lines.
+
+The special codes listed at the bottom of the screen can be used to embed variable words/numbers into the text.
+The ${B#} codes for buttons on a gamepad or keyboard, such as ESC or (X), are defined in General Game Settings->Platform-specific Options->Button Strings for Textboxes.
+
+Embed codes also in map names, battle captions, menu item names (including the in-battle hero menus), and the script commands for expanding embed codes. They don't work in text slices yet :(
+
+Press CTRL+SPACE to choose special characters to insert at the current cursor location.
+
+CTRL+C Copies the current line.
+
+CTRL+V Pastes the previously copied line, replacing the line that the cursor is on.
+
+CTRL+BACKSPACE or ALT+BACKSPACE deletes the previous word, and CTRL+DELETE or ALT+DELETE deletes the next word.

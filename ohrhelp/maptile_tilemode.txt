@@ -1,0 +1,9 @@
+Choose "Draw Tiles" if you want to edit the tiles in this tileset.
+
+Choose "Cut Tiles" if you want to copy tiles from another tileset or extract tiles from an imported background.
+
+Choose "Set Default Passability" if you want to define default walls for each tile in this tileset.
+
+Choose "Define Tile Animation" to create patterns for animated tiles.
+
+"View with background" specifies how color 0 is drawn, and affects the tileset editor only (it does nothing in-game!) When a tileset is used for map layer 1 and higher, color 0 is transparent, but on layer 0 it isn't!

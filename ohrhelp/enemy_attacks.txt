@@ -1,0 +1,25 @@
+This is the enemy attack editor.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate the menu.
+
+Use the Left and Right arrow keys to change the attacks, or type in attack ID numbers, or press ENTER or SPACE or CLICK to browse attacks, or hold CTRL or SHIFT with ENTER/SPACE/CLICK to edit an attack.
+
+Press + or INSERT to create a new attack and select it.
+
+Hold ALT to show the name of the enemy you are currently editing. While holding ALT, you can press the left and right arrow keys to change which enemy you are editing, or you can type in an enemy ID number.
+
+There are 5 slots for "Normal" attacks. Normally the enemy will choose a random attack from this list.
+
+There are 5 slots for "Desperation" attacks. The enemy will randomly choose from these attacks if its HP is less that 20%. If there are no desperation attacks, it will use normal attacks instead.
+
+There are 5 slots for "Alone" attacks. The enemy will randomly choose from these attacks if it is the last enemy alive in the battle formation. If there are no alone attacks, the enemy will use normal or desperation attacks instead.
+
+On-death Bequest:
+If this is set on an enemy it will happen when the enemy dies, after they've reached 0 HP but before they fade out.
+It's possible for the enemy to heal itself with this attack, which will cause its death to be cancelled!
+
+You can specify counterattacks that will be triggered when this enemy is hit by attacks of certain elemental types. An attack can only trigger one counterattack, so if multiple elementals apply, only the first one (going down the list) will be counterattacked. If that one fails for any reason, no other counterattacks will be tried.
+
+You can mark certain elements as "non-elemental", in General Game Settings->Battle System Options. An attack is non-elemental if it doesn't do damage of any element, except for non-elemental ones. Each non-elemental can have its own counterattack, and you can also set a general counterattack against non-elemental attacks.
+
+You can specify counterattacks that will be triggered when this enemy is hit by attacks that damage certain stats. Stat counterattacks can only happen when no elemental counterattacks have happened.

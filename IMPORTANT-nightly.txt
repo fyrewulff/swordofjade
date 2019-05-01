@@ -1,0 +1,267 @@
+*** PLEASE ALWAYS READ THIS FILE AFTER YOU DOWNLOAD A NIGHTLY BUILD! ***
+***         We would like to be able to ASSUME that you do!          ***
+
+This file holds important news that people who use unstable versions need to
+know. It'll probably be included with stable releases (for people upgrading
+from nightlies), so ignore it if you haven't used a nightly build. Entries
+for old versions are archived at the bottom of the file.
+
+The developers will occasionally update it with information about new bugs,
+things that have changed in a non-compatible way, things you need to do or
+not do after upgrading, and unfinished features.
+
+For more information ask on the mailing list or the forums:
+https://rpg.hamsterrepublic.com/ohrrpgce/Mailing_list
+https://rpg.hamsterrepublic.com/ohrrpgce/Forums
+and check the buglist:
+http://hamsterrepublic.com/ohrrpgce/buglist.php
+------------------------------------------------------------------------------
+
+2019-05-01:
+If you've placed an enemy target cursor position with a nightly since
+19 Jan 2019 you need to fix it, because the enemy editor wasn't drawing
+cursors in the actual positions as they appear in-game.
+
+2018-11-06:
+Nightlies since 2018-09-29 (SVN r10523) were affected by a **nasty bug**
+that deleted some hero data if you either created a new hero (either as a
+copy or blank), or were editing a game created before pre-Beelzebufo which
+still contained heroes that had never been edited since. Once the problem
+started it would repeatedly keep deleting the data as you used the hero
+editor.
+
+The heroes that were affected were the newly created (or never-edited)
+heroes, and hero 0. (Possibly some other hero instead of 0, but that's
+unlikely.)  Affected heroes would get all of the following deleted, over and
+over: the battle menu, stat visibility, counterattacks, hero level checks
+(in hero tags menu), and the experience curve setting. These were all
+replaced with defaults. Due to a separate bug (in Etheldreme; now fixed),
+the XP curve would get reset to 0.00 instead of the correct default, 0.20.
+
+2018-09-14:
+The "read/write preference bitset" functions have been replaced with
+"read/write preference bit" functions, which have simpler arguments.
+
+2018-07-28:
+Fixed slices in battle being the wrong size if you created a spriteset
+with a non-standard size. This changes the positioning of, at least,
+targetting cursors, heroes, and attack sprites, so these might not
+be positioned where you intended.
+
+2018-05-15:
+If you edited per-attack damage color overrides on this day, they will be
+off-by-one. If you edited per-attack damage color overrides in any build
+on or after 2018-05-16 then don't worry, your colors will be correct.
+
+2018-03-27:
+You can actually import/export full spritesets at a time again. There are
+still two major remaining problems with the new spriteset browser, which
+will be fixed next: it's slow in huge games, and arrow keys can be very
+wonky.
+
+2018-02-17:
+If you upgraded a game with a nightly from the last 13 days box border
+spriteset 0 got overwritten with the default!
+The new spriteset browser is still missing full-spriteset import/export.
+
+2018-02-04:
+We've switched to a new graphics file format, and new spriteset and backdrop
+browsers, so once again there's a risk of serious bugs! Plus the new
+spriteset browser doesn't yet support every feature of the old one.
+Stick to older nightlies if you want stability!
+Also, temporarily the old graphics data will not be deleted, so you might
+notice your .rpg become significantly LARGER if you have heaps of backdrops.
+
+2018-01-12:
+Line slices are back. Note that you will often want to give them negative
+width/height, but you shouldn't give any other slice types negative sizes,
+because there are various glitches which result (which we plan to fix).
+
+** 2017-12-03 Etheldreme Released ***
+
+2017-11-23:
+Line slices have been removed again, to allow more time to finalise them after
+the release. If you're already using them, don't!
+
+2017-11-11:
+"clone slice" now puts the cloned slice before the slice it was cloned from,
+rather than after.
+
+2017-11-03:
+If you set custom per-hero XP curves, since that was implemented a couple of
+days ago, they have been erased and you need to re-do that.
+Also, a bug (existing most of October) which broke script importing has been
+fixed.
+
+** 2017-08-31 Dwimmercrafty Released ***
+
+2017-04-06:
+64 bit builds of Custom are now (hopefully) safe to use, thanks to Wendigo
+completing a 12 year cleanup project!
+
+Also notable: the old archive of nightly builds is now gone; instead
+old builds are only archived once a week, with the last 10 weeks kept.
+
+2016-12-28:
+Back to doing some major work on sprite editor internals, so once again
+there's a risk of serious bugs appearing. 
+
+In other news, do not use 64-bit builds of Custom. They crash in certain menus.
+
+2016-04-09:
+Currently working on the sprite editor and in particular the loading/saving
+code. There's a possibility of serious bugs as a result!
+
+** 2016-04-04 Callipygous Released ***
+
+2016-03-20:
+If you previously used the Release/Debug mode option, reread about it. Contrary
+to what the help page used to say, you should not release games in Debug mode!
+
+2016-03-19:
+The undocumented "email saved game" command has been replaced with
+"send email" (which is documented), which behaves differently. So if you
+used "email saved game" it will no longer work.
+
+** 2013-04-09 Beelzebufo Released ***
+
+2013-01-29:
+Nightlies from the last two days (specifically r5584-r5595) might delete
+the settings for the last menu definition. They wouldn't touch the menu
+items, but would set the menu bitsets, position, etc. to defaults.
+
+2012-12-25:
+Some recent nightlies could cause corruption.
+Make sure you are using a nightly build from Dec 25 or newer to avoid.
+r5507-r5529 on Windows usually would not save hero data and could delete
+            user interface colours or the zone maps for the last map.
+r5484-r5550 deleted "Items" from hero battle menus.
+r5507-r5530 newly created heroes would have completely blank battle menus
+
+*** 2012-07-31 Alectormancy+2 Released ***
+*** 2012-07-27 Alectormancy+1 Released ***
+*** 2012-06-15 Alectormancy Released ***
+
+2012-05-21:
+Mac Nightly builds are up, but PLEASE DO **NOT** use them yet.
+Mac-only bug 946 and bug 933 make most games unplayable, and have a risk
+of data corruption. If you do test them, make certain you do backups
+of your RPG files first!
+
+2011-08-20:
+You'll notice a new option, "Test Game" in Custom. You should definitely
+read the help file that pops up. Please note that there are probably lots
+of new bugs that occur in Game when running it like this. In addition to
+all the things that won't reload because they're not implemented yet!
+
+2011-06-18:
+NPCs and heroes are now drawn using slices!, and starting today you can
+actually parent other slices to them and have everything display properly.
+But beware! The behaviour of NPC/hero slices are likely to change in
+several ways, so it's probably best not to use them in released games.
+In particular:
+-Don't set an NPC/hero slice's position, set the hero/NPC position instead
+-Slices parented to NPC slices will probably eventually be saved when you
+ leave the map if the map is set to remember NPC state
+-Similarly, slices parented to hero slices may start being saved in saved
+ games
+-Current NPC/hero slices are containers with a sprite child, but the type
+ may change to dedicated Hero/NPC Slices (with the same sprite child)
+
+*** 2011-05-06 Zenzizenzic Released ***
+
+2011-01-29:
+The "Old awful" equipment elemental resistances merge formula has changed
+so that the order of equipment no longer matters. However it now usually
+returns different results for inputs other than combinations of 12%, 24%,
+100%, 200% (where it acts backwardsly compatible). But surely this doesn't
+affect you, because you weren't relying on it, right? Unless you haven't
+bothered to change it yet (it's the default for existing games).
+
+2011-01-17:
+The "Fail vs. enemy type #" attack bits have been removed from the attack
+editor. They haven't actually done anything since Jan 7th (revision 4087),
+when they were replaced with elemental failure conditions for elements 9-16,
+but we forgot to remove the old bits. So if you've used them in that time,
+you'll have to re-apply your changes (to the new conditions).
+
+2011-01-05:
+Yesterday's fix could overzealously clamp hero sprite and palette settings
+when you entered the hero editor. Flick through your heroes to check they're
+alright.
+
+2011-01-04:
+Nightly builds of revisions 4072-4075 (check svninfo.txt) -- January 1-3 --
+contained a bug that corrupted all of the data for all the heroes except the
+first! This would cause the hero editor to crash. The editor should hopefully
+no longer crash, and let you repair any corrupted data if you need to (please
+report any problems you have). Always keep backups!
+
+2010-12-28:
+The level cap wasn't being saved in save games, now it is.
+
+Also, note that the password format changed today; upon upgrading a passworded
+game you won't be able to open it with old versions of Custom or utilities
+anymore. The solution is of course to remove the password.
+
+Also, note that gfx_directx still does not support the new scancodes, and
+the fast-keypresses-missed is still unfixed.
+
+2010-11-11:
+Note that gfx_directx does not currently support the newly added scancodes;
+check back in a few days!
+
+2010-10-17:
+The default graphics backend on Windows is now gfx_directx instead of gfx_sdl
+so please, please report any problems -- even minor annoyances!
+
+2010-07-03:
+One of the bugs (now fixed) in the new save files wiped the gameover and
+loadgame script settings when loading a save. This means if you've saved a
+game, reloaded it and then saved again, your gameover and loadgame scripts will
+no longer be run, permanently. To fix an existing save you will have to turn on
+the "Don't save gameover/loadgame script IDs" general bitset, and then load and
+resave your saved games. It normally doesn't matter if you don't turn it off
+afterwards.
+
+2010-06-11:
+New RSAV format for savegames is now used by default. When you save it still
+also save sin the old format. if you need to load from the old format for
+some reason, just hold SHIFT while you load.
+
+2010-04-29:
+"trace value" requires HSpeak 3L; download a nightly HSpeak build if desired
+
+*** 2010-02-08 Ypsiliform+2 released ***
+
+*** 2010-01-24 Ypsiliform+1 released ***
+
+*** 2010-01-08 Ypsiliform released ***
+
+2009-12-27:
+"reset game" no longer behaves identically to "game over" when not both the
+titlescreen and load menu are disabled. Instead it always starts a new
+game (without showing title or load screens)
+
+2009-12-05:
+The old "place sprite", unlike the other sprite commands, could be used on
+slices as well as sprites. This is now an error, but will only affect you
+when you recompile your scripts. Use "put slice" instead.
+
+2009-10-20:
+The new script error screen will now pop up for all slice scripting errors,
+possibly interrupting your previously apparently-working game.
+
+If you edited your text boxes with any build from 2974 to 2982 your text boxes
+will be corrupted. The bug was fixed in revision 2983
+
+2009-09-24:
+We have just realised that (all versions of) Custom did not warn if an RPG is
+in a new format that it does not fully support! If you downgrade your Custom
+version, you'll get no warning if you're about to scramble some data! In
+particular, games edited with recent nightlies and then with Xocolatl+2 will
+suffer attack data corruption.
+
+2009-05-14: (Backdated!)
+Old command "set sprite visible" still exists but is now just an alias for
+"set slice visible".

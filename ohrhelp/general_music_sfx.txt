@@ -1,0 +1,13 @@
+Here you can pick default music and sound effects for a variety of different uses throughout your game.
+
+Navigate the menu with the Up and Down arrow keys (or PgUp, PgDn, Home, and End), or type part of a menu item to jump to it.
+
+Choose songs and sound effects by number, either by using the Left and Right arrow keys or by typing the number in.
+
+The songs and sound effects must already be imported through their respective importers accessed from the Main Menu.
+
+Default Battle Music: The default used when you create a new battle formation; changing this has no effect on existing formations.
+
+Textbox Line Sound: Played as each non-blank textbox line is displayed (aside from the first).
+
+Stealing sound effects are played in addition to the normal sound effect on an attack, but are played after the attack animation instead of before.

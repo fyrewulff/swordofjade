@@ -1,0 +1,105 @@
+The map editor is in Foe mapping mode (also known as "Foemap mode").
+
+Foe mapping allows you to specify where random battles can happen. Whenever the hero walks on a tile with a foe map number, the player has a chance of encountering a random battle. The number is the same as the Formation Set ID number from the Formation Set Editor. Only one formation set can be assigned to each tile.
+
+F2 switch to picture mode
+F3 switch to passability mode
+F4 switch to door placement mode
+F5 switch to NPC placement mode
+F6 switch to foemap mode
+F7 switch to zonemap mode
+F8 show settings menu
+
+Use the arrow keys or RIGHT CLICK and drag to move around the map.
+
+Use SHIFT+arrow keys to move around the map faster.
+
+Use ALT+arrow keys to move the view of the map.
+
+Press < and > to change the current formation set number, or type in a number or use the MOUSE WHEEL.
+
+At the top right corner the current drawing tool is shown. Press SPACE or LEFT CLICK to draw on the foemap. The tools are:
+
+D - Draw tool:
+  Press SPACE/CLICK to mark a tile
+  with the current formation set
+  number. You can hold down space and
+  move the cursor, or drag the mouse
+  to draw lines.
+
+B - Box tool:
+  Press SPACE/CLICK once to place one
+  corner of the box, and SPACE/CLICK
+  a second time at the opposite
+  corner to draw a rectangle.
+
+F - Fill (Paint bucket) tool:
+  Flood fills a continuous region of 
+  a single formation set under the 
+  cursor with the current formation 
+  set.
+
+R - Replace tool:
+  Replaces completely across the 
+  whole map one formation set (that 
+  of the tile under the cursor) with 
+  the current one.
+
+P - Paint on Layer # tool:
+  Finds the continuous area on the
+  current tilemap layer under the
+  cursor, and sets the formation set
+  for all those tiles; like a flood
+  fill of a map layer except that the
+  map layer isn't modified. You can
+  use PageDown and PageUp to change
+  the selected layer. For example,
+  you can use this to 'paint' a
+  forest path with an encounter
+  formation.
+
+M - Mark tool:
+  Use to select a rectangular of the
+  map to copy. Press SPACE/CLICK once
+  to place one corner of the
+  rectangle, and SPACE/CLICK a second
+  time at the opposite corner. The
+  tool will then be changed to the
+  Clone tool. Mark copies the visible
+  tilemap layers, wallmap, foemap,
+  and zones in the rectangle.
+
+C - Clone tool:
+  Press SPACE/CLICK to paste a
+  selection copied with the Mark
+  tool.  You can switch to different
+  editing modes to preview the
+  changes to walls, foemap, and
+  zones.  If default passability is
+  on (press CTRL+D to toggle), the
+  wallmap will updated using default
+  walls instead of the copied walls.
+  Only visible map layers are
+  modified (press ALT+~ to toggle
+  visibility of the current map
+  layer), so a map layer has to be
+  visible both when Marking and when
+  Cloning.
+
+Also,
+
+CTRL+W paints the tiles visible in the window/screen with the currently selected formation set number.
+
+CTRL+Z undoes a change to the tilemap, wallmap, foemap or zonemap. Changes to NPCs and doors are not undoable. The undo history buffer is near-infinite, but certain things cause it to be cleared: resizing the map, deleting or swapping map layers, erasing map data, and leaving the map editor.
+
+CTRL+Y redoes an undone change.
+
+CTRL+S immediately saves, useful when live-previewing a game.
+
+To remove random battles from a tile, press DELETE (or change the formation set number to 0).
+
+Press G to set the selected formation set to the one under the cursor (eyedropper tool).
+
+TAB toggles a blue rectangle that shows roughly what area of the map you are currently looking at.
+
+~ shows a minimap of the entire map.

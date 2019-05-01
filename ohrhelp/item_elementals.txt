@@ -1,0 +1,7 @@
+Here you can add elemental effects to this piece of equipment, which modify the elemental resistances of a hero when equipped. See the General Game Data ->Battle System Options ->Elemental Resistance Calculation menu Help file for information on how a hero's total resistance to an element is calculated.
+
+If the "elemental resistance merging formula" is set to Addition, then elemental effects here are presented as the increase or decrease, and "+0%" damage means 'no change'. For the other methods, Multiplication and Terrible-Old, "100%" damage means 'no change'.
+
+Set the values by typing them in. You can enter fractional percentages too, by typing a decimal point (Period).
+
+Press Minus to negate a value. If a hero takes negative damage from an element, then they will be healed.

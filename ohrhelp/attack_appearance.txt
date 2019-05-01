@@ -1,0 +1,179 @@
+This is the attack appearance editor.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate through the menu.
+
+Use the Left and Right arrow keys to change values, or you can type in numbers.
+
+You can also hold the ALT key and press the left and right arrow keys to change which attack you are editing, or while holding ALT you can type an attack ID number.
+
+Picture: This is the sprite set used by this attack in battle.
+
+Palette: "default" is the palette you used to draw the sprite, but you can change it by pressing ENTER or SPACE if you want to browse other palettes to use for the sprite.
+
+Attack Animation: Here you can choose between several different animations with the left and right arrow keys.
+
+* Normal - The attack appears over
+   the target.
+
+* Projectile - The attack moves from
+   the attacker to the target.
+
+* Reverse Projectile - The attack
+   moves from the target to the
+   attacker.
+
+* Drop - The attack falls straight
+   down from the sky and lands on the
+   target.
+
+* Ring - When used against a single
+   target, 8 attack sprites appear in
+   a ring around the target, and move
+   inward. When used on multiple
+   targets, one attack sprite appears
+   near each target and moves in a
+   circle around it.
+
+* Wave - When used against a single
+   target, a horizontal row of attack
+   sprites moves across the screen
+   past the target. When used on
+   multiple targets, a diagonal row
+   of attack sprites moves across the
+   whole screen.
+
+* Scatter - An attack sprite appears
+   over the target and then moves
+   away in a random direction.
+
+* Sequential Projectile - The attack
+   sprite starts at the attacker, and
+   moves to strike each target one
+   after another before flying off
+   the oppostite side of the screen.
+
+* Meteor - The attack falls
+   diagonally from the top of the
+   screen and strikes the target.
+
+* Driveby - The attack moves across
+   the screen from the attacker's
+   side to the target's, striking
+   the target as it passes.
+
+* Null - No animation at all. This is
+   often used in chains with other
+   attacks to apply extra effects.
+
+Animation Pattern: This affects how the three frames of the attack's sprite set animate. It does not affect the movement of the sprite, only the changing of the frames.
+
+* Cycle Forward - The frames cycle
+  0 1 2 0 1 2 0 1 2 0 1 2 ...
+
+* Cycle Back - The frames cycle
+  2 1 0 2 1 0 2 1 0 2 1 0 ...
+
+* Oscillate - The frames cycle
+  0 1 2 2 1 0 0 1 2 2 1 0 ...
+
+* Random - The frames cycle randomly
+  with no pattern.
+
+Attacker Animation: This controls how the attacker moves when doing the attack.
+
+* Strike - When used by a hero, the
+  hero steps forward, swings its
+  weapon, and steps back. When used
+  by an enemy, the enemy twitches.
+
+* Cast - When used by a hero, the
+  hero steps forward, shows its
+  casting animation frame, and steps
+  back. When used by an enemy, the
+  enemy twitchs.
+
+* Dash in - Causes the attacker to
+  move close to the target, do the 
+  attack, and then return to its
+  starting point.
+
+* Spinstrike - Causes the attacker to
+  flip horizontally several times.
+  If used by a hero, the hero's
+  weapon will appear in its hand.
+
+* Jump - Causes the attacker to leap
+  off the top of the screen. The
+  attacker  will remain invisible
+  until doing an attack with the
+  "Land" attacker animation. You can
+  use both "Jump" and "Land"  as part
+  of a single chain of attacks.
+
+* Land - Causes the attacker to fall
+  from the top of the screen and land
+  on the target, then to return to
+  its starting point.
+
+* Null - The attacker does not move
+  at all.
+
+* Standing Cast - If used by a hero, 
+  the hero will show its casting
+  animation frame without stepping
+  forward. Does nothing if used by an
+  enemy.
+
+* Teleport - The attacker vanishes
+  and reappears close to the target,
+  attacks, and then disappears and
+  reappears in its starting point. If
+  this attack is used by a hero, the
+  hero's weapon will display.
+
+Delay Ticks Before Attack: [Active-time battles only]
+Causes a delay before the attack is executed. During the delay, time passes and other combatants can act.
+
+Delay/Advance Attack: [Turn-based battles only]
+Normally, the order in which combatants act depends on their speed. This setting lets you cause the attacker to act earlier or later than normal. It's the number of places in the turn order queue that the attacker is moved forward or back. If the delay is large then the attacker will always act last... unless someone else has an even bigger delay!
+
+Delay Turns Before Attack: In turn-based battles, this is how many rounds of combat the attacker will wait before attacking. In active-time battles, the turn delay decreases by one every time the attacker gets a turn (after their ready meter fills up). If the attack is a blocking delayed attack it happens instead of the attacker's normal turn, otherwise it happens immediately before its action - unless there's also a tick delay.
+For example, if you set a delay of one turn (and zero ticks) on a chained attack with the "Delay doesn't block further actions" chain bitset, then the chained attack happens immediately before the attacker's next attack (but for heroes, after the player picks an attack).
+
+Dramatic Pause: This delay is part of the attacker's animation. Unlike "Delay Ticks" the Dramatic Pause always freezes time for all heroes and enemies. A Dramatic Pause cannot be interrupted by other attacks.
+Use Dramatic Pause if you want the Caption to appear well before the attack actually happens.
+
+Caption: A line of text that will be displayed at the bottom of the screen whenever the attack is used.
+
+Display Caption: Controls how long the attack caption is displayed. Press left and right arrow keys to change this value. This can be one of:
+
+* Not At All - The caption is not
+  used.
+
+* Full Duration of Attack - The
+  caption will last until the attack
+  animation finishes, so the length
+  of time depends on which "Attack
+  Animation" and "Attacker Animation"
+  you have chosen. This includes the
+  time of the "Dramatic Pause"
+
+* ## ticks - A number of game ticks.
+  NOTE: in Turn-Based battle mode,
+  the battle will be paused until the
+  caption has disappeared. In Active-
+  Time battle mode, by default the
+  battle will continue with other
+  attacks, or allowing the player to
+  choose an action, even while the
+  caption is still displaying! Turn
+  on the "Attack captions pause
+  battle meters" bitset in the Battle
+  System Options menu to pause the
+  battle instead.
+
+Delay Before Caption: Allows you to specify a delay in game ticks before the caption appears. This can be useful for attack animations that have a long lead-in, or for captions that are supposed to represent something that the attacker says after the attack has completed. If you are using a "Dramatic Pause" the caption delay starts counting from the beginning of the dramatic pause.
+
+Sound Effect: Use the left and right arrow keys to select a sound effect. You can press ENTER or SPACE to preview the currently selected effect. The sound effect will be played whenever the attack is used (both inside battle and outside battle)
+
+You can also specify a sound effect that wll be played when the attack is learned as a spell from a level-up or by using an item.

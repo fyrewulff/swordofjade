@@ -1,0 +1,37 @@
+This is the Menu Editor. The translucent menu that fills the screen is used for editing your menu. Behind it is a preview of the in-game menu that you are customizing.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate.
+
+To change which menu you are working on, select "Menu #" and press the Left and Right arrow keys or type a menu ID number. If you press the right arrow while the last menu is selected, you will be prompted to add a new menu.
+
+Name: This is a name for the menu. It is only for your reference, and is not displayed in-game.
+
+Edit Items: Press ENTER or SPACE to edit the menu items that appear in the menu.
+
+Box Style: The box style used for the background color and border. You can define these in the Box Styles editor in Edit Graphics menu.
+
+Text Color: The color of each non-disabled menu item, unless it specifies its own color. Press ENTER or SPACE for a color browser. You can also select a UI color (numbers below zero).
+
+Disabled Color: The color of each disabled menu item, unless it specifies its own disabled color. Press ENTER or SPACE for a color browser. You can also select a UI color (numbers below zero).
+
+Max rows to display: Reduce this number to make a long box scroll.
+
+Edit Bitsets: Press ENTER or SPACE to go to a list of OFF/ON bitsets that configure various aspects of box display and behaviour. See the help screen in that menu.
+
+Reposition Menu: Press ENTER or SPACE to reposition the menu using the arrow keys.
+
+Change Anchor Point: Press ENTER or SPACE to change which side or corner the box will be positioned relative to.
+
+Text Align: Can be "Center", "Left" or "Right".
+
+Minimum width: raise this number to widen the horizontal margins on either side of the menu.
+
+Maximum width: Reduce this to restrict the width of the menu.
+
+Border Size: Use this to enlarge or shrink the empty space around the margin on all sides of the menu. Press - to switch between a negative 
+or positive value.
+
+On-close script: This script is activated when the menu is closed by pressing the cancel button, or by using a menu item which has the "Close menu when activated" bit ON and the "Don't run on-close script" bit OFF. It is not used when you close a script using the "close menu" plotscripting command.
+
+Cancel button: allows you to choose whether the cancel button (ESC, ALT or right-click) will just close the current menu, or will close the current menu and open a different menu. This can be convenient when your menu structure has a main menu and several sub-menus, because it makes it easy to switch back to the main menu when a sub-menu closes.
+This only happens when the user manually closes the menu with the cancel button, not if it's closed in any other way.

@@ -1,0 +1,20 @@
+You can export your game as a convenient package that is easy to share with other people.
+
+[Icons]
+If you've created Windows or Mac icons for your game place them next to the .rpg file with a matching filename and they will be used.
+See http://rpg.hamsterrepublic.com/ohrrpgce/Icons for more information.
+
+[Windows .ZIP]
+This is the most popular format for game developers. It is a simple zip file with a copy of your game, a renamed copy of game.exe that will automatically launch your game, plus all the support .dll files that a player will need to play your game on Windows without needing to install the OHRRPGCE.
+
+[Windows Installer]
+This creates an easy-to-use setup installer that works on all major versions of Windows. This is good for sharing your game with casual players who don't know how to use zip files.
+
+[Mac OS X App Bundle]
+This creates an easy to install app bundle of your game for Macs. Users can drag and drop the game into their Applications folder. If a mac .icns formatted icon exists in the same folder as the rpg file, it will be used as the app's icon. If your game is gamename.rpg then the icon should be gamename.icns
+
+[Linux Tarball]
+This is similar to the .ZIP option, but instead of the Windows .exe file, it will include the Linux binary of the game player.
+
+[Debian Linux Package]
+This exports a package for any Linux distribution that uses .deb packages. This includes Debian, Ubuntu, Linux Mint, and others. (NOTE: if you create a Debian package from Windows or Mac, the package will work, but will show "low package quality" warnings because of incorrect file ownership when the user first installs it)

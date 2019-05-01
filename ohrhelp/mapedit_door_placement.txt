@@ -1,0 +1,31 @@
+The map editor is in Door placement mode.
+
+F2 switch to picture mode
+F3 switch to passability mode
+F4 switch to door placement mode
+F5 switch to NPC placement mode
+F6 switch to foemap mode
+F7 switch to zonemap mode
+F8 show settings menu
+
+Use the arrow keys or RIGHT CLICK and drag to move around the map.
+
+Use SHIFT+arrow keys to move around the map faster.
+
+Use ALT+arrow keys to move the view of the map.
+
+Press SPACE or LEFT CLICK to place a door. If the door with the selected number already exists, it will be moved.
+
+If you want to remove a door, position the cursor over it and press SPACE again, or LEFT CLICK on it.
+
+You can press < and > or type a number to set the current door number, and if that door already exists the cursor will jump to it. Normally an unused door number is automatically selected. You can also use the MOUSE WHEEL.
+
+To link a door to another door, position the cursor over the door and press ENTER, or RIGHT CLICK it. This will take you to the door linking tool.
+
+Remember that for a door to be usable in both directions, it needs to be linked from both directions. If you only link a door one way, it will only be usable one way.
+
+CTRL+S immediately saves, useful when live-previewing a game.
+
+TAB toggles a blue rectangle that shows roughly what area of the map you are currently looking at.
+
+~ shows a preview of the entire map.

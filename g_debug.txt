@@ -1,0 +1,62 @@
+ ----Starting OHRRPGCE Game----
+05-01-2019 02:18:21
+OHRRPGCE etheldreme 20171203.9852 gfx_directx+sdl+fb/music_sdl FreeBASIC 1.05.0 (01-31-2016) x86   Win32 32-bit
+exepath: C:\Users\fyrew\Documents\GitHub\swordofjade, exe: C:\Users\fyrew\Documents\GitHub\swordofjade\sword-of-jade.exe
+Runtime info:   music_sdl, SDL 1.2.15, SDL_Mixer 1.2.12  Windows 6.2.9200 (8/Server 2012 or later) 
+! gfx_version: gfx_directx.dll supports API version 1 rather than current version 2
+Initialising gfx_sdl...
+SDL: screen size 1920x1080
+setvideomode zoom=2 w*h = 640*400
+gfx_sdl: created screensurface size=640*400 depth=32 flags=0x0 R=0xFF0000 G=0xFF00 B=0xFF
+gfx_sdl "SDL 1.2.15 (0 joysticks) Driver:windib"
+music_sdl, SDL_Mixer 1.2.12 (22050Hz, Music decoders:WAVE,MIKMOD,NATIVEMIDI,OGG,MP3 Sample decoders:WAVE,AIFF,VOC,OGG)
+mersenne_twister seed=48856.6503347
+Setting default window settings...
+setvideomode zoom=2 w*h = 640*400
+gfx_sdl: created screensurface size=640*400 depth=32 flags=0x0 R=0xFF0000 G=0xFF00 B=0xFF
+setvideomode zoom=2 w*h = 640*400
+gfx_sdl: created screensurface size=640*400 depth=32 flags=0x0 R=0xFF0000 G=0xFF00 B=0xFF
+set_resolution 320*200
+Setting graphics scaling to x2 change_windowsize=-1
+ ----Loading C:\Users\fyrew\Documents\GitHub\swordofjade\sword-of-jade.rpgdir----
+curdir: C:\Users\fyrew\Documents\GitHub\swordofjade
+tmpdir: C:\Users\fyrew\AppData\Local\Temp\ohrrpgce20190501021821.295.tmp\
+settings_dir: C:\Users\fyrew\AppData\Roaming\OHRRPGCE
+Name: Sword of Jade: Parallel Dreams
+Partial game data upgrade...
+Last edited by: [[OHRRPGCE etheldreme 20171203.9852 gfx_directx+sdl+fb/music_sdl FreeBASIC 1.05.0 (01-31-2016) x86    Win32 32-bit]]
+archinym creation info: Incomplete O.H.R.RPG.C.E Editor 20000528
+set_resolution 368*207
+recenter_window_hint()
+get_screen_size: true screen size 1920x1080
+Desktop resolution: 1920*1040
+automatic_scale_factor(1), screen size: 1920*1040
+Setting graphics scaling to x4 change_windowsize=-1
+recenter_window_hint()
+setvideomode zoom=4 w*h = 1472*828
+gfx_sdl: created screensurface size=1472*828 depth=32 flags=0x0 R=0xFF0000 G=0xFF00 B=0xFF
+C:\Users\fyrew\AppData\Roaming\OHRRPGCE\sword-of-jade\gameconfig.ini : gfx.fullscreen = 0, genFullscreen = 0
+setvideomode zoom=4 w*h = 1472*828
+gfx_sdl: created screensurface size=1472*828 depth=32 flags=0x0 R=0xFF0000 G=0xFF00 B=0xFF
+genRungameFullscreenIndependent: 1
+setvideomode zoom=4 w*h = 1472*828
+gfx_sdl: created screensurface size=1472*828 depth=32 flags=0x0 R=0xFF0000 G=0xFF00 B=0xFF
+setvideomode zoom=4 w*h = 1472*828
+gfx_sdl: created screensurface size=1472*828 depth=32 flags=0x80000000 R=0xFF0000 G=0xFF00 B=0xFF
+SETVISPAGE(gfx_present) took 1091ms
+SETVISPAGE() took 2189ms
+SETVISPAGE() took 60ms
+setvideomode zoom=4 w*h = 1472*828
+gfx_sdl: created screensurface size=1472*828 depth=32 flags=0x0 R=0xFF0000 G=0xFF00 B=0xFF
+DOWAIT() took 1725ms
+! Scripterr(4): loadgame -> runrealtimesystem -> changetonight -> tonight -> sethp: setheropalette: invalid hero party slot -1
+! Scripterr(4): loadgame -> runrealtimesystem -> changetonight -> tonight -> sethp: setheropalette: invalid hero party slot -1
+! Scripterr(4): loadgame -> runrealtimesystem -> changetonight -> tonight -> sethp: setheropalette: invalid hero party slot -1
+! Scripterr(4): loadgame -> runrealtimesystem -> changetonight -> tonight -> sethp: setheropalette: invalid hero party slot -1
+DOWAIT() took 842ms
+...Quit the game.
+
+write C:\Users\fyrew\AppData\Roaming\OHRRPGCE\sword-of-jade\gameconfig.ini : gfx.fullscreen = 0
+Ignore ohrrpgce20190430224658.295.tmp because it has only been dead 1 days
+Ignore ohrrpgce20190501021821.295.tmp because we are using it
+Deleting tmpdir C:\Users\fyrew\AppData\Local\Temp\ohrrpgce20190501021821.295.tmp\

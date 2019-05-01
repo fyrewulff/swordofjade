@@ -1,0 +1,7 @@
+This is the Hero Editor.  Every single character that the player will have control of at some point throughout the game needs to be defined here. (It's also possible to have multiple copies of a hero in the party.)
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate the menu.
+
+To change which hero you are working on, select "Pick Hero" and press the left or right arrow keys, or type in a hero ID number.
+
+You can also type a name for your hero on this menu.

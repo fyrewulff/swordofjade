@@ -1,0 +1,98 @@
+This is the General Game Data Editor, where you can edit various aspects of your game that didn't seem to fit in any of the other menus.
+
+Navigate with the Up and Down arrow keys (or PgUp, PgDn, Home, and End), or type part of menu item to jump to it.
+
+Press ENTER or the SPACE bar to enter various submenus.
+
+
+  Game Title & Info
+
+Long Name: Type in a "full" name for your game which will be used in the game browse (as opposed to the file name).
+
+About Line: Type in some info about your game to appear when the game is selected in the game browser.
+
+Title Screen: Choose a fullscreen backdrop to appear when the game is opened by the player (before choosing a save file).  You must import the backdrop in the Graphics Editor first.
+
+
+  Major Settings
+
+New Game: Set initialization data for the player when they start a new game (such as initial money).
+
+Saved Games: Most options related to saving games.
+
+Battle System Options: Another menu of global game options, for battles and stats.
+
+Preference Bitsets: Enter a bitset menu for many important customisation options. See the help screen in that menu.
+
+
+  Controls
+
+Mouse Options: Set for what the mouse can be used by the player.
+
+Platform-specific Controls: Specific Gamepad/Joystick. Most important for when your game runs on Android or OUYA.
+
+
+  Scripts
+
+Special Plotscripts: Choose plotscripts to be run on certain special triggers like beginning a game or pressing the menu key.
+
+Error Display: Control which script errors will be shown at runtime. See the help page.
+
+
+  Graphics
+
+Master Palettes: Your game can have more than one master palette available. See the submenu help file for more info.
+
+Window Size Options: The resolution your game will run at and the size of the window.
+
+Framerate:
+By default, OHRRPGCE games run at 18.2 frames per second (FPS), which is 55 milliseconds (ms) per frame. Increasing the framerate is highly desirable if you want to use the mouse or create an action game. HOWEVER, increasing the framerate is not recommended for RPGs because the walk animation will become very fast (this is an unfinished feature). Battles are NOT affected by this setting (so you're safe there!)
+
+Minimap Style:
+This determines how the minimap is generated in-game (how the color of each pixel is determined). The default, "Smoothly scaled down" normally looks the best, but might be blurry. It uses more than the 256 colors in the master palette. "Pick random color" was the method used until Fufluns. The easiest way to try them out is using the Test Game feature (in particular, the Ctrl-F1 teleport tool).
+
+Camera following a hero/NPC centers on:
+You probably don't want to change this.
+-tile: The camera is centered on the walkabout container, i.e. the tie the hero/NPC is standing on. This is the default (since Fufluns), because it makes it easy to avoid camera glitches when switching between tile-based camera positioning (e.g. "focus camera") and camera following an NPC/hero. E.g. "put camera(hero pixel x(me), hero pixel y(me))" won't move the camera.
+But if the hero sprite is really big, the camera will be centered on its feet.
+-sprite: The hero/NPC sprite will be at the screen center.
+-sprite minus Z: The hero/NPC sprite will be at the center of the screen provided the hero/NPC Z is zero (as usual when riding an airship) and the map's foot offset is zero. The camera won't move when Z changes. This used to be the default from Alectormancy to Etheldreme.
+
+
+  Audio
+
+Global Music and Sound Effects: Set a wide range of default music and sounds for various aspects of your game.
+
+Initial Music/Sound Volume:
+These give the starting values for the two volume settings in the main menu.
+
+
+  Inventory
+
+Inventory Size: This is the number of rows available for the player's item inventory. Type in a number and the screen will show you how many actual item slots will result (there are three slots in a row).
+
+Inventory Autosort: This sets the criterion which the 'Autosort' option in the inventory menu uses to sort items (after first moving all items to the top). You can sort by:
+-item type/uses:  Items usable in battle go to the top, then usable out of battle, then equippable, then others. Whether they are consumed or can't be dropped also matters.
+-usable: places items into four groups depending on whether they are usable in-battle or out-of-battle - usable ones to the top.
+-alphabetically: by name
+-by item ID number
+-no reordering: move items to the top of the inventory, filling gaps, without changing their order
+
+Default maximum item stack size: The number of items that can be stored in each inventory slot, unless overridden for a specific item type.
+
+Display 'x1' in inventory: If an inventory slot contains one item, e.g. Boots, this controls whether "Boots  x 1" is displayed or just "Boots". You can set it to show 'x1' for stackable items only (max stack size more than one).
+
+
+  Misc
+
+Password for Editing: Set a password to be required to open the game with custom.exe (people will still be able to play the game with game.exe, obviously).
+
+
+  Stats
+
+These aren't editable settings.
+
+Time spent editing: shows how long you've been actively editing this game. The timer stops if you don't interact with the program for at least half a minute (it makes no difference whether it's foregrounded).
+"This session" means since you started the program and opened the game; "Total" time is across all development sessions. The total is only counted since version Fufluns.
+
+Game created [date]: this only appears if the game was created with Fufluns or later, telling when the game was started.

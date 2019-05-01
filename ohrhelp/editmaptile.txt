@@ -1,0 +1,79 @@
+You can use arrow keys or the mouse.
+
+Left-Click on pixels to draw (or press SPACE).
+Right-Click to select the color under the cursor (or press ENTER).
+
+Left click on a color in the palette at the bottom to select it. (ALT + arrow keys will pick palette colors too!)
+
+See the "Undo" bar along the right? Click there to revert to an earlier state, or press CTRL+Z to go back one step, so to speak.
+
+Hold SHIFT to move faster with the arrow keys. Press SHIFT+S to slow down the SHIFT-move speed and SHIFT+F to make it faster.
+
+On the left is a panel of tool buttons. Each of them can also be triggered with a keypress.
+
+D Draw tool. Use this for single
+  pixels or free-hand lines.
+
+B Box tool. Use this to draw
+  filled rectangles.
+
+L Line tool. Use this to draw
+  straight lines.
+
+F Fill tool. Use this to flood-fill
+  paint an area. Like the paint
+  bucket in Photoshop.
+
+R Replace tool. Use this to replace
+  one colour with another.
+
+O Circle tool. Use this to draw non-
+  filled circles. The first click
+  defines the center of the circle.
+
+A Airbrush tool. Use this to scatter
+  pixels around. While the airbrush
+  is active, you can press + and -
+  to change the scatter area, and
+  CTRL+ and CTRL- to change the
+  "mist", which is the number of
+  pixels scattered with each click.
+
+S Scroll tool. While this is the
+  selected tool, you can click and
+  drag on the tile, or press arrow
+  keys, to move it around. Pixels
+  will wrap over the edges.
+
+M Mark tool. Marks a rectangular
+  area of the tile to use with the
+  clone tool.
+
+C Clone tool. Draw on the tile using
+  a portion of a tile that you have
+  previously chosen with the mark
+  tool. Pixels drawn in color 0
+  (normally black) will be
+  transparent. While you are using
+  the clone tool, you can hold the
+  ENTER key or the right mouse button
+  and move the center of the cloned
+  area
+
+Backspace flips the tile horizontally.
+
+CTRL+Backspace flips the tile
+  vertically.
+
+[ Rotates the tile 90 degrees
+  counterclockwise.
+
+] Rotates the tile 90 degrees
+  clockwise.
+
+P or left mouse button on preview
+  Switch preview area at the bottom 
+  left between neighbouring tiles and
+  single tile preview. 
+
+CTRL+S saves the tile immediately without exiting, which is useful if you are live-previewing the game.

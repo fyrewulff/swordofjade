@@ -1,0 +1,74 @@
+This is the attack chaining editor. Chaining means that you can attach two or more attacks together in a chain.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate through the menu.
+
+Use the Left and Right arrow keys to change values, or you can type in numbers.
+
+You can also hold the ALT key and press the left and right arrow keys to change which attack you are editing, or while holding ALT you can type an attack ID number.
+
+There are three types of chaining.
+
+* Regular Chain - This chain will be evaluated after the current attack finishes. If the evaluation succeeds, then this attack will be used next.
+
+* Else-Chain - If the default chain's evaluation fails, then the else-chain will be evaluated. If the evaluation succeeds, then this attack will be used next.
+
+[NOTE: If the default chain's evaluation succeeds, but the ensuing attack itself fails, whether for aiming or any other reasons, the Else-Chain is not evaluated]
+
+* Instead-Chain - This attack will be used instead of the current attack. In other words, it will replace the current attack. If an attack gets replaced by its instead-chain, then the only thing about the original attack that will matter is its targetting data.
+
+For each chain, there are several different options.
+
+* Attack - Use the left and right arrow keys to choose another attack. If no attack is set, the chain will not happen.
+
+* Rate - This is a percentage that controls how often the chain succeeds. A chain rate of 50 would only chain half the time. If you want the chain to happen every time, use 100.
+
+* Option settings - this is a list of bitsets that affect chain behaviour. See the sub-menu help screen.
+
+* Condition - There are many different options for chain condition. Press ENTER/SPACE/LEFT-CLICK to view a list of options.
+
+  * Tag Check - check whether a pair
+    of tags is ON or OFF before
+    allowing the chain to continue.
+    (You can just use one tag if you
+    want - set the other tag
+    condition to ALWAYS.)
+
+  * Stat Check - Don't allow the
+    chain to continue unless either
+    the attacker's stat, any of the
+    targets' stats, or all of the
+    targets' stats, are above or
+    below a given threshold. The any/
+    all conditions will check the
+    max/min of the stats of the
+    targets, as appropriate. The
+    threshold can be specified
+    either as an absolute number
+    or as a percentage, or a
+    comparison to another stat.
+
+  * Stat-based chance - The chance to
+    take the chain increases
+    proportional to the value of one
+    of the target or attacker stats.
+    The chance is 0% if the stat is 0
+    and grows up to the Rate value
+    at a certain stat value.
+    E.g. "from 0% at stat=0 to 15%
+    at stat>=45" means that at
+    stat=30 the chance to chain is
+    15%*30/45 = 10%, while at values
+    above 45, it's capped at 15%.
+
+
+[NOTE: Same-Target Chains With 0 Delay]
+Note that for all three chain types, if the target class and target setting of the chain-starter and the chaned attack are the same, and the chained attack has 0 delay, then the chained attack will use the exact same target as the chain-starter. Same-target chains will be interrupted if the target dies.
+
+[NOTE: Different-Target Chains]
+When the target class or target setting are different, the chained attack will pick a new target automatically according to its "preferred target" rules. This will not be interrupted if the first attack's target dies.
+
+  Counterattacks
+
+Counterattacks to an attack are defined in the enemy editor, but here you can control whether this attack will trigger them if it hits, misses, or fails. The Default value is set in the Battle System Options menu.
+
+Never Trigger elemental counterattacks: This option can specifically disable elemental counterattacks (as opposed to non-elemental or stat counterattacks). It is also an attack bitset.

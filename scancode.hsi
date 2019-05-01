@@ -2,6 +2,9 @@
 # the "key is pressed" command. This is more complete than it needs to be :)
 
 define constant,begin
+# anykey, upkey, downkey, leftkey, rightkey, usekey, menukey, cancelkey, runkey
+# are also valid virtual scancodes, but they're defined in plotscr.hsd.
+
 01,key:Esc
 02,key:1
 02,key:Exclamation
@@ -112,8 +115,10 @@ define constant,begin
 88,key:F12
 91,key:Left Win Logo
 91,key:Left Command   #Macintosh
+91,key:Left Meta
 92,key:Right Win Logo
 92,key:Right Command  #Macintosh
+92,key:Right Meta
 93,key:Context
 
 94,key:F13
@@ -146,8 +151,12 @@ define constant,begin
 
 119,key:Filtered Alt  # Same as key:Alt, but try to filter out keypresses which are part of window manager combinations
 
+120,key:Any Enter  # either key:Enter or key:Numpad Enter
+121,key:Meta  # either key:Left Meta or key:Right Meta
+121,key:Win Logo
+121,key:Command
+
 #keys >= 128 are NOT scan codes, per se, but for other devices (mouse, joystick)
-# note that these only work for key is pressed, not for keyval
 128,joy:button 1
 129,joy:button 2
 130,joy:button 3
@@ -164,9 +173,31 @@ define constant,begin
 141,joy:button 14
 142,joy:button 15
 143,joy:button 16
+# Warning: gap in scancode numbers!
+148,joy:button 17
+149,joy:button 18
+150,joy:button 19
+151,joy:button 20
+152,joy:button 21
+153,joy:button 22
+154,joy:button 23
+155,joy:button 24
+156,joy:button 25
+157,joy:button 26
+158,joy:button 27
+159,joy:button 28
+160,joy:button 29
+161,joy:button 30
+162,joy:button 31
+163,joy:button 32
+
 144,joy:x left
+144,joy:left
 145,joy:x right
+145,joy:right
 146,joy:y up
+146,joy:up
 147,joy:y down
+147,joy:down
 
 end

@@ -1,0 +1,11 @@
+This is the Enemy Editor.  In general, any character/active "thing" present in a battle (besides the heroes) must be defined as an enemy.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate through the menu.
+
+Use the Left and Right arrow keys to change which enemy you are editing.
+
+You can also hold the ALT key and press Left and Right or type an enemy ID number.
+
+In this menu you can type in a name for your enemy, or press ENTER or SPACE to access the various sub-menus.
+
+If you want to quickly switch between two enemies, select one of them and press SHIFT+TAB. Then you can select the other enemy, and press TAB to quickly switch back and forth between them.

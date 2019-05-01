@@ -1,0 +1,12 @@
+Here you can browse for an image to import as a tileset.
+
+Your import files can be saved in BMP, PNG or JPEG format with any bit depth.
+
+The correct size for a tileset is 320x200 pixels. The pixel size must be exactly correct.
+The browser will display the size of images, so you can easily identify files that won't import because they have the wrong size.
+
+Your tiles should be 20x20 pixels, and they should be aligned in 10 rows of 16 tiles.
+
+You can type in the beginning of a folder or file name to move the cursor to it. You can also press a letter repeatedly to cycle through files and folders starting with that letter.
+
+Press F5 to refresh the directory as well as poll the names of all removeable drives.

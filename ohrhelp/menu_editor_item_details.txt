@@ -1,0 +1,142 @@
+This is the menu item detail editor. This is where you define what a menu item actually does.
+
+*Caption - The caption is the text that will appear for this item in the menu. If you leave it blank it will be set to a default value.
+
+*Type & Subtype - There are 5 different types of menu item.
+
+  *Label - (previously called
+   Caption) menu items have no
+   special action when activated.
+   There are three subtypes:
+    *Selectable:
+      Only used to set tags or
+      to close the menu.
+    *Disabled:
+      Can be used for decoration
+      or information (but the next
+      sub-type might be better for
+      that).
+      Always count as disabled, which
+      means the "Set tag", "Toggle
+      Tag" options and "Close menu
+      when activated" bits are
+      ignored.
+      (Warning: this used to be
+      called "Unselectable", don't
+      confuse that with the below...)
+    *Can't be selected:
+      Menu items which can't be
+      selected with keyboard or mouse
+      controls. They can still be
+      forcibly selected with the
+      "select menu item" command.
+
+  *Special Screen - This provides
+   access to all the standard
+   built-in special menus.
+
+    *Items
+    *Spells
+    *Status
+    *Equip
+    *Order
+    *Team
+    *Order/Team (either the Team menu
+      if the "Hero Swapping Always
+      Available" general preference
+      bitset is turned on, otherwise
+      the Order menu)
+    *Map (if allowed in the Map
+      General Settings)
+    *Save (if allowed in the Map
+      General settings)
+    *Load
+    *Quit
+    *Volume [Obsolete]
+      This lets you adjust the music
+      volume, and pressing Enter
+      opens a new menu with Music
+      and Sound Volume options.
+    *Music Volume
+    *Sound Volume
+    *Map (even if not allowed in Map
+      General Settings)
+    *Save (even if not allowed in Map
+      General Settings)
+    *Margins
+      An option to adjust margins at
+      the edges of the screen, when
+      playing a game on a console
+      like the Ouya which displays on
+      a TV (Only appears on consoles)
+    *Purchases
+      (Appears only if a store has
+      been set in the In-App
+      Purchases menu.)
+    *Fullscreen
+      (Appears only if playing
+      windowed, and fullscreen is
+      supported)
+    *Windowed
+      (Appears only if playing
+      fullscreen, and it is
+      supported)
+      You must add BOTH Fullscreen
+      and Windowed menu items next to
+      each other to allow players to
+      switch to-and-fro.
+
+  *Go To Menu - This menu item will
+   jump to another menu when a player
+   selects it. Use the subtype to
+   select which menu.
+
+  *Show Text Box - Cause a text box
+   to be displayed. Use subtype to
+   select which box. Note that if the
+   menu has the "allow gameplay &
+   scripts" bitset turned OFF then
+   the text box will not appear until
+   after the menu has closed. You may
+   want to use the "Close menu if
+   selected" menu item bitset to
+   avoid that problem. Also note that
+   if the "allow gameplay & scripts"
+   bitset is turned ON, the text box
+   will appear layered underneath
+   the open menu.
+   Press ENTER to browse for the text
+   box, or hold CTRL or SHIFT with
+   ENTER/SPACE/CLICK to edit the text
+   box, or INSERT or + to quickly add
+   a new text box.
+
+  *Run script - Press ENTER on the
+   subtype to browse a list of
+   scripts. Note that as with text
+   boxes, if the "allow gameplay &
+   scripts" bitset is OFF then the
+   script will not start until the
+   menu has closed.
+   If you select a script, then the
+   arguments that will be passed to
+   it are displayed underneath. Note
+   that the arguments change based
+   on the "Allow Gameplay & Scripts"
+   menu bitset and "Close menu if
+   selected" menu item bitset!
+
+
+Color: The normal text color. Each menu has its own default color. Press ENTER or SPACE for a color browser. You can also select a UI color (numbers below zero).
+
+Disabled Color: The text color when the menu item is disabled. Each menu has its own default disabled color. Press ENTER or SPACE for a color browser. You can also select a UI color (numbers below zero).
+
+*Enable if Tag - Press ENTER or SPACE to browse a list of tags. If you specify one or more tags conditions they must all be true for the menu item to be enabled.  Depending on the "Hide if disabled" bitset, disabled items are greyed out or hidden. Press - to toggle between requiring a tag to be ON or OFF.
+
+*Set Tag - This tag will be turned ON or OFF when the menu item is used. Press ENTER or SPACE to browse tags. Press - to toggle between turning a tag ON and turning it OFF.
+
+*Toggle Tag - This tag will be switch OFF if it is ON and ON if it is OFF whenever this menu item is used. Press ENTER or SPACE to browse tags.
+
+*Bitsets - See the help screen in this submenu for details.
+
+*Extra Data - There are 3 pieces of extra data that you can attach to each menu item. These are just numbers. They don't mean anything unless you use them for your own special purposes from a plotscript. They are passed to triggered scripts as arguments if the menu bitset "Allow gameplay & scripts" is off.

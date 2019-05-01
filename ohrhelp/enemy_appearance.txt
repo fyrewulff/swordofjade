@@ -1,0 +1,21 @@
+This is the enemy appearance editor.
+
+Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate the menu.
+
+Use the Left and Right arrow keys to change values.
+
+Hold ALT to see the name of the enemy you are editing. While holding ALT, you can use the left and right arrow keys to change which enemy you are editing, or you can type in an enemy ID number.
+
+Picture Size: This can be "small" "medium" or "big" (see Edit Graphics menu).
+
+Picture: This is the ID number of the sprite that will be used for this enemy. You will see a preview in the bottom right.
+
+Palette: "default" is the palette you used to draw the sprite, but if you want to, you can change it by typing in a palette number or pressing ENTER or SPACE to browse 16-color palettes.
+
+Death Animation: "Global default" means that the death animation setting from the "General Game Data"  menu will be used. Try out the fade types yourself to get an idea how they look -- you can press ENTER to test.
+
+Death Animation Ticks: Allows you to adjust the length of the death animation. 1 second is roughly equal to 18 game ticks.
+
+Death Sound Effect: This sound will be played when the enemy dies.
+
+Cursor Offset: This changes the position of the player's cursor when they are targetting this enemy.
