@@ -3,6 +3,8 @@ The repository for the video game Sword of Jade. This repository contains everyt
 
 The binary files are GPL licensed. Please see the README files for where to obtain sources and more information. The game runs on the OHRRPGCE engine, a free engine geared towards making RPG style games.
 
+Note that this currently requires the latest nightly version of the engine. It will likely not work on the last stable.
+
 The data for Sword of Jade (either represented as sword-of-jade.rpgdir or sword-of-jade.rpg) is -NOT- GPL. However, you are free to edit, remix, change or update Sword of Jade as you see fit, as long as you clarify that your version is not officially endorsed and is non-canon. If we feel your usage of Sword of Jade is harmful to us or the game, we reserve the right to ask your version to be taken down and/or removed.
 
 Please note that due to how the game was developed, the music soundtracks in the game are all under various methods of licensing. While we have permission to distribute the tracks with the game as of December 15, 2018, this permission does not automatically extend to third party distributions. 
