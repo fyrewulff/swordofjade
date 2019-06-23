@@ -2,6 +2,12 @@
 #AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 #..................
 #MORE SCRIPTS!
+#JOYOUS
+#HOORAY
+#HURRAY
+#FOR GENOCIDE!!
+#ARGH
+#DEATH TO SARCASM
 
 define script(autonumber,innrest,0)
 
@@ -5390,7 +5396,7 @@ variable (spot)
 set variable (spot,80)
 
 do sk it pal refresh
-set color(spot)
+set color_(spot)
 update palette
 
 set variable(flash,0)
@@ -5408,7 +5414,7 @@ then(
 	then(
 	set variable(spot,spot--3)
 	do sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette	
 	)
 )
@@ -5420,7 +5426,7 @@ then(
 		else( if( spot==94 ) then( set variable(spot,spot+1) )
 		else( set variable(spot,spot+3)))
 	do sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -5430,7 +5436,7 @@ then(
 	then(
 	set variable(spot,spot--1)
 	do sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -5440,7 +5446,7 @@ then(
 	then(
 	set variable(spot,spot+1)
 	do sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -5689,7 +5695,7 @@ variable (spot)
 set variable (spot,80)
 
 mi sk it pal refresh
-set color(spot)
+set color_(spot)
 update palette
 
 set variable(flash,0)
@@ -5712,7 +5718,7 @@ then(
 		if ( spot==95 ) then ( set variable(spot, spot--1) )
 		else ( set variable(spot,spot--3) ) ))
 	mi sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette	
 	)
 )
@@ -5727,7 +5733,7 @@ then(
 		if ( spot==85 ) then( set variable(spot, spot+5) )
 		else( set variable(spot, spot+3))))
 	mi sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -5737,7 +5743,7 @@ then(
 	then(
 	set variable(spot,spot--1)
 	mi sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -5747,7 +5753,7 @@ then(
 	then(
 	set variable(spot,spot+1)
 	mi sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -5997,7 +6003,7 @@ variable (spot)
 set variable (spot,80)
 
 jo sk it pal refresh
-set color(spot)
+set color_(spot)
 update palette
 
 set variable(flash,0)
@@ -6016,7 +6022,7 @@ then(
 		if ( spot==91 ,or, spot==92 ,or, spot==93 ,or, spot==94 ,or, spot==95 ) then ( set variable(spot, spot--2) )
 		else ( set variable(spot,spot--3) )
 	jo sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette	
 	)
 )
@@ -6029,7 +6035,7 @@ then(
 		if ( spot==88 ,or, spot==89 ,or, spot==90 ,or, spot==91 ,or, spot==92 ,or, spot==93 ) then( set variable(spot, spot+2) )
 		else( set variable(spot, spot+3)))
 	jo sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -6039,7 +6045,7 @@ then(
 	then(
 	set variable(spot,spot--1)
 	jo sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -6049,7 +6055,7 @@ then(
 	then(
 	set variable(spot,spot+1)
 	jo sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -6298,7 +6304,7 @@ variable (spot)
 set variable (spot,80)
 
 py sk it pal refresh
-set color(spot)
+set color_(spot)
 update palette
 
 set variable(flash,0)
@@ -6321,7 +6327,7 @@ then(
 		if ( spot==91 ) then( set variable(spot, spot--6) )
 		else ( set variable(spot,spot--3) ) ))
 	py sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette	
 	)
 )
@@ -6336,7 +6342,7 @@ then(
 		if ( spot==85 ) then( set variable(spot, spot+6) )
 		else( set variable(spot, spot+3))))
 	py sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -6346,7 +6352,7 @@ then(
 	then(
 	set variable(spot,spot--1)
 	py sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )
@@ -6356,7 +6362,7 @@ then(
 	then(
 	set variable(spot,spot+1)
 	py sk it pal refresh
-	set color(spot)
+	set color_(spot)
 	update palette
 	)
 )

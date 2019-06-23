@@ -2783,29 +2783,41 @@ if(herox(0)==149,and,heroy(0)==20) then(
 else(
 #Scarf 1
 if(herox(0)==162,and,heroy(0)==57) then(tb(7466))
-)else(
+)
+do(
 if(herox(0)==136,and,heroy(0)==20) then(tb(7465))
-)else(
+)
+do(
 if(herox(0)==138,and,heroy(0)==20) then(tb(7461))
-)else(
+)
+do(
 if(herox(0)==140,and,heroy(0)==20) then(tb(7464))
-)else(
+)
+do(
 if(herox(0)==142,and,heroy(0)==15) then(tb(7471))
-)else(
+)
+do(
 if(herox(0)==148,and,heroy(0)==17) then(tb(7459))
-)else(
+)
+do(
 if(herox(0)==150,and,heroy(0)==17) then(tb(7470))
-)else(
+)
+do(
 if(herox(0)==145,and,heroy(0)==20) then(tb(7463))
-)else(
+)
+do(
 if(herox(0)==147,and,heroy(0)==20) then(tb(7460))
-)else(
+)
+do(
 if(herox(0)==151,and,heroy(0)==20) then(tb(7467))
-)else(
+)
+do(
 if(herox(0)==148,and,heroy(0)==23) then(tb(7469))
-)else(
+)
+do(
 if(herox(0)==150,and,heroy(0)==23) then(tb(7462))
-)else(
+)
+do(
 if(herox(0)==152,and,heroy(0)==23) then(tb(7468))
 )
 
@@ -4814,7 +4826,8 @@ if(herox(0)==9,and,heroy(0)==16) then(
 	)
 	else(tb(84))
 )
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==53) then(
 set hero direction(0,up)
 	if (check tag(302)==false) then(
@@ -4900,7 +4913,8 @@ set tag(301,1)
 get item(205,1)
 tb(6658)
 )
-)else(
+)
+do(
 #Shadow icon
 if(herox(0)==60,or,herox(0)==61,or,herox(0)==62) then(
 set npc position(npc at spot(61,43),0,2)
@@ -4908,7 +4922,8 @@ set tag(303,1)
 get item(207,1)
 tb(6660)
 )
-)else(
+)
+do(
 #Phantasm icon
 if(herox(0)==97,or,herox(0)==98,or,herox(0)==99) then(
 set npc position(npc at spot(98,19),0,2)
@@ -13892,62 +13907,74 @@ else(
 if((herox(0)==15,and,heroy(0)==52),or,(herox(0)==16,and,heroy(0)==51),or,(herox(0)==15,and,heroy(0)==66),or,(herox(0)==16,and,heroy(0)==65)) then(
 	tb(7111)
 )
-)else(
+)
+do(
 #art house
 if((herox(0)==28,and,heroy(0)==52),or,(herox(0)==29,and,heroy(0)==51),or,(herox(0)==28,and,heroy(0)==50)) then(
 	tb(7112)
 )
-)else(
+)
+do(
 #avis shop
 if((herox(0)==34,and,heroy(0)==36),or,(herox(0)==33,and,heroy(0)==35),or,(herox(0)==34,and,heroy(0)==34)) then(
 	tb(7113)
 )
-)else(
+)
+do(
 #cyport central, up to cyport north
 if((herox(0)==53,and,heroy(0)==32),or,(herox(0)==54,and,heroy(0)==33)) then(
 	tb(7114)
 )
-)else(
+)
+do(
 #inn
 if((herox(0)==64,and,heroy(0)==48),or,(herox(0)==65,and,heroy(0)==47),or,(herox(0)==64,and,heroy(0)==46)) then(
 	tb(7115)
 )
-)else(
+)
+do(
 #cyport central, --> rorc mountains
 if((herox(0)==74,and,heroy(0)==48),or,(herox(0)==73,and,heroy(0)==47),or,(herox(0)==74,and,heroy(0)==60),or,(herox(0)==73,and,heroy(0)==61),or,(herox(0)==74,and,heroy(0)==62)) then(
 	tb(7116)
 )
-)else(
+)
+do(
 #bounty office
 if((herox(0)==67,and,heroy(0)==58),or,(herox(0)==66,and,heroy(0)==59),or,(herox(0)==67,and,heroy(0)==60)) then(
 	tb(7117)
 )
-)else(
+)
+do(
 #town hall left sign post
 if((herox(0)==54,and,heroy(0)==64),or,(herox(0)==53,and,heroy(0)==65),or,(herox(0)==54,and,heroy(0)==66),or,(herox(0)==55,and,heroy(0)==65,and,herodirection(0)==left)) then(
 	tb(7118)
 )
-)else(
+)
+do(
 #town hall right sign post
 if((herox(0)==56,and,heroy(0)==64),or,(herox(0)==57,and,heroy(0)==65),or,(herox(0)==56,and,heroy(0)==66),or,(herox(0)==55,and,heroy(0)==65,and,herodirection(0)==right)) then(
 	tb(7119)
 )
-)else(
+)
+do(
 #dao's domain
 if((herox(0)==45,and,heroy(0)==77),or,(herox(0)==46,and,heroy(0)==78),or,(herox(0)==45,and,heroy(0)==79)) then(
 	tb(7120)
 )
-)else(
+)
+do(
 #cyport central, down to fralin
 if((herox(0)==34,and,heroy(0)==88),or,(herox(0)==33,and,heroy(0)==89),or,(herox(0)==34,and,heroy(0)==90)) then(
 	tb(7121)
 )
-)else(
+)
+do(
 #items, sparra and talon
 if((herox(0)==32,and,heroy(0)==65),or,(herox(0)==33,and,heroy(0)==66),or,(herox(0)==32,and,heroy(0)==67)) then(
 	tb(7122)
 )
-)else(
+)
+do(
 #fabric imports
 if((herox(0)==21,and,heroy(0)==63),or,(herox(0)==22,and,heroy(0)==64),or,(herox(0)==21,and,heroy(0)==65)) then(
 	tb(7123)
@@ -16888,17 +16915,23 @@ script, cybooks, begin
 if(herox(0)==1,and,heroy(0)==92) then(tb(7615))
 else(
 if(herox(0)==2,and,heroy(0)==92) then(tb(7616))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==92) then(tb(7617))
-)else(
+)
+do(
 if(herox(0)==5,and,heroy(0)==92) then(tb(7618))
-)else(
+)
+do(
 if(herox(0)==1,and,heroy(0)==95) then(tb(7619))
-)else(
+)
+do(
 if(herox(0)==2,and,heroy(0)==95) then(tb(7620))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==95) then(tb(7621))
-)else(
+)
+do(
 if(herox(0)==5,and,heroy(0)==95) then(tb(7622))
 )
 

@@ -1658,133 +1658,155 @@ pan camera(down,12,20)
 walk hero (0,down,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==26,and,heroy(0)==6) then(
 pan camera(left,18,20)
 walk hero (0,left,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==7) then(
 pan camera(down,12,20)
 walk hero (0,down,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==28,and,heroy(0)==6) then(
 pan camera(right,18,20)
 walk hero (0,right,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==44,and,heroy(0)==6) then(
 pan camera(left,18,20)
 walk hero (0,left,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==7) then(
 pan camera(down,12,20)
 walk hero (0,down,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==17) then(
 pan camera(up,12,20)
 walk hero (0,up,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==10,and,heroy(0)==18) then(
 pan camera(right,18,20)
 walk hero (0,right,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==19) then(
 pan camera(down,12,20)
 walk hero (0,down,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==17) then(
 pan camera(up,12,20)
 walk hero (0,up,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==28,and,heroy(0)==18) then(
 pan camera(right,18,20)
 walk hero (0,right,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==19) then(
 pan camera(down,12,20)
 walk hero (0,down,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==26,and,heroy(0)==18) then(
 pan camera(left,18,20)
 walk hero (0,left,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==17) then(
 pan camera(up,12,20)
 walk hero (0,up,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==44,and,heroy(0)==18) then(
 pan camera(left,18,20)
 walk hero (0,left,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==19) then(
 pan camera(down,12,20)
 walk hero (0,down,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==29) then(
 pan camera(up,12,20)
 walk hero (0,up,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==10,and,heroy(0)==30) then(
 pan camera(right,18,20)
 walk hero (0,right,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==26,and,heroy(0)==30) then(
 pan camera(left,18,20)
 walk hero (0,left,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==29) then(
 pan camera(up,12,20)
 walk hero (0,up,11)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==28,and,heroy(0)==30) then(
 pan camera(right,18,20)
 walk hero (0,right,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==44,and,heroy(0)==30) then(
 pan camera(left,18,20)
 walk hero (0,left,17)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==29) then(
 pan camera(up,12,20)
 walk hero (0,up,11)
@@ -2298,10 +2320,12 @@ script, poff, begin
  else(
  if (check tag (4)==true) then(
   set variable (paletteoffset,0))
- )else(
+ )
+do(
  if (check tag (5)==true) then(
   set variable (paletteoffset,1))
- )else(
+ )
+do(
  if (check tag (6)==true) then(
   set variable (paletteoffset,2))
  )
@@ -2363,7 +2387,8 @@ walk hero (0,right,18)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==76,and,heroy(0)==10) then(
 set hero speed (0,10)
 pan camera (left,18,20)
@@ -2371,7 +2396,8 @@ walk hero (0,left,18)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==76,and,heroy(0)==11) then(
 set hero speed (0,10)
 pan camera (left,18,20)
@@ -2379,7 +2405,8 @@ walk hero (0,left,18)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==94,and,heroy(0)==26) then(
 set hero speed (0,10)
 pan camera (down,9,20)
@@ -2387,7 +2414,8 @@ walk hero (0,down,9)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==94,and,heroy(0)==34) then(
 set hero speed (0,10)
 pan camera (up,9,20)
@@ -2395,7 +2423,8 @@ walk hero (0,up,9)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==92,and,heroy(0)==63) then(
 
 if(check tag(204),and,check tag(277)==false,and,check tag(278)==false) then(dackenmorph)
@@ -2419,7 +2448,8 @@ wait for hero(0)
 camera follows hero(0))
 
 )
-)else(
+)
+do(
 if (herox(0)==93,and,heroy(0)==63) then(
 
 if(check tag(204),and,check tag(277)==false,and,check tag(278)==false) then(dackenmorph)
@@ -2443,7 +2473,8 @@ wait for hero(0)
 camera follows hero(0))
 
 )
-)else(
+)
+do(
 if (herox(0)==94,and,heroy(0)==63) then(
 
 if(check tag(204),and,check tag(277)==false,and,check tag(278)==false) then(dackenmorph)
@@ -2541,7 +2572,8 @@ set hero frame(0,0)
 )
 
 )
-)else(
+)
+do(
 if (herox(0)==127,and,(heroy(0)==52,or,heroy(0)==53)) then(
 set hero speed (0,10)
 pan camera (right,17,20)
@@ -2549,7 +2581,8 @@ walk hero (0,right,17)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==143,and,(heroy(0)==52,or,heroy(0)==53)) then(
 set hero speed (0,10)
 pan camera (left,17,20)
@@ -2557,7 +2590,8 @@ walk hero (0,left,17)
 wait for hero (0)
 set hero speed(0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==43,and,heroy(0)==67) then(
 set hero speed (0,10)
 pan camera (up,9,20)
@@ -2565,7 +2599,8 @@ walk hero (0,up,9)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==43,and,heroy(0)==59) then(
 set hero speed (0,10)
 pan camera (down,9,20)
@@ -2573,7 +2608,8 @@ walk hero (0,down,9)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==115,and,heroy(0)==36) then(
 pan camera(south,0,0)
 walk hero(0,up,5)
@@ -2590,7 +2626,8 @@ walk hero(0,up,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==162,and,heroy(0)==89) then(
 pan camera(south,0,0)
 walk hero(0,down,5)
@@ -2647,7 +2684,8 @@ wait(3)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==125,and,heroy(0)==80) then(
 
 if(check tag(244),and,check tag(245)==false) then(forestpasswobbler)
@@ -2671,7 +2709,8 @@ camera follows hero(0)
 )
 
 )
-)else(
+)
+do(
 if (herox(0)==125,and,heroy(0)==81) then(
 
 if(check tag(244),and,check tag(245)==false) then(forestpasswobbler)
@@ -2695,7 +2734,8 @@ camera follows hero(0)
 )
 
 )
-)else(
+)
+do(
 if (herox(0)==61,and,heroy(0)==80) then(
 pan camera(south,0,0)
 walk hero(0,right,5)
@@ -2713,7 +2753,8 @@ wait(3)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==61,and,heroy(0)==81) then(
 pan camera(south,0,0)
 walk hero(0,right,5)
@@ -2787,7 +2828,8 @@ camera follows hero)
 else(meetskyler)
 
 )
-)else(
+)
+do(
 if (herox(0)==162,and,heroy(0)==77) then(
 	if(check tag(204)) then(
 	palout(1)
@@ -2803,13 +2845,16 @@ if (herox(0)==162,and,heroy(0)==77) then(
 	wait for text box
 	)
 )
-)else(
+)
+do(
 if (herox(0)==107,and,heroy(0)==40,and,check tag(285)==false) then(
 fralinmanx)
-)else(
+)
+do(
 if(herox(0)==57,and,heroy(0)==36,and,check tag(294)==false,and,check tag(246)==false) then(
 badadvice2)
-)else(
+)
+do(
 if(herox(0)==162,and,heroy(0)==56) then(
 palout(2)
 teleport to map(69,3,6)
@@ -2823,7 +2868,8 @@ walk hero(0,up,2)
 wait for hero(0)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==6,and,check tag(651)==false) then(
 	set tag(651,1)
 	get item(3,1)
@@ -2843,97 +2889,114 @@ if (herox(0)==94,and,heroy(0)==13) then(
 palout(1)
 teleport to map (currentmap+4,5,25)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==87,and,heroy(0)==42) then(
 palout(1)
 teleport to map (currentmap+4,7,60)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==85,and,heroy(0)==56) then(
 palout(1)
 teleport to map (currentmap+4,11,80)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==104,and,heroy(0)==54) then(
 palout(1)
 teleport to map (currentmap+4,9,101)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==105,and,heroy(0)==54) then(
 palout(1)
 teleport to map (currentmap+4,10,101)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==107,and,heroy(0)==40) then(
 palout(1)
 teleport to map (currentmap+4,3,118)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==122,and,heroy(0)==58) then(
 palout(1)
 teleport to map (currentmap+4,3,135)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==112,and,heroy(0)==64) then(
 palout(1)
 teleport to map (currentmap+4,3,153)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==159,and,heroy(0)==21) then(
 palout(1)
 teleport to map (currentmap+4,3,170)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==133,and,heroy(0)==79) then(
 palout(1)
 teleport to map (currentmap+4,4,187)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==57,and,heroy(0)==36) then(
 palout(1)
 teleport to map (currentmap+4,3,204)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==25,and,heroy(0)==79) then(
 palout(1)
 teleport to map (currentmap+4,3,221)
 palin(1))
-)else(
+)
+do(
 #farmer's house, 6 gold
 if(herox(0)==53,and,heroy(0)==6,and,check tag(718)==false) then(
 	set tag(718,1)
 	get money(6)
 	tb(8272)
 )
-)else(
+)
+do(
 #grin house, 1 Up+
 if(herox(0)==27,and,heroy(0)==74,and,check tag(719)==false) then(
 	set tag(719,1)
 	get item(56,1)
 	tb(8273)
 )
-)else(
+)
+do(
 #butter house, 2 HP
 if(herox(0)==82,and,heroy(0)==35,and,check tag(720)==false) then(
 	set tag(720,1)
 	get item(50,2)
 	tb(8274)
 )
-)else(
+)
+do(
 #bar, 9 gold
 if(herox(0)==81,and,heroy(0)==49,and,check tag(721)==false) then(
 	set tag(721,1)
 	get money(9)
 	tb(8275)
 )
-)else(
+)
+do(
 #manx's house, 1 HP+
 if(herox(0)==109,and,heroy(0)==35,and,check tag(722)==false) then(
 	set tag(722,1)
 	get item(51,1)
 	tb(8276)
 )
-)else(
+)
+do(
 #graveyard, 3 HP
 if(herox(0)==164,and,heroy(0)==16,and,check tag(723)==false) then(
 	set tag(723,1)
@@ -2991,10 +3054,12 @@ palin(2)
 walk hero(0,down,4)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(check tag(267),and,check tag(270)==false,and,check tag(6)==false,and,herox(0)==3,and,heroy(0)==154) then(
 )
-)else(
+)
+do(
 if (herox(0)==1,and,heroy(0)==234) then(
 pan camera(south,0,0)
 walk hero(0,up,3)
@@ -3010,7 +3075,8 @@ palin(2)
 walk hero(0,up,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==1,and,heroy(0)==253) then(
 
 if(check tag(278),and,check tag(279)==false) then(dackenmorph)
@@ -3031,7 +3097,8 @@ wait for hero(0)
 camera follows hero(0))
 
 )
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==119,and,check tag(45),and,check tag(285)==false) then(fralinmanx)
 )
 end
@@ -3047,38 +3114,45 @@ if (herox(0)==5,and,heroy(0)==26) then(
 palout(1)
 teleport to map (currentmap--4,94,14)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==7,and,heroy(0)==61) then(
 palout(1)
 teleport to map (currentmap--4,87,43)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==11,and,heroy(0)==81) then(
 palout(1)
 teleport to map (currentmap--4,85,57)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==102) then(
 palout(1)
 teleport to map (currentmap--4,104,55)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==10,and,heroy(0)==102) then(
 palout(1)
 teleport to map (currentmap--4,105,55)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==119) then(
 palout(1)
 camera follows hero(0)
 teleport to map (currentmap--4,107,41)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==136) then(
 palout(1)
 teleport to map (currentmap--4,122,59)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==154) then(
 	if(check tag(267),and,check tag(270)==false,and,check tag(6)==false,and,check tag(297)==false) then( thiefgetaway )
 	else(
@@ -3087,27 +3161,32 @@ if (herox(0)==3,and,heroy(0)==154) then(
 		palin(1)
 	)
 )
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==171) then(
 palout(1)
 teleport to map (currentmap--4,159,22)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==4,and,heroy(0)==188) then(
 palout(1)
 teleport to map (currentmap--4,133,80)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==205) then(
 palout(1)
 teleport to map (currentmap--4,57,37)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==222) then(
 palout(1)
 teleport to map (currentmap--4,25,80)
 palin(1))
-)else(
+)
+do(
 if (herox(0)==5,and,heroy(0)==240) then(
 palout(1)
 teleport to map (currentmap--4,162,78)
@@ -3979,7 +4058,8 @@ walk hero(0,up,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==56,and,heroy(0)==9) then(
 pan camera(south,0,0)
 walk hero(0,up,4)
@@ -4000,7 +4080,8 @@ walk hero(0,up,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==69,and,(heroy(0)==22,or,heroy(0)==23)) then(
 pan camera(right,17,20)
 set hero speed(0,10)
@@ -4008,7 +4089,8 @@ walk hero(0,right,17)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==85,and,(heroy(0)==22,or,heroy(0)==23)) then(
 pan camera(left,17,20)
 set hero speed(0,10)
@@ -4057,7 +4139,8 @@ walk hero(0,down,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==63,or,herox(0)==64),and,heroy(0)==68) then(
 pan camera(up,8,20)
 set hero speed(0,10)
@@ -4065,7 +4148,8 @@ walk hero(0,up,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==79,or,herox(0)==80),and,heroy(0)==77) then(
 pan camera(down,8,20)
 set hero speed(0,10)
@@ -4073,7 +4157,8 @@ walk hero(0,down,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==79,or,herox(0)==80),and,heroy(0)==84) then(
 pan camera(up,8,20)
 set hero speed(0,10)
@@ -4081,7 +4166,8 @@ walk hero(0,up,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==49,or,herox(0)==50),and,heroy(0)==84) then(
 pan camera(down,8,20)
 set hero speed(0,10)
@@ -4089,7 +4175,8 @@ walk hero(0,down,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==49,or,herox(0)==50),and,heroy(0)==91) then(
 pan camera(up,8,20)
 set hero speed(0,10)
@@ -4097,7 +4184,8 @@ walk hero(0,up,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==74,or,herox(0)==75),and,heroy(0)==112) then(
 pan camera(down,8,20)
 set hero speed(0,10)
@@ -4105,7 +4193,8 @@ walk hero(0,down,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==74,or,herox(0)==75),and,heroy(0)==119) then(
 pan camera(up,8,20)
 set hero speed(0,10)
@@ -4113,7 +4202,8 @@ walk hero(0,up,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==58,and,heroy(0)==49) then(
 palout(2)
 teleport to map(69,4,69)
@@ -4155,7 +4245,8 @@ walk hero(0,left,16)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==100,and,(heroy(0)==107,or,heroy(0)==108)) then(
 pan camera(right,16,20)
 set hero speed(0,10)
@@ -4163,7 +4254,8 @@ walk hero(0,right,16)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==115,and,(heroy(0)==107,or,heroy(0)==108)) then(
 pan camera(left,16,20)
 set hero speed(0,10)
@@ -4171,7 +4263,8 @@ walk hero(0,left,16)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==139,or,herox(0)==140),and,heroy(0)==105) then(
 pan camera(down,8,20)
 set hero speed(0,10)
@@ -4179,7 +4272,8 @@ walk hero(0,down,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==139,or,herox(0)==140),and,heroy(0)==112) then(
 pan camera(up,8,20)
 set hero speed(0,10)
@@ -4187,7 +4281,8 @@ walk hero(0,up,8)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==172,or,herox(0)==173),and,heroy(0)==62) then(
 focus camera(herox(0),69,20)
 set hero speed(0,10)
@@ -4195,7 +4290,8 @@ walk hero(0,down,7)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==172,or,herox(0)==173),and,heroy(0)==68) then(
 pan camera(up,11,20)
 set hero speed(0,10)
@@ -4203,7 +4299,8 @@ walk hero(0,up,7)
 wait for hero(0)
 set hero speed(0,hspeed)
 pan camera(south,0,0))
-)else(
+)
+do(
 if ((herox(0)==142,or,herox(0)==143),and,heroy(0)==61) then(
 pan camera(down,9,20)
 set hero speed(0,10)
@@ -4211,7 +4308,8 @@ walk hero(0,down,9)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==142,or,herox(0)==143),and,heroy(0)==69) then(
 pan camera(up,9,20)
 set hero speed(0,10)
@@ -4219,7 +4317,8 @@ walk hero(0,up,9)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==101,and,(heroy(0)==59,or,heroy(0)==60)) then(
 pan camera(right,18,20)
 set hero speed(0,10)
@@ -4227,7 +4326,8 @@ walk hero(0,right,18)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==118,and,(heroy(0)==59,or,heroy(0)==60)) then(
 pan camera(left,18,20)
 set hero speed(0,10)
@@ -4235,7 +4335,8 @@ walk hero(0,left,18)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==107,and,(heroy(0)==39,or,heroy(0)==40)) then(
 pan camera(right,16,20)
 set hero speed(0,10)
@@ -4243,7 +4344,8 @@ walk hero(0,right,16)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==122,and,(heroy(0)==39,or,heroy(0)==40)) then(
 pan camera(left,16,20)
 set hero speed(0,10)
@@ -4251,7 +4353,8 @@ walk hero(0,left,16)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==142,and,heroy(0)==34) then(
 pan camera(south,0,0)
 walk hero(0,right,5)
@@ -4269,7 +4372,8 @@ wait(3)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==142,and,heroy(0)==35) then(
 pan camera(south,0,0)
 walk hero(0,right,5)
@@ -4328,7 +4432,8 @@ wait(3)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==16,and,heroy(0)==123) then(
 pan camera(south,0,0)
 walk hero(0,left,5)
@@ -4346,7 +4451,8 @@ wait(3)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==16,and,heroy(0)==124) then(
 pan camera(south,0,0)
 walk hero(0,left,5)
@@ -4364,7 +4470,8 @@ wait(3)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==77,and,heroy(0)==148) then(
 suspend player
 pan camera(south,0,0)
@@ -4386,10 +4493,12 @@ palin(3)
 wait(3)
 walk hero(0,down,4)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==58,and,heroy(0)==49) then(
 camera follows hero(0))
-)else(
+)
+do(
 	if (herox(0)==129,and,heroy(0)==136) then(
 
 		if(check tag(72),and,check tag(285)) then(
@@ -4420,7 +4529,8 @@ camera follows hero(0))
 			else(tb(6642))
 		)
 	)
-)else(
+)
+do(
 	if (herox(0)==130,and,heroy(0)==136) then(
 
 		if(check tag(72),and,check tag(285)) then(
@@ -4451,7 +4561,8 @@ camera follows hero(0))
 			else(tb(6642))
 		)
 	)
-)else(
+)
+do(
 	if (herox(0)==131,and,heroy(0)==136) then(
 
 		if(check tag(72),and,check tag(285)) then(
@@ -6209,17 +6320,23 @@ script, watdundoor1, begin
 if (herox(0)==45,and,heroy(0)==73) then(mrup(-1,-1,-1))
 else(
 if (herox(0)==45,and,heroy(0)==71) then(mrdown(0,0,0))
-)else(
+)
+do(
 if (herox(0)==53,and,heroy(0)==68) then(mrright(-2,-2,-2,night))
-)else(
+)
+do(
 if (herox(0)==55,and,heroy(0)==68) then(mrleft(-1,-1,-1,afternoon))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==61) then(mrup(-1,-1,4,noon))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==59) then(mrdown(-1,-1,-1,afternoon))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==49) then(mrup(-1,-1,-1,afternoon))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==47) then(mrdown(-1,-1,4,noon))
 )
 end
@@ -6270,7 +6387,8 @@ if (herox(0)==45,and,heroy(0)==37) then(
 )
 else(
 if (herox(0)==45,and,heroy(0)==35) then(mrdown(-1,-1,-1,afternoon))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==25) then(
 	mrup(-1,-6,-6,afternoon)
 	if(check tag(66)==false) then(
@@ -6334,22 +6452,29 @@ script, watdundoor3, begin
 if (herox(0)==45,and,heroy(0)==23) then(mrdown(-3,-3,7,noon))
 else(
 if (herox(0)==45,and,heroy(0)==13) then(mrup(-7,-7,-7,night))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==11) then(mrdown(-1,-6,-6,afternoon))
-)else(
+)
+do(
 if (herox(0)==37,and,heroy(0)==43) then(mrleft(-1,-1,4,noon))
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==43) then(mrright(-1,-1,-1,afternoon))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==37) then(
 	if(check tag(214),or,checktag(72)) then(mrup(-3,-3,4))
 	else(killbutter)
 )
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==35) then(mrdown(-1,-1,4))
-)else(
+)
+do(
 if (herox(0)==19,and,heroy(0)==43) then(mrleft(-3,-3,-3,afternoon))
-)else(
+)
+do(
 if (herox(0)==17,and,heroy(0)==43) then(mrright(-1,-1,4,noon))
 )
 end
@@ -6432,11 +6557,14 @@ if (herox(0)==12,and,heroy(0)==51) then(
 	write pass block (12,43,2+8+4)
 	write pass block (12,44,0)
 	write pass block (12,45,0))
-)else(
+)
+do(
 if (herox(0)==53,and,heroy(0)==43) then(mrright(-2,-2,1))
-)else(
+)
+do(
 if (herox(0)==55,and,heroy(0)==43) then(mrleft(-1,-1,-1,afternoon))
-)else(
+)
+do(
 if (herox(0)==71,and,heroy(0)==43) then(
 	mrright(-3,-3,-3,night,5)
 	set tag(711,1)
@@ -6525,16 +6653,20 @@ if (herox(0)==63,and,heroy(0)==37) then(
 		play song(9)
 	)
 )
-)else(
+)
+do(
 if (herox(0)==63,and,heroy(0)==35) then(mrdown(-1,-1,4,noon))
-)else(
+)
+do(
 if (herox(0)==63,and,heroy(0)==25) then(
 	if(check tag(69)==false) then(stop song)
 	mrup(-1,-1,-1,afternoon)
 )
-)else(
+)
+do(
 if (herox(0)==63,and,heroy(0)==23) then(mrdown(-1,-1,4,morning))
-)else(
+)
+do(
 if (herox(0)==63,and,heroy(0)==13) then(
 	if(check tag(72)) then(mrup(-4,-4,10,noon))
 	else(
@@ -6542,9 +6674,11 @@ if (herox(0)==63,and,heroy(0)==13) then(
 		meet anon
 	)
 )
-)else(
+)
+do(
 if (herox(0)==63,and,heroy(0)==11) then(mrdown(-1,-1,-1,morning))
-)else(
+)
+do(
 if (herox(0)==39,and,heroy(0)==74) then(
 	wait(3)
 	palout(3)
@@ -6563,13 +6697,15 @@ if (herox(0)==39,and,heroy(0)==74) then(
 	set hero frame(0,0)
 	camera follows hero(0)
 	write pass block(77,149,2+4+8))
-)else(
+)
+do(
 if (herox(0)==63,and,heroy(0)==16) then(
 set pal(morning)
 set npc position(npc at spot(63,16),63,17)
 set npc position(npc at spot(0,2),62,16)
 set npc position(npc at spot(1,2),64,16))
-)else(
+)
+do(
 if ((herox(0)==63,and,heroy(0)==17),or,(herox(0)==62,or,herox(0)==64,and,heroy(0)==16)) then(
 set pal(afternoon)
 set npc position(npc at spot(63,17),63,16)
@@ -6986,19 +7122,22 @@ pan camera (down,12,10)
 walk hero (0,down,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==43,or,herox(0)==44,or,herox(0)==45,or,herox(0)==46,or,herox(0)==47),and,heroy(0)==49) then(
 pan camera (up,12,10)
 walk hero (0,up,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==43,or,herox(0)==44,or,herox(0)==45,or,herox(0)==46,or,herox(0)==47),and,heroy(0)==47) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==43,or,herox(0)==44,or,herox(0)==45,or,herox(0)==46,or,herox(0)==47),and,heroy(0)==41) then(
 variable(hxx)
 set variable(hxx,herox(0))
@@ -7013,14 +7152,16 @@ play song(94)
 palin(10)
 walk hero(0,up,2)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==25) then(
 pan camera (up,12,10)
 walk hero (0,up,3)
 wait for camera
 wait for hero (0)
 write pass block(9,23,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==23) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
@@ -7040,7 +7181,8 @@ set hero position (0,18,7)
 wait(1)
 walk hero (0,right,2)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==19,and,heroy(0)==7) then(
 walk hero (0,right,1)
 wait for hero(0)
@@ -7048,7 +7190,8 @@ set hero frame(0,0)
 jig hero(0)
 tb(1046)
 )
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==7) then(
 walk hero (0,right,1)
 pan camera (right,18,10)
@@ -7060,7 +7203,8 @@ wait(1)
 walk hero (0,down,2)
 wait for hero(0)
 write pass block(45,13,1))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==13) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -7077,14 +7221,16 @@ tb(426)
 #walk hero (0,left,2)
 #wait for hero(0)
 )
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==11) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
 wait for camera
 wait for hero(0)
 write pass block(27,13,1))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==13) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -7096,7 +7242,8 @@ tb(426)
 #wait for camera
 #wait for hero(0)
 )
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==23) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
@@ -7104,7 +7251,8 @@ wait for camera
 wait for hero(0)
 write pass block(27,25,1)
 write pass block(35,31,2+128))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==25) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -7116,7 +7264,8 @@ tb(426)
 #wait for camera
 #wait for hero(0)
 )
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==23) then(
 walk hero (0,down,2)
 pan camera (down,12,10)
@@ -7129,7 +7278,8 @@ walk hero (0,left,2)
 wait for hero(0)
 write pass block(27,25,1)
 write pass block(35,31,2+128))
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==31) then(
 walk hero(0,left,1)
 wait for hero(0)
@@ -7146,7 +7296,8 @@ tb(426)
 #walk hero (0,up,2)
 #wait for hero(0)
 )
-)else(
+)
+do(
 if (herox(0)==21,and,(heroy(0)==30,or,heroy(0)==31,or,heroy(0)==32)) then(
 walk hero (0,up,3)
 walk hero (0,left,3)
@@ -7198,7 +7349,8 @@ wait for hero(0)
 set tag(8,0)
 save game
 )
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==49) then(
 walk hero (0,up,1)
 pan camera (up,12,10)
@@ -7210,7 +7362,8 @@ wait(1)
 walk hero (0,right,2)
 wait for hero(0)
 write pass block(19,43,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==19,and,heroy(0)==43) then(
 walk hero (0,left,1)
 pan camera (left,18,10)
@@ -7221,31 +7374,36 @@ set hero position (0,9,48)
 wait(1)
 walk hero (0,down,2)
 wait for hero(0))
-)else(
+)
+do(
 if ((herox(0)==26,or,herox(0)==27,or,herox(0)==28),and,heroy(0)==47) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==26,or,herox(0)==27,or,herox(0)==28),and,heroy(0)==49) then(
 pan camera (up,12,10)
 walk hero (0,up,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==26,or,herox(0)==27,or,herox(0)==28),and,heroy(0)==59) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==26,or,herox(0)==27,or,herox(0)==28),and,heroy(0)==61) then(
 pan camera (up,12,10)
 walk hero (0,up,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==21,and,(heroy(0)==68,or,heroy(0)==69,or,heroy(0)==70)) then(
 walk hero (0,up,3)
 walk hero (0,left,3)
@@ -7447,7 +7605,8 @@ set hero position (0,9,84)
 wait(1)
 walk hero (0,down,2)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==79) then(
 walk hero (0,right,1)
 pan camera (right,18,10)
@@ -7459,7 +7618,8 @@ wait(1)
 walk hero (0,down,2)
 wait for hero(0)
 write pass block(45,85,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==85) then(
 walk hero (0,up,1)
 pan camera (up,12,10)
@@ -7470,11 +7630,13 @@ set hero position (0,36,79)
 wait(1)
 walk hero (0,left,2)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==95) then(
 slime boss fight
 )
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==103) then(
 walk hero(0,left,1)
 wait for hero(0)
@@ -7491,7 +7653,8 @@ tb(426)
 #walk hero (0,up,3)
 #wait for hero(0)
 )
-)else(
+)
+do(
 if (herox(0)==21,and,(heroy(0)==102,or,heroy(0)==103,or,heroy(0)==104)) then(
 walk hero (0,up,3)
 walk hero (0,left,3)
@@ -7529,7 +7692,8 @@ set variable(musicsave,68)
 set tag(8,0)
 save game
 )
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==121) then(
 walk hero (0,up,1)
 pan camera (up,12,10)
@@ -7541,7 +7705,8 @@ wait(1)
 walk hero (0,right,2)
 wait for hero(0)
 write pass block(19,114,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==19,and,heroy(0)==114) then(
 walk hero (0,left,1)
 pan camera (left,18,10)
@@ -7552,7 +7717,8 @@ set hero position (0,9,120)
 wait(1)
 walk hero (0,down,2)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==114) then(
 walk hero (0,right,1)
 pan camera (right,18,10)
@@ -7564,7 +7730,8 @@ wait(1)
 walk hero (0,down,2)
 wait for hero(0)
 write pass block(45,121,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==121) then(
 walk hero (0,up,1)
 pan camera (up,12,10)
@@ -7575,7 +7742,8 @@ set hero position (0,36,114)
 wait(1)
 walk hero (0,left,2)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==131) then(
 walk hero (0,down,2)
 pan camera (down,12,10)
@@ -7587,7 +7755,8 @@ wait(1)
 walk hero (0,left,2)
 wait for hero(0)
 write pass block(35,140,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==140) then(
 walk hero (0,right,1)
 pan camera (right,18,10)
@@ -7598,20 +7767,23 @@ set hero position (0,45,133)
 wait(1)
 walk hero (0,up,3)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==133) then(
 pan camera (up,12,10)
 walk hero (0,up,3)
 wait for camera
 wait for hero (0)
 write pass block(27,131,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==131) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==121) then(
 walk hero (0,up,1)
 wait for hero (0)
@@ -8271,9 +8443,11 @@ set npc frame(14,0)
 set tag(8,0)))
 else(if (npcx(16)==44,and,(npcy(16)+1)==93) then(
 write map block (44,93,16+(16*4)+1))
-)else(if (npcx(16)==45,and,(npcy(16)+1)==93) then(
+)
+do(if (npcx(16)==45,and,(npcy(16)+1)==93) then(
 write map block (45,93,16+16))
-)else(if (npcx(16)==46,and,(npcy(16)+1)==93) then(
+)
+do(if (npcx(16)==46,and,(npcy(16)+1)==93) then(
 write map block (46,93,16+(16*4)+2))
 )
 
@@ -8510,11 +8684,13 @@ else(if (herox(0)==44,and,heroy(0)==93) then(
 write map block (44,93,32)
 set hero position(0,3,3)
 over game)
-)else(if (herox(0)==45,and,heroy(0)==93) then(
+)
+do(if (herox(0)==45,and,heroy(0)==93) then(
 write map block (45,93,32)
 set hero position(0,3,3)
 over game)
-)else(if (herox(0)==46,and,heroy(0)==93) then(
+)
+do(if (herox(0)==46,and,heroy(0)==93) then(
 write map block (46,93,32)
 set hero position(0,3,3)
 over game)
@@ -9448,7 +9624,8 @@ if (herox(0)==78,and,heroy(0)==80) then(
 	palin(3)
 	wait for hero(0)
 	camera follows hero(0))
-)else(
+)
+do(
 if ((herox(0)==16,or,herox(0)==17,or,herox(0)==18),and,heroy(0)==42) then(
 	if(check tag(296)) then(
 		variable(ooo)
@@ -11264,7 +11441,8 @@ wait(3)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if((herox(0)==103,or,herox(0)==104),and,heroy(0)==26) then(
 set variable(time,0)
 pan camera(up,15,20)
@@ -11283,7 +11461,8 @@ wait(3)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==89,and,(heroy(0)==56,or,heroy(0)==57,or,heroy(0)==58,or,heroy(0)==59,or,heroy(0)==60)) then(
 set variable (time,0)
 	if(check tag(120)) then(
@@ -11306,7 +11485,8 @@ set variable (time,0)
 		tb(3808)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==75,and,(heroy(0)==56,or,heroy(0)==57,or,heroy(0)==58,or,heroy(0)==59,or,heroy(0)==60)) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -11316,7 +11496,8 @@ wait for camera
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if(herox(0)==142) then(
 	set variable (time,0)
 	if(checktag(97)) then(
@@ -11390,7 +11571,8 @@ if(herox(0)==142) then(
 		tb(6654)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==95,and,heroy(0)==56) then(
 	set variable(time,0)
 	if(check tag(77)) then(
@@ -11416,48 +11598,62 @@ teleport to map(currentmap+4,3,7))
 else(
 if(herox(0)==112,and,heroy(0)==48) then(
 teleport to map(currentmap+4,2,23))
-)else(
+)
+do(
 if(herox(0)==120,and,heroy(0)==48) then(
 teleport to map(currentmap+4,3,40)
 if(check tag(349)==false) then(write map block(4,36,read map block(3,36)))
 )
-)else(
+)
+do(
 if(herox(0)==108,and,heroy(0)==56) then(
 teleport to map(currentmap+4,3,57))
-)else(
+)
+do(
 if(herox(0)==115,and,heroy(0)==56) then(
 teleport to map(currentmap+4,3,90))
-)else(
+)
+do(
 if(herox(0)==124,and,heroy(0)==56) then(
 teleport to map(currentmap+4,3,73))
-)else(
+)
+do(
 if(herox(0)==111,and,heroy(0)==64) then(
 teleport to map(currentmap+4,3,106))
-)else(
+)
+do(
 if(herox(0)==120,and,heroy(0)==64) then(
 teleport to map(currentmap+4,3,123))
-)else(
+)
+do(
 if(herox(0)==66,and,heroy(0)==68) then(
 teleport to map(currentmap+4,3,158))
-)else(
+)
+do(
 if(herox(0)==48,and,heroy(0)==78) then(
 teleport to map(currentmap+4,6,175))
-)else(
+)
+do(
 if(herox(0)==56,and,heroy(0)==78) then(
 teleport to map(currentmap+4,14,175))
-)else(
+)
+do(
 if(herox(0)==26,and,heroy(0)==78) then(
 teleport to map(currentmap+4,6,193))
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==78) then(
 teleport to map(currentmap+4,13,193))
-)else(
+)
+do(
 if(herox(0)==23,and,heroy(0)==57) then(
 teleport to map(currentmap+4,7,212))
-)else(
+)
+do(
 if(herox(0)==31,and,heroy(0)==42) then(
 teleport to map(currentmap+4,5,229))
-)else(
+)
+do(
 if(herox(0)==52,and,heroy(0)==42) then(
 teleport to map(currentmap+4,7,246))
 )
@@ -11494,7 +11690,8 @@ walk hero(0,right,1)
 wait for hero(0)
 set hero speed(0,hspeed)
 set variable(time,0))
-)else(
+)
+do(
 if(herox(0)==8,and,heroy(0)==189) then(
 walk hero(0,left,1)
 wait for hero(0)
@@ -11507,7 +11704,8 @@ walk hero(0,down,1)
 wait for hero(0)
 set hero speed(0,hspeed)
 set variable(time,0))
-)else(
+)
+do(
 if(herox(0)==11,and,heroy(0)==191) then(
 set hero speed(0,2)
 walk hero(0,up,2)
@@ -11517,7 +11715,8 @@ walk hero(0,left,1)
 wait for hero(0)
 set hero speed(0,hspeed)
 set variable(time,0))
-)else(
+)
+do(
 if(herox(0)==11,and,heroy(0)==189) then(
 walk hero(0,right,1)
 wait for hero(0)
@@ -11530,7 +11729,8 @@ walk hero(0,down,1)
 wait for hero(0)
 set hero speed(0,hspeed)
 set variable(time,0))
-)else(
+)
+do(
 if(herox(0)==7,and,heroy(0)==205) then(
 	set variable(time,0)
 	pan camera(south,0,0)
@@ -11553,7 +11753,8 @@ if(herox(0)==7,and,heroy(0)==205) then(
 	wait for hero(0)
 	camera follows hero
 	if(check tag(83)==false) then(scene2point4))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==36) then(
 	set variable(time,0)
 	if(check tag(349)) then(
@@ -11580,7 +11781,8 @@ if(herox(0)==4,and,heroy(0)==36) then(
 		camera follows hero(0)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==136) then(
 set variable(time,0)
 write pass block(4,137,128)
@@ -11614,52 +11816,68 @@ teleport to map(currentmap--4,96,41))
 else(
 if(herox(0)==2,and,heroy(0)==24) then(
 teleport to map(currentmap--4,112,49))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==41) then(
 teleport to map(currentmap--4,120,49))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==58) then(
 teleport to map(currentmap--4,108,57))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==74) then(
 teleport to map(currentmap--4,124,57))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==91) then(
 teleport to map(currentmap--4,115,57))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==107) then(
 teleport to map(currentmap--4,111,65))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==124) then(
 teleport to map(currentmap--4,120,65))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==142) then(
 teleport to map(currentmap--4,95,57))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==159) then(
 teleport to map(currentmap--4,66,69))
-)else(
+)
+do(
 if(herox(0)==6,and,heroy(0)==176) then(
 teleport to map(currentmap--4,48,79))
-)else(
+)
+do(
 if(herox(0)==14,and,heroy(0)==176) then(
 teleport to map(currentmap--4,56,79))
-)else(
+)
+do(
 if(herox(0)==6,and,heroy(0)==194) then(
 teleport to map(currentmap--4,26,79))
-)else(
+)
+do(
 if(herox(0)==13,and,heroy(0)==194) then(
 teleport to map(currentmap--4,33,79))
-)else(
+)
+do(
 if(herox(0)==7,and,heroy(0)==213) then(
 teleport to map(currentmap--4,23,58))
-)else(
+)
+do(
 if(herox(0)==5,and,heroy(0)==230) then(
 teleport to map(currentmap--4,31,43))
-)else(
+)
+do(
 if(herox(0)==7,and,heroy(0)==247) then(
 teleport to map(currentmap--4,52,43))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==117) then(
 camera follows hero(0)
 teleport to map(currentmap--4,120,59))
@@ -11793,7 +12011,8 @@ if(herox(0)==75,and,heroy(0)==5) then(
 	wait for hero(0)
 	set hero speed(0,hspeed)
 	camera follows hero)
-)else(
+)
+do(
 if(herox(0)==176,and,heroy(0)==130) then(
 	write pass block(75,6,0)
 	write pass block(75,7,128)
@@ -11838,7 +12057,8 @@ if(herox(0)==176,and,heroy(0)==130) then(
 	write pass block(75,6,2+4+8)
 	write pass block(75,7,0)
 	write pass block(75,8,0))
-)else(
+)
+do(
 if(herox(0)==142,and,heroy(0)==29) then(
 	pan camera(south,0,0)
 	walk hero(0,up,1)
@@ -11890,24 +12110,28 @@ if((herox(0)==42,or,herox(0)==43),and,heroy(0)==110) then(
 		set tag(309,1)
 	)
 )
-)else(
+)
+do(
 if((herox(0)==42,or,herox(0)==43),and,heroy(0)==86) then(
 	settp(-1,-1,-1)
 	tp
 )
-)else(
+)
+do(
 if((herox(0)==42,or,herox(0)==43),and,heroy(0)==85) then(
 	settp(-2,-2,-2)
 	tp
 	set pal(noon)
 )
-)else(
+)
+do(
 if((herox(0)==42,or,herox(0)==43),and,heroy(0)==63) then(
 	settp(-2,-2,-2)
 	tp
 	set pal(noon)
 )
-)else(
+)
+do(
 if((herox(0)==42,or,herox(0)==43),and,heroy(0)==62) then(
 	settp(-3,-3,-3)
 	tp
@@ -11915,12 +12139,14 @@ if((herox(0)==42,or,herox(0)==43),and,heroy(0)==62) then(
 
 	if(check tag(88)==false) then(dangle1)
 )
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==67) then(
 	settp(-4,-4,-4)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==66) then(
 	settp(-3,-3,-3)
 	set pal(afternoon)
@@ -11931,13 +12157,15 @@ if(herox(0)==3,and,heroy(0)==66) then(
 		alter npc(3,NPCstat:palette,107)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==51) then(
 	settp(-3,-3,-3)
 	tp
 	set pal(afternoon)
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==50) then(
 	settp(-4,-4,-4)
 	tp
@@ -11948,24 +12176,28 @@ if(herox(0)==75,and,heroy(0)==50) then(
 		alter npc(3,NPCstat:palette,107)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==28) then(
 	settp(-4,-4,-4)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==27) then(
 	settp(-5,-5,-5)
 	tp
 	set pal(afternoon)
 )
-)else(
+)
+do(
 if(herox(0)==176,and,heroy(0)==113) then(
 	settp(-5,-5,-5)
 	tp
 	set pal(afternoon)
 )
-)else(
+)
+do(
 if(herox(0)==176,and,heroy(0)==112) then(
 	settp(-6,-6,-6)
 	tp
@@ -11973,7 +12205,8 @@ if(herox(0)==176,and,heroy(0)==112) then(
 
 	if(check tag(88)==true,and,check tag(89)==false) then(dangle2)
 )
-)else(
+)
+do(
 if(herox(0)==210,and,(heroy(0)==109,or,heroy(0)==110)) then(
 	settp(-6,-6,-6)
 	tp
@@ -11984,7 +12217,8 @@ if(herox(0)==210,and,(heroy(0)==109,or,heroy(0)==110)) then(
 		alter npc(3,NPCstat:palette,107)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==211,and,(heroy(0)==109,or,heroy(0)==110)) then(
 	settp(-7,-7,-7)
 	tp
@@ -12009,57 +12243,68 @@ if(herox(0)==151,and,heroy(0)==107) then(
 	settp(-7,-7,-7)
 	tp
 )
-)else(
+)
+do(
 if((herox(0)==149,or,herox(0)==150),and,heroy(0)==82) then(
 	settp(-7,-7,-7)
 	tp
 )
-)else(
+)
+do(
 if((herox(0)==149,or,herox(0)==150),and,heroy(0)==81) then(
 	settp(-8,-8,-8)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==71) then(
 	settp(-8,-8,-8)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==70) then(
 	settp(-9,-9,-9)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==142,and,heroy(0)==51) then(
 	settp(-9,-9,-9)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==142,and,heroy(0)==50) then(
 	settp(-10,-10,-10)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==156,and,heroy(0)==42,and,check tag(91)==false) then(
 	settp(-10,-10,-10)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==157,and,heroy(0)==42,and,check tag(91)==false) then(
 	settp(-10,-10,-10,0,4,0)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==162,and,heroy(0)==42,and,check tag(91)==false) then(
 	settp(-10,-10,-10,0,4,0)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==163,and,heroy(0)==42,and,check tag(91)==false) then(
 	settp(-10,-10,-10,0,10,0)
 	tp
 )
-)else(
+)
+do(
 if(herox(0)==15,and,heroy(0)==22) then(
 	pan camera(south,0,0)
 	walk hero(0,down,1)
@@ -12087,7 +12332,8 @@ if(herox(0)==15,and,heroy(0)==22) then(
 	write pass block(4,37,0)
 	write pass block(4,38,0)
 )
-)else(
+)
+do(
 if(herox(0)==168,and,heroy(0)==42,and,check tag(567)==false) then(
 	set hero speed(0,4)
 	pan camera(right,6,2)
@@ -12171,37 +12417,53 @@ if(herox(0)==9,and,heroy(0)==59) then(
 	camera follows hero)
 else(
 if(herox(0)==9,and,heroy(0)==49) then(mrup(-6,-6,-6))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==47) then(mrdown(-7,-7,-7))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==42) then(mrright(-5,-5,-5,afternoon))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==42) then(mrleft(-6,-6,-6,night))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==37) then(mrup(1,-2,-2,morning,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==35) then(mrdown(-5,-5,-5,afternoon))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==30) then(mrright(1,-2,-2,morning,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==35,and,(heroy(0)==30,or,heroy(0)==31)) then(mrright(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==37,and,(heroy(0)==30,or,heroy(0)==31)) then(mrleft(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if((herox(0)==43,or,herox(0)==44),and,heroy(0)==25) then(mrup(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if((herox(0)==43,or,herox(0)==44),and,heroy(0)==23) then(mrdown(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==18) then(mrright(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==18) then(mrleft(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==25) then(mrup(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==23) then(mrdown(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==37) then(mrup(1,-2,-2,morning,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==47) then(mrdown(-4,-4,-4,afternoon))
 )
 end
@@ -12211,15 +12473,20 @@ script, gitlehtombdoor111, begin
 if(herox(0)==45,and,heroy(0)==49) then(mrup(-2,1,-2,noon))
 else(
 if(herox(0)==55,and,heroy(0)==30) then(mrleft(1,-2,-2,morning,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==18) then(mrright(-2,-2,-2,noon))
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==18) then(mrleft(1,-2,-2,morning,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==60,and,heroy(0)==13) then(mrup(1,-1,-1))
-)else(
+)
+do(
 if(herox(0)==60,and,heroy(0)==11) then(mrdown(-2,-2,-2))
-)else(
+)
+do(
 if(herox(0)==60,and,heroy(0)==6) then(
 	write pass block(60,4,128)
 	walk hero(0,up,1)
@@ -12255,7 +12522,8 @@ if(herox(0)==60,and,heroy(0)==6) then(
 	walk hero(0,down,2)
 	wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==60,and,heroy(0)==66) then(
 	write pass block(60,4,128)
 	walk hero(0,up,1)
@@ -12307,17 +12575,23 @@ if(herox(0)==60,and,heroy(0)==66) then(
 	walk hero(0,down,2)
 	wait for hero(0)
 	write pass block(60,4,0))
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==68) then(mrleft(-7,-7,-7,0,3,4,0,0))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==68) then(mrright(-6,-6,-6,0,3,6,0,0))
-)else(
+)
+do(
 if(herox(0)==43,and,heroy(0)==71) then(mrdown(-8,-8,-8,night))
-)else(
+)
+do(
 if(herox(0)==43,and,heroy(0)==73) then(mrup(-7,-7,-7,afternoon,3,4,0,0))
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==78) then(mrleft(-5,-5,-5,afternoon,3,3,0,0))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==78) then(mrright(-8,-8,-8,night))
 )
 end
@@ -12355,7 +12629,8 @@ if(herox(0)==45,and,heroy(0)==35) then(
 
 	if(check tag(99)==false) then(gitlehtombmini2)
 )
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==30) then(
 	pan camera (right,9,10)
 	walk hero (0,right,3)
@@ -12445,27 +12720,38 @@ if(herox(0)==33,and,heroy(0)==21) then(
 
 	walk hero(0,down,2)
 	wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==11) then(mrdown(1,-2,-2,morning,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==18) then(mrleft(-1,-4,-4,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==18) then(mrright(1,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==13) then(mrup(-1,-4,-4,afternoon,3,4,0,0))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==11) then(mrdown(-1,-4,-4,morning,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==4) then(mrright(-2,-2,-2,noon,3,0,6,0))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==4) then(mrleft(-1,-4,-4,afternoon,3,4,0,0))
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==4) then(mrleft(-2,-2,-2,noon,3,0,6,0))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==4) then(mrright(1,-1,-1,noon))
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==4) then(mrleft(-3,-3,-3,afternoon,3,8,2,2))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==4) then(
 	set npc position(4,83,8)
 	set npc direction(4,down)
@@ -12477,7 +12763,8 @@ if(herox(0)==71,and,heroy(0)==4) then(
 
 	mrright(-2,-2,-2,afternoon,3,4,0,0)
 )
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==4) then(
 	pan camera (left,9,10)
 	walk hero (0,left,3)
@@ -12494,9 +12781,11 @@ if(herox(0)==73,and,heroy(0)==4) then(
 	alter npc(4,NPCstat:palette,33)
 
 	wait for hero (0))
-)else(
+)
+do(
 if(herox(0)==67,and,heroy(0)==11) then(mrdown(-2,-2,-2))
-)else(
+)
+do(
 if(herox(0)==67,and,heroy(0)==13) then(mrup(1,-1,-1))
 )
 end
@@ -12506,31 +12795,44 @@ script, gitlehtombdoor222, begin
 if(herox(0)==67,and,heroy(0)==23) then(mrdown(-1,2,-2))
 else(
 if(herox(0)==67,and,heroy(0)==25) then(mrup(-2,-2,-2))
-)else(
+)
+do(
 if(herox(0)==67,and,heroy(0)==35) then(mrdown(-2,-2,-2,morning,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==67,and,heroy(0)==37) then(mrup(-1,2,-2,noon))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==16) then(mrright(-2,-2,-2,morning,3,2,0,4))
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==16) then(mrleft(-2,-2,-2,noon))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==18) then(mrright(-2,-2,-2,0,3,0,0,4))
-)else(
+)
+do(
 if(herox(0)==91,and,heroy(0)==18) then(mrleft(-2,-2,-2,0,3,2,0,4))
-)else(
+)
+do(
 if((herox(0)==79,or,herox(0)==82,or,herox(0)==83),and,heroy(0)==23) then(mrdown(-4,-4,-4,0,3,0,0,5))
-)else(
+)
+do(
 if((herox(0)==79,or,herox(0)==82,or,herox(0)==83),and,heroy(0)==25) then(mrup(-2,-2,-2,0,3,2,0,4))
-)else(
+)
+do(
 if((herox(0)==79,or,herox(0)==82,or,herox(0)==83),and,heroy(0)==35) then(mrdown(-5,-5,-5,0,3,0,0,6))
-)else(
+)
+do(
 if((herox(0)==79,or,herox(0)==82,or,herox(0)==83),and,heroy(0)==37) then(mrup(-4,-4,-4,0,3,0,0,5))
-)else(
+)
+do(
 if((herox(0)==79,or,herox(0)==82,or,herox(0)==83),and,heroy(0)==47) then(mrdown(-2,-2,-2,noon,3,0,6,3))
-)else(
+)
+do(
 if((herox(0)==79,or,herox(0)==82,or,herox(0)==83),and,heroy(0)==49) then(mrup(-5,-5,-5,morning,3,0,0,6))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==56) then(
 	mrright(-4,-4,-4,0,3,2,2,2)
 	if(check tag(581)==false) then(
@@ -12544,11 +12846,14 @@ if(herox(0)==89,and,heroy(0)==56) then(
 		save game
 	)
 )
-)else(
+)
+do(
 if(herox(0)==91,and,heroy(0)==56) then(mrleft(-2,-2,-2,0,3,0,6,3))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==47) then(mrdown(-4,-4,-4,0,3,2,2,2))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==37) then(
 	pan camera (up,6,10)
 	walk hero (0,up,3)
@@ -12563,7 +12868,8 @@ if(herox(0)==99,and,heroy(0)==37) then(
 	if(check tag(97)==false) then(gitlehtombgitleh)
 
 )
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==35) then(mrdown(-4,-4,-4,0,3,4,4,4))
 )
 end
@@ -12599,7 +12905,8 @@ if(herox(0)==35,and,heroy(0)==4) then(
 		wait for hero (0))
 	if(checktag(93)==false) then(gitlehtombrift)
 )
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==49) then(
 	pan camera (up,6,10)
 	walk hero (0,up,3)
@@ -18957,7 +19264,8 @@ camera follows hero(0))
 else(scenethreepointthree)
 
 )
-)else(
+)
+do(
 if(herox(0)==174,and,heroy(0)==57) then(
 
 if(check tag(131)==false) then(enteringdun3)
@@ -18981,7 +19289,8 @@ set hero speed(0,hspeed)
 )
 
 )
-)else(
+)
+do(
 if((herox(0)==14,or,herox(0)==15,or,herox(0)==16,or,herox(0)==17,or,herox(0)==18,or,herox(0)==19,or,herox(0)==20),and,heroy(0)==88) then(
 walk hero(0,down,5)
 wait(5)
@@ -18999,7 +19308,8 @@ wait for hero(0)
 set hero frame(0,0)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==79) then(
 stop song
 pan camera(up,4,4)
@@ -19023,7 +19333,8 @@ walk hero(0,up,3)
 wait for hero(0)
 set hero frame(0,0)
 )
-)else(
+)
+do(
 if(herox(0)==84,and,heroy(0)==15) then(
 	if(check tag(604)) then(
 		walk hero(0,down,1)
@@ -19120,7 +19431,8 @@ wait(2)
 palin(2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==56,and,heroy(0)==11) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -19151,16 +19463,20 @@ teleport to map(currentmap+4,3,6))
 else(
 if(herox(0)==32,and,heroy(0)==17) then(
 teleport to map(currentmap+4,6,24))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==13) then(
 teleport to map(currentmap+4,4,42))
-)else(
+)
+do(
 if(herox(0)==43,and,heroy(0)==17) then(
 teleport to map(currentmap+4,4,60))
-)else(
+)
+do(
 if(herox(0)==51,and,heroy(0)==18) then(
 teleport to map(currentmap+4,3,79))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==13) then(
 	if(check tag(385),and,check tag(392)==false) then(
 		set variable(time,0)
@@ -19175,7 +19491,8 @@ if(herox(0)==53,and,heroy(0)==13) then(
 	)
 	else(teleport to map(currentmap+4,5,95))
 )
-)else(
+)
+do(
 if(herox(0)==51,and,heroy(0)==27) then(
 	if(check tag(385),and,check tag(393)==false) then(
 		set variable(time,0)
@@ -19255,7 +19572,8 @@ wait for hero(0)
 write pass block(56,12,0)
 write pass block(56,13,0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==5,and,heroy(0)==108) then(
 	set variable(time,0)
 	if(check tag(122)) then(
@@ -19283,7 +19601,8 @@ if(herox(0)==5,and,heroy(0)==108) then(
 		set hero frame(0,0)
 		write pass block(5,124,1))
 	)
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==112) then(
 set variable(time,0)
 
@@ -19298,11 +19617,13 @@ palout(1)
 teleport to map(currentmap--4,51,28)
 palin(1)))
 
-)else(
+)
+do(
 if(herox(0)==2,and,heroy(0)==122) then(
 set variable(time,0)
 gunfight)
-)else(
+)
+do(
 if(herox(0)==5,and,heroy(0)==96) then(
 	set variable(time,0)
 	if(check tag(373),and,check tag(374),and,check tag(375)==false) then(
@@ -19329,13 +19650,16 @@ midnightraiders)
 else(teleport to map(currentmap--4,32,18))
 
 )
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==43) then(
 teleport to map(currentmap--4,35,14))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==61) then(
 teleport to map(currentmap--4,43,18))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==80) then(
 teleport to map(currentmap--4,51,19))
 )
@@ -19934,7 +20258,8 @@ manxmoon
 )
 
 )
-)else(
+)
+do(
 if(herox(0)==21,and,heroy(0)==46) then(
 set variable(time,0)
 
@@ -19951,7 +20276,8 @@ set tag(127,1)
 animals can talk)
 
 )
-)else(
+)
+do(
 if(herox(0)==28,and,heroy(0)==46) then(
 set variable(time,0)
 if(check tag(102)) then(
@@ -19968,7 +20294,8 @@ wait(2)
 walk hero(0,right,1)
 wait for hero(0))
 )
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==40) then(
 set variable(time,0)
 
@@ -20001,7 +20328,8 @@ else(
 )
 
 )
-)else(
+)
+do(
 if(herox(0)==43,and,heroy(0)==22) then(
 set variable(time,0)
 set hero speed(0,5)
@@ -20021,7 +20349,8 @@ wait for hero(0)
 set hero speed(0,5)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==50,and,heroy(0)==16) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -20031,7 +20360,8 @@ wait for camera
 wait for hero(0)
 set hero speed(0,5)
 )
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==16) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -20041,7 +20371,8 @@ wait for camera
 wait for hero(0)
 set hero speed(0,5)
 )
-)else(
+)
+do(
 if(herox(0)==49,and,(heroy(0)==45,or,heroy(0)==46,or,heroy(0)==47)) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -20060,7 +20391,8 @@ wait for hero(0)
 set hero speed(0,5)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==62,and,heroy(0)==44) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -20079,7 +20411,8 @@ wait for hero(0)
 set hero speed(0,5)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==40,and,heroy(0)==53) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -20090,7 +20423,8 @@ wait for hero(0)
 set hero speed(0,5)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==40,and,heroy(0)==59) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -20101,7 +20435,8 @@ wait for hero(0)
 set hero speed(0,5)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==50,and,heroy(0)==43) then(
 set variable(time,0)
 variable(i)
@@ -20117,7 +20452,8 @@ write pass block(50,i,128))
 set hero speed(0,5)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==50,and,heroy(0)==52) then(
 set variable(time,0)
 variable(j)
@@ -20133,7 +20469,8 @@ write pass block(50,i,128))
 set hero speed(0,5)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==41,and,heroy(0)==57) then(
 set variable(time,0)
 write pass block(40,57,0)
@@ -20146,7 +20483,8 @@ write pass block(40,57,128)
 set hero speed(0,5)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==57) then(
 set variable(time,0)
 write pass block(40,57,0)
@@ -20424,13 +20762,13 @@ end
 ###
 
 ###############################
-script, flashbackraceone, switch, begin
+script, flashbackraceone, _switch, begin
 suspend player
 suspend npcs
 
 #npc player steps on starts the race with the argument of 7
 #otherwise, it sets up the race at the end of katina chatter
-if(switch==7) then(
+if(_switch==7) then(
 
 stop song
 
@@ -21719,7 +22057,8 @@ walk hero (0,right,18)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==76,and,heroy(0)==10) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21728,7 +22067,8 @@ walk hero (0,left,18)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==76,and,heroy(0)==11) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21737,7 +22077,8 @@ walk hero (0,left,18)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==94,and,heroy(0)==26) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21746,7 +22087,8 @@ walk hero (0,down,9)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==94,and,heroy(0)==34) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21755,7 +22097,8 @@ walk hero (0,up,9)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==92,and,heroy(0)==63) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21776,7 +22119,8 @@ walk hero(0,down,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==93,and,heroy(0)==63) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21797,7 +22141,8 @@ walk hero(0,down,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==94,and,heroy(0)==63) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21818,7 +22163,8 @@ walk hero(0,down,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==19,and,heroy(0)==16) then(
 set variable(time,0)
 wait for hero(0)
@@ -21827,7 +22173,8 @@ set hero direction(0,down)
 wait(2)
 walk hero(0,right,1)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==19,and,heroy(0)==17) then(
 set variable(time,0)
 wait for hero(0)
@@ -21836,7 +22183,8 @@ set hero direction(0,down)
 wait(2)
 walk hero(0,right,1)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==127,and,(heroy(0)==52,or,heroy(0)==53)) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21845,7 +22193,8 @@ walk hero (0,right,17)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==143,and,(heroy(0)==52,or,heroy(0)==53)) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21854,7 +22203,8 @@ walk hero (0,left,17)
 wait for hero (0)
 set hero speed(0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==43,and,heroy(0)==67) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21863,7 +22213,8 @@ walk hero (0,up,9)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==43,and,heroy(0)==59) then(
 set variable (time,0)
 set hero speed (0,10)
@@ -21872,7 +22223,8 @@ walk hero (0,down,9)
 wait for hero (0)
 set hero speed (0,hspeed)
 camera follows hero)
-)else(
+)
+do(
 if (herox(0)==115,and,heroy(0)==36) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -21890,7 +22242,8 @@ walk hero(0,up,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==162,and,heroy(0)==89) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -21908,7 +22261,8 @@ walk hero(0,down,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if (herox(0)==162,and,heroy(0)==77) then(
 	set variable(time,0)
 	walk hero(0,down,1)
@@ -21916,7 +22270,8 @@ if (herox(0)==162,and,heroy(0)==77) then(
 	show text box(84)
 	wait for hero(0)
 	wait for text box)
-)else(
+)
+do(
 if(herox(0)==162,and,heroy(0)==56) then(
 set variable(time,0)
 palout(2)
@@ -21930,7 +22285,8 @@ palin(2)
 walk hero(0,up,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==6) then(
 	set variable(time,0)
 	if(check tag(651)==false) then(
@@ -21939,7 +22295,8 @@ if(herox(0)==99,and,heroy(0)==6) then(
 		tb(7828)
 	)
 )
-)else(
+)
+do(
 #farmer's house, 6 gold
 if(herox(0)==53,and,heroy(0)==6,and,check tag(718)==false) then(
 	set variable(time,0)
@@ -21947,7 +22304,8 @@ if(herox(0)==53,and,heroy(0)==6,and,check tag(718)==false) then(
 	get money(6)
 	tb(8272)
 )
-)else(
+)
+do(
 #butter house, 2 HP
 if(herox(0)==82,and,heroy(0)==35,and,check tag(720)==false) then(
 	set variable(time,0)
@@ -21955,7 +22313,8 @@ if(herox(0)==82,and,heroy(0)==35,and,check tag(720)==false) then(
 	get item(50,2)
 	tb(8274)
 )
-)else(
+)
+do(
 #bar, 9 gold
 if(herox(0)==81,and,heroy(0)==49,and,check tag(721)==false) then(
 	set variable(time,0)
@@ -21963,7 +22322,8 @@ if(herox(0)==81,and,heroy(0)==49,and,check tag(721)==false) then(
 	get money(9)
 	tb(8275)
 )
-)else(
+)
+do(
 #manx's house, 1 HP+
 if(herox(0)==109,and,heroy(0)==35,and,check tag(722)==false) then(
 	set variable(time,0)
@@ -21980,25 +22340,32 @@ teleport to map (97,6,7))
 else(
 if (herox(0)==94,and,heroy(0)==13) then(
 teleport to map (97,5,25))
-)else(
+)
+do(
 if (herox(0)==87,and,heroy(0)==42) then(
 teleport to map (97,7,60))
-)else(
+)
+do(
 if (herox(0)==85,and,heroy(0)==56) then(
 teleport to map (97,11,80))
-)else(
+)
+do(
 if (herox(0)==104,and,heroy(0)==54) then(
 teleport to map (97,9,101))
-)else(
+)
+do(
 if (herox(0)==105,and,heroy(0)==54) then(
 teleport to map (97,10,101))
-)else(
+)
+do(
 if (herox(0)==107,and,heroy(0)==40) then(
 teleport to map (97,3,118))
-)else(
+)
+do(
 if (herox(0)==122,and,heroy(0)==58) then(
 teleport to map (97,3,135))
-)else(
+)
+do(
 if (herox(0)==112,and,heroy(0)==64) then(
 teleport to map (97,3,153))
 )
@@ -22038,44 +22405,57 @@ else(
 if (herox(0)==6,and,heroy(0)==17) then(
 camera follows hero(0)
 teleport to map (97,1,36))
-)else(
+)
+do(
 if (herox(0)==5,and,heroy(0)==26) then(
 teleport to map (96,94,14))
-)else(
+)
+do(
 if (herox(0)==1,and,heroy(0)==39) then(
 camera follows hero(0)
 teleport to map (97,6,21))
-)else(
+)
+do(
 if (herox(0)==7,and,heroy(0)==61) then(
 teleport to map (96,87,43))
-)else(
+)
+do(
 if (herox(0)==11,and,heroy(0)==81) then(
 teleport to map (96,85,57))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==102) then(
 teleport to map (96,104,55))
-)else(
+)
+do(
 if (herox(0)==10,and,heroy(0)==102) then(
 teleport to map (96,105,55))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==119) then(
 teleport to map (96,107,41))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==136) then(
 teleport to map (96,122,59))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==154) then(
 teleport to map (96,112,65))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==171) then(
 teleport to map (96,159,22))
-)else(
+)
+do(
 if (herox(0)==4,and,heroy(0)==188) then(
 teleport to map (96,133,80))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==205) then(
 teleport to map (96,57,37))
-)else(
+)
+do(
 if (herox(0)==3,and,heroy(0)==222) then(
 teleport to map (96,25,80))
 )
@@ -24874,24 +25254,32 @@ if(herox(0)==45,and,heroy(0)==191) then(
 )
 else(
 if(herox(0)==45,and,heroy(0)==181) then(mrup(1,3,-5,afternoon))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==179) then(mrdown(0,0,0,noon))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==169) then(
 	mrup(-3,-1,-5)
 	alter npc(9,NPCstat:movespeed,2)
 )
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==167) then(mrdown(1,3,-5))
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==163) then(mrleft(-3,-6,-6))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==163) then(mrright(-3,-1,-5))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==157) then(mrup(5,-1,-1))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==155) then(mrdown(-3,-1,-5))
-)else(
+)
+do(
 if(herox(0)==51,and,heroy(0)==148) then(
 	write pass block(51,149,128)
 	write pass block(51,150,128)
@@ -24948,7 +25336,8 @@ if(herox(0)==51,and,heroy(0)==148) then(
 	set hero direction(0,up)
 	wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==22,and,heroy(0)==148) then(
 write pass block(22,149,128)
 write pass block(22,150,128)
@@ -25005,31 +25394,44 @@ walk hero(0,down,4)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==29,and,heroy(0)==145) then(mrup(6,-3,-4))
-)else(
+)
+do(
 if(herox(0)==29,and,heroy(0)==143) then(mrdown(3,-3,-4))
-)else(
+)
+do(
 if(herox(0)==35,and,(heroy(0)==138,or,heroy(0)==139,or,heroy(0)==140)) then(mrright(6,-3,-4))
-)else(
+)
+do(
 if(herox(0)==37,and,(heroy(0)==138,or,heroy(0)==139,or,heroy(0)==140)) then(mrleft(6,-3,-4))
-)else(
+)
+do(
 if(herox(0)==35,and,(heroy(0)==124,or,heroy(0)==125,or,heroy(0)==126,or,heroy(0)==127)) then(mrright(6,-3,-4))
-)else(
+)
+do(
 if(herox(0)==37,and,(heroy(0)==124,or,heroy(0)==125,or,heroy(0)==126,or,heroy(0)==127)) then(mrleft(6,-3,-4))
-)else(
+)
+do(
 if((herox(0)==25,or,herox(0)==26,or,herox(0)==27,or,herox(0)==28,or,herox(0)==29),and,heroy(0)==133) then(mrup(6,-3,-4))
-)else(
+)
+do(
 if((herox(0)==25,or,herox(0)==26,or,herox(0)==27,or,herox(0)==28,or,herox(0)==29),and,heroy(0)==131) then(mrdown(6,-3,-4))
-)else(
+)
+do(
 if((herox(0)==43,or,herox(0)==44,or,herox(0)==45,or,herox(0)==46,or,herox(0)==47,or,herox(0)==48),and,heroy(0)==133) then(mrup(6,-3,-4))
-)else(
+)
+do(
 if((herox(0)==43,or,herox(0)==44,or,herox(0)==45,or,herox(0)==46,or,herox(0)==47,or,herox(0)==48),and,heroy(0)==131) then(mrdown(6,-3,-4))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==119) then(mrdown(6,-3,-4))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==121) then(mrup(1,6,4))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==112) then(
 write pass block(45,113,128)
 write pass block(45,114,128)
@@ -25086,7 +25488,8 @@ walk hero(0,down,4)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==123) then(
 write pass block(9,124,128)
 write pass block(9,125,128)
@@ -25143,7 +25546,8 @@ walk hero(0,down,3)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==31,and,heroy(0)==112) then(
 write pass block(31,113,128)
 write pass block(31,114,128)
@@ -25200,7 +25604,8 @@ walk hero(0,down,4)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==112) then(
 write pass block(24,113,128)
 write pass block(24,114,128)
@@ -25257,9 +25662,11 @@ walk hero(0,down,4)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==109) then(mrup(2,0,0,noon))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==107) then(
 	mrdown
 	if(check tag(580)==false) then(
@@ -25273,9 +25680,11 @@ if(herox(0)==9,and,heroy(0)==107) then(
 		save game
 	)
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==121) then(mrup(2,0,-1))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==119) then(mrdown(6,-3,-4))
 )
 
@@ -25342,71 +25751,97 @@ wait for hero(0)
 )
 else(
 if(herox(0)==19,and,heroy(0)==102) then(mrleft(2,0,0))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==102) then(mrright(3,0,0))
-)else(
+)
+do(
 if(herox(0)==35,and,(heroy(0)==100,or,heroy(0)==101,or,heroy(0)==102,or,heroy(0)==103,or,heroy(0)==104)) then(mrright(3,0,0))
-)else(
+)
+do(
 if(herox(0)==37,and,(heroy(0)==100,or,heroy(0)==101,or,heroy(0)==102,or,heroy(0)==103,or,heroy(0)==104)) then(mrleft(3,0,0))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==97) then(mrup(2,0,0))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==95) then(mrdown(3,0,0))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==97) then(mrup(3,-3,-3))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==95) then(mrdown(3,0,0))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==85) then(mrup(7,0,0))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==83) then(mrdown(3,-3,-3))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==79) then(mrright(7,0,0))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==79) then(mrleft(14,-2,-2))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==79) then(mrright(14,-2,-2))
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==79) then(mrleft(7,0,0))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==73) then(
 	if(check tag(405)) then(mrup(8,0,0))
 	else(manxrunsaway)
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==71) then(mrdown(7,0,0))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==66) then(
 	if(check tag(405)) then(mrright(8,0,0))
 	else(manxrunsaway)
 )
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==66) then(mrleft(14,-2,-2))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==66) then(mrright(14,-2,-2))
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==66) then(
 	if(check tag(405)) then(mrleft(8,0,0))
 	else(manxrunsaway)
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==61) then(
 
 if(check tag(134)==false) then(manxhype)
 else(mrup(10,0,0))
 
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==59) then(mrdown(8,0,0))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==49) then(mrup(1,-4,-4))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==47) then(mrdown(10,0,0))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==37) then(mrup(5,1,1))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==35) then(mrdown(1,-4,-4))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==81) then(
 write pass block(4,82,128)
 write pass block(4,83,128)
@@ -25466,7 +25901,8 @@ walk hero(0,down,9)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==64) then(
 write pass block(4,65,128)
 write pass block(4,66,128)
@@ -25526,7 +25962,8 @@ walk hero(0,down,4)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==50,and,heroy(0)==81) then(
 write pass block(50,82,128)
 write pass block(50,83,128)
@@ -25586,7 +26023,8 @@ walk hero(0,down,9)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==50,and,heroy(0)==64) then(
 write pass block(50,65,128)
 write pass block(50,66,128)
@@ -25646,7 +26084,8 @@ walk hero(0,down,4)
 set hero direction(0,up)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==28) then(
 write pass block(27,29,128)
 write pass block(27,30,128)
@@ -25774,9 +26213,11 @@ write pass block(51,150,0)
 )
 else(
 if(herox(0)==91,and,heroy(0)==149) then(mrleft(-5,-5,-5))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==149) then(mrright(-5,-5,-5))
-)else(
+)
+do(
 if(herox(0)==76,and,heroy(0)==147) then(
 write pass block(22,149,128)
 write pass block(22,150,128)
@@ -25838,7 +26279,8 @@ wait for hero(0)
 write pass block(22,149,0)
 write pass block(22,150,0)
 )
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==111) then(
 write pass block(45,113,128)
 write pass block(45,114,128)
@@ -25899,17 +26341,23 @@ wait for hero(0)
 write pass block(45,113,0)
 write pass block(45,114,0)
 )
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==121) then(mrup(-5,-5,-5,afternoon))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==119) then(mrdown(-5,-7,-7,night))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==133) then(mrup(-5,-7,-7))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==131) then(mrdown(-4,-9,-9))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==138) then(mrright(-4,-9,-9))
-)else(
+)
+do(
 if(herox(0)==91,and,heroy(0)==138) then(
 	mrleft(-4,-9,-9)
 	if(check tag(582)==false) then(
@@ -25920,15 +26368,20 @@ if(herox(0)==91,and,heroy(0)==138) then(
 		set tag(582,1)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==138) then(mrright(-4,-9,-9))
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==138) then(mrleft(-4,-9,-9))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==133) then(mrup(-5,-5,-5,afternoon))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==131) then(mrdown(-4,-9,-9,night))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==122) then(
 write pass block(9,124,128)
 write pass block(9,125,128)
@@ -25990,7 +26443,8 @@ wait for hero(0)
 write pass block(9,124,0)
 write pass block(9,125,0)
 )
-)else(
+)
+do(
 if(herox(0)==85,and,heroy(0)==111) then(
 write pass block(31,113,128)
 write pass block(31,114,128)
@@ -26052,7 +26506,8 @@ wait for hero(0)
 write pass block(31,113,0)
 write pass block(31,114,0)
 )
-)else(
+)
+do(
 if(herox(0)==78,and,heroy(0)==111) then(
 write pass block(24,113,128)
 write pass block(24,114,128)
@@ -26114,19 +26569,26 @@ wait for hero(0)
 write pass block(24,113,0)
 write pass block(24,114,0)
 )
-)else(
+)
+do(
 if(herox(0)==85,and,heroy(0)==121) then(mrup(-5,-5,-5))
-)else(
+)
+do(
 if(herox(0)==85,and,heroy(0)==119) then(mrdown(-7,-7,-7))
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==114) then(mrleft(-7,-7,-7))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==114) then(mrright(-5,-5,-5))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==109) then(mrup(-5,-5,-5))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==107) then(mrdown(-7,-7,-7))
-)else(
+)
+do(
 if(herox(0)==61,and,heroy(0)==99) then(
 write pass block(7,101,128)
 write pass block(7,102,128)
@@ -26188,33 +26650,47 @@ wait for hero(0)
 write pass block(7,101,0)
 write pass block(7,102,0)
 )
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==83) then(mrdown(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==85) then(mrup(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==90) then(mrright(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==90) then(mrleft(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==81,and,heroy(0)==85) then(mrup(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==81,and,heroy(0)==83) then(mrdown(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==90) then(mrright(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==91,and,heroy(0)==90) then(mrleft(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==85) then(mrup(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==83) then(mrdown(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==95) then(mrdown(10,-4,-4))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==97) then(mrup(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==91,and,heroy(0)==102) then(mrleft(10,-4,-4))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==102) then(mrright(10,-4,-4))
 )
 end
@@ -26234,34 +26710,46 @@ script, fedoratombdoorupright1, begin
 if(herox(0)==89,and,heroy(0)==30) then(mrright(15,-2,-2))
 else(
 if(herox(0)==91,and,heroy(0)==30) then(mrleft(10,0,0))
-)else(
+)
+do(
 if(herox(0)==101,and,heroy(0)==35) then(mrdown(20,-10,-10))
-)else(
+)
+do(
 if(herox(0)==101,and,heroy(0)==37) then(mrup(15,-2,-2))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==42) then(mrright(20,-10,-10))
-)else(
+)
+do(
 if(herox(0)==91,and,heroy(0)==42) then(mrleft(20,-10,-10))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==43) then(mrright(20,-10,-10))
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==43) then(mrleft(20,-10,-10))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==37) then(mrup(20,-10,-10))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==35) then(mrdown(20,-10,-10))
-)else(
+)
+do(
 if(herox(0)==61,and,heroy(0)==25) then(mrup(15,-8,-8))
-)else(
+)
+do(
 if(herox(0)==61,and,heroy(0)==23) then(mrdown(20,-10,-10))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==20) then(
 
 if(check tag(135)==false) then(manxfight)
 else(mrright(10,-5,-5))
 
 )
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==20) then(mrleft(15,-8,-8))
 )
 end
@@ -26283,29 +26771,41 @@ script, fedoratombdoorupright3, begin
 if(herox(0)==81,and,heroy(0)==11) then(mrdown(10,-5,-5))
 else(
 if(herox(0)==81,and,heroy(0)==71) then(mrdown(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==81,and,heroy(0)==73) then(mrup(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==66) then(mrright(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==91,and,heroy(0)==66) then(mrleft(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==81,and,heroy(0)==61) then(mrup(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==81,and,heroy(0)==59) then(mrdown(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==89,and,heroy(0)==54) then(mrright(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==91,and,heroy(0)==54) then(mrleft(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==54) then(mrright(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==54) then(mrleft(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==65,and,heroy(0)==59) then(mrdown(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==65,and,heroy(0)==61) then(mrup(5,-2,-2))
-)else(
+)
+do(
 if(herox(0)==58,and,heroy(0)==80) then(
 write pass block(4,82,128)
 write pass block(4,83,128)
@@ -26371,7 +26871,8 @@ wait for hero(0)
 write pass block(4,82,0)
 write pass block(4,83,1+2+4+8)
 )
-)else(
+)
+do(
 if(herox(0)==58,and,heroy(0)==63) then(
 write pass block(4,65,128)
 write pass block(4,66,128)
@@ -26437,7 +26938,8 @@ wait for hero(0)
 write pass block(4,65,0)
 write pass block(4,66,1+2+4+8)
 )
-)else(
+)
+do(
 if(herox(0)==104,and,heroy(0)==80) then(
 write pass block(50,82,128)
 write pass block(50,83,128)
@@ -26503,7 +27005,8 @@ wait for hero(0)
 write pass block(50,82,0)
 write pass block(50,83,1+2+4+8)
 )
-)else(
+)
+do(
 if(herox(0)==104,and,heroy(0)==63) then(
 write pass block(50,65,128)
 write pass block(50,66,128)
@@ -26569,7 +27072,8 @@ wait for hero(0)
 write pass block(50,65,0)
 write pass block(50,66,1+2+4+8)
 )
-)else(
+)
+do(
 if(herox(0)==81,and,heroy(0)==27) then(
 write pass block(27,29,128)
 write pass block(27,30,128)
@@ -28504,7 +29008,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==78,and,heroy(0)==25) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -28523,7 +29028,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==78,and,heroy(0)==37) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -28542,7 +29048,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==78,and,heroy(0)==38) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -28561,7 +29068,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==78,and,heroy(0)==39) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -28589,13 +29097,16 @@ teleport to map(41+poff,4,7))
 else(
 if(herox(0)==61,and,heroy(0)==16) then(
 teleport to map(41+poff,3,24))
-)else(
+)
+do(
 if(herox(0)==56,and,heroy(0)==25) then(
 teleport to map(41+poff,4,42))
-)else(
+)
+do(
 if(herox(0)==66,and,heroy(0)==25) then(
 teleport to map(41+poff,4,60))
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==35) then(
 teleport to map(41+poff,3,77))
 )
@@ -28672,7 +29183,8 @@ wait(1)
 palin(2)
 walk hero(0,up,1)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==2,and,heroy(0)==153) then(
 	#if katina talk battle over
 	if(check tag(649)) then(
@@ -28752,7 +29264,8 @@ wait(1)
 palin(2)
 walk hero(0,up,1)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==46) then(
 palout(2)
 camera follows hero(0)
@@ -28765,7 +29278,8 @@ palin(2)
 walk hero(0,down,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==34,and,heroy(0)==57) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -28781,7 +29295,8 @@ palin(2)
 walk hero(0,up,1)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==39,and,heroy(0)==86) then(
 palout(2)
 set hero position(0,34,58)
@@ -28793,7 +29308,8 @@ palin(2)
 walk hero(0,down,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==20,and,heroy(0)==57) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -28809,7 +29325,8 @@ palin(2)
 walk hero(0,up,1)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==25,and,heroy(0)==104) then(
 palout(2)
 set hero position(0,20,58)
@@ -28821,7 +29338,8 @@ palin(2)
 walk hero(0,down,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==102) then(
 pan camera(south,0,0)
 walk hero(0,down,1)
@@ -28836,7 +29354,8 @@ wait(1)
 palin(2)
 walk hero(0,down,3)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==115) then(
 walk hero(0,up,2)
 wait for hero(0)
@@ -28851,7 +29370,8 @@ palin(2)
 walk hero(0,up,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==26,and,heroy(0)==119) then(
 stop song
 walk hero(0,down,9)
@@ -28873,7 +29393,8 @@ palin(5)
 walk hero(0,down,4)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==26,and,heroy(0)==98) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -28889,7 +29410,8 @@ palin(2)
 walk hero(0,up,1)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==40,and,heroy(0)==104) then(
 palout(2)
 set hero position(0,26,99)
@@ -28901,7 +29423,8 @@ palin(2)
 walk hero(0,down,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==38,and,heroy(0)==98) then(
 pan camera(south,0,0)
 walk hero(0,up,3)
@@ -28916,7 +29439,8 @@ wait(1)
 palin(2)
 walk hero(0,up,2)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==38,and,heroy(0)==119) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -28931,7 +29455,8 @@ palin(2)
 walk hero(0,down,4)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==40,and,heroy(0)==115) then(
 pan camera(south,0,0)
 walk hero(0,up,2)
@@ -28946,7 +29471,8 @@ wait(1)
 palin(2)
 walk hero(0,up,2)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==40,and,heroy(0)==135) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -28960,7 +29486,8 @@ wait(1)
 palin(2)
 walk hero(0,down,3)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==38,and,heroy(0)==131) then(
 pan camera(south,0,0)
 walk hero(0,up,2)
@@ -28975,7 +29502,8 @@ wait(1)
 palin(2)
 walk hero(0,up,2)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==38,and,heroy(0)==150) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -28989,7 +29517,8 @@ wait(1)
 palin(2)
 walk hero(0,down,3)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==3) then(
 set npc position(10,52,22)
 walk hero(0,up,1)
@@ -29005,7 +29534,8 @@ palin(3)
 walk hero(0,up,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==52,and,heroy(0)==46) then(
 palout(3)
 camera follows hero(0)
@@ -29017,7 +29547,8 @@ wait(1)
 palin(3)
 walk hero(0,down,2)
 wait for hero(0))
-)else(
+)
+do(
 if(herox(0)==1,and,heroy(0)==133) then(
 stop song
 palout(5)
@@ -29061,37 +29592,43 @@ else(
 			palin(1)
 		)
 	)
-)else(
+)
+do(
 	if(herox(0)==4,and,heroy(0)==43) then(
 		palout(1)
 		teleport to map(37+poff,56,26)
 		palin(1)
 	)
-)else(
+)
+do(
 	if(herox(0)==4,and,heroy(0)==61) then(
 		palout(1)
 		teleport to map(37+poff,66,26)
 		palin(1)
 	)
-)else(
+)
+do(
 	if(herox(0)==3,and,heroy(0)==78) then(
 		palout(1)
 		teleport to map(37+poff,75,36)
 		palin(1)
 	)
-)else(
+)
+do(
 	if(herox(0)==7,and,heroy(0)==100) then(
 		palout(1)
 		teleport to map(45+poff,55,64)
 		palin(1)
 	)
-)else(
+)
+do(
 	if(herox(0)==4,and,heroy(0)==121) then(
 		palout(1)
 		teleport to map(53+poff,30,50)
 		palin(1)
 	)
-)else(
+)
+do(
 	if(herox(0)==5,and,heroy(0)==137) then(
 		if(check tag(424),and,check tag(425)==false) then(worldending3)
 		else(
@@ -29100,7 +29637,8 @@ else(
 			palin(1)
 		)
 	)
-)else(
+)
+do(
 	if(herox(0)==22,and,heroy(0)==15) then(
 		if(check tag(424),and,check tag(425)==false) then(worldending)
 		else(
@@ -29109,13 +29647,15 @@ else(
 			palin(1)
 		)
 	)
-)else(
+)
+do(
 	if(herox(0)==22,and,heroy(0)==33) then(
 		palout(1)
 		teleport to map(45+poff,69,60)
 		palin(1)
 	)
-)else(
+)
+do(
 	if(herox(0)==27,and,heroy(0)==66) then(
 		palout(1)
 		teleport to map(53+poff,41,37)
@@ -29173,7 +29713,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==14,and,heroy(0)==54) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29192,7 +29733,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==14,and,heroy(0)==66) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29211,7 +29753,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==14,and,heroy(0)==67) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29230,7 +29773,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==14,and,heroy(0)==68) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29249,7 +29793,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==51,and,heroy(0)==31) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29268,7 +29813,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==52,and,heroy(0)==31) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29287,7 +29833,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==31) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29306,7 +29853,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==32,and,heroy(0)==92) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29325,7 +29873,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==92) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29344,7 +29893,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==34,and,heroy(0)==92) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29363,7 +29913,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==20,and,heroy(0)==30) then(
 set variable(time,0)
 palout(2)
@@ -29376,7 +29927,8 @@ palin(2)
 walk hero(0,down,4)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==26,and,heroy(0)==29) then(
 set variable(time,0)
 palout(2)
@@ -29389,42 +29941,48 @@ palin(2)
 walk hero(0,down,4)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==48) then(
 
 set variable(time,0)
 clothescheck(18,73,48)
 
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==49) then(
 
 set variable(time,0)
 clothescheck(18,74,49)
 
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==50) then(
 
 set variable(time,0)
 clothescheck(18,75,50)
 
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==62) then(
 
 set variable(time,0)
 clothescheck(13,87,62)
 
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==63) then(
 
 set variable(time,0)
 clothescheck(13,88,63)
 
 )
-)else(
+)
+do(
 if(herox(0)==75,and,heroy(0)==64) then(
 
 set variable(time,0)
@@ -29440,22 +29998,28 @@ teleport to map(49+poff,7,9))
 else(
 if(herox(0)==36,and,heroy(0)==35) then(
 teleport to map(49+poff,12,27))
-)else(
+)
+do(
 if(herox(0)==40,and,heroy(0)==33) then(
 teleport to map(49+poff,3,45))
-)else(
+)
+do(
 if(herox(0)==44,and,heroy(0)==37) then(
 teleport to map(49+poff,6,66))
-)else(
+)
+do(
 if(herox(0)==16,and,heroy(0)==50) then(
 teleport to map(49+poff,2,84))
-)else(
+)
+do(
 if(herox(0)==26,and,heroy(0)==51) then(
 teleport to map(49+poff,4,101))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==64) then(
 teleport to map(49+poff,5,116))
-)else(
+)
+do(
 if(herox(0)==30,and,heroy(0)==66) then(
 
 if(check tag(408)) then(teleport to map(49+poff,6,134))
@@ -29464,22 +30028,28 @@ set variable(time,0)
 worldending)
 
 )
-)else(
+)
+do(
 if(herox(0)==43,and,heroy(0)==78) then(
 teleport to map(41+poff,22,14))
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==63) then(
 teleport to map(41+poff,7,99))
-)else(
+)
+do(
 if(herox(0)==56,and,heroy(0)==37) then(
 teleport to map(49+poff,2,150))
-)else(
+)
+do(
 if(herox(0)==68,and,heroy(0)==44) then(
 teleport to map(49+poff,5,169))
-)else(
+)
+do(
 if(herox(0)==62,and,heroy(0)==47) then(
 teleport to map(49+poff,29,8))
-)else(
+)
+do(
 if(herox(0)==69,and,heroy(0)==59) then(
 teleport to map(41+poff,22,32))
 )
@@ -29525,7 +30095,8 @@ teleport to map(45+poff,26,30)
 set hero direction(0,down)
 wait(1)
 palin(2))
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==1) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29542,7 +30113,8 @@ palin(2)
 walk hero(0,up,1)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==94) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29559,7 +30131,8 @@ palin(2)
 walk hero(0,up,1)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==41,and,heroy(0)==6) then(
 set variable(time,0)
 palout(2)
@@ -29572,7 +30145,8 @@ palin(2)
 walk hero(0,down,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==16,and,heroy(0)==99) then(
 set variable(time,0)
 palout(2)
@@ -29594,37 +30168,48 @@ teleport to map(45+poff,25,37))
 else(
 if(herox(0)==12,and,heroy(0)==28) then(
 teleport to map(45+poff,36,36))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==46) then(
 teleport to map(45+poff,40,34))
-)else(
+)
+do(
 if(herox(0)==6,and,heroy(0)==67) then(
 teleport to map(45+poff,44,38))
-)else(
+)
+do(
 if(herox(0)==2,and,heroy(0)==85) then(
 teleport to map(45+poff,16,51))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==102) then(
 teleport to map(45+poff,26,52))
-)else(
+)
+do(
 if(herox(0)==5,and,heroy(0)==117) then(
 teleport to map(45+poff,19,65))
-)else(
+)
+do(
 if(herox(0)==6,and,heroy(0)==135) then(
 teleport to map(45+poff,30,67))
-)else(
+)
+do(
 if(herox(0)==2,and,heroy(0)==151) then(
 teleport to map(45+poff,56,38))
-)else(
+)
+do(
 if(herox(0)==5,and,heroy(0)==170) then(
 teleport to map(45+poff,68,45))
-)else(
+)
+do(
 if(herox(0)==29,and,heroy(0)==9) then(
 teleport to map(45+poff,62,48))
-)else(
+)
+do(
 if(herox(0)==26,and,heroy(0)==26) then(
 teleport to map(53+poff,25,52))
-)else(
+)
+do(
 if(herox(0)==31,and,heroy(0)==46) then(
 teleport to map(53+poff,50,53))
 )
@@ -29684,7 +30269,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==57) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -29703,7 +30289,8 @@ wait(1)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if((herox(0)==10,or,herox(0)==28,or,herox(0)==46,or,herox(0)==64),and,heroy(0)==10) then(
 set variable(time,0)
 set tag(139,0)
@@ -29720,15 +30307,20 @@ create npc(34,39,147)
 create npc(34,40,148)
 walk hero(0,down,3)
 wait for hero(0))
-)else(
+)
+do(
 if(check tag(410),and,check tag(411)==false,and,herox(0)==20,and,heroy(0)==50) then(set variable(time,0))
-)else(
+)
+do(
 if(check tag(411),and,check tag(413)==false,and,herox(0)==20,and,heroy(0)==50) then(set variable(time,0))
-)else(
+)
+do(
 if(check tag(413),and,check tag(424)==false,and,herox(0)==20,and,heroy(0)==50) then(set variable(time,0))
-)else(
+)
+do(
 if(check tag(424),and,check tag(425)==false,and,herox(0)==20,and,heroy(0)==50) then(set variable(time,0))
-)else(
+)
+do(
 if(herox(0)==41,and,heroy(0)==36) then(
 	set variable(time,0)
 	#check day
@@ -29745,7 +30337,8 @@ if(herox(0)==41,and,heroy(0)==36) then(
 		wait for hero(0)
 	)
 )
-)else(
+)
+do(
 #MAZING GO!
 if(herox(0)==30,and,heroy(0)==49) then(
 
@@ -29774,7 +30367,8 @@ else(teleport to map(41+poff,5,136))
 else(
 if(herox(0)==25,and,heroy(0)==51) then(
 teleport to map(49+poff,26,25))
-)else(
+)
+do(
 if(herox(0)==50,and,heroy(0)==52) then(
 teleport to map(49+poff,31,45))
 )
@@ -29836,7 +30430,8 @@ walk hero(0,left,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==75) then(
 pan camera(south,0,0)
 walk hero(0,left,7)
@@ -29853,7 +30448,8 @@ walk hero(0,left,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==12,and,heroy(0)==87) then(
 pan camera(south,0,0)
 walk hero(0,left,7)
@@ -29870,7 +30466,8 @@ walk hero(0,left,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==12,and,heroy(0)==88) then(
 pan camera(south,0,0)
 walk hero(0,left,7)
@@ -29887,7 +30484,8 @@ walk hero(0,left,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==12,and,heroy(0)==89) then(
 pan camera(south,0,0)
 walk hero(0,left,7)
@@ -29904,7 +30502,8 @@ walk hero(0,left,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==83,and,heroy(0)==95) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -29923,7 +30522,8 @@ palin(3)
 walk hero(0,up,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==139,and,heroy(0)==110) then(
 
 if(check tag(184)) then(
@@ -29936,7 +30536,8 @@ camera follows hero(0))
 else(scenefourpointfour)
 
 )
-)else(
+)
+do(
 if(herox(0)==139,and,heroy(0)==111) then(
 
 if(check tag(184)) then(
@@ -29949,7 +30550,8 @@ camera follows hero(0))
 else(scenefourpointfour)
 
 )
-)else(
+)
+do(
 if(herox(0)==156,and,heroy(0)==110) then(
 set hero speed(0,10)
 pan camera(left,18,20)
@@ -29957,7 +30559,8 @@ walk hero(0,left,18)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==156,and,heroy(0)==111) then(
 set hero speed(0,10)
 pan camera(left,18,20)
@@ -29965,7 +30568,8 @@ walk hero(0,left,18)
 wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==169,and,heroy(0)==111) then(
 
 if(check tag(185)) then(
@@ -29985,7 +30589,8 @@ camera follows hero(0))
 else(onceaminion)
 
 )
-)else(
+)
+do(
 if(herox(0)==243,and,heroy(0)==19) then(
 pan camera(south,0,0)
 walk hero(0,right,7)
@@ -30004,7 +30609,8 @@ palin(3)
 wait for hero(0)
 wait for camera
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==243,and,heroy(0)==20) then(
 pan camera(south,0,0)
 walk hero(0,right,7)
@@ -30023,7 +30629,8 @@ palin(3)
 wait for hero(0)
 wait for camera
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==243,and,heroy(0)==21) then(
 pan camera(south,0,0)
 walk hero(0,right,7)
@@ -30100,7 +30707,8 @@ walk hero(0,left,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==68) then(
 set variable(time,0)
 pan camera(south,0,0)
@@ -30120,7 +30728,8 @@ walk hero(0,left,5)
 palin(3)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if((herox(0)==136,or,herox(0)==137,or,herox(0)==138),and,heroy(0)==50) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -30130,7 +30739,8 @@ wait for camera
 wait for hero
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if((herox(0)==136,or,herox(0)==137,or,herox(0)==138),and,heroy(0)==44) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -30140,7 +30750,8 @@ wait for camera
 wait for hero
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if((herox(0)==131,or,herox(0)==132,or,herox(0)==133),and,heroy(0)==33) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -30150,7 +30761,8 @@ wait for camera
 wait for hero
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if((herox(0)==131,or,herox(0)==132,or,herox(0)==133),and,heroy(0)==26) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -30160,7 +30772,8 @@ wait for camera
 wait for hero
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if((herox(0)==109,or,herox(0)==110,or,herox(0)==111),and,heroy(0)==31) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -30170,7 +30783,8 @@ wait for camera
 wait for hero
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if((herox(0)==109,or,herox(0)==110,or,herox(0)==111),and,heroy(0)==27) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -30180,7 +30794,8 @@ wait for camera
 wait for hero
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==121,and,heroy(0)==20) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -30190,7 +30805,8 @@ wait for camera
 wait for hero
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==121,and,heroy(0)==14) then(
 set variable(time,0)
 set hero speed(0,10)
@@ -30200,7 +30816,8 @@ wait for camera
 wait for hero
 set hero speed(0,hspeed)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==121,and,heroy(0)==6) then(
 set variable(time,0)
 palout(3)
@@ -30233,31 +30850,40 @@ teleport to map(77+poff,6,33))
 else(
 if(herox(0)==126,and,heroy(0)==36) then(
 teleport to map(77+poff,2,51))
-)else(
+)
+do(
 if(herox(0)==146,and,heroy(0)==34) then(
 teleport to map(77+poff,4,71))
-)else(
+)
+do(
 if(herox(0)==140,and,heroy(0)==38) then(
 teleport to map(77+poff,2,92))
-)else(
+)
+do(
 if(herox(0)==140,and,heroy(0)==17) then(
 teleport to map(77+poff,24,6))
-)else(
+)
+do(
 if(herox(0)==134,and,heroy(0)==21) then(
 teleport to map(77+poff,32,25))
-)else(
+)
+do(
 if(herox(0)==129,and,heroy(0)==18) then(
 teleport to map(77+poff,27,22))
-)else(
+)
+do(
 if(herox(0)==113,and,heroy(0)==19) then(
 teleport to map(77+poff,25,44))
-)else(
+)
+do(
 if(herox(0)==107,and,heroy(0)==18) then(
 teleport to map(77+poff,26,65))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==98) then(
 teleport to map(77+poff,25,83))
-)else(
+)
+do(
 if(herox(0)==106,and,heroy(0)==88) then(
 teleport to map(77+poff,25,97))
 )
@@ -30312,31 +30938,40 @@ teleport to map(73+poff,104,33))
 else(
 if(herox(0)==2,and,heroy(0)==52) then(
 teleport to map(73+poff,126,37))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==72) then(
 teleport to map(73+poff,146,35))
-)else(
+)
+do(
 if(herox(0)==2,and,heroy(0)==93) then(
 teleport to map(73+poff,140,39))
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==7) then(
 teleport to map(73+poff,140,18))
-)else(
+)
+do(
 if(herox(0)==32,and,heroy(0)==26) then(
 teleport to map(73+poff,134,22))
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==23) then(
 teleport to map(73+poff,129,19))
-)else(
+)
+do(
 if(herox(0)==25,and,heroy(0)==45) then(
 teleport to map(73+poff,113,20))
-)else(
+)
+do(
 if(herox(0)==26,and,heroy(0)==66) then(
 teleport to map(73+poff,107,19))
-)else(
+)
+do(
 if(herox(0)==25,and,heroy(0)==84) then(
 teleport to map(73+poff,71,99))
-)else(
+)
+do(
 if(herox(0)==25,and,heroy(0)==98) then(
 teleport to map(73+poff,106,89))
 )
@@ -30469,7 +31104,8 @@ script, shodatombdoor0A, begin
 	else(dartjadefirstscene)
 
 	)
-	)else(
+	)
+do(
 	if(currentmap==92,and,herox(0)==27,and,heroy(0)==23) then(
 	set hero speed(0,2)
 	walk hero(0,down,2)
@@ -30489,7 +31125,8 @@ script, shodatombdoor0A, begin
 	set hero speed(0,hspeed)
 	walk hero(0,down,2)
 	wait for hero(0))
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==45,and,heroy(0)==11) then(
 		if(check tag(576)) then(mrdown)
 		else(
@@ -30502,9 +31139,11 @@ script, shodatombdoor0A, begin
 			wait for camera
 		)
 	)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==45,and,heroy(0)==13) then(mrup)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==45,and,heroy(0)==22) then(
 	walk hero(0,down,3)
 	wait for hero(0)
@@ -30526,7 +31165,8 @@ script, shodatombdoor0A, begin
 	wait(10)
 	palin(15)
 	)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==17,and,heroy(0)==31) then(
 		if(check tag(577)) then(mrright)
 		else(
@@ -30539,9 +31179,11 @@ script, shodatombdoor0A, begin
 			wait for camera
 		)
 	)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==19,and,heroy(0)==31) then(mrleft)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==33,and,heroy(0)==31) then(
 	walk hero(0,right,3)
 	wait for hero(0)
@@ -30562,11 +31204,14 @@ script, shodatombdoor0A, begin
 	wait(10)
 	palin(15)
 	)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==45,and,heroy(0)==61) then(mrup)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==45,and,heroy(0)==59) then(mrdown)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==45,and,heroy(0)==49) then(
 		if(check tag(578)) then(mrup)
 		else(
@@ -30579,9 +31224,11 @@ script, shodatombdoor0A, begin
 			wait for camera
 		)
 	)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==45,and,heroy(0)==47) then(mrdown)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==45,and,heroy(0)==40) then(
 	walk hero(0,up,3)
 	wait for hero(0)
@@ -30608,11 +31255,14 @@ script, shodatombdoor0A, begin
 	set tag(8,0)
 	save game
 	)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==73,and,heroy(0)==31) then(mrleft)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==71,and,heroy(0)==31) then(mrright)
-	)else(
+	)
+do(
 	if(currentmap==91,and,herox(0)==54,and,heroy(0)==31) then(dartconfrontation)
 	)
 end
@@ -31416,7 +32066,8 @@ alter npc(1,NPCstat:scriptargument,13)
 )
 
 )
-)else(
+)
+do(
 #night 2 post
 if( (herox(0)>>18,and,herox(0)<<27),and,(heroy(0)>>48,and,heroy(0)<<60) ) then(
 alter npc(1,NPCstat:picture,424)
@@ -31425,7 +32076,8 @@ set npc direction(1,down)
 set npc position(1,23,55)
 alter npc(1,NPCstat:scriptargument,13)
 )
-)else(
+)
+do(
 #afternoon
 if( (herox(0)>>90,and,herox(0)<<108),and,(heroy(0)>>72,and,heroy(0)<<84) ) then(
 alter npc(1,NPCstat:picture,418)
@@ -31434,7 +32086,8 @@ set npc direction(1,down)
 set npc position(1,99,79)
 alter npc(1,NPCstat:scriptargument,5)
 )
-)else(
+)
+do(
 #morning 2 pre
 if( (herox(0)>>108,and,herox(0)<<126),and,(heroy(0)>>30,and,heroy(0)<<36) ) then(
 alter npc(1,NPCstat:picture,427)
@@ -31451,7 +32104,8 @@ alter npc(1,NPCstat:scriptargument,14)
 )
 
 )
-)else(
+)
+do(
 #morning 2 post
 if( (herox(0)>>108,and,herox(0)<<126),and,(heroy(0)>>24,and,heroy(0)<<30) ) then(
 alter npc(1,NPCstat:picture,427)
@@ -31460,7 +32114,8 @@ set npc direction(1,down)
 set npc position(1,117,28)
 alter npc(1,NPCstat:scriptargument,14)
 )
-)else(
+)
+do(
 #morning
 if( (herox(0)>>54,and,herox(0)<<72),and,(heroy(0)>>96,and,heroy(0)<<108) ) then(
 alter npc(1,NPCstat:picture,427)
@@ -31469,7 +32124,8 @@ set npc direction(1,down)
 set npc position(1,63,101)
 alter npc(1,NPCstat:scriptargument,6)
 )
-)else(
+)
+do(
 #afternoon 2 pre
 if( (herox(0)>>0,and,herox(0)<<18),and,(heroy(0)>>132,and,heroy(0)<<138) ) then(
 alter npc(1,NPCstat:picture,418)
@@ -31486,7 +32142,8 @@ alter npc(1,NPCstat:scriptargument,15)
 )
 
 )
-)else(
+)
+do(
 #afternoon 2 post
 if( (herox(0)>>0,and,herox(0)<<18),and,(heroy(0)>>138,and,heroy(0)<<144) ) then(
 alter npc(1,NPCstat:picture,418)
@@ -31495,7 +32152,8 @@ set npc direction(1,down)
 set npc position(1,9,140)
 alter npc(1,NPCstat:scriptargument,15)
 )
-)else(
+)
+do(
 #night
 if( (herox(0)>>90,and,herox(0)<<108),and,(heroy(0)>>96,and,heroy(0)<<108) ) then(
 alter npc(1,NPCstat:picture,424)
@@ -31504,7 +32162,8 @@ set npc direction(1,down)
 set npc position(1,99,101)
 alter npc(1,NPCstat:scriptargument,7)
 )
-)else(
+)
+do(
 #noon 2 pre
 if( (herox(0)>>126,and,herox(0)<<135),and,(heroy(0)>>144,and,heroy(0)<<156) ) then(
 alter npc(1,NPCstat:picture,421)
@@ -31521,7 +32180,8 @@ alter npc(1,NPCstat:scriptargument,16)
 )
 
 )
-)else(
+)
+do(
 #noon 2 post
 if( (herox(0)>>135,and,herox(0)<<144),and,(heroy(0)>>144,and,heroy(0)<<156) ) then(
 alter npc(1,NPCstat:picture,421)
@@ -31553,27 +32213,38 @@ alter npc(1,NPCstat:scriptargument,4)
 mrdown(0,0,0,0,3)
 
 )
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==63) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==58) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==52) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==47) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==41) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==41) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==47) then(mrdown(0,0,0,0,7))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==53) then(mrup(0,0,0,0,7))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==58) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==63) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 ###############night2 - pre
 if(herox(0)==38,and,heroy(0)==55) then(
 
@@ -31591,11 +32262,14 @@ alter npc(1,NPCstat:scriptargument,13)
 mrleft(0,0,0,0,4)
 
 )
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==55) then(mrright(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==55) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 ###############night2 - post
 if(herox(0)==17,and,heroy(0)==55) then(
 
@@ -31607,15 +32281,20 @@ alter npc(1,NPCstat:scriptargument,13)
 mrright(0,0,0,0,3)
 
 )
-)else(
+)
+do(
 if(herox(0)==6,and,heroy(0)==49) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==6,and,heroy(0)==47) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==44) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==44) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==39) then(
 	mrup(0,0,0,0,6)
 	if(check tag(490)==false) then(
@@ -31629,13 +32308,17 @@ if(herox(0)==9,and,heroy(0)==39) then(
 		set tag(489,1)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==34) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==28) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==23) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==11) then(mrdown(0,0,0,0,6))
 )
 end
@@ -31673,13 +32356,17 @@ alter npc(1,NPCstat:scriptargument,6)
 mrright(0,0,0,0,4)
 
 )
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==107) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==45,and,heroy(0)==109) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==107) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==112) then(
 
 alter npc(1,NPCstat:picture,427)
@@ -31690,27 +32377,38 @@ alter npc(1,NPCstat:scriptargument,6)
 mrup(0,0,0,0,6)
 
 )
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==115) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==115) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==38,and,heroy(0)==115) then(mrleft(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==115) then(mrright(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==30,and,heroy(0)==111) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==30,and,heroy(0)==106) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==111) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==106) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==115) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==115) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==6,and,heroy(0)==119) then(
 	mrdown(0,0,0,0,3)
 	if(check tag(602)==false) then(
@@ -31724,21 +32422,29 @@ if(herox(0)==6,and,heroy(0)==119) then(
 		save game
 	)
 )
-)else(
+)
+do(
 if(herox(0)==6,and,heroy(0)==121) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==48,and,heroy(0)==118) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==48,and,heroy(0)==123) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==42,and,heroy(0)==118) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==42,and,heroy(0)==123) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==37,and,(heroy(0)==129,or,heroy(0)==130)) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==35,and,(heroy(0)==129,or,heroy(0)==130)) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if((herox(0)==23,or,herox(0)==24),and,heroy(0)==131) then(
 	mrdown(0,0,0,0,3)
 	if(check tag(497)==false) then(
@@ -31748,13 +32454,17 @@ if((herox(0)==23,or,herox(0)==24),and,heroy(0)==131) then(
 		set tag(496,1)
 	)
 )
-)else(
+)
+do(
 if((herox(0)==23,or,herox(0)==24),and,heroy(0)==133) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if((herox(0)==39,or,herox(0)==40),and,heroy(0)==131) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if((herox(0)==39,or,herox(0)==40),and,heroy(0)==133) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==37,and,(heroy(0)==139,or,heroy(0)==140,or,heroy(0)==141)) then(
 	mrleft(0,0,0,0,3)
 	if(check tag(497)==false) then(
@@ -31764,9 +32474,11 @@ if(herox(0)==37,and,(heroy(0)==139,or,heroy(0)==140,or,heroy(0)==141)) then(
 		set tag(496,1)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==35,and,(heroy(0)==139,or,heroy(0)==140,or,heroy(0)==141)) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 ############afternoon2 - pre
 if(herox(0)==20,and,heroy(0)==136) then(
 
@@ -31794,7 +32506,8 @@ wait for hero(0)
 set hero frame(0,0)
 
 )
-)else(
+)
+do(
 if(herox(0)==16,and,heroy(0)==136) then(
 walk hero(0,up,1)
 wait for hero(0)
@@ -31808,14 +32521,16 @@ walk hero(0,down,2)
 wait for hero(0)
 set hero frame(0,0)
 )
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==143) then(
 	mrdown(0,0,0,0,6)
 	if(check tag(498)==false,and,check tag(499)==false) then(
 		shodaspunk
 	)
 )
-)else(
+)
+do(
 ###########afternoon2 - post
 if(herox(0)==9,and,heroy(0)==148) then(
 
@@ -31827,15 +32542,20 @@ alter npc(1,NPCstat:scriptargument,15)
 mrup(0,0,0,0,6)
 
 )
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==155) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==9,and,heroy(0)==157) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==16,and,heroy(0)==162) then(mrright(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==162) then(mrleft(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==162) then(
 	if(check tag(498),and,check tag(499)==false) then(
 		shodaspunk
@@ -31844,17 +32564,23 @@ if(herox(0)==35,and,heroy(0)==162) then(
 		mrright(0,0,0,0,3)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==162) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==162) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==55,and,heroy(0)==162) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==157) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==155) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==143) then(mrdown(0,0,0,0,3))
 )
 end
@@ -31895,13 +32621,17 @@ alter npc(1,NPCstat:scriptargument,5)
 mrdown(0,0,0,0,6)
 
 )
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==64) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==99,and,heroy(0)==59) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==107,and,heroy(0)==78) then(mrright(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==110,and,heroy(0)==78) then(
 
 alter npc(1,NPCstat:picture,418)
@@ -31912,27 +32642,38 @@ alter npc(1,NPCstat:scriptargument,5)
 mrleft(0,0,0,0,4)
 
 )
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==73) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==71) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==64) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==59) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==51) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==46) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==125,and,heroy(0)==43) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==127,and,heroy(0)==43) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==40) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==35) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 ############Morning 2 - pre
 if(herox(0)==117,and,heroy(0)==40) then(
 
@@ -31950,11 +32691,14 @@ alter npc(1,NPCstat:scriptargument,14)
 mrup(0,0,0,0,6)
 
 )
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==35) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==25) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 #############Morning 2 - post
 if(herox(0)==117,and,heroy(0)==23) then(
 
@@ -31966,7 +32710,8 @@ alter npc(1,NPCstat:scriptargument,14)
 mrdown(0,0,0,0,3)
 
 )
-)else(
+)
+do(
 if(herox(0)==109,and,heroy(0)==18) then(
 	mrleft(0,0,0,0,4)
 	if(check tag(603)==false) then(
@@ -31977,53 +32722,77 @@ if(herox(0)==109,and,heroy(0)==18) then(
 		tb(7368)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==106,and,heroy(0)==18) then(mrright(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==13) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==11) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==125,and,heroy(0)==19) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==127,and,heroy(0)==19) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==10) then(mrdown(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==151,and,heroy(0)==85) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==151,and,heroy(0)==83) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==73) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==71) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==66) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==145,and,heroy(0)==66) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==132,and,heroy(0)==61) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==132,and,heroy(0)==59) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==158,and,heroy(0)==61) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==158,and,heroy(0)==59) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==54) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==145,and,heroy(0)==54) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==158,and,heroy(0)==53) then(mrstairdown(135,114,140,113))
-)else(
+)
+do(
 if(herox(0)==150,and,heroy(0)==54) then(mrstairdown(135,114,132,114))
-)else(
+)
+do(
 if(herox(0)==130,and,heroy(0)==65) then(mrstairdown(117,126,112,125))
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==78) then(mrstairdown(117,138,117,138))
-)else(
+)
+do(
 if(herox(0)==149,and,heroy(0)==76) then(mrstairdown(153,114,149,112))
-)else(
+)
+do(
 if(herox(0)==157,and,heroy(0)==76) then(mrstairdown(153,114,157,112))
 )
 end
@@ -32052,9 +32821,11 @@ script, shodatombdoor4, begin
 if(herox(0)==156,and,heroy(0)==97) then(mrup(0,0,0,0,3))
 else(
 if(herox(0)==156,and,heroy(0)==95) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==107,and,heroy(0)==102) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==109,and,heroy(0)==102) then(
 
 alter npc(1,NPCstat:picture,424)
@@ -32065,7 +32836,8 @@ alter npc(1,NPCstat:scriptargument,7)
 mrleft(0,0,0,0,3)
 
 )
-)else(
+)
+do(
 if(herox(0)==114,and,heroy(0)==107) then(
 	mrdown(0,0,0,0,6)
 	if(check tag(495)==false) then(
@@ -32094,53 +32866,77 @@ if(herox(0)==114,and,heroy(0)==107) then(
 		set tag(494,1)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==114,and,heroy(0)==112) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==125,and,heroy(0)==113) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==127,and,heroy(0)==113) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==114) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==145,and,heroy(0)==114) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==155,and,heroy(0)==119) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==155,and,heroy(0)==121) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==114,and,heroy(0)==119) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==114,and,heroy(0)==121) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==120,and,heroy(0)==119) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==120,and,heroy(0)==121) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==125,and,heroy(0)==126) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==127,and,heroy(0)==126) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==126) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==145,and,heroy(0)==126) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==153,and,heroy(0)==131) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==153,and,heroy(0)==133) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==136,and,heroy(0)==131) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==136,and,heroy(0)==133) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==125,and,heroy(0)==139) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==127,and,heroy(0)==139) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==138) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==145,and,heroy(0)==138) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 ##########Noon 2 - pre
 if(herox(0)==131,and,heroy(0)==142) then(
 
@@ -32158,11 +32954,14 @@ alter npc(1,NPCstat:scriptargument,16)
 mrdown(0,0,0,0,6)
 
 )
-)else(
+)
+do(
 if(herox(0)==131,and,heroy(0)==147) then(mrup(0,0,0,0,6))
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==151) then(mrright(0,0,0,0,4))
-)else(
+)
+do(
 ##########Noon 2 - post
 if(herox(0)==146,and,heroy(0)==151) then(
 
@@ -32174,35 +32973,50 @@ alter npc(1,NPCstat:scriptargument,16)
 mrleft(0,0,0,0,4)
 
 )
-)else(
+)
+do(
 if(herox(0)==153,and,heroy(0)==155) then(mrdown(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==153,and,heroy(0)==157) then(mrup(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==146,and,heroy(0)==163) then(mrleft(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==163) then(mrright(0,0,0,0,4))
-)else(
+)
+do(
 if(herox(0)==127,and,heroy(0)==163) then(mrleft(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==125,and,heroy(0)==163) then(mrright(0,0,0,0,3))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==154) then(mrdown(0,0,0,0,7))
-)else(
+)
+do(
 if(herox(0)==157,and,heroy(0)==101) then(mrstairdown(153,138,157,137))
-)else(
+)
+do(
 if(herox(0)==157,and,heroy(0)==137) then(mrstairup(153,102,157,101))
-)else(
+)
+do(
 if(herox(0)==157,and,heroy(0)==112) then(mrstairup(153,78,157,76))
-)else(
+)
+do(
 if(herox(0)==149,and,heroy(0)==112) then(mrstairup(153,78,149,76))
-)else(
+)
+do(
 if(herox(0)==132,and,heroy(0)==114) then(mrstairup(153,54,150,54))
-)else(
+)
+do(
 if(herox(0)==140,and,heroy(0)==113) then(mrstairup(153,54,158,53))
-)else(
+)
+do(
 if(herox(0)==112,and,heroy(0)==125) then(mrstairup(135,66,130,65))
-)else(
+)
+do(
 if(herox(0)==117,and,heroy(0)==138) then(mrstairup(135,78,135,78))
 )
 end
@@ -32303,7 +33117,8 @@ set hero frame(0,0)
 camera follows hero(0)
 play song(85)
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==3) then(
 write pass block(118,14,0)
 write pass block(118,15,128)
@@ -32327,7 +33142,8 @@ write pass block(118,14,2+4+8)
 write pass block(118,15,0)
 write pass block(118,16,0)
 )
-)else(
+)
+do(
 if(herox(0)==7,and,heroy(0)==65) then(
 write pass block(7,66,0)
 write pass block(7,67,128)
@@ -32394,7 +33210,8 @@ set hero frame(0,0)
 wait for camera
 play song(17)
 )
-)else(
+)
+do(
 if(herox(0)==90,and,heroy(0)==27) then(
 stop song
 #if haven't confronted her, or have already escaped, set rest back on
@@ -32431,7 +33248,8 @@ if(check tag(479),and,check tag(595)==false,and,check tag(690)==false) then(
 else(play song(85))
 
 )
-)else(
+)
+do(
 if(herox(0)==90,and,heroy(0)==21) then(
 stop song
 focus camera(90,14,10)
@@ -32444,7 +33262,8 @@ wait for camera
 camera follows hero(0)
 play song(98)
 )
-)else(
+)
+do(
 if(herox(0)==90,and,heroy(0)==15) then(
 stop song
 focus camera(90,23,10)
@@ -32456,7 +33275,8 @@ set hero speed(0,hspeed)
 wait for camera
 play song(17)
 )
-)else(
+)
+do(
 if(herox(0)==90,and,heroy(0)==8) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -32472,7 +33292,8 @@ palin(3)
 walk hero(0,up,2)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==136,and,heroy(0)==30) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -32531,7 +33352,8 @@ write pass block(136,26,2+4+8)
 write pass block(136,27,0)
 write pass block(136,28,0)
 )
-)else(
+)
+do(
 if(herox(0)==39,and,heroy(0)==104) then(
 focus camera(39,113,20)
 set hero speed(0,10)
@@ -32542,7 +33364,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==39,and,heroy(0)==112) then(
 focus camera(39,101,20)
 set hero speed(0,10)
@@ -32552,17 +33375,23 @@ set hero frame(0,0)
 set hero speed(0,hspeed)
 wait for camera
 )
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==112) then(icedoor(32,120))
-)else(
+)
+do(
 if(herox(0)==32,and,heroy(0)==119) then(icedoor(33,113))
-)else(
+)
+do(
 if(herox(0)==49,and,heroy(0)==113) then(icedoor(47,120))
-)else(
+)
+do(
 if(herox(0)==47,and,heroy(0)==119) then(icedoor(49,114))
-)else(
+)
+do(
 if(herox(0)==56,and,heroy(0)==118) then(icedoor(63,121))
-)else(
+)
+do(
 if(herox(0)==63,and,heroy(0)==120) then(icedoor(56,119))
 )
 end
@@ -32572,19 +33401,26 @@ script, unknowntombdoor4, begin
 if(herox(0)==69,and,heroy(0)==123) then(icedoor(70,129))
 else(
 if(herox(0)==70,and,heroy(0)==128) then(icedoor(69,124))
-)else(
+)
+do(
 if(herox(0)==68,and,heroy(0)==129) then(icedoor(62,127))
-)else(
+)
+do(
 if(herox(0)==62,and,heroy(0)==126) then(icedoor(68,130))
-)else(
+)
+do(
 if(herox(0)==78,and,heroy(0)==123) then(icedoor(71,136))
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==135) then(icedoor(78,124))
-)else(
+)
+do(
 if(herox(0)==62,and,heroy(0)==134) then(icedoor(47,126))
-)else(
+)
+do(
 if(herox(0)==47,and,heroy(0)==125) then(icedoor(62,135))
-)else(
+)
+do(
 if(herox(0)==64,and,heroy(0)==133) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -32600,7 +33436,8 @@ palin(3)
 walk hero(0,up,2)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==108,and,heroy(0)==148) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -32653,7 +33490,8 @@ walk hero(0,down,7)
 wait for hero(0)
 wait for camera
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==65) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -32669,7 +33507,8 @@ palin(2)
 walk hero(0,up,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==7,and,heroy(0)==106) then(
 pan camera(south,0,0)
 walk hero(0,down,1)
@@ -32685,7 +33524,8 @@ palin(2)
 walk hero(0,down,2)
 wait for hero(0)
 camera follows hero(0))
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==7) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -32696,7 +33536,8 @@ set hp
 wait(1)
 palin(2)
 )
-)else(
+)
+do(
 if(herox(0)==3,and,heroy(0)==2) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -32713,7 +33554,8 @@ walk hero(0,up,2)
 wait for hero(0)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==69,and,heroy(0)==55) then(
 pan camera(south,0,0)
 walk hero(0,down,1)
@@ -32852,7 +33694,8 @@ wait(2)
 tb(4235)
 set tag(532,1)
 )
-)else(
+)
+do(
 if(herox(0)==40,and,heroy(0)==6) then(
 pan camera(south,0,0)
 walk hero(0,down,1)
@@ -32879,9 +33722,11 @@ wait for hero(0)
 set hero frame(0,0)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==10,and,heroy(0)==15) then(godown(10,24))
-)else(
+)
+do(
 if(herox(0)==10,and,heroy(0)==23) then(
 pan camera(south,0,0)
 walk hero(0,up,1)
@@ -32897,11 +33742,14 @@ palin(2)
 walk hero(0,up,2)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==10,and,heroy(0)==34) then(godown(33,49))
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==48) then(goup(10,33))
-)else(
+)
+do(
 if(herox(0)==47,and,heroy(0)==48) then(
 	goupdown(47,67)
 	if(check tag(534)==false) then(
@@ -32913,34 +33761,47 @@ if(herox(0)==47,and,heroy(0)==48) then(
 		set tag(533,1)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==47,and,heroy(0)==66) then(goupdown(47,49))
-)else(
+)
+do(
 if(herox(0)==53,and,heroy(0)==69) then(goup(33,97))
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==98) then(godown(53,70))
-)else(
+)
+do(
 if(herox(0)==32,and,heroy(0)==91) then(goup(54,96))
-)else(
+)
+do(
 if(herox(0)==54,and,heroy(0)==97) then(godown(32,92))
-)else(
+)
+do(
 if(herox(0)==36,and,heroy(0)==93) then(goup(67,97))
-)else(
+)
+do(
 if(herox(0)==67,and,heroy(0)==98) then(godown(36,94))
-)else(
+)
+do(
 if(herox(0)==39,and,heroy(0)==92) then(goup(80,97))
-)else(
+)
+do(
 if(herox(0)==80,and,heroy(0)==98) then(godown(39,93))
-)else(
+)
+do(
 if(herox(0)==42,and,heroy(0)==95) then(goup(17,96))
-)else(
+)
+do(
 if(herox(0)==17,and,heroy(0)==97) then(godown(42,96))
-)else(
+)
+do(
 if((herox(0)==54,and,heroy(0)==92),or,(herox(0)==67,and,heroy(0)==90),or,(herox(0)==81,and,heroy(0)==90)) then(
 	#scripted whisper scene
 	whisper
 )
-)else(
+)
+do(
 if(herox(0)==18,and,heroy(0)==92) then(
 	goup(51,77)
 	if(check tag(535)==false) then(
@@ -32953,13 +33814,17 @@ if(herox(0)==18,and,heroy(0)==92) then(
 		set tag(534,1)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==51,and,heroy(0)==78) then(godown(18,93))
-)else(
+)
+do(
 if(herox(0)==46,and,heroy(0)==80) then(godown(80,9))
-)else(
+)
+do(
 if(herox(0)==80,and,heroy(0)==8) then(goup(46,79))
-)else(
+)
+do(
 if((herox(0)==61,and,heroy(0)==3),or,(herox(0)==101,and,heroy(0)==3),or,(herox(0)==61,and,heroy(0)==21),or,(herox(0)==106,and,heroy(0)==20)) then(
 	#scripted whisper scene
 	whisper
@@ -32986,7 +33851,8 @@ wait for hero(0)
 )
 else(
 if(herox(0)==68,and,heroy(0)==116) then(godownup(80,39))
-)else(
+)
+do(
 if(herox(0)==62,and,heroy(0)==116) then(
 	godownup(42,81)
 	if(check tag(536)==false) then(
@@ -32999,7 +33865,8 @@ if(herox(0)==62,and,heroy(0)==116) then(
 		set tag(535,1)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==42,and,heroy(0)==82) then(
 pan camera(south,0,0)
 walk hero(0,down,1)
@@ -33015,42 +33882,59 @@ palin(2)
 walk hero(0,up,2)
 wait for hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==82) then(godown(80,52))
-)else(
+)
+do(
 if(herox(0)==80,and,heroy(0)==51) then(goup(37,81))
-)else(
+)
+do(
 if(herox(0)==70,and,heroy(0)==70) then(godown(109,50))
-)else(
+)
+do(
 if(herox(0)==109,and,heroy(0)==49) then(goup(70,69))
-)else(
+)
+do(
 if(herox(0)==73,and,heroy(0)==70) then(godown(109,63))
-)else(
+)
+do(
 if(herox(0)==109,and,heroy(0)==62) then(goup(73,69))
-)else(
+)
+do(
 if(herox(0)==79,and,heroy(0)==70) then(godown(109,76))
-)else(
+)
+do(
 if(herox(0)==109,and,heroy(0)==75) then(goup(79,69))
-)else(
+)
+do(
 if(herox(0)==82,and,heroy(0)==70) then(godown(109,89))
-)else(
+)
+do(
 if(herox(0)==109,and,heroy(0)==88) then(goup(82,69))
-)else(
+)
+do(
 if(herox(0)==85,and,heroy(0)==70) then(godown(109,102))
-)else(
+)
+do(
 if(herox(0)==109,and,heroy(0)==101) then(goup(85,69))
-)else(
+)
+do(
 if((herox(0)==101,and,heroy(0)==49),or,(herox(0)==101,and,heroy(0)==62),or,(herox(0)==101,and,heroy(0)==75),or,(herox(0)==101,and,heroy(0)==88),or,(herox(0)==101,and,heroy(0)==101)) then(
 	#scripted whisper scene
 	whisper
 )
-)else(
+)
+do(
 if(herox(0)==76,and,heroy(0)==70) then(godown(109,115))
-)else(
+)
+do(
 if(herox(0)==109,and,heroy(0)==114) then(goup(76,69))
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==80) then(godown(101,115))
-)else(
+)
+do(
 if(herox(0)==101,and,heroy(0)==114) then(
 	goup(33,79)
 	if(check tag(537)==false) then(
@@ -33063,11 +33947,14 @@ if(herox(0)==101,and,heroy(0)==114) then(
 		set tag(536,1)
 	)
 )
-)else(
+)
+do(
 if(herox(0)==29,and,heroy(0)==78) then(godown(135,14))
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==13) then(goup(29,77))
-)else(
+)
+do(
 if(herox(0)==130,and,heroy(0)==13) then(goupdown(120,18))
 )
 end
@@ -33077,21 +33964,29 @@ script, scarf2door3, begin
 if(herox(0)==120,and,heroy(0)==17) then(goupdown(130,14))
 else(
 if(herox(0)==127,and,heroy(0)==14) then(goup(141,20))
-)else(
+)
+do(
 if(herox(0)==141,and,heroy(0)==21) then(godown(127,15))
-)else(
+)
+do(
 if(herox(0)==122,and,heroy(0)==15) then(goup(135,24))
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==25) then(godown(122,16))
-)else(
+)
+do(
 if(herox(0)==121,and,heroy(0)==24) then(godown(143,13))
-)else(
+)
+do(
 if(herox(0)==143,and,heroy(0)==12) then(goup(121,23))
-)else(
+)
+do(
 if(herox(0)==132,and,heroy(0)==28) then(godown(138,15))
-)else(
+)
+do(
 if(herox(0)==138,and,heroy(0)==14) then(goup(132,27))
-)else(
+)
+do(
 if(herox(0)==126,and,heroy(0)==24) then(
 palout(3)
 set hero position(0,141,47)
@@ -33104,7 +33999,8 @@ walk hero(0,left,1)
 wait for hero(0)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==142,and,heroy(0)==47) then(
 palout(2)
 set hero position(0,129,24)
@@ -33117,7 +34013,8 @@ walk hero(0,right,1)
 wait for hero(0)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==135,and,heroy(0)==39) then(
 	if(check tag(538)==false) then(
 		pan camera(south,0,0)
@@ -33143,20 +34040,26 @@ if(herox(0)==135,and,heroy(0)==39) then(
 	)
 	else(godown(29,70))
 )
-)else(
+)
+do(
 if(herox(0)==29,and,heroy(0)==69) then(goup(135,38))
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==67) then(goup(12,74))
-)else(
+)
+do(
 if(herox(0)==12,and,heroy(0)==75) then(godown(33,68))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==74) then(
 	if(check tag(538)==false) then(set tag(538,1))
 	godown(40,67)
 )
-)else(
+)
+do(
 if(herox(0)==40,and,heroy(0)==66) then(goup(19,73))
-)else(
+)
+do(
 if(herox(0)==11,and,heroy(0)==70,and,check tag(691)==false) then(
 	set tag(691,1)
 	variable(randla)
@@ -33206,7 +34109,8 @@ camera follows hero(0)
 if(check tag(540)==false) then(lavascarfintro)
 
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==29) then(
 focus camera(27,45,20)
 set hero speed(0,10)
@@ -33216,24 +34120,32 @@ set hero frame(0,0)
 set hero speed(0,hspeed)
 wait for camera
 )
-)else(
+)
+do(
 if(herox(0)==24,and,heroy(0)==29) then(
 	set tag(614,1)
 	godownup(19,23)
 )
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==24) then(godownup(24,28))
-)else(
+)
+do(
 if(herox(0)==19,and,heroy(0)==15) then(goupdown(23,8))
-)else(
+)
+do(
 if(herox(0)==23,and,heroy(0)==7) then(goupdown(19,16))
-)else(
+)
+do(
 if(herox(0)==31,and,heroy(0)==7) then(goupdown(35,15))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==14) then(goupdown(31,8))
-)else(
+)
+do(
 if(herox(0)==35,and,heroy(0)==23) then(godownup(30,28))
-)else(
+)
+do(
 if(herox(0)==30,and,heroy(0)==29) then(
 	set tag(614,1)
 	godownup(35,22)
@@ -33286,7 +34198,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==37,and,heroy(0)==37) then(
 pan camera(down,7,20)
 set hero speed(0,10)
@@ -33297,7 +34210,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==33,and,heroy(0)==30) then(
 focus camera(22,29,20)
 set hero speed(0,10)
@@ -33307,7 +34221,8 @@ set hero frame(0,0)
 set hero speed(0,hspeed)
 wait for camera
 )
-)else(
+)
+do(
 if(herox(0)==27,and,heroy(0)==30) then(
 focus camera(34,30,20)
 set hero speed(0,10)
@@ -33318,7 +34233,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==82) then(
 pan camera(down,8,20)
 set hero speed(0,10)
@@ -33328,7 +34244,8 @@ set hero frame(0,0)
 set hero speed(0,hspeed)
 wait for camera
 )
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==88) then(
 focus camera(71,81,20)
 set hero speed(0,10)
@@ -33339,7 +34256,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==72,and,heroy(0)==76) then(
 pan camera(up,7,20)
 set hero speed(0,10)
@@ -33350,7 +34268,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==72,and,heroy(0)==70) then(
 pan camera(down,7,20)
 set hero speed(0,10)
@@ -33361,7 +34280,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==120,and,heroy(0)==43) then(
 pan camera(up,7,20)
 set hero speed(0,10)
@@ -33372,7 +34292,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==120,and,heroy(0)==37) then(
 pan camera(down,7,20)
 set hero speed(0,10)
@@ -33383,7 +34304,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==152,and,heroy(0)==87) then(
 pan camera(down,8,20)
 set hero speed(0,10)
@@ -33393,7 +34315,8 @@ set hero frame(0,0)
 set hero speed(0,hspeed)
 wait for camera
 )
-)else(
+)
+do(
 if(herox(0)==152,and,heroy(0)==93) then(
 focus camera(152,86,20)
 set hero speed(0,10)
@@ -33404,7 +34327,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==152,and,heroy(0)==100) then(
 walk hero(0,down,1)
 wait for hero(0)
@@ -33424,7 +34348,8 @@ wait for hero(0)
 set hero speed(0,hspeed)
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==4,and,heroy(0)==74,and,check tag(694)) then(
 	set tag(694,0)
 	play song(2)
@@ -33481,7 +34406,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if(herox(0)==71,and,heroy(0)==64) then(
 pan camera(left,12,20)
 set hero speed(0,10)
@@ -33492,7 +34418,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if((herox(0)==99,or,herox(0)==100,or,herox(0)==101),and,heroy(0)==43) then(
 stop song
 variable(hx)
@@ -33522,7 +34449,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if((herox(0)==99,or,herox(0)==100,or,herox(0)==101),and,heroy(0)==26) then(
 stop song
 variable(hxx)
@@ -33552,7 +34480,8 @@ set hero speed(0,hspeed)
 wait for camera
 camera follows hero(0)
 )
-)else(
+)
+do(
 if((herox(0)==99,or,herox(0)==100,or,herox(0)==101),and,heroy(0)==18) then(
 
 if(check tag(546)==false) then(set npc position(8,3,1))
@@ -33567,7 +34496,8 @@ wait for camera
 if(check tag(546)==false) then(thisisit)
 
 )
-)else(
+)
+do(
 if((herox(0)==99,or,herox(0)==100,or,herox(0)==101),and,heroy(0)==15) then(
 variable(hxxx)
 set variable(hxxx,herox(0))
@@ -38655,8 +39585,8 @@ alter npc(18,NPCstat:movespeed,1)
 )
 
 if(check tag(4),and,check tag(156)==false) then(
-alter npc(,NPCstat:movespeed,4)
-alter npc(,NPCstat:movespeed,4)
+#alter npc(,NPCstat:movespeed,4)  #FIXME: the NPC id is missing!
+#alter npc(,NPCstat:movespeed,4)  #FIXME: the NPC id is missing!
 )
 
 if(check tag(156),and,check tag(6)==false) then(
@@ -47045,42 +47975,50 @@ if(heroy(0)==55) then(
 relocate npc(1)
 jig gahn
 tb(3689))
-)else(
+)
+do(
 if(heroy(0)==54) then(
 relocate npc(1)
 jig gahn
 tb(3690))
-)else(
+)
+do(
 if(heroy(0)==53) then(
 relocate npc(1)
 jig gahn
 tb(3691))
-)else(
+)
+do(
 if(heroy(0)==52) then(
 relocate npc(1)
 jig gahn
 tb(3692))
-)else(
+)
+do(
 if(heroy(0)==51) then(
 relocate npc(1)
 jig gahn
 tb(3693))
-)else(
+)
+do(
 if(heroy(0)==50) then(
 relocate npc(5)
 jig gahn2(2)
 tb(3694))
-)else(
+)
+do(
 if(heroy(0)==45) then(
 relocate npc(1)
 jig gahn2(3)
 tb(3695))
-)else(
+)
+do(
 if(heroy(0)==44) then(
 relocate npc(1)
 jig gahn2(4)
 tb(3696))
-)else(
+)
+do(
 if(heroy(0)==43) then(
 relocate npc(43)
 jig gahn
@@ -47386,7 +48324,8 @@ camera follows hero(0))
 else(farewellskyler)
 
 )
-)else(
+)
+do(
 if(herox(0)==56,and,heroy(0)==164) then(
 pan camera(down,15,10)
 walk hero(0,down,5)
@@ -47433,19 +48372,22 @@ pan camera (down,12,10)
 walk hero (0,down,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==43,or,herox(0)==44,or,herox(0)==45,or,herox(0)==46,or,herox(0)==47),and,heroy(0)==49) then(
 pan camera (up,12,10)
 walk hero (0,up,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==43,or,herox(0)==44,or,herox(0)==45,or,herox(0)==46,or,herox(0)==47),and,heroy(0)==47) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
 wait for camera
 wait for hero (0))
-)else(
+)
+do(
 if ((herox(0)==43,or,herox(0)==44,or,herox(0)==45,or,herox(0)==46,or,herox(0)==47),and,heroy(0)==41) then(
 palout(10)
 camera follows hero(0)
@@ -47458,7 +48400,8 @@ wait for camera
 palin(10)
 walk hero(0,up,2)
 wait for hero(0))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==13) then(
 alter npc(18,NPCstat:picture,0)
 walk hero (0,up,1)
@@ -47472,7 +48415,8 @@ wait(1)
 walk hero (0,right,2)
 wait for hero(0)
 write pass block(19,7,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==7) then(
 walk hero (0,right,1)
 pan camera (right,18,10)
@@ -47487,7 +48431,8 @@ wait(1)
 walk hero (0,down,2)
 wait for hero(0)
 write pass block(45,13,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==23) then(
 walk hero (0,down,2)
 pan camera (down,12,10)
@@ -47500,7 +48445,8 @@ walk hero (0,left,2)
 wait for hero(0)
 write pass block(27,25,1)
 write pass block(35,31,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==49) then(
 walk hero (0,up,1)
 pan camera (up,12,10)
@@ -47512,7 +48458,8 @@ wait(1)
 walk hero (0,right,2)
 wait for hero(0)
 write pass block(19,43,1+2+4+8))
-)else(
+)
+do(
 if ((herox(0)==26,or,herox(0)==27,or,herox(0)==28),and,heroy(0)==47) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
@@ -47521,7 +48468,8 @@ wait for hero (0)
 write pass block(26,49,1+2+4+8)
 write pass block(27,49,1+2+4+8)
 write pass block(28,49,1+2+4+8))
-)else(
+)
+do(
 if ((herox(0)==26,or,herox(0)==27,or,herox(0)==28),and,heroy(0)==59) then(
 pan camera (down,12,10)
 walk hero (0,down,3)
@@ -47530,7 +48478,8 @@ wait for hero (0)
 write pass block(26,61,1+2+4+8)
 write pass block(27,61,1+2+4+8)
 write pass block(28,61,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==85) then(
 walk hero (0,up,1)
 pan camera (up,12,10)
@@ -47542,7 +48491,8 @@ wait(1)
 walk hero (0,right,2)
 wait for hero(0)
 write pass block(19,79,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==35,and,heroy(0)==79) then(
 walk hero (0,right,1)
 pan camera (right,18,10)
@@ -47554,7 +48504,8 @@ wait(1)
 walk hero (0,down,2)
 wait for hero(0)
 write pass block(45,85,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==95) then(
 walk hero (0,down,2)
 pan camera (down,12,10)
@@ -47566,7 +48517,8 @@ wait(1)
 walk hero (0,left,2)
 wait for hero(0)
 write pass block(35,103,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==21,and,(heroy(0)==102,or,heroy(0)==103,or,heroy(0)==104)) then(
 walk hero (0,up,3)
 walk hero (0,left,3)
@@ -47601,7 +48553,8 @@ write pass block(8,130,1+2+4+8)
 write pass block(9,130,1+2+4+8)
 write pass block(10,130,1+2+4+8)
 )
-)else(
+)
+do(
 if (herox(0)==9,and,heroy(0)==121) then(
 alter npc(18,NPCstat:picture,0)
 walk hero(0,up,1)
@@ -47622,7 +48575,8 @@ walk hero(0,up,2)
 wait for hero(0)
 write pass block(9,179,1+2+4+8)
 )
-)else(
+)
+do(
 if (herox(0)==45,and,heroy(0)==131) then(
 walk hero (0,down,2)
 pan camera (down,12,10)
@@ -47634,14 +48588,16 @@ wait(1)
 walk hero (0,left,2)
 wait for hero(0)
 write pass block(35,140,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==133) then(
 pan camera (up,12,10)
 walk hero (0,up,3)
 wait for camera
 wait for hero (0)
 write pass block(27,131,1+2+4+8))
-)else(
+)
+do(
 if (herox(0)==27,and,heroy(0)==121) then(
 walk hero (0,up,1)
 wait for hero (0)
