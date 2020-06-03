@@ -1,0 +1,85 @@
+## Mods! 
+## Last updated June 2nd - psuedocode edition - does not compile in public code yet (will soon)
+## This script file handles the loading, enumeration, and registration of mods.
+##
+## This is intended to make it easier to modify the game quickly, and remove mods easily after the fact without
+## having to go all the way back to vanilla files.
+##
+##
+
+## HOOK POINTS
+## Hook points are built into the game's scripts to execute mod scripts when those events happen
+## your script "hooks" into the game at that point to run it's own code!
+## This makes it easier to alter the game because you don't have to go add the script's name manually
+## in every spot you want it to run in. This also means you don't have to manually re-edit the base files
+## every time the main game's scripts are updated. Neat!
+
+define constant(hooktimeloop,0) 	# this mod script will execute every time the time system loops around
+					# it's somewhat equivalent to an 'every tick' loop, but not exactly
+
+define constant(hookhournew,1)		# executes every time an in-game hour occurs (not real time)
+define constant(hookdaynew,2		# same but with in-game days
+
+define constant(hookbattleprep,3)	# executes every time the game will start a battle, but continues to 
+					# load the battle after this script completes
+define constant(hookbattle,4)		# executes in place of battles if any mod script defines this hook
+define constant(hookbattlepost,5)	# executes after a battle completes. 
+
+define constant(hookcutscene,6)		# executes right before any story cutscene in the game. ex if you want to
+					# implement a mod that would tweak aspect ratio/etc, this is the place
+
+define constant(hookcutscenepost,7) 	# executes after a cutscene finishes. check CUTSCENESKIPPED to see if player
+					# skipped the cutscene (not yet implemented)
+
+define constant(hookmenu,8)		# runs code whenever the player brings up the menu
+define constant(hookmenupost,9)		# runs code when player exits the menu
+
+define constant(hookmodmenuexit,10)	# runs when the mod menu exits. good for one time script cleanup for togglemods
+
+define constant(hooknewgame,11)		# run when a new game is started. it's possible to replace the entire game's scripts with
+					# this one if you want to do a total conversion
+
+define constant(hookloadgame,12)	# runs when a save file is loaded
+define constant(hooksavegame,13)	# runs right before the game is saved
+
+# more hook points will be added over time as figured out
+
+
+##
+##
+##
+## REQUIRED MOD FUNCTIONS - DO NOT ALTER OR DELETE ANY OF THE FOLLOWING SCRIPTS - REQUIRED TO LOAD
+## EVERYTHING ELSE
+
+
+script, register mod, registered script id, hookpoint, menu toggle, menu toggle name , begin
+	#usage ex: 	register mod (@scriptname)
+	#		register mod (@scriptname,hookbattle,true,"Hard Battles")
+	#registers a script to the game to let it know it should execute this script at the hook point
+	# hook point defaults to timeloop. menu toggle defaults to none.
+	# ex: i want to register a mod script that lets me toggle if the player regens health over time
+	# register mod (@modsuperstrength,hooktimeloop,true)
+
+
+	insert mod ID into FIFO queue with an array
+	create and insert menu toggle if defined, give it the name with string	
+
+end
+
+
+script, register mod menu script, mod menu string, begin
+	#usage: variable(register mod menu script(string))
+	#creates a new menu item in the game's main menu at the bottom that leads to a blank menu
+	#similar to engine's pre existing "create menu" but adds extra heavy lifting that cleanly adds and
+	#removes the menu entry and prevents it from colliding with the game's existing scripts
+
+	return the menu handle so that the mod can create the menus it wants to after that point
+end
+
+## END REQUIRED MOD FUNCTIONS
+##
+##
+##
+
+
+
