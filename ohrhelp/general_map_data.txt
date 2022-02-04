@@ -4,7 +4,9 @@ Use the Up and Down arrow keys to navigate the menu, and the left and right arro
 
 Ambient Music: This is the background music for the map. You can type in a music ID number. You can also choose -silence- or -same as previous map-
 
-Minimap Available: Setting this to YES allows the player to view a minimap while playing this map via a "Map" menu item in the default in-game menu.
+Main Menu Available: Setting this to YES allows the player to trigger the main menu (or the Menu Action script if there is one) in the usual ways (e.g. pressing ESC, from a vehicle Use or Menu key, right clicking if enabled in Mouse Options). It doesn't disable other actions attached to the ESC key while riding a vehicle or the "main menu" script command.
+
+Minimap Available: Setting this to YES allows the player to view a minimap while playing this map via a "Map" menu item in the in-game main menu. (If the main menu is disabled above, this still affects the "main menu" script command).
 
 Save Anywhere: Setting this to YES causes "Save" to appear in the default in-game menu while playing this map.
 
@@ -48,4 +50,6 @@ Instead-of-Battle Script: A plotscript that will be executed instead when a rand
 
 Each-Step Script: A plotscript that will be run each time the hero finished taking a step on the current map. The script will be passed the X and Y coordinates of the hero and its direction as arguments in that order.
 
-On-Keypress Script: A plotscript that will be run each time the user presses any key on the current map.
+On-Keypress Script: A plotscript that will be run each tick that any keyboard key or joystick button is pressed (down) or the joystick stick(s) are off-center, or (when mouse controls are enabled) if any mouse button is pressed/clicked.
+Mouse controls are considered enabled if "init mouse" is called or "Click on map to move the hero" or ""any key", etc, include mouse" are turned on in the global Mouse Options menu.
+During a "wait for key" command the on-keypress script won't be triggered!

@@ -1,11 +1,12 @@
-Here you can choose which sprite you want to edit. Each box is a sprite set. Different types of sprites have different sizes and different numbers of frames in each sprite set.
+This is the spriteset browser and editor for all the spritesets of one type. Each box is a sprite set. Different types of sprites have different default sizes and different numbers of frames.
 
-Use the arrow keys (or PgUp, PgDn, Home, and End) or mousewheel to navigate,
-or type in a spriteset number to jump to it.
+Use the arrow keys (or PgUp, PgDn, Home, and End) or mousewheel to navigate, or type in a spriteset number to jump to it.
 
-Select the box at the front of a spriteset that says "Set #" in order to do an operation on a whole spriteset, such as copying, pasting, importing, exporting, or editing the whole spriteset at once (useful for replacing colors or shifting all frames).
+Hold down SHIFT and use arrow keys/PgUp/PgDn/Home/End to move by spriteset instead of frame.
 
-Press ENTER, SPACE or CLICK to start editing a single frame sprite or the whole spriteset.
+Select the box at the front of a spriteset that says "Set #" in order to do an operation on a whole spriteset, such as copying, pasting, importing, exporting, resizing, or drawing the whole spriteset at once (useful for replacing colors or shifting all frames).
+
+Press ENTER, SPACE or CLICK to start editing a single frame sprite or the whole spriteset: the latter brings up a menu.
 
 Press ESC to go back to the main graphics menu.
 
@@ -18,6 +19,9 @@ CTRL+V pastes a sprite or spriteset.
 CTRL+T pastes a sprite or spriteset using color 0 as transparent.
 Select "Set #" and hit CTRL+C/V/T to copy/paste the whole spriteset.
 Copying and pasting works between different spriteset types.
+
+You can copy a frame and paste it onto a spriteset and vice versa, in which case only one frame is pasted.
+If you copy a whole spriteset and paste it onto another spriteset, it will completely replace the original.
 
 Press E to export the currently selected frame or spriteset to a BMP file.
 Press I to import a frame or spriteset from a BMP, PNG or JPEG file, overwriting the currently selected one. You can import from an image of any size. It will be cropped/expanded to the expected size.

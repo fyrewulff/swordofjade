@@ -84,7 +84,7 @@ define function, begin
 61,teleporttomap,3,0,0,0    # teleport to map (map,x,y)
 62,suspendrandomenemys,0    # misspelled alias for backcompat
 63,resumerandomenemys,0     # misspelled alias for backcompat
-64,getherostat,3,0,0,0      # returns a hero's stat (who,stat,cur/max)
+64,getherostat,3,0,0,0      # returns a hero's stat (who,stat,cur/max/base stat)
 65,resumeoverlay,0          # turns overhead tiles back on
 66,addhero,1,0              # adds a hero to the party
 67,deletehero,1,0           # deletes a hero from the party
@@ -98,16 +98,14 @@ define function, begin
 75,fadescreenout,3,0,0,0    # fade screen out (red,green,blue)
 76,fadescreenin,0           # fade back to color after fade screen out
 77,showvalue,1,0            # display a number in the bottom left corner
-78,alterNPC,3,0,0,0         # replaces one of an NPC's stats
+78,alterNPC,4,0,0,0,-1      # replaces one of an NPC's stats
 79,shownovalue,0            # hide the number from showvalue
 80,currentmap,0             # returns the number of the current map
 81,setherospeed,2,0,4       # changes a heros walking speed
 82,inventory,1,0            # returns the count of a given item
-83,setherostat,4,0,0,1,0    # alters a hero's stats (who,stat,value,cur/max)
-84,suspendboxadvance,0      # prevents user from advancing text boxes/using choiceboxes
-84,suspendtextboxcontrols,0 # prevents user from advancing text boxes/using choiceboxes
+83,setherostat,4,0,0,1,0    # alters a hero's stats (who,stat,value,cur/max/base stat)
+84,suspendboxadvance,0      # prevents user from advancing text boxes
 85,resumeboxadvance,0       # reverses suspendboxadvance
-85,resumetextboxcontrols,0  # reverses suspendboxadvance
 86,advancetextbox,0         # as if the user had pressed a key
 87,setheroposition,3,0,0,0  # arbitrarily set x,y
 88,setNPCposition,3,0,0,0   # arbitrarily set x,y
@@ -142,12 +140,12 @@ define function, begin
 #117,NPCiswalking,1,0       #x obsolete, backwards compatability only
 118,suspendcaterpillar,0    # other heros stop following the leader, and can be manipulated separately.
 119,resumecaterpillar,0     # turns catapillar party back on
-120,NPCreference,3,0,0,0    # get an NPC reference by ID number (ID, copynumber, allowdisabled)
+120,NPCreference,4,0,0,0,0  # get an NPC reference by ID number (ID, copynumber, allowdisabled, pool)
 121,NPCatspot,3,0,0,0       # get nth NPC reference on tile (X,Y,n)
 122,getNPCID,1,0            # get the ID number of an NPC reference
-123,NPCcopycount,1,0        # find out how many copys of an NPC ID are on the map
-124,changeNPCID,2,0,0       # given an NPC reference, changes its ID
-125,createNPC,4,0,0,0,2     # create an NPC by ID at a location and return its reference
+123,NPCcopycount,2,0,0      # find out how many copys of an NPC ID are on the map
+124,changeNPCID,3,0,0,-1    # given an NPC reference, changes its ID and pool
+125,createNPC,5,0,0,0,2,0   # create an NPC by ID at a location and return its reference
 126,destroyNPC,1,0          # destroy the referenced NPC
 126,deleteNPC,1,0           # alias
 127,teachspell,2,0,0        # (who,spell) tries to teach a hero a spell
@@ -167,7 +165,7 @@ define function, begin
 141,npcpixely,1,0           # (who) get npc pixel y
 142,camerapixelx,0          #? get camera pixel x
 143,camerapixely,0          #? get camera pixel y
-144,loadtileset,2,-1,-1     # load a new tileset for the current map
+144,loadtileset,2,-1,-1     # load a new tileset for a map layer [](tileset, layer), or change the default tileset [](tileset), or reset tilesets []().
 145,pickhero,2,-1,0         # lets you manually pick a hero (message string, skip if alone)
 146,renameherobyslot,1,0    # lets you manually rename a hero
 147,readgeneral,1,0         # directly read from the in-memory array of general game data
@@ -203,7 +201,7 @@ define function, begin
 179,writegmap,2,0,0         # write a gmap data item
 180,mapwidth,1,-1           # returns map height in tiles (map id)
 181,mapheight,1,-1          # returns map width in tiles (map id)
-182,readNPC,2,0,0           # reads information about an NPC on the current map (corresponds to alterNPC)
+182,readNPC,3,0,0,-1        # reads information about an NPC on the current map (corresponds to alterNPC)
 183,setherolevel,3,0,0,1    # change a hero's level
 184,giveexperience,2,-1,1   # (who, how much) gives a hero or the active party experience
 185,herolevelled,1,0        # number of levels gained last battle/giveexperience command.
@@ -229,7 +227,8 @@ define function, begin
 205,setheroname,2,0,0         # (string, hero) - sets the name of hero(hero) to string(string)
 206,getitemname,2,0,0         # (string, item) - puts the name of item(item) in string(string)
 207,getmapname,2,0,0          # (string, map) - puts the name of map(map) in string(string)
-208,getattackname,2,0,0       # deprecated. Use "read attack name" instead
+@obsolete("The argument isn't an attack ID or atk: constant! ", read attack name)
+208,getattackname,2,0,0       #Obsolete: Takes real ID - 1 or atk: constant - 2 (string id, attack ID - 1)
 #209,getglobalstring,2,0,0     # (string, global) - puts the global string (global) in string(string)
 210,showstring,1,0            #shows string on the bottom(stringID)
 211,clearstring,1,0           #deletes the data from string(stringID)
@@ -250,6 +249,7 @@ define function, begin
 226,systemday,0               #returns system day
 227,systemmonth,0             #returns system month
 228,systemyear,0              #returns system year
+229,stringequal,2,0,0	      #returns whether two strings are the same(stringID1, stringID2)
 229,stringcompare,2,0,0	      #returns whether two strings are the same(stringID1, stringID2)
 230,readenemydata,2,0,0       #reads enemy data(enemy,dataposition)
 231,writeenemydata,3,0,0,0    #writes enemy data(enemy,dataposition,value)
@@ -301,7 +301,7 @@ define function, begin
 277,readmenuitemint,2,0,0     #read menu item int(menuitemhandle,intid)
 278,writemenuitemint,3,0,0,0  #write menu item int(menuitemhandle,intid,n)
 279,createmenu,0              #create a blank menu
-280,closemenu,1,0             #close menu(handle)
+280,closemenu,2,0,0           #close menu(handle, run close script)
 281,topmenu,0                 #return a handle to the topmost menu
 282,bringmenuforward,1,0      #bring menu forward(menu handle)
 283,addmenuitem,1,0           #add menu item(menuhandle) appends, returns menuitemhandle
@@ -326,7 +326,7 @@ define function, begin
 302,menuisopen,1,0            #menu is open(menu handle) # return true as long as the handle is still valid
 303,menuitemslot,1,0          #menu item slot(menu item handle) returns a menu slot number
 304,outsidebattlecure,3,0,0,-1 #backcompat only, should prefer "map cure"
-305,changetileset,2,-1,-1     #similar to loadtileset. (tileset,layer)
+305,changetileset,2,-1,-1     #similar to loadtileset. load a new tileset for a map layer [](tileset, layer), or change the default tileset [](tileset), or reset tilesets []().
 306,layertileset,1,0          #layer tileset(layer) returns tileset number in use
 307,getformationsong,1,0      #returns the song associated with a given formation
 308,addenemytoformation,5,0,0,85,95,-1 #add enemy to formation(formation, enemy id, x, y, slot = -1) returns slot or -1
@@ -491,7 +491,7 @@ define function, begin
 465,setslicelookup,2,0,0      #change a slice's lookup code
 466,tracevalueinternal,-1     #tracevalue is translated to this
 467,mapcure,3,0,0,-1          #uses a cure attack on a hero
-468,readattackname,2,0,0      #puts an attack name in a string (string id, attack id+1 / attack .hsi constant)
+468,readattackname,2,0,0      #puts an attack name in a string (string id, atk: constant (attack id+1))
 469,spellslearned,2,0,0       #number spells and spell ids hero learnt at last battle/giveexperience command.
 470,allocatetimers,1,16       #change the number of timers
 #471,unusedtimer,0             #find a timer id that's not in use, or allocate more
@@ -551,7 +551,7 @@ define function, begin
 524,getdoordestinationmap,2,0,-1 #map number of given door's exit
 525,doorexists,2,0,-1            #returns true if the given door exists
 526,getattackcaption,2,0,0       #puts an attack's caption in a string (string id, attack id+1 / attack .hsi constant)
-527,getrectfuzziness,1,0         #get rect fuzz percentange
+527,getrectfuzziness,1,0         #get rect fuzz or opacity percentage
 528,setrectfuzziness,2,0,50      #set rect fuzz percentange
 529,textboxline,5,0,0,-1,1,0     #get a line of text from a textbox (string, box, line, expand, strip)
 530,getslicetext,2,0,0           #get the contents of a text slice (string, slice)
@@ -585,12 +585,12 @@ define function, begin
 558,setspritesetnumber,2,0,0     #(sprite slice handle, set num)
 559,getspritedefaultpal,1,0      #(sprite slice handle) - returns default palette number
 560,npcisdisabled,1,0            #(npc reference) returns true if the npc exists, but is disabled by tags or one-time use
-#561,unused
+#561,unused (Don't use: should increment maxScriptCmdID when new commands added)
 #562,unused
 #563,unused
 #564,unused
 565,stringsprintf,-1             #(dest string id, format string id, args...) Format a string, like sprintf
-566,scripterror,1,-1             #(string id) Show a script error
+566,scripterror,2,-1,0           #(string id, hide frame) Show a script error
 567,getscriptname,2,0,0          #(string id, script id) Get name of a script
 568,getcallingscriptid,1,1       #(depth) Get ID number of a parent or ancestor script
 569,camerafollowsslice,1,0       #(slice) Center camera on slice
@@ -618,7 +618,8 @@ define function, begin
 591,getscrollbarstyle,1,0     # return current scroll slice scrollbar style
 592,setscrollcheckdepth,2,0,0 # change a scroll's child-check-depth
 593,getscrollcheckdepth,1,0   # return a scroll's current child-check-depth
-594,scrolltochild,2,0,0       # cause all the children of a Scroll Slice to move until a specific child is in view
+594,scrolltochild,3,0,0,0     # cause all the children of a Scroll Slice to move until a specific child is in view (parent, descendent, apply_padding)
+594,scrolltoslice,3,0,0,0     # alias
 595,runningonwindows,0        # returns true if the device is Windows
 596,runningonmac,0            # returns true if the device is Mac
 597,runningonlinux,0          # returns true if the device is Linux
@@ -665,7 +666,6 @@ define function, begin
 637,doorsaresuspended,0       # return true if "suspend doors" is active
 638,randomenemiesaresuspended,0  # return true if "suspend random enemies" is active
 639,boxadvanceissuspended,0   # return true if "suspend box advance" is active
-639,textboxcontrolsaresuspended,0 # return true if "suspend box advance" is active
 640,overlayissuspended,0      # return true if "suspend overlay" is active
 641,mapmusicissuspended,0     # return true if "suspend map music" is active
 642,timersaresuspended,0      # return true if "suspend timers" is active
@@ -675,7 +675,7 @@ define function, begin
 646,mouserelease,1,0          # returns true if the specified button is was just released (button)
 647,_cancelrunfast,0          # cancels the -runfast command-line option, if it is active.
 648,_runfast,0                # speeds up as if the -runfast command-line option is active.
-649,multdiv,3,0,0,0           # calculate int(float(a)*b/c), with rounding and clamping (undocumented)
+649,multdiv,3,0,0,0           # calculate int(float(a)*b/c), with rounding and clamping
 650,setrectrawborder,2,0,-1   # set a rectangle slice to use a specific border sprite instead of the border for its style
 651,getrectrawborder,1,0      # set a rectangle slice to use a specific border sprite instead of the border for its style
 652,cloneslice,2,0,1          # Copy a slice (handle, recurse)
@@ -683,7 +683,7 @@ define function, begin
 654,resetformationslot,2,0,0  # resets scripted modifications to a specific slot in a battle formation
 655,sliceismaplayer,1,0       # Check slice type
 656,npcreferencefromslice,1,0 # Return the NPC reference for an NPC slice, or else 0
-657,herorankfromslice,1,0     # Return the hero rank for a hero slice, or else 0
+657,herorankfromslice,1,0     # Return the hero rank for a hero slice, or else -1
 658,slicetype,1,0             # Returns a slicetype:* constant
 659,_asserteq,4,0,0,0,0       # Used in the macro expansion of assert(x==y)
 660,savescreenshot,0          # Save a screenshot
@@ -711,6 +711,48 @@ define function, begin
 682,findcolor,4,0,0,0,0       # Index of nearest match in palette (r, g, b, searchstart)
 683,overridetickmilliseconds,1,0  # change game tick speed
 684,canceloverridetickmilliseconds,0 # revert tick speed back to the game default
+685,suspendtextboxcontrols,0  # Prevents player from using choiceboxes
+686,resumetextboxcontrols,0   # Reverses suspendtextboxcontrols
+687,textboxcontrolsaresuspended,0 # Return true if "suspend textbox control" is active
+688,menuitemcount,1,0         # Number of menu items in a menu, including invisible ones
+689,visiblemenuitemcount,1,0  # Number of visible menu items in a menu
+690,replacesubstring,5,-1,-1,-1,-1,0  # Replace text in a string (in string ID, replace what ID, with what ID, max replacements, case insensitive)
+691,decodetrigger,1,0         # (Undocumented) Decode a script trigger to a script ID. Script IDs and 0 passed through. Missing scripts return 0.
+692,getscancodename,3,0,0,1   # Get the name of a scancode in a string (string id, scancode, long name)
+693,getheroslicebyslot,1,0    # Get the slice representing a hero walkabout
+694,heroslotfromslice,1,0     # Return the hero party slot for a hero slice, or else -1
+695,getopacity,1,0            # Return opacity percentage, 0-100 (slice)
+696,setopacity,2,0,100        # Set slice opacity 0-100 (blendable slice, percent)
+697,getblendingenabled,1,0    # True or false (slice)
+698,setblendingenabled,2,0,1  # Blending (blendable slice, true/false)
+699,getblendmode,1,0          # Get slice blend mode: blend:normal/blend:add/blend:multiply (slice)
+700,setblendmode,2,0,0        # Set blend mode (blendable slice, blendmode)
+701,getrectopacity,1,0        # Alias to "get rect fuzziness" (slice)
+702,setrectopacity,2,0,50     # Set rect bg to transparent and set its opacity (slice, opacity)
+703,settimerargs,-1           # Set the arguments a timer will pass to its triggered script (id, args...)
+704,expandstringsinslices,2,0,0 # Expand all codes like ${H0} or ${V0} in text slices starting with a parent slice and including all child slices
+705,heroischasing,1,0         # If hero is chasing an NPC, return the NPC reference
+706,npcischasing,1,0          # If npc is chasing another NPC, return NPC reference
+707,maxmapid,0                # Return id number of the last map
+708,getslicelookupname,3,0,0,1 # Get the name of a lookup code (string id, code id, use default name)
+709,getnpcpool,1,0            # given an NPC reference, return its pool number
+710,gracefullydismountvehicle,0 # Dismount a vehicle, but cleanly
+711,readfoemap,2,0,0          # Read a formation set (0-255) from the foe map (x, y)
+712,getenemyname,2,0,0        # Get enemy name (enemyid, stringid)
+713,setenemyname,2,0,0        # Change the name of an enemy (enemyid, stringid)
+714,breakpoint,0              # Enter the script debugger
+715,deleteherobyslot,1,0      # Delete a hero by slot number
+716,getuicolor,2,0,0          # Translate a ui: constant to master pal index (color code, autotoggle)
+717,setuicolor,2,0,0          # Change UI color temporarily (color code, pal index)
+718,getboxstylecolor,1,0      # Box background color (box style)
+719,getboxstyleedgecolor,1,0  # Box edge color (box style)
+720,getboxstyleborder,1,0     # border:line or box border spriteset (box style)
+721,getchildautosort,1,0      # Get slice children autosort setting, an autosort: constant (slice)
+722,setchildautosort,2,0,0    # Set slice children autosort setting (slice, autosort)
+723,lastlayerid,0             # The ID number of the last map layer that exists in the current map
+724,layeridunderwalkabouts,0  # Get ID number of map layer under the walkabouts in the current map
+725,getglobalsoundvolume,0    # Get the sfx volume setting (0-255)
+726,setglobalsoundvolume,1,192 # Get sfx volume (0-255); default to 75% (default initial sfx volume)
 
 # Don't forget to update maxScriptCmdID in const.bi when adding new commands
 end
@@ -762,6 +804,19 @@ script, npc copy number, hsd:npc, begin
   return (hsd:copy)
 end
 
+script, create global npc, hsd:id, hsd:x=0, hsd:y=0, hsd:direction=2, begin
+  exit returning(create npc(hsd:id, hsd:x, hsd:y, hsd:direction, pool:global))
+end
+
+script, global npc reference, hsd:id, hsd:copy=0, hsd:allow disabled=0, begin
+  exit returning(npc reference(hsd:id, hsd:copy, hsd:allow disabled, pool:global))
+end
+
+# Alias to above
+script, global npc, hsd:id, hsd:copy=0, hsd:allow disabled=0, begin
+  exit returning(npc reference(hsd:id, hsd:copy, hsd:allow disabled, pool:global))
+end
+
 script,swapbyname,hsd:hero1,hsd:hero2,begin
  hsd:hero1:=findhero(hsd:hero1)
  hsd:hero2:=findhero(hsd:hero2)
@@ -771,11 +826,15 @@ script,swapbyname,hsd:hero1,hsd:hero2,begin
 end
 
 script,renamehero,hsd:who=0,begin
-  variable(hsd:slot)
+  variable(hsd:slot, hsd:tmp)
   hsd:slot:=findhero(hsd:who)
   if(hsd:slot>=0)
-    then(return(renameherobyslot(hsd:slot)))
-    else(return(false))
+  then(return(renameherobyslot(hsd:slot)))
+  else(
+    hsd:tmp := hsd:save string(99)
+    script error(string sprintf(99, $99="rename hero: no hero with id %d", hsd:who), true)
+    hsd:restore string(99, hsd:tmp)
+  )
 end
 
 # this exploits an undocumented feature of getherostat. Don't use the
@@ -854,7 +913,9 @@ script,showstringat,hsd:stringID,hsd:x=0,hsd:y=0,begin
   positionstring(hsd:stringID,hsd:x,hsd:y)
 end
 
-script,centerstringat,hsd:stringID,hsd:x=160,hsd:y=100,begin
+script,centerstringat,hsd:stringID,hsd:x=-654321,hsd:y=-654321,begin
+  if(hsd:x == -654321) then(hsd:x := get screen width / 2)
+  if(hsd:y == -654321) then(hsd:y := get screen height / 2)
   setstringbit(hsd:stringID,0,1)
   positionstring(hsd:stringID,hsd:x--(stringlength(hsd:stringID)*4),hsd:y)
 end
@@ -901,7 +962,7 @@ end
 script, last ascii, begin
 	variable(hsd:code, hsd:shift)
 
-	hsd:shift := keyispressed(42) || keyispressed(54)
+	hsd:shift := keyispressed(key:shift)
 
 	if(keyval(30) >> 1) then (hsd:code := 65) #A...
 	if(keyval(48) >> 1) then (hsd:code := 66)
@@ -950,7 +1011,7 @@ script, last ascii, begin
 	if(keyval(52) >> 1) then (if(hsd:shift) then (hsd:code := 62) else (hsd:code := 46)) # . >
 	if(keyval(53) >> 1) then (if(hsd:shift) then (hsd:code := 63) else (hsd:code := 47)) # / ?
 	if(keyval(43) >> 1) then (if(hsd:shift) then (hsd:code := 124) else (hsd:code := 92)) # \ |
-	#if(keyval(40) >> 1) then (hsd:code := 47) # Num / WTF? What's the hsd:code for the other "/"?
+	if(keyval(102) >> 1) then (hsd:code := 47) # Num /
 	if(keyval(55) >> 1) then (hsd:code := 42) # Num *
 	if(keyval(71) >> 1) then (hsd:code := 55) # Num 7
 	if(keyval(72) >> 1) then (hsd:code := 56) # Num 8
@@ -1033,13 +1094,7 @@ end
 #--------------------------------------------------------------------------
 #read/write enemy wrappers
 
-script,getenemyname,hsd:enemyID,hsd:stringID,begin
-  variable(hsd:t)
-  clearstring(hsd:stringID)
-  for (hsd:t,1,readenemydata(hsd:enemyID,0)) do(
-    appendascii(hsd:stringID,readenemydata(hsd:enemyID,hsd:t))
-  end
-end
+#getenemyname and setenemyname used to be scripts here
 
 script,getenemystat,hsd:enemyID,hsd:stat,begin
   return(readenemydata(hsd:enemyID,hsd:stat+62))
@@ -1047,15 +1102,6 @@ end
 
 script,setenemystat,hsd:enemyID,hsd:stat,hsd:value,begin
   writeenemydata(hsd:enemyID,hsd:stat+62,hsd:value)
-end
-
-script,setenemyname,hsd:enemyID,hsd:stringID,begin
-  variable(hsd:t,hsd:t2)
-  if(stringlength(hsd:stringID)>=16) then (hsd:t2:=16) else (hsd:t2:=stringlength(hsd:stringID))
-  writeenemydata(hsd:enemyID,0,hsd:t2)
-  for(hsd:t,1,hsd:t2) do (
-    writeenemydata(hsd:enemyID,hsd:t,asciifromstring(hsd:stringID,hsd:t))
-  )
 end
 
 #get/set enemy appearance are now simply wrappers. too much confusion to remove them now
@@ -1079,11 +1125,11 @@ script,get victory music,begin
 end
 
 script,get death script,begin
-  return(read general(42))
+  return(decode trigger(read general(42)))
 end
 
 script,get load script,begin
-  return(read general(57))
+  return(decode trigger(read general(57)))
 end
 
 script,set load script,hsd:ID=0,begin
@@ -1281,7 +1327,7 @@ script,set footoffset,hsd:offset=0,begin
 end
 
 script,get instead of battle script,begin
-  return (read gmap(13))
+  return (decode trigger(read gmap(13)))
 end
 
 script,set instead of battle script,hsd:ID=0,begin
@@ -1289,7 +1335,7 @@ script,set instead of battle script,hsd:ID=0,begin
 end
 
 script,get each step script,begin
-  return (read gmap(14))
+  return (decode trigger(read gmap(14)))
 end
 
 script,set each step script,hsd:ID=0,begin
@@ -1297,7 +1343,7 @@ script,set each step script,hsd:ID=0,begin
 end
 
 script,get on keypress script,begin
-  return (read gmap(15))
+  return (decode trigger(read gmap(15)))
 end
 
 script,set on keypress script,hsd:ID=0,begin
@@ -1306,6 +1352,20 @@ end
 
 script,draw npcs above heroes,hsd:setting=1,begin
   write gmap(16,hsd:setting)
+end
+
+#--------------------------------------------------------------------------
+# read/write pass block wrappers
+
+script, read wall bit, hsd:x, hsd:y, hsd:bit, begin
+  return ((read pass block(hsd:x, hsd:y), and, hsd:bit) <> 0)
+end
+
+script, write wall bit, hsd:x, hsd:y, hsd:bit, hsd:new value = true, begin
+  variable (hsd:val)
+  hsd:val := read pass block (hsd:x, hsd:y), and, (-1 -- hsd:bit)
+  if (hsd:new value) then (hsd:val += hsd:bit)
+  write pass block (hsd:x, hsd:y, hsd:val)
 end
 
 #--------------------------------------------------------------------------
@@ -1348,6 +1408,18 @@ end
 
 script, first menu item, hsd:menuhandle, begin
   exit returning(menu item by slot(hsd:menuhandle, 0))
+end
+
+script, last menu item, hsd:menuhandle, hsd:visible only=true, begin
+  variable(hsd:idx)
+  if (hsd:visible only) then (
+    hsd:idx := visible menu item count(hsd:menuhandle) -- 1
+  ) else (
+    hsd:idx := menu item count(hsd:menuhandle) -- 1
+  )
+  if (hsd:idx >= 0) then (
+    exit returning(menu item by slot(hsd:menuhandle, hsd:idx, false))
+  )
 end
 
 script, wait for menu, hsd:menuhandle, begin
@@ -1454,7 +1526,7 @@ script, set menu border, hsd:menuhandle, hsd:n=0, begin
 end
 
 script, get menu on close script, hsd:menuhandle, begin
-  exit returning(read menu int(hsd:menuhandle, 24))
+  exit returning(decode trigger(read menu int(hsd:menuhandle, 24)))
 end
 
 script, set menu on close script, hsd:menuhandle, hsd:n=0, begin
@@ -1592,30 +1664,71 @@ end
 #--------------------------------------------------------------------------
 # slice commands
 
+script, get npc sprite, hsd:npc, begin
+  variable (hsd:sl, hsd:tmp)
+  hsd:sl := get npc slice(hsd:npc)
+  # If the NPC is tag-disabled it has no slice and we return 0; not an error.
+  if (hsd:sl) then (return (lookup slice(sl:walkabout sprite component, hsd:sl)))
+end
+
+script, get hero sprite, hsd:rank, begin
+  variable (hsd:sl)
+  hsd:sl := get hero slice(hsd:rank)
+  # If the caterpillar rank is empty we return 0; not an error.
+  if (hsd:sl) then (return (lookup slice(sl:walkabout sprite component, hsd:sl)))
+end
+
+script, get hero sprite by slot, hsd:who, begin
+  variable (hsd:sl)
+  hsd:sl := get hero slice by slot(hsd:who)
+  # If the slot is empty we return 0; not an error.
+  if (hsd:sl) then (return (lookup slice(sl:walkabout sprite component, hsd:sl)))
+end
+
 script, load sprite, hsd:type, hsd:number, hsd:pal = -1, begin
-  if(hsd:type == spritetype:hero)        then(return(load hero sprite         (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:smallenemy)  then(return(load small enemy sprite  (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:mediumenemy) then(return(load medium enemy sprite (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:largeenemy)  then(return(load large enemy sprite  (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:walkabout)   then(return(load walkabout sprite    (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:weapon)      then(return(load weapon sprite       (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:attack)      then(return(load attack sprite       (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:border)      then(return(load border sprite       (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:portrait)    then(return(load portrait sprite     (hsd:number, hsd:pal)))
-  if(hsd:type == spritetype:backdrop)    then(return(load backdrop sprite     (hsd:number)))
+  switch (hsd:type) do (
+    case(spritetype:hero)        return(load hero sprite         (hsd:number, hsd:pal))
+    case(spritetype:smallenemy)  return(load small enemy sprite  (hsd:number, hsd:pal))
+    case(spritetype:mediumenemy) return(load medium enemy sprite (hsd:number, hsd:pal))
+    case(spritetype:largeenemy)  return(load large enemy sprite  (hsd:number, hsd:pal))
+    case(spritetype:walkabout)   return(load walkabout sprite    (hsd:number, hsd:pal))
+    case(spritetype:weapon)      return(load weapon sprite       (hsd:number, hsd:pal))
+    case(spritetype:attack)      return(load attack sprite       (hsd:number, hsd:pal))
+    case(spritetype:border)      return(load border sprite       (hsd:number, hsd:pal))
+    case(spritetype:portrait)    return(load portrait sprite     (hsd:number, hsd:pal))
+    case(spritetype:backdrop)    return(load backdrop sprite     (hsd:number))
+    else (
+      variable(hsd:tmp)
+      hsd:tmp := hsd:save string(99)
+      script error(string sprintf(99, $99="load sprite(%d,%d,%d): invalid type %d", hsd:type, hsd:number, hsd:pal, hsd:type), true)
+      hsd:restore string(99, hsd:tmp)
+    )
+  )
+end
+
+script, create sprite, hsd:type, hsd:number, hsd:pal = -1, begin
+  return(load sprite(hsd:type, hsd:number, hsd:pal))
 end
 
 script, replace sprite, hsd:sl, hsd:type, hsd:number, hsd:pal = -1, begin
-  if(hsd:type == spritetype:hero)        then(replace hero sprite         (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:smallenemy)  then(replace small enemy sprite  (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:mediumenemy) then(replace medium enemy sprite (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:largeenemy)  then(replace large enemy sprite  (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:walkabout)   then(replace walkabout sprite    (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:weapon)      then(replace weapon sprite       (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:attack)      then(replace attack sprite       (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:border)      then(replace border sprite       (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:portrait)    then(replace portrait sprite     (hsd:sl, hsd:number, hsd:pal))
-  if(hsd:type == spritetype:backdrop)    then(replace backdrop sprite     (hsd:sl, hsd:number))
+  switch (hsd:type) do (
+    case(spritetype:hero)        replace hero sprite         (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:smallenemy)  replace small enemy sprite  (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:mediumenemy) replace medium enemy sprite (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:largeenemy)  replace large enemy sprite  (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:walkabout)   replace walkabout sprite    (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:weapon)      replace weapon sprite       (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:attack)      replace attack sprite       (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:border)      replace border sprite       (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:portrait)    replace portrait sprite     (hsd:sl, hsd:number, hsd:pal)
+    case(spritetype:backdrop)    replace backdrop sprite     (hsd:sl, hsd:number)
+    else (
+      variable(hsd:tmp)
+      hsd:tmp := hsd:save string(99)
+      script error(string sprintf(99, $99="replace sprite(%d,%d,%d): invalid type %d", hsd:type, hsd:number, hsd:pal, hsd:type), true)
+      hsd:restore string(99, hsd:tmp)
+    )
+  )
 end
 
 script, load enemy sprite, hsd:size, hsd:number, hsd:pal = -1, begin
@@ -1739,7 +1852,7 @@ script, set selected child, hsd:parent, hsd:child, begin
   if (parent slice(hsd:child) <> hsd:parent) then (
     variable(hsd:tmp)
     hsd:tmp := hsd:save string(99)
-    script error($99="set selected slice: 2nd slice must be a child of the 1st")
+    script error($99="set selected slice: 2nd slice must be a child of the 1st", true)
     hsd:restore string(99, hsd:tmp)
   ) else (
     set select slice index(hsd:parent, slice child index(hsd:child))
@@ -1872,16 +1985,6 @@ define constant, begin
 2,down
 3,left
 1,right
-# plotscr version >= "3U " has new *key constants
--1,anykey
--2,upkey
--3,downkey
--4,leftkey
--5,rightkey
--6,usekey
--7,cancelkey
--7,menukey
--8,runkey
 0,me
 0,none
 -1,autonumber
@@ -1938,8 +2041,8 @@ define constant, begin
 7,NPCstat:pushability
   0,NPCpush:off
   1,NPCpush:full
-  2,NPCpush:horizontal
-  3,NPCpush:vertical
+  2,NPCpush:vertical
+  3,NPCpush:horizontal
   4,NPCpush:uponly
   5,NPCpush:rightonly
   6,NPCpush:downonly
@@ -1999,8 +2102,6 @@ define constant, begin
 0, extra 0
 1, extra 1
 2, extra 2
-0, x axis
-1, y axis
 0b1,mapstate:mapsettings
 0b10,mapstate:npclocations
 0b100,mapstate:npcdefinitions
@@ -2011,6 +2112,10 @@ define constant, begin
 0b110,mapstate:npcs
 0b111000,mapstate:tiles
 0b11111111,mapstate:all
+# Values for "draw NPCs above heroes"
+0,layering:heroes over NPCs
+1,layering:NPCS over heroes
+2,layering:heroes and NPCs together
 0,timer:stop #use in speed
 -1,timer:default #use in any
 -2,timer:gameover#use in trigger
@@ -2106,12 +2211,23 @@ define constant, begin
 7,spritetype:border
 8,spritetype:portrait
 9,spritetype:backdrop
+0,autosort:Off
+1,autosort:Custom
+2,autosort:Y
+3,autosort:TopY
+4,autosort:CenterY
+5,autosort:BottomY
 -1,border:line
 -2,border:none
 -99,border:raw
 0,trans:solid
 1,trans:fuzzy
 2,trans:hollow
+3,trans:blend
+0,blend:normal
+1,blend:add
+1,blend:additive
+2,blend:multiply
 0,hand:Attack A
 1,hand:Attack B
 0,dissolve:random scatter
@@ -2125,9 +2241,72 @@ define constant, begin
 8,dissolve:squeeze
 9,dissolve:shrink
 10,dissolve:flicker
+11,dissolve:shrink to center
+12,dissolve:fade
+13,dissolve:ghostly fade
+14,dissolve:fade to white
+15,dissolve:puff
+16,dissolve:fade up
+17,dissolve:blip
 -1,dissolvetime:default
 50000,maximum global id
 99,maximum string id
+ -1, ui:Background               # Background colour
+ -2, ui:MenuItem                 # Normal menu item
+ -3, ui:DisabledItem             # Disabled menu item
+ -4, ui:SelectedItem             # Selection, alternates 3 & 4
+ -5, ui:SelectedItem2            # Selection flash color
+ -6, ui:SelectedDisabled         # Selected disabled item
+ -7, ui:SelectedDisabled2        # Selected disabled item flash color
+ -8, ui:HighlightA               # Background to selected menu item
+ -9, ui:HighlightB               # Background used in equip menu
+ -10, ui:TimeBar                 # Hero's time bar
+ -11, ui:TimeBarFull             # Time bar flash when full
+ -12, ui:HealthBar               # Hero's health bar
+ -13, ui:HealthBarFull           # Health bar flash when full
+ -14, ui:Text                    # Default text colour
+ -15, ui:TextOutline             # Text outline colour
+ -16, ui:Description             # Spell description
+ -17, ui:Money                   # Status menu money display
+ -18, ui:Shadow                  # Vehicle shadow
+ -19, ui:SpecialItem             # Special menu item
+ -20, ui:SelectedSpecial         # Selected Special item
+ -21, ui:SelectedSpecial2        # Selected Special item flash color
+ -22, ui:Items:Swap
+ -23, ui:Items:SwapDisabled
+ -24, ui:Items:SwapSpecial
+ -25, ui:Items:Item
+ -26, ui:Items:Disabled
+ -27, ui:Items:Special
+ -28, ui:Items:Selected
+ -29, ui:Items:Selected2
+ -30, ui:Items:SelectedDisabled
+ -31, ui:Items:SelectedDisabled2
+ -32, ui:Items:SelectedSpecial
+ -33, ui:Items:SelectedSpecial2
+ -34, ui:Items:Highlight
+ -35, ui:Items:Highlight2
+ -36, ui:Items:SwapHighlight
+ -37, ui:Items:SwapHighlight2
+ -38, ui:MouseHoverItem          # A menu item over which the mouse is hovering
+ -39, ui:Damage                  # Default damage digit color
+ -40, ui:Heal
+ -41, ui:Absorb
+ -42, ui:Poison
+ -43, ui:Regen
+ -44, ui:FadeOutNewGame
+ -45, ui:FadeOutLoadGame
+ -46, ui:FadeOutDeath
+ -47, ui:FadeOutQuit
+ -48, ui:FadeOutDoor
+ -49, ui:FadeOutInn
+ -50, ui:FadeOutEnterBattle
+ -51, ui:FadeOutWonBattle
+ -52, ui:FadeOutExitBattle
+ -53, ui:MPBar                   # Hero's MP bar
+ -54, ui:MPBarFlash              # MP bar flash colour (when higher than max)
+0,pool:local
+1,pool:global
 end
 
 #<SLICE LOOKUP CODES>
@@ -2144,13 +2323,16 @@ define constant, begin
 -100005, sl:script layer
 -100006, sl:textbox layer
 -100007, sl:string layer
+-100021, sl:reserve
 -100008, sl:maproot
 -100009, sl:obsolete overhead
 -100020, sl:map overlay
 -100010, sl:walkabout layer
 -100011, sl:hero layer
 -100012, sl:npc layer
+-100013, sl:walkabout sprite
 -100013, sl:walkabout sprite component
+-100014, sl:walkabout shadow
 -100014, sl:walkabout shadow component
 -100015, sl:backdrop
 -101000, sl:map layer0
@@ -2169,35 +2351,6 @@ define constant, begin
 -101013, sl:map layer13
 -101014, sl:map layer14
 -101015, sl:map layer15
--102000, sl:status portrait
--102001, sl:status walkabout
--102002, sl:status battlesprite
--102003, sl:status page select
--102004, sl:status statlist
--102005, sl:status hide if no mp
--102006, sl:status hide if no lmp
--102007, sl:status hide if max lev
--102008, sl:plank holder
--102009, sl:status hide if no portrait
--102010, sl:item itemlist
--102011, sl:item exitbutton
--102012, sl:item sortbutton
--102013, sl:item trashbutton
--102014, sl:plank menu selectable
--102015, sl:spell listlist
--102016, sl:spell spelllist
--102017, sl:spell hide if no list
--102018, sl:spell cancelbutton
--102019, sl:virtual keyboard button
--102020, sl:virtual keyboard buttontext
--102021, sl:virtual keyboard shift
--102022, sl:virtual keyboard symbols
--102023, sl:virtual keyboard select
--102024, sl:virtual keyboard entrytext
--102025, sl:virtual keyboard del
--102026, sl:virtual keyboard enter
--102027, sl:shop buy info panel
--102028, sl:status hide if no hp
 -102100, sl:pathfind dest display
 end
 #</SLICE LOOKUP CODES>

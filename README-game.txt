@@ -1,6 +1,6 @@
-------------------------------------------------------------------
- O.H.R.RPG.C.E Game Player         (2017-12-03 etheldreme version)
-------------------------------------------------------------------
+------------------------------------------------------------
+ O.H.R.RPG.C.E Game Player         (Hróðvitnir version)
+------------------------------------------------------------
 Official Hamster Republic RPG Construction Engine
 
 ---
@@ -11,7 +11,7 @@ To learn how to use the OHRRPGCE, please visit
 http://HamsterRepublic.com/ohrrpgce/
 
 If you have questions, read the FAQ at
-http://hamsterrepublic.com/ohrrpgce/F.A.Q.html
+http://rpg.hamsterrepublic.com/ohrrpgce/F.A.Q.
 
 ---
 DISTRIBUTION INFO
@@ -23,8 +23,8 @@ just visit: http://HamsterRepublic.com/ohrrpgce/Source.html
 ---
 WHERE TO FIND GAMES?
 
-You can start at http://HamsterRepublic.com/ohrrpgce/ where there are lots
-of links to OHRRPGCE related sites with downloadable games, or you can
+You can start at http://rpg.hamsterrepublic.com/ohrrpgce/Games where there are
+lots of links to OHRRPGCE related sites with downloadable games, or you can
 search the internet for the word OHRRPGCE with your favorite search engine
 
 ---

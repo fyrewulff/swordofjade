@@ -16,11 +16,15 @@ Use ALT+arrow keys to move the view of the map.
 
 Press < and > to choose which NPC you want to place. You can also type in an NPC ID number or use the MOUSE WHEEL.
 
+Press PageUp or PageDown to switch between the local pool of NPCs for this map and the global pool of NPCs for all maps
+
 Press the SPACE bar or LEFT CLICK to place an NPC on the map.
 
 To remove an NPC, position the cursor over the NPC and press SPACE or CLICK again.
 
-Press C to find an NPC, cycling between the locations of all copies of this NPC on the map.
+Move the cursor over an NPC and press G ('grab') to select its NPC type. If there are multiple NPCs on the tile, press G to cycle through them.
+
+Press C to find an NPC, cycling between the locations of all copies of the current NPC type on the map.
 
 If you want to control which direction an NPC will be facing, you can use CTRL+arrow keys, or LEFT CLICK and drag with the mouse.
 

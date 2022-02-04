@@ -1,31 +1,316 @@
 WHAT IS NEW?
 
-April ? 2019 [Fufluns]
+September 13 2021 [Hróðvitnir]
+
+  *** New Features
+    * Slice Editor:
+      * Settings/tools menu (F8 to open). Lists most hotkeys. Includes new
+        settings to show/hide the position and size of each slice. [Ralph]
+      * Data organised into collapsible/expandable sections [Sword]
+      * Press F in the slice editor to focus on a slice [Ralph]
+      * Slice collections can be named. The name and collection ID are shown in
+        the in-game slice debugger [Ralph]
+      * In the position/size edit view hold Ctrl to change size/position instead
+    * F8 debug menu option "Enable/Disable random battles" [Ralph]
+    * Better, smoother screen fading in/out [Ralph]
+    * Option (in General Settings Menu) to run in 24-bit color mode. Much nicer
+      looking transparent sprites, but increases CPU usage [Ralph]
+    * Attacks can have custom alignment relative to their targets [James]
+    * There is now a global pool of NPC definitions that can be used on
+      any map to supplement the local per-map NPCs [James]
+    * Turn-based battle bit "Don't break Speed ties randomly" [Ralph]
+    * "Ignore MP~ stat" general preference bit, so you can use the stat for
+      something else [Ralph]
+    * The new gfx_sdl2 and music_sdl2 backends based on SDL 2 & SDL_mixer 2 are
+      now the default on Windows, 64-bit Mac and Linux/Unix. These fix many
+      problems in gfx_sdl and music_sdl. gfx_sdl2 requires Windows XP or later.
+      You can switch backend, to gfx_directx or (obsolete) gfx_fb, with Ctrl-F7.
+      There's no reason to prefer music_sdl, but if you want to use gfx_sdl,
+      which was the default on Unix/Linux/Mac and the default for Custom on
+      Windows, you will need to download/compile a "music_sdl" build or 32-bit
+      Mac build.
+      [Ralph]
+    * When using gfx_sdl2, gamepads should now work reliably: A is Use, B is
+      Cancel/Menu, Start is Menu, and you can use new joy:button constants like
+      joy:A, joy:LeftStick, joy:L2 for keypress commands, and axis:X, axis:RightY,
+      axis:L2, etc. for "joystick axis".
+      And when multiple gamepads are plugged in all of them should work [Ralph]
+    * Preference bitset "Map joystick (left) stick to dpad" (default on) [Ralph]
+    * You can copy/paste enemies and attacks by pressing Ctrl-C, etc, on the
+      <- Enemy/Attack ## -> line [Ralph]
+    * Shift+F# alternative keycombos to Ctrl+F# debug keys, so you can activate
+      them without accidentally activating NPCs/etc [Ralph]
+    * "Don't display 'Miss'" and "Don't display 'Fail'" attack bits [Ralph]
+
+   * New Plotscripting Features
+    * "set timer args" [Ralph]
+    * "sl:walkabout sprite" alias to "sl:walkabout sprite component" and
+      "sl:walkabout shadow" alias to "sl:walkabout shadow component"
+    * "get scancode name" works for joy: scancodes too [Ralph]
+    * "expand strings in slices" [James]
+    * "hero is chasing" and "npc is chasing" [James]
+    * "max map id" [James]
+    * "get slice lookup name" [Ralph]
+    * "create global npc", "global npc reference" (and alias "global npc"),
+      "get npc pool" [James]
+    * Commands that now accept an optional "pool" argument:
+      "alter npc", "npc reference", "npc copy count", "change npc id",
+      "create npc", "read npc" [James]
+    * "gracefully dismount vehicle" [James]
+    * "read foemap" [Ralph]
+    * "breakpoint" [Ralph]
+    * "delete hero by slot" [James]
+    * "get ui color", "set ui color", "get box style color",
+      "get box style edge color", "get box style border" [Ralph]
+    * "get child autosort", "set child autosort" [Ralph]
+    * "last layer id", "layer id under walkabouts" [James]
+    * "get/set global sound volume" [Ralph]
+
+  *** Changes
+    * NPCpush:vertical and NPCpush:horizontal script constants were swapped with
+      with each other! They've been swapped the right way. This fix only takes
+      effect when you reimport your scripts.
+    * MP~/Focus and Hits stats are no longer limited to 100 and 20 in the editors
+    * Joystick buttons 2 and 3 are no longer mapped to Use/Cancel (like buttons 0
+      and 1), so you can use them for other purposes
+    * The 'joystick num' args to various script commands were replaced with
+      'player' args which are similar, except joysticks are now numbered from 1
+      instead of 0. 0 means "any joystick".
+    * The slice editor now shows the root slice of a collection by default
+    * "trim string" now trims tabs and newlines too
+    * "menu key" and "cancel key" are now different constants. "menu key"
+      includes the Start button on a gamepad
+    * Module (.mod/xm/it/s3m) music volume level has changed. Unfortunately the
+      volume level differs by OS, SDL_mixer version and SDL_mixer backend
+      library, and previously changed in Dwimmercrafty (2017):
+                                 Windows            Mac/Linux/Android
+        music_sdl2, now:         medium (modplug)   medium (modplug)
+        music_sdl, now:          medium (modplug)   quiet  (mikmod)
+        music_sdl, 2017-2020:    loud   (modplug)   quiet  (mikmod)
+        music_sdl, before 2017:  quiet  (mikmod)    quiet  (mikmod)
+    * Games packed as Windows installers install into Program Files\ not
+      Program Files\OHRRPGCE Games\
+
+  *** Bugfixes
+    * "set opacity" (with opacity < 100%) didn't always turn on blending
+      [Ralph]
+    * Bug #1118 In turn-based battles, non-blocking attacks delayed by X
+      attacks could delay by up to X turns. You have to turn off the "Non-turn
+      attack delays can also cause turn delays" back-compatibility bit to get
+      this bugfix [Ralph]
+    * Experience required to level is no longer shown in the Status screen
+      for heroes that reached max level. If all heroes are at max level,
+      battles no longer tell that you gained experience [Ralph]
+    * Damage and level caps changes didn't update in saved games. This fix
+      only affects new saves, old ones still remember the old caps [Ralph]
+    * Wrong victory animation when battle ends while hero is walking [Ralph]
+    * In the slice editor, Ctrl+Up/Down and Shift+Up/Down made the cursor move
+      two places [Ralph]
+    * Sprites imported from PNGs had the last palette color set to black [Ralph]
+    * Wrong default palette in spriteset browser after importing a frame [Ralph]
+    * "load palette" reverted often when using Test Game or debug menus [Ralph]
+    * Deleting tilesets didn't delete default passability or animations, and
+      the tilesets reappeared, blanked out, when quitting & reloading [Ralph]
+    * Foemap Stats menu partly ignored enemy 0, and several minor bugs [Ralph]
+    * Saving in a hidden save slot with a script will not move the default
+      cursor to the very bottom of the save/load menu anymore [James]
+    * On Macs, games set to run at 60fps (or close to 60) actually ran at a much
+      lower framerate. Shift-Tab also works much better on Mac now. [Ralph]
+    * Transparency effects resulted in random colors (unless "update palette"
+      was called) in games that didn't use the default master palette [Ralph]
+    * Bug #1138 64-bit Mac builds show black screen when fullscreened, and also
+      bug #1142 possible extreme lag/freezing on 64-bit Mac [James]
+    * If you had more than about 3321 textboxes, Page Down in the textbox
+      browser was broken [Ralph]
+    * NPC extra data wasn't saved in saved map states (they reset to 0) [Ralph]
+    * Bug #1143 4-bit BMP export with width mod 4 == 1 is broken, and
+      bug #1070 Master palette export produces a semi-broken BMP file [Ralph]
+    * Zone maps could be saved incorrectly on width-256 and larger maps [Ralph]
+    * Poison/regen/mute/stun status icon characters were pointlessly saved in
+      save games, so didn't update if you changed them
+    * "check parentage" was completely broken [Ralph]
+    * Bug #1145 on Mac spawning HSpeak to import scripts randomly failed [Ralph]
+    * Mac: music & sfx menus didn't show metadata for .ogg files [Ralph]
+    * When using the new default gfx_sdl2/music_sdl2 backends, the following
+      bugs are fixed:
+      * #372 music_sdl: segmentation fault on 11025Hz MP3 files (affects old
+        games containing MP3s on Mac/Linux)
+      * #1085 SDL_mixer plays tracks slowed down/sped up if not 11, 22 or 44.1kHz
+      * #1187 module (XM/MOD/IT/S3M) loop points didn't work on Linux and Mac
+      * #1136 music_sdl: Crash when playing a truncated .wav
+      * #1079 Linux: Occasional freeze when quitting when using PulseAudio
+      * #617 Screen tearing on some computers (didn't affect gfx_directx)
+      * #1140 64-bit Mac gfx_sdl: Random crash in SDL_SoftStretch
+      * #1147 64-bit Mac gfx_sdl: run-away memory leak
+      * #1115 Linux gfx_sdl: can't resize the window on Xfce
+      * #1173 Windows gfx_sdl: Enter key stuck after changing window zoom level
+        in Custom
+      * On a multimonitor Unix/X11 system game windows could get created larger
+        than a single monitor
+    * Many bugs fixed in gfx_sdl2, which was previously experimental [Ralph]
+    * The currency global text string wasn't used for attack harm text or cost
+      descriptions [Ralph]
+    * If the player unequips something when there's no room in the inventory they
+      now get the "No room" message instead of losing the equipment (other
+      methods of unequipping still destroy the item!) [Ralph]
+    * Bug #1137 crashes and "BUG: missing sprite component" errors when swapping
+      heroes immediately before a map change [James]
+    * Tweaked battle target cursor movement to fix some (but not all) odd
+      behaviour and a possibility of unselectable targets! [Ralph]
+    * Bug #38 Virus scanners raise false alarm on game.exe when a game icon is
+      embedded while distributing a game. Most virus scanners stopped reporting
+      a false positive anyway, but we now use a fixed embedding tool that sets
+      the correct .exe checksum [Ralph]
+
+  *** Stuff Only Developers Will Notice
+    * clang can be used to compile instead of gcc. Added "compiler=clang|gcc"
+      flag to scons [Ralph]
+    * hspeak now built using eubind instead of euc in debug builds; using eubind
+      avoids linker errors when compiling Euphoria->C on recent Linux distros
+
+
+May 2 2020 [Gorgonzola]
+
+  *** New Features
+    * True transparent sprite and map layer slices!
+      You can control opacity and blend mode: normal, add or multiply.
+      Blending works by mapping to the nearest master palette color, which
+      is fast-enough but sometimes looks poor; there's a global setting to
+      control how that's done. (Press Ctrl-F3 in the slice editor to preview
+      what future 32-bit blending will look like!) [Ralph]
+    * New dissolve/appear animations: Fade, Ghostly fade, Fade to white,
+      Puff, Fade up, Blip [Ralph]
+    * Numlock is now respected in both Game and Custom; when it's off numpad
+      keys are also mapped to other keys, so you can use the numpad for
+      movement.  When it's on, no remapping happens. (You can disable
+      remapping with Ctrl-Shift-N.) [Ralph]
+    * "Dead Foe (dead heroes only)" and "Foe (including dead heroes)" attack
+      target classes [Ralph]
+    * Title Screen Text; a quick and easy way to put a line of text like
+      a version number at the bottom of the title screen [James]
+    * "Reset UI Colors/Box Styles to defaults" options in the Master Palettes
+      menu, and Ctrl-D rescue key [Ralph]
+    * Enemy editor option to show a backdrop behind the enemy sprite [Ralph]
+    * While encoding .ogg files, added an advanced option not to filter out
+      very high frequencies. Useful for sfx (eg rain) with hiss noises [Ralph]
+
+   * New Plotscripting Features
+    * ""any key", etc, includes mouse" option in Mouse Controls menu [Ralph]
+    * "get scancode name" [Ralph]
+    * "get hero slice by slot", "get hero sprite by slot",
+      "hero slot from slice" [Ralph]
+    * Global script triggers for when a hero is added, deleted, or swapped to
+      a different slot [Ralph]
+    * "get opacity", "set opacity", "get blend mode", "set blend mode",
+      "get blending enabled", "set blending enabled" [Ralph]
+    * "set rect opacity", "get rect opacity", and trans:blend constant for
+      "set rect trans" [Ralph]
+
+  *** Changes
+    * Renamed "Enemy" target class to "Foe (not dead)", and "Ally" to
+      "Ally (not dead)"
+    * Empty active party slots no longer have hidden dummy hero slices, while
+      reserve party heroes *do* have slices, so hero slices are now preserved
+      until you save and reload the game. They're parented to a new hidden
+      'Reserve' special slice [Ralph]
+
+  *** Bugfixes
+    * Linux builds should now hopefully work on all Linux systems since 2011
+      (as long as SDL & SDL_mixer are installed) [Ralph]
+    * On Windows, copy-pasting text caused spaces to be added at line ends,
+      and near-full textboxes couldn't be copy-pasted [Ralph]
+    * sf#2045: "Lost HP (target)" base attack stat was always 0 [Ralph]
+    * Weapon pictures/palettes didn't update in saved games and Test Game
+      after a weapon was edited [Ralph]
+    * Script IDs could change when you reimported scripts, breaking script
+      IDs stored in saved games (didn't affect Test Game) [Ralph]
+    * OK, now you can *actually* import .wav files as music.
+    * You couldn't import .wav or .mp3 files on Mac OS 10.15 (the utilities
+      were still 32-bit) [Ralph]
+    * A few fixes for heroes with negative HP not counting as dead when using
+      spells outside of battle [Ralph]
+    * Bug 1105 "Self"- and "Ally not Self"-target attacks are treated as
+      "Ally"-target attacks outside of battle [Ralph]
+    * Caterpillar party heroes overlapped when hero speed didn't divide evenly
+      into 20, even with "Keep caterpillar length the same" on [Ralph]
+    * "any key" was pressed when numlock/scrolllock/capslock were on [Ralph]
+    * State of numlock and capslock keys was wrong in various cases [Ralph]
+    * Crash when switching between gfx backends (switching to gfx_sdl) [Ralph]
+    * When heroes are swapped between active party slots their slices are
+      now swapped too, instead of just the sprites changing [Ralph]
+    * "create sprite" always returned 0 [Bena, Ralph]
+    * --scriptlog commandline arg didn't work
+    * If "Do not hide leader" vehicle bit was on, "Do not hide party" was
+      ignored [Ralph]
+    * Windows gfx_sdl2 builds failed to add SDL2.dll to packaged games [Ralph]
+    * Innosetup (to create installer .exe) download no longer worked, at least
+      on some Windows OSes [Ralph]
+    * Fix possible "Can't find unzip tool" error on Windows when trying to
+      distribute a game in a .zip file [Ralph]
+    * Couldn't package games for Linux from recent Windows 10 versions [Ralph]
+    * The FreeBSD port didn't compile [Ralph]
+    * When upgrading some pre-Beelzebufo (2013) .rpgs new UI colors were
+      initialised to nonsense values [Ralph]
+    * Imported images with height or width above 2048 would crash [Ralph]
+    * Possible crash in slice editor when switching collections [Ralph]
+    * Crash when viewing Map from inside a shop [Ralph]
+    * Bug #1106 Space and Ctrl cause Enter to appear pressed, Alt causes ESC
+      to appear pressed [Ralph]
+    * Fix various crashes or BUG messages in (generally very old) corrupt .rpg
+      files [Ralph]
+
+  *** Stuff Only Developers Will Notice
+    * All .py build scripts and utilities will run under Python 3 as well as
+      Python 2 [Daniel Würl, Ralph]
+
+
+January 12 2020 [Fufluns]
 
   Highlights:
-    * ~~Fill this in later~~
+    * Games can be played with mouse or (mostly working) joystick
+    * Spritesets and backdrops can be any size
+    * Hero counter-attacks
+    * Hero MP meters
+    * Graphical browsers for sprites, attacks, enemies, maps, textboxes, etc.
+    * Enemy Usage and Foemap Statistics screens
+    * Menu item colors and real unselectable menu items
+    * Line slices
+    * PNG, JPEG importing
 
-  * New Features
-    * New spriteset editor [Ralph]
-    * Backdrops can now be any size [Ralph]
-    * You can now import PNG and JPG files as well as BMP (they're
+  *** New Features
+
+   * Graphics and Slices
+    * Spritesets and backdrops can be any size! E.g. walkabouts can be larger
+      than 20x20 [Ralph]
+    * You can now import PNG and JPEG images as well as BMP (they're
       decompressed on import, so beware of importing large images) [Ralph]
-    * When importing a backdrop or tileset from an unpaletted image you can use
+    * Screenshots saved as PNGs instead of BMPs (but when using gfx_directx
+      the Screenshot setting in the Options menu has priority) [Ralph]
+    * When importing a backdrop or tileset from an unpaletted image, can use
       dithering for hopefully-better conversion to your master palette [Ralph]
-    * Added a "wall display style" setting to the passmap editor; walls now
-      pulse rather than flash, and there's a new "outlined" style [Ralph]
-    * Heroes can have intrinsic counter-attacks just like Enemies [James]
-    * Add the ability to browse for Attacks, Enemies, Heroes, Textboxes,
-      Shops, stuff in shops, Sound Effects, Songs.
-    * You can press Ctrl+F or click the "Filter" button to filter/search the
-      thingbrowser screen by name. [James]
+    * Minimaps look much better. Also, you can change the minimap generation
+      method in the General Game Settings menu, with four options [Ralph]
+    * You can adjust the number of ticks per walkabout animation frame in
+      General Game Settings [Ralph]
+    * Rect slices can now be "truly" alpha-transparent (but blend results are
+      still limited to the master palette) [Ralph]
+    * Added fuzzy rect slice settings: fuzzy zoom, stationary pattern [Ralph]
     * Line slices [Ralph]
-    * New attack target class: "Counter (last to hit attacker)", which you
-      should normally use for counterattacks instead of Revenge [Ralph]
-    * Previewing MP3 files in the file browser reenabled (Windows only) [Ralph]
-    * New bitset "Cap minimum stats to zero" can prevent equipment with
-      negative stat bonuses from making a hero's stats negative [James]
-    * Maximum Shop ID has been raised from 99 to 32767 [James]
+    * "Camera following a hero/NPC centers on..." general setting to control
+      which part of a tall walkabout to center on [Ralph]
+
+   * In-game User Interface, Controls
+    * Mouse Options menu allows you to enable built-in mouse support for
+      walking around on maps, activating NPCs, using menus and special
+      screens and in battles. [James]
+    * Joystick controls should now work everywhere in-game again - been broken
+      for over a decade! However not all gamepads are supported yet: only ones
+      with ABXY buttons numbered 0-3. [Ralph]
+      * New general bitset "Map joystick controls to keyboard keys for scripts"
+        (ON by default) allows existing scripts which check keyboard keys
+        key:enter, key:esc, and key:left/right/up/down to work when the
+        player uses a joystick.
+    * In General Map Settings you can disable access to the main menu [Ralph]
     * Added a general bitset to hide empty save slots at the bottom of the
       save/load menu. (Won't shows less than 4 slots unless you specifically
       set a max lower than 4) [James]
@@ -35,35 +320,32 @@ April ? 2019 [Fufluns]
       subtype is renamed "Disabled") [Ralph]
     * In user-defined menus each menu item can now have its own color and
       'disabled' color [Ralph]
-    * Mouse Options menu allows you to enable built-in mouse support for
-      walking around on maps, activating NPCs, using menus and special
-      screens and in battles. [James] 
-    * Ctrl-F2 and Ctrl-F3 debug keys to access save/load menus [Ralph]
-    * You can now pick the color used to display damage, healing, absorb
-      poison and regen in battle. You can also override the color
-      in the attack editor. [James]
+    * All the fade-out colors are now customisable User Interface Colors [Ralph]
+    * Displaying "x1" after singular items in the inventory is now optional
+      (in General Game Settings) [Ralph]
+    * Shops requiring trade-ins tell how many of the item you have [Ralph]
+    * More flexible Money global text string, e.g. "$9" instead of "9 $" [Ralph]
+
+   * Map Editor Features
+    * Added a "wall display style" setting to the passmap editor; walls now
+      pulse rather than flash, and there's a new "outlined" style [Ralph]
     * Option to show outline of the in-game screen size in the map editor so
       you can check what will be visible. Press Ctrl-O once/twice or toggle in
       the Map Editor Settings menu. [Ralph]
-    * All the fade-out colors are now customisable User Interface Colors [Ralph]
-    * Option to give rewards from an enemy before it is transmogrified [Ralph]
-    * You can preview hero formations with hero sprites [Ralph]
-    * You can share save files between games by overriding the name of the
-      .saves folder (useful if you create additional .rpg files which are
-      sequels, variants (eg a Hardtype) or have bonus content) [Ralph]
-    * Screenshots saved as PNGs instead of BMPs (but when using gfx_directx
-      the Screenshot setting in the Options menu has priority) [Ralph]
-    * While using Test Game, a "Record combined editor+player .gif" option
-      appears in the editor's F9 Global Options menu [Ralph]
-    * Minimaps look much better. Also, you can change the minimap generation
-      method in the General Game Settings menu, with three options [Ralph]
-    * The map editor's map picker shows a preview of each map [Ralph]
-    * In turn-based mode negative attack delays are now allowed, to make the
-      attack jump ahead in the turn-order queue [Ralph]
-    * Enemy spawning option to allow multi-elemental attacks to trigger multiple
-      on-hit elemental spawning conditions, not just the first [Ralph]
-    * Attack option to control whether counterattacks are triggered on a hit,
-      miss or fail, with a global default in Battle System Options menu [Ralph]
+    * The map picker shows a preview of each map [Ralph]
+    * Press G in NPC placement mode to select NPC type under cursor, and C to
+      cycle through NPC instances [Ralph]
+    * Can delete NPCs from the NPCs-on-this-tile menu [Ralph]
+    * Foemap Statistics submenu (see below)
+    * Editor Settings to show NPCs in all edit modes, draw NPCs below overhead
+      layers, and hide the Hero start location [Ralph]
+
+   * Other Editors
+    * New spriteset editor [Ralph]
+    * Add the ability to browse for Attacks, Enemies, Heroes, Textboxes,
+      Shops, stuff in shops, Sound Effects, Songs. [James]
+    * You can press Ctrl+F or click the "Filter" button to filter/search the
+      'thingbrowser' screen by name. [James]
     * Re-organised various menus, especially Attack Bitsets menu and the
       General Game Settings menu:
       * General Preference/Battle/Backcompat bitsets rearranged - all battle-
@@ -71,52 +353,82 @@ April ? 2019 [Fufluns]
         Some bits have been renamed and now all Backcompat Bits are
         off by default in new games; if one of them is on then you know you're
         missing out on some feature or bugfix [Ralph]
+    * Most editors updated to display better at resolutions > 320x200. Sprite
+      editor still the glaring omission. [James, Ralph]
+    * Much nicer interactive stat preview graph in the Hero Stats menu [Ralph]
+    * Can create an enemy/hero formation as a copy of an existing one [Ralph]
+    * Copy/pasting of item definitions [Ralph] 
+    * Copy/pasting of palettes inside the palette browser [Ralph]
     * See how long you've been working on your game in General Game Settings
       (starts counting from zero with Fufluns) [Ralph]
+    * Previewing MP3 files in the file browser reenabled (Windows only) [Ralph]
+    * You can preview hero formations with hero sprites [Ralph]
+    * Enemy Usage menu shows where an enemy is used, and chance of encountering
+      it, and Foemap Statistics menu shows chance of each encounter [Ralph]
+
+   * Battle Features
+    * Hero MP meter, along bottom of the HP meter. Disabled by default in
+      existing games. [Sword, Ralph]
+    * You can now pick the color used to display damage, healing, absorb
+      poison and regen in battle. You can also override the color
+      in the attack editor. [James]
+    * "Shrink to Center" dissolve animation [James]
+    * "Screen Center" attack animation [James]
+    * Heroes can have intrinsic counter-attacks just like Enemies [James]
+    * Attack option to control whether counterattacks are triggered on a hit,
+      miss or fail, with a global default in Battle System Options menu [Ralph]
+    * New attack target class: "Counter (last to hit attacker)", which you
+      should normally use for counterattacks instead of "Revenge" [Ralph]
     * Added missing attack target class "All (including dead heroes)" [Ralph]
-    * C to cycle through NPC instances in map editor [Ralph]
-    * Preference bitset "Negative-damage harmtiles can cure above max HP"
-      (defaults to on) [Ralph]
-    * Added fuzzy rect slice settings: fuzzy zoom, stationary pattern [Ralph]
-    * Much nicer interactive stat preview graph in the Hero Stats menu [Ralph]
-    * New F8 debug option "Show/test any battle formation" [Ralph]
-    * You can copy & paste palettes inside the palette browser [Ralph]
+    * New bitset "Cap minimum stats to zero" can prevent equipment with
+      negative stat bonuses from making a hero's stats negative [James]
+    * All stat caps and equipment stat bonuses can now be up to 32767 [Ralph]
+    * Option to give rewards from an enemy before it is transmogrified [Ralph]
+    * In turn-based mode negative attack delays are now allowed, to make the
+      attack jump ahead in the turn-order queue [Ralph]
+    * Turn-based battles bitset to disallow cancelling/changing a hero's attack
+      [Ralph]
+    * Enemy spawning option to allow multi-elemental attacks to trigger multiple
+      on-hit elemental spawning conditions, not just the first [Ralph]
+    * "Useable in battle from spell lists" attack bit (default on) [Ralph]
+
+   * Debug Keys and Live-previewing
+    * Ctrl-F2 and Ctrl-F3 debug keys to access save/load menus [Ralph]
+    * Ctrl-F8 to view debug log (works everywhere in Game/Custom)
+      (Changing graphics backend now Ctrl-F7 instead of Ctrl-F8).  [Ralph]
+    * In-battle instant-run debug key moved from Ctrl-F4 to Ctrl-F5, because
+      Ctrl-F4 now shows slice debug menu in battles (not useful yet)
+    * Debug menu option "Show/test any battle formation" [Ralph]
     * Shop stock levels in saved games and when Testing Game are now updated if
       you edit the things in a shop - reset if needed, or increased/decreased
       to reflect the change [Ralph]
-    * Copy/pasting of item definitions [Ralph]
-    * New attack animation "Screen Center" [James]
+    * Vehicles are reloaded while using Test Game [Ralph]
+    * While using Test Game, a "Record combined editor+player .gif" option
+      appears in the editor's F9 Global Options menu [Ralph]
+
+  * Misc Features
+    * Added a crash reporter (CrashRpt) on Windows (not included when
+      distributing a game), which makes it trivial for you to send a report if
+      a crash or a bug is detected. Towards a bug-free future! [Ralph]
+    * Maximum Shop ID has been raised from 99 to 32767 [James]
+    * You can share save files between games by overriding the name of the
+      .saves folder (useful if you create additional .rpg files which are
+      sequels, variants (eg a Hardtype) or have bonus content) [Ralph]
     * Windows 95 is supported again! (But hspeak doesn't run on 95; upgrade to
       Windows 98) [Ralph]
-    * Joystick controls should now work everywhere in-game again - been broken
-      for over a decade! [Ralph]
-      * New general bitset "Map joystick controls to keyboard keys for scripts"
-        (ON by default) allows existing scripts which check keyboard keys
-        key:enter, key:esc, and key:left/right/up/down to work when the
-        player uses a joystick.
-    * Vehicles are reloaded while using Test Game [Ralph]
-    * Turn-based battles bitset to disallow cancelling/changing a hero's attack
-      [Ralph]
-    * Displaying "x1" after singular items in the inventory is now optional
-      (in General Game Settings) [Ralph]
     * New graphics backend gfx_sdl2 (and music_sdl2). Better fullscreen handling
       than gfx_sdl. Only available in non-default nightly builds for now [Ralph]
-    * "Camera following a hero/NPC centers on..." general setting [Ralph]
-    * Enemy Usage menu shows where an enemy is used, and chance of encountering
-      it, and Foemap Statistics menu shows chance of each encounter [Ralph]
     * "Ignore harmtiles" vehicle bit [Ralph]
-    * Rect slices can now be "truly" transparent (uses nearest-color) [Ralph]
-    * Hero MP meter, along bottom of the HP meter. Disabled by default in
-      existing games. [Sword, Ralph]
-    * All stat caps and equipment stat bonuses can now be up to 32767 [Ralph]
+    * Preference bitset "Negative-damage harmtiles can cure above max HP"
+      (defaults to on) [Ralph]
 
   * New Plotscripting Features
     * "save screenshot" [Ralph]
     * "append number": added "min length" and "pad with zeroes" args [Ralph]
     * "use door": added "fade screen" argument, so you can use a door without
       fading [Ralph]
-    * "npc copy number" (opposite to "npc reference") [Ralph]
-    * "npc reference" can find tag-disabled npcs with "allow disabled" arg
+    * "npc copy number" (inverse of "npc reference") [Ralph]
+    * "npc reference" can find tag-disabled NPCs with new "allow disabled" arg
       [Ralph]
     * "create line", "slice is line", "get line color", "set line color" [Ralph]
     * "force mount vehicle", "current vehicle id", "current vehicle npc" [James]
@@ -132,14 +444,16 @@ April ? 2019 [Fufluns]
     * "menu item disabled", "menu item visible", "menu item selectable" [Ralph]
     * "get/set menu disabled textcolor", "get/set menu item color",
       "get/set menu item disabled color" [Ralph]
+    * "last menu item", "menu item count", "visible menu item count" [Ralph]
+    * "close menu" gains "run close script" argument [Ralph]
     * "pathfind hero to", "hero chases npc" and "cancel hero walk" [James]
     * NPCstat:pathfindingrule constant for "read npc"/"alter npc"
+    * "speaking npc" [Ralph]
     * "read preference bit", "write preference bit" [Ralph]
     * "pick hero" has two new args to let you pick the prompt message, and to
       auto-pick if there's only one active hero [Ralph]
     * hspeak is several times faster when compiling very large scripts [Ralph]
     * "set last save slot" [Ralph]
-    * "speaking npc" [Ralph]
     * All key commands accept all key constants - no more hassles! You can pass
       "any key", "use key", etc, to "key is pressed", "keyval" and "wait for
       scancode", and pass key: and joy: constants to "wait for key" [Ralph]
@@ -151,20 +465,28 @@ April ? 2019 [Fufluns]
     * "keyval" now takes the joystick number as a second argument (for use
       with joy: key constants), like "key is pressed" did [Ralph]
     * "get joystick name", "joystick button count", "joystick axis count",
-      "joystick hat count" [Ralph]
-    * "suspend/resume textbox controls" and "textbox controls are suspended" are
-      aliases to "suspend/resume box advance" and "box advance is suspended"
+      "joystick hat count" (only works with gfx_sdl/gfx_sdl2 currently) [Ralph]
+    * "suspend/resume textbox controls" and "textbox controls are suspended"
     * "find color" [Ralph]
     * "set selected child", "get selected child" (only for convenience) [Ralph]
     * "override tick milliseconds" and "cancel override tick milliseconds" [James]
+    * "show string at" now respects newlines (\n in strings) [Ralph]
+    * "read wall bit", "write wall bit" [Ralph]
+    * "get npc sprite", "get hero sprite" convenience wrappers [Ralph]
+    * Plotscripting Dictionary shows list of commands in each section [Ralph]
+    * "replace substring" [Ralph]
+    * "string equal" as alias for "string compare"
+    * "create sprite" as alias for "load sprite"
+    * Add 'apply padding' arg to "scroll to child" and add alias "scroll to slice"
 
-  * Changes
+  *** Changes
+    * Default walking animation speed is 110ms/frame (like games running at
+      the default 18fps) instead of 2 ticks/frame
     * "Previous attack" base ATK stat renamed to "Last damage by attacker"
+    * Various general/battle/backcompat bitsets renamed or moved (see above)
     * "Caption" menu item type renamed to "Label", the "Unselectable" subtype
       of Labels renamed to "Disabled", and the "Close menu if selected" bit
       renamed to "Close menu when activated"
-    * In-battle instant-run debug key moved from Ctrl-F4 to Ctrl-F5
-    * "suspend box advance" now suspends choicebox selection controls too
     * Sorting inventory "by whether usable" considers battle uses too [Ralph]
     * Shops auto-quit when there's nothing left to buy, as they used to [Ralph]
     * Sprite slices can no longer be resized in the slice editor (except by
@@ -172,8 +494,12 @@ April ? 2019 [Fufluns]
     * Camera is now focused by default on hero walkabout container instead of
       sprite (see "Camera following a hero/NPC centers on" setting) to fix
       glitches when using camera script commands with large walkabouts [Ralph]
+    * Can import .wav files as music
+    * You can activate NPCs while holding down an arrow key [Ralph]
+    * "free slice(0)" no longer shows a warning
+    * unlump no longer asks for game password
 
-  * Bugfixes
+  *** Bugfixes
     * Fix a major memory leak while recording .gifs [Ralph]
     * Couldn't copy-paste text containing characters above ASCII 127 [Ralph]
     * Panel slices set to clip had broken child clipping and positioning
@@ -214,9 +540,9 @@ April ? 2019 [Fufluns]
       other improvements too [Ralph]
     * NPCs could walk through pushable NPCs being pushed against a wall. (Fix
       only enabled if "Simulate Pushable NPC obstruction bug" is off) [Ralph]
-    * Bug 2037: "Attacker must know chained attack" didn't work correctly for
+    * Bug sf#2037: "Attacker must know chained attack" didn't work correctly for
       known attacks in spell lists (it searched for attack ID+1) [Ralph]
-    * Bug 2038: If the last enemy has the "Ignored for "Alone" AI" bit set,
+    * Bug sf#2038: If the last enemy has the "Ignored for "Alone" AI" bit set,
       it doesn't count as alone [Ralph]
     * In turn-based mode, delaying an attack didn't always delay long enough.
       E.g. setting the delay to 1 attack could have no effect. [Ralph]
@@ -236,11 +562,32 @@ April ? 2019 [Fufluns]
     * Crash when attack targetting mute/etc register used out-of-battle [Ralph]
     * "gain hero stat" could divide by zero and set a stat to 2147483647 [Ralph]
     * If stealing has 0% chance but isn't "Disabled", show "Has Nothing" message
-    * Crash or freeze when switching between slice collections [Sword/Ralph]
+    * Crash or freeze when switching between slice collections [Sword, Ralph]
+    * Sometimes, the icon for game.exe didn't get replaced when Distributing
+      Game for Windows [Ralph]
+    * "Import tilemap, as new layers" crashed when importing 2+ layers [Ralph]
+    * A few BAMs were cut off early when converted to MIDI, possibly right at
+      the beginning, which could trigger a MIDI playback crash. Also fixed lost
+      notes after loop points. [Ralph]
+    * Crash when changing window zoom in certain editors/menus [Ralph]
+    * Possible crash in script debugger [Sword, Ralph]
+    * Bug gh#32: Lots of map editor problems when mixing one-way walls with
+      undo or mark+clone tools [Ralph]
+    * Bug gh#33: On Windows you can now import scripts even if HSpeak showed a
+      warning. Been broken many years but no one thought to complain! [Ralph]
+    * Changing hero or NPC speed while in the middle of a step, or using a
+      speed value that doesn't divide into 20, no longer causes misalignment.
+      Should have fixed that decades ago! Note, only speeds 3 and 7 are
+      reasonable, other previously-forbidden ones cause jerky movement. [Ralph]
+    * Bug gh#41: Corrupt tileset graphics and crash in Test Game after changing
+      tilesets or reordering layers [Ralph]
+    * Wrapping text slices with width < 8 are meant to wrap to the right edge
+      of the screen but wrapped at wrong point [Ralph]
 
-  * Stuff Only Developers Will Notice
+  *** Stuff Only Developers Will Notice
     * The .pt# 4-bit graphics lumps and .mxs backdrops lump have been replaced
-      with a new RELOAD-based rgfx file format [Ralph]
+      with a new RELOAD-based rgfx file format (old lumps are deleted) [Ralph]
+    * Much more bug checking and display of previously silent errors
 
 Dec 3 2017 [Etheldreme]
 
@@ -3867,3 +4214,92 @@ June 18 1999
     of a particular item, have that item in your inventory, have that
     item equiped, or have that item equiped on a hero you are currently
     using
+
+
+[...release notes lost...]
+
+
+October 4 1998
+
+  * Heroswapping is done!!! (see HOWTO.TXT for details)
+
+  * Fixed bug that generated "Path not found" error when running from DOS
+
+  * Fixed levelup calculation.
+    You will now have the correct stats at level 99
+
+  * Fixed bug that sometimes scrambled maptiles after a dialogue box
+    with a background
+
+  * Supports "catapillar-walkabout" parties as used in Dragon Warrior
+    or Breath of Fire
+
+  * Improved Joystick Support... it still isnt quite right, but at least it
+    doesnt act with a mind of it's own anymore :)
+
+  * Sprites are now correctly cropped on all edges of the screen.
+
+  * "Rename Game" no longer erases the original file. It creates a new
+    file under a new name, but the old one stays there for backup purposes
+
+  * the "Edit NPC" option on the main menu is now a submenu under "Edit Maps"
+
+  * "Erase Map Data" now also erases door links, door loactions and NPC
+    locations.
+
+  * "Resize Map" is greatly improved. (see howto.txt, line 173)
+
+  * Maps are now stored more space-efficiently
+
+  * Fixed the bug that created a line on the right side of imported sprites
+
+  * You can disable the HP/MP restoration of a levelup
+
+  * Fixed the bug that allowed you to buy an item you couldnt afford when
+    the item requires both money and an exchange
+
+  * NPC positions are preserved when you fight a battle
+
+  * Fixed bug that prevented values greater than 500 on the Dialogue
+    conditionals screen
+
+
+[...release notes lost...]
+
+
+July 27 1998
+
+  * Small, but important bugfix. In the July 26 copy, your
+    extended text box data gets flushed if you do not modify
+    any "General Game Data" If you are not losing text box data,
+    you dont need to bother with this update.
+
+July 26 1998
+
+  * Fixed Step-on NPCs. they now activate when stepped on, not when stepped
+    off
+
+  * Lost of great Text-Box enhancements. Added:
+    If Tag Then get/lose item
+    If Tag Then get/lose money
+    If Tag The teleport (auto-use door)
+    Customisable sise, position, and color for text box display, optional
+    backdrop image, music change, and Choice-box
+
+  * Detects if CUSTOM.EXE crashed while unlumping, and forbids you from
+    relumping the dammaged game-- several people have lost data because of
+    that.
+
+  * No longer crashes if you press ENTER or SPACE in the wrong place
+    while editing enemy formations
+
+  * Updated HOWTO.TXT (not much new, mostly just updated the old information)
+
+  * Tags are now displayed as OFF and ON instead of 0 and 1
+
+  * You can now Import 320x200 24-Bit BMP files from _any_ drawing program,
+    not just the ones that save them correctly... Gasp! You can even import
+    them from Windows Paintbrush!
+
+
+[...release notes lost...]

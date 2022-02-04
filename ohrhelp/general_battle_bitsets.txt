@@ -8,6 +8,12 @@ Note that there are more bitsets which affect things like stats and hero experie
 
  Battle Display Options
 
+"Show ready-meter" - in active-time battles, shows a time bar for each hero that fills up until their turn. In turn-based battles, this is quite useless (the bar is either full or empty), so you probably want to turn it off.
+
+"Show health meter" - Show an HP bar for each hero at the top of the screen behind their HP value. If their HP is above maximum, the bar will flash.
+
+"Show MP meter" - Show a small MP bar for each hero at the bottom of their HP bar (or where it would be). If their MP is above maximum, the bar will flash.
+
 "Disable hero cursor" prevents a cursor from appearing above the hero currently taking an action. The cursor will still appear when you are targetting a hero with an attack. This may be useful if you want first-person battles where there are no hero sprites on the screen (so you make heroes sprites blank).
 
 "Never show script timers during battles" prevents timers (see "set timer" command) from displaying during battle; they will countdown normally.
@@ -16,9 +22,12 @@ Note that there are more bitsets which affect things like stats and hero experie
 
 "0 damage when immune to attack elements" allows elemental attacks to do zero damage if the target takes 0% damage from that element. Normally you would have to to set the "Allow zero damage" bit on the attack to do less than 1 point of damage.
 
-"Ignore attacker's extra hits" makes the engine ignore the Hits stat, letting you repurpose this stat for something else. Otherwise, Hits randomly increases the number of times each attack by an enemy/hero hits, by 0 to Hits times.
+"Ignore extra Hits stat" lets you repurpose this stat for whatever you want, by disabling the builtin meaning of this stat. Otherwise, Hits randomly increases the number of times each attack by an enemy/hero hits, by 0 to Hits times.
 Turning this on is equivalent to setting the "Ignore attacker's extra hits" attack bit on all attacks (that bit is hidden if you turn on this general one).
+(This bit also appears in General Preference Bitsets)
 
+"Ignore MP~ stat" makes the engine ignore the MP~ stat, letting you repurpose this stat for something else. Otherwise, MP~ reduces the MP cost of spells by a %.
+(This bit also appears in General Preference Bitsets)
 
  Active-time Battle Options
 
@@ -43,3 +52,5 @@ This does everything the next two bits do, and more. If ON, those bits have no e
 These bitsets only apply to Turn-based battle mode. They aren't shown if your game is set to use Active-time battles.
 
 "Press ESC to cancel/change a hero's attack" is on by default, and lets you press ESC to go back to the previous hero and change the attack you already selected. It would be odd for you to disable this.
+
+"Don't break Speed ties randomly" causes combatants which have the same Speed stat to act in order (first the leader, then the second hero, etc, then enemies in order), assuming they don't use attacks that have delays. Otherwise, these turn-order ties are broken randomly each combat round.

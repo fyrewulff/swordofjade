@@ -1,0 +1,14 @@
+This is a global setting, not a slice setting, but is editable here so you can easily try different values.
+
+Since the OHRRPGCE, for now, still runs in 8-bit color mode, graphics are limited to the current master palette.
+This setting controls how the results of blending are mapped back into the palette.
+
+Dither: Default. Use dithering to get smoothest fades and resonable results in most circumstances. Can suffer from flickering dither patterns as slices move about.
+
+Less dither: Less dithering means less flicker when slices move, but fading in/out is much less smooth. Doesn't use 1/4 dither patterns. A reasonable middle ground.
+
+No dithering: Tends to look bad as you fade sprites in/out, but no flickering at all. Sprites with very low opacity tend to disappear completely.
+This option is also a little faster than dithering, in case you want many transparent map layers.
+
+
+When running in 32-bit color mode (Ctrl-F3), blending is 2-3x faster than "No dithering".

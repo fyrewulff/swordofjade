@@ -15,6 +15,13 @@ Causes the attack's name to be displayed alongside the attack's damage. (This ca
 
 * Don't display damage
 Although the damage will still be dealt to the target, this bitset will prevent the damage from being displayed.
+"Miss" or "Fail" messages, and "Show attack name" will still appear.
+
+* Don't display "Miss"
+Don't show the "Miss" message (as set in Global Text Strings) if the attack misses.
+
+* Don't display "Fail"
+Don't show the "Fail" message if the attack fails.
 
 * Don't cause target to flinch
 Normally the target of an attack flinches. For heroes this is their "Hurt" frame, and for enemies this is a small horizontal twitch. This bitset prevents the flinching.
@@ -125,12 +132,21 @@ If this bitset is turned on, the attack will fail if the attacker does not have 
 
   Misc
 
-* Useable Outside of Battle
-Allows the attack to be used by heroes outside of battle, from the Spells menu. This is normally only used for curing attacks, but note that it also works for damaging attacks. (Some attack features like chaining do not work outside of battle)
+* Useable in battle from spell lists
+Allows the attack to be used by heroes inside battle from the spell list menus, if the hero knows the attack. Turn this off if you only want the player to be able to use it outside battle.
+This bitset only affects whether the attack can be selected from the spell list menu in which it appears (including Random spell lists). It has no effect on attacks triggered from items, weapons, directly by a hero battle menu item, chained to from other attacks, counter-attacks, etc.
+
+* Useable outside battle from Spells menu
+Allows the attack to be used by heroes outside of battle from the Spells menu, if the hero knows the attack. This is normally only used for curing attacks, but note that it also works for damaging attacks. (Note, many attack features like chaining do not work outside of battle).
+This bitset only affects whether the attack can be used from the Spells menu. It has no effect on attacks triggered from items or with the "map cure" script command.
+
+
 
 * Delay doesn't block further actions
-This bitset means the attacker will start their next turn immediately without waiting for the attack delay to run out. These non-blocking attacks don't interfere with the attacker's ready-meter. (non-blocking is a automatically inherited by attacks that chain from a non-blocking attack)
+This bitset means the attacker can continue to take turns as normal while attack delays and chained attacks happen.
+In Active-time battles their ready meter will start filling again without waiting for the attack delay to run out.
+In Turn-based battles, this only matters for attacks that have turn delays, it means the attacker will get their next turn as normal.
+In both battle modes non-blocking status is inherited by all attacks that chain from a non-blocking attack.
 
 * Don't chain if attack misses or fails
 This causes the attack's chain to be ignored if the attack doesn't hit instead of continuing.
-

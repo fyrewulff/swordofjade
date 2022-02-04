@@ -17,6 +17,42 @@ and check the buglist:
 http://hamsterrepublic.com/ohrrpgce/buglist.php
 ------------------------------------------------------------------------------
 
+2021-1-20:
+Mac 64-bit builds now also use gfx_sdl2/music_sdl2 instead of gfx_sdl/music_sdl.
+Mac 64-bit gfx_sdl nightlies are no longer available; OHRRPGCE-wip-x86_64.dmg
+is a gfx/music_sdl2 build.
+Also, please beware that the new gamepad support in gfx_sdl2 still has some
+significant bugs, especially when using multiple controllers.
+
+2020-11-17:
+The default graphics/music backends have changed to sdl2 on Windows and Linux/
+Unix so keep an eye out for problems.
+In particular, it's possible there'll be hiccups with Distribute Game menu
+packaging not working or producing broken packages EVEN (or ESPECIALLY) if
+you are using an OLD nightly build. Though currently it should work.
+
+** 2020-05-02 Gorgonzola Released **
+
+2020-04-16:
+Evaporate and Evaporate Up dissolves were renamed to Puff and Fade Up, so
+if you've used these in a script you need to replace the constants.
+
+** 2020-01-12 Fufluns Released ***
+
+2020-01-04:
+If you changed the default palette of a spriteset in the Fufluns release
+candidate (2020-01-01) it might have been saved incorrectly (it's stored in two
+places and they could be inconsistent). When you enter "Draw Walkabouts", etc,
+for the first time, the default palettes will be checked you'll be told if any
+of them had to be fixed.
+
+2019-08-05:
+"suspend box advance" had been changed to suspend choicebox selection
+controls too, but that change is now undone because it broke some games.
+"suspend/resume textbox controls" and "textbox controls are suspended"
+were added as aliases for "suspend/resume box advance" and "box advance is
+suspended", but they are now completely distinct commands.
+
 2019-05-01:
 If you've placed an enemy target cursor position with a nightly since
 19 Jan 2019 you need to fix it, because the enemy editor wasn't drawing
