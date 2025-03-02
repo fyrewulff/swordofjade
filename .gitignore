@@ -1,6 +1,8 @@
 support/
 autobackups/
+soj/
 c_debug
+c_debug_archive
 g_debug
 c_debug_archive.txt
 g_debug_archive.txt

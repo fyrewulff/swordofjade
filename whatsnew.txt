@@ -1,5 +1,335 @@
 WHAT IS NEW?
 
+October 28 2024 [Ichorescent]
+
+  *** Highlights
+    * Ports
+      * New experimental web port (lacks save game support)
+      * Steam Achievements support
+      * Distribute to itch.io option
+      * Commercial console ports such as Switch, PS4/5 and XBox
+      * Android port doesn't currently work on Android 12 or newer
+       (don't worry this will get fixed in the future)
+      * Linux packages and games will now work without installing libraries
+      * Builds to support ancient Win95 PCs
+    * Marvellous new features and fixes, including but not limited to:
+      * New battle features including Turncoat and Defector
+      * New script commands including variable length extra data arrays
+      * New slice features and improved slice editor GUI
+      * Improved support for screen resolutions other than 320x200
+      * Improved mouse/touch support
+      * Improvements to both fullscreen and windowed modes
+      * Debug tools including slice and script profiling
+    * Source code license has been changed to Dual GPLv2+ & MIT license
+    * And more, detailed below!
+
+  *** New Features
+    * Experimental Web (wasm) port! You can export your game to a .zip including
+      an .html file from the Distribute Game menu. However saved games aren't
+      yet kept after closing the page [Blain Maguire, Ralph, James]
+    * From the "Distribute Game" menu, you can upload your game directly to
+      itch.io [James]
+    * gfx_fb backend (the one noone uses) supports non 320x200 games now [Ralph]
+    * Custom/Game remember the window size when you quit; defaults larger [Ralph]
+    * Added "View/edit ohrrpgce_config.ini/gameconfig.ini" options to the F8
+      Debug menu and F9 menu in Custom.
+      See https://rpg.hamsterrepublic.com/ohrrpgce/ohrrpgce_config.ini [Ralph]
+    * You can create a <gamename>_config.ini next to an .rpg to put game-specific
+      overrides for ohrrpgce_config.ini settings for both Game and Custom [Ralph]
+    * "gfx.screenshot_dir" config option, for screenshots and .gifs [Ralph]
+    * Enemy bit "Give rewards even if left alive" [Ralph]
+    * Press Delete to clear most non-text data fields. And can delete collections
+      in the slice editor with Delete on the root slice or "<- Collection # ->"
+      [Ralph]
+    * Removed the 1MB limit on size of sound effects, but note that loading large
+      sounds causes a short pause
+    * Can press shift+F# instead of ctrl+F# in the map editor to show/hide layers
+    * Pushable NPCs can be pushed using mouse and touch controls. Click on them
+      if they are nearby and not activatable, or drag from the hero to a nearby
+      NPC no matter if they are activatable or not. [James]
+    * Slices can be marked as Templates, which makes them hidden and ignored for
+      almost all purposes. Intended for use with "clone slice". [Ralph]
+    * Slices can be Clamped within their parents or the screen  [Ralph, James]
+    * Text box connection editor can insert boxes with tag contitionals [James]
+    * New attacker animations "Run and Hide" and "Run In" which behave the
+      same as "Jump" and "Land" [James]
+    * New attack bitsets "Always Hide Attacker" and "Always Unhide Attacker"
+      which can make any attack behave like Jump/Land regardless of animation
+      [James]
+    * New attack bitset "Block actions as a counterattack in active mode" [James]
+    * New Enemy bitset "Controlled By Player" [James]
+    * New Battle debug-key Shift/Ctrl-F7 lets the player take control of all
+      enemies in the battle [James]
+    * New attack option "Change Target Control" can put the target under
+      player control, or make it automatically controlled, or reset to default
+      [James]
+    * New attack bitsets "Fill Target's Ready Meter" and "Empty target's Ready
+      Meter" [James]
+    * New battle feature "Turncoat attacker" causes an enemy or hero to
+      attack their own team, and heal their foes. Can be turned on and off
+      with attacks. [James]
+    * New battle feature "Defector target" causes an enemy or hero to be
+      targetted as if it is a member of the other team [James]
+    * New menu bit "Clamp to screen bounds". Good for mouse popup menus [Ralph]
+    * Map editor setting to label only NPCs near the cursor with ID/copy [Ralph]
+    * New available battle menu item "Skip Turn" [James]
+    * You can use a custom menu as a template for the Battle Menu [James]
+    * Attacks can now cause a target's sprite to flip backwards (or unflip)
+      [James]
+    * --hsargs commandline arg to pass extra args to HSpeak when using Custom to
+      import scripts from the commandline [Ralph]
+    * Better tiebreaking when pressing multiple arrows/directions at once [Lenny]
+    * Enemy-transmogrifying attacks gain the option to preserve both current and
+      max values of each stat [Ralph]
+    * Added an option to disable the victory dance animation for specific heroes
+      [James]
+    * If using a stable release, Distribute Game now packages your game with the
+      release you're using, not the latest one. In nightlies, it won't download
+      the latest game players unless you upgrade to a new nightly build of Custom,
+      so you're not distributing with a version you haven't tested.
+      And it won't re-download anything if it hasn't changed. [Ralph]
+    * If a utility like unzip or oggenc reports an error the terminal window
+      stays open so you can read it [Ralph]
+    * "Show CPU usage" debug mode (Shift/Ctrl-F6), to help understand slowdowns
+      (to find slow scripts, use script profiling: Shift/Ctrl-F9). Available
+      in battles too. [Ralph]
+    * Script+Command Profiling (in the Debug Menu) extends script profiling to
+      also show time spent on each command, and Specific Command Profiling to
+      add a column for time each script spends on one command [Ralph]
+    * Number of script strings increased from 100 to 256 (IDs 0-255)
+    * Attacks can directly spawn an enemy (if there is room) [James]
+    * New attack target class "Most recently spawned by attack" allows
+      attack chains to target newly spawned enemies [James]
+    * "Battles display at 320x200" battle/backcompat bit (default on) which you
+      can turn off to make battles run at a higher resolution. Everything
+      including enemies, the backdrop, and all the battle UI and menus will
+      remain in the same place, but not clipped to 320x200. However there may be
+      graphical glitches when attacks/attackers move on/off-screen. [Ralph]
+    * Hero movement and avoidance zones, in Map general settings menu [Ralph]
+    * You can insert a copy of one slice collection into another when you press
+      + in the slice collection editor [Ralph]
+    * Slice Editor tools to Pick, Move, Resize, Pan with the mouse or keyboard.
+      Right-drag with the mouse to pan the collection around.
+      Clicking in Pick mode lets you pick from all slices at that point.
+      And mouse support while repositioning/resizing the old way [Ralph]
+    * Left/Right in the Slice Editor (in Pick mode) now collapse/expand part
+      of the menu, press repeatedly to hide/show more. [Ralph]
+    * Slice Editor uses icons to show slice type and other info [Ralph, Kiefer]
+    * Distribute Game for Steam on Windows or Linux options, which add the
+      libraries needed for Steam achievements [Ralph]
+    * Distribute Game submenu to Customize Package Contents [Ralph]
+    * As you hold down Left/Right keys while editing a value the rate of change
+      accelerates. Release it for a moment to slow down [Ralph]
+    * .gifs recorded while running in 24-bit color depth are smaller, smoother
+      (dithered) and flicker less [Ralph]
+    * Slice Editor Metadata section shows Screen X/Y and Draw timings [Ralph]
+    * Attack extra data, for scripts [Holly]
+    * You can drag the borders of a game's window to resize it (gfx_sdl2 only).
+      Doesn't restrict to integer ratios. [Ralph]
+    * An Engine Settings menu (currently just graphics settings). Ctrl/Shift-F7
+      to open anywhere (that key previously switched gfx backend) [Ralph]
+    * In the map editor, you can now drag with the middle mouse button as well
+      as the right (to avoid misclicks) [Ralph]
+    * Attack bit "Ignore damage cap" [Ralph]
+    * Bitset "Ignore key repeats for confirm, cancel, and menu" and also
+      exception bitset "Always allow key repeat for confirm in battles" [James]
+    * Tile animation patterns can be up to 50 commands long rather than just 9
+      (whew). Added Reset and Loop (without Reset) commands. And made the
+      pattern editor a little faster to use. [Ralph]
+    * Support for Steam Achievements (editor under General Game Data). The
+      achievements system currently has no effect in games not distributed via
+      Steam, but will in future! [Mike, Ralph]
+    * Games, and the engine itself, packaged for Linux (except Debian .deb) now
+      include all libraries and should run an any system [Ralph]
+    * "win-win95" engine builds which support Windows 95 or later and Pentium
+      Pro or later. (Regular gfx_sdl2 Windows builds require Win XP and a
+      Pentium 4 (SSE2) CPU but run faster.) For now you need to manually
+      download and combine your .rpg with ohrrpgce-player-*-win95.zip [Ralph]
+
+   * New Plotscripting Features
+    * "dir X", "dir Y" [Ralph]
+    * "forward X", "forward Y" [Holly]
+    * "heal party" (acts like an inn) [Ralph]
+    * "inn screen" (shows an inn) [James]
+    * "set hero auto battle", "get hero auto battle" [James]
+    * "break" and "continue" take an argument for the number of loops to break
+      out of, for 15 years already, but it wasn't documented [Ralph]
+    * When a slice command shows an error you can jump to the slice in the slice
+      debugger/editor [Ralph]
+    * "get/set turn based battle mode" and "get/set active time battle mode"
+      [James]
+    * NPC, slice, zone and menu item extra data are now variable length arrays
+      defaulting to length 3. Maximum length is 5,000,000.
+      * The slice & zone editors allow resizing the extra data; the menu editor
+        remains limited to 3 extra data.
+      * "resize extra", "extra length", "append extra", "insert extra",
+        "find extra", "delete extra", "delete extra range", as well as "get extra"
+        and "set extra" alternatives to "get/set slice/zone/... extra". These can
+        be used with any NPC reference/slice/zone/menu item handle. [Ralph, James]
+      * "get zone" command returns a zone handle.
+      * You can use Python-style negative indexing to read from the back of
+        the extra array: "get extra(sl, -1)" is the last value, -2 is the second
+        last, etc. Works with all extra data commands.
+      [Ralph]
+    * "get attack extra" [Holly]
+    * "lookup next slice", "next slice in tree" [Ralph]
+    * "window is focused" [Ralph]
+    * "show value" can now show multiple values. Added "show values" as an alias.
+      Added "show value of", a cross between "show value" and "trace value" that
+      shows expressions. Added "trace value of" as an alias to "trace value".
+      [Ralph]
+    * "exit(x)" is short for "exit returning(x)" and "exit" is short for
+      "exit script" [Ralph]
+    * (Unix only) --print and --printonly commandline args cause trace/tracevalue
+      to print to the terminal as well as/instead of g_debug.txt [Ralph]
+    * "reset enemy data", "reset enemy stat", "reset enemy name" [Ralph]
+    * "slice is valid" can now tell slice handles apart from anything else (e.g.
+      NPCs, menus) and is safe to use: it no longer returns false positives...
+      until you create and delete at least a million slices. Good enough. [Ralph]
+    * "hero uses level mp" [James]
+    * "delete map state" takes customid arg, like other mapstate commands [Ralph]
+    * "get/set rect fuzzy zoom", "get/set rect stationary pattern" [Ralph]
+    * "keypress time" [Ralph]
+    * "random choice" [Ralph]
+    * "move slice to screen pos" "gently reparent", "gently realign slice" [James]
+    * "lookup ancestor" [James]
+    * "get stat name" [Ralph]
+    * "pathfind into extra as hero" and "pathfind into extra as npc" [James]
+    * "is shop buy menu empty" and "is shop hire menu empty" [James]
+    * "suspend walkabouts", "resume walkabouts" and "walkabouts are suspended"
+      [Ralph]
+    * "play music", "stop music", "current music" aliases to "play song",
+      "stop song", "current song"
+    * "script layer" alias to "sprite layer", and "sl:sprite layer" alias to
+      "sl:script layer"
+    * "get current map autorun script", "get current map autorun script argument"
+      [James]
+
+  *** Changes
+    * Removed support for optional prefixes on .ini config settings (e.g.
+      "fullscreen" instead of "gfx.fullscreen"), game-specific prefixes (e.g.
+      "edit.game_vikings."), and placing ohrrpgce_config.ini next to the .rpg.
+      Too complex! [Ralph]
+    * When you import a slice collection with forbidden slices they are cleaned
+      up for you, rather than not importing and telling you to clean it [Ralph]
+    * The number of slices is now limited to 2.1 million because slice handles
+      don't count up from 1, in order to fix "slice is valid". (Handles for
+      slices in old saves still work) [Ralph]
+    * "free slice" on an already freed slice no longer shows a warning [Ralph]
+    * Graphics export as .png instead of .bmp (a setting in ohrrpgce_config.ini)
+      [Ralph]
+    * Small changes to some of the attack animations. Screen Center and spread
+      Ring didn't cause the same flinching as all other animations. Sequential
+      Projectile doesn't leave the attacker in attack pose with no weapon. [Ralph]
+
+  *** Bugfixes
+    * Various gfx_sdl2 window size/position/resizing and mouse glitches when
+      entering/exiting fullscreen (e.g. bug #1190) [Ralph]
+    * Re-did "mouse region" handling under gfx_sdl2 so the mouse moves/accelerates
+      normally, and switching fullscreen/windowed doesn't break it.
+      Also, entering a debug menu now pauses "mouse region" [Ralph]
+    * Various gfx_fb bugfixes, including screen fades not happening, fullscreen
+      not working at some zooms or picking awful aspect ratio wrong mouse cursor
+      position and visibility in fullscreen, broken display at 1x zoom, and
+      freezing. Thankfully noone uses gfx_fb. [Ralph]
+    * Fix #1219 Global NPCs now properly support one-time-use tags [James]
+    * Editing a single global NPC definition from NPC placement mode didn't save
+      changes and caused crashes. Plus other global NPC bugfixes. [Ralph]
+    * Global NPCs didn't reload while using Test Game. [Ralph]
+    * At higher resolutions the map layers would be cropped to 320x200 for a
+      tick when exiting the Spells, Equip or Save/Load menus [Ralph]
+    * "free slice(0)" no longer shows a warning, I mean it this time! [Ralph]
+    * Modifying an ellipse slice broke child clipping for one tick [Ralph]
+    * Bug #1120 Heroes which have jumped count as dead for targetting [James]
+    * Bug #1107 Can escape unescapable enemies who are jumping [James]
+    * On Windows, detection of whether certain subprograms were installed was
+      broken, giving strange errors about "_" [Ralph]
+    * Fix transmogrification unhiding a enemy if they tansform in the middle
+      of jump/hide state [James]
+    * An enemy set to "Ignored for Alone AI" would use its Alone attack list
+      if it still had one ally [Ralph]
+    * Menus set to "Max rows to display: Default" will now extend up to the
+      screen edge (taking menu position into account) instead of always showing
+      18 items. And the menu box was the wrong size at high resolutions [Ralph]
+    * The menu editor now shows how the menu is actually positioned in-game,
+      using the in-game resolution [Ralph]
+    * Random spell lists now respect attack costs, but for old games you
+      must enable this fix in the backcompat bits to avoid breaking games
+      that relied on it. [James]
+    * In games wider than 320px, in the Items menu the Left key would go
+      up-left to Exit or Sort [Ralph]
+    * Item and hero autoset tags didn't update immediately (until something
+      else did so) due to:
+      -using items (including attacks and item consumption) outside of battle
+      -the "use item" command (also, "use item in slot" updated tags but
+       didn't update visible NPCs)
+      -gaining/losing items from a textbox, until the textbox chain ended
+      [Ralph]
+    * Crash reporting on Windows stopped working for a while, aside from the
+      manual email fallback [Ralph]
+    * "load map state" to load tile & wallmaps from a custom state ID usually
+      wrongly complained about wrong map size [Ralph]
+    * Deleting all party heroes showed a BUG error. It's OK momentarily [Ralph]
+    * Bug #1210 Sequential Projectile attacks misposition the weapon [Ralph]
+    * Bug #1101 Enemy ready meter not reset for spawned enemies [Rue]
+    * Spell lists duplicated (with tag conditions) in a hero's battle menu caused
+      duplication in out-of-battle Spells menu and could crash [Ralph]
+    * Fix the Mac app bundles exported from the Distribute Game menu on Windows
+      [James]
+    * Debian packages were missing the Plotscripting Dictionary [Ralph]
+    * "add enemy to formation", "formation slot x/y" didn't use the real bottom-
+      center of enemy sprites which were not default-sized [Ralph]
+    * "set panel percent" didn't work [Ralph]
+    * Hero formation positions don't have overly restrictive boundary limits
+      anymore [James]
+    * The Attack Damage Color setting showed the wrong color, it was off by 1.
+      Also it was ignored by "Don't display damage" or "No damage" attacks [Ralph]
+    * Attacks set to "No damage" ignored the "Show attack name" bit [Ralph]
+    * Corrupt .ogg files could show a BUG message instead of being ignored [Ralph]
+    * In release mode, spamming script errors could slow down the game even though
+      they were suppressed. Now at most 50 are logged to g_debug.txt [Ralph]
+    * If an enemy spawned into a previously occupied slot, it inherited the
+      leftover ready-meter of the previous enemy. [James]
+    * Fixed bug that allowed you to target hidden enemies if your battles
+      are not configured to pause when targetting [James]
+    * Script variable names ending with a : would cause an error when followed by
+      comma [Ralph]
+    * HSpeak didn't notice when a local and a subscript, or a script followed by
+      a global variable, had the same name [Ralph]
+    * Attack animations such as Wave and Meteor will now start/stop fully off the
+      screen edge when used with attack sprites larger than 50x50 or battle
+      resolutions above 320x200 [Ralph]
+    * A multi-hit Drop attack kept falling downwards from the target instead of
+      the sky on the 2nd and later hits [Ralph]
+    * You couldn't disable the Windowed/Fullscreen options with a tag [Ralph/RMZ]
+    * After creating or moving an NPC the position of its walkabout slice wasn't
+      immediately correct when checked by a script [Ralph]
+    * Map General Settings menu now actually shows animated map edge tiles [Ralph]
+    * Our most infamous crash bug (Bug #1060), "Occasional MIDI crash when
+      looping on Windows", is fixed after over a decade! Some very short or blank
+      MIDIs crashed very often. Credit to the SDL_Mixer team.
+    * You could activate NPCs while riding a vehicle by clicking on them [James]
+
+  *** Stuff Only Developers Will Notice
+    * Source code license has been changed to Dual GPLv2+ & MIT license
+      by unanimous consent of all previous OHRRPGCE contributors [James, Ralph,
+      Mike, Simon, David, Yuriy, Jay, Matthias, Adam, Lakan, Taoki,
+      Daniel, SwordPlay, zzo38, Lenny]
+    * FreeBASIC 1.04+ now required to compile
+    * UI in Battle (Hero names, meters, HP, status icons) are now all
+      slice-based instead of hardcoded. It still looks the same by
+      default! [James]
+    * EditorKit framework to make creating and modifying editors easy. Several
+      editors have been converted to it. Will allow many UI improvements [Ralph]
+    * gfx_fb and gfx_console take a --nogfx arg, combine with --print to create
+      commandline programs [Ralph]
+    * Help pages can include template_name.txt using {{name}} syntax [Ralph]
+    * New system for packaging the engine [Ralph]
+    * Ratalaika Games has private (commercial) ports of the OHRRPGCE to consoles
+      including PS4/5, Switch and XBox One/Series X, and made many improvements
+      that will make future ports easier [Matt Gambrell, Ralph]
+
+
 September 13 2021 [Hróðvitnir]
 
   *** New Features
@@ -142,7 +472,6 @@ September 13 2021 [Hróðvitnir]
       * #617 Screen tearing on some computers (didn't affect gfx_directx)
       * #1140 64-bit Mac gfx_sdl: Random crash in SDL_SoftStretch
       * #1147 64-bit Mac gfx_sdl: run-away memory leak
-      * #1115 Linux gfx_sdl: can't resize the window on Xfce
       * #1173 Windows gfx_sdl: Enter key stuck after changing window zoom level
         in Custom
       * On a multimonitor Unix/X11 system game windows could get created larger
@@ -1418,6 +1747,7 @@ Jun 15 2012 [Alectormancy]
       * Distribute as Zip file
       * Distribute as Windows installer
       * Distribute as Debian Linux package
+      * Distribute as Mac OSX app bundle
     * Script trigger log: press CTRL+F10 in-game to cause triggered
       scripts (not called from other scripts) to be logged to
       script_log.txt. It might help to restart/reload the game
@@ -1855,7 +2185,7 @@ Jan 08 2010 [Ypsiliform]
     * You can test enemy dissolve animations in the enemy editor [Ralph]
     * The random scatter (default) enemy dissolve animation now fades
       out smoothly and completely [Ralph]
-    * Added new enemy dissolve animations: Squash, Melt, Vapourise
+    * Added new enemy dissolve animations: Squash, Melt, Vaporise
       and Phase out [Ralph]
     * When a script error occurs, you are now shown the script callstack
       and given options such as entering the slightly improved script

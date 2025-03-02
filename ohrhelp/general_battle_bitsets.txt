@@ -1,8 +1,4 @@
-This is a list of option bitsets for the battle system - simple OFF or ON settings. Bitsets that are turned ON are highlighted.
-
-Use the Up and Down arrow keys (or PgUp, PgDn, Home, and End) to navigate the list.
-
-Modify bitsets with Left, Right, SPACE, ENTER, or by LEFT-CLICK.
+This is a list of option bitsets for the battle system. {{edit_bitsets}}
 
 Note that there are more bitsets which affect things like stats and hero experience in the Preference Bitsets menu.
 
@@ -17,6 +13,9 @@ Note that there are more bitsets which affect things like stats and hero experie
 "Disable hero cursor" prevents a cursor from appearing above the hero currently taking an action. The cursor will still appear when you are targetting a hero with an attack. This may be useful if you want first-person battles where there are no hero sprites on the screen (so you make heroes sprites blank).
 
 "Never show script timers during battles" prevents timers (see "set timer" command) from displaying during battle; they will countdown normally.
+
+{{prefbit_320x200_battle_display}}
+(This bit also appears in the Backwards-Compatibility menu.)
 
  General Options
 

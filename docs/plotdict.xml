@@ -2,20 +2,24 @@
 <?xml-stylesheet type="text/xsl" href="htmlplot.xsl"?>
 
 <!DOCTYPE plotscript [
-	<!ELEMENT plotscript (section+)>
+	<!ELEMENT plotscript (title,introduction?,section+)>
 	<!ATTLIST plotscript version CDATA "wip" datecode CDATA "???">
 	<!ATTLIST plotscript show-alias CDATA "yes">
-	<!ELEMENT section (description?,(command|reference|section)+)>
+	<!ELEMENT title         (#PCDATA)>
+	<!ELEMENT introduction  ANY>
+	<!ELEMENT section (description?,(command|reference|gloss|section)+)>
 	<!ATTLIST section title CDATA #REQUIRED constants (yes|no) #IMPLIED topics (yes|no) #IMPLIED>
 	<!ELEMENT reference EMPTY>
 	<!ATTLIST reference ref IDREF #REQUIRED>
 	<!ELEMENT command ((canon+,shortname,altcommand*,added?,deprecated?,description,altcommand*,example*,seealso?) |
 					   (alias,shortname,added?,deprecated?))>
 	<!ATTLIST command id ID #REQUIRED>
+	<!ELEMENT gloss ((canon,shortname?,description) |
+					   (alias,shortname))>
+	<!ATTLIST gloss id ID #REQUIRED>
 	<!ELEMENT altcommand (canon*,shortname)>
 	<!ATTLIST altcommand id ID #IMPLIED show-alias CDATA "yes"  alias (show|hide) "show">
 	<!ELEMENT canon      (#PCDATA)>
-	<!ELEMENT altcanon   (#PCDATA)>
 	<!ELEMENT shortname   (#PCDATA)>
 	<!ELEMENT added     (#PCDATA)>
 	<!ELEMENT deprecated     (#PCDATA)>
@@ -47,8 +51,9 @@ This markup (hereby refered to as PDL (Plotscript Dictionary Language)) is
 designed to reduce the time spent maintaining the Plotscripting Dictionary, and
 to enable easier porting to other formats.
 
-The root element is the <plotscript> element. It has a 'version' attribute,
-the engine version it applies to. Update this when releasing.
+The root element is the <plotscript> element. It has 'version' and 'datecode'
+attributes telling the engine version it applies to. These are set automatically
+by docs/update-html.sh (which is called by release/release-docs.sh).
 
 In <plotscript>, there is a series of <section> elements, each with a title
 attribute. These are to group the plotscripting commands into logical groups,
@@ -59,8 +64,8 @@ a subsection will be reorderd in front of all subsections.
 The heart of the PDL are the <command> elements inside the <section>s. It has a
 single attribute, id. This is essentially the whitespace stripped version of the
 command (the "wait for text box" command would have an id of "waitfortextbox").
-This is used to uniquely identify each command. It's used in many ways, from
-crosslinking command entries to generating a file for HssEd to use.
+This is used to uniquely identify each command for linking or cross-linking.
+Similiar to <command> is <gloss>, for glossary items.
 
 Inside the <command> element are subelements, in this order:
 Case 1: Full command definition
@@ -100,6 +105,9 @@ Case 1: Full command definition
                   <example># first example line has no line-break
 # the second (and more) lines should have no indentation
 # and so forth</example>
+                  The <example> tag can have a c="..." attribute to reuse an
+		  example from another command.
+
 
 As an alternative to <altcommand> you can also define aliases which have
 separate entries. This is probably mainly useful for obsolete aliases which
@@ -115,6 +123,20 @@ Case 2: Alias command definition
 Additionally, if you want a command to appear in multiple sections,
 define it once and place references to it elsewhere.
   <reference>   - Has a single attribute, 'ref', and no contents.
+
+A <gloss> is like a <command> but styled differently, and not supporting most of the
+same subelements. It can be placed in any section, if there's a reason to not put it
+in the dedicated Glossary section. It can be an alias to another <gloss>
+Case 1: Normal <gloss> subelements:
+  <canon>       - The title of the glossary entry.
+  <shortname>?  - Optional, this is text to use in cross-links. The canon is used
+                  by default.
+  <description> - Defines the term. See <command> above for available subelemnts.
+
+Case 2: Alias <gloss> subelements:
+  <alias>       - If two term are synonymous, use the <alias> element. Put
+                  the ID of the real gloss entry in here.
+  <shortname>   - The name/title of the term.
 
 Basically, you should be able to examine the entries that already exist. It's
 fairly self evident what everything does.
@@ -169,7 +191,24 @@ same level.)
 	~ Monorail guy, Simpsons
 
 -->
-<plotscript version="hróðvitnir" datecode="2021-09-09">
+<plotscript version="ichorescent" datecode="2024-10-28">
+	<title>
+		Dictionary of Plotscripting Commands
+	</title>
+	<introduction>
+		This is the documentation for all <a href="https://rpg.hamsterrepublic.com/ohrrpgce/Plotscripting">plotscripting</a> commands.
+		In addition to reading this document, we also recommend you check out the
+		<a href="https://rpg.hamsterrepublic.com/ohrrpgce/Plotscripting_Tutorial">Plotscripting Tutorial</a>
+		and the <a href="https://rpg.hamsterrepublic.com/ohrrpgce/Plotscripting">Plotscripting</a>
+		article on the wiki.
+		<lb/>
+		If you're reading this on the <a href="https://rpg.hamsterrepublic.com/ohrrpgce/">OHRRPGCE website</a>
+		then make sure you're looking at the page for the latest stable release
+		(<a href="http://hamsterrepublic.com/ohrrpgce/docs/plotdictionary.html">here</a>)
+		or latest nightly version
+		(<a href="http://hamsterrepublic.com/ohrrpgce/nightly/docs/plotdictionary.html">here</a>).
+		This documentation is also included as an HTML file with downloads of the engine.
+	</introduction>
 
 	<section title="Declarations">
 		<command id="plotscript">
@@ -311,7 +350,7 @@ include, ..\utility scripts\math.hss  # A few useful scripts shared between mult
 				This command works exactly the same for global and local variables.
 				<lb/>
 				The <tt>:=</tt> operation actually returns <p>value</p>, so you can use it
-				as an expression, for example in <tt>temp1 := (temp2 := 1)</tt>.
+				as an <ref>expression</ref>, for example in <tt>temp1 := (temp2 := 1)</tt>.
 			</description>
 		</command>
 		<command id="increment">
@@ -325,7 +364,7 @@ include, ..\utility scripts\math.hss  # A few useful scripts shared between mult
 				This command works exactly the same for global and local variables.
 				<lb/>
 				The <tt>+=</tt> operation actually returns the new value of <p>variable</p>,
-				so you can use it as an expression, for example in <tt>while ((index += 1) &lt; 10)</tt>.
+				so you can use it as an <ref>expression</ref>, for example in <tt>while ((index += 1) &lt; 10)</tt>.
 			</description>
 		</command>
 		<command id="decrement">
@@ -339,7 +378,7 @@ include, ..\utility scripts\math.hss  # A few useful scripts shared between mult
 				This command works exactly the same for global and local variables.
 				<lb/>
 				The <tt>-=</tt> operation actually returns the new value of <p>variable</p>,
-				so you can use it as an expression, for example in <tt>while (index -= 1)</tt>.
+				so you can use it as an <ref>expression</ref>, for example in <tt>while (index -= 1)</tt>.
 			</description>
 		</command>
 		<command id="readglobal">
@@ -478,6 +517,17 @@ include, ..\utility scripts\math.hss  # A few useful scripts shared between mult
 			<shortname>random</shortname>
 			<description>Returns a random integer in the range of the two numbers. The returned value will be greater than or equal to the first number, and less than or equal to the second number</description>
 		</command>
+		<command id="randomchoice">
+			<canon>random choice (values...)</canon>
+			<shortname>random choice</shortname>
+			<description>
+				Returns one of its arguments, randomly.
+				Up to 32 different <p>values</p> can be provided.
+				Returns 0 if it has no arguments.
+			</description>
+			<example># Move an npc randomly to either (5,10), (5,14), or (5,18)
+set npc position(npc, 5, random choice (10, 14, 18))</example>
+		</command>
 		<command id="seedrandom">
 			<canon>seed random (seed)</canon>
 			<shortname>seedrandom</shortname>
@@ -510,17 +560,49 @@ include, ..\utility scripts\math.hss  # A few useful scripts shared between mult
 				This is equivalent to <tt>min(2^31 - 1, max(-2^31, round(1.0 * a * b / c)))</tt> in other languages.
 			</description>
 		</command>
-	</section>
+
+		<command id="dirx">
+			<canon>dir X (direction)</canon>
+			<shortname>dir X</shortname>
+			<description>
+				Simpler helper function to convert a <ref>direction</ref> into a relative X value. Returns -1 for left, 1 for right, and otherwise 0.
+				It's often useful to multiply the return value, e.g. to get an increment of 20 pixels rather than 1 tile.
+				<example># To find the tile in front of the hero:
+variable (x, y, dir)
+dir := hero direction(me)
+x := hero X(me) + dir X(dir)
+y := hero Y(me) + dir Y(dir
+
+# To find the point 20 pixels in front of the hero (the hero has a 20x20 hitbox, but "hero pixel X/Y"
+# return the top-left corner, so add 10 pixels to start at the center of the hero):
+x := hero pixel X(me) + 10 + 20 * dir X(dir)
+y := hero pixel Y(me) + 10 + 20 * dir Y(dir)</example>
+			</description>
+			<seealso><ref>diry</ref></seealso>
+		</command>
+		<command id="diry">
+			<canon>dir Y (direction)</canon>
+			<shortname>dir Y</shortname>
+			<description>
+				Simpler helper function to convert a <ref>direction</ref> into a relative Y value. Returns -1 for up, 1 for down, and otherwise 0.
+				See <ref>dirx</ref>.
+			</description>
+			<seealso><ref>dirx</ref></seealso>
+		</command>
+
+	</section>   <!-- Math, Comparison, and Logic Operators" -->
 
 	<section title="Flow Control">
 		<command id="begin">
-			<canon>begin,other commands,end</canon>
+			<canon>begin, other commands, end</canon>
 			<shortname>begin</shortname>
 			<description>
 				<tt>begin</tt> is a synonym for <tt>(</tt> and <tt>end</tt> is a synonym for <tt>)</tt>.
 				Parentheses are normally used for bracketing things that all fit on the same line,
-				and begin/end statements are often used to enclose very long things such as whole
-				scripts or long flow control blocks that take up several lines.
+				and <tt>begin</tt>/<tt>end</tt> statements are often used to enclose very long things
+				such as whole scripts or long flow control blocks that take up several lines.
+				But using one or the other is a matter of taste.
+				<lb/>
 				For example, the following:
 				<example>if (check tag(tag:have rusty sword)) then (show text box (5), wait for text box)</example>
 				is equivalent to:
@@ -538,14 +620,26 @@ end</example>
 		<command id="if">
 			<canon>if(condition) then(commands) else(commands)</canon>
 			<shortname>if</shortname>
-			<description>The <p>if</p> statement checks the value of its condition, and if the value is <ref>true</ref> (actually, any value other than <ref>false</ref> (which is zero) counts as true), it runs the commands in the <p>then</p> block. If the value is <ref>false</ref>, it runs the commands in its <p>else</p> block. The conditional is usually a comparison operator such as <ref>equal</ref> or <ref>notequal</ref>, or a command which returns either true or false, such as <ref>checktag</ref>. The <p>else</p> is optional as long as you have a <p>then</p>, and the <p>then</p> is optional as long as you have an <p>else</p>. You can also place one or more <ref>elseif</ref>s after the <p>then</p> (or immediately after the <p>if</p> if you skip the <p>then</p>) instead of nesting multiple <p>if</p> statements.</description>
+			<description>
+				The <p>if</p> statement checks the value of its <p>condition</p>, and if the value is <ref>true</ref>
+				(actually, any value other than <ref>false</ref> (which is zero) also counts as true),
+				it runs the commands in the <p>then</p> block.
+				If the value is <ref>false</ref>, it runs the commands in its <p>else</p> block.
+				The conditional is usually a comparison operator such as <ref>equal</ref> or <ref>notequal</ref>,
+				or a command which returns either true or false, such as <ref>checktag</ref>.
+				The <p>else</p> is optional as long as you have a <p>then</p>, and the <p>then</p>
+				is optional as long as you have an <p>else</p>.
+				You can also place one or more <ref>elseif</ref>s after the <p>then</p>
+				(or immediately after the <p>if</p> if you skip the <p>then</p>) instead of nesting multiple <p>if</p> statements.
+			</description>
 			<seealso><ref>elseif</ref></seealso>
 		</command>
 		<command id="elseif">
 			<canon>... else if(condition) then(commands) ...</canon>
 			<shortname>else if</shortname>
-			<description>This can appear after an <ref>if</ref> or <ref>then</ref> block. It is a shortcut for <ref>else</ref> followed by <ref>if</ref> which lets you omit a pairs of brackets/<ref>begin</ref> and <ref>end</ref>, as this example shows:
-			<example>if (inventory (item:apple)) then (
+			<description>This can appear after an <ref>if</ref> or <ref>then</ref> block. It is a shortcut for <ref>else</ref> followed by <ref>if</ref> which lets you omit a pairs of brackets/<ref>begin</ref> and <ref>end</ref> around the <tt>else</tt>, as this example shows:
+			<example># "inventory" returns the number you own. Remember that any number other than 0 counts as true
+if (inventory (item:apple)) then (
   show text box (10)  # "Apples! My favourite!"
 ) else if (inventory (item:orange)) then (
   show text box (11)  # "My, what a tasty looking orange..."
@@ -556,19 +650,28 @@ end</example>
 )</example>
 			</description>
 		</command>
-
 		<command id="then">
-			<alias>if</alias>
+			<canon>then</canon>
 			<shortname>then</shortname>
+			<description>See <ref>if</ref>.</description>
 		</command>
 		<command id="else">
-			<alias>if</alias>
+			<canon>else</canon>
 			<shortname>else</shortname>
+			<description>See <ref>if</ref>.</description>
 		</command>
+
 		<command id="while">
 			<canon>while(condition) do(commands)</canon>
 			<shortname>while</shortname>
-			<description>The while command checks the value of its condition, and if the value is <ref>true</ref> it runs the commands in the do block. It keeps checking the conditional and runs the do block over and over again until the conditional returns <ref>false</ref>. The conditional is usually an equality operator such as <ref>equal</ref> or <ref>notequal</ref>, or it is a check tag command.</description>
+			<description>
+				The while command checks the value of its condition, and if the value is <ref>true</ref>
+				(or any value other than 0/false) it runs the commands in the <ref>do</ref> block.
+				It keeps checking the conditional and runs the do block over and over
+				again until the conditional returns <ref>false</ref>.
+				The conditional is usually an equality operator such as <ref>equal</ref> or <ref>notequal</ref>,
+				or something else that returns <tt>true/false</tt> such as <tt>checktag</tt>.
+</description>
 		</command>
 		<command id="do">
 			<canon>do</canon>
@@ -590,7 +693,8 @@ end</example>
 			<shortname>return</shortname>
 			<description>
 				<warn>
-					<p>return</p> in HamsterSpeak is very different from <p>return</p> in nearly all other programming languages!
+					<p>return</p> in HamsterSpeak is very different from <p>return</p> in nearly all other programming languages,
+					which is equivalent to <ref>exit</ref> in HamsterSpeak!
 				</warn>
 				Sets the value to be returned by the script.
 				This is only useful when the script has been called as a function from another script.
@@ -629,11 +733,26 @@ end
 				<ref>exitreturning</ref>
 			</seealso>
 		</command>
+		<command id="exit">
+			<canon>exit</canon>
+			<canon>exit(value)</canon>
+			<shortname>exit</shortname>
+			<description>
+				With no argument, is equivalent to <ref>exitscript</ref>. With one argument is equivalent to <ref>exitreturning</ref>.
+				<note>
+					This is the same as the <p>return</p> statement in most other programming languages.
+				</note>
+			</description>
+		</command>
 		<command id="exitreturning">
 			<canon>exit returning(value)</canon>
+			<canon>exit(value)</canon>
 			<shortname>exit returning</shortname>
 			<added>ubersetzung</added>
-			<description>Sets the value to be returned by the script, and exits the script. This is only useful when the script has been called as a function from another script.
+			<description>
+				Sets the value to be returned by the script, and exits the script.
+				Can be written as either <p>exit returning(value)</p> or the new style <p>exit(value)</p>.
+				This is only useful when the script has been called as a function from another script.
 <example>
 script, key wait, ticks, begin
   # Returns true if the wait was cancelled by a keypress.
@@ -656,7 +775,8 @@ plotscript, usage example, begin
    )
 end
 </example>
-The <p>exit returning</p> command works exactly the same as the <ref>return</ref> command followed immediately by <ref>exitscript</ref>. Whether you decide to use <ref>return</ref> or <p>exit returning</p> to set your script's return value is often just a matter of style and taste.
+				The <p>exit returning</p> command works exactly the same as the <ref>return</ref> command followed immediately by <ref>exitscript</ref>.
+				Whether you decide to use <ref>return</ref> or <p>exit returning</p> to set your script's return value is often just a matter of style and taste.
 			</description>
 			<seealso>
 				<ref>return</ref>
@@ -665,32 +785,126 @@ The <p>exit returning</p> command works exactly the same as the <ref>return</ref
 		</command>
 		<command id="exitscript">
 			<canon>exit script</canon>
+			<canon>exit</canon>
 			<shortname>exit script</shortname>
 			<added>ubersetzung</added>
 			<description>
 				Causes the script to end immediately, and return the value set by the most recent <ref>return</ref> statement.
+				Can be written as either <p>exit script</p> or the new style <p>exit</p>.
 			</description>
 			<seealso>
 				<ref>exitreturning</ref>
 			</seealso>
 		</command>
 		<command id="break">
-			<canon>break</canon>
+			<canon>break (levels)</canon>
 			<shortname>break</shortname>
 			<added>ubersetzung</added>
-			<description>Breaks out of a <ref>for</ref> or <ref>while</ref> loop or <ref>switch</ref> and continues the script after the end of the <ref>do</ref> block.</description>
+			<description>
+				Breaks out of a <ref>for</ref> or <ref>while</ref> loop or <ref>switch</ref>
+				(or even an isolated <ref>do</ref> block)
+				and continues the script after the end of the <ref>do</ref> block.
+				If breaking out of a <tt>for</tt> loop, the loop's variable isn't modified.
+				<lb/>
+				<p>levels</p> is optional (defaulting to 1), and is almost never used (see below).
+				<lb/>
+				For example:
+				<example>plotscript, search for gemstones, begin
+  variable (gems)
+  # A minimum payout of 1 gem, a maximum of 15
+  for (gems, 1, 15) do (
+    wait(20)
+    $1 = "Found "
+    append number(1, gems)
+    center string at(1)   # Show "Found 1", etc, in the center of the screen (the position is optional)
+    if (random(1, 6) == 1) then (break)  # Roll a die and stop on a 1
+  )
+  # Remove the text from the screen
+  hide string(1)
+  # "${S1} shiny rocks in the river", displays as "Found 2 shiny rocks in the river", etc
+  show textbox(17)
+end</example>
+				<p>levels</p> tells how many nested loops/blocks to break out of.
+				It must be at least 1.
+				Remember that other flow control blocks such as <tt>if/then/else</tt> and <tt>case() do()</tt> don't count, only those listed above.
+				<example># Randomly pick one of the flowers on the map that hasn't bloomed yet and make it bloom
+plotscript, a flower blooms, begin
+  variable (x, y, found)
+  for (x, 0, map width -- 1) do (
+    for (y, 0, map height -- 1) do (
+      # Look for a flower tile (on map layer 0), suppose it's tile 10
+      if (read block(x, y) == 10) then (
+        if (random(1, 10) == 1) then (   # 10% chance of picking this one
+	  found := true
+	  break (2)  # Exit both 'for' loops. The x and y variables will remain the same
+      )
+    )
+  )
+  # The break(2) jumps to here
+
+  if (found) then (
+    # Do a little animation
+    write block(x, y, 11)
+    wait(20)
+    write block(x, y, 12)
+  )
+end</example>
+			</description>
 		</command>
 		<command id="continue">
-			<canon>continue</canon>
+			<canon>continue (levels)</canon>
 			<shortname>continue</shortname>
 			<added>ubersetzung</added>
-			<description>When used inside the <ref>do</ref> block of a <ref>for</ref> or <ref>while</ref> command, <p>continue</p> skips the rest of the do block and continues on to the next loop. When used inside a <ref>switch</ref> statement, continue causes a jump to after the next <ref>case</ref> block.</description>
+			<description>
+				When used inside the <ref>do</ref> block of a <ref>for</ref> or <ref>while</ref> command
+				(or in an isolated <ref>do</ref> block),
+				<tt>continue</tt> skips the rest of the <tt>do</tt> block and continues on to the next loop, if any.
+				That's equivalent to jumping to the bottom of the loop, so its effect is like enclosing
+				the rest of the loop in an <ref>if</ref>
+				(except for isolated <tt>do</tt> blocks, in which case it jumps straight to the top
+				of the loop because there's no condition to check).
+				<lb/>
+				When used inside a <ref>switch</ref> statement, <tt>continue</tt> causes a jump into
+				the next <ref>case</ref>'s <tt>do()</tt> block, even if the <tt>case</tt> doesn't match,
+				or into the <tt>else()</tt> (aka <tt>case(else) do()</tt>) block if that follows the current <tt>case</tt>.
+				<lb/>
+				
+				<lb/>
+				<p>levels</p> is optional (defaulting to 1), and is almost never used.
+				When inside several nested loops/blocks it tells which one to continue.
+				It must be at least 1.
+				For example if there are 3 nested <tt>for</tt> loops, <tt>continue(3)</tt> continues the outermost one,
+				in the process  breaking out of the inner two.
+				For example:
+<example>plotscript, update shadow tiles, begin
+  for (x, 0, map width -- 1) do (
+    for (y, 0, map height -- 1) do (
+
+      for (layer, 4, 7) do (
+        # Suppose tiles on any of the layers 4 to 7 are overhead tiles which cast shadows
+        if (read map block(x, y, layer) &lt;&gt; 0) then (
+          # Found a non-empty tile. Put a shadow tile (42) on the ground (layer 1)
+          write map block(x, y, 42, 1)
+	  # We don't need to check the other layers. Skipping them speeds up the script
+          continue(2)
+        )
+      )
+      # This part is reached only if the continue(2) didn't happen
+      # Remove any shadow tile on layer 1, no shadow here
+      write map block(x, y, 0, 1)
+
+      # The continue(2) jumps to here (immediately before the 'for' loops back)
+    )
+  )
+end</example>
+
+			</description>
 		</command>
 		<command id="switch">
 			<canon>switch(expression)</canon>
 			<shortname>switch</shortname>
 			<added>ubersetzung</added>
-			<description>Select between a number of <ref>case</ref> blocks to execute based on the value of an expression. The switch command is an alternative to a big block of nested <ref>if</ref>/then/else commands that all check the same value. Switch can be easier to read than a lot of if's. Consider the follow script snippet:
+			<description>Select between a number of <ref>case</ref> blocks to execute based on the value of an <ref>expression</ref>. The switch command is an alternative to a big block of nested <ref>if</ref>/then/else commands that all check the same value. Switch can be easier to read than a lot of if's. Consider the follow script snippet:
 <example>if (v == 0) then (
   something
 ) else if (v == 1 || v == 2) then (
@@ -729,7 +943,7 @@ There are two different styles (syntaxes) in which switch can be written. The se
   case(10)   do() #nothing happens here
   case(else) something to do if none of the cases happen
 )</example>
-Besides readability, there is one other important difference between using switch and using a sequence of if's. The switch command only checks the value of the expression (v) once. The if/then/else method checks v repeatedly, so it could be slower, and could be susceptible to errors if you accidentally change the value of v somewhere in the middle.
+Besides readability, there is one other important difference between using switch and using a sequence of if's. The switch command only checks the value of the <ref>expression</ref> (v) once. The if/then/else method checks v repeatedly, so it could be slower, and could be susceptible to errors if you accidentally change the value of v somewhere in the middle.
 			</description>
 		</command>
 		<command id="case">
@@ -811,6 +1025,8 @@ wait for hero (me) # wait until he stops</example>
 				If you do not specify <p>key</p>, then <ref>anykey</ref> will be used.
 				<lb/>
 				<ref>anykey</ref> waits for any keyboard or joystick button,
+				(except Numlock, Capslock and Scrolllock, or any joystick buttons that have no
+				builtin meaning e.g. X/Y/L1/L2/R1/R2)
 				and also waits for a mouse click if "'any key', etc, include mouse clicks" is
 				turned on in the Mouse Controls menu.
 				<p>usekey</p> will wait for Space, Ctrl or Enter, joystick use key, and optionally left click;
@@ -936,11 +1152,11 @@ resume NPCs</example>
 				Blocks the player from controlling the game, so the plotscript can have exclusive control.
 				The exceptions to this are text boxes and menus.
 				<lb/>
-				The player can advance text boxes no matter what, unless you use <ref>suspendboxadvance</ref>.
+				The player can still advance text boxes unless you use <ref>suspendboxadvance</ref>.
 				<lb/>
 				<tt>suspend player</tt> prevents the player from opening the main menu using the menu key (ESC/etc),
 				but it doesn't suspend controls on any menu or the player's ability to close menus with
-				the menu key.
+				the cancel key.
 				(You can change that with <ref>setmenubit</ref><tt>(menu handle, menubit:no controls, true)</tt>
 				where <tt>menu handle</tt> might for example be <ref>topmenu</ref>.)
 			</description>
@@ -959,11 +1175,12 @@ resume player</example>
 			<shortname>player is suspended</shortname>
 			<description>Returns true if <ref>suspendplayer</ref> is active.</description>
 		</command>
+
 		<command id="suspendnpcs">
 			<canon>suspend NPCs</canon>
 			<shortname>suspend NPCs</shortname>
 			<description>
-				Stops NPCs from walking around automatically (ie, suspends NPC AI).
+				Stops NPCs from walking around automatically (ie., suspends NPC AI).
 				When <tt>suspend NPCs</tt> is run, all NPCs stop in their tracks once they've
 				finished their current step to the next tile, ready for you to control them
 				with commands like <ref>walknpc</ref> and <ref>pathfindnpcto</ref>.
@@ -972,6 +1189,9 @@ resume player</example>
 				cause tile misalignment).
 				<lb/>
 				Use <ref>setnpcmoves</ref>(who, false) instead to prevent a single NPC from moving.
+				<note>
+					If you want NPCs to stop immediately without finishing their current steps, consider <ref>suspendwalkabouts</ref> instead.
+				</note>
 			</description>
 			<example>suspend NPCs
 # do stuff
@@ -980,6 +1200,7 @@ resume NPCs</example>
 				<ref>waitfornpc</ref>
 				<ref>waitforall</ref>
 				<ref>setnpcmoves</ref>
+				<ref>suspendwalkabouts</ref>
 			</seealso>
 		</command>
 		<command id="resumenpcs">
@@ -993,6 +1214,57 @@ resume NPCs</example>
 			<shortname>npcs are suspended</shortname>
 			<description>Returns true if <ref>suspendnpcs</ref> is active.</description>
 		</command>
+
+		<command id="suspendwalkabouts">
+			<canon>suspend walkabouts</canon>
+			<shortname>suspend walkabouts</shortname>
+			<description>
+				Suspends (pauses) all NPC and hero movement immediately and completely, as well as
+				NPC AI, player movement controls, NPC activation, Walk In Place animations,
+				and vehicle mounting/dismounting/rising/falling animations.
+				Unlike <ref>suspendnpcs</ref>, NPCs stop moving immediately rather than finishing their step.
+				<lb/>
+				This doesn't suspend updating of the hero/NPCs slices.
+				For example, <ref>puthero</ref>, <ref>putnpc</ref>, <ref>setheroz</ref>, <ref>setheroframe</ref>,
+				etc. still cause the hero/NPC slices to move, change frame, etc.
+				<lb/>
+				Although player movement is suspended, this doesn't suspend everything <ref>suspendplayer</ref> does:
+				the player can still open the menu (or the vehicle's menu setting or Instead-of-menu script)
+				and advance text boxes.
+				They can't activate NPCs or dismount vehicles.
+				<danger>
+					While walkabouts are suspended, <ref>waitforhero</ref> and <ref>waitfornpc</ref> commands will freeze forever,
+					and commands like <ref>walkhero</ref> and <ref>walknpc</ref> won't cause any movement until you <ref>resumewalkabouts</ref>.
+
+				</danger>
+				<note>
+					This is one of the main effects of menus set to "Suspend gameplay &amp; scripts",
+					along with <ref>suspendplayer</ref>, <ref>suspendtimers</ref>, <ref>suspendboxadvance</ref>,
+					<ref>suspendtextboxcontrols</ref>, pausing scripts and script triggers,
+					and suspending slice movement.
+
+				</note>
+			</description>
+			<seealso>
+				<ref>suspendplayer</ref>
+				<ref>suspendnpcs</ref>
+			</seealso>
+		</command>
+		<command id="resumewalkabouts">
+			<canon>resume walkabouts</canon>
+			<shortname>resume walkabouts</shortname>
+			<description>
+				Undoes <ref>suspendwalkabouts</ref>.
+				Has no effect if walkabout movement is actually suspended by a menu set to "Suspend gameplay &amp; scripts".
+			</description>
+		</command>
+		<command id="walkaboutsaresuspended">
+			<canon>walkabouts are suspended</canon>
+			<shortname>walkabouts are suspended</shortname>
+			<description>Returns true if <ref>suspendwalkabouts</ref> is active.</description>
+		</command>
+
+
 		<command id="suspendobstruction">
 			<canon>suspend obstruction</canon>
 			<shortname>suspend obstruction</shortname>
@@ -1274,7 +1546,7 @@ play song (get ambient music)</example>
 		<command id="walkhero">
 			<canon>walk hero (who, direction, distance)</canon>
 			<shortname>walk hero</shortname>
-			<description>Makes the specified hero move in the specified direction for the specified number of tiles. The first argument tells who to move. Use <ref>me</ref> or numbers 0-3. The second argument is the direction. Use the constants: <ref>north</ref>, <ref>south</ref>, <ref>east</ref>, <ref>west</ref>, <ref>up</ref>, <ref>down</ref>, <ref>left</ref>, or <ref>right</ref>. The third argument is the number of tiles to move. If you leave out the third argument, the hero will move one tile. If you use a negative number for walk distance, the hero will walk backwards. Walk hero is usually used with the <ref>waitforhero</ref> command. You should normally use the <ref>suspendplayer</ref> command before moving heroes, and if you want to move heroes other than the leader, you should use the <ref>suspendcaterpillar</ref> command.</description>
+			<description>Makes a hero move the specified number of tiles in some direction. The first argument tells who to move, it is a caterpillar rank. Use <ref>me</ref> or numbers 0-3. (If the catepillar party is disabled then there will only be one hero, <ref>me</ref>.) The second argument is the <ref>direction</ref>, such as <ref>north</ref>. The third argument is the number of tiles to move. If you leave out the third argument, the hero will move one tile. If you use a negative number for walk distance, the hero will walk backwards. Walk hero is usually used with the <ref>waitforhero</ref> command. You should normally use the <ref>suspendplayer</ref> command before moving heroes, and if you want to move heroes other than the leader, you should use the <ref>suspendcaterpillar</ref> command.</description>
 			<example>suspend player # stop player
 walk hero(me,up,3) # move him up 3 tiles
 resume player # OK, done</example>
@@ -1338,13 +1610,13 @@ walk hero(who, hero direction(hero), 0)</example>
 		<command id="setherodirection">
 			<canon>set hero direction (who, direction)</canon>
 			<shortname>set hero direction</shortname>
-			<description>Makes the specified hero face in the specified direction. The hero is specified by their rank in the walkabout caterpillar, 0-3. The following constants are available for direction: <ref>north</ref>, <ref>south</ref>, <ref>east</ref>, <ref>west</ref>, <ref>up</ref>, <ref>down</ref>, <ref>left</ref>, or <ref>right</ref>.</description>
+			<description>Makes the specified hero face in the specified <ref>direction</ref> (e.g. <ref>down</ref>). The hero is specified by their rank in the walkabout caterpillar, 0-3. Use <ref>me</ref> to affect the leader.</description>
 			<example>set hero direction (me,right) # face right</example>
 		</command>
 		<command id="herodirection">
 			<canon>hero direction (who)</canon>
 			<shortname>hero direction</shortname>
-			<description>Returns the specified hero&apos;s direction. The hero is specified by their rank in the walkabout caterpillar, 0-3</description>
+			<description>Returns the specified hero&apos;s <ref>direction</ref>. The hero is specified by their rank in the walkabout caterpillar, 0-3</description>
 		</command>
 		<command id="setheroframe">
 			<canon>set hero frame (who, frame)</canon>
@@ -1407,6 +1679,32 @@ resume player</example>
 			<shortname>hero pixel Y</shortname>
 			<description>Returns the hero&apos;s Y position on the map in pixels. To find the hero&apos;s position in tiles, use the <ref>heroy</ref> function instead.</description>
 		</command>
+		<command id="forwardx">
+			<canon>forward X (who)</canon>
+			<shortname>forward X</shortname>
+			<description>
+				Returns the X position of the tile immediately in front of the specified hero.
+				<p>who</p> is optional, defaulting to 0 (<ref>me</ref>), the leader.
+				<lb/>
+				Wraps over the edge of wrapping maps.
+			</description>
+		</command>
+		<command id="forwardy">
+			<canon>forward Y (who)</canon>
+			<shortname>forward Y</shortname>
+			<description>
+				Returns the Y position of the tile immediately in front of the specified hero.
+				<p>who</p> is optional, defaulting to 0 (<ref>me</ref>), the leader.
+				<lb/>
+				Wraps over the edge of wrapping maps.
+			</description>
+			<example># This will check if npc 1 is in front of the leading hero, and if so show a textbox,
+# as if you spoke to the npc. "use npc (1)" instead would actually activate it.
+if (npc X (1) == forward X &amp;&amp; npc Y (1) == forward Y) then(
+   show text box (2)
+)
+</example>
+		</command>
 		<command id="heroz">
 			<canon>hero Z (who)</canon>
 			<shortname>hero Z</shortname>
@@ -1448,7 +1746,7 @@ resume player</example>
 			<canon>check hero wall (who,direction)</canon>
 			<shortname>check hero wall</shortname>
 			<description>
-				Returns true if there is a wall blocking the hero from moving in the specified direction.
+				Returns true if there is a wall blocking the hero from moving in the specified <ref>direction</ref>.
 				No actual movement takes place.
 				<note>
 					This command should only be used when the hero is standing still and aligned with the tile grid.
@@ -1506,7 +1804,14 @@ resume player</example>
 		<command id="teleporttomap">
 			<canon>teleport to map (map, x, y)</canon>
 			<shortname>teleport to map</shortname>
-			<description>An alternative to <ref>usedoor</ref>, teleport to map moves you to a given x,y position on the specified map without the need to create a door-link on the map. Teleport to map does not fade to black. <note>An automatic <ref>wait</ref>(1) occurs immediately after this command.</note></description>
+			<description>
+				An alternative to <ref>usedoor</ref>, teleport to map moves you to a given x,y position (in tiles)
+				on the specified map without the need to create a door-link on the map.
+				Teleport to map does not fade to black.
+				<note>
+					An automatic <ref>wait</ref>(1) occurs immediately after this command.
+				</note>
+			</description>
 		</command>
 		<reference ref="gracefullydismountvehicle" />
 		<command id="heroiswalking">
@@ -1654,15 +1959,16 @@ end</example>
 				<ref>globalnpcreference</ref>
 			</seealso>
 		</command>
-		<command id="globalnpc">
-			<alias>globalnpcreference</alias>
-			<shortname>global NPC</shortname>
-		</command>
 		<command id="globalnpcreference">
 			<canon>global NPC reference (ID, copy, allow disabled?)</canon>
 			<shortname>global NPC reference</shortname>
+			<altcommand id="globalnpc">
+				<canon>global NPC (ID, copy, allow disabled?)</canon>
+				<shortname>global NPC</shortname>
+			</altcommand>
 			<description>
-				This command is the same as <ref>npcreference</ref> except that it will always assume that you are using a global NPC ID number instead of a local NPC ID number. If there is no copy of the global NPC ID on the current map, it will return false. This command cannot get references to NPCs located on different maps, and the NPC reference it returns is only valid on the current map.
+				This command is the same as <ref>npcreference</ref> except that it takes a global NPC ID number instead of a local NPC ID number. If there is no copy of the global NPC ID on the current map, it will return false. This command cannot get references to NPCs located on different maps, and the NPC reference it returns is only valid on the current map.<lb/>
+				<tt>global NPC</tt> is an alias for <tt>global NPC reference</tt>.
 			</description>
 			<seealso>
 				<ref>npcreference</ref>
@@ -1711,7 +2017,7 @@ while (npcref) do (
 		<command id="walknpc">
 			<canon>walk NPC (who, direction, distance)</canon>
 			<shortname>walk NPC</shortname>
-			<description>Makes the specified NPC move in the specified direction for the specified number of tiles. The first argument tells who to move. You can use an <ref>npcref</ref> or <ref>npcid</ref>. The second argument is the direction. Use the constants: <ref>north</ref>, <ref>south</ref>, <ref>east</ref>, <ref>west</ref>, <ref>up</ref>, <ref>down</ref>, <ref>left</ref>, or <ref>right</ref>. The third argument is the number of tiles to move. If you leave out the third argument, the NPC will move one tile. If you use a negative number for walk distance, the npc will walk backwards. walk NPC is usually used with the <ref>waitfornpc</ref> command. You should normally use the <ref>suspendnpcs</ref> command before moving NPCs to prevent their automatic movements from interfering with your scripted movements.</description>
+			<description>Makes the specified NPC move in the specified direction for the specified number of tiles. The first argument tells who to move. You can use an <ref>npcref</ref> or <ref>npcid</ref>. The second argument is a <ref>direction</ref>, e.g. <ref>north</ref>. The third argument is the number of tiles to move. If you leave out the third argument, the NPC will move one tile. If you use a negative number for walk distance, the npc will walk backwards. walk NPC is usually used with the <ref>waitfornpc</ref> command. You should normally use the <ref>suspendnpcs</ref> command before moving NPCs to prevent their automatic movements from interfering with your scripted movements.</description>
 		</command>
 		<command id="walknpctox">
 			<canon>walk NPC to X (who, X)</canon>
@@ -1729,12 +2035,12 @@ while (npcref) do (
 		<command id="setnpcdirection">
 			<canon>set NPC direction (who, direction)</canon>
 			<shortname>set NPC direction</shortname>
-			<description>Makes the specified NPC face in the specified direction. The following constants are available for direction: <ref>north</ref>, <ref>south</ref>, <ref>east</ref>, <ref>west</ref>, <ref>up</ref>, <ref>down</ref>, <ref>left</ref>, or <ref>right</ref>. You can use either an <ref>npcref</ref> or <ref>npcid</ref> to specify which NPC will turn.</description>
+			<description>Makes the specified NPC face in the specified <ref>direction</ref>, e.g. <ref>north</ref>. You can use either an <ref>npcref</ref> or <ref>npcid</ref> to specify which NPC will turn.</description>
 		</command>
 		<command id="npcdirection">
 			<canon>NPC direction (who)</canon>
 			<shortname>NPC direction</shortname>
-			<description>Returns the specified NPC&apos;s direction.</description>
+			<description>Returns the specified NPC&apos;s <ref>direction</ref>.</description>
 		</command>
 
 
@@ -1870,7 +2176,7 @@ walk NPC(npc, NPC direction(npc), 0)</example>
 			<canon>check NPC wall (who, direction)</canon>
 			<shortname>check NPC wall</shortname>
 			<description>
-				Returns true if there is a wall blocking the NPC from moving in the specified direction.
+				Returns true if there is a wall blocking the NPC from moving in the specified <ref>direction</ref>.
 				No actual movement takes place.
 				It does not matter whether the NPC is set to ignore walls or ignore the passmap.
 				<note>
@@ -1892,7 +2198,8 @@ walk NPC(npc, NPC direction(npc), 0)</example>
 			<description>
 				This command (along with <ref>npccopynumber</ref> and <ref>getnpcpool</ref>)
 				is the inverse of <ref>npcreference</ref>.
-				Returns an NPC's ID. <p>reference</p>If you give <p>get NPC ID</p> an <ref>npcref</ref> it will return the NPC's ID.
+				Returns an NPC's ID.
+				If you give <p>get NPC ID</p> an <ref>npcref</ref> it will return the NPC's ID.
 				If the reference is not valid then <p>get NPC ID</p> will return -1.
 				This command can be used on tag-disabled NPCs too, returning their ID number.
 				<note>
@@ -2001,7 +2308,7 @@ end</example>
 			<shortname>create NPC</shortname>
 			<description>
 				This command will magically create a new copy of an NPC with the given <p>ID</p> number.
-				You can specify an <p>X</p> and <p>Y</p> position where it will be created, and optionally a <p>direction</p> too
+				You can specify an <p>X</p> and <p>Y</p> position where it will be created, and optionally a <ref>direction</ref> too
 				(if you leave out the direction, the new NPC will be facing south).
 				The <p>pool</p> argument is an optional <ref>npcpool</ref> defaulting to <tt>pool:local</tt>
 				(NPC definitions local to the current map).
@@ -2028,7 +2335,20 @@ end</example>
 		<command id="destroynpc">
 			<canon>destroy NPC (reference)</canon>
 			<shortname>destroy NPC</shortname>
-			<description>This command will erase the specified NPC. You can use either an <ref>npcref</ref> or the NPC&apos;s ID number. The deletion is not permanent. Unless this is an NPC that you created with <ref>createnpc</ref>, the NPC will be back again next time the map gets loaded. If you need to permanently remove an NPC, use tags. <note>This only deletes the one NPC you specify. If you use an NPC ID number as the argument, only the first copy of the NPC on the map will be deleted.</note><note>This command can be also be written as <p>delete NPC</p>.</note></description>
+			<description>
+				This command will erase the specified NPC.
+				You can use either an <ref>npcref</ref> or the NPC&apos;s ID number.
+				The deletion is not permanent.
+				Unless this is an NPC that you created with <ref>createnpc</ref>, the NPC will be back again next time the map gets loaded.
+				If you need to permanently remove an NPC, use tags.
+				<note>
+					This only deletes the one NPC you specify.
+					If you use an NPC ID number as the argument, only the first copy of the NPC on the map will be deleted.
+				</note>
+				<note>
+					This command can be also be written as <p>delete NPC</p>.
+				</note>
+			</description>
 		</command>
 		<command id="deletenpc">
 			<alias>destroynpc</alias>
@@ -2173,7 +2493,15 @@ end</example>
 		<command id="npcextra">
 			<canon>NPC extra (who, which)</canon>
 			<shortname>NPC extra</shortname>
-			<description>Returns the npc instance-specific extra data field requested in <p>which</p>, a number from 0 to 2. You may use the constants <p>extra 0</p>, <p>extra 1</p> and <p>extra 2</p> to refer to them. If you use an NPC ID for <p>who</p>, the first instance's data will be used.</description>
+			<description>
+				Returns an extra data value previously set on NPC instance <p>who</p> with <ref>setnpcextra</ref>.
+				<lb/>
+				If you use an NPC ID for <p>who</p>, the first instance's data will be used.
+				<p>extra</p> is the <ref>extradataindex</ref> to read.
+				<lb/>
+				This command is like <ref>getextra</ref> but only works on NPCs
+				and accepts NPC IDs as well as NPC references.
+			</description>
 			<seealso>
 				<ref>setnpcextra</ref>
 			</seealso>
@@ -2181,7 +2509,15 @@ end</example>
 		<command id="setnpcextra">
 			<canon>set NPC extra (who, which, value)</canon>
 			<shortname>set NPC extra</shortname>
-			<description>Sets the npc instance-specific extra data field requested in <p>which</p>, a number from 0 to 2. You may use the constants <p>extra 0</p>, <p>extra 1</p> and <p>extra 2</p> to refer to them.  If you use an NPC ID for <p>who</p>, the first instance's data will be used.
+			<description>
+				Sets one of the extra data variables on the NPC instance <p>who</p>.
+				If you use an NPC ID for <p>who</p>, the first instance's data will be used.
+				<p>extra</p> is an <ref>extradataindex</ref>.
+				<lb/>
+				This command is like <ref>setextra</ref> but only works on NPCs
+				and accepts NPC IDs as well as NPC references.
+				See <ref>appendextra</ref> and <ref>resizeextra</ref> for more ways to
+				modify zone extra data.
 				<note>
 					Like other NPC instance data, the extra data for NPCs on the current map is not saved in save games!
 					However, it is saved in mapstate NPC saves (see <ref>savemapstate</ref>).
@@ -2423,12 +2759,12 @@ end</example>
 		<command id="camerafollowsslice">
 			<canon>camera follows slice (slice)</canon>
 			<shortname>camera follows slice</shortname>
-			<description>With this command, you can make the camera follow a slice instead of the hero. The slice will be centered on the screen. To revert the camera to normal, use <ref>camerafollowshero</ref>.</description>
+			<description>With this command, you can make the camera follow a slice instead of the hero. The slice's anchor point will be centered on the screen. To revert the camera to normal, use <ref>camerafollowshero</ref>. Note that this command usually only makes sense for slices that are parented to a map layer, or parented to something attached to a map layer like a hero or NPC.</description>
 		</command>
 		<command id="pancamera">
 			<canon>pan camera (direction,distance,pixelstep)</canon>
 			<shortname>pan camera</shortname>
-			<description>This command causes the camera to stop following your leader and pan in the specified direction. For direction, you can use the constants: <ref>north</ref>, <ref>south</ref>, <ref>east</ref>, <ref>west</ref>, <ref>up</ref>, <ref>down</ref>, <ref>left</ref>, or <ref>right</ref>. The distance is the number of tiles you want the camera to move before it stops. You can also specify the number of pixels you want the camera to move for each tick. if you leave the last argument out, the camera will move by 2 pixels per tick. This command is normally used with <ref>waitforcamera</ref>. To revert the camera to normal, use <ref>camerafollowshero</ref>.</description>
+			<description>This command causes the camera to stop following your leader and pan in the specified direction. The first argument is a <ref>direction</ref>, e.g. <ref>north</ref>. The distance is the number of tiles you want the camera to move before it stops. You can also specify the number of pixels you want the camera to move for each tick. if you leave the last argument out, the camera will move by 2 pixels per tick. This command is normally used with <ref>waitforcamera</ref>. To revert the camera to normal, use <ref>camerafollowshero</ref>.</description>
 		</command>
 		<command id="focuscamera">
 			<canon>focus camera (x,y,speed)</canon>
@@ -2677,9 +3013,42 @@ wait for text box # wait until the player continues</example>
 
 	<section title="Basic Display Commands">
 		<command id="showvalue">
-			<canon>show value (number)</canon>
+			<canon>show value (number, ...)</canon>
+			<canon>show values (number, ...)</canon>
 			<shortname>show value</shortname>
-			<description>Displays the number in the bottom left corner of the screen. Useful for count-down timers, and for debugging complicated scripts. See <ref>tracevalue</ref> for a more powerful debugging tool.</description>
+			<description>
+				Displays one or more numbers at the bottom left corner of the screen,
+				which remains there until overwritten or <ref>shownovalue</ref> is used.
+				Useful for count-down timers, and for debugging complicated scripts.
+				The number of arguments to this command is variable.
+				See <ref>showvalueof</ref> and <ref>tracevalue</ref> for similar debugging tools.
+				You can't print strings with this command; use <ref>showstring</ref> instead.
+				<note>
+					At most one of <ref>showvalue</ref>, <ref>showstring</ref>, and
+					<ref>showvalueof</ref> can show at once.
+				</note>
+			</description>
+			<example>
+				show value(hero X(me), hero Y(me))   # Shows something like "  3   14" at the bottom of the screen
+			</example>
+		</command>
+		<command id="showvalueof">
+			<canon>show value of (expression, ...)</canon>
+			<shortname>show value of</shortname>
+			<description>
+				Displays one or more <ref>expression</ref>s and their values at the bottom left corner of the screen,
+				which remains there until overwritten or <ref>shownovalue</ref> is used.
+				Useful for debugging complicated scripts.
+				The number of arguments to this command is variable;
+				each is printed as source text along with its value.
+				You can't print strings with this command; use <ref>showstring</ref> instead.
+				<note>
+					At most one of <ref>showvalue</ref>, <ref>showstring</ref>, and
+					<ref>showvalueof</ref> can show at once.
+				</note>
+			</description>
+			<example># Shows something like "coins=0, hero X(me)=3, hero Y(me)=14" at the bottom of the screen
+show value of(coins, hero X(me), hero Y(me))</example>
 		</command>
 		<command id="showstring">
 			<canon>show string (ID)</canon>
@@ -2697,6 +3066,7 @@ wait for text box # wait until the player continues</example>
 			<shortname>show no value</shortname>
 			<description>Gets rid of the number in the bottom left corner of the screen after a <ref>showvalue</ref> or <ref>showstring</ref> command.</description>
 		</command>
+
 		<command id="cancelmapnamedisplay">
 			<canon>cancel map name display</canon>
 			<shortname>cancel map name display</shortname>
@@ -2844,6 +3214,14 @@ if (slot > 0) then (load from slot (slot))</example>
 			<shortname>team menu</shortname>
 			<description>Takes you directly to the team menu, where you can change the order of the heroes in your active party, and swap heroes in and out of your reserve.</description>
 		</command>
+		<command id="innscreen">
+			<canon>inn screen (price, skip fade)</canon>
+			<shortname>inn screen</shortname>
+			<description>Opens an Inn screen with a specific <p>price</p>. The optional <p>skip fade</p> argument defaults to false. If you set it to true, no fade effect will happen when sleeping at the inn. This command returns true if the player slept in the inn, and false if they cancelled.</description>
+			<seealso>
+				<ref>healparty</ref>
+			</seealso>
+		</command>
 		<reference ref="debugmenu" />
 	</section>		<!-- Opening Built-in Menus-->
 
@@ -2852,7 +3230,7 @@ if (slot > 0) then (load from slot (slot))</example>
 		<description>
 			See also the <secref>Hero Data</secref> section for inspecting or modifying individual heroes.
 			<note>
-			You should definitely read <a href="http://rpg.hamsterrepublic.com/ohrrpgce/Ways_to_refer_to_a_hero_in_a_script">
+			You should definitely read <a href="https://rpg.hamsterrepublic.com/ohrrpgce/Ways_to_refer_to_a_hero_in_a_script">
 			Ways to refer to a hero in a script</a> to understand the differences between hero ID numbers
 			(including <tt>hero:name</tt> constants), hero party slots, and walkabout rank!
 			</note>
@@ -2961,6 +3339,9 @@ if (slot > 0) then (load from slot (slot))</example>
 				Swaps two heroes in your party by their positions in the party (ie, by party slot).
 			</description>
 		</command>
+
+		<reference ref="healparty" />
+
 		</section>		<!--Changing the Party-->
 	</section>		<!-- The Party-->
 
@@ -3234,15 +3615,27 @@ gain hero stat(who, stat:mp, 0)</example>
 			<shortname>play song</shortname>
 			<description>Plays the specified song. Use the constants defined in your HSI file. They appear in the form of song:name</description>
 		</command>
+		<command id="playmusic">
+			<alias>playsong</alias>
+			<shortname>play music</shortname>
+		</command>
 		<command id="currentsong">
 			<canon>current song</canon>
 			<shortname>current song</shortname>
 			<description>Returns the number of the currently playing song, or -1 if none.</description>
 		</command>
+		<command id="currentmusic">
+			<alias>currentsong</alias>
+			<shortname>current music</shortname>
+		</command>
 		<command id="stopsong">
 			<canon>stop song</canon>
 			<shortname>stop song</shortname>
 			<description>Stops whatever music is currently playing.</description>
+		</command>
+		<command id="stopmusic">
+			<alias>stopsong</alias>
+			<shortname>stop music</shortname>
 		</command>
 		<command id="setvictorymusic">
 			<canon>set victory music (song)</canon>
@@ -3619,7 +4012,7 @@ fade screen in</example>
 			See also <secref>The Party</secref> section for commands for finding, adding, removing or swapping
 			heroes in the party.
 			<note>
-			You should definitely read <a href="http://rpg.hamsterrepublic.com/ohrrpgce/Ways_to_refer_to_a_hero_in_a_script">
+			You should definitely read <a href="https://rpg.hamsterrepublic.com/ohrrpgce/Ways_to_refer_to_a_hero_in_a_script">
 			Ways to refer to a hero in a script</a> to understand the differences between hero ID numbers
 			(including <tt>hero:name</tt> constants), hero party slots, and walkabout rank!
 			</note>
@@ -3713,6 +4106,25 @@ fade screen in</example>
 			</seealso>
 		</command>
 		</section>		<!-- Hero Graphics-->
+
+		<section title="Hero Battle Settings">
+		<command id="getheroautobattle">
+			<canon>get hero auto battle (who)</canon>
+			<shortname>get hero auto battle</shortname>
+			<description>Returns true if the hero is set to fight automatically in battles, or false if the hero will be under normal player control. The hero number should be the hero's position in the battle party (not the name or caterpillar rank)</description>
+			<seealso>
+				<ref>setheroautobattle</ref>
+			</seealso>
+		</command>
+		<command id="setheroautobattle">
+			<canon>set hero auto battle (who, bool)</canon>
+			<shortname>set hero auto battle</shortname>
+			<description>Changes whether or not the hero should fight automatically in battles (true), or if the hero will be under normal player control (false). The hero number should be the hero's position in the battle party (not the name or caterpillar rank)</description>
+			<seealso>
+				<ref>getheroautobattle</ref>
+			</seealso>
+		</command>
+		</section>		<!-- Hero Battle Settings -->
 
 		<section title="Hero Hand Position">
 		<command id="getherohandx">
@@ -3825,17 +4237,25 @@ fade screen in</example>
 					Modifying the max will always modify the other by the same amount.
 				</note>
 				<note>
-					If you want to increase or decrease a stat by a certain amount, just use <ref>gainherostat</ref>.
+					Modifying a hero's HP will turn on or off the hero's Is Alive tag as needed,
+					but will not trigger a game over if all the heroes have zero HP.
+				</note>
+				<note>
+					If you want to permanently increase or decrease the max and base of a stat just use <ref>gainherostat</ref>.
 				</note>
 			</description>
 			<example># Use this script to reset a stat to its max value
 script, reset stat, hero slot, stat, begin
   set hero stat(hero slot, stat, get hero stat(hero slot, stat, maximum stat), current stat) 
 end</example>
-			<example># Use this script to permanently increase (or decrease, if amount is negative) a stat, without violating stat caps
+			<example># Increase (or decrease, if amount is negative) the current value
+# of a stat (so, make a temporary change) without violating stat caps or going below zero.
+# You can use the "gain hero stat" command instead to make a permanent change.
 script, adjust stat, hero slot, stat, amount, begin 
-  set capped hero stat(hero slot, stat, get hero stat(hero slot, stat, current stat) + amount, current stat) 
-  set hero stat(hero slot, stat, get hero stat(hero slot, stat, base stat) + amount, base stat) 
+  variable (value)
+  value := get hero stat(hero slot, stat, current stat) + amount
+  if (value &lt; 0) then (value := 0)
+  set capped hero stat(hero slot, stat, value, current stat)
 end</example>
 			<seealso>
 				<ref>gainherostat</ref>
@@ -3850,7 +4270,7 @@ end</example>
 			<canon>gain hero stat (who, stat, amount, reset to max)</canon>
 			<shortname>gain hero stat</shortname>
 			<description>
-				Increase or decrease one of a hero's stats.
+				Permanently increase or decrease one of a hero's stats.
 				The base, maximum and current value of the stat are all changed, consistently.
 				<lb/>
 				The first argument <tt>who</tt> is the position in your party of the hero you want
@@ -3932,6 +4352,25 @@ as returned by <ref>findhero</ref>.
 				There's not yet any command to make a permanent change (to maximum level MP).
 			</description>
 		</command>
+		<command id="herouseslevelmp">
+			<canon>hero uses level MP (who)</canon>
+			<shortname>hero uses level MP</shortname>
+			<description>Returns true if a hero makes use of level MP (FF1-style MP). The argument <p>who</p> is the hero's position in the party, as returned by <ref>findhero</ref>. This will be true if the hero has at least one named spell list set to use level MP, and that spell list is included in their battle menu. This is the same logic that is used internall to decide if Level MP will be displayed on the Status screen.</description>
+		</command>
+
+		<command id="healparty">
+			<canon>heal party (revive dead heroes)</canon>
+			<shortname>heal party</shortname>
+			<description>
+				Restores the HP, MP and level MP of the active party heroes to 100%,
+				just like inns or the textbox "Restore HP &amp; MP" conditional do.
+				<lb/>
+				The optional <p>revive dead heroes</p> argument tells whether
+				heroes with 0 HP should be healed. If omitted, the General Preference
+				Bitset "Inns Don't Revive Dead Heroes" determines the default.
+			</description>
+		</command>
+
 		<command id="herobaseelementalresistasint">
 			<canon>hero base elemental resist as int (who, element)</canon>
 			<shortname>hero base elemental resist as int</shortname>
@@ -4125,7 +4564,7 @@ plotscript, print learned spells, who=0, begin
     0 $= 1  # copy the static part to the displayed string
     0 $+ 2  # combine with the spell name
     show string at (0, 160, 100)
-    wait for keypress (anykey)
+    wait for key (anykey)
   )
   hide string (0)
 end</example>
@@ -4169,12 +4608,58 @@ end</example>
 		</section>		<!-- Out-of-battle Attacks-->
 
 	</section>
+	
+	<section title="Attack Data">
+
+		<command id="getattackname">
+			<alias>readattackname</alias>
+			<shortname>get attack name</shortname>
+		</command>
+		<command id="readattackname">
+			<canon>read attack name (str ID, attack)</canon>
+			<shortname>read attack name</shortname>
+			<description>
+				This command will take the name of <p>attack</p> and stick it in the <p>str ID</p> string, overwriting its contents.
+				Use the <p>atk:name</p> constants from your HSI file.
+				<note>
+				If you want to use this command with attack ID numbers, you must add 1 to the ID number.
+				</note>
+				<note>
+					This command replaces the old <p>get attack name</p> which required you to use <p>atk:name -- 2</p> or the attack id number <p>-- 1</p>
+				</note>
+			</description>
+		</command>
+		<command id="getattackcaption">
+			<canon>get attack caption (str ID, attack)</canon>
+			<shortname>get attack caption</shortname>
+			<description>
+				This command will take the caption of <p>attack</p> and stick it in the <p>str ID</p> string, overwriting its contents.
+				Use the <p>atk:name</p> constants from your HSI file as the <p>attack</p>.
+				<note>
+					If you want to use this command with attack ID numbers, you must add 1 to the ID displayed in the attack editor.
+				</note>
+			</description>
+		</command>
+		<command id="getattackextra">
+			<canon>get attack extra (attack, extra num)</canon>
+			<shortname>get attack extra</shortname>
+			<description>
+				Returns the value in one of an attack's "extra data" fields, which you can set in the Misc submenu.
+				Use the <tt>atk:name</tt> constants from your HSI file as the <p>attack</p> ID.
+				<p>extra num</p> is an <ref>extradataindex</ref>.
+				<note>
+					If you want to use this command with attack ID numbers, you must add 1 to the ID displayed in the attack editor.
+				</note>
+			</description>
+		</command>
+
+	</section>   <!-- Attack Data -->
 
 	<section title="Enemy and Formation Functions">
 		<command id="getenemystat">
 			<canon>get enemy stat(enemy, stat)</canon>
 			<shortname>get enemy stat</shortname>
-			<description>Returns the selected stat from the selected enemy. The first argument is the number of the enemy whose stats you want to check. The second argument is the name of the stat that you want to check. The names of the stats are defined in your HSI file in the form stat:name. </description>
+			<description>Returns the selected stat from the selected enemy definition. The first argument is the number of the enemy whose stats you want to check. The second argument is the name of the stat that you want to check. The names of the stats are defined in your HSI file in the form <tt>stat:name</tt>.</description>
 			<seealso>
 				<ref>setenemystat</ref>
 				<ref>enemyelementalresistasint</ref>
@@ -4185,13 +4670,34 @@ end</example>
 		<command id="setenemystat">
 			<canon>set enemy stat(enemy, stat, value)</canon>
 			<shortname>set enemy stat</shortname>
-			<description>Sets the selected stat of the selected enemy to the value you supply. The first argument is the number of the enemy whose stats you want to set. The second argument is the name of the stat that you want to set. The names of the stats are defined in your HSI file in the form stat:name. The third is the new value of the stat.<note>Enemy stat changes are temporary. They are not saved in the game save.</note></description>
+			<description>
+				Sets the selected stat of the selected enemy definition to the value you supply.
+				The first argument is the number of the enemy whose stats you want to set.
+				The second argument is the name of the stat that you want to set.
+				The names of the stats are defined in your HSI file in the form <tt>stat:name</tt>.
+				The third is the new value of the stat.
+				<note>
+					Enemy stat changes are temporary. They are not saved in saved games.
+					If you want to reset them early, use <ref>resetenemystat</ref>.
+				</note>
+			</description>
 			<seealso>
 				<ref>getenemystat</ref>
+				<ref>resetenemystat</ref>
 				<ref>getherostat</ref>
 				<ref>setherostat</ref>
 			</seealso>
 		</command>
+		<command id="resetenemystat">
+			<canon>reset enemy stat(enemy, stat)</canon>
+			<shortname>reset enemy stat</shortname>
+			<description>
+				Resets the selected stat of the selected enemy definition to its original value as set in the editor.
+				<p>enemy</p> is an enemy ID and <p>stat</p> is the name of the stat that you want to check.
+				The names of the stats are defined in your HSI file in the form stat:name.
+			</description>
+		</command>
+
 		<command id="enemyelementalresistasint">
 			<canon>enemy elemental resist as int (enemy, element)</canon>
 			<shortname>enemy elemental resist as int</shortname>
@@ -4221,7 +4727,7 @@ end</example>
 			<canon>set enemy name (enemyid, stringid)</canon>
 			<shortname>set enemy name</shortname>
 			<description>
-				Lets you change an enemy's name from a string.
+				Lets you change an enemy's name to a new name in a string.
 				The string length cannot be more then 16 characters, if it is more then 16 the name will be truncated.
 				<lb/>
 				<p>enemyid</p> is the number of the enemy
@@ -4229,12 +4735,23 @@ end</example>
 				and <p>stringid</p> is the number of the string that you supply the name of the enemy from.
 				<note>
 					Enemy name changes are temporary. They are not saved in saved games.
+					If you want to reset them early, use <ref>resetenemyname</ref>.
 				</note>
 			</description>
 			<seealso>
 				<ref>getenemyname</ref>
+				<ref>resetenemyname</ref>
 			</seealso>
 		</command>
+		<command id="resetenemyname">
+			<canon>reset enemy name (enemyid)</canon>
+			<shortname>reset enemy name</shortname>
+			<description>
+				Resets the name of an enemy to the value originally set in the editor.
+				<p>enemyid</p> is the number of the enemy.
+			</description>
+		</command>
+
 		<command id="getenemyappearance">
 			<canon>get enemy appearance (enemyid, appearance)</canon>
 			<shortname>get enemy appearance</shortname>
@@ -4249,6 +4766,8 @@ end</example>
 				</ul>
 				<lb/>
 				You can compare the values returned for <tt>enemy:picturesize</tt> with the constants <tt>enemysize:small</tt>, <tt>enemysize:medium</tt> and <tt>enemysize:large</tt>.
+				<lb/>
+				This command is just an alias for <ref>readenemydata</ref>.
 			</description>
 			<seealso>
 				<ref>setenemyappearance</ref>
@@ -4269,6 +4788,8 @@ end</example>
 				or palette number when changing palette.
 				<note>
 					Enemy appearance changes are temporary: they are not saved in saved games.
+					If you want to reset them early, use <ref>resetenemydata</ref>,
+					because <p>set enemy appearance</p> is (now) just an alias for <ref>writeenemydata</ref>.
 				</note>
 			</description>
 			<seealso>
@@ -4303,10 +4824,32 @@ end</example>
 		<command id="writeenemydata">
 			<canon>write enemy data (enemyid, data, value)</canon>
 			<shortname>write enemy data</shortname>
-			<description>Lets you set items of an enemy's data. Enemyid is the number of enemy, data is a predefined constant for the data you want to change. Value is the new value given to that setting. Use the same constants as are given at <ref>readenemydata</ref>.<note>Enemy data changes are temporary. They are not saved in saved games.</note></description>
+			<description>
+				Lets you set items of an enemy's data.
+				<p>enemyid</p> is the number of enemy.
+				<p>data</p> is a predefined constant for the data you want to change:
+				use the same constants listed at <ref>readenemydata</ref>.
+				<p>value</p> is the new value given to that setting.
+				<note>
+					Enemy data changes are temporary. They are not saved in saved games.
+					If you want to reset them early, use <ref>resetenemydata</ref>.
+				</note>
+			</description>
 			<seealso>
 				<ref>readenemydata</ref>
+				<ref>resetenemydata</ref>
 			</seealso>
+		</command>
+		<command id="resetenemydata">
+			<canon>reset enemy data (enemyid, data)</canon>
+			<shortname>reset enemy data</shortname>
+			<description>
+				Undoes the effect of <ref>writeenemydata</ref>, resetting one piece of
+				an enemy's data to the original value set in the enemy editor.
+				<p>enemyid</p> is the number of enemy.
+				<p>data</p> is a predefined constant for the data you want to change:
+				use the constants listed at <ref>readenemydata</ref> or <ref>getenemyappearance</ref>.
+			</description>
 		</command>
 
 		<section title="Formations">
@@ -4316,9 +4859,9 @@ end</example>
 			<description>
 				Adds an enemy with given <p>enemy id</p>
 				(use the constants of the form <p>enemy:name</p> in your exported .hsi file) to the specified <p>formation</p>.
-				<p>x</p> (0 to 320) and <p>y</p> (from roughly 17 to 240, depending on enemy size)
-				give the position of the center of the bottom edge of the enemy
-				- approximately where it appears to stand.
+				give the position of the center of the bottom edge of the enemy (approximately where it appears to stand),
+				relative to the center 320x200 of the screen.
+				Use the formation editor to get coordinates to feed into this command.
 				<p>slot</p> (0 to 7) is an optional argument,
 				if you specify it, then the enemy is created in the suggested slot if empty.
 				If you omit <p>slot</p> or <p>slot</p> isn't empty, the enemy is put in the first empty slot.
@@ -4388,7 +4931,10 @@ end
 		<command id="formationslotx">
 			<canon>formation slot x (formation, slot)</canon>
 			<shortname>formation slot x</shortname>
-			<description>Returns the x position of the center of the enemy in the specified formation slot (0 to 7). An enemies position is the center of the bottom edge of the enemy - approximately where it appears to stand.</description>
+			<description>
+				Returns the x position of the center of the enemy in the specified formation slot (0 to 7).
+				An enemy's position is the center of the bottom edge of the enemy - approximately where it appears to stand.
+			</description>
 			<seealso>
 				<ref>findenemyinformation</ref>
 			</seealso>
@@ -4396,7 +4942,10 @@ end
 		<command id="formationsloty">
 			<canon>formation slot y (formation, slot)</canon>
 			<shortname>formation slot y</shortname>
-			<description>Returns the y position of the bottom edge of the enemy sprite in the specified formation slot (0 to 7). An enemies position is the center of the bottom edge of the enemy - approximately where it appears to stand.</description>
+			<description>
+				Returns the y position of the bottom edge of the enemy sprite in the specified formation slot (0 to 7).
+				An enemy's position is the center of the bottom edge of the enemy - approximately where it appears to stand.
+			</description>
 			<seealso>
 				<ref>findenemyinformation</ref>
 			</seealso>
@@ -4588,6 +5137,8 @@ end
 				<note>
 					This command is an alternative to <ref>keypress</ref> or <ref>newkeypress</ref>;
 					see <secref>Keyboard Input</secref> for usage hints.
+					<lb/>
+					You can use <ref>keypresstime</ref> to see how long a key/button has been down.
 				</note>
 				<note>
 					Previously you couldn't use virtual scancodes like <ref>usekey</ref>,
@@ -4604,6 +5155,7 @@ end
 				<ref>keypress</ref>
 				<ref>newkeypress</ref>
 				<ref>keyval</ref>
+				<ref>keypresstime</ref>
 			</seealso>
 		</command>
 		<command id="keypress">
@@ -4640,6 +5192,7 @@ end
 				<ref>keyispressed</ref>
 				<ref>newkeypress</ref>
 				<ref>keyval</ref>
+				<ref>keypresstime</ref>
 			</seealso>
 		</command>
 		<command id="newkeypress">
@@ -4665,6 +5218,7 @@ end
 				<ref>keyispressed</ref>
 				<ref>keypress</ref>
 				<ref>keyval</ref>
+				<ref>keypresstime</ref>
 			</seealso>
 		</command>
 		<command id="keyval">
@@ -4706,8 +5260,37 @@ end
 				<ref>keyispressed</ref>
 				<ref>keypress</ref>
 				<ref>newkeypress</ref>
+				<ref>keypresstime</ref>
 			</seealso>
 		</command>
+		<command id="keypresstime">
+			<canon>keypress time (scancode, player)</canon>
+			<shortname>keypress time</shortname>
+			<description>
+				Returns how long a key or button has been held down, in milliseconds (thousandths of a second), or 0 if the key isn't pressed.
+				<lb/>
+				The <p>scancode</p> argument is a <ref>scancode</ref> such as a keyboard key (e.g. <tt>key:ctrl</tt>)
+				a joystick button (e.g. <tt>joy:left</tt>), or a virtual scancode such as
+				<ref>usekey</ref> (see <ref>controlcodes</ref>).
+				If you use a scancode that refers to multiple keys/buttons
+				(e.g. <tt>usekey</tt> or <tt>anykey</tt>)
+				then the longest time that any of those keys has been held down is returned.
+				<lb/>
+				<p>player</p> is an optional <ref>playernumber</ref>,
+				normally only used with <tt>joy:...</tt> joystick scancodes
+				or <ref>controlcodes</ref>, and tells which player's controller to read.
+				By default it checks for a button press on any plugged-in controller.
+				<lb/>
+				If a fast keypress happens in less than a tick and the key is already up again
+				then <ref>keyispressed</ref> can return <tt>false</tt> and <p>keypress time</p>
+				return <tt>0</tt> although <ref>keypress</ref> returns <tt>true</tt>.
+			</description>
+			<seealso>
+				<ref>keyispressed</ref>
+				<ref>keypress</ref>
+			</seealso>
+		</command>
+
 		<command id="lastascii">
 			<canon>last ascii</canon>
 			<shortname>last ascii</shortname>
@@ -4859,7 +5442,8 @@ end
 					For example, ignore values between -50 and 50.
 					Also, if you push a stick diagonally (e.g. up-right) it probably won't reach 100,-100.
 					<lb/>
-					If possible, use the <tt>joy:Up, joy:Down, joy:Left, joy:Right</tt> or
+					If possible (if you don't need to know how far or precisely what angle the stick is pushed),
+					use the <tt>joy:Up, joy:Down, joy:Left, joy:Right</tt> or
 					<tt>joy:RStick Up, joy:RStick Down, joy:RStick Left, joy:RStick Right</tt>
 					buttons with <ref>keyispressed</ref> instead.
 					These allow 8-directional movement and have a proper circular dead zone.
@@ -4878,7 +5462,7 @@ end
 		<command id="initmouse">
 			<canon>init mouse</canon>
 			<shortname>init mouse</shortname>
-			<description>Informs the engine that you intend to use the mouse. This command should be run before any mouse functions are be used. It causes the normal mouse cursor to be hidden when over the game's window, and causes mouse buttons to trigger on-keypress scripts. Therefore, it is a good idea to place this command in the newgame and loadgame scripts if you are going to use the mouse.<lb/><note>Running this command does not draw a cursor onscreen. Either you can enable the default mouse cursor with <ref>unhidemousecursor</ref>, or your script may display the cursor itself by placing a slice at the appropriate location. If you use a slice, your cursor will appear below menus and text and strings shown with <ref>showvalue</ref>, <ref>showstringat</ref>, etc., which is currently unavoidable.</note> Here is an example:</description>
+			<description>Informs the engine that you intend to use the mouse. This command should be run before any mouse functions are be used, but it's not necessary. It causes the normal mouse cursor to be hidden when over the game's window, and causes mouse buttons to trigger on-keypress scripts. Therefore, it is a good idea to place this command in the newgame and loadgame scripts if you are going to use the mouse.<lb/><note>Running this command does not draw a cursor onscreen. Either you can enable the default mouse cursor with <ref>unhidemousecursor</ref>, or your script may display the cursor itself by placing a slice at the appropriate location. If you use a slice, your cursor will appear below menus and text and strings shown with <ref>showvalue</ref>, <ref>showstringat</ref>, etc., which is currently unavoidable.</note> Here is an example:</description>
 			<example>#Simple Mouse cursor example
 
 plotscript, display mouse, begin
@@ -4912,12 +5496,21 @@ end</example>
 		<command id="mousepixelx">
 			<canon>mouse pixel X</canon>
 			<shortname>mouse pixel X</shortname>
-			<description>Returns the X coordinate in pixels of the mouse on the screen.</description>
+			<description>
+				Returns the X coordinate in pixels of the mouse on the screen (window).
+				The position is clamped to the size of the window: it is always in the range <tt>0</tt> to <ref>getscreenwidth</ref><tt> -- 1</tt>.
+				<note>
+					Because of the clamping, currently there's no way to tell whether the mouse is actually over the window.
+				</note>
+			</description>
 		</command>
 		<command id="mousepixely">
 			<canon>mouse pixel Y</canon>
 			<shortname>mouse pixel Y</shortname>
-			<description>Returns the Y coordinate in pixels of the mouse on the screen.</description>
+			<description>
+				Returns the Y coordinate in pixels of the mouse on the screen.
+				The position is clamped to the size of the window: it is always in the range <tt>0</tt> to <ref>getscreenheight</ref><tt> -- 1</tt>.
+			</description>
 		</command>
 		<command id="mousebutton">
 			<canon>mouse button (which)</canon>
@@ -4986,7 +5579,7 @@ end</example>
 		<command id="putmouse">
 			<canon>put mouse (X, Y)</canon>
 			<shortname>put mouse</shortname>
-			<description>Changes the location of the mouse on the screen, in pixels. Note that this function might do nothing, if the game's window is not active. <ref>initmouse</ref> should be called before this command is used.</description>
+			<description>Changes the location of the mouse on the screen, in pixels. Note that this function might do nothing, if the game's window is not active (see <ref>windowisfocused</ref>). <ref>initmouse</ref> should be called before this command is used.</description>
 		</command>
 		<command id="mouseregion">
 			<canon>mouse region (x min, x max, y min, y max)</canon>
@@ -5070,7 +5663,7 @@ There is no limit on string length.<lb/>
 		<command id="__setstring__">
 			<canon>$id="some text"</canon>
 			<shortname>$id="..."</shortname>
-			<description>Sets the contents of a string variable given by <p>id</p>, which can be a constant like 0 or 1, a variable, or even an expression like a call to a script, to a piece of text. The previous contents are erased. The whole statement must be on a single line; you can't split the text onto multiple lines (use multiple <ref>__appendstring__</ref> statements instead). The value of the whole statement is equal to <p>id</p> for convenience (see the example). The text (which is called a string literal) can contain certain escape codes (see examples below):<lb/>
+			<description>Sets the contents of a string variable given by <p>id</p>, which can be a constant like 0 or 1, a variable, or even an <ref>expression</ref> like a call to a script, to a piece of text. The previous contents are erased. The whole statement must be on a single line; you can't split the text onto multiple lines (use multiple <ref>__appendstring__</ref> statements instead). The value of the whole statement is equal to <p>id</p> for convenience (see the example). The text (which is called a string literal) can contain certain escape codes (see examples below):<lb/>
 \\ turns into a single \<lb/>
 \" turns into a single " without signalling the end of the literal<lb/>
 \n is a new line character, which can be used in text slices, <ref>showstring</ref>, <ref>showstringat</ref> and <ref>trace</ref>.<lb/>
@@ -5215,7 +5808,7 @@ show string(0)</example>
 		<command id="searchstring">
 			<canon>search string (ID1, ID2, start)</canon>
 			<shortname>search string</shortname>
-			<description>Searches the string for a specified string, returns the position at which the string was found. <p>start</p> is the position at which you want to start looking, default is 1. <p>ID1</p> is the the string you want to search, <p>ID2</p> is the string expression you want to find. Returns <ref>false</ref> if the string wasn't found</description>
+			<description>Searches the string for a specified string, returns the position at which the string was found. <p>start</p> is the position at which you want to start looking, default is 1. <p>ID1</p> is the the string you want to search, <p>ID2</p> is the string you want to find. Returns <ref>false</ref> if the string wasn't found</description>
 		</command>
 		<command id="trimstring">
 			<canon>trim string (ID, start, length)</canon>
@@ -5333,25 +5926,20 @@ get hero name (1, find hero (leader))
 			<shortname>get map name</shortname>
 			<description>This command will take the name of map #<p>map</p> and stick it in string #<p>ID</p>, overwriting its contents.</description>
 		</command>
-		<command id="getattackname">
-			<alias>readattackname</alias>
-			<shortname>get attack name</shortname>
-		</command>
-		<command id="readattackname">
-			<canon>read attack name (ID, attack)</canon>
-			<shortname>read attack name</shortname>
-			<description>This command will take the name of <p>attack</p> and stick it in string #<p>ID</p>, overwriting its contents. Use the <p>atk:name</p> constants from your HSI file.
-			<note>If you want to use this command with attack ID numbers, you must add 1 to the ID number.</note>
-			<note>This command replaces the old <p>get attack name</p> which required you to use <p>atk:name -- 2</p> or the attack id number <p>-- 1</p></note>
+		<command id="getstatname">
+			<canon>get stat name (ID, stat)</canon>
+			<shortname>get stat name</shortname>
+			<description>
+				Gets the name of a <p>stat</p> and puts it in string #<p>ID</p>.
+				The <p>stat</p> index can be a constant like <tt>stat:hp</tt> for stats 0-11 (but beware the names of these change to match the stats so are no use for portable scripts) or an in-battle register stat (stats 12-15 for poison, regen, stun and mute registers).
+				<lb/>
+				Safe to use with an out-of-range <p>stat</p>: returns <tt>false</tt> and sets a blank string without showing an error.
+				Otherwise returns <tt>true</tt>.
 			</description>
 		</command>
-		<command id="getattackcaption">
-			<canon>get attack caption (ID, attack)</canon>
-			<shortname>get attack caption</shortname>
-			<description>This command will take the caption of <p>attack</p> and stick it in string #<p>ID</p>, overwriting its contents. Use the <p>atk:name</p> constants from your HSI file.
-			<note>If you want to use this command with attack ID numbers, you must add 1 to the ID number.</note>
-			</description>
-		</command>
+		<reference ref="getattackname" />
+		<reference ref="readattackname" />
+		<reference ref="getattackcaption" />
 		<command id="getsongname">
 			<canon>get song name (ID, song)</canon>
 			<shortname>get song name</shortname>
@@ -5469,7 +6057,224 @@ get hero name (1, find hero (leader))
 
 		</section>     <!-- Obsolete Commands -->
 
-	</section>
+	</section>      <!-- String Functions -->
+
+	<section title="Extra Data Array Functions">
+		<description>
+			Certain types of objects (slices, NPCs, zones, menu items) have "extra data",
+			which is an array of data fields with no builtin meaning which you can use for whatever you want.
+			(Menu item extra data is also passed as arguments to any script triggered by the item.)
+			For example you could write a script to randomly play ambient sound effects while inside a zone,
+			and store the sound effect numbers in the zone's extra data in the zone editor.
+			<lb/>
+			These functions can be used on any objects with a resizable "extra data" array.
+			(To operate on zones you need to use <ref>getzone</ref> to get a zone handle.)
+		</description>
+
+		<command id="setextra">
+			<canon>set extra (handle, extra, value)</canon>
+			<shortname>set extra</shortname>
+			<description>
+				Sets one of the extra data variables on an object,
+				which have no builtin meaning, they are only for use in your scripts.
+				By default all new objects that support extra data start with a length 3 extra data array containing zeroes.
+				<lb/>
+				<p>handle</p> is an <ref>objecthandle</ref>.
+				<p>extra</p> is an <ref>extradataindex</ref>, typically a value from 0 to 2.
+				Use <ref>resizeextra</ref> if you want more than 3 extra values.
+				<lb/>
+				This command is a generic alternative to <ref>setsliceextra</ref>, <ref>setzoneextra</ref>, <ref>setnpcextra</ref>, and <ref>setmenuitemextra</ref>.
+			</description>
+			<seealso>
+				<ref>getextra</ref>
+				<ref>appendextra</ref>
+			</seealso>
+		</command>
+		<command id="getextra">
+			<canon>get extra (handle, extra)</canon>
+			<shortname>get extra</shortname>
+			<description>
+				Retrieve a value of an object's extra data array (e.g. one previously stored with <ref>setextra</ref>).
+				<lb/>
+				<p>handle</p> is an <ref>objecthandle</ref>.
+				<p>extra</p> is the <ref>extradataindex</ref> to read.
+				<lb/>
+				This command is a generic alternative to <ref>getsliceextra</ref>, <ref>getzoneextra</ref> (using <ref>getzone</ref> not a zone ID), <ref>npcextra</ref>, and <ref>getmenuitemextra</ref>.
+				But it can't be used to replace <ref>getattackextra</ref>.
+			</description>
+		</command>
+
+		<command id="appendextra">
+			<canon>append extra (handle, value)</canon>
+			<shortname>append extra</shortname>
+			<description>
+				Increases the length of an object's extra data array by 1 and puts <p>value</p> in the new slot at the end.
+				<p>handle</p> is the <ref>objecthandle</ref>.
+				<lb/>
+				The return value is the new array length.
+				<lb/>
+				Equivalent to:
+				<example>resize extra(handle, extra length(handle) + 1)
+set extra(handle, -1, value)   # Index -1 is the last element of the array</example>
+			</description>
+		</command>
+		<command id="insertextra">
+			<canon>insert extra (handle, index, value)</canon>
+			<shortname>insert extra</shortname>
+			<description>
+				Insert a value into a new position anywhere in an extra data array, moving up the index of all the data after it, and increasing the length by 1.
+				<lb/>
+				<p>handle</p> is the <ref>objecthandle</ref>.
+				<lb/>
+				<p>index</p> is an <ref>extradataindex</ref> where to put the new element. As usual negative indices count from the end.
+				<lb/>
+				<p>value</p> is the value to insert.
+				<example>
+# starting extra array 0,0,0
+insert extra(handle, 0, 111) # 111,0,0,0
+insert extra(handle, 2, 222) # 111,0,222,0,0</example>
+				<note>
+					Inserting an element means all the elments after it have to be moved. If you are using an extra array as a stack, and are concerned about high performance, it is better to push to the end with <tt>append extra(handle, value)</tt> rather than insert at the beginning with <tt>insert extra(handle, 0, value)</tt>
+				</note>
+			</description>
+		</command>
+		<command id="findextra">
+			<canon>find extra (handle, value, start index)</canon>
+			<shortname>find extra</shortname>
+			<description>
+				Search an object's extra data array for <p>value</p> and returns the index of the first item from the beginning
+				equal to value, or -1 if not found.
+				You could write a for loop instead but this command is much faster.
+				<lb/>
+				<p>handle</p> is the <ref>objecthandle</ref>.
+				<lb/>
+				<p>start index</p>, defaulting to 0, is an optional <ref>extradataindex</ref> where to start searching from;
+				the search looks from there until the end of the array.
+				(If it's beyond the end, the return value is always -1.)
+				Use this if there might be multiple copies of the value and you want to find them all:
+				set <p>start index</p> equal to the previous return value <tt>+ 1</tt>.
+				<example>
+# Deletes every occurrence of 'value' from an extra array.
+script, remove extra, obj, value, begin
+	variable (idx)
+	while (true) do (
+		idx := find extra (obj, value)
+		if (idx == -1) then (exit)   # All deleted
+		delete extra (obj, idx)
+		# Normally we'd do "idx += 1" to look for the next occurrence of 'value'
+		# after idx, but because we deleted it we don't need to.
+	)
+end</example>
+			</description>
+		</command>
+
+		<command id="extralength">
+			<canon>extra length (handle)</canon>
+			<shortname>extra length</shortname>
+			<description>
+				Returns the length of an object's extra data array.
+				This is 3 by default, and can be changed with <ref>resizeextra</ref>.
+				<p>handle</p> is the <ref>objecthandle</ref>.
+			</description>
+		</command>
+		<command id="resizeextra">
+			<canon>resize extra (handle, length)</canon>
+			<shortname>resize extra</shortname>
+			<description>
+				Changes the length of an object's extra data array.
+				<p>handle</p> is the <ref>objecthandle</ref>.
+				The new <p>length</p> can be between 0 and 5,000,000.
+				For backwards compatibility it's 3 by default for all newly created slices, zones,
+				NPCs and menu items.
+				Values will either be removed from the end of the array, or zeroes added to the
+				end to meet the new length.
+				The rest of the existing contents of the array will be preserved.
+			</description>
+		</command>
+		<command id="deleteextra">
+			<canon>delete extra (handle, index)</canon>
+			<shortname>delete extra</shortname>
+			<description>
+				Delete an element from an extra data array at a specific index, moving down the index of all the data after it, and decreasing the length of an object's extra data array by 1.
+				<lb/>
+				<p>handle</p> is the <ref>objecthandle</ref>.
+				<lb/>
+				<p>index</p> is the <ref>extradataindex</ref> of the element to delete and return.
+				<lb/>
+				The return value is the value that was found at the index which was removed.
+				<example>
+# starting extra array 11,12,13
+delete extra(handle, 1) # returns 12, remaining extra data is 11,13
+delete extra(handle, -1) # returns 13, remaining extra data is 11</example>
+				<note>
+					If you want to delete by value rather than by index, use the <tt>remove extra</tt>
+					script from the example to <ref>findextra</ref>.
+				</note>
+				<note>
+					Deleting an element means all the elments after it have to be moved. If you are using an extra array as queue, and are concerned about high performance, it is better to pop from the end with <tt>delete extra(handle, -1)</tt> rather than popping from the beginning with <tt>delete extra(handle, 0)</tt>
+				</note>
+			</description>
+		</command>
+		<command id="deleteextrarange">
+			<canon>delete extra range (handle, from index, to index)</canon>
+			<shortname>delete extra range</shortname>
+			<description>
+				Delete a range of elements from an extra data array starting from one index (inclusive) to another (exclusive).
+				All the data after it will be moved down, and the length of an object's extra data array will be decreased by the same amount,
+				which is <tt>to index -- from index</tt> elements (after converting negative indices to positive).
+				<lb/>
+				<p>handle</p> is the <ref>objecthandle</ref>.
+				<lb/>
+				<p>from index</p> is the <ref>extradataindex</ref> of the starting element to delete. It's the one returned. You can use negative indices as usual.
+				<lb/>
+				<p>to index</p> is the <ref>extradataindex</ref> of the first element <b>after</b> the deleted range: it is exclusive.
+				<lb/>
+				The return value is the item that was at <p>from index</p>,
+				unless <tt>from index == to index</tt> (an empty range) in which case nothing
+				happens and nothing is returned.
+				<example>
+delete extra range(handle, 2, 2) # Will not delete anything because the indices are the same
+delete extra range(handle, 2, 3) # Will delete just the element at index 2, same as delete extra(handle, 2)
+
+# starting extra array 50,51,52,53,54,55
+delete extra range(handle, 2, 5) # delete elements 2, 3, and 4
+# remaining extra array 50,51,55
+
+# delete from element 1 to the end of the extra array, leaving behind only element 0
+delete extra range(handle, 1, extra length(handle))</example>
+				<note>
+					Deleting elements means all the elments after them have to be moved. Using <tt>delete extra range</tt> to delete a bunch of elements at once is more efficient than calling <ref>deleteextra</ref> many times in a row, because the elements after only need to be moved once.
+				</note>
+			</description>
+		</command>
+
+	</section>  <!-- Extra Data Array Functions -->
+
+	<section title="Shop Functions">
+		<reference ref="useshop" />
+		<command id="isshopbuymenuempty">
+			<canon>is shop buy menu empty (shop id)</canon>
+			<shortname>is shop buy menu empty</shortname>
+			<description>
+				Returns true if the shop specified by <p>shop id</p> has no available items. This could be because no items are defined, or they might all be out of stock or disabled by tags. You can use constants in the form of <tt>shop:Shop Name</tt>. 
+			</description>
+			<seealso>
+				<ref>isshophiremenuempty</ref>
+			</seealso>
+		</command>
+		<command id="isshophiremenuempty">
+			<canon>is shop hire menu empty (shop id)</canon>
+			<shortname>is shop hire menu empty</shortname>
+			<description>
+				Returns true if the shop specified by <p>shop id</p> has no available heroes for hire. This could be because no hireable heroes are defined, or they might all be out of stock or disabled by tags. You can use constants in the form of <tt>shop:Shop Name</tt>. 
+			</description>
+			<seealso>
+				<ref>isshopbuymenuempty</ref>
+			</seealso>
+		</command>
+		<reference ref="innscreen" />
+		
+	</section>  <!-- Shop Functions -->
 
 	<section title="Menu Functions">
 		<command id="openmenu">
@@ -6119,6 +6924,7 @@ end</example>
 					<li>menubit:advance text box when menu closes</li>
 					<li>menubit:highlight selection background</li>
 					<li>menubit:remember selection</li>
+					<li>menubit:clamp to screen bounds</li>
 				</ul>
 			</description>
 		</command>
@@ -6405,7 +7211,7 @@ set menu on close script(m, @my menu exit handler)
 
 	<section title="Slices">
 		<description>
-			To learn what a slice is, read the <a href="http://rpg.hamsterrepublic.com/ohrrpgce/Slices">Slices article</a> on the wiki,
+			To learn what a slice is, read the <a href="https://rpg.hamsterrepublic.com/ohrrpgce/Slices">Slices article</a> on the wiki,
 			or one of the other tutorials you can find there.
 			Although there are many commands here for manipulating slices, it's much easier to create slices
 			in the Slice Collection Editor and then use <ref>loadslicecollection</ref>.
@@ -6415,29 +7221,45 @@ set menu on close script(m, @my menu exit handler)
 		<command id="setparent">
 			<canon>set parent (handle, parent handle)</canon>
 			<shortname>set parent</shortname>
-			<description>Moves a slice <p>handle</p> to a different <p>parent handle</p>. A slice is connected to its parent, and is positioned based on its parent's position. When you move a slice to a new parent, it will become that parent's last child, meaning it will be drawn on top of any other children that the parent already had.</description>
+			<description>Moves a slice <p>handle</p> to a different <p>parent handle</p>. A slice is connected to its parent, and is positioned based on its parent's position. When you move a slice to a new parent, it will become that parent's last child, meaning it will be drawn on top of any other children that the parent already had. Because a slice is positioned relative to its parent, using this command can cause the slice to move. If you would like to change a slice's parent without changing its screen position, see the <ref>gentlyreparent</ref> command instead.</description>
 			<seealso>
 				<ref>parentslice</ref>
 				<ref>checkparentage</ref>
 				<ref>slicechild</ref>
+				<ref>gentlyreparent</ref>
+			</seealso>
+		</command>
+		<command id="gentlyreparent">
+			<canon>gently reparent (handle, parent handle)</canon>
+			<shortname>gently reparent</shortname>
+			<description>Moves a slice <p>handle</p> to a different <p>parent handle</p>, but preserves the slice's current screen position. This means that the slice's x and y position relative to its new parent might be changed. When you move a slice to a new parent, it will become that parent's last child, meaning it will be drawn on top of any other children that the parent already had. If you would like to change a slice's parent without changing its position relative to its parent (which could change its screen position), see the <ref>setparent</ref> command instead.</description>
+			<seealso>
+				<ref>parentslice</ref>
+				<ref>checkparentage</ref>
+				<ref>slicechild</ref>
+				<ref>gentlyreparent</ref>
 			</seealso>
 		</command>
 		<command id="sliceisvalid">
-			<canon>slice is valid (id)</canon>
+			<canon>slice is valid (value)</canon>
 			<shortname>slice is valid</shortname>
 			<description>
-				Returns true if the given <p>id</p> is a valid slice handle to some existing slice.
-				However this tells you nothing about whether the slice it points to is the original one.
-				<danger>
-					<b>You should almost never use this command.</b>
-					Just because a slice handle is valid doesn't mean it points to the slice that you expected.
-					After a slice is deleted, its handle can be reused for new slices!
-					If you delete a slice but still have a slice handle to it stored in a variable,
-					you must never access that handle again, because it will either be invalid,
-					causing an error when you use it, or even worse, it will point to some
-					random slice, which is a bug in your script!
-					For alternatives to sliceisvalid, please see the examples.
-				</danger>
+				Returns true if the given <p>value</p> is a valid slice handle to some existing slice,
+				or false if the value isn't a slice handle (e.g. if it's <tt>false</tt> or is any
+				other type of handle such as an NPC reference or menu item handle) or if it refers
+				to a slice that's been deleted.
+				This command never throws an error.
+				<note>
+					Previously this command was considered dangerous because it could return
+					<tt>true</tt> even if the slice had been deleted because its handle
+					could be reused for a different slice.
+					But starting in the <b>ichorescent</b> release this is mostly solved.
+					Now in ichorescent slice handles won't get reused unless you create and
+					delete at least a million slices.
+					If you create millions of slices and want to be sure,
+					set your slice handles to 0 when you delete the slice (see examples)
+					rather than using this command.
+				</note>
 				When you want to check whether the result of a slice command is a valid slice,
 				you can just test whether the handle is <p>false</p>, as this example shows:
 				<example>
@@ -6456,7 +7278,7 @@ if (sl) then (....)
 				<example>
 global variable (1, bullet slice)
 
-###### Suppose we have one script that creates a temporary slice:
+###### Suppose one script creates a slice:
 
 plotscript, fire bullet, begin
 	bullet slice := create rect (3, 3)
@@ -6469,32 +7291,31 @@ end
 	if (slice collide (bullet slice, get hero slice(me))) then (
 		...
 
-		###### Also, the temp slice can be deleted:
 		# Bullet is destroyed
 		free slice (bullet slice)
 	)
 
 ###### Wait! First we need to test if there is a bullet slice at all, or we have an error.
-###### You might be tempted to use sliceisvalid:
+###### You could use sliceisvalid:
 
-	if (slice is valid (bullet slice)) then (     # &lt;--- Sometimes returns WRONG result!
+	if (slice is valid (bullet slice)) then (
 		# Test for collision with the player
 		if (slice collide (bullet slice, get hero slice(me))) then (
 			...
 		)
 	)
 
-###### That's a mistake. Instead, you should make sure to set the variable
-###### bulletslice to 0 in every single place you delete it.
+###### Or you could make sure to set the variable bulletslice to 0 in every single place you delete
+###### it so there are no invalid slice handles.
 ###### Some of other places aren't obvious! They include leaving the map, or loading a saved game!
 
-	if (bullet slice) then (     # &lt;--- Since we do the needed bookkeeping, this is correct
+	if (bullet slice) then (     # &lt;--- This works only because we do the needed bookkeeping
 		# Test for collision with the player
 		if (slice collide (bullet slice, get hero slice(me))) then (
 			...
 			# Bullet is destroyed
 			free slice (bullet slice)
-			bullet slice := 0     # &lt;--- Very important!
+			bullet slice := 0     # &lt;---
 		)
 	)
 				</example>
@@ -6512,10 +7333,14 @@ end
 				<lb/>
 				Freeing the same slice handle twice shows a warning
 				(if slice error reporting is enabled, e.g. while testing your game).
-				However, <tt>free slice (0)</tt> is fine.
+				However, <tt>free slice (0)</tt> is fine, showing no warning.
 				It's good practice to set a variable containing a slice handle to 0
-				after you free it, so that the script can test whether the slice
-				exists or not. (<ref>sliceisvalid</ref> is not reliable.)
+				after you free it, so that the script can easily test whether the slice
+				exists or not without needing to use <ref>sliceisvalid</ref>.
+				<note>
+					You can't delete a protected slice, which includes most
+					slices created by the engine such as NPCs and heroes.
+				</note>
 			</description>
 			<example>
 script, simple example, begin
@@ -6602,6 +7427,8 @@ end
 				You can copy a protected slice (such as an NPC); the result isn't protected.
 				Any slices with special lookup codes (those listed in <ref>lookupslice</ref>)
 				won't have their lookup codes copied; they'll be set to 0 instead.
+				If the slice is a Template then the copy won't be marked as a template,
+				but the copies of any descendents it has still will be.
 				Passing the root slice or a Map slice as <p>handle</p> is an error.
 				Trying to clone a slice which has a Map slice as a descendent is OK,
 				the Map slices just won't be copied.
@@ -6613,19 +7440,7 @@ end
 				</note>
 			</description>
 		</command>
-		<command id="setsliceextra">
-			<canon>set slice extra (handle, extra, value)</canon>
-			<shortname>set slice extra</shortname>
-			<description>Sets one of three extra data variables that every slice has, on the slice <p>handle</p>. <p>extra</p> is a number from 0 to 2 which indicates which extra data field to write  (you may also use the constants <p>extra 0</p>, <p>extra 1</p>, <p>extra 2</p>). The extra data has no meaning to the slice, it is only for use by scripts.</description>
-			<seealso>
-				<ref>getsliceextra</ref>
-			</seealso>
-		</command>
-		<command id="getsliceextra">
-			<canon>get slice extra (handle, extra)</canon>
-			<shortname>get slice extra</shortname>
-			<description>Retrieve an extra data value previously set on a slice <p>handle</p> with <ref>setsliceextra</ref>. <p>extra</p> is a number from 0 to 2 which indicates which extra data field to read.</description>
-		</command>
+
 		<command id="reparenttonpc">
 			<canon>reparent to npc (handle, npc)</canon>
 			<shortname>reparent to npc</shortname>
@@ -6642,23 +7457,43 @@ end
 		<command id="loadslicecollection">
 			<canon>load slice collection (id)</canon>
 			<shortname>load slice collection</shortname>
-			<description>Loads a collection of slices that you have defined in the slice collection editor. The argument is the <p>id</p> number of the collection. The return value is a handle to the container that holds the loaded collection.</description>
+			<description>
+				Loads a collection of slices that you have defined in the slice collection editor.
+				<lb/>
+				The argument is the <p>id</p> number of the collection.
+				<lb/>
+				The return value is a handle to the container that holds the loaded collection.
+				If the collection doesn't exist (it's marked as BLANK in the editor), then
+				the return value is false (0).
+			</description>
 		</command>
 		<command id="lookupslice">
-			<canon>lookup slice (lookup code, start slice)</canon>
+			<canon>lookup slice (lookup code, root slice)</canon>
 			<shortname>lookup slice</shortname>
 			<description>
-				Search for an important slice using a <ref>lookupcode</ref>, and return a handle to it, or 0 if it is not found.
-				You can optionally specify a slice for the <p>lookup slice</p> command to start searching from,
-				but if you do not, the whole slice tree will be searched.
+				Search for a slice that's tagged with a <ref>lookupcode</ref>, and return a handle to it, or 0 if it is not found.
+				<lb/>
+				<p>root slice</p> is optional, if you don't specify it the whole slice tree will be searched,
+				otherwise only descendents of that slice (a subtree) will be searched.
+				<p>root slice</p> itself will be returned if it matches.
 				<note>
 					You can use a number as a lookup code, but usually you use a builtin code constant, starting with <tt>sl:</tt>
 					(see below), or name a code in the slice editor, in which case the constant will start with <tt>sli:</tt>.
 					Don't mix them up!
 				</note>
 				<note>Although the user-defined slice lookup codes are always safe to use for any purpose, there is a lot of potential mischief that you can do with a handle to a special slice. If you do anything dubious, like reordering, reparenting, or god forbid freeing the special slice, don't expect your scripts to work in later versions of the engine, which are likely to impose stricter restrictions! Deleting or reparenting special slices generally won't work. You may parent your own slices to these special slices, though.</note>
-				<note>Be aware that when there is more than one slice with the same lookup code, the <p>lookup slice</p> command will only return the first one it finds in a depth-first search. If you need to find multiple slices with the same lookup code, you must search manually using <ref>getslicelookup</ref>.</note>
-			You may <ref>setparent</ref> a slice to a map layer to make it move with the camera just like heroes and NPCs do.
+				<note>
+					When there is more than one slice with the same lookup code
+					this command will only return the first one it finds (in depth-first search order).
+					If you need to find multiple slices with the same lookup code,
+					use <ref>lookupnextslice</ref>.
+					<lb/>
+					Also, if you want to find a slice based on something other than lookup code,
+					search for it using <ref>nextsliceintree</ref>.
+				</note>
+				You may <ref>setparent</ref> a slice to a map layer
+				(or to <tt>sl:map overlay</tt> which is above all map layers)
+				to make it move with the camera just like heroes and NPCs do.
 			</description>
 <example>
 # this example loads a saved slice collection,
@@ -6676,7 +7511,8 @@ portrait := lookup slice(sl:textbox portrait)
 if(portrait) then(
   replace portrait sprite(portrait, 5)
 )
-
+</example>
+<example>
 # This is a list of special slice lookup codes
 lookup slice(sl:root)
 lookup slice(sl:textbox text)
@@ -6688,6 +7524,7 @@ lookup slice(sl:textbox portrait box)
 lookup slice(sl:textbox choice box)
 lookup slice(sl:textbox root)
 lookup slice(sl:script layer)
+lookup slice(sl:sprite layer)  # Same as lookup slice(sl:script layer)
 lookup slice(sl:textbox layer)
 lookup slice(sl:string layer)
 lookup slice(sl:reserve)
@@ -6723,12 +7560,69 @@ lookup slice(sl:pathfind dest display)
 			<seealso>
 				<ref>setslicelookup</ref>
 				<ref>getslicelookup</ref>
+				<ref>lookupnextslice</ref>
+				<ref>lookupancestor</ref>
 			</seealso>
 		</command>
-		<command id="spritelayer">
-			<canon>sprite layer</canon>
-			<shortname>sprite layer</shortname>
-			<description>Returns a slice handle for the slice (also called the 'script layer') which is the default parent of all new script-created slices, such as created by <ref>loadherosprite</ref> and <ref>createrect</ref>. You can move slices elsewhere in the slice tree with <ref>setparent</ref>. You can use spritelayer together with <ref>firstchild</ref> if you want to loop through all your slices without knowing their handles. Another way to get this slice is to use <ref>lookupslice</ref>: <p>lookup slice(sl:script layer)</p>.</description>
+
+		<command id="lookupnextslice">
+			<canon>lookup next slice (lookup code, current slice, root slice)</canon>
+			<shortname>lookup next slice</shortname>
+			<description>
+				Find the next slice after <p>current slice</p> that has a certain <ref>lookupcode</ref>
+				and return it, or 0 if there are no more matching slices.
+				<lb/>
+				The first matching slice after <p>current slice</p> (in the order that slices are shown in the slice editor/debugger, 
+				called the "depth first search order"), will be returned.
+				<p>current slice</p> is actually optional, if it's <tt>0</tt> then this command is equivalent to <ref>lookupslice</ref>.
+				(In that case, if <p>root slice</p> has the lookup code you're searching for, it's returned first.)
+				<p>current slice</p> can be any descendent of <p>root slice</p>, it doesn't have to have the lookup code.
+				<lb/>
+				<p>root slice</p> is optional, if you don't specify it the whole slice tree will be searched,
+				otherwise only descendents of that slice (a subtree) will be searched.
+				<note>
+					You can delete slices while you're iterating over them,
+					as long as you don't pass a handle to a deleted slice to this command.
+				</note>
+			</description>
+			<example>
+# Suppose you've scripted a slice-based GUI or menu, attached to the sprite layer,
+# and every clickable thing the sli:selectable lookup code, and now you want to undo any
+# highlighting of text or buttons you might have added previously due to mouse-over.
+variable(sl)
+sl := lookup slice (sli:selectable, sprite layer)
+while (sl) do (
+  if (slice is sprite (sl)) then (set sprite frame (sl, 0))  # Reset button appearances
+  if (slice is text (sl)) then (set text color (sl, ui:text))  # Reset text highlighting
+  sl := lookup next slice (sli:selectable, sl, sprite layer)
+)</example>
+			<example># An alternative way to write the above
+variable(sl)
+while (true) do (
+  sl := lookup next slice (sli:selectable, sl, sprite layer)
+  if (sl == 0) then (break)
+  if (slice is sprite (sl)) then (set sprite frame (sl, 0))  # Reset button appearances
+  if (slice is text (sl)) then (set text color (sl, ui:text))  # Reset text highlighting
+)</example>
+		</command>
+		<command id="lookupancestor">
+			<canon>lookup ancestor (lookup code, slice)</canon>
+			<shortname>lookup ancestor</shortname>
+			<description>
+				Search for a slice's <ref>ancestor</ref> that's tagged with a <ref>lookupcode</ref>, and return a handle to it, or 0 if no ancestor slice has the lookup code.
+				Starts by checking the parent, and goes up to the root.
+			</description>
+			<seealso>
+				<ref>lookupslice</ref>
+				<ref>setslicelookup</ref>
+				<ref>getslicelookupname</ref>
+			</seealso>
+		</command>
+
+		<command id="scriptlayer">
+			<canon>script layer</canon>
+			<shortname>script layer</shortname>
+			<description>Returns a slice handle for the slice (also called the 'sprite layer') which is the default parent of all new script-created slices, such as created by <ref>loadherosprite</ref> and <ref>createrect</ref>. You can move slices elsewhere in the slice tree with <ref>setparent</ref>. You can use <tt>scriptlayer</tt> together with <ref>firstchild</ref> if you want to loop through all your slices (that you haven't reparented) without knowing their handles. Another way to get this slice is to use <ref>lookupslice</ref>: <p>lookup slice(sl:script layer)</p>.</description>
 			<example>variable(sl)
 sl := first child(sprite layer)
 while (sl) do, begin
@@ -6739,6 +7633,11 @@ while (sl) do, begin
 end
 </example>
 		</command>
+		<command id="spritelayer">
+			<alias>scriptlayer</alias>
+			<shortname>spritelayer</shortname>
+		</command>
+
 		<command id="getslicelookup">
 			<canon>get slice lookup (handle)</canon>
 			<shortname>get slice lookup</shortname>
@@ -6746,6 +7645,7 @@ end
 			<seealso>
 				<ref>lookupslice</ref>
 				<ref>setslicelookup</ref>
+				<ref>getslicelookupname</ref>
 			</seealso>
 		</command>
 		<command id="setslicelookup">
@@ -7178,6 +8078,36 @@ map y := slice screen y(sl) + camera pixel y</example>
 		</command>
 		</section>		<!--Positioning Slices-->
 
+		<section title="Extra Data">
+			<description>
+				You can use any of the <secref>Extra Data Array Functions</secref> on slices.
+			</description>
+
+		<command id="setsliceextra">
+			<canon>set slice extra (handle, extra, value)</canon>
+			<shortname>set slice extra</shortname>
+			<description>
+				Sets one of the extra data variables on the slice <p>handle</p>.
+				<p>extra</p> is an <ref>extradataindex</ref>.
+				<lb/>
+				This command is the same as <ref>setextra</ref> but only works on slices
+				and is slightly faster.
+			</description>
+		</command>
+		<command id="getsliceextra">
+			<canon>get slice extra (handle, extra)</canon>
+			<shortname>get slice extra</shortname>
+			<description>
+				Retrieve an extra data value previously set on a slice <p>handle</p> with <ref>setsliceextra</ref>.
+				<p>extra</p> is an <ref>extradataindex</ref>.
+				<lb/>
+				This command is the same as <ref>getextra</ref> but only works on slices
+				and is slightly faster.
+			</description>
+		</command>
+
+		</section>  <!-- Extra data -->
+
 		<section title="Visibility and Clipping">
 		<command id="setslicevisible">
 			<canon>set slice visible (handle, vis)</canon>
@@ -7196,12 +8126,12 @@ map y := slice screen y(sl) + camera pixel y</example>
 		<command id="getslicevisible">
 			<canon>get slice visible (handle)</canon>
 			<shortname>get slice visible</shortname>
-			<description>Returns the visibility setting for slice <p>handle</p>.  This is true for visible, or false for invisible. Note that this only tells you if the slice is set to be invisible, it will not tell you if the slice is invisible for some other reason, such as if it is offscreen, or if it is the child of an invisible parent or grandparent.</description>
+			<description>Returns the visibility setting for slice <p>handle</p>.  This is true for visible, or false for invisible. Note that this only tells you if the slice is set to be invisible, it will not tell you if the slice is invisible for some other reason, such as if it is offscreen, or if it is the <ref>descendent</ref> of an invisible slice.</description>
 		</command>
 		<command id="setsliceclipping">
 			<canon>set slice clipping (handle, clip)</canon>
 			<shortname>set slice clipping</shortname>
-			<description>Changes whether or not a slice will clip its children if they overflow its edges. The first argument is a slice <p>handle</p>. The second argument is true to make the slice clip, or false to allow its children to overflow. (newly created slices do not clip by default)</description>
+			<description>Changes whether or not a slice will clip its children if they overflow its edges. The first argument is a slice <p>handle</p>. The second argument is true to make the slice clip, or false to allow its children to overflow. (Newly created slices do not clip by default)</description>
 		</command>
 		<command id="getsliceclipping">
 			<canon>get slice clipping (handle)</canon>
@@ -7466,6 +8396,7 @@ map y := slice screen y(sl) + camera pixel y</example>
 				<ref>setvertalign</ref>
 				<ref>sethorizanchor</ref>
 				<ref>setvertanchor</ref>
+				<ref>gentlyrealignslice</ref>
 			</seealso>
 		</command>
 		<command id="centerslice">
@@ -7474,6 +8405,17 @@ map y := slice screen y(sl) + camera pixel y</example>
 			<description>A quick way to center the alignment and the anchor of a slice with a single command. Equivalent to <p>realign slice(handle, edge:center, edge:center, edge:middle, edge:middle)</p>.</description>
 			<seealso>
 				<ref>realignslice</ref>
+				<ref>sethorizalign</ref>
+				<ref>setvertalign</ref>
+				<ref>sethorizanchor</ref>
+				<ref>setvertanchor</ref>
+			</seealso>
+		</command>
+		<command id="gentlyrealignslice">
+			<canon>gently realign slice (handle, horiz align, vert align, horiz anchor, vert anchor)</canon>
+			<shortname>gently realign slice</shortname>
+			<description>A quick way to set the alignment and optionally the anchor of a slice with a single command, but to preserve the current screen position of the slice. This will alter a slices relative position, but keep its screen position the same as the alignment and anchor change. If you leave out the arguments for the anchor then only the alignment will be changed.</description>
+			<seealso>
 				<ref>sethorizalign</ref>
 				<ref>setvertalign</ref>
 				<ref>sethorizanchor</ref>
@@ -7741,7 +8683,38 @@ map y := slice screen y(sl) + camera pixel y</example>
 			<description>
 				Instruct slice <p>handle</p> to move in a straight line to a specific
 				<p>x</p> and <p>y</p> position over a given number of <p>ticks</p>.
-				(As always, the position is an offset relative to its parent.)
+				(As always, the position is an offset relative to its parent. See <ref>moveslicetoscreenpos</ref> if you want to use screen coordinates instead)
+				<lb/>
+				If the slice had velocity set with <ref>setslicevelocity</ref>,
+				<ref>setslicevelocityx</ref> or <ref>setslicevelocityy</ref> it will be cancelled.
+				<note>
+					If you change the slice's position manually during that time (eg. with <ref>putslice</ref>),
+					it'll continue to move towards the original target in a straight line
+					(but now with a different velocity), until <tt>ticks</tt> is up.
+					Use <ref>setslicevelocity</ref> instead if you don't want this.
+				</note>
+			</description>
+			<seealso>
+				<ref>setslicevelocityx</ref>
+				<ref>setslicevelocityy</ref>
+				<ref>getslicevelocityx</ref>
+				<ref>getslicevelocityy</ref>
+				<ref>setslicevelocity</ref>
+				<ref>stopslice</ref>
+				<ref>movesliceto</ref>
+				<ref>moveslicetoscreenpos</ref>
+				<ref>movesliceby</ref>
+				<ref>waitforslice</ref>
+				<ref>sliceismoving</ref>
+			</seealso>
+		</command>
+		<command id="moveslicetoscreenpos">
+			<canon>move slice to screen pos (handle, x, y, ticks)</canon>
+			<shortname>move slice to screen pos</shortname>
+			<description>
+				Instruct slice <p>handle</p> to move in a straight line to a specific
+				<p>x</p> and <p>y</p> screen position over a given number of <p>ticks</p>.
+				(Unlike <ref>movesliceto</ref> the position is relative to the screen, regardless of the slice's parentage)
 				<lb/>
 				If the slice had velocity set with <ref>setslicevelocity</ref>,
 				<ref>setslicevelocityx</ref> or <ref>setslicevelocityy</ref> it will be cancelled.
@@ -7794,6 +8767,7 @@ map y := slice screen y(sl) + camera pixel y</example>
 				<ref>setslicevelocity</ref>
 				<ref>stopslice</ref>
 				<ref>movesliceto</ref>
+				<ref>moveslicetoscreenpos</ref>
 				<ref>movesliceby</ref>
 				<ref>waitforslice</ref>
 				<ref>sliceismoving</ref>
@@ -7904,19 +8878,27 @@ end
 			<example>variable(sl)
 sl := first child(sprite layer)
 while (sl) do, begin
- if (slice is sprite(sl)) then, begin
-   # do an operation on each sprite
- end
+ if (slice is sprite(sl)) then (
+   # ...do an operation on each sprite
+ )
  sl := next sibling(sl)
+end
+
+# The above loop can be written more simply as:
+sl := first sprite child(sprite layer)
+while (sl) do, begin
+ # ...do an operation on each sprite
+ sl := next sprite sibling(sl)
 end
 </example>
 			<seealso>
 				<ref>previoussibling</ref>
+				<ref>parentslice</ref>
+				<ref>nextsliceintree</ref>
 				<ref>nextspritesibling</ref>
 				<ref>nextrectsibling</ref>
 				<ref>nextcontainersibling</ref>
 				<ref>slicechild</ref>
-				<ref>freeslice</ref>
 				<ref>slicetofront</ref>
 				<ref>slicetoback</ref>
 				<ref>movesliceabove</ref>
@@ -7930,11 +8912,6 @@ end
 			<seealso>
 				<ref>nextsibling</ref>
 				<ref>slicechild</ref>
-				<ref>freeslice</ref>
-				<ref>slicetofront</ref>
-				<ref>slicetoback</ref>
-				<ref>movesliceabove</ref>
-				<ref>moveslicebelow</ref>
 			</seealso>
 		</command>
 		<command id="parentslice">
@@ -7947,15 +8924,77 @@ end
 			<description>Returns a slice handle for the parent of slice <p>handle</p>, or 0 if <p>handle</p> is the root slice.</description>
 			<seealso>
 				<ref>setparent</ref>
+				<ref>gentlyreparent</ref>
 				<ref>checkparentage</ref>
 				<ref>slicechild</ref>
 			</seealso>
 		</command>
+
+		<command id="nextsliceintree">
+			<canon>next slice in tree (current slice, root slice, visit children)</canon>
+			<shortname>next slice in tree</shortname>
+			<description>
+				Returns the next slice after <p>current slice</p> in the slice tree or a <ref>slicesubtree</ref>.
+				This can be used for iterating over a tree of slices using a <ref>while</ref> loop, in the order that they appear
+				in the slice collection editor (from top to bottom):
+				first go to the first child if any, and then any other descendents and children,
+				then go across to the next sibling if any,
+				then finally go up and look for a sibling of the parent, then of the grandparent, etc.
+				Finally, returns <p>false</p> if <p>current slice</p> is the last descendent of <p>root slice</p>.
+				<lb/>
+				<p>root slice</p> tells the sub-tree to iterate over: every descendent of it starting with <p>root slice</p> itself.
+				<p>root slice</p> is optional, if it's omitted (or <tt>0</tt>) then iterate over the entire slice tree.
+				<lb/>
+				On the first iteration you can pass <tt>0</tt> or <tt>false</tt> as <p>current slice</p>,
+				in which case the return value is <p>root slice</p>.
+				<p>current slice</p> can actually be any slice, but
+				should normally be in the subtree defined by <p>root slice</p>.
+				<lb/>
+				<p>visit children</p> is optional, defaulting to true.
+				If false, then skip over all the children and descendents of this slice.
+				<lb/>
+				Unless you use <tt>visit children = false</tt> each slice in the sub-tree is visited exactly once,
+				provided that you don't add, delete, or reorder slices.
+				<example>variable(root, sl)
+root := sprite layer
+sl := root
+# If you want to skip over the root slice itself, write instead:
+#sl := first child(root)
+
+while (sl) do, begin
+  # Reset all text slices to default text color, e.g. to unhighlight all menu items in a slice-based menu
+  if (slice is text(sl)) then (set text color(sl, ui:Text))
+  sl := next slice in tree(sl, root)
+end
+</example>
+This example shows how to delete slices while you're iterating over them:
+			<example>variable(root, sl, next)
+root := sprite layer
+sl := root
+
+while (sl) do, begin
+  next := next slice in tree(sl, root)
+  # Delete all the hidden slices
+  if (get slice visible(sl) == false) then (
+    free slice (sl)
+  )
+  sl := next
+end
+</example>
+			</description>
+			<seealso>
+				<ref>nextsibling</ref>
+				<ref>parentslice</ref>
+				<ref>slicechild</ref>
+				<ref>lookupnextslice</ref>
+			</seealso>
+		</command>
+
 		<command id="checkparentage">
 			<canon>check parentage (handle, ancestor handle)</canon>
 			<shortname>check parentage</shortname>
 			<description>
-				Checks to see if <p>handle</p> is a child (or grandchild, or great-grandchild, etc...) of <p>ancestor handle</p>.
+				Checks to see if <p>handle</p> is a <ref>descendent</ref> of <p>ancestor handle</p>.
 				Returns <ref>true</ref> or <ref>false</ref>.
 				The result is <tt>false</tt> if <tt>handle == ancestor handle</tt>.
 			</description>
@@ -8409,7 +9448,7 @@ end
 
 		<section title="Slice Types">
 			<description>
-				For a description of the different slice types, see the <a href="http://rpg.hamsterrepublic.com/ohrrpgce/Slices#Slice_types">Slices</a> article on the wiki.
+				For a description of the different slice types, see the <a href="https://rpg.hamsterrepublic.com/ohrrpgce/Slices#Slice_types">Slices</a> article on the wiki.
 				<note>
 					There are two types of slice used by the engine for which there are no commands:
 					'special' slices (such as <ref>spritelayer</ref>),
@@ -8772,10 +9811,19 @@ set horiz align(sl, edge:right)
 		<command id="freesprite">
 			<canon>free sprite (handle)</canon>
 			<shortname>free sprite</shortname>
-			<description>Unloads a sprite loaded by any of the "load x sprite" functions. This removes the sprite from the screen and removes it from memory. It is a good idea to free sprites when you are completely done with them. Unlike <ref>freeslice</ref>, this command only works on sprites, but it will still also free any children of the sprite it is freeing regardless of what kind of children they are. The only purpose of this command is additional error checking.</description>
+			<description>
+				Deletes a sprite slice (e.g. created by <tt>load ... sprite</tt> commands).
+				Identical to <ref>freeslice</ref> except it shows an error when used on a non-sprite,
+				for additional error checking.
+				This removes the sprite from the screen, and deletes any children it has.
+				It is a good idea to free sprites when you are completely done with them.
+				<note>
+					You can't delete a protected slice, which includes most
+					slices created by the engine such as NPC and hero sprites.
+				</note>
+			</description>
 			<seealso>
 				<ref>freeslice</ref>
-				<ref>loadherosprite</ref>
 			</seealso>
 		</command>
 		<command id="clonesprite">
@@ -8978,7 +10026,7 @@ set horiz align(sl, edge:right)
 				<p>dissolve:sink into ground</p>,
 				<p>dissolve:squash</p>,
 				<p>dissolve:melt</p>,
-				<p>dissolve:vapourise</p>,
+				<p>dissolve:vaporize (or dissolve:vaporise)</p>,
 				<p>dissolve:phase out</p>,
 				<p>dissolve:squeeze</p>,
 				<p>dissolve:shrink</p>,
@@ -9203,6 +10251,8 @@ set horiz align(sl, edge:right)
 			<seealso>
 				<ref>setrecttrans</ref>
 				<ref>getrectfuzziness</ref>
+				<ref>getrectfuzzyzoom</ref>
+				<ref>getrectstationarypattern</ref>
 			</seealso>
 		</command>
 
@@ -9236,6 +10286,8 @@ set rect trans(rect, trans:fuzzy)  # Becomes fuzzy with 70% fuzziness</example>
 				<ref>getrecttrans</ref>
 				<ref>setrectfuzziness</ref>
 				<ref>setrectopacity</ref>
+				<ref>setrectfuzzyzoom</ref>
+				<ref>setrectstationarypattern</ref>
 			</seealso>
 		</command>
 
@@ -9260,6 +10312,8 @@ set rect trans(rect, trans:fuzzy)  # Becomes fuzzy with 70% fuzziness</example>
 				<ref>setrectfuzziness</ref>
 				<ref>setrectopacity</ref>
 				<ref>getopacity</ref>
+				<ref>getrectfuzzyzoom</ref>
+				<ref>getrectstationarypattern</ref>
 			</seealso>
 		</command>
 
@@ -9279,6 +10333,67 @@ set rect trans(rect, trans:fuzzy)  # Becomes fuzzy with 70% fuzziness</example>
 				<ref>setrecttrans</ref>
 				<ref>getrecttrans</ref>
 				<ref>getrectfuzziness</ref>
+				<ref>setrectfuzzyzoom</ref>
+				<ref>setrectstationarypattern</ref>
+			</seealso>
+		</command>
+
+		<command id="getrectfuzzyzoom">
+			<canon>get rect fuzzy zoom (handle)</canon>
+			<shortname>get rect fuzzy zoom</shortname>
+			<description>
+				Given a rect slice <p>handle</p> returns the zoom amount for its fuzzy background,
+				if it has one. See <ref>setrectfuzzyzoom</ref>.
+				The zoom is a value 1 or higher.
+			</description>
+			<seealso>
+				<ref>getrectfuzziness</ref>
+				<ref>getrectstationarypattern</ref>
+			</seealso>
+		</command>
+		<command id="setrectfuzzyzoom">
+			<canon>set rect fuzzy zoom (handle, zoom)</canon>
+			<shortname>set rect fuzzy zoom</shortname>
+			<description>
+				Sets the zoom amount for the fuzzy background of a rect slice <p>handle</p> which has had
+				its background set to <tt>trans:fuzzy</tt> using e.g. <ref>setrecttrans</ref>.
+				If the rectangle doesn't have a fuzzy background then this setting has no effect.
+				<p>zoom</p> must be 1 or higher, measuring the size of each 'block' in the fuzzy pattern in pixels.
+			</description>
+			<seealso>
+				<ref>getrectfuzzyzoom</ref>
+				<ref>setrectfuzziness</ref>
+				<ref>setrectstationarypattern</ref>
+			</seealso>
+		</command>
+
+		<command id="getrectstationarypattern">
+			<canon>get rect stationary pattern (handle)</canon>
+			<shortname>get rect stationary pattern</shortname>
+			<description>
+				Given a rect slice <p>handle</p> returns <tt>true</tt> or <tt>false</tt>,
+				telling whether its fuzzy background pattern (if it has one) is set to be
+				'stationary'. See <ref>setrectstationarypattern</ref>.
+			</description>
+			<seealso>
+				<ref>getrectfuzziness</ref>
+				<ref>getrectfuzzyzoom</ref>
+			</seealso>
+		</command>
+		<command id="setrectstationarypattern">
+			<canon>set rect stationary pattern (handle, value)</canon>
+			<shortname>set rect stationary pattern</shortname>
+			<description>
+				Set whether a rect slice <p>handle</p> with a fuzzy background pattern is
+				'stationary', meaning that as you move the slice around the pattern doesn't shift.
+				This is especially useful when two fuzzy rects overlap.
+				<p>value</p> should be <tt>true</tt> or <tt>false</tt>.
+				If the rectangle doesn't have a fuzzy background then this setting has no effect.
+			</description>
+			<seealso>
+				<ref>getrectstationarypattern</ref>
+				<ref>setrectfuzziness</ref>
+				<ref>setrectfuzzyzoom</ref>
 			</seealso>
 		</command>
 
@@ -9676,7 +10791,7 @@ set rect trans(rect, trans:fuzzy)  # Becomes fuzzy with 70% fuzziness</example>
 		<command id="setscrollcheckdepth">
 			<canon>set scroll check depth (handle, depth)</canon>
 			<shortname>set scroll check depth</shortname>
-			<description>Changes the number of generations of children and grandchildren that a scroll slice cares about. The first argument is the handle of the scroll slice. The second argument is the desired depth, or 0 to check the entire family tree of all child slices. For example, a depth of 1 means the scroll only considers children. 2 means it considers children+grandchildren. 3 means it considers children+grandchildren+greatgrandchildren.</description>
+			<description>Changes the number of generations of <ref>descendent</ref>s that a scroll slice cares about. The first argument is the <ref>slicehandle</ref> of the scroll slice. The second argument is the desired depth, or 0 to check the entire <ref>slicesubtree</ref>. For example, a depth of 1 means the scroll only considers children. 2 means it considers children+grandchildren. 3 means it considers children+grandchildren+greatgrandchildren.</description>
 			<seealso>
 				<ref>getscrollcheckdepth</ref>
 			</seealso>
@@ -9684,7 +10799,7 @@ set rect trans(rect, trans:fuzzy)  # Becomes fuzzy with 70% fuzziness</example>
 		<command id="getscrollcheckdepth">
 			<canon>get scroll check depth (handle)</canon>
 			<shortname>get scroll check depth</shortname>
-			<description>Returns the number of generations of children and grandchildren that a scroll slice cares about, or 0 if it considers the entire family tree of every child. The first argument is the handle of the scroll slice. For example, a return value of 1 means the scroll only considers children. 2 means it considers children+grandchildren. 3 means it considers children+grandchildren+greatgrandchildren.</description>
+			<description>Returns the number of generations of <ref>descendent</ref>s that a scroll slice cares about, or 0 if it considers the <ref>slicesubtree</ref>. The first argument is the <ref>slicehandle</ref> of the scroll slice. For example, a return value of 1 means the scroll only considers children. 2 means it considers children+grandchildren. 3 means it considers children+grandchildren+greatgrandchildren.</description>
 			<seealso>
 				<ref>setscrollcheckdepth</ref>
 			</seealso>
@@ -9698,7 +10813,7 @@ set rect trans(rect, trans:fuzzy)  # Becomes fuzzy with 70% fuzziness</example>
 			<shortname>scroll to slice</shortname>
 			<description>
 				Causes all the children of the <p>parent</p> slice to be shifted by the same offset
-				so the screen position of <p>sl</p> (any child or descendent of <p>parent</p>) fits inside the parent.
+				so the screen position of <p>sl</p> (which may be any <ref>descendent</ref> of <p>parent</p>) fits inside the parent.
 				<lb/>
 				If <p>apply padding</p> is true (the default is <tt>false</tt>),
 				then <p>sl</p> is scrolled within the area of <p>parent</p>
@@ -9869,7 +10984,8 @@ set rect trans(rect, trans:fuzzy)  # Becomes fuzzy with 70% fuzziness</example>
 				<lb/>
 				<p>number</p> is an optional argument indicating which slice to return if there is more than one at that point;
 				the bottom-most one (returned by default) is number 0, next up is 1, etc.
-				slice at pixel returns 0 if <p>number</p> is too large (larger than or equal to the number of overlapping slices).
+				Alternatively, -1 is the topmost one, -2 is the second from the top, etc.
+				slice at pixel returns 0 if <p>number</p> is out of range (<tt>number &lt; -count</tt> or  larger than or equal to the number of overlapping slices).
 				If you pass <ref>getcount</ref> as <p>number</p> the number of slices at that pixel is returned instead of a slice handle.
 				<lb/>
 				<p>check descendants</p> is an optional argument defaulting to true.
@@ -9936,6 +11052,58 @@ set rect trans(rect, trans:fuzzy)  # Becomes fuzzy with 70% fuzziness</example>
 					with <p>slice</p>.
 				</note>
 			</description>
+			<example># Example for the player picking up fruit by moving onto them using normal
+# tile-based player movement, but you can use whatever 'player' slice you want)
+
+global variable (1, fruit container)
+global variable (2, collected fruits)  # Number picked up
+
+# Create 10 randomly placed fruit slices on the map
+plotscript, create fruit, begin
+  # Where to put the fruit
+  fruit container := lookup slice(sl:walkabout layer)
+
+  variable (i, fruit)
+  for (i, 1, 10) do (
+    fruit := load walkabout sprite(42)   # Sprite set 42
+    put slice(fruit, random(0, 500), random(0, 500))
+    set parent(fruit, fruit container)
+  )
+end
+
+# Call this from somewhere, such as an each-step script, or each tick from a loop, e.g.:
+#   "while(true) do(pickup fruit, wait(1))"
+plotscript, pickup fruit, begin
+  variable (player, fruit)
+  player := get hero slice(me)
+  while (true) do (
+     fruit := find colliding slice(fruit container, player)
+     if (fruit == false) then (break)
+     free slice (fruit)
+     collected fruits += 1
+   )
+end
+</example>
+			<example>
+# If you need to skip some colliding slices (e.g. other NPCs), or don't immediately free them on
+# collision, use this version instead
+plotscript, pickup fruit, begin
+  variable (player, fruit, index)
+  player := get hero slice(me)
+  while (true) do (
+     fruit := find colliding slice(fruit container, player, index)
+     if (fruit == false) then (break)
+     # Example of rejecting certain slices as not fruit
+     if (slice is sprite(fruit) == false || get sprite set number(fruit) &lt;&gt; 42) then (
+       index += 1
+       continue  #skip
+     )
+
+     free slice (fruit)
+     collected fruits += 1
+   )
+end
+</example>
 			<seealso>
 				<ref>sliceatpixel</ref>
 				<ref>slicecollide</ref>
@@ -10405,12 +11573,19 @@ end</example>
 
 
 		<section title="Zonemaps">
+			<description>
+				<note>
+					All zone commands accept zone handles (returned by <ref>getzone</ref>)
+					in place of zone IDs.
+				</note>
+			</description>
+
 		<command id="writezone">
 			<canon>write zone (zone id, x, y, value)</canon>
 			<shortname>write zone</shortname>
 			<description>
 				Sets whether the tile at (<p>x,y</p>) is part of the specified zone.
-				<p>zone id</p> is a valid ID number (see <ref>readzone</ref>),
+				<p>zone id</p> is a valid ID number (see <ref>readzone</ref>) or zone handle,
 				and <p>value</p> is interpreted as either <p>true</p> (non-zero) or <p>false</p> (zero).
 				<note>
 					Only up to 15 zones may overlap at each tile.
@@ -10435,6 +11610,7 @@ end</example>
 			<description>
 				Returns <ref>true</ref> if the tile at (<p>x,y</p>) is part of the specified zone.
 				The <p>zone id</p> is an ID number from 1 to 9999 for zones defined in the map editor,
+				or a zone handle,
 				or can be the ID one of these special zones:
 				<ul>
 					<li>
@@ -10459,7 +11635,10 @@ end</example>
 				in which case the total number of zones which overlap there is returned.
 				If <p>count</p> too large (greater than or equal to the number of zones),
 				0 (<ref>false</ref>) is returned.
-				<note>The order in which the ID numbers are returned is completely arbitrary.</note>
+				<note>
+					The order in which the ID numbers are returned is completely arbitrary.
+					Also note this returns IDs, not zone handles.
+				</note>
 			</description>
 			<seealso>
 				<ref>readzone</ref>
@@ -10476,19 +11655,24 @@ end</example>
 			<canon>get zone extra (zone id, extra num)</canon>
 			<shortname>get zone extra</shortname>
 			<description>
-				Returns the value in a zone's "extra data" field numbered <p>extra num</p>,
-				which is a number from 0 to 2.
-				You may use the constants <p>extra 0</p>, <p>extra 1</p> and <p>extra 2</p> to refer to them.
-				You can set a zone's extra data in the Zone Info editor.
+				Returns the value in one of a zone's "extra data" fields, which you can set in the Zone Info editor.
+				<p>extra num</p> is an <ref>extradataindex</ref>.
+				<lb/>
+				This command is the same as <ref>getextra</ref> but only works on zones, and accepts zone IDs as well as zone handles.
 			</description>
 		</command>
 		<command id="setzoneextra">
 			<canon>set zone extra (zone id, extra num, value)</canon>
 			<shortname>set zone extra</shortname>
 			<description>
-				Sets the value of a zone's "extra data" field numbered <p>extra num</p>,
-				which is a number from 0 to 2.
-				You may use the constants <p>extra 0</p>, <p>extra 1</p> and <p>extra 2</p> to refer to them.
+				Sets the value of one of a zone's "extra data" fields.
+				<p>extra num</p> is an <ref>extradataindex</ref>.
+				<lb/>
+				Extra data has no builtin meaning or effect, so you're free to use it for whatever you want.
+				<lb/>
+				This command is the same as <ref>setextra</ref> but only works on zones, and accepts zone IDs as well as zone handles.
+				See <ref>appendextra</ref> and <ref>resizeextra</ref> for more ways to
+				modify zone extra data.
 				<note>
 					Changes to zones are not stored in saved games,
 					and are erased when you leave the map unless "Tile Data State" is saved when
@@ -10500,10 +11684,35 @@ end</example>
 			<canon>zone number of tiles (zone id)</canon>
 			<shortname>zone number of tiles</shortname>
 			<description>
-				Given a <p>zone id</p> (from 1 to 9999 or a special id),
+				Given a <p>zone id</p> (from 1 to 9999 or a special id) or zone handle,
 				returns the number of tiles that the zone contains.
 			</description>
 		</command>
+
+		<command id="getzone">
+			<canon>get zone (zone id)</canon>
+			<shortname>get zone</shortname>
+			<description>
+				Given a <p>zone id</p> (from 1 to 9999 or a special ID), returns a "zone handle",
+				which is a value that can be passed to any of the <secref>Extra Data Array Functions</secref>
+				to access the zone's extra data.
+				It can also be used in place of the zone ID in any zone command,
+				but it does nothing useful in that case.
+				For example, you can also pass a zone handle to this command and it returns it unchanged.
+				<note>
+					Zone handles are just numbers that can be recognised by the engine as referring to a zone --
+					because what is <tt>5</tt>?
+					Is it a zone ID, NPC ID, party slot, map number, ...??
+					There's no way to or necessity to destroy a zone handle after use.
+				</note>
+				<example>  # Resize to 5 extra data slots
+resize extra(get zone(10), 5)
+# Set the last (10th) extra data field to 42
+set extra(get zone(10), -1, 42) # Can also be written as  set zone extra(10, -1, 42)
+				</example>
+			</description>
+		</command>
+
 		</section>		<!--Zone functions-->
 
 
@@ -10622,7 +11831,7 @@ end</example>
 					<li>mapstate:tiles = mapstate:tilemap, or, mapstate:passmap, or, mapstate:zonemap</li>
 					<li>mapstate:mapsettings</li>
 					<li>mapstate:npclocations</li>
-					<li>mapstate:npcdefinitions</li>
+					<li>mapstate:npcdefinitions - local NPC definitions only, not global NPCs</li>
 					<li>mapstate:tilemap</li>
 					<li>mapstate:passmap</li>
 					<li>mapstate:zonemap</li>
@@ -10675,12 +11884,21 @@ end</example>
 		<command id="resetmapstate">
 			<canon>reset map state (whichdata)</canon>
 			<shortname>reset map state</shortname>
-			<description>Reloads original unaltered map data from the RPG file. <p>whichdata</p> is a set of bits in the <ref>savemapstate</ref> format to determine what exactly to load. It is optional and the default is mapstate:all. This does not remove temp state files for the map, so they could still be loaded instead when you next enter the map, use <ref>deletemapstate</ref> to remove them if wanted.</description>
+			<description>Reloads original unaltered map data from the RPG file. <p>whichdata</p> is a set of bits in the <ref>savemapstate</ref> format to determine what exactly to load. It is optional and the default is mapstate:all (which doesn't reset global NPC definitions). This does not remove temp state files for the map, so they could still be loaded instead when you next enter the map, use <ref>deletemapstate</ref> to remove them if wanted.</description>
 		</command>
 		<command id="deletemapstate">
-			<canon>delete map state (whichdata)</canon>
+			<canon>delete map state (whichdata, custom id)</canon>
 			<shortname>delete map state</shortname>
-			<description>Deletes temporary map state files for the current map, so that if the map is set to load NPC or tile data it will load the original data from the game files when it is entered. <p>whichdata</p> is a set of bits in the <ref>savemapstate</ref> format to determine what exactly to delete. The default is mapstate:all.</description>
+			<description>
+				Deletes temporary map state for the current map saved either with <ref>savemapstate</ref>
+				or by leaving a map set to save state.
+				By default (if both arguments are omitted), if the map is set to load NPC or tile
+				data it will instead load the original data from the game files when it is entered.
+				<lb/>
+				<p>whichdata</p> is an optional set of bits in the <ref>savemapstate</ref> format to determine
+				what exactly to delete. The default is <tt>mapstate:all</tt>.
+				<p>customid</p> is an optional number between 0 and 31 of a slot in which a custom save was made.
+			</description>
 		</command>
 		</section>		<!--Map State-->
 
@@ -10952,6 +12170,16 @@ end</example>
 			<shortname>get instead of battle script</shortname>
 			<description>Returns a reference to the script that is run instead of battles.</description>
 		</command>
+		<command id="getcurrentmapautorunscript">
+			<canon>get current map autorun script</canon>
+			<shortname>get current map autorun script</shortname>
+			<description>Returns a reference to the script that is run automatically when you load the current map.</description>
+		</command>
+		<command id="getcurrentmapautorunscriptargument">
+			<canon>get current map autorun script argument</canon>
+			<shortname>get current map autorun script argument</shortname>
+			<description>Returns the argument value that will be automatically passed to the autorun script on the current map. Is this useful? Not very!</description>
+		</command>
 	</section>		<!--Script Triggers-->
 
 	<section title="General Game Settings">
@@ -11193,6 +12421,58 @@ end</example>
 				so changing it only lasts until the game is quit and reloaded.
 			</description>
 			<seealso><ref>getactivebattlepauseonallmenus</ref></seealso>
+		</command>
+		<command id="setturnbasedbattlemode">
+			<canon>set turn based battle mode</canon>
+			<shortname>set turn based battle mode</shortname>
+			<description>
+				Changes the battle mode to turn based.
+				This option is not stored in save-games,
+				so changing it only lasts until the game is quit and reloaded.
+			</description>
+			<seealso>
+				<ref>getturnbasedbattlemode</ref>
+				<ref>setactivetimebattlemode</ref>
+				<ref>getactivetimebattlemode</ref>
+			</seealso>
+		</command>
+		<command id="getturnbasedbattlemode">
+			<canon>get turn based battle mode</canon>
+			<shortname>get turn based battle mode</shortname>
+			<description>
+				Return true if the battle mode is currently turn based.
+			</description>
+			<seealso>
+				<ref>setturnbasedbattlemode</ref>
+				<ref>setactivetimebattlemode</ref>
+				<ref>getactivetimebattlemode</ref>
+			</seealso>
+		</command>
+		<command id="setactivetimebattlemode">
+			<canon>set active time battle mode</canon>
+			<shortname>set active time battle mode</shortname>
+			<description>
+				Changes the battle mode to active time.
+				This option is not stored in save-games,
+				so changing it only lasts until the game is quit and reloaded.
+			</description>
+			<seealso>
+				<ref>setturnbasedbattlemode</ref>
+				<ref>getturnbasedbattlemode</ref>
+				<ref>getactivetimebattlemode</ref>
+			</seealso>
+		</command>
+		<command id="getactivetimebattlemode">
+			<canon>get active time battle mode</canon>
+			<shortname>get active time battle mode</shortname>
+			<description>
+				Return true if the battle mode is currently active time.
+			</description>
+			<seealso>
+				<ref>setturnbasedbattlemode</ref>
+				<ref>getturnbasedbattlemode</ref>
+				<ref>setactivetimebattlemode</ref>
+			</seealso>
 		</command>
 		<command id="showbattlereadymeter">
 			<canon>show battle ready meter (state)</canon>
@@ -11574,6 +12854,42 @@ run game(0)</example>
 			</description>
 		</command>
 
+		<command id="pathfindintoextraashero">
+			<canon>pathfind into extra as hero (extra, start x, start y, dest x, dest y, maxdepth, append, skip first)</canon>
+			<shortname>pathfind into extra as hero</shortname>
+			<description>
+				Perform pathfinding between 2 points, using the wall+obstruction rules for heroes. Store the results into extra data (for example, on a slice or an npc)
+				The x and y values of each step in the path will be put into the extra data with 2 values for each, X,Y,X,Y,X,Y to the end of the path. All values are in tile coordinates. If you need pixel coordinates, multiply by 20.
+				The function return value will be true of the destination was reachable, or false if the pathfinding had to give up before reaching the destination. (If it gave up, the extra data will still be filled with the path leading to the closest reachable tile)
+				The first argument <p>extra</p> is the slice handle or npc reference to put the extra data into.
+				The next 4 arguments are the X,Y of the start position, and the X,Y of the destination. Current hero positions don't matter, but if you wanted to pathfind based on the leader hero's current positions, you could use <tt>hero x(me), hero y(me)</tt> for the start x and y.
+				The <p>maxdepth</p> argument is the maximum search depth in tiles to seach before giving up. The default value of 0 means no maximum (search the entire map)
+				The <p>append</p> argument can be set to true if you want to append data to the existing extra data. The default value of false means that the existing extra data will be replaced.
+				The <p>skip first</p> argument can be set to true if you want to exclude the start position from the path (this can be useful if you are appending multiple paths together, or in other situations where it may be convenient)
+			</description>
+			<seealso>
+				<ref>pathfindintoextraasnpc</ref>
+			</seealso>
+		</command>
+		<command id="pathfindintoextraasnpc">
+			<canon>pathfind into extra as npc (extra, npc ref, start x, start y, dest x, dest y, maxdepth, append, skip first)</canon>
+			<shortname>pathfind into extra as npc</shortname>
+			<description>
+				Perform pathfinding between 2 points, using the wall+obstruction rules for a specific NPC. Store the results into extra data (for example, on a slice or an npc)
+				The x and y values of each step in the path will be put into the extra data with 2 values for each, X,Y,X,Y,X,Y to the end of the path. All values are in tile coordinates. If you need pixel coordinates, multiply by 20.
+				The function return value will be true of the destination was reachable, or false if the pathfinding had to give up before reaching the destination. (If it gave up, the extra data will still be filled with the path leading to the closest reachable tile)
+				The first argument <p>extra</p> is the slice handle or npc reference to put the extra data into.
+				The second argument <p>npc ref</p> is the NPC reference of the NPC who will be used for pathfinding. You can also use an NPC ID, but this will use the first copy of that NPC on the map, which might matter for the pathfinding, because an NPC can path through itself, but cannot (by default) path through other copies of the same NPC ID.
+				The next 4 arguments are the X,Y of the start position, and the X,Y of the destination. Current NPC position does not matter, but if you wanted to pathfind based on the NPCs current position, you could use <tt>npc x(npc ref), npc y(npc ref)</tt> for the start x and y.
+				The <p>maxdepth</p> argument is the maximum search depth in tiles to seach before giving up. The default value of 0 means no maximum (search the entire map)
+				The <p>append</p> argument can be set to true if you want to append data to the existing extra data. The default value of false means that the existing extra data will be replaced.
+				The <p>skip first</p> argument can be set to true if you want to exclude the start position from the path (this can be useful if you are appending multiple paths together, or in other situations where it may be convenient)
+			</description>
+			<seealso>
+				<ref>pathfindintoextraashero</ref>
+			</seealso>
+		</command>
+
 		<section title="Debugging">
 		<command id="trace">
 			<canon>trace (string)</canon>
@@ -11587,8 +12903,16 @@ trace (1) # writes "TRACE: i = ????" to g_debug.txt</example>
 		</command>
 		<command id="tracevalue">
 			<canon>trace value (expression, ...)</canon>
+			<canon>trace value of (expression, ...)</canon>
 			<shortname>trace value</shortname>
-			<description>Prints one or more expressions and their values to "g_debug.txt". The number of arguments to this command is variable; each is printed as source text along with its value. You can't print strings with this command; use <ref>trace</ref> instead.</description>
+			<description>
+				Prints one or more <ref>expression</ref>s and their values to "g_debug.txt".
+				The number of arguments to this command is variable;
+				each is printed as source text along with its value.
+				You can't print strings with this command; use <ref>trace</ref> instead.
+				<lb/>
+				<p>trace value of</p> is an alias to <p>trace value</p>.
+			</description>
 			<example>variable(i)
 i := random (1, 1000)
 trace value (i)  # writes "TRACE: i = ????" to g_debug.txt
@@ -11604,12 +12928,13 @@ trace value (hero X (me), hero Y (me))</example>
 			<canon>dump slice tree (slice)</canon>
 			<shortname>dump slice tree</shortname>
 			<description>
-				Prints out a brief description of a slice and all its descendents to "g_debug.txt".
-				<p>slice</p> is optional; if omitted the whole tree is printed out,
-				which is the same as pressing the <p>Ctrl+F8</p> debug key.
+				Prints out a brief description of a slice and all its <ref>descendent</ref>s to "g_debug.txt".
+				<p>slice</p> is optional; if omitted the whole tree is printed out.
+				<lb/>
+				This is also available as "List slices to g_debug.txt" in the F8 Debug Menu.
 				<note>
 					Most of the slice data isn't printed; if you want to inspect it the easiest
-					way to do so is either to press <p>Ctrl+F4</p> to view the slice editor/debugger,
+					way to do so is either to press <p>Shift+F4</p> to view the slice editor/debugger,
 					or to call <ref>scripterror</ref> at the exact moment you want to check the slice tree;
 					you can then enter the slice debugger from the Script Error menu.
 				</note>
@@ -11665,7 +12990,7 @@ trace value (hero X (me), hero Y (me))</example>
 		<command id="assert">
 			<canon>assert (expression)</canon>
 			<shortname>assert</shortname>
-			<description>If <p>expression</p> is false, then writes the script filename, line number and <p>expression</p> into the string given by the constant or global variable named <p>assert expression string</p>, and then calls the script named <p>assert failure</p>. You can use this to detect bugs in your scripts, by checking that your assumptions about the state of the game are correct.</description>
+			<description>If <p>expression</p> is false, then writes the script filename, line number and <ref>expression</ref> into the string given by the constant or global variable named <p>assert expression string</p>, and then calls the script named <p>assert failure</p>. You can use this to detect bugs in your scripts, by checking that your assumptions about the state of the game are correct.</description>
 			<example># The following...
 assert (check tag (tag:initialised) == OFF)
 # ...is equivalent to something like
@@ -11714,7 +13039,7 @@ assert (check tag (tag:initialised) == OFF)  # something ought to be true at thi
 		<command id="getcallingscriptid">
 			<canon>get calling script id (depth)</canon>
 			<shortname>get calling script id</shortname>
-			<description>Returns the ID number of the script which called this one. The optional <p>depth</p> argument, which defaults to 1, allows returning the ID of a deeper ancestor script instead: 1 is the parent, 2 is the grandparent, etc. If there is no calling script (the script was triggered instead), then the return value is 0. You can get the ID number of a script by writing @scriptname.</description>
+			<description>Returns the ID number of the script which called this one. The optional <p>depth</p> argument, which defaults to 1, allows returning the ID of a deeper ancestor script instead: 1 is the parent, 2 is the grandparent, etc. If there is no calling script (the script was triggered instead), then the return value is 0. You can get the ID number of a script by writing <tt>@scriptname</tt>.</description>
 			<seealso>
 				<ref>getscriptname</ref>
 			</seealso>
@@ -11764,6 +13089,17 @@ assert (check tag (tag:initialised) == OFF)  # something ought to be true at thi
 	</section>		<!-- Advanced Functions-->
 
 	<section title="Platform Specific">
+		<command id="windowisfocused">
+			<canon>window is focused</canon>
+			<shortname>window is focused</shortname>
+			<description>
+				Returns true if the game's window is the currently active (focused) one (or if it's fullscreen and active), or false if the user has switched to a different program.
+				This is always true when running on a smartphone, because when the app is backgrounded the game is
+				paused and scripts don't run.
+				<lb/>
+				Use this command if you want to pause something when the player switches to another program.
+			</description>
+		</command>
 		<command id="runningondesktop">
 			<canon>running on desktop</canon>
 			<shortname>running on desktop</shortname>
@@ -11855,13 +13191,14 @@ assert (check tag (tag:initialised) == OFF)  # something ought to be true at thi
 			<canon>NPC IDs</canon>
 			<shortname>NPC ID</shortname>
 			<description>
-				An NPC ID refers to an NPC type, as defined in the Edit NPCs menu.
-				NPC IDs count from 0 upwards.
-				Local and global <ref>npcpool</ref>s have distinct sets of IDs,
-				so some commands such as <ref>npccopycount</ref> take both an NPC ID and an NPC pool
+				An NPC ID refers to an NPC type (aka NPC definition), as defined in the Edit
+				Local/Global NPCs menus.
+				Local and global <ref>npcpool</ref>s both have ID numbers that count from 0 upwards,
+				so the ID doesn't tell you whether it's a local or global NPC.
+				Some commands such as <ref>npccopycount</ref> take both an NPC ID and an NPC pool
 				as separate arguments.
 				But most NPC commands, such as <ref>walknpc</ref>, don't take a pool argument.
-				If you pass an ID to these, then it's interpreted as a ID in the local NPC pool.
+				If you pass an ID to these, then it's interpreted as an ID in the local NPC pool.
 				<lb/>
 				A copy of an NPC is referred to using an <ref>npcref</ref>.
 			</description>
@@ -11876,9 +13213,9 @@ assert (check tag (tag:initialised) == OFF)  # something ought to be true at thi
 				It can be either <p>pool:local</p> (which is <p>0</p>; NPCs specific to one map) or <p>pool:global</p>
 				(which is <p>1</p>).
 				Most commands that accept NPC IDs don't have an argument to tell the pool number.
-				These always default to the local pool, and you need to first use
-				<ref>npcreference</ref> or <ref>globalnpcreference</ref>
-				if you want to refer to a global NPC by ID.
+				These always default to the local pool, and you need to first use the
+				<ref>npcreference</ref> or <ref>globalnpcreference</ref> functions to get an
+				<ref>npcref</ref> to pass to these commands if you want to refer to a global NPC by ID.
 			</description>
 		</command>
 
@@ -11893,7 +13230,7 @@ assert (check tag (tag:initialised) == OFF)  # something ought to be true at thi
 				NPC references are handles for NPC instances on the map,
 				that is, a copy of an NPC definition.
 				NPC references are always negative values, while NPC IDs count from 0 up.
-				An <ref>npcid</ref> can always be used with any command that expects
+				An <ref>npcid</ref> for a local NPC can always be used with any command that expects
 				an NPC reference, in which case it refers to the first
 				instance/copy of that NPC ID from the local <ref>npcpool</ref>, not to the NPC definition itself.
 				(If you want to refer to a global NPC, you need to first use <ref>globalnpcreference</ref>.)
@@ -11948,6 +13285,21 @@ assert (check tag (tag:initialised) == OFF)  # something ought to be true at thi
 			</seealso>
 		</command>
 
+		<command id="objecthandle">
+			<canon>Object handles</canon>
+			<shortname>object handle</shortname>
+			<description>
+				Object handles are handles to things that have extra data arrays,
+				they can be passed to <secref>Extra Data Array Functions</secref>.
+				An object handle is either a <ref>slicehandle</ref>, an <ref>npcref</ref> (NOT an NPC ID!),
+				a zone handle (returned by <ref>getzone</ref>; NOT a zone ID!),
+				or a <ref>menuitemhandle</ref>.
+				Menu handles are distinct from all the others but don't (yet) count, because they
+				don't have extra data.
+				<ref>false</ref> (zero) is never a valid object handle.
+			</description>
+		</command>
+
 		<command id="lookupcode">
 			<canon>Slice lookup codes</canon>
 			<shortname>slice lookup code</shortname>
@@ -11985,6 +13337,24 @@ assert (check tag (tag:initialised) == OFF)  # something ought to be true at thi
 				for example, the one returned by <ref>selectedmenuitem</ref>.
 				Menu items in different menus are always different, so it's possible to lookup
 				which menu its in with <ref>parentmenu</ref>, and menu handles are never reused.
+			</description>
+		</command>
+
+		<command id="extradataindex">
+			<canon>Extra data array index</canon>
+			<shortname>extra array index</shortname>
+			<description>
+				An extra array index is a number telling which element of an NPC's, slice's, etc, extra data array to read/write.
+				(An "array" is a list of values.)
+				The first element of the array is index 0, the second is index 1, etc, up to <tt>extra length(handle) -- 1</tt>.
+				<lb/>
+				By default all slices/NPCs/etc start with a length 3 extra data array, so <p>extra</p> is typically a value from 0 to 2.
+				You may also use the obsolete constants <p>extra 0</p>, <p>extra 1</p>, <p>extra 2</p>
+				which have values 0, 1, 2, if you find them more readable.
+				<lb/>
+				For convenience, negative indexing like Python is also supported:
+				the last element is index -1, the second last is index -2, down to <tt>-1 * extra length(handle)</tt> which is the first element.
+				Negative indexing is only supported by commands that explicitly say they accept an array index.
 			</description>
 		</command>
 
@@ -12210,7 +13580,9 @@ joy:button 17      # Warning: joy:button17 is not joy:button16 + 1! All other bu
 joy:button 32
 
 #  Virtual scancodes:
-any key            # Any keyboard key or joystick button (including joystick left/right/up/down),
+any key            # Any keyboard key except Numlock, Capslock and Scrolllock, or any joystick button
+                   # (including joystick left/right/up/down) that has a builtin meaning like 'use'
+                   # (e.g. X/Y/L1/L2/R1/R2/Select aren't included),
                    # and also any mouse button if "'any key', etc, include mouse clicks" is turned on in
 		   # the Mouse Controls menu.
 up key             # Up key on the keyboard, or on any joystick
@@ -12292,6 +13664,53 @@ run key            # Alias for 'flee key'
 				<ref>joystickaxis</ref>
 			</seealso>
 		</command>
+	</section>
+
+	<section title="Glossary">
+		<gloss id="ancestor">
+			<canon>ancestor (of a slice)</canon>
+			<shortname>ancestor</shortname>
+			<description>
+				A slice's parent, grandparent, great-grandparent, etc., all the way to the root.
+				Use <ref>checkparentage</ref> to see if one slice is an ancestor of another.
+			</description>
+		</gloss>
+		<gloss id="descendent">
+			<canon>descendent (of a slice)</canon>
+			<shortname>descendent</shortname>
+			<description>
+				Any child, or grandchild, or great-grandchild, etc. of a slice.
+				Use <ref>checkparentage</ref> to see if one slice is a descendent of another.
+			</description>
+		</gloss>
+		<gloss id="slicesubtree">
+			<canon>slice subtree</canon>
+			<description>
+				A slice together with all of its <ref>descendent</ref>s forms a slice subtree.
+				The slice is the 'root' of the subtree.
+				You can iterate over all the slices in a subtree (or the whole tree) with <ref>nextsliceintree</ref>.
+			</description>
+		</gloss>
+		<gloss id="subtree">
+			<alias>slicesubtree</alias>
+			<shortname>subtree</shortname>
+		</gloss>
+		<gloss id="expression">
+			<canon>expression</canon>
+			<description>
+				An expression is any piece of code that can be evaluated to a value, which can be passed to a command
+				or stored in a variable.
+				Examples include numbers like <tt>3</tt>, variables like <tt>x</tt>,
+				formulas like <tt>20 * x</tt>, commands or scripts which return values like <ref>npcdirection</ref>,
+				compound expressions like <tt><ref>heropixelx</ref>(who + 1) / 20</tt>
+				and the string expressions <ref>__setstring__</ref> and <ref>__appendstring__</ref> (which return <tt>id</tt>).
+				Flow control (<ref>if</ref>, <ref>switch</ref>, etc) as well as <ref>variable</ref>
+				are <p>statements</p>, not expressions.
+				<lb/>
+				<ref>setvariable</ref> expressions like <tt>x := 3</tt> can also be used as expressions, but it's often considered poor taste to do so.
+			</description>
+		</gloss>
+
 	</section>
 
 	<section title="Predefined Constants" constants="yes">
@@ -12391,15 +13810,18 @@ run key            # Alias for 'flee key'
 				<shortname>off</shortname>
 			</altcommand>
 		</command>
-		<command id="directionconstants">
-			<canon>Direction Constants</canon>
-			<shortname>Direction Constants</shortname>
+		<command id="direction">
+			<canon>Directions</canon>
+			<shortname>direction</shortname>
 			<description>
-				There are constants for each of the four directions.
-				These constants are useful for commands such as <ref>walkhero</ref> and
-				<ref>walknpc</ref>, which take a direction as an argument.
+				A direction is a value 0-3 used by commands such as <ref>walkhero</ref> and
+				<ref>walknpc</ref>, which goes clockwise from north:
 				<lb/>
-				<p>north, south, east, west, up, down, right, left</p>
+				<p>north</p> = <p>up</p> = <p>0</p><lb/>
+				<p>east</p> = <p>right</p> = <p>1</p><lb/>
+				<p>south</p> = <p>down</p> = <p>2</p><lb/>
+				<p>west</p> = <p>left</p> = <p>3</p><lb/>
+				You can convert a direction into relative X and Y values using the <ref>dirx</ref> and <ref>diry</ref> functions.
 			</description>
 			<altcommand id="north">
 				<shortname>north</shortname>
@@ -12434,7 +13856,7 @@ run key            # Alias for 'flee key'
                                 (hero zero) in any command that takes a caterpillar party rank as an argument.
                                 It is equal to zero.
                                 You can't write <tt>me</tt> where a hero party slot or hero ID is needed!
-                                See <a href="http://rpg.hamsterrepublic.com/ohrrpgce/Ways_to_refer_to_a_hero_in_a_script">
+                                See <a href="https://rpg.hamsterrepublic.com/ohrrpgce/Ways_to_refer_to_a_hero_in_a_script">
 				Ways to refer to a hero in a script</a>.
                         </description>
 		</command>

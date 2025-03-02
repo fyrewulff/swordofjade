@@ -50,7 +50,9 @@ define function, begin
 26,setNPCframe,2,0,0        # (who,frame) frame is 0 or 1
 27,suspendoverlay,0         # turns off overhead tiles
 28,playsong,1,0             # play song(#)
+28,playmusic,1,0            # play song(#)
 29,stopsong,0               # stop the music
+29,stopmusic,0              # stop the music
 30,keyval,2,0,0             # check key/joystick/virtual scancode state bits (scancode, joystick num)
 31,rankincaterpillar,1,0    # finds the heros position in the caterpillar
 32,showbackdrop,1,0         # showbackdrop (#)
@@ -97,7 +99,8 @@ define function, begin
 74,setdeathscript,1,0       # changes what script is run when you die
 75,fadescreenout,3,0,0,0    # fade screen out (red,green,blue)
 76,fadescreenin,0           # fade back to color after fade screen out
-77,showvalue,1,0            # display a number in the bottom left corner
+77,showvalue,-1             # display one or more numbers in the bottom left corner
+77,showvalues,-1            # display one or more numbers in the bottom left corner
 78,alterNPC,4,0,0,0,-1      # replaces one of an NPC's stats
 79,shownovalue,0            # hide the number from showvalue
 80,currentmap,0             # returns the number of the current map
@@ -223,6 +226,7 @@ define function, begin
 201,systemminute,0
 202,systemsecond,0
 203,currentsong,0
+203,currentmusic,0
 204,getheroname,2,0,0         # (string, hero) - puts the name of hero(hero) in string(string)
 205,setheroname,2,0,0         # (string, hero) - sets the name of hero(hero) to string(string)
 206,getitemname,2,0,0         # (string, item) - puts the name of item(item) in string(string)
@@ -269,7 +273,7 @@ define function, begin
 245,savemapstate,2,255,255    #save map data to a temp file (savebits, customid)
 246,loadmapstate,2,255,255    #load map data from a temp file (loadbits, customid)
 247,resetmapstate,1,255       #reload original map data (loadbits)
-248,deletemapstate,1,255      #delete temp map state files (deletebits)
+248,deletemapstate,2,255,255  #delete temp map state files (deletebits, customid)
 249,partymoney,0              #retrieves amount of gold
 250,setmoney,1,0              #sets amount of gold
 251,setstringfromtable,2,0,0  #string support function
@@ -382,6 +386,7 @@ define function, begin
 358,numberfromstring,2,0,0    #look in a string for a number and return it
 359,sliceissprite,1,0         #return true if the provided slice handle points to a sprite
 360,spritelayer,0             #return a handle to the plotsprite layer
+360,scriptlayer,0             #return a handle to the plotsprite layer
 361,freeslice,1,0             #free a slice and all its children
 362,firstchild,1,0            #return the first child of a slice or 0 if none
 363,nextsibling,1,0           #return the next sibling of a slice or 0 if none
@@ -459,7 +464,7 @@ define function, begin
 435,parentslice,1,0           #return a slice's parent
 435,sliceparent,1,0           #alias
 436,childcount,1,0            #return number of children of a slice
-437,lookupslice,2,0,0         #find a slice using a lookup code constant
+437,lookupslice,2,0,0         #find a slice using a lookup code constant (lookup, root)
 438,resetgame,-1              #reset the game (newgame args)
 439,sliceisvalid,1,0          #checks for a real, non-deleted slice handle
 440,iteminslot,1,0            #read inventory by position
@@ -753,6 +758,57 @@ define function, begin
 724,layeridunderwalkabouts,0  # Get ID number of map layer under the walkabouts in the current map
 725,getglobalsoundvolume,0    # Get the sfx volume setting (0-255)
 726,setglobalsoundvolume,1,192 # Get sfx volume (0-255); default to 75% (default initial sfx volume)
+727,healparty,1,-2            # Restore active party's HP & MP ([revive dead heroes])
+728,setheroautobattle,2,0,0   # Change a hero's auto battle setting
+729,getheroautobattle,1,0     # Return true if the hero is set to auto battle
+730,resizeextra,2,0,3         # Resize an object's 'extra' array (handle, length)
+731,extralength,1,0           # The length of an object's 'extra' array (handle)
+732,appendextra,2,0,0         # Append to an object's 'extra' array (handle, value)
+733,lookupnextslice,3,0,0,0   # Next slice with lookup code (lookupcode, current, root)
+734,nextsliceintree,3,0,0,1   # Next slice (current, root, visit children)
+735,windowisfocused,0         # The game's window is the active one
+736,showvalueofinternal,-1    # "show value of" is translated to this
+737,resetenemydata,2,0,0      # Reset one element of an enemy's data (enemy id, data index)
+738,resetenemyname,1,0        # Reset enemy name to original (enemy id)
+739,getextra,2,0,0            # Index an object's 'extra' array (handle, index)
+739,getmenuitemextra,2,0,0    # Used to be a script
+740,setextra,3,0,0,0          # Set element of an object's 'extra' array (handle, index, value)
+740,setmenuitemextra,3,0,0,0  # Used to be a script
+741,herouseslevelmp,1,0       # Returns true if the hero uses level mp
+742,getzone,1,0               # Create a zone handle (zone id)
+743,getrectfuzzyzoom,1,0      # Get fuzzy zoom (slice)
+744,setrectfuzzyzoom,2,0,1    # Set fuzzy zoom >= 1 (slice, zoom)
+745,getrectstationarypattern,1,0 # Get whether fuzzy pattern is stationary (slice)
+746,setrectstationarypattern,2,0,1 # Set whether fuzzy pattern is stationary (slice, bool)
+747,keypresstime,2,0,0        # How long a key has been down, in milliseconds (scancode, player)
+748,randomchoice,-1           # Return one of the args, randomly
+749,getstatname,2,0,0         # Get the name of a stat, register, or "" if invalid ID (string id, stat)
+750,suspendwalkabouts,0       # Suspend hero/NPC movement and logic
+751,resumewalkabouts,0        # Undo suspendwalkabouts
+752,walkaboutsaresuspended,0  # suspendwalkabouts called
+753,forwardx,1,0              # Tile X coord in front of hero (hero rank)
+754,forwardy,1,0              # Tile Y coord in front of hero (hero rank)
+755,getattackextra,2,0,0      # get attack extra data (attack id + 1, 0 - 2)
+756,pathfindintoextraasnpc,9,0,0,0,0,0,0,0,0,0 # pathfind, then store the results in extra data (handle, npcref, startx, starty, destx, desty, maxsearch, append, skipstart)
+757,pathfindintoextraashero,8,0,0,0,0,0,0,0,0  # pathfind, then store the results in extra data (handle, startx, starty, destx, desty, maxsearch, append, skipstart)
+758,insertextra,3,0,0,0       # insert a new extra value at a specific index (handle, index, value)
+759,deleteextra,2,0,0         # Delete an element from an extra array, returns the deleted value (handle, index)
+760,deleteextrarange,3,0,0,0  # Delete several elements of a slice at once (handle, first index, last index)
+761,isshopbuymenuempty,1,0    # Is the "Buy" menu empty? (shop id)
+762,isshophiremenuempty,1,0   # Is the "Hire" menu empty? (shop id)
+763,innscreen,2,0,0           # Open the Inn screen for a specific price (price, skip_fade)
+764,readenvironment,2,0,0     # (Console only) Read a platform info string (deststr, keystr)
+765,xboxrequestaccountpicker,0# (Console only)
+766,ps5startstory,0           # (Console only)
+767,ps5endstory,0             # (Console only)
+768,setrichpresence,2,0,-1    # (Console/Steam) Set the Friends list status (token_name strid, substitution strid)
+769,findextra,3,0,0,0         # Return index of a value in an extra array, or -1 (handle, value, startindex)
+#770 unused
+#771 unused
+#772 unused
+773,playstationcontroller,1,0 # The specified controller is a playstation-style one
+774,xboxcontroller,1,0        # The specified controller is an xbox-style one
+775,nintendocontroller,1,0    # The specified controller is a nintendo-style one
 
 # Don't forget to update maxScriptCmdID in const.bi when adding new commands
 end
@@ -1104,6 +1160,10 @@ script,setenemystat,hsd:enemyID,hsd:stat,hsd:value,begin
   writeenemydata(hsd:enemyID,hsd:stat+62,hsd:value)
 end
 
+script,resetenemystat,hsd:enemyID,hsd:stat,begin
+  resetenemydata(hsd:enemyID,hsd:stat+62)
+end
+
 #get/set enemy appearance are now simply wrappers. too much confusion to remove them now
 script,getenemyappearance,hsd:enemyID,hsd:appearance,begin
   return(readenemydata(hsd:enemyID,hsd:appearance))
@@ -1225,6 +1285,22 @@ end
 
 script,set dead heroes gain experience,hsd:bit=1,begin
   write preference bit(19, hsd:bit)
+end
+
+script, set turn based battle mode,begin
+  write general(192, 1)
+end
+
+script, get turn based battle mode,begin
+  exit returning(read general(192) == 1)
+end
+
+script, set active time battle mode,begin
+  write general(192, 0)
+end
+
+script, get active time battle mode,begin
+  exit returning(read general(192) == 0)
 end
 
 script,set active battle pause for animations,hsd:bit=1,begin
@@ -1352,6 +1428,14 @@ end
 
 script,draw npcs above heroes,hsd:setting=1,begin
   write gmap(16,hsd:setting)
+end
+
+script,get current map autorun script, begin
+  return (read gmap(7))
+end
+
+script,get current map autorun script argument, begin
+  return (read gmap(8))
 end
 
 #--------------------------------------------------------------------------
@@ -1633,18 +1717,6 @@ script, set menu item bit, hsd:handle, hsd:bit, hsd:value=1, begin
   write menu item int(hsd:handle, 28, hsd:n)
 end
 
-script, set menu item extra, hsd:handle, hsd:extra=0, hsd:n=0, begin
-  if(hsd:extra >= 0 && hsd:extra <= 2) then, begin
-    write menu item int(hsd:handle, 29+hsd:extra, hsd:n)
-  end
-end
-
-script, get menu item extra, hsd:handle, hsd:extra=0, begin
-  if(hsd:extra >= 0 && hsd:extra <= 2) then, begin
-    exit returning(read menu item int(hsd:handle, 29+hsd:extra))
-  end
-end
-
 script, set menu item color, hsd:handle, hsd:n=0, begin
   write menu item int(hsd:handle, 32, hsd:n)
 end
@@ -1876,6 +1948,15 @@ script, realign slice, hsd:sl, hsd:halign, hsd:valign, hsd:hanchor=-1, hsd:vanch
   if(hsd:vanchor <> -1) then(set vert anchor(hsd:sl, hsd:vanchor))
 end
 
+script, gently realign slice, hsd:sl, hsd:halign, hsd:valign, hsd:hanchor=-1, hsd:vanchor=-1, begin
+  variable(hsd:oldx, hsd:oldy)
+  hsd:oldx := slice screen x(hsd:sl)
+  hsd:oldy := slice screen y(hsd:sl)
+  realign slice(hsd:sl, hsd:halign, hsd:valign, hsd:hanchor, hsd:vanchor)
+  set slice screen x(hsd:sl, hsd:oldx)
+  set slice screen y(hsd:sl, hsd:oldy)
+end
+
 script, center slice, hsd:sl, begin
   realign slice(hsd:sl, 1, 1, 1, 1)
 end
@@ -1904,6 +1985,13 @@ script, put slice screen, hsd:sl, hsd:newx, hsd:newy, begin
                     slice y(hsd:sl) + hsd:newy -- slice screen y(hsd:sl))
 end
 
+script, move slice to screen pos, hsd:sl, hsd:newx, hsd:newy, hsd:ticks, begin
+  variable(hsd:offsetx, hsd:offsety)
+  hsd:offsetx := slice screen x(hsd:sl) -- slice x(hsd:sl)
+  hsd:offsety := slice screen y(hsd:sl) -- slice y(hsd:sl)
+  move slice to(hsd:sl, hsd:newx -- hsd:offsetx, hsd:newy -- hsd:offsety, hsd:ticks)
+end
+
 script, set padding, hsd:sl, hsd:newpadding, begin
   set left padding  (hsd:sl, hsd:newpadding)
   set right padding (hsd:sl, hsd:newpadding)
@@ -1918,6 +2006,45 @@ end
 script, reparent to hero, hsd:sl, hsd:hero rank, begin
   set parent(hsd:sl, lookup slice(sl:walkabout sprite component, get hero slice(hsd:hero rank)))
 end
+
+script, gently reparent, hsd:sl, hsd:newparent, begin
+  variable(hsd:oldx, hsd:oldy)
+  hsd:oldx := slice screen x(hsd:sl)
+  hsd:oldy := slice screen y(hsd:sl)
+  set parent(hsd:sl, hsd:newparent)
+  set slice screen x(hsd:sl, hsd:oldx)
+  set slice screen y(hsd:sl, hsd:oldy)
+end
+
+script, lookup ancestor, hsd:code, hsd:sl, begin
+  variable(hsd:par)
+  hsd:par := slice parent(hsd:sl)
+  while(hsd:par) do(
+    if(get slice lookup(hsd:par) == hsd:code) then(exit(hsd:par))
+    hsd:par := slice parent(hsd:par)
+  )
+  exit(0)
+end
+
+#--------------------------------------------------------------------------
+# helper scripts
+
+script, dirX, dir, begin
+  switch (dir) do (
+    #case (up, down) return (0)
+    case (right) return (1)
+    case (left) return (-1)
+  )
+end
+
+script, dirY, dir, begin
+  switch (dir) do (
+    #case (left, right) return (0)
+    case (down) return (1)
+    case (up) return (-1)
+  )
+end
+
 
 #--------------------------------------------------------------------------
 # script triggers
@@ -2075,6 +2202,7 @@ define constant, begin
 -1,getcount
 0,string:outline
 1,string:flat
+# readenemydata constants
 53,Enemy:Picture
 54,Enemy:Palette
 55,Enemy:PictureSize
@@ -2095,6 +2223,7 @@ define constant, begin
 19, StealableItemChance
 20, StealableRareItem
 21, StealableRareItemchance
+# end of readenemydata constants
 0, Crop
 1, Wrap
 2, Defaulttile
@@ -2168,6 +2297,7 @@ define constant, begin
 8,menubit:advance text box when menu closes
 9,menubit:highlight selection background
 10,menubit:remember selection
+11,menubit:clamp to screen bounds
 ### The align: constants are for menu alignment, NOT for slices!
 0,align:center
 -1,align:left
@@ -2236,6 +2366,8 @@ define constant, begin
 3,dissolve:sink into ground
 4,dissolve:squash
 5,dissolve:melt
+6,dissolve:vaporise
+6,dissolve:vaporize
 6,dissolve:vapourise
 7,dissolve:phase out
 8,dissolve:squeeze
@@ -2250,7 +2382,7 @@ define constant, begin
 17,dissolve:blip
 -1,dissolvetime:default
 50000,maximum global id
-99,maximum string id
+255,maximum string id
  -1, ui:Background               # Background colour
  -2, ui:MenuItem                 # Normal menu item
  -3, ui:DisabledItem             # Disabled menu item
@@ -2321,6 +2453,7 @@ define constant, begin
 -100018, sl:textbox choice box
 -100019, sl:textbox root
 -100005, sl:script layer
+-100005, sl:sprite layer
 -100006, sl:textbox layer
 -100007, sl:string layer
 -100021, sl:reserve

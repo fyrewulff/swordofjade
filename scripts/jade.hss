@@ -770,15 +770,33 @@ if(slot>=0) then(set variable(saves,saves+1))
 )
 end
 
-script,sethp,begin
-set hero palette(find hero(0),1+poff)
-set hero palette(find hero(1),29+poff)
-set hero palette(find hero(2),33+poff)
-set hero palette(find hero(3),65+poff)
-set hero palette(find hero(0),1+poff,inside battle)
-set hero palette(find hero(1),29+poff,inside battle)
-set hero palette(find hero(2),33+poff,inside battle)
-set hero palette(find hero(3),65+poff,inside battle)
+
+# new version of sethp contributed by Artimus Bena in 2025
+# the engine now throws errors if the other heroes are not present in
+# extra warning mode, so he wrote this new version.
+script, sethp, begin 
+    variable (slot, hero, p0, p1, p2, p3, new_palette)
+    p0 := 1+poff
+	#silver dogero
+    if (check tag(724) ) then ( p0 := 73+poff )
+    p1 := 29+poff
+    p2 := 33+poff
+    p3 := 65+poff
+    
+    for (slot, 0, 3) do (
+        hero := hero by slot (slot)
+        switch (hero) do (
+            case (hero:Dogero) new_palette := p0
+            case (hero:Mi'la) new_palette := p1
+            case (hero:Johan) new_palette := p2
+            case (hero:Pyrus) new_palette := p3
+	    case (else) continue(2)
+        )
+    
+        set hero palette (hero, new_palette)
+        set hero palette (hero, new_palette, inside battle)
+        
+    )
 end
 
 script,setpartyout,begin
@@ -822,6 +840,8 @@ show map
 wait(5)
 set variable(flash,2)
 )
+
+play sound (31,false,true) #battle sound for 2025
 variable(iii)
 for(iii,1,flash,1) do(
 write color (0,0,50)
@@ -1048,6 +1068,15 @@ set variable(actnumber,1)
 #DUN DUN DUN
 #!!!!!!!!!!!
 #Add in the option to skip the introduction!
+
+# new for 2025 :(
+# there's a really bad bug in the katina battle at the end of the program that causes an infinite loop
+# in order to keep complains low on steam and put out the fire, the proem is being temporarily disabled
+# after spending a whole day trying to get the battle fixed.
+
+#begin proem choice comment out
+# update - fenrir found the bug, so this is fixed now.proem choice is uncommented
+
 fade screen out(0,0,0)
 show backdrop(133)
 show text box(7325)
@@ -1059,6 +1088,9 @@ wait(1)
 fade screen out
 advance text box
 show map
+
+# as part of the proem disable, force tag 258 to false just to keep things clean
+#set tag (258,false) #now commented out since we're not disabling the proem anymore
 
 #chose to watch the intro
 if(check tag(258)) then(

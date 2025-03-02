@@ -1,0 +1,13 @@
+Path: .
+Working Copy Root Path: C:\Users\james\src\ohr
+URL: https://rpg.hamsterrepublic.com/source/rel/ichorescent
+Relative URL: ^/rel/ichorescent
+Repository Root: https://rpg.hamsterrepublic.com/source
+Repository UUID: 7d344553-34f0-0310-a9b1-970ce8f1c3a2
+Revision: 13625
+Node Kind: directory
+Schedule: normal
+Last Changed Author: james
+Last Changed Rev: 13625
+Last Changed Date: 2024-10-28 13:33:39 -0700 (Mon, 28 Oct 2024)
+

@@ -2,6 +2,8 @@ The following documentation is also available at http://rpg.hamsterrepublic.com/
 
 Most debug keys let you press either Shift or Ctrl. Pressing Ctrl will activate menu items, NPCs, etc, so use Shift in those cases.
 
+F1 might show a help page while certain debug modes are active.
+
 -------------------------------------
 The following are only available when a text box IS NOT being displayed:
 
@@ -28,18 +30,26 @@ Shift/Ctrl+F4 Edit the slice tree (in the Slice Collection Editor). You can even
 
 F5 Menu for forcing reloading of edited data while running Game using "Test Game". If you are not editing while you play then this menu is only useful for reloading the map to undo changes made by scripts.
 
+Shift/Ctrl+F5 Shows CPU usage - shows how much time is spent on different tasks including running scripts and drawing slices. Also shows numbers of drawn and total slices. Press F1 after enabling it for detailed help.
+
 F6 NPC Debug Mode. Draw NPC type ID and reference numbers on top of NPCs. ID numbers at top, reference numbers below. The reference numbers are shown without the negative signs. NPCs that are hidden due to tag conditions are shown with darkened ID numbers.
 Move the mouse over an NPC to see some of the NPC type and instance data. (Hint: use the PAUSE key to examine at moving NPCs)
 Press F6 twice to also see dotted lines around each NPC indicating everything that's considered an obstruction. Press three times to disable this mode.
+
+F7 Enter camera movement mode. Lets you use the arrow keys to move the camera (hold Shift to go faster). Press F7 to exit this mode.
 
 Shift/Ctrl+F7 Lets you switch graphics backend. This key combination works everywhere in Game and Custom. Try switching if you have graphical or keyboard/mouse/joystick problems or want certain features. Only gfx_sdl supports resolutions other than 320x200.
 
 F8 Bring up this debug menu (this option does nothing)
 
-Shift/Ctrl+F8 Open g_debug.txt with an (default) external program. g_debug.txt is written next to the .rpg file and error messages and other output is written to it. Errors are lines beginning with "! ", and often don't cause a message to display to the player.
+Shift/Ctrl+F8 Open g_debug.txt with a (default) external program. g_debug.txt is written next to the .rpg file and error messages and other output is written to it. Errors are lines beginning with "! ", and often don't cause a message to display to the player.
 This menu item will read "View g_debug.txt: # errors" if there are errors.
 
 Shift/Ctrl+F9 Toggle script profiling. When profiling, the script interpreter collects statistics about how long each script ran for, how long the scripts it called ran for, and how many times it was run. These stats are printed to g_debug.txt (press Shift-F8 to view) when you quit, or when you turn off profiling. Note: If you turn profiling on and off several times, data from all profiling sessions gets printed.
+
+Start script+command profiling. (Only when not already profiling.) Script profiling plus also track time spent on each script command (and how many times each was called), printed to g_debug.txt as an extra table. Causes extra slow down.
+
+Start specific command profiling. (Only when not already profiling.) Shows a prompt for the name or ID number (from the list in plotscr.hsd, e.g. showtextbox is 11) of a builtin script command. Then starts script+command profiling. After stopping the profiling, the printed script profiles table has two extra columns showing how many times each script called the command and how much time it took. This doesn't work for builtin scripts in plotscr.hsd which aren't commands like "npc copy number".
 
 F10 Toggle script-debugging mode. Press once to draw some information on-screen while continuing to play, twice to pause and enter the script debugger, three times to exit.
 
@@ -78,6 +88,12 @@ Manipulate gen() array: Raw-edit gen(), for engine developers. This gives you di
 Manipulate gmap() array: Raw-edit gmap(), for engine developers. This gives you direct access to the data represented in the General Map Data submenu of the map editor.
 
 Email saved game (Only on Android): Saves the current game and then attaches it to an email to the game developer (opens an email client).
+
+View/edit ohrrpgce_config.ini: opens an external text editor to edit ohrrpgce_config.ini, where Game and Custom store various settings, some of which can't be edited any other way. There are multiple possible locations for this .ini file.
+See "ohrrpgce_config.ini" on the wiki.
+
+View/edit gameconfig.ini: opens an external text editor to edit gameconfig.ini, where Game stores a couple remembered player settings like whether to fullscreen.
+See "gameconfig.ini" on the wiki.
 
 Switch to debug/release mode: This toggles whether script and other errors are displayed. Games usually default to Release because lots of errors might occur in old games, but when playtesting it's better to use Debug mode.
 

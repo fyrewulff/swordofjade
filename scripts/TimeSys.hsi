@@ -64,6 +64,9 @@ script,Run Real Time System,doinit, begin
 	setvariable(isrunning,true)
 	setvariable(dochange,false)
 	setvariable(wearycounter,4)
+	$3 = "nothing"
+	$1 = "silverdog"
+	$2 = "normaldog"
 	set tag (5,1) #Is afternoon tag
 
 	#suspend box advance	#run real time system before saving
@@ -77,8 +80,26 @@ script,Run Real Time System,doinit, begin
 	
 	while(isrunning == true)
 	do,begin
+
+		# new for 2025! early jade sword bug hotfix! >:(
+		# for some reason new versions give the player the FINAL WEAPON IN THE GAME
+		# literally RIGHT AT THE START of the game WHY?!!?!?
+		# so as a hotfix, the RTS will force delete the SoJ back out of inventory
+		# until the player is past a certain point the story until the actual bug
+		# is found.
+
+		if( check tag(71) == false ) then ( delete item ( 34 ) )
+
+		# tag 71 is "has the player killed first boss yet" tag. this should be enough to
+		# get the bugged sword out while not punishing early jade assemblers / 
+		# sequence breakers because i don't want to punish all bugs.
+		# item 34 is the soj
+
+		# until this is fixed all sequence breaks require killing the first boss
+
 		waitfortextbox
 		#hot keys for various actions
+
             if ( key is pressed ( 35 ) ) then, begin #check for H key
 			if ( inventory ( 71 ) ) then , begin #safety check for hunt item
 				hunt
@@ -126,7 +147,29 @@ script,Run Real Time System,doinit, begin
 				tb (8030)
 			end
 		end
+
+		if ( key is pressed ( 46) ), then , begin # check for C key, code input
+			$100 = "Enter code:"
+			center string at(100, 160, 80)
+			enable input text (true)
+			inputstring ( 3 )
+			enable input text (false)
+			hide string (100)
+			if ( stringcompare(3,1) ) then, begin
+				set tag(724, true) #silver dogero mode
+			end
+			# the palette is actually set in jade.hss in script 'sethp' (around line 770, depending on when you see this)
+			if ( stringcompare(3,2) ) then, begin
+				set tag(724, false)
+			end
+			
+		end
 		#end hot keys
+
+		#special code stuff
+		#showstring(1)
+
+
 
 
 		setvariable(second,second + 01) #increase
