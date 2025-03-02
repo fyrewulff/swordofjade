@@ -3,7 +3,9 @@ Welcome to the Github repo for Sword of Jade: Parallel Dreams, which is a full l
 Sword of Jade is created by Kevin 'Charbile' Loan and Michael 'FyreWulff' Kidder, (c)1998-2025.
 
 Sword of Jade is available for purchase on Steam and Itch:
+
 https://store.steampowered.com/app/1885860/Sword_of_Jade_Parallel_Dreams/
+
 https://fyrewulff.itch.io/sword-of-jade-parallel-dreams
 
 The OHRRPGCE engine source code can be found at https://github.com/ohrrpgce 
